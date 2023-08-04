@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7260fc2f7faab714dbcc1ef23a6146bd, type: 3}
+  m_Name: Test Projectile 1
+  m_EditorClassIdentifier: 
+  skillID: 0
+  skillName: Test 1
+  skillType: 0
+  cost: 1
+  activePrefab: {fileID: 0}
+  previewMaterial: {fileID: 0}
+  rawDamage: 10
+  baseSpeed: 1
+  lifetime: 0
+  cursorPrefab: {fileID: 6377454362745107474, guid: 054d1e739df444b45b497f7abea12974, type: 3}
+  linePrefab: {fileID: 792442966114428294, guid: d63e3325e5d35344890aedf32d0b73ee, type: 3}

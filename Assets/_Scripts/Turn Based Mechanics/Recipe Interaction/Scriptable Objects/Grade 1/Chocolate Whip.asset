@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc57d44bc493814e898d904654c2f29, type: 3}
+  m_Name: Chocolate Whip
+  m_EditorClassIdentifier: 
+  displayName: Chocolate Cake
+  id: chocolate_cake
+  ingredientList:
+  - {fileID: 11400000, guid: 405a4e85e15009a409324bea3cb70d9f, type: 2}
+  - {fileID: 11400000, guid: 91aa34c2882fd1f4b8823ec72491af0e, type: 2}
