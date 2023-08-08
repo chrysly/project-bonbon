@@ -40,7 +40,7 @@ MonoBehaviour:
   maxRequiredSlope: 0
   prefabOriginOffset: {x: 0, y: 0, z: 0}
   prefabRotationOffset: {x: 0, y: 0, z: 0}
-  draggingAction: 0
+  draggingAction: 2
   rotationAxis: 0
   rotationSensitivity: 10
   parentingStyle: 0
