@@ -7,7 +7,7 @@ public class ObjectAlpha : MonoBehaviour
 {
     private CharacterActor parentActor;
     [SerializeField] private Transform renderObject;
-    [SerializeField] private SelectManager selector;
+    //[SerializeField] private SelectManager selector;
     [SerializeField] private float fadeDuration = 0.1f;
     private Color color;
 
@@ -17,8 +17,8 @@ public class ObjectAlpha : MonoBehaviour
     {
         parentActor = transform.parent.GetComponent<CharacterActor>();
         //color = renderObject.GetComponent<Renderer>().material.color;
-        selector.OnSelect += Toggle;
-        selector.OnDeselect += Deselect;
+        //selector.OnSelect += Toggle;
+        //selector.OnDeselect += Deselect;
     }
 
     private void Toggle(CharacterActor actor) {

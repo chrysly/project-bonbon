@@ -12,7 +12,7 @@ public class IngredientWindow : MonoBehaviour
     [SerializeField] private CharacterActor actor;
     [SerializeField] private Transform buttonContainer;
 
-    [SerializeField] private BattleStateSystem battleState;
+    //[SerializeField] private BattleStateSystem battleState;
     [SerializeField] private GameObject buttonPrefab;
 
     [SerializeField] private CanvasGroup panel;
