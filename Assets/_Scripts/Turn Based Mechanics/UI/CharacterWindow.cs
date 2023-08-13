@@ -6,7 +6,7 @@ using DG.Tweening;
 public class CharacterWindow : MonoBehaviour
 {
     [Header("Linked Objects")]
-    [SerializeField] private SelectManager selector;
+    //[SerializeField] private SelectManager selector;
     [SerializeField] private CanvasGroup canvas;
     [SerializeField] private CanvasGroup healthbar;
     [SerializeField] private CharacterActor actor;
@@ -22,8 +22,8 @@ public class CharacterWindow : MonoBehaviour
     }
 
     private void RegisterEvents() {
-        selector.OnSelect += Select;
-        selector.OnDeselect += Deselect;
+        //selector.OnSelect += Select;
+        //selector.OnDeselect += Deselect;
     }
 
     private void Select(CharacterActor selectedActor) {

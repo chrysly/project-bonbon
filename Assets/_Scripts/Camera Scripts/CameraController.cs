@@ -5,7 +5,7 @@ using UnityEngine;
 using Cinemachine;
 
 public class CameraController : MonoBehaviour {
-    [SerializeField] private SelectManager selector;
+    //[SerializeField] private SelectManager selector;
 
     [SerializeField] private CinemachineVirtualCamera orbitalCam;
     [SerializeField] private CinemachineVirtualCamera aerialCam;
@@ -28,8 +28,8 @@ public class CameraController : MonoBehaviour {
     }
 
     private void RegisterEvents() {
-        selector.OnSelect += FocusCamera;
-        selector.OnDeselect += ClearFocus;
+        //selector.OnSelect += FocusCamera;
+        //selector.OnDeselect += ClearFocus;
     }
 
     void Update()

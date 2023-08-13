@@ -12,6 +12,7 @@ Shader "Unlit/GrassShader"
     	_BladeWidthRandom("Blade Width Random", Float) = 0.02
     	_BladeHeight("Blade Height", Float) = 0.5
     	_BladeHeightRandom("Blade Height Random", Float) = 0.3
+    	_MinimumHeight("Blade Minimum Height", Float) = 0.1
     	_BendRotationRandom("Bend Rotation Random", Range(0, 1)) = 0.2
     	_BladeForward("Blade Forward Amount", Float) = 0.38
 		_BladeCurve("Blade Curvature Amount", Range(1, 4)) = 2
@@ -22,6 +23,7 @@ Shader "Unlit/GrassShader"
     	_WindFrequency("Wind Frequency", Vector) = (0.05, 0.05, 0, 0)
     	_WindStrength("Wind Strength", Float) = 1
     	
+    	_PlacementMap("Placement Map", 2D) = "white" {}
     }
 
 	CGINCLUDE
@@ -34,6 +36,7 @@ Shader "Unlit/GrassShader"
 	float _BendRotationRandom;
 	float _BladeHeight;
 	float _BladeHeightRandom;
+	float _MinimumHeight;
 	float _BladeWidth;
 	float _BladeWidthRandom;
 
@@ -44,6 +47,12 @@ Shader "Unlit/GrassShader"
 	float4 _WindDistortionMap_ST;
 	float2 _WindFrequency;
 	float _WindStrength;
+
+	sampler2D _PlacementMap;
+	float4 _PlacementMap_ST;
+
+	float3 minBounds;
+	float3 maxBounds;
 	
 	struct geometryOutput
 	{
@@ -99,47 +108,56 @@ Shader "Unlit/GrassShader"
 	void geo(triangle vertexOutput IN[3], inout TriangleStream<geometryOutput> triStream)
 	{
 		float3 pos = IN[0].vertex;
-
-		float3x3 facingRotationMatrix = AngleAxis3x3(rand(pos) * UNITY_TWO_PI, float3(0, 0, 1));
-		float3x3 bendRotationMatrix = AngleAxis3x3(rand(pos.zzx) * _BendRotationRandom * UNITY_PI * 0.5, float3(-1, 0, 0));
-
-		float2 uv = pos.xz * _WindDistortionMap_ST.xy + _WindDistortionMap_ST.zw + _WindFrequency * _Time.y;
-		float2 windSample = (tex2Dlod(_WindDistortionMap, float4(uv, 0, 0)).xy * 2 - 1) * _WindStrength;
-		float3 wind = normalize(float3(windSample.x, windSample.y, 0));
-		float3x3 windRotation = AngleAxis3x3(UNITY_PI * windSample, wind);
 		
-		float3 vNormal = IN[0].normal;
-		float4 vTangent = IN[0].tangent;
-		float3 vBinormal = cross(vNormal, vTangent) * vTangent.w;
-
-		float3x3 tangentToLocal = float3x3(
-			vTangent.x, vBinormal.x, vNormal.x,
-			vTangent.y, vBinormal.y, vNormal.y,
-			vTangent.z, vBinormal.z, vNormal.z);
-
-		float3x3 transformationMatrix = mul(mul(mul(tangentToLocal, windRotation), facingRotationMatrix), bendRotationMatrix);
-		float3x3 transformationMatrixFacing = mul(tangentToLocal, facingRotationMatrix);
-
-		float height = (rand(pos.zyx) * 2 - 1) * _BladeHeightRandom + _BladeHeight;
-		float width = (rand(pos.xzy) * 2 - 1) * _BladeWidthRandom + _BladeWidth;
-
-		float forward = rand(pos.yyz) * _BladeForward;
-
-		for (int i = 0; i < BLADE_SEGMENTS; i++)
+		//float2 tiling = _PlacementMap_ST.xy;
+		//float2 offset = _PlacementMap_ST.zw;
+		float u = (mul(unity_ObjectToWorld, pos.x) - minBounds.x) / (maxBounds.x - minBounds.x);
+		float v = (mul(unity_ObjectToWorld, pos.z) - minBounds.z) / (maxBounds.z - minBounds.z);
+		
+		float3 placementVal = tex2Dlod(_PlacementMap, float4(u, v, 0, 0));
+		if (any(placementVal.rgb != float3(0, 0, 0)))
 		{
-			float t = i / (float)BLADE_SEGMENTS;
+			float3x3 facingRotationMatrix = AngleAxis3x3(rand(pos) * UNITY_TWO_PI, float3(0, 0, 1));
+			float3x3 bendRotationMatrix = AngleAxis3x3(rand(pos.zzx) * _BendRotationRandom * UNITY_PI * 0.5, float3(-1, 0, 0));
 
-			float segmentHeight = height * t;
-			float segmentWidth = width * (1 - t);
+			float2 uv = pos.xz * _WindDistortionMap_ST.xy + _WindDistortionMap_ST.zw + _WindFrequency * _Time.y;
+			float2 windSample = (tex2Dlod(_WindDistortionMap, float4(uv, 0, 0)).xy * 2 - 1) * _WindStrength;
+			float3 wind = normalize(float3(windSample.x, windSample.y, 0));
+			float3x3 windRotation = AngleAxis3x3(UNITY_PI * windSample, wind);
+		
+			float3 vNormal = IN[0].normal;
+			float4 vTangent = IN[0].tangent;
+			float3 vBinormal = cross(vNormal, vTangent) * vTangent.w;
 
-			float segmentForward = pow(t, _BladeCurve) * forward;
+			float3x3 tangentToLocal = float3x3(
+				vTangent.x, vBinormal.x, vNormal.x,
+				vTangent.y, vBinormal.y, vNormal.y,
+				vTangent.z, vBinormal.z, vNormal.z);
 
-			float3x3 transformMatrix = i == 0 ? transformationMatrixFacing : transformationMatrix;
-			triStream.Append(GenerateGrassVertex(pos, segmentWidth, segmentHeight, segmentForward, float2(0, t), transformMatrix));
-			triStream.Append(GenerateGrassVertex(pos, -segmentWidth, segmentHeight, segmentForward, float2(1, t), transformMatrix));
+			float3x3 transformationMatrix = mul(mul(mul(tangentToLocal, windRotation), facingRotationMatrix), bendRotationMatrix);
+			float3x3 transformationMatrixFacing = mul(tangentToLocal, facingRotationMatrix);
+
+			float height = (rand(pos.zyx) * 2 - 1) * _BladeHeightRandom + _BladeHeight;
+			float width = (rand(pos.xzy) * 2 - 1) * _BladeWidthRandom + _BladeWidth;
+
+			float forward = rand(pos.yyz) * _BladeForward;
+
+			for (int i = 0; i < BLADE_SEGMENTS; i++)
+			{
+				float t = i / (float)BLADE_SEGMENTS;
+
+				float segmentHeight = height * t;
+				float segmentWidth = width * (1 - t);
+
+				float segmentForward = pow(t, _BladeCurve) * forward;
+
+				float3x3 transformMatrix = i == 0 ? transformationMatrixFacing : transformationMatrix;
+				triStream.Append(GenerateGrassVertex(pos, segmentWidth, segmentHeight, segmentForward, float2(0, t), transformMatrix));
+				triStream.Append(GenerateGrassVertex(pos, -segmentWidth, segmentHeight, segmentForward, float2(1, t), transformMatrix));
+			}
+
+			triStream.Append(GenerateGrassVertex(pos, 0, height, forward, float2(0.5, 1), transformationMatrix));
 		}
-
-		triStream.Append(GenerateGrassVertex(pos, 0, height, forward, float2(0.5, 1), transformationMatrix));
 	}
 	ENDCG
 
