@@ -1,6 +1,6 @@
 ﻿/*
  * 		Prefab Brush+ 
- * 		Version 1.3.11
+ * 		Version 1.3.12
  *		Author: Archie Andrews
  *		www.archieandrews.games
  */
@@ -48,6 +48,7 @@ namespace ArchieAndrews.PrefabBrush
         //On Off variables
         [SerializeField]
         private bool isOn = true;
+        private bool wasOn = true;
         private Texture2D onButtonLight;
         private Texture2D offButtonLight;
         private Texture2D onButtonDark;
@@ -94,6 +95,8 @@ namespace ArchieAndrews.PrefabBrush
         private Vector3 rayLastFrame = Vector3.positiveInfinity;
         private bool moddingSingle = false;
         private GameObject objectToSingleMod = null, objectToChain;
+        private float objectToSingleRotation = 0;
+        private Vector3 hitNormalSinceLastMovement;
         private const int maxFails = 10;
    
         private LayerMask layerBeforeSingleMod, layerBeforeChaining;
@@ -105,6 +108,32 @@ namespace ArchieAndrews.PrefabBrush
         public static void ShowWindow()
         {
             GetWindow(typeof(PrefabBrush), false, "Prefab Brush+");
+        }
+
+        void OnBecameVisible()
+        {
+            if (activeSave == null)
+                return;
+
+            SetOnState(wasOn);
+        }
+
+        void OnBecameInvisible()
+        {
+            //Cache the on state so we can bring it back when the window is visible again
+            wasOn = isOn;
+            SetOnState(false);
+        }
+
+        private void HideTools(bool hide = true)
+        {
+            Tools.hidden = hide;
+
+            if (activeSave.hideToolsWarnings)
+                return;
+
+            string message = (hide) ? "Hiding Tools as prefab brush window is active." : "Showing Tools again as prefab brush window is no longer active.";
+            Debug.LogWarning(message);
         }
 
         void OnFocus()
@@ -468,6 +497,8 @@ namespace ArchieAndrews.PrefabBrush
 
         private void DrawSettingsTab()
         {
+            activeSave.hideToolsWarnings = EditorGUILayout.Toggle("Hide Tools Warnings", activeSave.hideToolsWarnings);
+
             showDebug = EditorGUILayout.Foldout(showDebug, "Debug");
 
             if (showDebug)
@@ -1520,7 +1551,7 @@ namespace ArchieAndrews.PrefabBrush
 
         private void RunPrefabPaint()
         {
-            if (!IsTabActive(PB_ActiveTab.PrefabPaint))
+            if (!IsTabActive(PB_ActiveTab.PrefabPaint) || Event.current.alt)
                 return;
 
             //If the placment brush is selected and the mouse is being dragged across the scene view.
@@ -1540,8 +1571,8 @@ namespace ArchieAndrews.PrefabBrush
             bool didRayHit = GetHitPoint(ray.origin + paintOffset, ray.direction, out finalHit);
             int failCount = 0;
 
-            if (didRayHit == false)
-                return;
+            //  if (didRayHit == false)
+            //  return;
 
             switch (activeSave.paintType)
             {
@@ -1590,9 +1621,15 @@ namespace ArchieAndrews.PrefabBrush
                         }
                     break;
                 case PB_PaintType.Single:
-                    RunSinglePaint(mouseDown, mouseDrag, mouseUp, mouseLeaveWindow, finalHit);
+                    if (mouseDown)
+                        StartSinglePaint(finalHit);
+                    else if (mouseUp)
+                        StopSinglePaint();
                     break;
             }
+
+            if (moddingSingle)
+                RunSinglePaint(mouseDown, mouseDrag, mouseUp, mouseLeaveWindow, finalHit);
         }
 
         private void RunSurfacePaint(bool mouseDown, RaycastHit hit, bool physicsBrush, Vector3 brushCenter)
@@ -1628,31 +1665,44 @@ namespace ArchieAndrews.PrefabBrush
             }
         }
 
-        private void RunSinglePaint(bool mouseDown, bool mouseDrag, bool mouseUp, bool mouseLeaveWindow, RaycastHit hit)
+        private void StartSinglePaint(RaycastHit hit)
         {
-            if (mouseDown && !moddingSingle)
+            EditorGUIUtility.SetWantsMouseJumping(1);
+            selectedObject = GetRandomObject(); //Assign random object
+
+            if (selectedObject != null)
             {
-                selectedObject = GetRandomObject(); //Assign random object
+                clone = PrefabUtility.InstantiatePrefab(selectedObject) as GameObject;
 
-                if (selectedObject != null)
+                if (clone != null)
                 {
-                    clone = PrefabUtility.InstantiatePrefab(selectedObject) as GameObject;
+                    ApplyModifications(clone, hit, false, activeSave.parentingStyle, activeSave.rotateToMatchSurface, activeSave.randomizeRotation, (activeSave.scaleType != PB_ScaleType.None), false);
+                    Undo.RegisterCreatedObjectUndo(clone, "brush stroke: " + clone.name);       //Store the undo variables.
 
-                    if (clone != null)
-                    {
-                        ApplyModifications(clone, hit, false, activeSave.parentingStyle, activeSave.rotateToMatchSurface, activeSave.randomizeRotation, (activeSave.scaleType != PB_ScaleType.None), false);
-                        Undo.RegisterCreatedObjectUndo(clone, "brush stroke: " + clone.name);       //Store the undo variables.
-
-                        objectToSingleMod = clone;
-                        layerBeforeSingleMod = clone.layer;
-                        clone.layer = 2;
-                        moddingSingle = true;
-                    }
+                    objectToSingleMod = clone;
+                    layerBeforeSingleMod = clone.layer;
+                    clone.layer = 2;
+                    moddingSingle = true;
                 }
                 else
                     Debug.LogError("There is no object selected in the prefab window, please drag a prefab into the area to use the placment brush.");
             }
+        }
 
+        private void StopSinglePaint()
+        {
+            if (objectToSingleMod != null)
+                objectToSingleMod.layer = layerBeforeSingleMod;
+
+            moddingSingle = false;
+            selectedObject = null;
+            objectToSingleMod = null;
+
+            EditorGUIUtility.SetWantsMouseJumping(0);
+        }
+
+        private void RunSinglePaint(bool mouseDown, bool mouseDrag, bool mouseUp, bool mouseLeaveWindow, RaycastHit hit)
+        {
             if (moddingSingle && objectToSingleMod != null)
             {
                 switch (activeSave.draggingAction)
@@ -1662,14 +1712,22 @@ namespace ArchieAndrews.PrefabBrush
                         if (mouseDrag)
                         {
                             objectToSingleMod.transform.position = hit.point;
+                            hitNormalSinceLastMovement = hit.normal;
+
+                            if (activeSave.rotateToMatchSurface)
+                            {
+                                objectToSingleMod.transform.rotation = Quaternion.FromToRotation(GetDirection(activeSave.rotateSurfaceDirection), hitNormalSinceLastMovement);
+                            }
                         }
 
                         break;
                     case PB_DragModType.Rotation:
 
                         if (e.isMouse)
-                            objectToSingleMod.transform.Rotate(objectToSingleMod.transform.TransformDirection(GetDirection(activeSave.rotationAxis)), activeSave.rotationSensitivity * (-e.delta.x * Time.deltaTime));
+                            objectToSingleRotation += (activeSave.rotationSensitivity * (-e.delta.x * Time.deltaTime));
 
+                        objectToSingleMod.transform.rotation = Quaternion.FromToRotation(GetDirection(activeSave.rotateSurfaceDirection), hitNormalSinceLastMovement);
+                        objectToSingleMod.transform.rotation *= Quaternion.Euler(GetDirection(activeSave.rotationAxis) * objectToSingleRotation);
                         break;
                     case PB_DragModType.Scale:
 
@@ -1683,14 +1741,6 @@ namespace ArchieAndrews.PrefabBrush
 
                         break;
                 }
-
-                if (mouseUp || mouseLeaveWindow)
-                {
-                    moddingSingle = false;
-
-                    if (objectToSingleMod != null)
-                        objectToSingleMod.layer = layerBeforeSingleMod;
-                }
             }
         }
 
@@ -1701,7 +1751,6 @@ namespace ArchieAndrews.PrefabBrush
                 rayLastFrame = hitPoint;
 
             paintTravelDistance += Vector3.Distance(hitPoint, rayLastFrame);
-            Debug.Log(paintTravelDistance);
             rayLastFrame = hitPoint;
         }
 
@@ -2144,7 +2193,13 @@ namespace ArchieAndrews.PrefabBrush
 
         private void ToggleOnState()
         {
-            isOn = !isOn;
+            SetOnState(!isOn);
+        }
+
+        private void SetOnState(bool newState)
+        {
+            isOn = newState;
+            HideTools(isOn);
             buttonIcon = GetButtonTexture();
         }
 #endregion
@@ -2500,9 +2555,6 @@ namespace ArchieAndrews.PrefabBrush
             CheckActiveSave();
             CheckForOnHotKey();
 
-            //Hide gizmos when brushing
-            Tools.hidden = ((IsTabActive(PB_ActiveTab.PrefabPaint) || IsTabActive(PB_ActiveTab.PrefabErase)) && isOn);
-
             if (isOn && activeSave != null)
             {
                 switch (activeTab)
@@ -2526,6 +2578,9 @@ namespace ArchieAndrews.PrefabBrush
 
         void OnDestroy()
         {
+            //Force tools to come back if tool is closed.
+            HideTools(false);
+
             // When the window is destroyed, remove the delegate
             // so that it will no longer do any drawing.
 #if UNITY_2017 || UNITY_2018 || UNITY_5 || UNITY_4
