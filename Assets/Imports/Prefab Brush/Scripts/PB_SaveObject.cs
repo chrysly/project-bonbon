@@ -84,6 +84,8 @@ namespace ArchieAndrews.PrefabBrush
         public KeyCode disableBrushHotKey = KeyCode.I;
         public bool disableBrushHoldKey = true;
 
+        public bool hideToolsWarnings = false;
+
         public void AddPrefab(GameObject prefab)
         {
             PB_PrefabData newData = new PB_PrefabData();

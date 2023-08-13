@@ -95,3 +95,4 @@ MonoBehaviour:
   removeBrushHoldKey: 1
   disableBrushHotKey: 105
   disableBrushHoldKey: 1
+  hideToolsWarnings: 0

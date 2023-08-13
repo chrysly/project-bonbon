@@ -837,10 +837,10 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.0,
-        "g": 0.0,
-        "b": 0.0,
-        "a": 0.0
+        "r": 0.5283018946647644,
+        "g": 0.5283018946647644,
+        "b": 0.5283018946647644,
+        "a": 1.0
     },
     "isMainColor": false,
     "m_ColorMode": 0
@@ -1331,7 +1331,7 @@
     "m_Group": {
         "m_Id": ""
     },
-    "m_Name": "Toon Shader",
+    "m_Name": "Entity Toon",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
