@@ -111,8 +111,8 @@ Shader "Unlit/GrassShader"
 		
 		//float2 tiling = _PlacementMap_ST.xy;
 		//float2 offset = _PlacementMap_ST.zw;
-		float u = (mul(unity_ObjectToWorld, pos.x) - minBounds.x) / (maxBounds.x - minBounds.x);
-		float v = (mul(unity_ObjectToWorld, pos.z) - minBounds.z) / (maxBounds.z - minBounds.z);
+		float u = (pos.x - minBounds.x) / (maxBounds.x - minBounds.x);
+		float v = (pos.z - minBounds.z) / (maxBounds.z - minBounds.z);
 		
 		float3 placementVal = tex2Dlod(_PlacementMap, float4(u, v, 0, 0));
 		if (any(placementVal.rgb != float3(0, 0, 0)))
