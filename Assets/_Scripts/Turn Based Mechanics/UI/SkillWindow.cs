@@ -13,7 +13,7 @@ public class SkillWindow : MonoBehaviour
     [SerializeField] private CharacterActor actor;
     [SerializeField] private Transform buttonContainer;
 
-    [SerializeField] private BattleStateSystem battleState;
+    //[SerializeField] private BattleStateSystem battleState;
 
     [SerializeField] private GameObject buttonPrefab;
 
@@ -27,7 +27,7 @@ public class SkillWindow : MonoBehaviour
         skills = new List<SkillObject>(actor.Data().SkillList());
         transform.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
         LoadButtons();
-        battleState.OnSkillConfirm += DisplayOnConfirm;
+        //battleState.OnSkillConfirm += DisplayOnConfirm;
     }
 
     public void Display() {
@@ -58,7 +58,7 @@ public class SkillWindow : MonoBehaviour
             SkillButton skillButton = button.GetComponent<SkillButton>();
             skillButton.AssignSkill(skill);
             Button btn = button.GetComponent<Button>();
-            btn.onClick.AddListener(delegate { battleState.SwitchToSkillSelect(skillButton.RetrieveSkill()); });
+            //btn.onClick.AddListener(delegate { battleState.SwitchToSkillSelect(skillButton.RetrieveSkill()); });
             btn.onClick.AddListener(delegate { Hide(); });
         }
     }

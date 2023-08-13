@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CursorManager : MonoBehaviour {
-    [SerializeField] private BattleStateSystem battleStateSystem;
+    //[SerializeField] private BattleStateSystem battleStateSystem;
 
     [SerializeField] private List<CharacterActor> actorList;
     private Dictionary<CharacterActor, LinkedList<ActionDisplay>> actorDict;
@@ -29,11 +29,11 @@ public class CursorManager : MonoBehaviour {
     }
 
     private void RegisterEvents() {
-        battleStateSystem.OnSkillSelected += CreateSkillCursor;
-        battleStateSystem.OnSkillConfirm += DisableSkillCursor;
-        battleStateSystem.OnWaypointAdded += CreateMovePoint;
-        battleStateSystem.OnUndoAction += RemoveLastDisplay;
-        battleStateSystem.OnSwitchState += ClearAll;
+        //battleStateSystem.OnSkillSelected += CreateSkillCursor;
+        //battleStateSystem.OnSkillConfirm += DisableSkillCursor;
+        //battleStateSystem.OnWaypointAdded += CreateMovePoint;
+        //battleStateSystem.OnUndoAction += RemoveLastDisplay;
+        //battleStateSystem.OnSwitchState += ClearAll;
     }
 
     public void CreateSkillCursor(SkillAction skill, CharacterActor actor) {
