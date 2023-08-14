@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204c977001affb143a975056b95aecd3, type: 3}
+  m_Name: ModelAssetLibraryAssets
+  m_EditorClassIdentifier: 
+  noMeshPreview: {fileID: 2800000, guid: 7747032198a980c40b9844c321f188dc, type: 3}
+  noMaterialPreview: {fileID: 2800000, guid: afafc4c3e9247ea45a91784f8f5779b9, type: 3}
+  meshPreviewBackground: {fileID: 2800000, guid: 98bc09f68eff6f6439b20ee04775d3c2,
+    type: 3}
+  highlight: {fileID: 2100000, guid: 3ca2daf9c1a584940bb405f5a07ae30d, type: 2}
