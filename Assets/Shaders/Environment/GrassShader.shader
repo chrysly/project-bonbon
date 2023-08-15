@@ -12,7 +12,7 @@ Shader "Unlit/GrassShader"
     	_BladeWidthRandom("Blade Width Random", Float) = 0.02
     	_BladeHeight("Blade Height", Float) = 0.5
     	_BladeHeightRandom("Blade Height Random", Float) = 0.3
-    	_MinimumHeight("Blade Minimum Height", Float) = 0.1
+    	_MinimumHeight("Blade Minimum Height Ratio", Range(0, 1)) = 0.1
     	_BendRotationRandom("Bend Rotation Random", Range(0, 1)) = 0.2
     	_BladeForward("Blade Forward Amount", Float) = 0.38
 		_BladeCurve("Blade Curvature Amount", Range(1, 4)) = 2
@@ -139,6 +139,11 @@ Shader "Unlit/GrassShader"
 
 			float height = (rand(pos.zyx) * 2 - 1) * _BladeHeightRandom + _BladeHeight;
 			float width = (rand(pos.xzy) * 2 - 1) * _BladeWidthRandom + _BladeWidth;
+
+			float sizeMultiplier = placementVal.r < _MinimumHeight ? _MinimumHeight : placementVal.r;
+			
+			height *= sizeMultiplier;
+			width *= sizeMultiplier;
 
 			float forward = rand(pos.yyz) * _BladeForward;
 
