@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cliff1
-    second: {fileID: 2100000, guid: 067912ea8a9ebb24092d3bfcd5b802a4, type: 2}
+    second: {fileID: 2100000, guid: 064f374fcf49ae74eb3a3402c59e14cb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

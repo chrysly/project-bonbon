@@ -97,7 +97,7 @@ Material:
     - _BladeForward: 0.05
     - _BladeHeight: 3
     - _BladeHeightRandom: 2
-    - _BladeWidth: 0.04
+    - _BladeWidth: 0.2
     - _BladeWidthRandom: 0.005
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
