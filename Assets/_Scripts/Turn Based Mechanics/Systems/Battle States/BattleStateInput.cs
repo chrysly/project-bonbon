@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class BattleStateInput : StateInput {
     
+    //Battle Actors
 }

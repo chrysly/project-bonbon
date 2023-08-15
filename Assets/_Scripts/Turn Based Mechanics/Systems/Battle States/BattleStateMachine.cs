@@ -8,6 +8,7 @@ public partial class
 
     #region SerializeFields
     [SerializeField] private float battleStartAnimationDuration;
+    [SerializeField] private List<Actor> actorList;
     #endregion SerializeFields
     
     protected override void SetInitialState() {
