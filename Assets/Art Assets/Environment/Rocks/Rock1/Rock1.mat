@@ -97,7 +97,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
-    - _Glossiness: -9.47
+    - _Glossiness: -0
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -105,19 +105,19 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Rim_Amount: 0.066
-    - _Rim_Threshold: 0.115
+    - _Rim_Amount: 0.232
+    - _Rim_Threshold: 0.099
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Toon_Amount: 0.115
+    - _Toon_Amount: 0.949
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Ambient_Color: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
+    - _Ambient_Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
