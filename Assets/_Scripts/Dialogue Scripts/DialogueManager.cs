@@ -83,7 +83,7 @@ public class DialogueManager : MonoBehaviour
             _dialogueRunner.StartDialogue(node);
             ProcessNode();
             _dialogueTransform.DOAnchorPosY(0f, 0.3f)
-                .SetEase(Ease.OutCubic)
+                .SetEase(Ease.OutCirc)
                 .OnStart(() => tweeningDialogue = true)
                 .OnComplete(() => tweeningDialogue = false);
         } else
@@ -191,6 +191,12 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         Debug.Log("DialogueManager.EndDialogue()");
+        foreach (GameObject o in activeDialogueBoxList)
+        {
+            CanvasGroup dialogueViewCG = o.GetComponent<CanvasGroup>();
+            dialogueViewCG.DOFade(0, 0.2f)
+                .SetEase(Ease.OutCirc);
+        }
         _dialogueTransform.DOAnchorPosY(-400f, 0.3f)
             .SetEase(Ease.OutCirc)
             .OnStart(() => tweeningDialogue = true)
