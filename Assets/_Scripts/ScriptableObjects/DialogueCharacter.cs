@@ -10,6 +10,7 @@ public class DialogueCharacter : ScriptableObject
     public string characterName;
     public List<PortraitData> portraitList = new();
     public bool defaultToRightSide;
+    public Color dialogueBoxColor;
 }
 
 [Serializable]

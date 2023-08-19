@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     CustomDialogueView _dialogueView;
     YarnProject _yarnProject;
 
+    [Header("References")]
     [SerializeField] GameObject _viewport;
     [SerializeField] GameObject _dialogueViewPrefab;
     [SerializeField] GameObject _dialoguePortraitPrefab;
@@ -27,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] List<DialogueCharacter> characterList = new();
     
     //Values
+    [Space(20)]
+    [Header("Values")]
     [SerializeField] List<ActiveDialogueCharacter> activeCharacterList = new();
     [SerializeField] List<ActiveDialogueCharacter> rightCharacterList = new();
     [SerializeField] List<ActiveDialogueCharacter> leftCharacterList = new();
@@ -34,6 +37,8 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] bool readingDialogue = false;
     [SerializeField] bool tweeningDialogue = false;
+
+    [SerializeField] Color fadeColor;
 
     LocalizedLine currentLine;
     GameObject currentDialogueBox;
@@ -114,7 +119,7 @@ public class DialogueManager : MonoBehaviour
                 if (rightCharacterList.Count > 1)
                 {
                     //activeCharacterList[i].portraitObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(300f + (50f * rightCharacterList.Count), 150f, 0f);
-                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = new Color(0.75f, 0.85f, 1, 1f);
+                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = fadeColor;
                 }
             }
             else
@@ -124,7 +129,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     Debug.Log("leftCharacterList.Count: " + leftCharacterList.Count);
                     //activeCharacterList[i].portraitObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-300f - (50f * leftCharacterList.Count), 150f, 0f);
-                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = new Color(0.75f, 0.85f, 1, 1f);
+                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = fadeColor;
                 }
             }
 
@@ -278,7 +283,7 @@ public class DialogueManager : MonoBehaviour
             {
                 rightCharacterList[i].portraitObject.transform.SetAsFirstSibling();
                 rightCharacterList[i].portraitObject.GetComponent<RectTransform>().DOAnchorPosX(300f + (50f * i), 0.29f);
-                rightCharacterList[i].portraitObject.GetComponent<Image>().DOColor(new Color(0.75f, 0.85f, 1, 1f), 0.29f).SetEase(Ease.OutCubic);
+                rightCharacterList[i].portraitObject.GetComponent<Image>().DOColor(fadeColor, 0.29f).SetEase(Ease.OutCubic);
             }
         } else if (!adc.onRightSide && leftCharacterList.Count > 1 && leftCharacterList.IndexOf(adc) != 0) {
             leftCharacterList.Remove(adc);
@@ -289,7 +294,7 @@ public class DialogueManager : MonoBehaviour
             {
                 leftCharacterList[i].portraitObject.transform.SetAsFirstSibling();
                 leftCharacterList[i].portraitObject.GetComponent<RectTransform>().DOAnchorPosX(-300f - (50f * i), 0.29f);
-                leftCharacterList[i].portraitObject.GetComponent<Image>().DOColor(new Color(0.75f, 0.85f, 1, 1f), 0.29f).SetEase(Ease.OutCubic);
+                leftCharacterList[i].portraitObject.GetComponent<Image>().DOColor(fadeColor, 0.29f).SetEase(Ease.OutCubic);
             }
         }
     }
@@ -338,11 +343,19 @@ public class DialogueManager : MonoBehaviour
         currentDialogueBoxText.text = currentLine.TextWithoutCharacterName.Text;
         currentDialogueBoxText.text = AddLineBreaks(currentDialogueBoxText.text);
         ActiveDialogueCharacter currentSpeaker = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(currentLine.CharacterName.Split("_")[0].ToLower()));
+        if (currentSpeaker == null)
+        {
+            string characterName = currentLine.CharacterName.ToLower();
+            AddCharacter(characterName);
+            currentSpeaker = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(currentLine.CharacterName.Split("_")[0].ToLower()));
+        }
         SetDialogueBoxSide(currentDialogueBox, currentSpeaker.onRightSide);
         GameObject textBG = currentDialogueBox.transform.GetChild(0).transform.GetChild(0).gameObject;
         Timer.Register(0.01f, () => { //this timer is needed so that the text content size filter can apply to the bg before it moves behind the text
             textBG.transform.SetParent(currentDialogueBox.transform);
             textBG.transform.SetAsFirstSibling();
+            Debug.Log("Setting color: " + currentSpeaker.dialogueCharacter.dialogueBoxColor);
+            textBG.GetComponent<Image>().color = currentSpeaker.dialogueCharacter.dialogueBoxColor;
         });
     }
     #endregion
@@ -354,15 +367,56 @@ public class DialogueManager : MonoBehaviour
         _dialogueRunner.AddCommandHandler<string>("remove_char", (s) => RemoveCharacter(s));
         _dialogueRunner.AddCommandHandler<string, bool>("set_side", (s, b) => SetCharacterSide(s, b));
     }
-    void AddCharacter(string characterName, bool isOnRight = false)
+    void AddCharacter(string nameInput, bool? isOnRight = null) //assumes you're adding the
     {
-
+        string expression = nameInput.Split("_").Length > 1 ? nameInput.Split("_")[1].ToLower() : "idle";
+        DialogueCharacter dialogueCharacter = characterList.Find(x => x.characterName.Contains(nameInput.Split("_")[0].ToLower()));
+        bool sideToSet = isOnRight == null ? dialogueCharacter.defaultToRightSide : (bool) isOnRight;
+        if (dialogueCharacter != null)
+        {
+            activeCharacterList.Add(new ActiveDialogueCharacter( 
+                Instantiate(_dialoguePortraitPrefab, _dialogueTransform),
+                dialogueCharacter,
+                expression,
+                sideToSet)
+            );
+            ActiveDialogueCharacter addedChar = activeCharacterList[^1];
+            addedChar.portraitObject.transform.SetAsFirstSibling();
+            if (sideToSet == true) 
+            {
+                rightCharacterList.Add(addedChar);
+                if (rightCharacterList.Count > 1) addedChar.portraitObject.GetComponent<Image>().color = fadeColor;
+            }
+            else
+            {
+                leftCharacterList.Add(addedChar);
+                if (leftCharacterList.Count > 1) addedChar.portraitObject.GetComponent<Image>().color = fadeColor;
+            }
+            SetPortraitExpression(nameInput);
+            SetPortraitSide(addedChar.portraitObject, sideToSet == true);
+        } else {
+            Debug.LogError("DialogueManager.AddCharacter(): Could not find specified character: " + nameInput.Split("_")[0].ToLower());
+        }
     }
-    void RemoveCharacter(string characterName)
+    void RemoveCharacter(string nameInput)
     {
-
+        ActiveDialogueCharacter adc = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(nameInput.Split("_")[0].ToLower()));
+        if (adc != null)
+        {
+            adc.portraitObject.GetComponent<RectTransform>().DOAnchorPosY(-400f, 0.28f)
+            .SetEase(Ease.OutCirc)
+            .OnStart(() => tweeningDialogue = true)
+            .OnComplete(() => {
+                activeCharacterList.Remove(adc);
+                if (adc.onRightSide == true) rightCharacterList.Remove(adc); else leftCharacterList.Remove(adc);
+                Destroy(adc.portraitObject);
+                tweeningDialogue = false;
+            });
+        } else {
+            Debug.LogError("DialogueManager.RemoveCharacter(): Could not find character to remove! Character name: " + nameInput.Split("_")[0].ToLower());
+        }
     }
-    void SetCharacterSide(string characterName, bool isOnRight = false)
+    void SetCharacterSide(string nameInput, bool isOnRight = false)
     {
         //Locate character in ActiveDialogueCharacterList
     }

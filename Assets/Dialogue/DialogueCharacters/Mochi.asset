@@ -21,3 +21,4 @@ MonoBehaviour:
   - expression: angry
     portrait: {fileID: 21300000, guid: 40b4d76f830a5694f9446cdb72b2cf81, type: 3}
   defaultToRightSide: 1
+  dialogueBoxColor: {r: 0.39215687, g: 0.5764706, b: 0.31764707, a: 0}

@@ -19,3 +19,4 @@ MonoBehaviour:
   - expression: embarassed
     portrait: {fileID: 21300000, guid: 4cf48f5a1bf99ec4f931c2361ba85239, type: 3}
   defaultToRightSide: 0
+  dialogueBoxColor: {r: 0.6981132, g: 0.3523496, b: 0.63996893, a: 0}
