@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce7eda58ad45554b9ab3a35d9b28d97, type: 3}
   m_Name: Pan
   m_EditorClassIdentifier: 
-  characterName: Pan
+  characterName: pan
   portraitList:
   - expression: idle
     portrait: {fileID: 21300000, guid: 2b691732f41c3ce45ad0b3456d2bc6e3, type: 3}

@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
-using UnityEngine;
-using Yarn.Unity;
-using UnityTimer;
 using System;
 using System.Linq;
-using TMPro;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
+using Yarn.Unity;
+using UnityTimer;
+using System.Collections.ObjectModel;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     
     //Values
     [SerializeField] List<ActiveDialogueCharacter> activeCharacterList = new();
+    [SerializeField] List<ActiveDialogueCharacter> rightCharacterList = new();
+    [SerializeField] List<ActiveDialogueCharacter> leftCharacterList = new();
     [SerializeField] List<GameObject> activeDialogueBoxList = new();
 
     [SerializeField] bool readingDialogue = false;
@@ -34,8 +38,9 @@ public class DialogueManager : MonoBehaviour
     LocalizedLine currentLine;
     GameObject currentDialogueBox;
     TextMeshProUGUI currentDialogueBoxText;
+    string previousName;
 
-    public static UnityEvent<string> dialogueRequestEvent;
+    public static UnityEvent<string> dialogueRequestEvent = new UnityEvent<string>();
 
     #region Monobehavior
     void Start()
@@ -45,6 +50,8 @@ public class DialogueManager : MonoBehaviour
         _yarnProject = _dialogueRunner.yarnProject;
         _dialogueView = (CustomDialogueView) _dialogueRunner.dialogueViews[0];
         _dialogueTransform = GameObject.Find("Dialogue Transform").GetComponent<RectTransform>();
+        float transformScale = Mathf.Round(Screen.width * 0.00113122f * 100f)/100f;
+        _dialogueTransform.localScale = new Vector3 (transformScale, transformScale, 1);
         LoadCommandList();
         dialogueRequestEvent.AddListener(StartNode);
     }
@@ -59,9 +66,9 @@ public class DialogueManager : MonoBehaviour
                 _dialogueView.UserRequestedViewAdvancement();
                 AdvanceDialogue();
             } else {
-                //StartNode();
                 //NOTE: Just invoke this event from another script with the node you want to call to start dialogue.
-                dialogueRequestEvent.Invoke("BrookeTestScript1");
+                //dialogueRequestEvent.Invoke("BrookeTestScript1");
+                dialogueRequestEvent.Invoke("BrookeTestScript2");
             }
         }
     }
@@ -70,8 +77,6 @@ public class DialogueManager : MonoBehaviour
     #region Main Dialogue Processing
     public void StartNode(string node = "BrookeTestScript1")
     {
-        //endOfNode = false;
-        //if (_lineView != null) _lineView.canvasGroupEnabled = true;
         if (_dialogueRunner != null) 
         {
             CreateDialogueBox();
@@ -97,18 +102,40 @@ public class DialogueManager : MonoBehaviour
             bool onTheRight = nodeTagList[i].Split(":")[2] == "right" ? true : false;
 
             activeCharacterList.Add(new ActiveDialogueCharacter( 
-                characterList.Find(x => x.characterName.Contains(nodeTagList[i].Split(":")[0])),
-                nodeTagList[i].Split(":")[1],
+                Instantiate(_dialoguePortraitPrefab, _dialogueTransform),
+                characterList.Find(x => x.characterName.Contains(nodeTagList[i].Split(":")[0].ToLower())),
+                nodeTagList[i].Split(":")[1].ToLower(),
                 onTheRight)
             );
+            activeCharacterList[i].portraitObject.transform.SetAsFirstSibling();
+            if (activeCharacterList[i].onRightSide) 
+            {
+                rightCharacterList.Add(activeCharacterList[i]);
+                if (rightCharacterList.Count > 1)
+                {
+                    //activeCharacterList[i].portraitObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(300f + (50f * rightCharacterList.Count), 150f, 0f);
+                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = new Color(0.75f, 0.85f, 1, 1f);
+                }
+            }
+            else
+            {
+                leftCharacterList.Add(activeCharacterList[i]);
+                if (leftCharacterList.Count > 1)
+                {
+                    Debug.Log("leftCharacterList.Count: " + leftCharacterList.Count);
+                    //activeCharacterList[i].portraitObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-300f - (50f * leftCharacterList.Count), 150f, 0f);
+                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = new Color(0.75f, 0.85f, 1, 1f);
+                }
+            }
+
+            SetPortraitExpression(nodeTagList[i]);
+            SetPortraitSide(activeCharacterList[i].portraitObject, activeCharacterList[i].onRightSide);
         }
         SetupDialogueBox();
         currentDialogueBox.GetComponent<RectTransform>().DOAnchorPosX(0f, 0.3f)
             .SetEase(Ease.OutCubic)
             .OnStart(() => tweeningDialogue = true)
             .OnComplete(() => tweeningDialogue = false);
-
-        //AdvanceDialogue();
     }
 
     public void AdvanceDialogue()
@@ -119,8 +146,6 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
         } else {
             CreateDialogueBox();
-            //_dialogueView.requestInterrupt();
-            //_dialogueView.UserRequestedViewAdvancement();
             ProcessDialogue();
         }
     }
@@ -130,9 +155,13 @@ public class DialogueManager : MonoBehaviour
         //identify speaker from line
         SetupDialogueBox();
 
-        //activeCharacterList.Add(new ActiveDialogueCharacter);
+        string currentCharacterName = currentLine.CharacterName.Split('_')[0].ToLower();
+        SetPortraitExpression(currentLine.CharacterName);
+        if (previousName != currentCharacterName)
+        {
+            MovePortraitToFront(currentLine.CharacterName);
+        }
         float increment = 35 + (Regex.Matches(currentDialogueBoxText.text, "<br>").Count * 20);
-        Debug.Log("increment: " + increment);
         for (int i = 0; i < activeDialogueBoxList.Count-1; i++)
         {
             GameObject dialogueViewObj = activeDialogueBoxList[i];
@@ -154,13 +183,16 @@ public class DialogueManager : MonoBehaviour
         currentDialogueBox.GetComponent<RectTransform>().DOAnchorPosX(0f, 0.3f)
             .SetEase(Ease.OutCubic)
             .OnStart(() => tweeningDialogue = true)
-            .OnComplete(() => tweeningDialogue = false);
+            .OnComplete(() => {
+                tweeningDialogue = false;
+                previousName = currentCharacterName;
+            });
     }
     void EndDialogue()
     {
         Debug.Log("DialogueManager.EndDialogue()");
-        _dialogueTransform.DOAnchorPosY(-300f, 0.3f)
-            .SetEase(Ease.OutCubic)
+        _dialogueTransform.DOAnchorPosY(-400f, 0.3f)
+            .SetEase(Ease.OutCirc)
             .OnStart(() => tweeningDialogue = true)
             .OnComplete(() => {
                 tweeningDialogue = false;
@@ -168,17 +200,94 @@ public class DialogueManager : MonoBehaviour
                 {
                     Destroy(o);
                 }
+                foreach (ActiveDialogueCharacter a in activeCharacterList)
+                {
+                    Destroy(a.portraitObject);
+                }
                 activeCharacterList.Clear();
                 activeDialogueBoxList.Clear();
+                rightCharacterList.Clear();
+                leftCharacterList.Clear();
                 readingDialogue = false;
+                previousName = null;
             });
     }
     #endregion
 
-    void SetCharacterExpression(string characterName, string expression)
+    #region Dialogue Processing Supporting Functions
+    void SetPortraitExpression(string characterNameFromYarn)
     {
         //Used when reading dialogue line to select a portrait from a DialogueCharacterObject
+        char [] delimiters = {'_', ':'};
+        string[] splitInput = characterNameFromYarn.Split(delimiters);
+        string name = splitInput[0].ToLower();
+        string expression = splitInput.Length > 1 ? splitInput[1].ToLower() : "idle";
+
+        //Debug.Log("SetCharacterExpression(): Running with input: " + characterNameFromYarn + ", translated to: " + characterNameFromYarn.Split(":")[0].Split("_")[0].ToLower());
+        ActiveDialogueCharacter adc = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(name));
+        //Debug.Log("adc is " + adc == null ? "null" : adc.dialogueCharacter.characterName);
+        Image img = adc.portraitObject.GetComponent<Image>();
+        img.sprite = adc.dialogueCharacter.portraitList.Find(x => x.expression.Contains(expression)).portrait;
     }
+    void SetPortraitExpression(string characterName, string expression)
+    {
+        //Used when reading dialogue line to select a portrait from a DialogueCharacterObject
+        ActiveDialogueCharacter adc = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(characterName.ToLower()));
+        Image img = adc.portraitObject.GetComponent<Image>();
+        if (expression == null)
+        {
+            img.sprite = adc.dialogueCharacter.portraitList.Find(x => x.expression.Contains("idle")).portrait;
+        } else {
+            img.sprite = adc.dialogueCharacter.portraitList.Find(x => x.expression.Contains(expression)).portrait;
+        }
+    }
+    void SetPortraitSide(GameObject portrait, bool onRight = false)
+    {
+        RectTransform rect = portrait.GetComponent<RectTransform>();
+        int index;
+        if (onRight)
+        {
+            index = rightCharacterList.IndexOf(rightCharacterList.Find(x => x.portraitObject == portrait));
+        } else {
+            index = leftCharacterList.IndexOf(leftCharacterList.Find(x => x.portraitObject == portrait));
+        }
+        rect.anchoredPosition = new Vector2(onRight ? 300f + (50f * index) : -300f - (50f * index), 150f);
+        rect.rotation = Quaternion.Euler(new Vector3(0, onRight ? 0 : -180f, 0));
+    }
+    void MovePortraitToFront(string characterNameFromYarn)
+    {
+        char [] delimiters = {'_', ':'};
+        string[] splitInput = characterNameFromYarn.Split(delimiters);
+        string name = splitInput[0].ToLower();
+        ActiveDialogueCharacter adc = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(name.ToLower()));
+        adc.portraitObject.transform.SetAsLastSibling();
+
+        if (adc.onRightSide && rightCharacterList.Count > 1 && rightCharacterList.IndexOf(adc) != 0)
+        {
+            rightCharacterList.Remove(adc);
+            rightCharacterList.Insert(0, adc);
+            adc.portraitObject.GetComponent<RectTransform>().DOAnchorPosX(300f, 0.29f).SetEase(Ease.OutCubic);
+            adc.portraitObject.GetComponent<Image>().color = Color.white;
+            for (int i = 1; i < rightCharacterList.Count; i++)
+            {
+                rightCharacterList[i].portraitObject.transform.SetAsFirstSibling();
+                rightCharacterList[i].portraitObject.GetComponent<RectTransform>().DOAnchorPosX(300f + (50f * i), 0.29f);
+                rightCharacterList[i].portraitObject.GetComponent<Image>().DOColor(new Color(0.75f, 0.85f, 1, 1f), 0.29f).SetEase(Ease.OutCubic);
+            }
+        } else if (!adc.onRightSide && leftCharacterList.Count > 1 && leftCharacterList.IndexOf(adc) != 0) {
+            leftCharacterList.Remove(adc);
+            leftCharacterList.Insert(0, adc);
+            adc.portraitObject.GetComponent<RectTransform>().DOAnchorPosX(-300f, 0.29f).SetEase(Ease.OutCubic);
+            adc.portraitObject.GetComponent<Image>().color = Color.white;
+            for (int i = 1; i < leftCharacterList.Count; i++)
+            {
+                leftCharacterList[i].portraitObject.transform.SetAsFirstSibling();
+                leftCharacterList[i].portraitObject.GetComponent<RectTransform>().DOAnchorPosX(-300f - (50f * i), 0.29f);
+                leftCharacterList[i].portraitObject.GetComponent<Image>().DOColor(new Color(0.75f, 0.85f, 1, 1f), 0.29f).SetEase(Ease.OutCubic);
+            }
+        }
+    }
+
     void SetDialogueBoxSide(GameObject dialogueBox, bool onRight = false)
     {
         RectTransform rect = dialogueBox.GetComponent<RectTransform>();
@@ -205,7 +314,6 @@ public class DialogueManager : MonoBehaviour
                 count++;
             }
         }
-        Debug.Log("AddLineBreaks() complete");
         return result.ToString();
     }
     TextMeshProUGUI GetDialogueBoxText(GameObject dialogueBox)
@@ -223,7 +331,7 @@ public class DialogueManager : MonoBehaviour
         currentLine = _dialogueView.GetCurrentLine();
         currentDialogueBoxText.text = currentLine.TextWithoutCharacterName.Text;
         currentDialogueBoxText.text = AddLineBreaks(currentDialogueBoxText.text);
-        ActiveDialogueCharacter currentSpeaker = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(currentLine.CharacterName.Split("_")[0]));
+        ActiveDialogueCharacter currentSpeaker = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(currentLine.CharacterName.Split("_")[0].ToLower()));
         SetDialogueBoxSide(currentDialogueBox, currentSpeaker.onRightSide);
         GameObject textBG = currentDialogueBox.transform.GetChild(0).transform.GetChild(0).gameObject;
         Timer.Register(0.01f, () => { //this timer is needed so that the text content size filter can apply to the bg before it moves behind the text
@@ -231,8 +339,9 @@ public class DialogueManager : MonoBehaviour
             textBG.transform.SetAsFirstSibling();
         });
     }
+    #endregion
 
-    #region CommandHandlers
+    #region Command Handlers
     void LoadCommandList()
     {
         _dialogueRunner.AddCommandHandler<string, bool>("add_char", (s, b) => AddCharacter(s, b));
@@ -257,13 +366,15 @@ public class DialogueManager : MonoBehaviour
 [Serializable]
 class ActiveDialogueCharacter
 {
-    public ActiveDialogueCharacter(DialogueCharacter dialogueCharacter, string expression, bool onRightSide = false)
+    public ActiveDialogueCharacter(GameObject portrait, DialogueCharacter dialogueCharacter, string expression, bool onRightSide = false)
     {
+        this.portraitObject = portrait;
         this.dialogueCharacter = dialogueCharacter;
         this.expression = expression;
         this.onRightSide = onRightSide;
     }
 
+    public GameObject portraitObject;
     public DialogueCharacter dialogueCharacter;
     public string expression;
     public bool onRightSide;

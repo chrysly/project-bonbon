@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce7eda58ad45554b9ab3a35d9b28d97, type: 3}
   m_Name: Mochi
   m_EditorClassIdentifier: 
-  characterName: Mochi
+  characterName: mochi
   portraitList:
   - expression: idle
     portrait: {fileID: 21300000, guid: 5adb25b067d7344419d0f589cffb55cb, type: 3}

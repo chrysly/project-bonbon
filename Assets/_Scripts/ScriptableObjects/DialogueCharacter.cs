@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DialogueCharacter", menuName = "BonBon/DialogueCharacter")]
+[Serializable]
 public class DialogueCharacter : ScriptableObject
 {
     public string characterName;

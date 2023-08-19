@@ -1,5 +1,5 @@
 ﻿title: BrookeTestScript1
-tags: Mochi:happy:right Pan:idle:left
+tags: Mochi:happy:right Pan:idle:left Esther:idle:left
 ---
 Mochi: Hello, world!
 Mochi_Happy: I'm the budding hero and future savior of Doh, Mochi!
@@ -12,4 +12,27 @@ Mochi_Happy: Where's the part where I get to fight bad guys and prove my mettle 
 Pan_Embarassed: You might want to hop two scenes over and give it a month or two before we get to have any proper fights.
 Mochi_Angry: No way! Waiting is boring.
 Pan: If that's the case, you're not going to like the combat sub-genre for this game...
+===
+
+title: BrookeTestScript2
+tags: Esther:idle:left Mochi:idle:right Pan:idle:left 
+---
+Esther: hey
+Pan: Good morning!
+Mochi_Happy: Hey hey, nice to see you!
+Pan: ...you seem a bit under the weather, Esther. Are you alright?
+Esther: there's like
+Esther: nothing in the narrative drive about me
+Esther: so i'm wingin' it based off of this one sprite alone
+Pan_Embarassed: Huh???
+Esther: i hate mondays, i hate mornings
+Esther: if i don't drink from this ambiguous cup of coffee/cocoa every five minutes i will actually just flatline on the spot
+Mochi_Angry: What's gotten into you? Is this some dark influence?
+Pan_Embarassed: It's like...all the tiredness and mindlessness of a programmer after six hours of hyperfocus was concentrated into one person...
+Esther: time has become a meaningless construct
+Esther: the mental stack is overflowing, the bugs are showing, the hours are going, my words free-flowing
+Esther: time to binge risk of rain 2 for twelve hours
+Pan_Idle: She's completely lost it...
+Pan_Idle: I think we're gunna have to kill this gal, Mochi.
+Mochi_Angry: Damn
 ===
