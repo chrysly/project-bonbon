@@ -299,38 +299,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void SetDialogueBoxSide(GameObject dialogueBox, bool onRight = false)
-    {
-        RectTransform rect = dialogueBox.GetComponent<RectTransform>();
-        rect.anchorMax = new Vector2 (onRight ? 0.87f : 0.13f, 0);
-        rect.anchorMin = new Vector2 (onRight ? 0.87f : 0.13f, 0);
-        RectTransform textRect = dialogueBox.transform.GetChild(0).GetComponent<RectTransform>();
-        textRect.anchorMax = new Vector2 (onRight ? 1f : 0f, 0.5f);
-        textRect.anchorMin = new Vector2 (onRight ? 1f : 0f, 0.5f);
-        textRect.pivot = new Vector2(onRight ? 1f : 0f, 0f);
-        rect.anchoredPosition = new Vector2(onRight ? 300f : -300f, 10f);
-    }
-    string AddLineBreaks(string text)
-    {
-        StringBuilder result = new StringBuilder(text);
-        int count = 0;
-        for (int i = 0; i < result.Length - 1; i++)
-        {
-            if (count >= 40 && result[i] == ' ')
-            {
-                result.Remove(i, 1);
-                result.Insert(i, "<br>");
-                count = 0;
-            } else {
-                count++;
-            }
-        }
-        return result.ToString();
-    }
-    TextMeshProUGUI GetDialogueBoxText(GameObject dialogueBox)
-    {
-        return dialogueBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-    }
     void CreateDialogueBox()
     {
         currentDialogueBox = Instantiate(_dialogueViewPrefab, _viewport.transform);
@@ -358,6 +326,39 @@ public class DialogueManager : MonoBehaviour
             textBG.GetComponent<Image>().color = currentSpeaker.dialogueCharacter.dialogueBoxColor;
         });
     }
+    void SetDialogueBoxSide(GameObject dialogueBox, bool onRight = false)
+    {
+        RectTransform rect = dialogueBox.GetComponent<RectTransform>();
+        rect.anchorMax = new Vector2 (onRight ? 0.87f : 0.13f, 0);
+        rect.anchorMin = new Vector2 (onRight ? 0.87f : 0.13f, 0);
+        RectTransform textRect = dialogueBox.transform.GetChild(0).GetComponent<RectTransform>();
+        textRect.anchorMax = new Vector2 (onRight ? 1f : 0f, 0.5f);
+        textRect.anchorMin = new Vector2 (onRight ? 1f : 0f, 0.5f);
+        textRect.pivot = new Vector2(onRight ? 1f : 0f, 0f);
+        rect.anchoredPosition = new Vector2(onRight ? 300f : -300f, 15f);
+    }
+    string AddLineBreaks(string text)
+    {
+        StringBuilder result = new StringBuilder(text);
+        int count = 0;
+        for (int i = 0; i < result.Length - 1; i++)
+        {
+            if (count >= 40 && result[i] == ' ')
+            {
+                result.Remove(i, 1);
+                result.Insert(i, "<br>");
+                count = 0;
+            } else {
+                count++;
+            }
+        }
+        return result.ToString();
+    }
+    TextMeshProUGUI GetDialogueBoxText(GameObject dialogueBox)
+    {
+        return dialogueBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+    }
+    
     #endregion
 
     #region Command Handlers
@@ -403,7 +404,7 @@ public class DialogueManager : MonoBehaviour
         ActiveDialogueCharacter adc = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(nameInput.Split("_")[0].ToLower()));
         if (adc != null)
         {
-            adc.portraitObject.GetComponent<RectTransform>().DOAnchorPosY(-400f, 0.28f)
+            adc.portraitObject.GetComponent<RectTransform>().DOAnchorPosY(-150f, 0.28f)
             .SetEase(Ease.OutCirc)
             .OnStart(() => tweeningDialogue = true)
             .OnComplete(() => {

@@ -17,4 +17,4 @@ MonoBehaviour:
   - expression: idle
     portrait: {fileID: 21300000, guid: aba302b4198b8c34b86ed0d1bc672596, type: 3}
   defaultToRightSide: 0
-  dialogueBoxColor: {r: 0.2830189, g: 0.26635736, b: 0.2282841, a: 0}
+  dialogueBoxColor: {r: 0.2830189, g: 0.26635736, b: 0.2282841, a: 1}
