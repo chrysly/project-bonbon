@@ -6,21 +6,81 @@ using UnityEngine;
 public class Actor : MonoBehaviour, IComparable<Actor>
 {
     #region Data Attributes
-    [SerializeField] 
+    [SerializeField] public ActorData data;
     #endregion Data Attributes
-    // Start is called before the first frame update
-    void Start()
+    
+    #region Accessors
+    public ActorData Data() { return data; }
+    #endregion Accessors
+    
+    #region Variable Attributes
+    [SerializeField] private float _hitpoints;
+    private int _stamina;
+    #endregion Variable Attributes
+    
+    protected virtual void Start()
     {
-        
+        InitializeAttributes();
     }
 
+    protected virtual void InitializeAttributes() {
+        _hitpoints = data.MaxHitpoints();
+        _stamina = data.MaxStamina();
+    }
+
+    //Returns true if Actor has no remaining health.
+    public bool DepleteHitpoints(float damage) {
+        if (_hitpoints - damage <= 0) {
+            _hitpoints = 0;
+            return true;
+        }
+        _hitpoints -= damage;
+        return false;
+    }
+    
+    //Returns true if over maximum hitpoints.
+    public bool RestoreHitpoints(float heal) {
+        if (_hitpoints + heal > data.MaxHitpoints()) {
+            _hitpoints = data.MaxHitpoints();
+            return true;
+        }
+        _hitpoints += heal;
+        return false;
+    }
+
+    public float Hitpoints() {
+        return _hitpoints;
+    }
+    
+    public bool HasRemainingStamina() {
+        return _stamina > 0;
+    }
+
+    public bool HasRemainingStamina(int cost) {
+        return _stamina - cost > 0;
+    }
+    
+    public void RefundStamina(int cost) {
+        if (_stamina + cost > data.MaxStamina()) {
+            _stamina = data.MaxStamina();
+        } else {
+            _stamina += cost;
+        }
+    }
+    
+    #region Comparators
     public int CompareTo(Actor actor) {
-        return 1;
+        return data.BaseSpeed() - actor.data.BaseSpeed();
     }
+    
+    public override bool Equals(object obj) {
+        var item = obj as Actor;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (item == null) {
+            return false;
+        }
+
+        return item.Data().ID() == data.ID();
     }
+    #endregion Comparators
 }
