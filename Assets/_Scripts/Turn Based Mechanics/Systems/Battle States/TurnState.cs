@@ -6,7 +6,12 @@ public partial class BattleStateMachine {
     public class TurnState : BattleState {
         public override void Enter(BattleStateInput i) {
             base.Enter(i);
-            Debug.Log("Entering Turn State");
+            MySM.OnStartTurn.Invoke(Input);
+            Debug.Log("[" + Input.CurrTurn() + "] " + "Entering " + Input.ActiveActor().data.DisplayName() + "'s Turn");
+            
+            if (Input.ActiveActor() is EnemyActor) {
+                MySM.Transition<TargetSelectState>();
+            }
         }
         
         public override void Update() {
@@ -16,6 +21,9 @@ public partial class BattleStateMachine {
 
         public override void Exit(BattleStateInput input) {
             base.Exit(input);
+            SkillObject skill = Input.ActiveActor().data.SkillList()[0];    //hard coded for pitch demo
+            Input.SetActiveSkill(new SkillAction(skill));
+            Debug.Log(Input.ActiveSkill().ToString());
         }
     }
 }
