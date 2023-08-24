@@ -14,12 +14,8 @@ public partial class
     #endregion SerializeFields
     
     #region Events
-    public delegate void StartTurn(BattleStateInput input);
-    public event StartTurn OnStartTurn;
-
-    public delegate void ConfirmTurn(BattleStateInput input);
-
-    public event ConfirmTurn OnConfirmTurn;
+    public delegate void StateTransition(BattleState state, BattleStateInput input);
+    public event StateTransition OnStateTransition;
     #endregion Events
     
     protected override void SetInitialState() {

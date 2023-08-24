@@ -12,6 +12,7 @@ public partial class BattleStateMachine {
             if (Input.ActiveActor() is EnemyActor) {
                 MySM.Transition<AnimateState>();
             }
+            MySM.OnStateTransition.Invoke(this, Input);
         }
         
         public override void Update() {

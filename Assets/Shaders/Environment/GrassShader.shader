@@ -26,12 +26,26 @@ Shader "Unlit/GrassShader"
     	_PlacementMap("Placement Map", 2D) = "white" {}
     }
 
-	CGINCLUDE
+	HLSLINCLUDE
 	#include "UnityCG.cginc"
 	#include "Autolight.cginc"
 	#include "CustomTessellation.cginc"
+	#pragma multi_compile _ _MAIN_LIGHT_SHADOWS
+	#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
 
-	#define BLADE_SEGMENTS 3
+	#pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
+	#pragma multi_compile_fragment _ _ADDITIONAL_LIGHT_SHADOWS
+	#pragma multi_compile_fragment _ _SHADOWS_SOFT
+	#pragma multi_compile _ LIGHTMAP_SHADOW_MIXING
+	#pragma multi_compile _ SHADOWS_SHADOWMASK
+	#pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
+	#pragma multi_compile_fog   
+	#pragma multi_compile _ DIRLIGHTMAP_COMBINED
+	#pragma multi_compile _ LIGHTMAP_ON
+
+	
+
+	#define BLADE_SEGMENTS 4
 	
 	float _BendRotationRandom;
 	float _BladeHeight;
@@ -58,13 +72,17 @@ Shader "Unlit/GrassShader"
 	{
 		float4 pos : SV_POSITION;
 		float2 uv : TEXCOORD0;
+		float3 normal : NORMAL;
+		unityShadowCoord4 _ShadowCoord : TEXCOORD1;
 	};
 
-	geometryOutput VertexOutput(float3 pos, float2 uv)
+	geometryOutput VertexOutput(float3 pos, float2 uv, float3 normal)
 	{
 		geometryOutput o;
 		o.pos = UnityObjectToClipPos(pos);
 		o.uv = uv;
+		o.normal = UnityObjectToWorldNormal(normal);
+		o._ShadowCoord = ComputeScreenPos(o.pos);
 		return o;
 	}
 
@@ -99,9 +117,13 @@ Shader "Unlit/GrassShader"
 	geometryOutput GenerateGrassVertex(float3 vertexPosition, float width, float height, float forward, float2 uv, float3x3 transformMatrix)
 	{
 		float3 tangentPoint = float3(width, forward, height);
+		
+		//lighting
+		float3 tangentNormal = float3(0, -1, 0);
+		float3 localNormal = mul(transformMatrix, tangentNormal);
 
 		float3 localPosition = vertexPosition + mul(transformMatrix, tangentPoint);
-		return VertexOutput(localPosition, uv);
+		return VertexOutput(localPosition, uv, localNormal);
 	}
 
 	[maxvertexcount(BLADE_SEGMENTS * 2 + 1)]
@@ -164,7 +186,7 @@ Shader "Unlit/GrassShader"
 			triStream.Append(GenerateGrassVertex(pos, 0, height, forward, float2(0.5, 1), transformationMatrix));
 		}
 	}
-	ENDCG
+	ENDHLSL
 
     SubShader
     {
@@ -179,11 +201,15 @@ Shader "Unlit/GrassShader"
         Pass
         {
 
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             #pragma geometry geo
 			#pragma target 4.6
+            #pragma multi_compile_fwdbase
+            #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
+			#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
+			#pragma multi_compile _ _SHADOWS_SOFT
             #pragma hull hull
             #pragma domain domain
             
@@ -194,10 +220,47 @@ Shader "Unlit/GrassShader"
 			float _TranslucentGain;
 
 			float4 frag (geometryOutput i, fixed facing : VFACE) : SV_Target
-            {	
+            {
+            	//#ifdef MAIN_LIGHT_SHADOWS
+            		//VertexPositionInputs vertexInput = (VertexPositionInputs)0;
+            		//vertexInput.positionWS;
+            	
+            	//#endif
+            	
 				return lerp(_BottomColor, _TopColor, i.uv.y);
+            	
             }
-            ENDCG
+            ENDHLSL
         }
+        
+        Pass
+		{
+			Tags
+			{
+				"LightMode" = "UniversalForward"
+			}
+			Blend OneMinusDstColor One
+			ZWrite Off
+			
+			HLSLPROGRAM
+			#pragma vertex vert
+			#pragma geometry geo
+			#pragma fragment frag
+			#pragma hull hull
+			#pragma domain domain
+			#pragma target 4.6
+			#pragma multi_compile_fwdadd_fullshadows
+
+			float4 frag(geometryOutput i) : SV_Target
+			{
+				//UNITY_LIGHT_ATTENUATION(atten, i, i.pos);
+				//float3 pointlights = atten * unity_LightColor0.rgb;
+
+				//return float4(atten, 0, 0, 1);
+				//return float4(pointlights, 1);
+			}
+
+			ENDHLSL
+		}
     }
 }
