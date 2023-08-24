@@ -13,14 +13,14 @@ public partial class BattleStateMachine {
             if (Input.ActiveActor() is CharacterActor) {
                 Input.ActiveSkill().ActivateSkill();
             } else if (Input.ActiveActor() is EnemyActor) {    //get rid of this aaaaa
-                int target = Input.CurrTurn() % 2 == 0 ? 0 : 2;
+                int target = Input.CurrTurn() % 2 == 0 ? 0 : 3;
                 Input.SetActiveSkill(new SkillAction(Input.ActiveActor().data.SkillList()[0], MySM.actorList[target]));
                 Input.ActiveSkill().ActivateSkill();
             }
             
             _movement.Bump(Input.ActiveActor().transform, Input.ActiveSkill().Target().transform);
             
-            MySM.OnConfirmTurn.Invoke(Input);
+            MySM.OnStateTransition.Invoke(this, Input);
             MySM.StartBattle(3f);
         }
         

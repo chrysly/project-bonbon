@@ -7,10 +7,13 @@ public class Actor : MonoBehaviour, IComparable<Actor>
 {
     #region Data Attributes
     [SerializeField] public ActorData data;
+    [SerializeField] private string uniqueID;
     #endregion Data Attributes
     
     #region Accessors
     public ActorData Data() { return data; }
+
+    public string UniqueID() { return uniqueID; }
     #endregion Accessors
     
     #region Variable Attributes
