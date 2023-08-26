@@ -58406,6 +58406,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 515a6fc3b4db38c4fa744c7506bc96d1, type: 2}
+    - target: {fileID: 681210223750957043, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d42fa83fd228b046a7dfdfb6ae33125, type: 2}
     - target: {fileID: 919132149155446097, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
       propertyPath: m_Name
       value: Escaroll
@@ -58414,6 +58418,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5273154858726083078, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d42fa83fd228b046a7dfdfb6ae33125, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -58424,6 +58432,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 858917014}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1901390820}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1901390818}
@@ -68931,6 +68942,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.980052, z: 2.354415}
   m_Center: {x: -0.0000003294265, y: 0.490026, z: 0.17704087}
+--- !u!95 &1901390820
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709609314}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99000f629e97c1d47812296bd4a13789, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1902203937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5060829554916522022, guid: 78e40d7e2dd1cf643b1620b18d7d382a, type: 3}
@@ -71077,6 +71109,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 515a6fc3b4db38c4fa744c7506bc96d1, type: 2}
+    - target: {fileID: 681210223750957043, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d42fa83fd228b046a7dfdfb6ae33125, type: 2}
     - target: {fileID: 919132149155446097, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
       propertyPath: m_Name
       value: Escaroll (1)
@@ -71085,6 +71121,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5273154858726083078, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d42fa83fd228b046a7dfdfb6ae33125, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -71101,6 +71141,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1960498929}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1960498930}
   m_SourcePrefab: {fileID: 100100000, guid: 148336fa3f8365a408a9e0e735df8ffa, type: 3}
 --- !u!4 &1960498927 stripped
 Transform:
@@ -71143,6 +71186,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.7012448, z: 2.1999016}
   m_Center: {x: -0.00000023704969, y: 0.35062265, z: 0.22224188}
+--- !u!95 &1960498930
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690777502}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 99000f629e97c1d47812296bd4a13789, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1960835992
 GameObject:
   m_ObjectHideFlags: 0
