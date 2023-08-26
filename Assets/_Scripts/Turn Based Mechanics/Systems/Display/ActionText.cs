@@ -9,10 +9,11 @@ public class ActionText : MonoBehaviour
     [SerializeField] private float textActiveDuration = 3f;
     private IEnumerator _activeDisplay;
     void Start() {
-        stateMachine.OnConfirmTurn += UpdateActionText;
+        stateMachine.OnStateTransition += UpdateActionText;
     }
 
-    private void UpdateActionText(BattleStateInput input) {
+    private void UpdateActionText(BattleStateMachine.BattleState state, BattleStateInput input) {
+        if (state is not BattleStateMachine.AnimateState) return;
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
         text.SetText(input.ActiveActor().data.DisplayName() + " used " + input.ActiveSkill().ToString() + " on "
                      + input.ActiveSkill().Target().data.DisplayName() + "!");

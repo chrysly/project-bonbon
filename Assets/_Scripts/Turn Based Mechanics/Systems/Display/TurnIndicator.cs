@@ -6,10 +6,11 @@ using TMPro;
 public class TurnIndicator : MonoBehaviour {
     [SerializeField] private BattleStateMachine stateMachine;
     void Start() {
-        stateMachine.OnStartTurn += UpdateTurnIndicator;
+        stateMachine.OnStateTransition += UpdateTurnIndicator;
     }
 
-    private void UpdateTurnIndicator(BattleStateInput input) {
+    private void UpdateTurnIndicator(BattleStateMachine.BattleState state, BattleStateInput input) {
+        if (state is not BattleStateMachine.TurnState) return;
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
         text.SetText("[" + input.CurrTurn() + "] " + input.ActiveActor().data.DisplayName());
     }
