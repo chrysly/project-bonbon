@@ -39,6 +39,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] bool tweeningDialogue = false;
 
     [SerializeField] Color fadeColor;
+    [SerializeField] Color fadeColorTwo;
 
     LocalizedLine currentLine;
     GameObject currentDialogueBox;
@@ -73,7 +74,7 @@ public class DialogueManager : MonoBehaviour
             } else {
                 //NOTE: Just invoke this event from another script with the node you want to call to start dialogue.
                 //dialogueRequestEvent.Invoke("BrookeTestScript1");
-                dialogueRequestEvent.Invoke("BrookeTestScript2");
+                dialogueRequestEvent.Invoke("BrookeTestScript3");
             }
         }
     }
@@ -119,7 +120,7 @@ public class DialogueManager : MonoBehaviour
                 if (rightCharacterList.Count > 1)
                 {
                     //activeCharacterList[i].portraitObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(300f + (50f * rightCharacterList.Count), 150f, 0f);
-                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = fadeColor;
+                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = fadeColorTwo;
                 }
             }
             else
@@ -129,7 +130,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     Debug.Log("leftCharacterList.Count: " + leftCharacterList.Count);
                     //activeCharacterList[i].portraitObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-300f - (50f * leftCharacterList.Count), 150f, 0f);
-                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = fadeColor;
+                    activeCharacterList[i].portraitObject.GetComponent<Image>().color = fadeColorTwo;
                 }
             }
 
@@ -161,6 +162,7 @@ public class DialogueManager : MonoBehaviour
         SetupDialogueBox();
 
         string currentCharacterName = currentLine.CharacterName.Split('_')[0].ToLower();
+        ActiveDialogueCharacter currentSpeaker = activeCharacterList.Find(x => x.dialogueCharacter.characterName.Contains(currentLine.CharacterName.Split("_")[0].ToLower()));
         SetPortraitExpression(currentLine.CharacterName);
         if (previousName != currentCharacterName)
         {
@@ -192,6 +194,16 @@ public class DialogueManager : MonoBehaviour
                 tweeningDialogue = false;
                 previousName = currentCharacterName;
             });
+        Transform currentSpeakerTransform = currentSpeaker.portraitObject.transform;
+        Vector2 origScale = currentSpeakerTransform.localScale;
+        currentSpeakerTransform.localScale = new Vector2(currentSpeakerTransform.localScale.x * 1.15f, currentSpeakerTransform.localScale.y * 1.15f);
+        currentSpeakerTransform.DOScale(origScale, 0.28f).SetEase(Ease.OutCubic);
+        currentSpeaker.portraitObject.GetComponent<Image>().DOColor(Color.white, 0.28f).SetEase(Ease.OutCubic);
+        if (currentSpeaker.onRightSide) {
+            leftCharacterList[0].portraitObject.GetComponent<Image>().DOColor(fadeColor, 0.28f).SetEase(Ease.OutCubic);
+        } else {
+            rightCharacterList[0].portraitObject.GetComponent<Image>().DOColor(fadeColor, 0.28f).SetEase(Ease.OutCubic);
+        }
     }
     void EndDialogue()
     {
@@ -283,7 +295,7 @@ public class DialogueManager : MonoBehaviour
             {
                 rightCharacterList[i].portraitObject.transform.SetAsFirstSibling();
                 rightCharacterList[i].portraitObject.GetComponent<RectTransform>().DOAnchorPosX(300f + (50f * i), 0.29f);
-                rightCharacterList[i].portraitObject.GetComponent<Image>().DOColor(fadeColor, 0.29f).SetEase(Ease.OutCubic);
+                rightCharacterList[i].portraitObject.GetComponent<Image>().DOColor(fadeColorTwo, 0.29f).SetEase(Ease.OutCubic);
             }
         } else if (!adc.onRightSide && leftCharacterList.Count > 1 && leftCharacterList.IndexOf(adc) != 0) {
             leftCharacterList.Remove(adc);
@@ -294,7 +306,7 @@ public class DialogueManager : MonoBehaviour
             {
                 leftCharacterList[i].portraitObject.transform.SetAsFirstSibling();
                 leftCharacterList[i].portraitObject.GetComponent<RectTransform>().DOAnchorPosX(-300f - (50f * i), 0.29f);
-                leftCharacterList[i].portraitObject.GetComponent<Image>().DOColor(fadeColor, 0.29f).SetEase(Ease.OutCubic);
+                leftCharacterList[i].portraitObject.GetComponent<Image>().DOColor(fadeColorTwo, 0.29f).SetEase(Ease.OutCubic);
             }
         }
     }
@@ -386,12 +398,12 @@ public class DialogueManager : MonoBehaviour
             if (sideToSet == true) 
             {
                 rightCharacterList.Add(addedChar);
-                if (rightCharacterList.Count > 1) addedChar.portraitObject.GetComponent<Image>().color = fadeColor;
+                if (rightCharacterList.Count > 1) addedChar.portraitObject.GetComponent<Image>().color = fadeColorTwo;
             }
             else
             {
                 leftCharacterList.Add(addedChar);
-                if (leftCharacterList.Count > 1) addedChar.portraitObject.GetComponent<Image>().color = fadeColor;
+                if (leftCharacterList.Count > 1) addedChar.portraitObject.GetComponent<Image>().color = fadeColorTwo;
             }
             SetPortraitExpression(nameInput);
             SetPortraitSide(addedChar.portraitObject, sideToSet == true);

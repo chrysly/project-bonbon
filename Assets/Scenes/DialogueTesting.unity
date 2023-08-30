@@ -2447,7 +2447,8 @@ MonoBehaviour:
   activeDialogueBoxList: []
   readingDialogue: 0
   tweeningDialogue: 0
-  fadeColor: {r: 0.72, g: 0.82, b: 0.92, a: 1}
+  fadeColor: {r: 0.81501424, g: 0.8733221, b: 0.9339623, a: 1}
+  fadeColorTwo: {r: 0.72156864, g: 0.81960785, b: 0.92156863, a: 1}
 --- !u!114 &3831113771857514791
 MonoBehaviour:
   m_ObjectHideFlags: 0

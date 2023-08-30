@@ -42,3 +42,25 @@ Esther: good luck i've got like eighty goat hooves
 Pan_Idle: !!
 Mochi_Angry: She's getting away! After her!
 ===
+
+title: BrookeTestScript3
+tags: Esther:idle:left Mochi:idle:right 
+---
+Esther: hello again
+<<add_char pan_embarassed true>>
+Pan: Good evening!
+Esther: boing
+Esther: boing boing
+Esther: boing boing boing
+Esther: boing boing boing boing
+Esther: boing boing boing boing boing
+Esther: boing boing boing boing boing boing
+Pan_Embarassed: Esther...what are you doing?
+Esther: bouncing as i talk
+Esther: haven't you heard of basic animation principles
+Esther: if i bounce enough i'll be able to universe hop like in mario 64
+Esther: starting right abooooout
+<<remove_char esther>>
+Pan_Embarassed: Oh, there she goes.
+Mochi_Angry: ??????
+===
