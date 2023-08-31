@@ -8015,7 +8015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241918096}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.012350456, y: 0.6987806, z: -0.012068135, w: 0.71512765}
+  m_LocalRotation: {x: 0.012350479, y: 0.6987806, z: -0.01206816, w: 0.71512765}
   m_LocalPosition: {x: -11.638379, y: 2.7899997, z: -1.1010958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18475,7 +18475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551019037}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.067138076, y: 0.6956575, z: 0.044077337, w: 0.71387}
+  m_LocalRotation: {x: 0.067138106, y: 0.6956575, z: 0.044077314, w: 0.71387}
   m_LocalPosition: {x: -11.638379, y: 2.7899997, z: -1.1010958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -42382,7 +42382,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186945109}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 3a98970cae9752d4181843e9b2f0d724, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: f53e3750801268e418518a3e48bbac6d, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0

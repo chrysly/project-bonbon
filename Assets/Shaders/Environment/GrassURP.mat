@@ -105,13 +105,13 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _AmbientStrength: 0.609
-    - _BendRotationRandom: 0.159
-    - _BladeCurve: 1.32
+    - _BendRotationRandom: 0
+    - _BladeCurve: 1.27
     - _BladeForward: 0.5
     - _BladeHeight: 0.6
     - _BladeHeightRandom: 0.3
-    - _BladeWidth: 0.05
-    - _BladeWidthRandom: 0.01
+    - _BladeWidth: 0.08
+    - _BladeWidthRandom: 0.005
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1

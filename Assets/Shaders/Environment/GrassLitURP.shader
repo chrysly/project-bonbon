@@ -1,7 +1,5 @@
-Shader "Custom/GeometryGrass"
+Shader "Custom/GrassLitURP"
 {
-	// The properties block of the Unity shader. In this example this block is empty
-	// because the output color is predefined in the fragment shader code.
 	Properties
 	{
 		_BottomColor("Bottom Color", Color) = (0,1,0,1)
@@ -20,12 +18,8 @@ Shader "Custom/GeometryGrass"
 		_MinDist("Min Distance", Float) = 40
 		_MaxDist("Max Distance", Float) = 60
 	}
-
-		// The HLSL code block. Unity SRP uses the HLSL language.
 		HLSLINCLUDE
-		// This line defines the name of the vertex shader. 
 #pragma vertex vert
-		// This line defines the name of the fragment shader. 
 #pragma fragment frag
 #pragma require geometry
 #pragma geometry geom
@@ -46,21 +40,12 @@ Shader "Custom/GeometryGrass"
 #pragma multi_compile _ DIRLIGHTMAP_COMBINED
 #pragma multi_compile _ LIGHTMAP_ON
 
-		// The Core.hlsl file contains definitions of frequently used HLSL
-		// macros and functions, and also contains #include references to other
-		// HLSL files (for example, Common.hlsl, SpaceTransforms.hlsl, etc.).
-
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"	
 
-		// The structure definition defines which variables it contains.
-		// This example uses the Attributes structure as an input structure in
-		// the vertex shader.
 		struct Attributes
 	{
-		// The positionOS variable contains the vertex positions in object
-		// space.
 		float4 positionOS   : POSITION;
 		float3 normal :NORMAL;
 		float2 texcoord : TEXCOORD0;
@@ -165,6 +150,8 @@ Shader "Custom/GeometryGrass"
 	g2f GrassVertex(float3 vertexPos, float width, float height, float offset, float curve, float2 uv, float3x3 rotation, float3 faceNormal, float3 color) {
 		g2f OUT;
 		float3 offsetvertices = vertexPos + mul(rotation, float3(width, height, curve) + float3(0, 0, offset));
+
+
 		OUT.pos = GetShadowPositionHClip(offsetvertices, faceNormal);
 		OUT.norm = faceNormal;
 		OUT.diffuseColor = color;
@@ -204,12 +191,7 @@ Shader "Custom/GeometryGrass"
 
 		// set vertex color
 		float3 color = (IN[0].color).rgb;
-		// set grass height from tool, uncomment if youre not using the tool!
-		_GrassHeight *= IN[0].uv.y;
-		_GrassWidth *= IN[0].uv.x;
-		_GrassHeight *= clamp(rand(IN[0].pos.xyz), 1 - _RandomHeight, 1 + _RandomHeight);
-
-		// grassblades geometry
+		
 		for (int j = 0; j < (GrassBlades * distanceFade); j++)
 		{
 			// set rotation and radius of the blades
@@ -273,7 +255,7 @@ Shader "Custom/GeometryGrass"
 	half4 frag(g2f i) : SV_Target
 	{
 		float4 shadowCoord = TransformWorldToShadowCoord(i.worldPos);
-#if _MAIN_LIGHT_SHADOWS
+	#if _MAIN_LIGHT_SHADOWS_CASCADE || _MAIN_LIGHT_SHADOWS
 	Light mainLight = GetMainLight(shadowCoord);
 #else
 	Light mainLight = GetMainLight();

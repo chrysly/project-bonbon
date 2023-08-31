@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ExampleShader
-  m_Shader: {fileID: 4800000, guid: b247c9c1bce8c844f8a6e4988ed1b8ac, type: 3}
+  m_Shader: {fileID: 4800000, guid: 453a35b002b904443bdb5040645c55f9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -116,11 +116,12 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _AmbientStrength: 0.576
     - _BendDelta: 0.2
     - _BendRotationRandom: 0.042
     - _BladeBendCurve: 2
     - _BladeBendDistance: 0.38
-    - _BladeCurve: 1.32
+    - _BladeCurve: 1.6
     - _BladeForward: 0.5
     - _BladeHeight: 2
     - _BladeHeightMax: 0.2
@@ -147,24 +148,33 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _GrassFalloff: 0.05
+    - _GrassHeight: 1
     - _GrassThreshold: 0.5
+    - _GrassWidth: 0.1
+    - _MaxDist: 100
     - _Metallic: 0
+    - _MinDist: 40
     - _MinimumHeight: 0.129
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
+    - _Rad: 0.118
+    - _Radius: 0.3
+    - _RandomHeight: 0.01
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
+    - _Strength: 4
     - _Surface: 0
     - _TessellationGrassDistance: 0.17
     - _TessellationUniform: 3.6
     - _TranslucentGain: 0.5
     - _WindFrequency: 0.01
-    - _WindStrength: 1
+    - _WindSpeed: 20
+    - _WindStrength: 0.3
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

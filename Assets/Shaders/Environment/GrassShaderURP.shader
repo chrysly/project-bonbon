@@ -27,9 +27,10 @@ Shader "Unlit/GrassShaderURP"
     }
 
 	HLSLINCLUDE
-	#include "UnityCG.cginc"
-	#include "Autolight.cginc"
-	#include "CustomTessellation.cginc"
+	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+	#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
+	
 	#pragma multi_compile _ _MAIN_LIGHT_SHADOWS
 	#pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
 
@@ -67,23 +68,46 @@ Shader "Unlit/GrassShaderURP"
 
 	float3 minBounds;
 	float3 maxBounds;
+
+	//Reserved for vertex shader
+	struct Attributes
+	{
+		float4 positionOS   : POSITION;
+		float3 normal :NORMAL;
+		float2 uv : TEXCOORD0;
+		float4 color : COLOR;
+		float4 tangent :TANGENT;
+	};
 	
 	struct geometryOutput
 	{
 		float4 pos : SV_POSITION;
 		float2 uv : TEXCOORD0;
 		float3 normal : NORMAL;
-		unityShadowCoord4 _ShadowCoord : TEXCOORD1;
 	};
 
 	geometryOutput VertexOutput(float3 pos, float2 uv, float3 normal)
 	{
 		geometryOutput o;
-		o.pos = UnityObjectToClipPos(pos);
+		o.pos = TransformObjectToHClip(pos);
 		o.uv = uv;
-		o.normal = UnityObjectToWorldNormal(normal);
-		o._ShadowCoord = ComputeScreenPos(o.pos);
+		o.normal = TransformObjectToWorldNormal(normal);
 		return o;
+	}
+
+	float4 GetShadowPositionHClip(float3 input, float3 normal) {
+		float3 positionWS = TransformObjectToWorld(input.xyz);
+		float3 normalWS = TransformObjectToWorldNormal(normal);
+
+		float4 positionCS = TransformWorldToHClip(ApplyShadowBias(positionWS, normalWS, 0));
+
+
+	#if UNITY_REVERSED_Z
+		positionCS.z = min(positionCS.z, UNITY_NEAR_CLIP_VALUE);
+	#else
+		positionCS.z = max(positionCS.z, UNITY_NEAR_CLIP_VALUE);
+	#endif
+		return positionCS;
 	}
 
 	// Simple noise function, sourced from http://answers.unity.com/answers/624136/view.html
