@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public partial class
     BattleStateMachine : StateMachine<BattleStateMachine, BattleStateMachine.BattleState, BattleStateInput> {
@@ -47,7 +46,7 @@ public partial class
         bool allEnemiesDead = true;
         bool allCharactersDead = true;
         foreach (Actor actor in actorList) {
-            if (actor.Hitpoints() == 0) {
+            if (actor.Defeated()) {
                 continue;
             }
             if (actor is EnemyActor) {
