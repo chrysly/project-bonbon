@@ -6,10 +6,11 @@ using UnityEngine;
 /// <summary>
 /// Scriptable Object class for all and every bonbon;
 /// </summary>
+[CreateAssetMenu(menuName = "Bonbon/Bonbon")]
 public class BonbonObject : ScriptableObject {
 
-    public readonly string name;
-    public readonly Sprite sprite;
+    public new string name;
+    public Sprite sprite;
 
     /// <summary> A description of the bonbon for later use in the UI; </summary>
     public readonly string description;
@@ -18,7 +19,7 @@ public class BonbonObject : ScriptableObject {
     //public StatusEffect[] statusEffects;
 
     /// <summary> A dictionary containing the bonbons required to make the bonbon, mapped to the required quantity; </summary>
-    public readonly BonbonObject[] recipe;
+    public BonbonObject[] recipe;
 
     public override bool Equals(object other) {
         if (other is BonbonObject) {
