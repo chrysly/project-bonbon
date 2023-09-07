@@ -8,5 +8,9 @@ public partial class BattleStateMachine {
         public virtual void EnterBattle() { MySM.Transition<TurnState>(); }
 
         public virtual void AnimateTurn() { MySM.Transition<AnimateState>(); }
+
+        public virtual void TriggerBattleWin() { MySM.Transition<WinState>(); }
+
+        public virtual void TriggerBattleLose() { MySM.Transition<LoseState>(); }
     }
 }

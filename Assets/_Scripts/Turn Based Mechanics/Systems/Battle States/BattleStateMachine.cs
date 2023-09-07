@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.Rendering.Universal;
 
 public partial class
     BattleStateMachine : StateMachine<BattleStateMachine, BattleStateMachine.BattleState, BattleStateInput> {
@@ -43,7 +43,27 @@ public partial class
 
     #region State Handlers
     public void StartBattle() {
-        CurrState.EnterBattle();
+        // Checks whether to progress to Win/Lose state
+        bool allEnemiesDead = true;
+        bool allCharactersDead = true;
+        foreach (Actor actor in actorList) {
+            if (actor.Hitpoints() == 0) {
+                continue;
+            }
+            if (actor is EnemyActor) {
+                allEnemiesDead = false;
+            } else if (actor is CharacterActor) {
+                allCharactersDead = false;
+            }
+        }
+
+        if (allEnemiesDead) {
+            CurrState.TriggerBattleWin();
+        } else if (allCharactersDead) {
+            CurrState.TriggerBattleLose();
+        } else {
+            CurrState.EnterBattle();
+        }
     }
 
     public void StartBattle(float delay) {
