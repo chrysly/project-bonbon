@@ -17,11 +17,11 @@ public class IngredientWindow : MonoBehaviour
 
     [SerializeField] private CanvasGroup panel;
 
-    private List<Ingredient> ingredients;
+    ///private List<Ingredient> ingredients;
 
     private void Start() {
 
-        ingredients = new List<Ingredient>(actor.Data().IngredientList());
+        ///ingredients = new List<Ingredient>(actor.Data().IngredientList());
         transform.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
         LoadButtons();
         //battleState.OnSkillConfirm += DisplayOnConfirm;
@@ -50,13 +50,13 @@ public class IngredientWindow : MonoBehaviour
 
 
     private void LoadButtons() {
-        foreach (Ingredient ingredient in ingredients) {
+        /*foreach (Ingredient ingredient in ingredients) {
             GameObject button = (GameObject)Instantiate(buttonPrefab, buttonContainer);
             IngredientButton ingredientButton = button.GetComponent<IngredientButton>();
             ingredientButton.AssignIngredient(ingredient);
             Button btn = button.GetComponent<Button>();
             //btn.onClick.AddListener(delegate { battleState.SwitchToSkillSelect(.RetrieveSkill()); });
             //btn.onClick.AddListener(delegate { Hide(); });
-        }
+        }*/
     }
 }
