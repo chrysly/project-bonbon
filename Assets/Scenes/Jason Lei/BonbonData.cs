@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Bonbon", menuName = "BonBon/BonbonData")]
-[Serializable]
+[System.Serializable]
 public class BonbonData : ScriptableObject
 {
     public string ID;
