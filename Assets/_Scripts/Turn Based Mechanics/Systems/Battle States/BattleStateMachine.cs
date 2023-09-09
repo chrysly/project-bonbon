@@ -13,8 +13,8 @@ public partial class
     #endregion SerializeFields
     
     #region Events
-    public delegate void StateTransition(BattleState state, BattleStateInput input);
-    public event StateTransition OnStateTransition;
+    public new delegate void StateTransition(BattleState state, BattleStateInput input);
+    public event StateTransition OnStateTransition ;
     #endregion Events
     
     protected override void SetInitialState() {
