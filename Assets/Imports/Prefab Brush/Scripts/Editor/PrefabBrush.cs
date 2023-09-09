@@ -2075,12 +2075,12 @@ namespace ArchieAndrews.PrefabBrush
                 else if (rBody == null)
                     return;
 
-                Physics.autoSimulation = false;
+                Physics.simulationMode = SimulationMode.Script;
                 for (int i = 0; i < activeSave.physicsIterations; i++)
                 {
                     Physics.Simulate(Time.fixedDeltaTime);
                 }
-                Physics.autoSimulation = true;
+                Physics.simulationMode = SimulationMode.FixedUpdate;
 
                 if (removeBodyAtEnd)
                     DestroyImmediate(rBody);

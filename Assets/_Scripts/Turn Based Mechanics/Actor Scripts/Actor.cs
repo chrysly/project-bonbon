@@ -96,5 +96,10 @@ public class Actor : MonoBehaviour, IComparable<Actor>
 
         return item.Data().ID() == data.ID();
     }
+
+    public override int GetHashCode() {
+        return HashCode.Combine(base.GetHashCode(), name, gameObject, uniqueID);
+    }
+
     #endregion Comparators
 }
