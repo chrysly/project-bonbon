@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14142bd7c92aef1418ae58a98e3f393a, type: 3}
-  m_Name: LifeStealAttack Skill
+  m_Name: LifeSteal Skill
   m_EditorClassIdentifier: 
   skillID: lifeStealAttack_default
   skillName: Life Steal
@@ -19,3 +19,4 @@ MonoBehaviour:
   resistanceAmount: 0
   speedIncreaseAmount: 0
   attackIncreaseAmount: 0
+  selfInflictAmount: -8

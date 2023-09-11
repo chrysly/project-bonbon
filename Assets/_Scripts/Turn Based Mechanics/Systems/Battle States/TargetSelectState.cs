@@ -13,7 +13,7 @@ public partial class BattleStateMachine {
             Debug.Log("Entering target select state");
             if (Input.ActiveActor() is EnemyActor) {
                 // Enemy Actor Selection; pls fix thank you
-                Input.SetActiveSkill(new SkillAction(Input.ActiveActor().data.SkillList()[0], MySM.actorList[_nextSelectedActor]));
+                Input.SetActiveSkill(new SkillAction(Input.ActiveActor().data.SkillList()[0], Input.ActiveActor(), MySM.actorList[_nextSelectedActor]));
                 _nextSelectedActor = (_nextSelectedActor == 0) ? MySM.actorList.Count - 1 : 0;
                 MySM.Transition<AnimateState>();
             }
@@ -24,7 +24,7 @@ public partial class BattleStateMachine {
             base.Update();
             Actor actor = _selectManager.CheckForSelect();
             if (actor != null) {
-                Input.SetActiveSkill(new SkillAction(Input.ActiveSkill().Data(), actor));
+                Input.SetActiveSkill(new SkillAction(Input.ActiveSkill().Data(), Input.ActiveActor(), actor));
                 MySM.Transition<AnimateState>();
             }
         }

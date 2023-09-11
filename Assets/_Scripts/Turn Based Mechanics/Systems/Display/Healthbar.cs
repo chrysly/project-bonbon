@@ -21,6 +21,11 @@ public class Healthbar : MonoBehaviour {
             float maxHealth = input.ActiveSkill().Target().data.MaxHitpoints();
 
             slider.value = currHealth / maxHealth;
+        } else if (input.ActiveSkill().Caster().UniqueID() == actor.UniqueID()) {
+            float currHealth = input.ActiveSkill().Caster().Hitpoints();
+            float maxHealth = input.ActiveSkill().Caster().data.MaxHitpoints();
+
+            slider.value = currHealth / maxHealth;
         }
     }
 }
