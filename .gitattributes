@@ -53,3 +53,4 @@
 *.unity linguist-generated
 *.aar filter=lfs diff=lfs merge=lfs -text
 *.bundle text eol=lf
+*.plist text eol=lf
