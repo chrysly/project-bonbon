@@ -20,6 +20,7 @@ public class SkillObject : ScriptableObject {
     public float resistanceAmount = 0f;
     public float speedIncreaseAmount = 0f;
     public float attackIncreaseAmount = 0f;
+    public float selfInflictAmount = 0f;
     
     public String GetSkillID() { return skillID; }
     public string GetSkillName() { return skillName; }

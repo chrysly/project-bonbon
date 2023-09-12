@@ -21,5 +21,4 @@ MonoBehaviour:
   maxStamina: 100
   staminaRegenRate: 12
   skillList:
-  - {fileID: 11400000, guid: f0554fb479c9bd14c92b1c3089e23da1, type: 2}
-  ingredientList: []
+  - {fileID: 11400000, guid: a5757cb606b9d1d4fb1371333ea20171, type: 2}
