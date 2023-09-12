@@ -22,6 +22,10 @@ public class SkillAction {
         _target = target;
     }
 
+    public void SetCaster(Actor caster) {
+        _caster = caster;
+    }
+
     public void SetSkill(SkillObject data) {
         _data = data;
     }
@@ -47,7 +51,6 @@ public class SkillAction {
         _target.RestoreHitpoints(_data.healAmount);
         
         float selfInflictAmount = _data.selfInflictAmount;
-        Debug.Log(_caster);
         if (selfInflictAmount > 0f) {
             _caster.DepleteHitpoints(selfInflictAmount);
         } else {
