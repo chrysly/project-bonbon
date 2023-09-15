@@ -24,7 +24,7 @@ public class SkillWindow : MonoBehaviour
 
     private void Start() {
         
-        skills = new List<SkillObject>(actor.Data().SkillList());
+        //skills = new List<SkillObject>(actor.Data().SkillList());
         transform.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
         LoadButtons();
         //battleState.OnSkillConfirm += DisplayOnConfirm;
