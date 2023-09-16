@@ -24,12 +24,12 @@ public class BattleStateInput : StateInput {
         activeSkill = skill;
     }
 
+    //Advances until the next undefeated Actor. Returns to initial Actor if not available.
     public void AdvanceTurn() {
-        if (currActorIndex < turnQueue.Count - 1) {
-            currActorIndex++;
-        } else {
-            currActorIndex = 0;
-        }
+        Actor initialActor = ActiveActor();
+        do {
+            currActorIndex = (currActorIndex + 1) % turnQueue.Count;
+        } while (ActiveActor().Defeated() && !initialActor.Equals(ActiveActor()));
         currentTurn++;
     }
 

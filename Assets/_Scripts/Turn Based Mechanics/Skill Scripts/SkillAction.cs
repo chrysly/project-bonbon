@@ -5,19 +5,25 @@ using UnityEngine;
 
 public class SkillAction {
     private SkillObject _data;
+    private Actor _caster;
     private Actor _target;
 
     public SkillAction(SkillObject data) {
         _data = data;
     }
     
-    public SkillAction(SkillObject data, Actor target) {
+    public SkillAction(SkillObject data, Actor caster, Actor target) {
         _data = data;
+        _caster = caster;
         _target = target;
     }
 
     public void SetTarget(Actor target) {
         _target = target;
+    }
+
+    public void SetCaster(Actor caster) {
+        _caster = caster;
     }
 
     public void SetSkill(SkillObject data) {
@@ -32,6 +38,10 @@ public class SkillAction {
         return _target;
     }
 
+    public Actor Caster() {
+        return _caster;
+    }
+
     public SkillObject Data() {
         return _data;
     }
@@ -39,10 +49,18 @@ public class SkillAction {
     public void ActivateSkill() {
         _target.DepleteHitpoints(_data.damageAmount);
         _target.RestoreHitpoints(_data.healAmount);
+        
+        float selfInflictAmount = _data.selfInflictAmount;
+        if (selfInflictAmount > 0f) {
+            _caster.DepleteHitpoints(selfInflictAmount);
+        } else {
+            _caster.RestoreHitpoints(-selfInflictAmount);
+        }
     }
 
     public void Clear() {
         _data = null;
         _target = null;
+        _caster = null;
     }
 }

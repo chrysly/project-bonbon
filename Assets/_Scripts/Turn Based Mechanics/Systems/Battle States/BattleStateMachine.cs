@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-
 public partial class
     BattleStateMachine : StateMachine<BattleStateMachine, BattleStateMachine.BattleState, BattleStateInput> {
 
@@ -14,8 +13,8 @@ public partial class
     #endregion SerializeFields
     
     #region Events
-    public delegate void StateTransition(BattleState state, BattleStateInput input);
-    public event StateTransition OnStateTransition;
+    public new delegate void StateTransition(BattleState state, BattleStateInput input);
+    public event StateTransition OnStateTransition ;
     #endregion Events
     
     protected override void SetInitialState() {
@@ -43,7 +42,27 @@ public partial class
 
     #region State Handlers
     public void StartBattle() {
-        CurrState.EnterBattle();
+        // Checks whether to progress to Win/Lose state
+        bool allEnemiesDead = true;
+        bool allCharactersDead = true;
+        foreach (Actor actor in actorList) {
+            if (actor.Defeated()) {
+                continue;
+            }
+            if (actor is EnemyActor) {
+                allEnemiesDead = false;
+            } else if (actor is CharacterActor) {
+                allCharactersDead = false;
+            }
+        }
+
+        if (allEnemiesDead) {
+            CurrState.TriggerBattleWin();
+        } else if (allCharactersDead) {
+            CurrState.TriggerBattleLose();
+        } else {
+            CurrState.EnterBattle();
+        }
     }
 
     public void StartBattle(float delay) {

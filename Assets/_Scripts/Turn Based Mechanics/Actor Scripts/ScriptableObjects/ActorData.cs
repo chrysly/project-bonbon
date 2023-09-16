@@ -34,9 +34,11 @@ public class ActorData : ScriptableObject
     [Tooltip("Pool of skills actor currently has access to.")]
     [SerializeField] private List<SkillObject> skillList;
     
+    /*
     [Tooltip("Pool of ingredients actor currently has access to.")]
     [SerializeField] private List<Ingredient> ingredientList;
-    
+    */
+
     public string DisplayName() { return displayName; }
     public string ID() { return id; }
     public int MaxHitpoints() { return maxHitpoints; }
@@ -46,5 +48,5 @@ public class ActorData : ScriptableObject
     public int MaxStamina() { return maxStamina; }
     public int StaminaRegenRate() { return staminaRegenRate; }
     public List<SkillObject> SkillList() { return skillList; }
-    public List<Ingredient> IngredientList() { return ingredientList; }
+    ///public List<Ingredient> IngredientList() { return ingredientList; }
 }
