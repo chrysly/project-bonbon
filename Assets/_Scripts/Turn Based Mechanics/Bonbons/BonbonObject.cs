@@ -24,10 +24,28 @@ public class BonbonObject : ScriptableObject {
     public override bool Equals(object other) {
         if (other is BonbonObject) {
             BonbonObject oBonbon = other as BonbonObject;
-            return name == oBonbon.name /*StatusEffect.Equals(statusEffects, oBonbon.statusEffects)*/
-                           && recipe.RecipeEquals(oBonbon.recipe); 
+            return name == oBonbon.name /*&& StatusEffect.Equals(statusEffects, oBonbon.statusEffects)*/
+                           && recipe.RecipeEquals(oBonbon.recipe);
         } return false;
     }
+
+    #if UNITY_EDITOR
+
+    public void AddRecipeSlot(BonbonObject replacement) {
+        if (recipe == null) recipe = new BonbonObject[4];
+        else if (recipe.Length < 4) {
+            var nRecipe = new BonbonObject[4];
+            for (int i = 0; i < recipe.Length; i++) nRecipe[i] = recipe[i];
+        }
+        for (int i = 0; i < recipe.Length; i++) {
+            if (recipe[i] == null) {
+                recipe[i] = replacement;
+                return;
+            }
+        } Debug.LogError("There's no space to place the ingredient;");
+    }
+
+    #endif
 
     public override int GetHashCode() {
         return HashCode.Combine(base.GetHashCode(), name, recipe);

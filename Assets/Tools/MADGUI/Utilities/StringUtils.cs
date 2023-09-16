@@ -4,6 +4,22 @@ using UnityEditor;
 public static class StringUtils {
 
     /// <summary>
+    /// Insert spaces after uppercase letters (excluding start);
+    /// </summary>
+    /// <param name="str"> String to manipulate; </param>
+    /// <returns> String with spaces after uppercase letters; </returns>
+    public static string CamelSpace(this string str) {
+        var nStr = str;
+        int spaceCount = 0;
+        for (int i = 1; i < str.Length; i++) {
+            if (char.IsUpper(str[i])) {
+                nStr = str.Insert(i + spaceCount, " ");
+                spaceCount++;
+            }
+        } return nStr;
+    }
+
+    /// <summary>
     /// Remove the ending of a string up to a given delimeter;<br></br>
     /// Used in the script to remove substrings pertaining to file pathing;
     /// </summary>

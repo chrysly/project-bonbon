@@ -12,14 +12,14 @@ namespace ModelAssetDatabase {
         /// <summary>
         /// Shows the Main Window of the Model Asset Library;
         /// </summary>
-        [MenuItem("Tools/Model Asset Library")]
+        [MenuItem("Tools/Model Asset Database")]
         public static void ShowWindow() {
             if (HasOpenInstances<ModelAssetDatabaseGUI>()) MainGUI.Close();
             ConfigurationCore.LoadConfig();
             if (string.IsNullOrWhiteSpace(ModelAssetDatabase.RootAssetPath)) {
                 ConfigurationGUI.ShowWindow();
                 return;
-            } MainGUI = GetWindow<ModelAssetDatabaseGUI>("Model Asset Library", typeof(ConfigurationGUI));
+            } MainGUI = GetWindow<ModelAssetDatabaseGUI>("Model Asset Database", typeof(ConfigurationGUI));
             if (HasOpenInstances<ConfigurationGUI>()) {
                 ConfigurationGUI.ConfigGUI.Close();
             }

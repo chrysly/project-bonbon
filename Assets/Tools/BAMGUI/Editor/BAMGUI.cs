@@ -5,7 +5,7 @@ using UnityEditor;
 using CJUtils;
 
 /// <summary>
-/// Because the structure I devised for the MADGUI has been quite comfortable to work with, I'm building 
+/// Because the structure I got for the MADGUI has been quite comfortable to work with, I'm building 
 /// this tool using a similar structure. This tool has different needs and less complexity than the MAD,
 /// thus I'm creating a new tool altogether rather than inheriting from the former's abstract base;
 /// </summary>
@@ -19,8 +19,8 @@ namespace BonbonAssetManager {
         }
 
         private enum ToolType {
-            ActorManager = 0,
-            BonbonManager = 1,
+            BonbonManager = 0,
+            ActorManager = 1,
             SceneManager = 2,
         } private ToolType activeTool = 0;
 
@@ -28,119 +28,94 @@ namespace BonbonAssetManager {
 
         void OnEnable() {
             tools = new BonBaseTool[] {
-                BonBaseTool.CreateTool<ActorManager>(this),
                 BonBaseTool.CreateTool<BonbonManager>(this),
+                //BonBaseTool.CreateTool<ActorManager>(this),
             };
         }
 
-        void OnGUI() {
-            tools[(int) activeTool].ShowGUI();
-        }
-    }
-
-    public class BonbonManager : BonBaseTool {
-
-        private BonbonHierarchy hierarchy;
-
-        private enum TabType {
-            Storage = 0,
-            Kitchen = 1,
-            Factory = 2,
-            Actors = 3,
-        } private TabType activeTab;
-
-        void OnEnable() {
-            hierarchy = new BonbonHierarchy();
-            tabs = new BonBaseTab[] {
-                BonBaseTab.CreateTab<BonbonStorageTab>(this),
-                BonBaseTab.CreateTab<BonbonKitchenTab>(this),
-                BonBaseTab.CreateTab<BonbonFactoryTab>(this),
-                BonBaseTab.CreateTab<BonbonActorsTab>(this),
-            };
-        }
-
-        public override void ShowGUI() {
-            using (new EditorGUILayout.HorizontalScope()) {
-                hierarchy.ShowGUI();
-                DrawToolbar();
-            } tabs[(int) activeTab].ShowGUI();
-        }
+        void OnGUI() => tools[(int) activeTool].ShowGUI();
 
         public void DrawToolbar() {
             using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar)) {
-                foreach (TabType tabMode in System.Enum.GetValues(typeof(TabType))) {
-                    if (GUILayout.Button(System.Enum.GetName(typeof(TabType), tabMode), activeTab == tabMode
-                                                                                      ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
-                                                                                      GUILayout.ExpandWidth(true))) SwitchTab(tabMode);
+                foreach (ToolType toolType in System.Enum.GetValues(typeof(ToolType))) {
+                    var name = System.Enum.GetName(typeof(ToolType), toolType).CamelSpace();
+                    if (GUILayout.Button(name, activeTool == toolType
+                                               ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
+                                               GUILayout.ExpandWidth(true))) SwitchTool(toolType);
                 }
             }
         }
 
-        private void SwitchTab(TabType tabMode) {
-            activeTab = tabMode;
+        private void SwitchTool(ToolType toolType) {
+            activeTool = toolType;
         }
     }
 
-    public class BonbonHierarchy {
+    public abstract class BaseHierarchy<T> {
 
-        private string[] bonbonObjects;
+        protected List<string> objectPaths;
+        protected List<string> filteredPaths;
+        private string searchString = "";
 
-        public BonbonHierarchy() {
-            var bonbonGUIDs = AssetDatabase.FindAssets($"t:{nameof(BonbonObject)}");
-            bonbonObjects = new string[bonbonGUIDs.Length];
-            for (int i = 0; i < bonbonGUIDs.Length; i++) bonbonObjects[i] = AssetDatabase.GUIDToAssetPath(bonbonGUIDs[i]);
+        public System.Action<string> OnPathSelection;
+
+        public static E CreateHierarchy<E>(BonBaseTool tool) where E : BaseHierarchy<T> {
+            var hierarchy = System.Activator.CreateInstance<E>();
+            hierarchy.AssignTool(tool);
+            return hierarchy;
         }
 
-        public void ShowGUI() {
+        protected abstract void AssignTool(BonBaseTool tool);
+
+        public BaseHierarchy() {
+            var typeName = typeof(T).FullName;
+            var bonbonGUIDs = AssetDatabase.FindAssets($"t:{typeName}");
+            objectPaths = new List<string>();
+            for (int i = 0; i < bonbonGUIDs.Length; i++) objectPaths.Add(AssetDatabase.GUIDToAssetPath(bonbonGUIDs[i]));
+            filteredPaths = new List<string>(objectPaths);
+        }
+
+        public virtual void ShowGUI() {
             using (new EditorGUILayout.VerticalScope(GUILayout.Width(200))) {
                 using (new EditorGUILayout.HorizontalScope(UIStyles.PaddedToolbar)) {
-                    GUILayout.TextField("", EditorStyles.toolbarSearchField);
+                    var potentialSearch = GUILayout.TextField(searchString, EditorStyles.toolbarSearchField);
+                    if (potentialSearch != searchString) {
+                        searchString = potentialSearch;
+                        SearchUpdate();                    } 
                 }
                 using (new EditorGUILayout.ScrollViewScope(Vector2.zero, UIStyles.WindowBox, GUILayout.ExpandHeight(true))) {
-                    foreach (string path in bonbonObjects) {
-                        GUILayout.Button(path.IsolatePathEnd("\\//").RemovePathEnd("."));
+                    foreach (string path in filteredPaths) {
+                        DrawButton(path);
                     }
                 }
             }
         }
-    }
 
-    public abstract class BonbonTab : BonBaseTab {
-
-        protected BonbonManager BonbonManager;
-
-        protected override void InitializeTab() {
-            if (Tool is BonbonManager) {
-                BonbonManager = Tool as BonbonManager;
-            } else Debug.LogError(INVALID_MANAGER);
+        private void SearchUpdate() {
+            filteredPaths = ModelAssetDatabase.MADUtils.SearchingUtils.GetSearchQuery(searchString, objectPaths);
         }
+
+        public abstract void DrawButton(string path);
     }
 
-    public class BonbonStorageTab : BonbonTab {
+    public class BonbonHierarchy : BaseHierarchy<BonbonObject> {
 
-        public override void ShowGUI() {
+        private BonbonManager bonbonManager;
 
+        protected override void AssignTool(BonBaseTool tool) {
+            if (tool is BonbonManager) {
+                bonbonManager = tool as BonbonManager;
+            } else Debug.LogError("Invalid tool assigned to hierarchy tab");
         }
-    }
 
-    public class BonbonKitchenTab : BonbonTab {
-
-        public override void ShowGUI() {
-        
-        }
-    }
-
-    public class BonbonFactoryTab : BonbonTab {
-
-        public override void ShowGUI() {
-
-        }
-    }
-
-    public class BonbonActorsTab : BonbonTab {
-
-        public override void ShowGUI() {
-
+        public override void DrawButton(string path) {
+            string pathName = path.IsolatePathEnd("\\//").RemovePathEnd(".");
+            float width = EditorUtils.MeasureTextWidth(pathName, GUI.skin.font);
+            if (GUILayout.Button(pathName, bonbonManager.SelectedPath == path
+                                   ? UIStyles.HButtonSelected : UIStyles.HButton,
+                                   GUILayout.Width(width + 15), GUILayout.Height(20))) {
+                OnPathSelection?.Invoke(path);
+            }
         }
     }
 }

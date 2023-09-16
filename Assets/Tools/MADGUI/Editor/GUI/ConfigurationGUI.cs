@@ -10,7 +10,7 @@ namespace ModelAssetDatabase {
 
     public class ConfigurationGUI : EditorWindow {
 
-        [MenuItem("Tools/Model Asset Library Config")]
+        [MenuItem("Tools/Model Asset Database Config")]
         public static void ShowWindow() {
             ConfigGUI = GetWindow<ConfigurationGUI>("Configuration", typeof(ModelAssetDatabaseGUI));
             if (HasOpenInstances<ModelAssetDatabaseGUI>()) {
