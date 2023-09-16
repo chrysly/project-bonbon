@@ -246,7 +246,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 7f41952db30c5e04a9a293b95b1e8ddd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c62941d02b4bc6d4ea5b02b593c12a82, type: 2}
+      objectReference: {fileID: 2100000, guid: cb85979ca72456a42abc824d6bc87734, type: 2}
     - target: {fileID: 919132149155446097, guid: 7f41952db30c5e04a9a293b95b1e8ddd, type: 3}
       propertyPath: m_Name
       value: Rock1
@@ -1190,7 +1190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241918096}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14565267, y: 0.7081331, z: -0.153093, w: 0.6737176}
+  m_LocalRotation: {x: 0.1454005, y: 0.7092409, z: -0.1533325, w: 0.6725513}
   m_LocalPosition: {x: -29.828835, y: 15.02369, z: 2.013046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4352,7 +4352,7 @@ PrefabInstance:
     - target: {fileID: -7577739868436781572, guid: 1a423e2eccb92ca4d8bd2b8cdf4f396d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 53b30c723533d694c8f37c2a062e2fe8, type: 2}
+      objectReference: {fileID: 2100000, guid: 1984175b4207e084f818baeca435053a, type: 2}
     - target: {fileID: 919132149155446097, guid: 1a423e2eccb92ca4d8bd2b8cdf4f396d, type: 3}
       propertyPath: m_Name
       value: Tree1
@@ -4360,7 +4360,7 @@ PrefabInstance:
     - target: {fileID: 7844023764105734644, guid: 1a423e2eccb92ca4d8bd2b8cdf4f396d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a6346c641e8022e409340ec0be396bdb, type: 2}
+      objectReference: {fileID: 2100000, guid: 7c58bc66d75bbfe418e479dd729a0bb5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
