@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e518ceabf27397419efdb39715b0536, type: 3}
-  m_Name: New Bonbon Object
+  m_Name: New Bonbon Object 9
   m_EditorClassIdentifier: 
   name: 
-  texture: {fileID: 2800000, guid: 14eb0e8bcff7e2240a17147f87b49c57, type: 3}
+  texture: {fileID: 2800000, guid: c525e98c5c857194fb75f9930c8cb4df, type: 3}
   recipe: []

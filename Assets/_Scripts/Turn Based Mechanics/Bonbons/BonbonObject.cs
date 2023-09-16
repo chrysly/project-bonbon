@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 /// <summary>
 /// Scriptable Object class for all and every bonbon;
 /// </summary>
@@ -10,7 +14,7 @@ using UnityEngine;
 public class BonbonObject : ScriptableObject {
 
     public new string name;
-    public Sprite sprite;
+    public Texture texture;
 
     /// <summary> A description of the bonbon for later use in the UI; </summary>
     public readonly string description;
@@ -29,23 +33,40 @@ public class BonbonObject : ScriptableObject {
         } return false;
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
 
     public void AddRecipeSlot(BonbonObject replacement) {
+        UpdateRecipeSize();
+        for (int i = 0; i < recipe.Length; i++) {
+            if (recipe[i] == null) {
+                recipe[i] = replacement;
+                EditorUtility.SetDirty(this);
+                return;
+            }
+        } Debug.LogWarning("There's no space to place the ingredient;");
+    }
+
+    public void RemoveRecipeSlot(BonbonObject removal) {
+        UpdateRecipeSize();
+        for (int i = 0; i < recipe.Length; i++) {
+            if (recipe[i] == removal) {
+                recipe[i] = null;
+                EditorUtility.SetDirty(this);
+                return;
+            }
+        } Debug.LogWarning("The Bonbon was not present in the recipe;");
+    }
+
+    public void UpdateRecipeSize() {
         if (recipe == null) recipe = new BonbonObject[4];
         else if (recipe.Length < 4) {
             var nRecipe = new BonbonObject[4];
             for (int i = 0; i < recipe.Length; i++) nRecipe[i] = recipe[i];
+            recipe = nRecipe;
         }
-        for (int i = 0; i < recipe.Length; i++) {
-            if (recipe[i] == null) {
-                recipe[i] = replacement;
-                return;
-            }
-        } Debug.LogError("There's no space to place the ingredient;");
     }
 
-    #endif
+#endif
 
     public override int GetHashCode() {
         return HashCode.Combine(base.GetHashCode(), name, recipe);

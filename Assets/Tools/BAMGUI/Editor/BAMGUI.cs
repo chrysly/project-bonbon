@@ -26,11 +26,29 @@ namespace BonbonAssetManager {
 
         private BonBaseTool[] tools;
 
+        public List<BonbonObject> GlobalBonbonList { get; private set; }
+        public List<SkillObject> GlobalSkillList { get; private set; }
+        //private Effect[] effectList;
+
         void OnEnable() {
             tools = new BonBaseTool[] {
                 BonBaseTool.CreateTool<BonbonManager>(this),
                 //BonBaseTool.CreateTool<ActorManager>(this),
-            };
+            }; IntializeLists();
+        }
+
+        private void IntializeLists() {
+            var bonbonGUIDs = AssetDatabase.FindAssets($"t:{nameof(BonbonObject)}");
+            GlobalBonbonList = new List<BonbonObject>();
+            for (int i = 0; i < bonbonGUIDs.Length; i++) {
+                GlobalBonbonList.Add(AssetDatabase.LoadAssetAtPath<BonbonObject>(AssetDatabase.GUIDToAssetPath(bonbonGUIDs[i])));
+            }
+
+            var skillGUIDs = AssetDatabase.FindAssets($"t:{nameof(SkillObject)}");
+            GlobalSkillList = new List<SkillObject>();
+            for (int i = 0; i < skillGUIDs.Length; i++) {
+                GlobalSkillList.Add(AssetDatabase.LoadAssetAtPath<SkillObject>(AssetDatabase.GUIDToAssetPath(skillGUIDs[i])));
+            }
         }
 
         void OnGUI() => tools[(int) activeTool].ShowGUI();
@@ -41,7 +59,7 @@ namespace BonbonAssetManager {
                     var name = System.Enum.GetName(typeof(ToolType), toolType).CamelSpace();
                     if (GUILayout.Button(name, activeTool == toolType
                                                ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
-                                               GUILayout.ExpandWidth(true))) SwitchTool(toolType);
+                                               GUILayout.MinWidth(150), GUILayout.ExpandWidth(true))) SwitchTool(toolType);
                 }
             }
         }
@@ -51,7 +69,7 @@ namespace BonbonAssetManager {
         }
     }
 
-    public abstract class BaseHierarchy<T> {
+    public abstract class BaseHierarchy<O> {
 
         protected List<string> objectPaths;
         protected List<string> filteredPaths;
@@ -59,8 +77,8 @@ namespace BonbonAssetManager {
 
         public System.Action<string> OnPathSelection;
 
-        public static E CreateHierarchy<E>(BonBaseTool tool) where E : BaseHierarchy<T> {
-            var hierarchy = System.Activator.CreateInstance<E>();
+        public static T CreateHierarchy<T>(BonBaseTool tool) where T : BaseHierarchy<O> {
+            var hierarchy = System.Activator.CreateInstance<T>();
             hierarchy.AssignTool(tool);
             return hierarchy;
         }
@@ -68,7 +86,7 @@ namespace BonbonAssetManager {
         protected abstract void AssignTool(BonBaseTool tool);
 
         public BaseHierarchy() {
-            var typeName = typeof(T).FullName;
+            var typeName = typeof(O).FullName;
             var bonbonGUIDs = AssetDatabase.FindAssets($"t:{typeName}");
             objectPaths = new List<string>();
             for (int i = 0; i < bonbonGUIDs.Length; i++) objectPaths.Add(AssetDatabase.GUIDToAssetPath(bonbonGUIDs[i]));
