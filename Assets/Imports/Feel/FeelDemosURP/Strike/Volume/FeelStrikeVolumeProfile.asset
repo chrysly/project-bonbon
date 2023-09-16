@@ -18,24 +18,24 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.95
+    m_Value: 0.57
   intensity:
     m_OverrideState: 1
-    m_Value: 2.5
+    m_Value: 5.39
   scatter:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.934
   clamp:
     m_OverrideState: 0
-    m_Value: 65472
+    m_Value: 65398.72
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0.9697, b: 0.899, a: 1}
   highQualityFiltering:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   downscale:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   maxIterations:
     m_OverrideState: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
   m_Name: PaniniProjection
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   distance:
     m_OverrideState: 1
     m_Value: 0
@@ -81,16 +81,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.7294118, g: 0.63416094, b: 0.4347294, a: 1}
+    m_Value: {r: 0.624, g: 0.5434839, b: 0.3723871, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.529
+    m_Value: 0.769
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.321
+    m_Value: 0.346
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.116
+    m_Value: 0
 --- !u!114 &-4803825905945671550
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -122,16 +122,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   type:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.157
+    m_Value: 0.19
   response:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0
   texture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.11
   contrast:
     m_OverrideState: 1
     m_Value: 20.1
@@ -184,10 +184,10 @@ MonoBehaviour:
     m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 0.262
+    m_Value: 0.736
   clamp:
     m_OverrideState: 1
-    m_Value: 0.05
+    m_Value: 0
 --- !u!114 &-208047447922490061
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -203,10 +203,10 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 17
+    m_Value: 2
   tint:
     m_OverrideState: 1
-    m_Value: 32
+    m_Value: 55
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,13 +341,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 5.37
+    m_Value: 3.54
   aperture:
     m_OverrideState: 1
-    m_Value: 3.56
+    m_Value: 1
   focalLength:
     m_OverrideState: 1
-    m_Value: 48
+    m_Value: 78
   bladeCount:
     m_OverrideState: 1
     m_Value: 5
