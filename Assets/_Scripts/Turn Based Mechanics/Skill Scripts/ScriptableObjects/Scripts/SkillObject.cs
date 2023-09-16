@@ -15,12 +15,13 @@ public class SkillObject : ScriptableObject {
     [SerializeField] private string skillName = "VANILLA";
 
     [Header("Skill Attributes")] 
-    public float damageAmount = 5f;
-    public float healAmount = 0f;
-    public float resistanceAmount = 0f;
-    public float speedIncreaseAmount = 0f;
-    public float attackIncreaseAmount = 0f;
-    public float selfInflictAmount = 0f;
+    public int damageAmount = 5;
+    public int staminaCost = 0;
+    public int healAmount = 0;
+    public int resistanceAmount = 0;
+    public int speedIncreaseAmount = 0;
+    public int attackIncreaseAmount = 0;
+    public int selfInflictAmount = 0;
     
     public String GetSkillID() { return skillID; }
     public string GetSkillName() { return skillName; }

@@ -96,4 +96,10 @@ public partial class
         yield return null;
     }
     #endregion
+
+    // idk if this is ok
+    public List<Actor> GetActors()
+    {
+        return actorList;
+    }
 }

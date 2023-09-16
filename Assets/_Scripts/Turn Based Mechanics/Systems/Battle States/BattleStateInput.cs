@@ -5,7 +5,7 @@ using UnityEngine;
 public class BattleStateInput : StateInput {
 
     #region Global Variables
-    private List<Actor> turnQueue;
+    private List<Actor> turnQueue;      
     private int currActorIndex = 0;
     private int currentTurn = 0;
     #endregion Global Variables
@@ -43,5 +43,10 @@ public class BattleStateInput : StateInput {
 
     public int CurrTurn() {
         return currentTurn;
+    }
+
+    public List<Actor> GetTurnQueue()
+    {
+        return turnQueue;
     }
 }

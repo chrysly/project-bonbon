@@ -73,7 +73,13 @@ public class Actor : MonoBehaviour, IComparable<Actor>
     public bool HasRemainingStamina(int cost) {
         return _stamina - cost > 0;
     }
+
+    public int GetStamina()
+    {
+        return _stamina;
+    }
     
+    // percentatge based or cost based?
     public void RefundStamina(int cost) {
         if (_stamina + cost > data.MaxStamina()) {
             _stamina = data.MaxStamina();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public partial class BattleStateMachine {
     public class TargetSelectState : BattleState {
@@ -11,10 +12,14 @@ public partial class BattleStateMachine {
         public override void Enter(BattleStateInput i) {
             base.Enter(i);
             Debug.Log("Entering target select state");
-            if (Input.ActiveActor() is EnemyActor) {
-                // Enemy Actor Selection; pls fix thank you
-                Input.SetActiveSkill(new SkillAction(Input.ActiveActor().data.SkillList()[0], Input.ActiveActor(), MySM.actorList[_nextSelectedActor]));
-                _nextSelectedActor = (_nextSelectedActor == 0) ? MySM.actorList.Count - 1 : 0;
+            if (Input.ActiveActor() is EnemyActor) 
+            {
+                // Enemy Actor Skill Selection
+                SkillAction skill = EnemyAI.ChooseEnemyAISkill(Input.ActiveActor(), Input.GetTurnQueue());
+                Input.SetActiveSkill(skill);
+                
+                // i don't think we need this line but i don't want to delete it just in case
+                //_nextSelectedActor = (_nextSelectedActor == 0) ? MySM.actorList.Count - 1 : 0;
                 MySM.Transition<AnimateState>();
             }
             MySM.OnStateTransition.Invoke(this, Input);
