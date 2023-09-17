@@ -15,6 +15,7 @@ MonoBehaviour:
   skillID: Skill2
   skillName: Skill2
   damageAmount: 10
+  staminaCost: 60
   healAmount: 0
   resistanceAmount: 0
   speedIncreaseAmount: 0

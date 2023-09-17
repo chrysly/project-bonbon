@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Chara2
   m_EditorClassIdentifier: 
   displayName: Chara2
-  id: 
-  maxHitpoints: 5
+  id: Chara2
+  maxHitpoints: 300
   baseAttack: 10
   baseDefense: 10
   baseSpeed: 10

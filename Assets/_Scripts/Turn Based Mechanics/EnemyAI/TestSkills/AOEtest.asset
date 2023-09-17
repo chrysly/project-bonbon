@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14142bd7c92aef1418ae58a98e3f393a, type: 3}
-  m_Name: Skill1
+  m_Name: AOEtest
   m_EditorClassIdentifier: 
-  skillID: Skill1
-  skillName: Skill1
-  damageAmount: 5
-  staminaCost: 10
+  skillID: AOEtest
+  skillName: AOEtest
+  damageAmount: 15
+  staminaCost: 5
   healAmount: 0
   resistanceAmount: 0
   speedIncreaseAmount: 0
   attackIncreaseAmount: 0
   selfInflictAmount: 0
+  aoe: 1

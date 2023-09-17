@@ -17,10 +17,10 @@ public class ActorData : ScriptableObject
     [SerializeField] private int maxHitpoints = 300;
 
     [Tooltip("Base attack power.")]
-    [SerializeField] private float baseAttack = 10;
+    [SerializeField] private int baseAttack = 10;
     
     [Tooltip("Base defense.")]
-    [SerializeField] private float baseDefense = 10;
+    [SerializeField] private int baseDefense = 10;
 
     [Tooltip("Base speed. Affects the stack order in battle.")]
     [SerializeField] private int baseSpeed = 10;

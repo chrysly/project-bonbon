@@ -29,7 +29,7 @@ public partial class BattleStateMachine {
             base.Update();
             Actor actor = _selectManager.CheckForSelect();
             if (actor != null) {
-                Input.SetActiveSkill(new SkillAction(Input.ActiveSkill().Data(), Input.ActiveActor(), actor));
+                Input.SetActiveSkill(new SkillAction(Input.ActiveSkill().Data(), Input.ActiveActor(), new List<Actor> { actor }));
                 MySM.Transition<AnimateState>();
             }
         }

@@ -22,6 +22,7 @@ public class SkillObject : ScriptableObject {
     public int speedIncreaseAmount = 0;
     public int attackIncreaseAmount = 0;
     public int selfInflictAmount = 0;
+    public bool aoe = false;
     
     public String GetSkillID() { return skillID; }
     public string GetSkillName() { return skillName; }
