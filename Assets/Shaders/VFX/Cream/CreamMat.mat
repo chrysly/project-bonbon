@@ -56,10 +56,10 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _dissolveScale: 14
+    - _dissolveScale: 25
     m_Colors:
-    - _Color01: {r: 1.304119, g: 1.0765133, b: 1.241164, a: 1}
+    - _Color01: {r: 1.4980394, g: 1.2365891, b: 1.425723, a: 1}
     - _Color02: {r: 0.01011107, g: 0.01011107, b: 0.01011107, a: 1}
-    - _dissolveSpeed: {r: 0.1, g: 0, b: 0, a: 0}
-    - _mainTexSpeed: {r: 0, g: 0.1, b: 0, a: 0}
+    - _dissolveSpeed: {r: 0.2, g: 0, b: 0, a: 0}
+    - _mainTexSpeed: {r: -0.1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
