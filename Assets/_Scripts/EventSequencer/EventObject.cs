@@ -7,6 +7,7 @@ using UnityEngine;
 public class EventObject : ScriptableObject
 {
     public int executionOrder = 0;
+    public GameObject prefabToLoad;
 
     public virtual void OnTrigger() // override for specific behavior
     {

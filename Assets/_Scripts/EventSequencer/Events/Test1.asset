@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Test1
   m_EditorClassIdentifier: 
   executionOrder: 0
-  dialoguePrefab: {fileID: 4474863212703628331, guid: 60bf1231e7159374684e91eb948c1a2a, type: 3}
+  prefabToLoad: {fileID: 4474863212703628331, guid: 60bf1231e7159374684e91eb948c1a2a, type: 3}

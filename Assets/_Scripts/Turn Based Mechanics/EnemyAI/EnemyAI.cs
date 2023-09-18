@@ -14,6 +14,7 @@ public class EnemyAI
         Damage = 4,
         HealthPercent = 10,
         // later inflict different status conditions
+        // also how many bonsbons the characters have
     }
 
     /// <summary> pass in the current active list of actors and the current actor, returns a skillObject </summary>

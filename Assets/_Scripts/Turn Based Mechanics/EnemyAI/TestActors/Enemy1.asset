@@ -23,4 +23,3 @@ MonoBehaviour:
   skillList:
   - {fileID: 11400000, guid: f7d952e674ea4864081ae1d138d9c718, type: 2}
   - {fileID: 11400000, guid: 7fcd51859e99fcc458d94aa84e3627f8, type: 2}
-  - {fileID: 11400000, guid: 2fb8f88df89160e4ca6223313c74623b, type: 2}
