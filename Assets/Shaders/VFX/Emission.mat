@@ -22,6 +22,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Emission
   m_Shader: {fileID: 4800000, guid: c16edb0346f323544b93e16c72ce85ff, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -30,6 +32,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -103,9 +106,9 @@ Material:
     - _DstBlend: 0
     - _Emission: 1
     - _EnvironmentReflections: 1
-    - _FlickerIntensity: 0.64
-    - _FlickerOffset: 0.6
-    - _FlickerRate: 2.6
+    - _FlickerIntensity: 0.89
+    - _FlickerOffset: 1.44
+    - _FlickerRate: 1.7
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -123,7 +126,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
-    - _EmissionColor: {r: 3.2910948, g: 7.5022807, b: 6.073486, a: 1}
+    - _Color: {r: 0.9433962, g: 0.71703243, b: 0.23584905, a: 1}
+    - _EmissionColor: {r: 4.299378, g: 2.2067983, b: 0.7909235, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

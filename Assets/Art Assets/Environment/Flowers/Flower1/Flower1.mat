@@ -30,10 +30,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _Brightness: 3.72
-    - _Glossiness: -10
-    - _Rim_Amount: 0.353
-    - _Rim_Threshold: 0.75
-    - _Toon_Amount: 0.147
+    - _Glossiness: -1.35
+    - _Rim_Amount: 0.307
+    - _Rim_Threshold: 0.473
+    - _Toon_Amount: 0.164
     m_Colors:
     - _Ambient_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
   m_BuildTextureStacks: []
