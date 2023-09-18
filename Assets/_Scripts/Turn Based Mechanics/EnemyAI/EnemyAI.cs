@@ -5,6 +5,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+/// <summary> Logic for enemy AI skill selection </summary>
 public class EnemyAI
 {
     enum AiWeights
