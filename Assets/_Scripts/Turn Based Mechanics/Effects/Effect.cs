@@ -10,7 +10,9 @@ public class Effect : ScriptableObject {
     public EffectModifier modifiers;
     public List<EffectAction> actions;
 
-    public void PerformActions 
+    public void PerformActions(StatIteration actorData, Actor actor) {
+        foreach (EffectAction action in actions) action.Use(actorData, actor);
+    }
 
     public bool IsSpent() {
         duration--;
