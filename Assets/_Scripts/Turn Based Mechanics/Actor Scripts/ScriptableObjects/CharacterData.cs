@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Actor Data/Character")]
 public class CharacterData : ActorData {
 
-    [SerializeField] private SkillObject[][] skillMap;
+    public SkillObject[][] skillMap;
+    public BonbonObject[][] bonbonMap;
 }
 
 #if UNITY_EDITOR
