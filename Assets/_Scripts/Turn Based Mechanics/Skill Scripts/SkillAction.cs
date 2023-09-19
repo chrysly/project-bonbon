@@ -6,20 +6,20 @@ using UnityEngine;
 public class SkillAction {
     private SkillObject _data;
     private Actor _caster;
-    private Actor _target;
+    private List<Actor> _targets;
 
     public SkillAction(SkillObject data) {
         _data = data;
     }
     
-    public SkillAction(SkillObject data, Actor caster, Actor target) {
+    public SkillAction(SkillObject data, Actor caster, List<Actor> target) {
         _data = data;
         _caster = caster;
-        _target = target;
+        _targets = target;
     }
 
-    public void SetTarget(Actor target) {
-        _target = target;
+    public void SetTarget(List<Actor> target) {
+        _targets = target;
     }
 
     public void SetCaster(Actor caster) {
@@ -34,8 +34,8 @@ public class SkillAction {
         return _data.GetSkillName();
     }
 
-    public Actor Target() {
-        return _target;
+    public List<Actor> Targets() {
+        return _targets;
     }
 
     public Actor Caster() {
@@ -46,11 +46,15 @@ public class SkillAction {
         return _data;
     }
 
-    public void ActivateSkill() {
-        _target.DepleteHitpoints(_data.damageAmount);
-        _target.RestoreHitpoints(_data.healAmount);
+    public void ActivateSkill() 
+    {
+        foreach(Actor target in _targets)
+        {
+            target.DepleteHitpoints(_data.damageAmount);
+            target.RestoreHitpoints(_data.healAmount);
+        }
         
-        float selfInflictAmount = _data.selfInflictAmount;
+        int selfInflictAmount = _data.selfInflictAmount;
         if (selfInflictAmount > 0f) {
             _caster.DepleteHitpoints(selfInflictAmount);
         } else {
@@ -60,7 +64,7 @@ public class SkillAction {
 
     public void Clear() {
         _data = null;
-        _target = null;
+        _targets = null;
         _caster = null;
     }
 }

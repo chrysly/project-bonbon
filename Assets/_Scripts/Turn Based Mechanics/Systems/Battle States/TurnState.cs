@@ -21,8 +21,10 @@ public partial class BattleStateMachine {
 
         public override void Exit(BattleStateInput input) {
             base.Exit(input);
+
             SkillObject skill = Input.ActiveActor().data.SkillList()[0];    //hard coded for pitch demo
             Input.SetActiveSkill(new SkillAction(skill));
+
             Debug.Log(Input.ActiveSkill().ToString());
         }
     }
