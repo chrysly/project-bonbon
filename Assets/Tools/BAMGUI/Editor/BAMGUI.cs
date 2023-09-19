@@ -77,6 +77,8 @@ namespace BonbonAssetManager {
 
         public System.Action<string> OnPathSelection;
 
+        protected const string INVALID_TOOL = "Invalid tool assigned to hierarchy tab";
+
         public static T CreateHierarchy<T>(BonBaseTool tool) where T : BaseHierarchy<O> {
             var hierarchy = System.Activator.CreateInstance<T>();
             hierarchy.AssignTool(tool);
@@ -123,13 +125,34 @@ namespace BonbonAssetManager {
         protected override void AssignTool(BonBaseTool tool) {
             if (tool is BonbonManager) {
                 bonbonManager = tool as BonbonManager;
-            } else Debug.LogError("Invalid tool assigned to hierarchy tab");
+            } else Debug.LogError(INVALID_TOOL);
         }
 
         public override void DrawButton(string path) {
             string pathName = path.IsolatePathEnd("\\//").RemovePathEnd(".");
             float width = EditorUtils.MeasureTextWidth(pathName, GUI.skin.font);
             if (GUILayout.Button(pathName, bonbonManager.SelectedPath == path
+                                   ? UIStyles.HButtonSelected : UIStyles.HButton,
+                                   GUILayout.Width(width + 15), GUILayout.Height(20))) {
+                OnPathSelection?.Invoke(path);
+            }
+        }
+    }
+
+    public class ActorHierarchy : BaseHierarchy<ActorData> {
+
+        private ActorManager actorManager;
+
+        protected override void AssignTool(BonBaseTool tool) {
+            if (tool is ActorManager) {
+                actorManager = tool as ActorManager;
+            } else Debug.LogError(INVALID_TOOL);
+        }
+
+        public override void DrawButton(string path) {
+            string pathName = path.IsolatePathEnd("\\//").RemovePathEnd(".");
+            float width = EditorUtils.MeasureTextWidth(pathName, GUI.skin.font);
+            if (GUILayout.Button(pathName, actorManager.SelectedPath == path
                                    ? UIStyles.HButtonSelected : UIStyles.HButton,
                                    GUILayout.Width(width + 15), GUILayout.Height(20))) {
                 OnPathSelection?.Invoke(path);

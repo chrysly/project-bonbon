@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   texture: {fileID: 2800000, guid: 2e3ff3919f6749446b2aed1782b493ce, type: 3}
-  recipe: []
+  recipe:
+  - {fileID: 11400000, guid: db6cafae944a4264db24982ee7c00307, type: 2}
+  - {fileID: 11400000, guid: 6b636629cfe89a34986246fb681ba138, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -12,6 +12,7 @@ namespace BonbonAssetManager {
     public abstract class BonBaseTool : ScriptableObject {
 
         protected BAMGUI MainGUI;
+        public string SelectedPath { get; protected set; }
 
         public static T CreateTool<T>(BAMGUI mainGUI) where T : BonBaseTool {
             T tool = CreateInstance<T>();
@@ -25,9 +26,8 @@ namespace BonbonAssetManager {
     public class BonbonManager : BonBaseTool {
 
         private BonbonHierarchy bonbonHierarchy;
-        public string SelectedPath { get; private set; }
         private BonbonObject selectedBonbon;
-        private List<BonbonObject> bonbonList => MainGUI.GlobalBonbonList;
+        private List<BonbonObject> bonbonList;
 
         private int buttonSize = 50;
 
@@ -38,11 +38,40 @@ namespace BonbonAssetManager {
         void OnEnable() {
             bonbonHierarchy = BaseHierarchy<BonbonObject>.CreateHierarchy<BonbonHierarchy>(this);
             bonbonHierarchy.OnPathSelection += BonbonManager_OnPathSelection;
+            UpdateBonbonList();
+        }
+
+        public void SetSelectedBonbon(BonbonObject bonbon) {
+            selectedBonbon = bonbon;
+            UpdateBonbonList();
+        }
+
+        private void UpdateBonbonList() {
+            bonbonList = new List<BonbonObject>(MainGUI.GlobalBonbonList);
+            foreach (BonbonObject bonbon in bonbonList) {
+                bonbon.UpdateRecipeSize();
+
+                if (bonbon == selectedBonbon) {
+                    bonbonList.Remove(bonbon);
+                    continue;
+                }
+
+                foreach (BonbonObject ingredient in bonbon.recipe) {
+                    if (ingredient == selectedBonbon) {
+                        bonbonList.Remove(bonbon);
+                        break;
+                    }
+                }
+            }
         }
 
         public override void ShowGUI() {
             using (new EditorGUILayout.HorizontalScope()) {
-                bonbonHierarchy.ShowGUI();
+                using (new EditorGUILayout.VerticalScope()) {
+                    bonbonHierarchy.ShowGUI();
+
+                }
+                    
                 using (new EditorGUILayout.VerticalScope()) {
                     MainGUI.DrawToolbar();
 
@@ -59,7 +88,7 @@ namespace BonbonAssetManager {
 
         private void BonbonManager_OnPathSelection(string path) {
             SelectedPath = path;
-            selectedBonbon = AssetDatabase.LoadAssetAtPath<BonbonObject>(path);
+            SetSelectedBonbon(AssetDatabase.LoadAssetAtPath<BonbonObject>(path));
         }
 
         private void DrawBonbonGroup() {
@@ -138,8 +167,7 @@ namespace BonbonAssetManager {
                         DragAndDrop.objectReferences = new Object[] { draggedObject };
                         DragAndDrop.visualMode = DragAndDropVisualMode.Move;
                     }
-                }
-                GUI.Label(buttonRect, content, GUI.skin.button);
+                } GUI.Label(buttonRect, content, GUI.skin.button);
             }
         }
 
@@ -158,8 +186,6 @@ namespace BonbonAssetManager {
                 DrawPreviewLevel(bonbonObject);
             }
         }
-
-        private const float HANDLE_HEIGHT = 20;
 
         private void DrawPreviewLevel(BonbonObject bonbonObject) {
             if (bonbonObject == null) return;
@@ -194,7 +220,42 @@ namespace BonbonAssetManager {
         }
     }
 
-    public abstract class ActorManager : BonBaseTool {
+    public class ActorManager : BonBaseTool {
 
+        private ActorHierarchy actorHierarchy;
+        private ActorData selectedActor;
+        private List<BonbonObject> bonbonList;
+        private List<SkillObject> skillList;
+
+        void OnEnable() {
+            actorHierarchy = BaseHierarchy<ActorData>.CreateHierarchy<ActorHierarchy>(this);
+            actorHierarchy.OnPathSelection += ActorManager_OnPathSelection;
+        }
+
+        private void ActorManager_OnPathSelection(string path) {
+            SelectedPath = path;
+            SetSelectedActor(AssetDatabase.LoadAssetAtPath<ActorData>(path));
+        }
+
+        private void SetSelectedActor(ActorData data) => selectedActor = data;
+
+        public override void ShowGUI() {
+            using (new EditorGUILayout.HorizontalScope()) {
+                using (new EditorGUILayout.VerticalScope()) {
+                    actorHierarchy.ShowGUI();
+
+                }
+                    
+                using (new EditorGUILayout.VerticalScope()) {
+                    MainGUI.DrawToolbar();
+
+                    if (selectedActor != null) {
+                        
+                    } else {
+                        EditorUtils.DrawScopeCenteredText("Select a Bonbon to edit it here;");
+                    }
+                }
+            }
+        }
     }
 }
