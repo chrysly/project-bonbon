@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 /// <summary> Logic for enemy AI skill selection </summary>
 public class EnemyAI
@@ -35,7 +31,7 @@ public class EnemyAI
         }
 
         // calculate the goodness value for each skill and each possible target it could have
-        foreach(SkillObject skill in currentActor.data.SkillList())
+        foreach(SkillObject skill in currentActor.SkillList)
         {
             // make sure the enemy has enough stamina to use the move
             if (currentActor.GetStamina() >= skill.staminaCost)
@@ -84,7 +80,7 @@ public class EnemyAI
     {
         // PROLLY CHANGE TO INTS???? --> i changed them to ints
         int value = 0;
-        value += addValueBasaedOnDamage(skill);
+        value += addValueBasedOnDamage(skill);
         value += addValueBasedOnHealth(skill);
         // add value based on status
 
@@ -92,21 +88,21 @@ public class EnemyAI
     }
 
     // later add functionality with a target array
-    private static int addValueBasaedOnDamage(SkillAction skill)
+    private static int addValueBasedOnDamage(SkillAction skill)
     {
         int point = 0;
 
         // if the skill can kill the targets
         foreach (Actor actor in skill.Targets())
-        {
-            if (skill.Data().damageAmount > actor.Hitpoints())
+        {/*
+            if (skill.ComputeActionValue() > actor.Hitpoints())
             {
-                point += 100;
+                point += (int) AiWeights.KillUnit;
             }
             else
             {
-                point += skill.Data().damageAmount * (int) AiWeights.Damage;
-            }
+                point += skill.ComputeActionValue() * (int) AiWeights.Damage;
+            }*/
         }
 
         return point;

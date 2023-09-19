@@ -17,15 +17,17 @@ public class CharacterActor : Actor
     }
 
     protected override void InitializeLevelObjects() {
+        base.InitializeLevelObjects();
+
         for (int i = 0; i < GameManager.CurrLevel; i++) {
             /// Load Skills
             foreach (SkillObject skill in data.skillMap[i]) {
-                skillList.Add(skill);
+                SkillList.Add(skill);
             }
 
             /// Load Bonbons
             foreach (BonbonObject bonbon in data.bonbonMap[i]) {
-                bonbonList.Add(bonbon);
+                BonbonList.Add(bonbon);
             }
         }
     }

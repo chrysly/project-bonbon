@@ -43,19 +43,19 @@ public class SkillAction {
         return _data;
     }
 
+    public AIActionValue ComputeSkillActionValues(Actor actor) {
+        AIActionValue actionValue = new AIActionValue();
+        _data.ComputeActionValues(ref actionValue);
+        /// Throw values against actor stats;
+        return actionValue;
+    }
+
     public void ActivateSkill() 
     {
         foreach(Actor target in _targets)
         {
-            target.DepleteHitpoints(_data.damageAmount);
-            target.RestoreHitpoints(_data.healAmount);
-        }
-        
-        int selfInflictAmount = _data.selfInflictAmount;
-        if (selfInflictAmount > 0f) {
-            _caster.DepleteHitpoints(selfInflictAmount);
-        } else {
-            _caster.RestoreHitpoints(-selfInflictAmount);
+            //target.DepleteHitpoints(_data.damageAmount);
+            //target.RestoreHitpoints(_data.healAmount);
         }
     }
 
@@ -68,13 +68,15 @@ public class SkillAction {
 
 public class StatIteration {
 
+    public readonly Actor Actor;
     private readonly ActorData baseData;
 
     public int Attack { get; private set; }
     public int Defense { get; private set; }
     public int StaminaRegen { get; private set; }
 
-    public StatIteration(ActorData data) {
+    public StatIteration(Actor actor, ActorData data) {
+        Actor = actor;
         baseData = data;
         Reset();
     }
