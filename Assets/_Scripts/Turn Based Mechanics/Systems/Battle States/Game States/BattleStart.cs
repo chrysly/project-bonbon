@@ -16,7 +16,7 @@ public partial class BattleStateMachine {
 
         public override void Update() {
             base.Update();
-            Debug.Log("Running Start State");
+            //Debug.Log("Running Start State");
         }
 
         public override void Exit(BattleStateInput input) {
