@@ -4,59 +4,120 @@ using UnityEngine;
 
 public class Effect : ScriptableObject {
 
-    public int duration;
-    public List<EffectModifier> modifiers;
+    [SerializeField] private new string name;
+    [SerializeField] private int duration;
+
+    public EffectModifier modifiers;
     public List<EffectAction> actions;
+
+    public void PerformActions 
+
+    public bool IsSpent() {
+        duration--;
+        return duration == 0;
+    }
 }
 
-public abstract class EffectModifier : ScriptableObject {
+[System.Serializable]
+public class EffectModifier {
 
     public float attackModifier;
     public float healModifier;
-    public float resistanceModifier;
-    public float evasionModifier;
-    public float speedModifier;
+    public float defenseModifier;
+    public float staminaRegenModifier;
+    //public float speedModifier;
+    //public float evasionModifier;
 }
 
 public abstract class EffectAction : ScriptableObject {
 
-    protected int amount;
-
-    public delegate System.Action<Actor, int> Damage(Actor target, int amount);
-
-    public delegate System.Action<Actor, int> Heal(Actor target, int amount);
-
-    public delegate System.Action<int> Skip(int amount);
-    public abstract void Use(Actor target = null);
-
-    public EffectAction(int amount) {
-        this.amount = amount;
-    }
+    public abstract void Use(StatIteration activeData, Actor target = null);
 }
 
 public class DamageAction : EffectAction {
 
-    public DamageAction(int amount) : base(amount) { }
+    [SerializeField] private int damageAmount;
 
-    public override void Use(Actor target = null) {
-        target.DepleteHitpoints(amount);
+    public static DamageAction CreateInstance(int damageAmount) {
+        DamageAction action = CreateInstance<DamageAction>();
+        action.damageAmount = damageAmount;
+        return action;
     }
+
+    public override void Use(StatIteration activeData, Actor target) {
+        target.DepleteHitpoints((activeData.Attack / 100) * damageAmount);
+    }
+
+    #if UNITY_EDITOR
+
+    public void Update(int amount) {
+        damageAmount = amount;
+    }
+
+    #endif
 }
 
 public class HealAction : EffectAction {
 
-    public HealAction(int amount) : base(amount) { }
+    [SerializeField] private int healAmount;
 
-    public override void Use(Actor target = null) {
-        target.RestoreHitpoints(amount);
+    public static HealAction CreateInstance(int healAmount) {
+        HealAction action = CreateInstance<HealAction>();
+        action.healAmount = healAmount;
+        return action;
+    }
+
+    public override void Use(StatIteration activeData, Actor target) {
+        target.RestoreHitpoints(healAmount);
+    }
+
+    #if UNITY_EDITOR
+
+    public void Update(int amount) {
+        healAmount = amount;
+    }
+
+    #endif
+}
+
+public class StaminaChangeAction : EffectAction {
+
+    [SerializeField] private int staminaAmount;
+
+    public static StaminaChangeAction CreateInstance(int staminaAmount) {
+        StaminaChangeAction action = CreateInstance<StaminaChangeAction>();
+        action.staminaAmount = staminaAmount;
+        return action;
+    }
+
+    public override void Use(StatIteration activeData, Actor target = null) {
+        target.RefundStamina(staminaAmount);
     }
 }
 
 public class SkipTurnAction : EffectAction {
 
-    public SkipTurnAction(int amount) : base(amount) { }
+    public SkipTurnAction CreateInstance() {
+        return CreateInstance<SkipTurnAction>();
+    }
 
-    public override void Use(Actor target = null) {
+    public override void Use(StatIteration activeData, Actor target = null) {
         // Skip Turn;
+    }
+}
+
+public class ApplyEffectsAction : EffectAction {
+
+    [SerializeField] private List<Effect> effects;
+
+    public ApplyEffectsAction CreateInstance(List<Effect> effects) {
+        ApplyEffectsAction action = CreateInstance<ApplyEffectsAction>();
+        if (effects == null) effects = new List<Effect>();
+        action.effects = effects;
+        return action;
+    }
+
+    public override void Use(StatIteration activeData, Actor target = null) {
+        target.ApplyEffects(effects);
     }
 }

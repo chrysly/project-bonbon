@@ -34,8 +34,8 @@ public class ActorData : ScriptableObject
     public string DisplayName() { return displayName; }
     public string ID() { return id; }
     public int MaxHitpoints() { return maxHitpoints; }
-    public float BaseAttack() { return baseAttack; }
-    public float BaseDefense() { return baseDefense; }
+    public int BaseAttack() { return baseAttack; }
+    public int BaseDefense() { return baseDefense; }
     public int BaseSpeed() { return baseSpeed; }
     public int MaxStamina() { return maxStamina; }
     public int StaminaRegenRate() { return staminaRegenRate; }
