@@ -16,7 +16,7 @@ public class ActionText : MonoBehaviour
         if (state is not BattleStateMachine.AnimateState) return;
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
         text.SetText(input.ActiveActor().data.DisplayName() + " used " + input.ActiveSkill().ToString() + " on "
-                     + input.ActiveSkill().Target().data.DisplayName() + "!");
+                     + input.ActiveSkill().Targets()[0].data.DisplayName() + "!");      //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
         ClearText();
     }
 

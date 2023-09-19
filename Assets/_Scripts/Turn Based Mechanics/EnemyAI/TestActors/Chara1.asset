@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95eb7628462183d4e9f10be019e4ec2e, type: 3}
+  m_Name: Chara1
+  m_EditorClassIdentifier: 
+  displayName: Chara1
+  id: Chara1
+  maxHitpoints: 300
+  baseAttack: 10
+  baseDefense: 10
+  baseSpeed: 100
+  maxStamina: 100
+  staminaRegenRate: 10
+  skillList:
+  - {fileID: 11400000, guid: f7d952e674ea4864081ae1d138d9c718, type: 2}
