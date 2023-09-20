@@ -17,7 +17,7 @@ public class ActorData : ScriptableObject
     [SerializeField] private int maxHitpoints = 300;
 
     [Tooltip("Base attack power.")]
-    [SerializeField] private int baseAttack = 10;
+    [SerializeField] private int basePotency = 10;
     
     [Tooltip("Base defense.")]
     [SerializeField] private int baseDefense = 10;
@@ -34,7 +34,7 @@ public class ActorData : ScriptableObject
     public string DisplayName() { return displayName; }
     public string ID() { return id; }
     public int MaxHitpoints() { return maxHitpoints; }
-    public int BaseAttack() { return baseAttack; }
+    public int BasePotency() { return basePotency; }
     public int BaseDefense() { return baseDefense; }
     public int BaseSpeed() { return baseSpeed; }
     public int MaxStamina() { return maxStamina; }

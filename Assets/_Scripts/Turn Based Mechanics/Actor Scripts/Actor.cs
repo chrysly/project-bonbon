@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Actor : MonoBehaviour, IComparable<Actor> {
+
     #region Data Attributes
     [SerializeField] public readonly ActorData data;
     public StatIteration ActiveData { get; private set; }
@@ -26,7 +27,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #region Level Skills, Bonbons & Modifiers
 
-    public List<SkillObject> SkillList { get; protected set; }
+    public List<SkillAction> SkillList { get; protected set; }
 
     public List<BonbonObject> BonbonList { get; protected set; }
 
@@ -63,7 +64,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     }
 
     private void ComputeStats() {
-        List<EffectModifier> modifiers = new List<EffectModifier>();
+        List<PassiveModifier> modifiers = new List<PassiveModifier>();
         foreach (BonbonObject bonbon in bonbonInventory) {
             modifiers.AddRange(bonbon.effects);
         } foreach (Effect effect in EffectList) {
@@ -83,7 +84,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     //Returns true if Actor has no remaining health.
     public bool DepleteHitpoints(int damage) {
-        damage *= ActiveData.Defense / 100;
+        damage *= 1 - (ActiveData.Defense / 100);
 
         if (_hitpoints - damage <= 0) {
             _hitpoints = 0;
@@ -112,6 +113,11 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         if (bonbonInventory[slot] == null) {
             bonbonInventory[slot] = bonbon;
         } else Debug.LogError("Inventory slot was not available;");
+    }
+
+    protected void CreateSkillAction(SkillObject skillData) {
+        SkillAction skillAction = new SkillAction(skillData, this);
+        SkillList.Add(skillAction);
     }
 
     public int Hitpoints() {

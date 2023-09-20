@@ -16,17 +16,21 @@ public class SkillObject : ScriptableObject {
 
     public int staminaCost;
 
-    public List<EffectAction> effectActions;
+    public List<ImmediateAction> immediateActions;
 
     public bool aoe = false;
+
+    public void PerformActions(StatIteration casterData, Actor target) {
+        foreach (ImmediateAction action in immediateActions) action.Use(casterData, target);
+    }
 
     /// <summary>
     /// Compute the action values of each action carried by the skill;
     /// </summary>
     /// <param name="actionValue"> AI Value bundle passed down for data collection; </param>
-    public void ComputeActionValues(ref AIActionValue actionValue) {
-        foreach (EffectAction action in effectActions) {
-            action.ComputeActionValue(ref actionValue);
+    public void ComputeActionValues(ref AIActionValue actionValue, StatIteration casterStats) {
+        foreach (ImmediateAction action in immediateActions) {
+            action.ComputeActionValue(ref actionValue, casterStats);
         }
     }
 

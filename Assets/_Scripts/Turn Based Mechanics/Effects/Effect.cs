@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif 
+
 /// <summary>
 /// Representation of an active Effect in an Actor;
 /// </summary>
+
 public class Effect : ScriptableObject {
 
     [SerializeField] private new string name;
@@ -13,28 +18,38 @@ public class Effect : ScriptableObject {
     [SerializeField] private int duration;
 
     /// <summary> Modifiers applied while the effect is active; </summary>
-    public EffectModifier modifiers;
+    public PassiveModifier modifiers;
     /// <summary> Actions carried at the beginning of every turn; </summary>
-    public List<EffectAction> actions;
+    public List<ImmediateAction> actions;
+    /// <summary> Stats of the original effector; </summary>
+    private StatIteration originStats;
+
+    /// <summary>
+    /// Define a set of originStats;
+    /// </summary>
+    /// <param name="originStats"> Stats of the Actor applying the effects; </param>
+    public void DefineEffectOrigin(StatIteration originStats) {
+        this.originStats = originStats;
+    }
 
     /// <summary>
     /// Use the actions designated in the Effect's list;
     /// </summary>
     /// <param name="actor"> Actor affected by this effect; </param>
     public void PerformActions(Actor actor) {
-        foreach (EffectAction action in actions) action.Use(actor.ActiveData, actor);
+        foreach (ImmediateAction action in actions) action.Use(originStats, actor);
     }
 
     /// <summary>
     /// Compute action values for each element of the effect;
     /// </summary>
     /// <param name="actionValue"> AI Value bundle passed down for data collection; </param>
-    public void ComputeEffectValue(ref AIActionValue actionValue) {
+    public void ComputeEffectValue(ref AIActionValue actionValue, StatIteration casterData) {
         AIActionValue compoundValue = new AIActionValue();
-        foreach (EffectAction action in actions) {
-            action.ComputeActionValue(ref compoundValue);
-        } actionValue.damageOverTime = compoundValue.immediateDamage;
-        actionValue.healOverTime = compoundValue.immediateHeal;
+        foreach (ImmediateAction action in actions) {
+            action.ComputeActionValue(ref compoundValue, casterData);
+        } actionValue.damageOverTime = compoundValue.immediateDamage * duration;
+        actionValue.healOverTime = compoundValue.immediateHeal * duration;
     }
 
     /// <summary>
@@ -52,7 +67,7 @@ public class Effect : ScriptableObject {
 /// <br></br> Belongs in Actors and Bonbons;
 /// </summary>
 [System.Serializable]
-public class EffectModifier {
+public class PassiveModifier {
 
     /// <summary> Multiplier for the Actor attack attribute; </summary>
     public float attackModifier;
@@ -67,13 +82,16 @@ public class EffectModifier {
     //public float evasionModifier;
 }
 
-public abstract class EffectAction : ScriptableObject {
+/// <summary>
+/// Generic definition for an action;
+/// </summary>
+public abstract class ImmediateAction : ScriptableObject {
 
     /// <summary>
     /// Override to implement AI value yield;
     /// </summary>
     /// <param name="actionValue"> Value bundle to operate on; </param>
-    public virtual void ComputeActionValue(ref AIActionValue actionValue) { }
+    public virtual void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) { }
 
     /// <summary>
     /// Trigger the action encompassed by this object;
@@ -103,7 +121,7 @@ public class AIActionValue {
 /// <summary>
 /// Action to deplete the hitpoints of a target;
 /// </summary>
-public class DamageAction : EffectAction {
+public class DamageAction : ImmediateAction {
 
     /// <summary> Amount to deduct from the target's hitpoint pool; </summary>
     [SerializeField] private int damageAmount;
@@ -114,12 +132,14 @@ public class DamageAction : EffectAction {
         return action;
     }
 
-    public override void ComputeActionValue(ref AIActionValue actionValue) {
-        actionValue.immediateDamage += damageAmount;
+    public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) {
+        int computedDamage = casterData.ComputePotency(damageAmount);
+        actionValue.immediateDamage -= computedDamage;
     }
 
     public override void Use(StatIteration activeData, Actor target) {
-        target.DepleteHitpoints((activeData.Attack / 100) * damageAmount);
+        int computedDamage = activeData.ComputePotency(damageAmount);
+        target.DepleteHitpoints(computedDamage);
     }
 
     #if UNITY_EDITOR
@@ -130,6 +150,7 @@ public class DamageAction : EffectAction {
     /// <param name="amount"> New damage amount; </param>
     public void Modify(int amount) {
         damageAmount = amount;
+        EditorUtility.SetDirty(this);
     }
 
     #endif
@@ -138,7 +159,7 @@ public class DamageAction : EffectAction {
 /// <summary>
 /// Action to replenish the hitpoints of a target;
 /// </summary>
-public class HealAction : EffectAction {
+public class HealAction : ImmediateAction {
 
     /// <summary> Amount to replenish in the target's hitpoint pool; </summary>
     [SerializeField] private int healAmount;
@@ -149,12 +170,14 @@ public class HealAction : EffectAction {
         return action;
     }
 
-    public override void ComputeActionValue(ref AIActionValue actionValue) {
-        actionValue.immediateHeal += healAmount;
+    public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) {
+        int computedHeal = casterData.ComputePotency(healAmount);
+        actionValue.immediateHeal += computedHeal;
     }
 
     public override void Use(StatIteration activeData, Actor target) {
-        target.RestoreHitpoints(healAmount);
+        int computedHeal = activeData.ComputePotency(healAmount);
+        target.RestoreHitpoints(computedHeal);
     }
 
     #if UNITY_EDITOR
@@ -165,6 +188,7 @@ public class HealAction : EffectAction {
     /// <param name="amount"> New heal amount; </param>
     public void Modify(int amount) {
         healAmount = amount;
+        EditorUtility.SetDirty(this);
     }
 
     #endif
@@ -173,7 +197,7 @@ public class HealAction : EffectAction {
 /// <summary>
 /// Action to deplete the hitpoints of the caster without target selection;
 /// </summary>
-public class SelfDamageAction : EffectAction {
+public class SelfDamageAction : ImmediateAction {
 
     /// <summary> Amount to deduct from the caster's hitpoint pool; </summary>
     [SerializeField] private int damageAmount;
@@ -184,7 +208,7 @@ public class SelfDamageAction : EffectAction {
         return action;
     }
 
-    public override void ComputeActionValue(ref AIActionValue actionValue) {
+    public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) {
         actionValue.immediateHeal -= damageAmount;
     }
 
@@ -200,6 +224,7 @@ public class SelfDamageAction : EffectAction {
     /// <param name="amount"> New damage amount; </param>
     public void Modify(int amount) {
         damageAmount = amount;
+        EditorUtility.SetDirty(this);
     }
 
     #endif
@@ -208,7 +233,7 @@ public class SelfDamageAction : EffectAction {
 /// <summary>
 /// Action to replenish the hitpoints of the caster without target selection;
 /// </summary>
-public class SelfHealAction : EffectAction {
+public class SelfHealAction : ImmediateAction {
 
     /// <summary> Amount to replenish in the caster's hitpoint pool; </summary>
     [SerializeField] private int healAmount;
@@ -219,12 +244,14 @@ public class SelfHealAction : EffectAction {
         return action;
     }
 
-    public override void ComputeActionValue(ref AIActionValue actionValue) {
-        actionValue.immediateHeal += healAmount;
+    public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterStats) {
+        int computedHeal = casterStats.ComputePotency(healAmount);
+        actionValue.immediateHeal += computedHeal;
     }
 
     public override void Use(StatIteration activeData, Actor target = null) {
-        activeData.Actor.DepleteHitpoints(healAmount);
+        int computedHeal = activeData.ComputePotency(healAmount);
+        activeData.Actor.RestoreHitpoints(computedHeal);
     }
 
     #if UNITY_EDITOR
@@ -235,6 +262,7 @@ public class SelfHealAction : EffectAction {
     /// <param name="amount"> New heal amount; </param>
     public void Modify(int amount) {
         healAmount = amount;
+        EditorUtility.SetDirty(this);
     }
 
     #endif
@@ -244,7 +272,7 @@ public class SelfHealAction : EffectAction {
 /// Action to change an actor's stamina;
 /// <br></br> Note: I could split this into "Deplete" and "Replenish" Actions on demand;
 /// </summary>
-public class StaminaChangeAction : EffectAction {
+public class StaminaChangeAction : ImmediateAction {
 
     /// <summary> Stamina added (+) or deducted (-) from the target's stamina pool; </summary>
     [SerializeField] private int staminaAmount;
@@ -258,9 +286,19 @@ public class StaminaChangeAction : EffectAction {
     public override void Use(StatIteration activeData, Actor target = null) {
         target.RefundStamina(staminaAmount);
     }
+
+
+    /// <summary>
+    /// EDITOR-ONLY: Change the stamina amount in the ScriptableObject;
+    /// </summary>
+    /// <param name="amount"> New stamina amount; </param>
+    public void Modify(int amount) {
+        staminaAmount = amount;
+        EditorUtility.SetDirty(this);
+    }
 }
 
-public class SkipTurnAction : EffectAction {
+public class SkipTurnAction : ImmediateAction {
 
     public static SkipTurnAction CreateInstance() {
         return CreateInstance<SkipTurnAction>();
@@ -274,7 +312,7 @@ public class SkipTurnAction : EffectAction {
 /// <summary>
 /// Action to Apply Effects to the given targets;
 /// </summary>
-public class ApplyEffectsAction : EffectAction {
+public class ApplyEffectsAction : ImmediateAction {
 
     /// <summary> List of effects applied by the action; </summary>
     [SerializeField] private List<Effect> effects;
@@ -286,12 +324,14 @@ public class ApplyEffectsAction : EffectAction {
         return action;
     }
 
-    public override void ComputeActionValue(ref AIActionValue actionValue) {
-        foreach (Effect effect in effects) effect.ComputeEffectValue(ref actionValue);
+    public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) {
+        foreach (Effect effect in effects) effect.ComputeEffectValue(ref actionValue, casterData);
     }
 
     public override void Use(StatIteration activeData, Actor target = null) {
-        target.ApplyEffects(effects);
+        List<Effect> appliedEffectList = new List<Effect>(effects);
+        foreach (Effect effect in appliedEffectList) effect.DefineEffectOrigin(activeData);
+        target.ApplyEffects(appliedEffectList);
     }
 
     #if UNITY_EDITOR
@@ -300,13 +340,19 @@ public class ApplyEffectsAction : EffectAction {
     /// EDITOR-ONLY: Add an Effect to the effect list in the ScriptableObject;
     /// </summary>
     /// <param name="effect"> Effect to add; </param>
-    public void AddEffect(Effect effect) => effects.Add(effect);
+    public void AddEffect(Effect effect) {
+        effects.Add(effect);
+        EditorUtility.SetDirty(this);
+    }
 
     /// <summary>
     /// EDITOR-ONLY: Remove an Effect from the effect list in the ScriptableObject;
     /// </summary>
     /// <param name="effectIndex"> Index of the effect to remove; </param>
-    public void RemoveEffect(int effectIndex) => effects.RemoveAt(effectIndex);
+    public void RemoveEffect(int effectIndex) {
+        effects.RemoveAt(effectIndex);
+        EditorUtility.SetDirty(this);
+    }
 
     #endif
 }

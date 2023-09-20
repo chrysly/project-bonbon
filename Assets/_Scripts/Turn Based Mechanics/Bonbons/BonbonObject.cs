@@ -20,7 +20,7 @@ public class BonbonObject : ScriptableObject {
     public readonly string description;
 
     /// <summary> An array of status effects granted by the bonbon; </summary>
-    public EffectModifier[] effects;
+    public PassiveModifier[] effects;
 
     /// <summary> A dictionary containing the bonbons required to make the bonbon, mapped to the required quantity; </summary>
     public BonbonObject[] recipe;

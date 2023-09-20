@@ -2,7 +2,6 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class CharacterActor : Actor
 {
@@ -22,7 +21,7 @@ public class CharacterActor : Actor
         for (int i = 0; i < GameManager.CurrLevel; i++) {
             /// Load Skills
             foreach (SkillObject skill in data.skillMap[i]) {
-                SkillList.Add(skill);
+                CreateSkillAction(skill);
             }
 
             /// Load Bonbons
