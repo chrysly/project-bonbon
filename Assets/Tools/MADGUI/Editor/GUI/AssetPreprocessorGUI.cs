@@ -397,8 +397,10 @@ namespace ModelAssetDatabase {
         /// </summary>
         /// <param name="model"> Model to reimport; </param>
         public static void LibraryReimport(ModelImporter model) {
+            return;
+            /*
             var window = ShowWindow();
-            if (model != null) window.LoadBasicOptions(model);
+            if (model != null) window.LoadBasicOptions(model);*/
         }
 
         /// <summary>
@@ -407,8 +409,10 @@ namespace ModelAssetDatabase {
         /// <returns> Whether the selected asset is a Model; </returns>
         [MenuItem("Assets/Library Reimport", true)]
         private static bool LibraryReimportValidate() {
+            return false;
+            /*
             return Selection.assetGUIDs.Length == 1 && ConfigurationCore.Config.rootAssetPath != null
-                   && AssetImporter.GetAtPath(AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0])) is ModelImporter;
+                   && AssetImporter.GetAtPath(AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0])) is ModelImporter;*/
         }
 
         /// <summary>
