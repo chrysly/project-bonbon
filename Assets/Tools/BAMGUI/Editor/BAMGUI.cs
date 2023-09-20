@@ -4,11 +4,6 @@ using UnityEngine;
 using UnityEditor;
 using CJUtils;
 
-/// <summary>
-/// Because the structure I got for the MADGUI has been quite comfortable to work with, I'm building 
-/// this tool using a similar structure. This tool has different needs and less complexity than the MAD,
-/// thus I'm creating a new tool altogether rather than inheriting from the former's abstract base;
-/// </summary>
 namespace BonbonAssetManager {
 
     public class BAMGUI : EditorWindow {
@@ -20,34 +15,48 @@ namespace BonbonAssetManager {
 
         private enum ToolType {
             BonbonManager = 0,
-            ActorManager = 1,
-            SceneManager = 2,
+            SkillManager = 1,
+            EffectManager = 2,
+            ActorManager = 3,
         } private ToolType activeTool = 0;
 
         private BonBaseTool[] tools;
 
-        public List<BonbonObject> GlobalBonbonList { get; private set; }
+        public List<BonbonBlueprint> GlobalBonbonList { get; private set; }
         public List<SkillObject> GlobalSkillList { get; private set; }
-        //private Effect[] effectList;
+        public List<EffectBlueprint> GlobalEffectList { get; private set; }
+        public List<ActorData> GlobalActorList { get; private set; }
 
         void OnEnable() {
+            IntializeLists();
             tools = new BonBaseTool[] {
-                BonBaseTool.CreateTool<BonbonManager>(this),
+                new BonbonManager(this),
+                new SkillManager(this),
                 //BonBaseTool.CreateTool<ActorManager>(this),
-            }; IntializeLists();
+            };
+        }
+
+        void OnDisable() {
+            tools = null;
+            Resources.UnloadUnusedAssets();
         }
 
         private void IntializeLists() {
-            var bonbonGUIDs = AssetDatabase.FindAssets($"t:{nameof(BonbonObject)}");
-            GlobalBonbonList = new List<BonbonObject>();
-            for (int i = 0; i < bonbonGUIDs.Length; i++) {
-                GlobalBonbonList.Add(AssetDatabase.LoadAssetAtPath<BonbonObject>(AssetDatabase.GUIDToAssetPath(bonbonGUIDs[i])));
-            }
-
-            var skillGUIDs = AssetDatabase.FindAssets($"t:{nameof(SkillObject)}");
+            GlobalBonbonList = new List<BonbonBlueprint>();
+            InitializeList(GlobalBonbonList);
             GlobalSkillList = new List<SkillObject>();
-            for (int i = 0; i < skillGUIDs.Length; i++) {
-                GlobalSkillList.Add(AssetDatabase.LoadAssetAtPath<SkillObject>(AssetDatabase.GUIDToAssetPath(skillGUIDs[i])));
+            InitializeList(GlobalSkillList);
+            GlobalEffectList = new List<EffectBlueprint>();
+            InitializeList(GlobalEffectList);
+            GlobalActorList = new List<ActorData>();
+            InitializeList(GlobalActorList);
+        }
+
+        private void InitializeList<T>(List<T> list) where T : Object {
+            string typeName = typeof(T).FullName;
+            var genericGUIDs = AssetDatabase.FindAssets($"t:{typeName}");
+            for (int i = 0; i < genericGUIDs.Length; i++) {
+                list.Add(AssetDatabase.LoadAssetAtPath<T>(AssetDatabase.GUIDToAssetPath(genericGUIDs[i])));
             }
         }
 
@@ -118,7 +127,7 @@ namespace BonbonAssetManager {
         public abstract void DrawButton(string path);
     }
 
-    public class BonbonHierarchy : BaseHierarchy<BonbonObject> {
+    public class BonbonHierarchy : BaseHierarchy<BonbonBlueprint> {
 
         private BonbonManager bonbonManager;
 
@@ -138,6 +147,49 @@ namespace BonbonAssetManager {
             }
         }
     }
+
+    public class SkillHierarchy : BaseHierarchy<SkillObject> {
+
+        private SkillManager skillManager;
+
+        protected override void AssignTool(BonBaseTool tool) {
+            if (tool is SkillManager) {
+                skillManager = tool as SkillManager;
+            } else Debug.LogError(INVALID_TOOL);
+        }
+
+        public override void DrawButton(string path) {
+            string pathName = path.IsolatePathEnd("\\//").RemovePathEnd(".");
+            float width = EditorUtils.MeasureTextWidth(pathName, GUI.skin.font);
+            if (GUILayout.Button(pathName, skillManager.SelectedPath == path
+                                   ? UIStyles.HButtonSelected : UIStyles.HButton,
+                                   GUILayout.Width(width + 15), GUILayout.Height(20))) {
+                OnPathSelection?.Invoke(path);
+            }
+        }
+    }
+    /*
+    public class EffectHierarchy : BaseHierarchy<EffectBlueprint> {
+
+        private EffectManager bonbonManager;
+
+        protected override void AssignTool(BonBaseTool tool) {
+            if (tool is EffectManager) {
+                bonbonManager = tool as EffectManager;
+            } else Debug.LogError(INVALID_TOOL);
+        }
+
+        public override void DrawButton(string path) {
+            string pathName = path.IsolatePathEnd("\\//").RemovePathEnd(".");
+            float width = EditorUtils.MeasureTextWidth(pathName, GUI.skin.font);
+            if (GUILayout.Button(pathName, bonbonManager.SelectedPath == path
+                                   ? UIStyles.HButtonSelected : UIStyles.HButton,
+                                   GUILayout.Width(width + 15), GUILayout.Height(20))) {
+                OnPathSelection?.Invoke(path);
+            }
+        }
+    }*/
+
 
     public class ActorHierarchy : BaseHierarchy<ActorData> {
 

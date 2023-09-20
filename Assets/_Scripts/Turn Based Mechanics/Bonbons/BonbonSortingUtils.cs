@@ -10,10 +10,10 @@ public static class BonbonSortingUtils {
     /// <param name="recipe1"> The recipe calling the comparison; </param>
     /// <param name="recipe2"> The other recipe participating in the comparison; </param>
     /// <returns> Whether the recipes are equivalent; </returns>
-    public static bool RecipeEquals(this BonbonObject[] recipe1, BonbonObject[] recipe2) {
-        List<BonbonObject> list1 = new List<BonbonObject>(recipe1);
-        List<BonbonObject> list2 = new List<BonbonObject>(recipe2);
-        foreach (BonbonObject bonbonObj in list1) {
+    public static bool RecipeEquals(this BonbonBlueprint[] recipe1, BonbonBlueprint[] recipe2) {
+        List<BonbonBlueprint> list1 = new List<BonbonBlueprint>(recipe1);
+        List<BonbonBlueprint> list2 = new List<BonbonBlueprint>(recipe2);
+        foreach (BonbonBlueprint bonbonObj in list1) {
             if (!list2.Remove(bonbonObj)) return false;
         } return list2.Count == 0;
     }

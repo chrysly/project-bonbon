@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillAction : ScriptableObject {
+public class SkillAction {
 
     public SkillObject SkillData { get; private set; }
     public Actor Caster { get; private set; }
     public List<Effect> Effects { get; private set; }
+    public int SkillIndex { get; private set; } 
 
-    public SkillAction(SkillObject data, Actor caster) {
+    public SkillAction(SkillObject data, Actor caster, int skillIndex) {
         SkillData = data;
         Caster = caster;
+        SkillIndex = skillIndex;
     }
 
     public AIActionValue ComputeSkillActionValues(Actor actor) {

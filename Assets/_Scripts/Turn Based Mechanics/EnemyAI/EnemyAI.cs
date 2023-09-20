@@ -31,23 +31,24 @@ public class EnemyAI
         }
 
         // calculate the goodness value for each skill and each possible target it could have
-        foreach(SkillObject skill in currentActor.SkillList)
+        foreach (SkillAction skill in currentActor.SkillList)
         {
             // make sure the enemy has enough stamina to use the move
-            if (currentActor.GetStamina() >= skill.staminaCost)
+            if (currentActor.GetStamina() >= skill.SkillData.staminaCost)
             {
                 // if this attack hits multiple targets
-                if (skill.aoe)
+                if (skill.SkillData.aoe)
                 {
-                    SkillAction newSkillAction = new SkillAction(skill, currentActor, characterActors);
-                    scenarios.Add(new Scenario(newSkillAction, calculateGoodnessValue(newSkillAction)));
+
+                    ScenarioSkillData newSkillData = new ScenarioSkillData(skill, currentActor, characterActors);
+                    scenarios.Add(new Scenario(newSkillData, calculateGoodnessValue(newSkillData)));
                 }
                 else
                 {
                     foreach (Actor actor in characterActors)
                     {
-                        SkillAction newSkillAction = new SkillAction(skill, currentActor, new List<Actor> {actor}); // idk if this is right owell
-                        scenarios.Add(new Scenario(newSkillAction, calculateGoodnessValue(newSkillAction)));
+                        ScenarioSkillData newSkillData = new ScenarioSkillData(skill, currentActor, new List<Actor> {actor}); // idk if this is right owell
+                        scenarios.Add(new Scenario(newSkillData, calculateGoodnessValue(newSkillData)));
                     }
                 } 
             }      
@@ -60,23 +61,23 @@ public class EnemyAI
 
         // edit this so if two ppl have == goodness values it randomlly chooses
         // return skill with the highest goodnessvalue
-        SkillAction bestSkill = new SkillAction(null, null, null);
+        SkillAction bestSkill;
         int bestValue = -1;
         foreach(Scenario scene in scenarios)
         {
             if (scene.getGoodnessValue() > bestValue)
             {
-                bestSkill = scene.getSkillAction();
+                bestSkill = scene.getSkillAction().skill;
                 bestValue = scene.getGoodnessValue();
             }
         }
 
-        Debug.Log("target: " + bestSkill.Targets() + " skill: " + bestSkill.ToString());
+        //Debug.Log("target: " + bestSkill.Targets() + " skill: " + bestSkill.ToString());
 
-        return bestSkill;
+        return null;
     }
     
-    private static int calculateGoodnessValue(SkillAction skill)
+    private static int calculateGoodnessValue(ScenarioSkillData skill)
     {
         // PROLLY CHANGE TO INTS???? --> i changed them to ints
         int value = 0;
@@ -88,32 +89,32 @@ public class EnemyAI
     }
 
     // later add functionality with a target array
-    private static int addValueBasedOnDamage(SkillAction skill)
+    private static int addValueBasedOnDamage(ScenarioSkillData skillData)
     {
         int point = 0;
 
         // if the skill can kill the targets
-        foreach (Actor actor in skill.Targets())
-        {/*
-            if (skill.ComputeActionValue() > actor.Hitpoints())
+        foreach (Actor actor in skillData.characterActors)
+        {
+            if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints())
             {
                 point += (int) AiWeights.KillUnit;
             }
             else
             {
-                point += skill.ComputeActionValue() * (int) AiWeights.Damage;
-            }*/
+                point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;
+            }
         }
 
         return point;
     }
 
     // based on % health
-    private static int addValueBasedOnHealth(SkillAction skill)
+    private static int addValueBasedOnHealth(ScenarioSkillData skill)
     {
         int point = 0;
 
-        foreach (Actor actor in skill.Targets())
+        foreach (Actor actor in skill.characterActors)
         {
             point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent;
         }

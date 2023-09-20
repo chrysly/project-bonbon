@@ -7,8 +7,19 @@ using UnityEngine;
 /// </summary>
 public class BonbonFactory : MonoBehaviour {
 
+    [SerializeField] private BonbonMap bonbonMapSO;
     /// <summary> An array referencing all bonbons used in battle; </summary>
-    [SerializeField] private BonbonObject[] allBonbons;
+    private List<BonbonBlueprint> allBonbons;
+
+    /// <summary>
+    /// Initialize the Bonbon Factory;
+    /// </summary>
+    /// <param name="lvlIndex"> Index of the current level; </param>
+    public void OpenFactory(int lvlIndex) {
+        for (int i = 0; i < lvlIndex; i++) {
+            foreach (BonbonBlueprint bonbon in bonbonMapSO.bonbonMap[i]) allBonbons.Add(bonbon);
+        }
+    }
 
     /// <summary>
     /// Create a bonbon with a given name using an assortment of bonbon objects;
@@ -17,10 +28,10 @@ public class BonbonFactory : MonoBehaviour {
     /// <param name="recipeBonbons"> Bonbons used to create the new bonbon; </param>
     /// <returns> A bonbon object if the recipe is valid, NULL otherwise;
     /// <br></br> Note: This method will throw an Exception if the string is invalid! </returns>
-    public BonbonObject CreateBonbon(string name, params BonbonObject[] recipeBonbons) {
-        FindBonbon(name, out BonbonObject bonbonObject);
-        if (bonbonObject) {
-            return CreateBonbon(bonbonObject, recipeBonbons);
+    public BonbonObject CreateBonbon(string name, ref BonbonObject[] bonbonInventory, bool[] recipeMask) {
+        FindBonbon(name, out BonbonBlueprint bonbonBlueprint);
+        if (bonbonBlueprint != null) {
+            return CreateBonbon(bonbonBlueprint, ref bonbonInventory, recipeMask);
         } else throw new System.Exception($"InvalidString: No bonbon named \"{name}\" was found;");
     }
 
@@ -30,19 +41,29 @@ public class BonbonFactory : MonoBehaviour {
     /// <param name="bonbon"> A bonbon object to duplicate; </param>
     /// <param name="recipeBonbons"> Bonbons used to create the new bonbon; </param>
     /// <returns> A bonbon object if the recipe is valid, NULL otherwise; </returns>
-    public BonbonObject CreateBonbon(BonbonObject bonbon, params BonbonObject[] recipeBonbons) {
+    public BonbonObject CreateBonbon(BonbonBlueprint bonbon, ref BonbonObject[] bonbonInventory, bool[] recipeMask) {
+        BonbonBlueprint[] recipeBonbons = CraftRecipeFromMask(bonbonInventory, recipeMask);
         if (bonbon.recipe.Equals(recipeBonbons)) {
-            DestroyUsedIngredients(recipeBonbons);
-            return Instantiate(bonbon);
+            DestroyUsedIngredients(ref bonbonInventory, recipeMask);
+            return bonbon.InstantiateBonbon();
         } else return null;
+    }
+
+    private BonbonBlueprint[] CraftRecipeFromMask(BonbonObject[] bonbonInventory, bool[] recipeMask) {
+        if (bonbonInventory.Length != recipeMask.Length) throw new System.Exception("Mask length does not match Recipe;");
+        List<BonbonBlueprint> maskedList = new List<BonbonBlueprint>();
+        for (int i = 0; i < bonbonInventory.Length; i++) {
+            if (recipeMask[i]) maskedList.Add(bonbonInventory[i].Data);
+        } return maskedList.ToArray();
     }
 
     /// <summary>
     /// Destroy the ingredients spent when creating a bonbon object;
     /// </summary>
-    /// <param name="usedBonbons"> Ingredients to destroy; </param>
-    private void DestroyUsedIngredients(BonbonObject[] usedBonbons) {
-        for (int i = 0; i < usedBonbons.Length; i++) Destroy(usedBonbons[i]);
+    private void DestroyUsedIngredients(ref BonbonObject[] bonbonInventory, bool[] recipeMask) {
+        for (int i = 0; i < bonbonInventory.Length; i++) {
+            if (recipeMask[i]) bonbonInventory[i] = null;
+        }
     }
 
     /// <summary>
@@ -50,8 +71,8 @@ public class BonbonFactory : MonoBehaviour {
     /// </summary>
     /// <param name="name"> Name of the bonbon to search; </param>
     /// <param name="bonbonRes"> Is assigned a bonbon with a matching name, or NULL if none is found; </returns>
-    private void FindBonbon(string name, out BonbonObject bonbonRes) {
-        foreach (BonbonObject bonbonObj in allBonbons) {
+    private void FindBonbon(string name, out BonbonBlueprint bonbonRes) {
+        foreach (BonbonBlueprint bonbonObj in allBonbons) {
             if (bonbonObj.name == name) {
                 bonbonRes = bonbonObj;
                 return;
@@ -64,10 +85,10 @@ public class BonbonFactory : MonoBehaviour {
     /// </summary>
     /// <param name="recipeBonbons"> Bonbons available to create a new one; </param>
     /// <returns> A list of matching recipes, or NULL if no matching recipes were found; </returns>
-    public List<BonbonObject> FindRecipes(params BonbonObject[] recipeBonbons) {
+    public List<BonbonBlueprint> FindRecipes(params BonbonBlueprint[] recipeBonbons) {
         if (recipeBonbons.Length == 0) return null;
-        List<BonbonObject> matchingRecipes = new List<BonbonObject>();
-        foreach (BonbonObject bonbonObject in allBonbons) {
+        List<BonbonBlueprint> matchingRecipes = new List<BonbonBlueprint>();
+        foreach (BonbonBlueprint bonbonObject in allBonbons) {
             if (bonbonObject.recipe.Length > 0
                 && bonbonObject.recipe.RecipeEquals(recipeBonbons)) matchingRecipes.Add(bonbonObject);
         } return matchingRecipes.Count > 0 ? matchingRecipes : null;

@@ -5,12 +5,12 @@ using UnityEngine;
 public class Scenario
 {
     private int _goodnessValue = 0;
-    private SkillAction _skillAction = null;
+    private ScenarioSkillData _scenarioSkillData = null;
 
-    public Scenario(SkillAction skillAction, int value)
+    public Scenario(ScenarioSkillData skillAction, int value)
     {
         _goodnessValue = value;
-        _skillAction = skillAction;
+        _scenarioSkillData = skillAction;
     }
 
     public void setGoodnessValue(int value)
@@ -23,8 +23,20 @@ public class Scenario
         return _goodnessValue;
     }
 
-    public SkillAction getSkillAction()
+    public ScenarioSkillData getSkillAction()
     {
-        return _skillAction;
+        return _scenarioSkillData;
+    }
+}
+
+public class ScenarioSkillData {
+    public SkillAction skill;
+    public Actor currentActor;
+    public List<Actor> characterActors;
+
+    public ScenarioSkillData(SkillAction skill, Actor currentActor, List<Actor> characterActors) {
+        this.skill = skill;
+        this.currentActor = currentActor;
+        this.characterActors = characterActors;
     }
 }

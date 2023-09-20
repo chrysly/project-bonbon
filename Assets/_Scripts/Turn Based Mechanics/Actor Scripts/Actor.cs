@@ -6,7 +6,7 @@ using UnityEngine;
 public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #region Data Attributes
-    [SerializeField] public readonly ActorData data;
+    [SerializeField] public ActorData data;
     public StatIteration ActiveData { get; private set; }
     [SerializeField] private string uniqueID;
     #endregion Data Attributes
@@ -29,7 +29,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     public List<SkillAction> SkillList { get; protected set; }
 
-    public List<BonbonObject> BonbonList { get; protected set; }
+    public List<BonbonBlueprint> BonbonList { get; protected set; }
 
     public List<Effect> EffectList { get; protected set; }
 
@@ -37,7 +37,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #region Bonbon Inventory
 
-    protected BonbonObject[] bonbonInventory = new BonbonObject[4];
+    protected BonbonBlueprint[] bonbonInventory = new BonbonBlueprint[4];
 
     #endregion
 
@@ -53,7 +53,10 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         _defeated = false;
     }
 
-    protected virtual void InitializeLevelObjects() => ComputeStats();
+    protected virtual void InitializeLevelObjects() {
+        EffectList = new List<Effect>();
+        ComputeStats();
+    }
 
     public void TurnStart() {
         List<int> spentEffects = new List<int>();
@@ -65,8 +68,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     private void ComputeStats() {
         List<PassiveModifier> modifiers = new List<PassiveModifier>();
-        foreach (BonbonObject bonbon in bonbonInventory) {
-            modifiers.AddRange(bonbon.effects);
+        foreach (BonbonBlueprint bonbon in bonbonInventory) {
+            if (bonbon != null) modifiers.Add(bonbon.passiveModifiers);
         } foreach (Effect effect in EffectList) {
             modifiers.Add(effect.modifiers);
         } ActiveData.ComputeModifiers(modifiers);
@@ -109,15 +112,14 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         return false;
     }
 
-    public void InsertBonbon(int slot, BonbonObject bonbon) {
+    public void InsertBonbon(int slot, BonbonBlueprint bonbon) {
         if (bonbonInventory[slot] == null) {
             bonbonInventory[slot] = bonbon;
         } else Debug.LogError("Inventory slot was not available;");
     }
 
     protected void CreateSkillAction(SkillObject skillData) {
-        SkillAction skillAction = new SkillAction(skillData, this);
-        SkillList.Add(skillAction);
+        SkillList.Add(new SkillAction(skillData, this, SkillList.Count));
     }
 
     public int Hitpoints() {

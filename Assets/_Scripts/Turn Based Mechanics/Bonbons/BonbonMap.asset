@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db50f99abb5d45469ee10eddff5558d, type: 3}
-  m_Name: bf32e0b52a1ba2f4abb3d8d0a0931eb3
+  m_Script: {fileID: 11500000, guid: 8c358eb00b1732145a73f24acfb6aa50, type: 3}
+  m_Name: BonbonMap
   m_EditorClassIdentifier: 
-  version: 1
-  guid: bf32e0b52a1ba2f4abb3d8d0a0931eb3
-  isReimported: 0
-  isModel: 1
-  notes: 

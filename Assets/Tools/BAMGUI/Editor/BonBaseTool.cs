@@ -9,15 +9,13 @@ using CJUtils;
 /// thus I'm creating a new tool altogether rather than inheriting from the former's abstract base;
 /// </summary>
 namespace BonbonAssetManager {
-    public abstract class BonBaseTool : ScriptableObject {
+    public abstract class BonBaseTool {
 
         protected BAMGUI MainGUI;
         public string SelectedPath { get; protected set; }
 
-        public static T CreateTool<T>(BAMGUI mainGUI) where T : BonBaseTool {
-            T tool = CreateInstance<T>();
-            tool.MainGUI = mainGUI;
-            return tool;
+        public BonBaseTool(BAMGUI mainGUI) {
+            MainGUI = mainGUI;
         }
 
         public virtual void ShowGUI() { }
@@ -26,8 +24,14 @@ namespace BonbonAssetManager {
     public class BonbonManager : BonBaseTool {
 
         private BonbonHierarchy bonbonHierarchy;
-        private BonbonObject selectedBonbon;
-        private List<BonbonObject> bonbonList;
+        private BonbonBlueprint selectedBonbon;
+        private List<BonbonBlueprint> bonbonList;
+
+        public BonbonManager(BAMGUI mainGUI) : base(mainGUI) {
+            bonbonHierarchy = BaseHierarchy<BonbonBlueprint>.CreateHierarchy<BonbonHierarchy>(this);
+            bonbonHierarchy.OnPathSelection += BonbonManager_OnPathSelection;
+            UpdateBonbonList();
+        }
 
         private int buttonSize = 50;
 
@@ -35,47 +39,42 @@ namespace BonbonAssetManager {
         private Vector2 recipeScroll;
         private Vector2 previewScroll;
 
-        void OnEnable() {
-            bonbonHierarchy = BaseHierarchy<BonbonObject>.CreateHierarchy<BonbonHierarchy>(this);
-            bonbonHierarchy.OnPathSelection += BonbonManager_OnPathSelection;
-            UpdateBonbonList();
-        }
-
-        public void SetSelectedBonbon(BonbonObject bonbon) {
+        public void SetSelectedBonbon(BonbonBlueprint bonbon) {
             selectedBonbon = bonbon;
             UpdateBonbonList();
         }
 
         private void UpdateBonbonList() {
-            bonbonList = new List<BonbonObject>(MainGUI.GlobalBonbonList);
-            foreach (BonbonObject bonbon in bonbonList) {
+            bonbonList = new List<BonbonBlueprint>(MainGUI.GlobalBonbonList);
+            List<BonbonBlueprint> invalidBonbons = new List<BonbonBlueprint>();
+            foreach (BonbonBlueprint bonbon in bonbonList) {
                 bonbon.UpdateRecipeSize();
 
                 if (bonbon == selectedBonbon) {
-                    bonbonList.Remove(bonbon);
+                    invalidBonbons.Add(bonbon);
                     continue;
                 }
 
-                foreach (BonbonObject ingredient in bonbon.recipe) {
+                foreach (BonbonBlueprint ingredient in bonbon.recipe) {
                     if (ingredient == selectedBonbon) {
-                        bonbonList.Remove(bonbon);
+                        invalidBonbons.Add(bonbon);
                         break;
                     }
                 }
-            }
+            } foreach (BonbonBlueprint bonbon in invalidBonbons) bonbonList.Remove(bonbon);
         }
 
         public override void ShowGUI() {
             using (new EditorGUILayout.HorizontalScope()) {
                 using (new EditorGUILayout.VerticalScope()) {
                     bonbonHierarchy.ShowGUI();
-
                 }
                     
                 using (new EditorGUILayout.VerticalScope()) {
                     MainGUI.DrawToolbar();
 
                     if (selectedBonbon != null) {
+                        //DrawBonbonProperties();
                         DrawBonbonGroup();
                         DrawRecipeDropSlots();
                         DrawRecipePreview(selectedBonbon);
@@ -88,7 +87,7 @@ namespace BonbonAssetManager {
 
         private void BonbonManager_OnPathSelection(string path) {
             SelectedPath = path;
-            SetSelectedBonbon(AssetDatabase.LoadAssetAtPath<BonbonObject>(path));
+            SetSelectedBonbon(AssetDatabase.LoadAssetAtPath<BonbonBlueprint>(path));
         }
 
         private void DrawBonbonGroup() {
@@ -109,7 +108,7 @@ namespace BonbonAssetManager {
             for (int i = 0; i < rows + 1; i++) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     for (int j = i * perRow; j < Mathf.Min((i + 1) * perRow, bonbonList.Count); j++) {
-                        DrawBonbonDragButton(bonbonList[j], new GUIContent(bonbonList[j].texture));
+                        BAMUtils.DrawBonbonDragButton(bonbonList[j], new GUIContent(bonbonList[j].texture), buttonSize);
                     }
                 }
             }
@@ -123,29 +122,29 @@ namespace BonbonAssetManager {
                 recipeScroll = scope.scrollPosition;
 
                 using (new EditorGUILayout.HorizontalScope()) {
-                    BonbonObject acceptedBonbon = DrawDragAcceptButton<BonbonObject>(GUILayout.Width(buttonSize * 2),
-                                                                                     GUILayout.Height(buttonSize * 2));
-                    UpdateBonbonRecipe(selectedBonbon, acceptedBonbon);
+                    BonbonBlueprint acceptedBonbon = BAMUtils.DrawDragAcceptButton<BonbonBlueprint>(GUILayout.Width(buttonSize * 2),
+                                                                                                    GUILayout.Height(buttonSize * 2));
+                    if (acceptedBonbon != null) UpdateBonbonRecipe(selectedBonbon, acceptedBonbon);
 
                     using (new EditorGUILayout.VerticalScope()) {
                         using (new EditorGUILayout.HorizontalScope()) {
-                            foreach (BonbonObject bonbon in selectedBonbon.recipe) {
-                                if (bonbon) DrawBonbonDragButton(bonbon, new GUIContent(bonbon.texture));
+                            foreach (BonbonBlueprint bonbon in selectedBonbon.recipe) {
+                                if (bonbon != null) BAMUtils.DrawBonbonDragButton(bonbon, new GUIContent(bonbon.texture), buttonSize);
                                 else DrawEmptyBox();
                             }
-                        } BonbonObject removeObject = DrawDragAcceptButton<BonbonObject>(GUILayout.Width(buttonSize * 4.6f),
-                                                                                         GUILayout.Height(buttonSize * 0.8f));
+                        } BonbonBlueprint removeObject = BAMUtils.DrawDragAcceptButton<BonbonBlueprint>(GUILayout.Width(buttonSize * 4.6f),
+                                                                                                        GUILayout.Height(buttonSize * 0.8f));
                         if (removeObject != null) RemoveFromRecipe(selectedBonbon, removeObject);
                     }
                 } 
             }
         }
 
-        private void UpdateBonbonRecipe(BonbonObject recipeBonbon, BonbonObject ingredientBonbon) {
+        private void UpdateBonbonRecipe(BonbonBlueprint recipeBonbon, BonbonBlueprint ingredientBonbon) {
             recipeBonbon.AddRecipeSlot(ingredientBonbon);
         }
 
-        private void RemoveFromRecipe(BonbonObject recipeBonbon, BonbonObject ingredientBonbon) {
+        private void RemoveFromRecipe(BonbonBlueprint recipeBonbon, BonbonBlueprint ingredientBonbon) {
             recipeBonbon.RemoveRecipeSlot(ingredientBonbon);
         }
 
@@ -155,31 +154,7 @@ namespace BonbonAssetManager {
             }
         }
 
-        private void DrawBonbonDragButton<T>(T draggedObject, GUIContent content) where T : Object {
-            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
-                Rect buttonRect = GUILayoutUtility.GetRect(buttonSize, buttonSize, GUILayout.ExpandWidth(false));
-                if (buttonRect.Contains(Event.current.mousePosition)) {
-                    bool mouseDown = Event.current.type == EventType.MouseDown;
-                    bool leftClick = Event.current.button == 0;
-                    if (mouseDown && leftClick) {
-                        DragAndDrop.PrepareStartDrag();
-                        DragAndDrop.StartDrag("Dragging");
-                        DragAndDrop.objectReferences = new Object[] { draggedObject };
-                        DragAndDrop.visualMode = DragAndDropVisualMode.Move;
-                    }
-                } GUI.Label(buttonRect, content, GUI.skin.button);
-            }
-        }
-
-        private T DrawDragAcceptButton<T>(params GUILayoutOption[] options) where T : Object {
-            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
-                T obj = null;
-                obj = EditorGUILayout.ObjectField(obj, typeof(T), false, options) as T;
-                return obj;
-            }
-        }
-
-        private void DrawRecipePreview(BonbonObject bonbonObject) {
+        private void DrawRecipePreview(BonbonBlueprint bonbonObject) {
             EditorUtils.WindowBoxLabel("Recipe Preview");
             using (var scope = new EditorGUILayout.ScrollViewScope(previewScroll)) {
                 previewScroll = scope.scrollPosition;
@@ -187,7 +162,7 @@ namespace BonbonAssetManager {
             }
         }
 
-        private void DrawPreviewLevel(BonbonObject bonbonObject) {
+        private void DrawPreviewLevel(BonbonBlueprint bonbonObject) {
             if (bonbonObject == null) return;
             using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
                 var levelRect = DrawPaddedButton(bonbonObject);
@@ -197,8 +172,8 @@ namespace BonbonAssetManager {
                 int buttonCount = 0;*/
                 
                 using (new EditorGUILayout.HorizontalScope()) {
-                    foreach (BonbonObject ingredient in bonbonObject.recipe) {
-                        if (ingredient) DrawPreviewLevel(ingredient);
+                    foreach (BonbonBlueprint ingredient in bonbonObject.recipe) {
+                        if (ingredient != null) DrawPreviewLevel(ingredient);
                         //if (buttonCount == 0) levelStart = (rect.xMax - rect.x) / 2;
                         //levelWidth = (rect.xMax - rect.x) / 2 - levelStart;
                     }
@@ -207,7 +182,7 @@ namespace BonbonAssetManager {
             }
         }
 
-        private Rect DrawPaddedButton(BonbonObject ingredient) {
+        private Rect DrawPaddedButton(BonbonBlueprint ingredient) {
             using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
                 GUILayout.FlexibleSpace();
                 using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox, GUILayout.Width(buttonSize), GUILayout.Height(buttonSize), GUILayout.ExpandWidth(false))) {
@@ -220,14 +195,129 @@ namespace BonbonAssetManager {
         }
     }
 
+    public class SkillManager : BonBaseTool {
+
+        private SkillHierarchy skillHierarchy;
+        private SkillObject selectedSkill;
+        private Editor skillInspector;
+
+        private System.Type[] actionTypes;
+        private ImmediateAction[] foundActions;
+
+        public SkillManager(BAMGUI mainGUI) : base(mainGUI) {
+            skillHierarchy = BaseHierarchy<SkillObject>.CreateHierarchy<SkillHierarchy>(this);
+            skillHierarchy.OnPathSelection += SkillHierarchy_OnPathSelection;
+            actionTypes = new System.Type[] {
+                typeof(DamageAction),
+                typeof(HealAction),
+                typeof(SkipTurnAction),
+                typeof(StaminaChangeAction),
+                typeof(ApplyEffectsAction),
+            };
+            /*
+            immediateActions = new ImmediateAction[] {
+                new DamageAction(0),
+                new HealAction(0),
+                new SkipTurnAction(),
+                new StaminaChangeAction(0),
+                new ApplyEffectsAction(null),
+            };*/
+        }
+
+        public void SkillHierarchy_OnPathSelection(string path) {
+            SelectedPath = path;
+            SetSelectedSkill(AssetDatabase.LoadAssetAtPath<SkillObject>(path));
+            if (selectedSkill.immediateActions == null) selectedSkill.immediateActions = new List<ImmediateAction>();
+        }
+
+        private void SetSelectedSkill(SkillObject skill) {
+            selectedSkill = skill;
+            FetchAvailableActions();
+        }
+
+        public override void ShowGUI() {
+            using (new EditorGUILayout.HorizontalScope()) {
+                using (new EditorGUILayout.VerticalScope()) {
+                    skillHierarchy.ShowGUI();
+
+                }
+                    
+                using (new EditorGUILayout.VerticalScope()) {
+                    MainGUI.DrawToolbar();
+
+                    if (selectedSkill != null) {
+                        if (skillInspector is null) skillInspector = Editor.CreateEditor(selectedSkill);
+                        if (selectedSkill != null) skillInspector.OnInspectorGUI();
+                        else Debug.Log("Nope");
+
+                        EditorGUILayout.Separator();
+                        EditorUtils.DrawSeparatorLines("Immediate Actions");
+                        EditorGUILayout.Separator();
+
+                        DrawAvailableActions();
+                    } else {
+                        EditorUtils.DrawScopeCenteredText("Select a Bonbon to edit it here;");
+                    }
+                }
+            }
+        }
+
+        private void FetchAvailableActions() {
+            foundActions = new ImmediateAction[actionTypes.Length];
+            for (int i = 0; i < actionTypes.Length; i++) {
+                var action = selectedSkill.immediateActions.FindAction(actionTypes[i]);
+                if (action != null) foundActions[i] = action;
+            }
+        }
+
+        private void DrawAvailableActions() {
+            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
+                for (int i = 0; i < actionTypes.Length; i++) {
+                    using (new EditorGUILayout.ToggleGroupScope(actionTypes[i].FullName, foundActions[i] != null)) {
+                        if (foundActions[i] != null) foundActions[i].DrawProperty();
+                    }
+                }
+            }
+        }
+
+        /*
+        private void DrawAvailableActions() {
+            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
+                foreach (ImmediateAction action in immediateActions) {
+                    BAMUtils.DrawBonbonDragButton(new ImmediateActionWrapper(action), new GUIContent(action.GetType().FullName), 60);
+                }
+            }
+        }
+
+        private void DrawEntryAcceptBox() {
+            ImmediateActionWrapper wrapper = BAMUtils.DrawDragAcceptButton<ImmediateActionWrapper>(GUILayout.Height(300));
+            if (wrapper is not null) selectedSkill.immediateActions.InsertAction(wrapper.action);
+        }
+
+        private void DrawActionObjects() {
+            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
+                foreach (ImmediateAction action in selectedSkill.immediateActions) {
+                    BAMUtils.DrawBonbonDragButton(new ImmediateActionWrapper(action), new GUIContent(action.GetType().FullName), 60);
+
+                }
+            }
+        }
+
+        private void DrawExitAcceptBox() {
+            ImmediateActionWrapper wrapper = BAMUtils.DrawDragAcceptButton<ImmediateActionWrapper>(GUILayout.Height(400));
+            if (wrapper is not null) selectedSkill.immediateActions.RemoveAction(wrapper.action);
+        }
+        */
+    }
+
     public class ActorManager : BonBaseTool {
 
         private ActorHierarchy actorHierarchy;
         private ActorData selectedActor;
-        private List<BonbonObject> bonbonList;
+        private List<BonbonBlueprint> bonbonList;
         private List<SkillObject> skillList;
 
-        void OnEnable() {
+        public ActorManager(BAMGUI mainGUI) : base(mainGUI) {
             actorHierarchy = BaseHierarchy<ActorData>.CreateHierarchy<ActorHierarchy>(this);
             actorHierarchy.OnPathSelection += ActorManager_OnPathSelection;
         }

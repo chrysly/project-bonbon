@@ -7,7 +7,7 @@ using UnityEngine;
 public class CharacterData : ActorData {
 
     public SkillObject[][] skillMap;
-    public BonbonObject[][] bonbonMap;
+    public BonbonBlueprint[][] bonbonMap;
 }
 
 #if UNITY_EDITOR
