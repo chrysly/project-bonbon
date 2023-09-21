@@ -38,7 +38,7 @@ public class Actor : MonoBehaviour, IComparable<Actor>
         if (_hitpoints - damage <= 0) {
             _hitpoints = 0;
             _defeated = true;
-            Debug.Log($"{this.data.DisplayName()} has fallen!");
+            Debug.Log($"{data.DisplayName()} has fallen!");
             return true;
         }
         _hitpoints -= damage;

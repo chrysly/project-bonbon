@@ -73,9 +73,10 @@ public partial class
         StartCoroutine(SkipEnemyAction(enemyTurnDuration));
     }
 
-    public void SwitchToTargetSelect() {
+    public void SwitchToTargetSelect(SkillObject skill) {
         if (CurrState is TurnState) {
             Transition<TargetSelectState>();
+            CurrInput.SetActiveSkill(new SkillAction(skill));
         }
     }
 
