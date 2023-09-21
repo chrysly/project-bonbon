@@ -20,7 +20,7 @@ public class SkillWindow : MonoBehaviour
     //TODO: Remove after refactoring selection script
     [SerializeField] private CanvasGroup panel;
 
-    private List<SkillObject> skills;
+    private List<SkillAction> skills;
 
     private void Start() {
         
@@ -65,7 +65,7 @@ public class SkillWindow : MonoBehaviour
     }
 
     private void LoadButtons() {
-        foreach (SkillObject skill in skills) {
+        foreach (SkillAction skill in skills) {
             GameObject button = (GameObject) Instantiate(buttonPrefab, buttonContainer);
             SkillButton skillButton = button.GetComponent<SkillButton>();
             skillButton.AssignSkill(skill);
