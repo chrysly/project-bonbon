@@ -21,6 +21,8 @@ public class BonbonObject : ScriptableObject {
     /// <summary> A dictionary containing the bonbons required to make the bonbon, mapped to the required quantity; </summary>
     public BonbonObject[] recipe;
 
+    public BonbonDisplayObject displayObject;
+
     public override bool Equals(object other) {
         if (other is BonbonObject) {
             BonbonObject oBonbon = other as BonbonObject;

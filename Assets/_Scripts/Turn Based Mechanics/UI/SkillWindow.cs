@@ -13,7 +13,7 @@ public class SkillWindow : MonoBehaviour
     [SerializeField] private CharacterActor actor;
     [SerializeField] private Transform buttonContainer;
 
-    //[SerializeField] private BattleStateSystem battleState;
+    [SerializeField] private BattleStateMachine battleState;
 
     [SerializeField] private GameObject buttonPrefab;
 
@@ -27,12 +27,24 @@ public class SkillWindow : MonoBehaviour
         skills = new List<SkillObject>(actor.Data().SkillList());
         transform.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
         LoadButtons();
-        //battleState.OnSkillConfirm += DisplayOnConfirm;
+        battleState.OnStateTransition += Redisplay;
     }
 
     public void Display() {
         gameObject.SetActive(true);
-        transform.DOScaleY(1, expandDuration);
+        transform.DOScaleY(40, expandDuration);
+    }
+
+    public void DisplayPanel() {
+        panel.DOFade(1, contractDuration);
+    }
+
+    public void Redisplay(BattleStateMachine.BattleState state, BattleStateInput input) {
+        if (state is BattleStateMachine.TurnState) {
+            if (input.ActiveActor().Equals(actor)) {
+                DisplayPanel();
+            }
+        }
     }
 
     private void DisplayOnConfirm(bool canceled) {
@@ -45,11 +57,11 @@ public class SkillWindow : MonoBehaviour
 
     private IEnumerator HideAction() {
         transform.DOScaleY(0, contractDuration);
+        panel.DOFade(0, contractDuration);
 
         yield return new WaitForSeconds(contractDuration);
 
         gameObject.SetActive(false);
-        panel.alpha = 0;    //POTATO
     }
 
     private void LoadButtons() {
@@ -58,7 +70,7 @@ public class SkillWindow : MonoBehaviour
             SkillButton skillButton = button.GetComponent<SkillButton>();
             skillButton.AssignSkill(skill);
             Button btn = button.GetComponent<Button>();
-            //btn.onClick.AddListener(delegate { battleState.SwitchToSkillSelect(skillButton.RetrieveSkill()); });
+            btn.onClick.AddListener(delegate { battleState.SwitchToTargetSelect(skill); });
             btn.onClick.AddListener(delegate { Hide(); });
         }
     }
