@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class BakeWindow : MonoBehaviour {
     [SerializeField] private Transform startPoint;
+    [SerializeField] private BonbonWindow bonbonWindow;
     private Vector3 startPos;
     private Vector3 endPoint;
 
@@ -16,7 +17,8 @@ public class BakeWindow : MonoBehaviour {
         transform.DOScale(new Vector3(0, 1, 1), 0);
     }
 
-    public void Activate() {
+    public void Activate(CharacterActor actor) {
+        bonbonWindow.ReloadActor(actor);
         transform.DOScale(1, 0.6f);
         transform.DOMove(endPoint, 0.5f);
     }

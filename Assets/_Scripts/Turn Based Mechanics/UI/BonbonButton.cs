@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class BonbonButton : MonoBehaviour
 {
-    [SerializeField] private BonbonObject _bonbonObject;
+    [SerializeField] private BonbonBlueprint _bonbonObject;
 
-    public void AssignBonbon(BonbonObject bonbonObject) {
+    public void AssignBonbon(BonbonBlueprint bonbonObject) {
         this._bonbonObject = bonbonObject;
         UpdateText();
     }
 
-    public BonbonObject RetrieveBonbon() {
+    public BonbonBlueprint GetBonbon() {
         return _bonbonObject;
     }
 
     private void UpdateText() {
         TextMeshProUGUI text = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        text.SetText(_bonbonObject.Name);
+        text.SetText(_bonbonObject.name);
     }
 }

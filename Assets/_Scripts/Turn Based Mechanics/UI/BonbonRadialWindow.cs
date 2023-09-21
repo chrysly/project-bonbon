@@ -116,7 +116,7 @@ public class BonbonRadialWindow : MonoBehaviour {
     public void SelectedSlot() {
         if (slots[_index].bonbon == null) {
             _selectState = BonbonSelectState.Craft;
-            bakeWindow.Activate();
+            bakeWindow.Activate((CharacterActor) actor);
         }
         MainSelect();
     }

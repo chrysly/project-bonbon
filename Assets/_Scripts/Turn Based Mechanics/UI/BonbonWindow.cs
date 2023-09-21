@@ -2,30 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 public class BonbonWindow : MonoBehaviour
 {
-    [SerializeField] private CharacterActor actor;
     [SerializeField] private Transform buttonContainer;
 
-    [SerializeField] private BonbonRadialWindow radialWindow;
+    [SerializeField] private BakeWindow display;
 
     [SerializeField] private GameObject buttonPrefab;
+    [SerializeField] private BattleStateMachine battleState;
 
-    //TODO: Remove after refactoring selection script
-    [SerializeField] private CanvasGroup panel;
+    private List<BonbonBlueprint> _bonbonObjects;
+    private List<GameObject> _activeButtons;
 
-    private List<BonbonObject> _bonbonObjects;
-
+    public void ReloadActor(CharacterActor actor) {
+        _bonbonObjects = actor.BonbonList;
+        LoadButtons();
+    }
+    
     private void LoadButtons() {
-        foreach (BonbonObject bonbonObject in _bonbonObjects) {
+        ClearPreviousButtons();
+        foreach (BonbonBlueprint bonbonBlueprint in _bonbonObjects) {
             GameObject button = (GameObject) Instantiate(buttonPrefab, buttonContainer);
-            SkillButton skillButton = button.GetComponent<SkillButton>();
-            skillButton.AssignSkill(skill);
+            BonbonButton bonbonButton = button.GetComponent<BonbonButton>();
+            bonbonButton.AssignBonbon(bonbonBlueprint);
             Button btn = button.GetComponent<Button>();
-            btn.onClick.AddListener(delegate { battleState.SwitchToTargetSelect(skill); });
-            btn.onClick.AddListener(delegate { Hide(); });
+            btn.onClick.AddListener(delegate { /*battleState.SwitchToTargetSelect(skill);*/ });
+            btn.onClick.AddListener(delegate { display.Deactivate(); });
+            _activeButtons.Add(button);
         }
+    }
+
+    private void ClearPreviousButtons() {
+        foreach (GameObject button in _activeButtons) {
+            Destroy(button);
+        }
+        _activeButtons.Clear();
     }
 }
