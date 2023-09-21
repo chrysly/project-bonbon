@@ -13,8 +13,8 @@ public class EnemyAI
         // also how many bonsbons the characters have
     }
 
-    /// <summary> pass in the current active list of actors and the current actor, returns a skillObject </summary>
-    public static SkillAction ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors)
+    /// <summary> pass in the current active list of actors and the current actor, returns an ActiveSkillPrep </summary>
+    public static BattleStateInput.ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors)
     {
         // enemy generates stamina (%)
         currentActor.RefundStamina(50);
@@ -61,20 +61,27 @@ public class EnemyAI
 
         // edit this so if two ppl have == goodness values it randomlly chooses
         // return skill with the highest goodnessvalue
-        SkillAction bestSkill;
+
+        Scenario bestScenario = null;   // better practice would prolly be to just assign the frist skill + random target but it's b4 M1 so
         int bestValue = -1;
         foreach(Scenario scene in scenarios)
         {
             if (scene.getGoodnessValue() > bestValue)
             {
-                bestSkill = scene.getSkillAction().skill;
+                bestScenario = scene;
                 bestValue = scene.getGoodnessValue();
             }
         }
 
         //Debug.Log("target: " + bestSkill.Targets() + " skill: " + bestSkill.ToString());
 
-        return null;
+        BattleStateInput.ActiveSkillPrep bestActiveSkill = new BattleStateInput.ActiveSkillPrep()
+        { 
+            skill = bestScenario.getSkillAction().skill,
+            targets = bestScenario.getSkillAction().characterActors.ToArray(),
+        };
+
+        return bestActiveSkill;
     }
     
     private static int calculateGoodnessValue(ScenarioSkillData skill)
