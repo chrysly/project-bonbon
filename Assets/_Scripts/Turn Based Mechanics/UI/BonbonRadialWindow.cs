@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class BonbonRadialWindow : MonoBehaviour {
     [SerializeField] private float rotateDuration = 0.5f;

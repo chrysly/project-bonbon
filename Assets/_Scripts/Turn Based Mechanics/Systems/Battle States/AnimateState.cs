@@ -22,9 +22,9 @@ public partial class BattleStateMachine {
             //}
             
             _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform);  // HARD CODED (change later bc anumation??? idk)
-            Input.ActivateSkill();
-
             MySM.OnStateTransition.Invoke(this, Input);
+            
+            Input.ActivateSkill();
             MySM.StartBattle(3f);
         }
         

@@ -15,8 +15,8 @@ public class ActionText : MonoBehaviour
     private void UpdateActionText(BattleStateMachine.BattleState state, BattleStateInput input) {
         if (state is not BattleStateMachine.AnimateState) return;
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-        text.SetText(input.ActiveActor().data.DisplayName() + " used " + input.SkillPrep.skill.ToString() + " on "
-                     + input.SkillPrep.targets[0].data.DisplayName() + "!");      //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
+        text.SetText(input.ActiveActor().data.DisplayName() + " used " + input.SkillPrep.skill.SkillData.name + " on "
+                     + input.SkillPrep.targets[0].data.DisplayName() + "!");     //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
         ClearText();
     }
 

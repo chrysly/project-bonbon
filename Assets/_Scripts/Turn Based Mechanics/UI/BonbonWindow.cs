@@ -12,23 +12,21 @@ public class BonbonWindow : MonoBehaviour
 
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private BattleStateMachine battleState;
-
-    private List<BonbonBlueprint> _bonbonObjects;
+    
     private List<GameObject> _activeButtons;
 
     private void Start() {
-        _bonbonObjects = new List<BonbonBlueprint>();
+        transform.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
         _activeButtons = new List<GameObject>();
     }
 
     public void ReloadActor(CharacterActor actor) {
-        _bonbonObjects = actor.BonbonList;
-        LoadButtons();
+        LoadButtons(actor);
     }
     
-    private void LoadButtons() {
+    private void LoadButtons(CharacterActor actor) {
         ClearPreviousButtons();
-        foreach (BonbonBlueprint bonbonBlueprint in _bonbonObjects) {
+        foreach (BonbonBlueprint bonbonBlueprint in actor.BonbonList) {
             GameObject button = (GameObject) Instantiate(buttonPrefab, buttonContainer);
             BonbonButton bonbonButton = button.GetComponent<BonbonButton>();
             bonbonButton.AssignBonbon(bonbonBlueprint);

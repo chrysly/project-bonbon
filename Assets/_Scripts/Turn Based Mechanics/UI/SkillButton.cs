@@ -19,6 +19,6 @@ public class SkillButton : MonoBehaviour
 
     private void UpdateText() {
         TextMeshProUGUI text = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        text.SetText(skill.SkillData.GetSkillName());
+        text.SetText(skill.SkillData.name);
     }
 }
