@@ -16,6 +16,7 @@ public class BonbonFactory : MonoBehaviour {
     /// </summary>
     /// <param name="lvlIndex"> Index of the current level; </param>
     public void OpenFactory(int lvlIndex) {
+        allBonbons = new List<BonbonBlueprint>();
         for (int i = 0; i < lvlIndex; i++) {
             foreach (BonbonBlueprint bonbon in bonbonMapSO.bonbonMap[i]) allBonbons.Add(bonbon);
         }

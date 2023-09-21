@@ -23,7 +23,9 @@ MonoBehaviour:
   skillMap:
     startIndeces: 00000000
     secondaryElements:
-    - {fileID: 0}
+    - {fileID: 11400000, guid: f0554fb479c9bd14c92b1c3089e23da1, type: 2}
   bonbonMap:
-    startIndeces: 
-    secondaryElements: []
+    startIndeces: 00000000
+    secondaryElements:
+    - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
+    - {fileID: 11400000, guid: 7e3505e7bbb63bb49a4085045d627bf9, type: 2}

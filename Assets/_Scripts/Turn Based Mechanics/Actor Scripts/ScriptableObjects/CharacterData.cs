@@ -7,9 +7,3 @@ using UnityEngine;
 public class CharacterData : ActorData {
 
 }
-
-#if UNITY_EDITOR
-
-
-
-#endif
