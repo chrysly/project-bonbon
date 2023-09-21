@@ -5,27 +5,58 @@ using UnityEngine;
 public class BattleStateInput : StateInput {
 
     #region Global Variables
-    private List<Actor> turnQueue;      
+    private List<Actor> turnQueue;
     private int currActorIndex = 0;
     private int currentTurn = 0;
     #endregion Global Variables
-    
-    #region Turn Variables
 
-    private SkillAction activeSkill;
+    #region Managers
+    public BonbonFactory BonbonFactory { get; private set; }
+    #endregion
+
+    #region Turn Variables
+    public class ActiveSkillPrep {
+        public SkillAction skill;
+        public Actor[] targets;
+    } public ActiveSkillPrep SkillPrep { get; private set; }
     #endregion Turn Variables
 
     // event sequencer tests (DEL LATER)
     public EventSequencer eventSequencer = GameObject.FindAnyObjectByType<EventSequencer>();
-    
+
+
+    public void Initialize() => SkillPrep = new ActiveSkillPrep();
 
     public void InsertTurnQueue(List<Actor> queue) {
         turnQueue = queue;
     }
 
-    public void SetActiveSkill(SkillAction skill) {
-        activeSkill = skill;
+    public void OpenBonbonFactory(BonbonFactory bonbonFactory) {
+        BonbonFactory = bonbonFactory;
+        BonbonFactory.OpenFactory(GameManager.CurrLevel);
     }
+
+    #region Skill Preparation
+
+    public void SetSkillPrep(SkillAction skillAction) {
+        SkillPrep.skill = skillAction;
+    }
+
+    public void SetSkillPrep(Actor[] targets) {
+        SkillPrep.targets = targets;
+    }
+
+    public void SetSkillPrep(SkillAction skillAction, Actor[] targets) {
+        SkillPrep.skill = skillAction;
+        SkillPrep.targets = targets;
+    }
+
+    public void ActivateSkill() {
+        SkillPrep.skill.ActivateSkill(SkillPrep.targets);
+        SkillPrep = new ActiveSkillPrep();
+    }
+
+    #endregion
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>
     public void AdvanceTurn() 
@@ -47,10 +78,6 @@ public class BattleStateInput : StateInput {
 
     public Actor ActiveActor() {
         return turnQueue[currActorIndex];
-    }
-
-    public SkillAction ActiveSkill() {
-        return activeSkill;
     }
 
     public int CurrTurn() {

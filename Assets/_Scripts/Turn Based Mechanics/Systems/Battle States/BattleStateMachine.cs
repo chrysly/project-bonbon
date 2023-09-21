@@ -7,6 +7,7 @@ public partial class
     BattleStateMachine : StateMachine<BattleStateMachine, BattleStateMachine.BattleState, BattleStateInput> {
 
     #region SerializeFields
+    [SerializeField] private BonbonFactory bonbonFactory;
     [SerializeField] private float battleStartAnimationDuration;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     [SerializeField] private List<Actor> actorList;
@@ -21,7 +22,9 @@ public partial class
         SetState<BattleStart>();
         actorList.Sort();       //sort by lowest speed
         actorList.Reverse();    //highest speed = higher priority
+        CurrInput.Initialize();
         CurrInput.InsertTurnQueue(actorList);
+        CurrInput.OpenBonbonFactory(bonbonFactory);
     }
 
     protected override void Init() {
