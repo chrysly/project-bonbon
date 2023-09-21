@@ -20,17 +20,22 @@ public class SkillWindow : MonoBehaviour
     //TODO: Remove after refactoring selection script
     [SerializeField] private CanvasGroup panel;
 
-    private List<SkillObject> skills;
+    private bool _initialized = false;
+
+    private List<SkillAction> skills;
 
     private void Start() {
-        
-        skills = new List<SkillObject>(actor.Data().SkillList());
         transform.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
-        LoadButtons();
         battleState.OnStateTransition += Redisplay;
     }
 
     public void Display() {
+        if (!_initialized) {
+            skills = new List<SkillAction>(actor.SkillList);
+            LoadButtons();
+            _initialized = true;
+        }
+
         gameObject.SetActive(true);
         transform.DOScaleY(40, expandDuration);
     }
@@ -65,7 +70,7 @@ public class SkillWindow : MonoBehaviour
     }
 
     private void LoadButtons() {
-        foreach (SkillObject skill in skills) {
+        foreach (SkillAction skill in skills) {
             GameObject button = (GameObject) Instantiate(buttonPrefab, buttonContainer);
             SkillButton skillButton = button.GetComponent<SkillButton>();
             skillButton.AssignSkill(skill);

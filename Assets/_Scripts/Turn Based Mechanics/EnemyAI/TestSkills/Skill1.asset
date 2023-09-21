@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: Skill1
   skillName: Skill1
-  damageAmount: 5
   staminaCost: 10
-  healAmount: 0
-  resistanceAmount: 0
-  speedIncreaseAmount: 0
-  attackIncreaseAmount: 0
-  selfInflictAmount: 0
+  immediateActions: []
+  aoe: 0
+  references:
+    version: 2
+    RefIds: []

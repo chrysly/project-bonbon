@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu()]
@@ -14,16 +12,30 @@ public class SkillObject : ScriptableObject {
     [Tooltip("The name of the skill. Type how this skill name would appear in game.")]
     [SerializeField] private string skillName = "VANILLA";
 
-    [Header("Skill Attributes")] 
-    public int damageAmount = 5;
-    public int staminaCost = 0;
-    public int healAmount = 0;
-    public int resistanceAmount = 0;
-    public int speedIncreaseAmount = 0;
-    public int attackIncreaseAmount = 0;
-    public int selfInflictAmount = 0;
+    [Header("Skill Attributes")]
+
+    public int staminaCost;
+
+    /// <summary> A list of Immediate Actions performed by the skill when used; </summary>
+    [HideInInspector] [SerializeReference]
+    public List<ImmediateAction> immediateActions;
+
     public bool aoe = false;
-    
-    public String GetSkillID() { return skillID; }
+
+    public void PerformActions(StatIteration casterData, Actor target) {
+        foreach (ImmediateAction action in immediateActions) action.Use(casterData, target);
+    }
+
+    /// <summary>
+    /// Compute the action values of each action carried by the skill;
+    /// </summary>
+    /// <param name="actionValue"> AI Value bundle passed down for data collection; </param>
+    public void ComputeActionValues(ref AIActionValue actionValue, StatIteration casterStats) {
+        foreach (ImmediateAction action in immediateActions) {
+            action.ComputeActionValue(ref actionValue, casterStats);
+        }
+    }
+
+    public string GetSkillID() { return skillID; }
     public string GetSkillName() { return skillName; }
 }

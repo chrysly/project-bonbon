@@ -1,37 +1,33 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Scriptable Object class for all and every bonbon;
+/// An instantiable Bonbon Object class;
 /// </summary>
-[CreateAssetMenu(menuName = "Bonbon/Bonbon")]
-public class BonbonObject : ScriptableObject {
+public class BonbonObject {
 
-    public new string name;
-    public Sprite sprite;
+    public BonbonBlueprint Data { get; private set; }
 
-    /// <summary> A description of the bonbon for later use in the UI; </summary>
-    public readonly string description;
+    public string Name => Data.name;
+    public Texture Texture => Data.texture;
+    public string Description => Data.description;
+    public PassiveModifier PassiveModifiers => Data.passiveModifiers;
+    public BonbonBlueprint[] Recipe => Data.recipe;
 
-    /// <summary> An array of status effects granted by the bonbon; </summary>
-    //public StatusEffect[] statusEffects;
-
-    /// <summary> A dictionary containing the bonbons required to make the bonbon, mapped to the required quantity; </summary>
-    public BonbonObject[] recipe;
+    public BonbonObject(BonbonBlueprint blueprint) => Data = blueprint;
 
     public BonbonDisplayObject displayObject;
 
     public override bool Equals(object other) {
+        if (other == null) return false;
         if (other is BonbonObject) {
             BonbonObject oBonbon = other as BonbonObject;
-            return name == oBonbon.name /*StatusEffect.Equals(statusEffects, oBonbon.statusEffects)*/
-                           && recipe.RecipeEquals(oBonbon.recipe); 
+            return Data == oBonbon.Data;
         } return false;
     }
 
     public override int GetHashCode() {
-        return HashCode.Combine(base.GetHashCode(), name, recipe);
+        return System.HashCode.Combine(base.GetHashCode(), Data.name, Data.recipe);
     }
 }

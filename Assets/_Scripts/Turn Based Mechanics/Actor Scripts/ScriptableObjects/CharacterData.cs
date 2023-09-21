@@ -4,6 +4,6 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "Actor Data/Character")]
-
 public class CharacterData : ActorData {
+
 }

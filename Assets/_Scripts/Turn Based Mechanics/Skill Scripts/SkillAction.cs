@@ -1,70 +1,72 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillAction {
-    private SkillObject _data;
-    private Actor _caster;
-    private List<Actor> _targets;
 
-    public SkillAction(SkillObject data) {
-        _data = data;
-    }
-    
-    public SkillAction(SkillObject data, Actor caster, List<Actor> target) {
-        _data = data;
-        _caster = caster;
-        _targets = target;
+    public SkillObject SkillData { get; private set; }
+    public Actor Caster { get; private set; }
+    public List<Effect> Effects { get; private set; }
+    public int SkillIndex { get; private set; } 
+
+    public SkillAction(SkillObject data, Actor caster, int skillIndex) {
+        SkillData = data;
+        Caster = caster;
+        SkillIndex = skillIndex;
     }
 
-    public void SetTarget(List<Actor> target) {
-        _targets = target;
+    public AIActionValue ComputeSkillActionValues(Actor actor) {
+        AIActionValue actionValue = new AIActionValue();
+        SkillData.ComputeActionValues(ref actionValue, actor.ActiveData);
+        actionValue.immediateDamage *= 1 - (actor.ActiveData.Defense / 100);
+        actionValue.damageOverTime *= 1 - (actor.ActiveData.Defense / 100);
+        return actionValue;
     }
 
-    public void SetCaster(Actor caster) {
-        _caster = caster;
-    }
-
-    public void SetSkill(SkillObject data) {
-        _data = data;
-    }
-
-    public override String ToString() {
-        return _data.GetSkillName();
-    }
-
-    public List<Actor> Targets() {
-        return _targets;
-    }
-
-    public Actor Caster() {
-        return _caster;
-    }
-
-    public SkillObject Data() {
-        return _data;
-    }
-
-    public void ActivateSkill() 
-    {
-        foreach(Actor target in _targets)
-        {
-            target.DepleteHitpoints(_data.damageAmount);
-            target.RestoreHitpoints(_data.healAmount);
-        }
-        
-        int selfInflictAmount = _data.selfInflictAmount;
-        if (selfInflictAmount > 0f) {
-            _caster.DepleteHitpoints(selfInflictAmount);
-        } else {
-            _caster.RestoreHitpoints(-selfInflictAmount);
+    public void ActivateSkill(Actor[] targets) {
+        foreach(Actor target in targets) {
+            SkillData.PerformActions(Caster.ActiveData, target);
         }
     }
 
-    public void Clear() {
-        _data = null;
-        _targets = null;
-        _caster = null;
+    public override string ToString() {
+        return SkillData.GetSkillName();
+    }
+}
+
+public class StatIteration {
+
+    public readonly Actor Actor;
+    private readonly ActorData baseData;
+
+    public int Potency { get; private set; }
+    public int Defense { get; private set; }
+    public int StaminaRegen { get; private set; }
+
+    public StatIteration(Actor actor, ActorData data) {
+        Actor = actor;
+        baseData = data;
+        Reset();
+    }
+
+    public void Reset() {
+        Potency = baseData.BasePotency();
+        Defense = baseData.BaseDefense();
+        StaminaRegen = baseData.StaminaRegenRate();
+    }
+
+    public void ComputeModifiers(List<PassiveModifier> mods) {
+        foreach (PassiveModifier mod in mods) {
+            Potency = (int) (mod.attackModifier * Potency);
+            Defense = (int) (mod.defenseModifier * Defense);
+            StaminaRegen = (int) (mod.staminaRegenModifier * StaminaRegen);
+        }
+    }
+
+    public int ComputePotency(int rawAmount) {
+        return rawAmount * (Potency / 100);
+    }
+
+    public int ComputeDefense(int rawAmount) {
+        return rawAmount * (1 - (Defense / 100));
     }
 }
