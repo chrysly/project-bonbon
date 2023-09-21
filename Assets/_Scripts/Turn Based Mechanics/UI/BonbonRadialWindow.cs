@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
 
 public class BonbonRadialWindow : MonoBehaviour {
     [SerializeField] private float rotateDuration = 0.5f;
@@ -13,6 +14,7 @@ public class BonbonRadialWindow : MonoBehaviour {
     [SerializeField] private CanvasGroup mainCanvas;
     [SerializeField] private List<BonbonDisplay> slots;
     [SerializeField] private Transform mainSelectLocation;
+    [SerializeField] private BakeWindow bakeWindow;
 
     private CanvasGroup _canvasGroup;
     private int _index = 0;
@@ -56,8 +58,7 @@ public class BonbonRadialWindow : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) {
                     SwitchToSelect();
                 } else if (Input.GetKeyDown(KeyCode.Escape)) {
-                    ResetSlots();
-                    Hide();
+                    ResetSlots(true);
                 }
                 break;
             case BonbonSelectState.Select:
@@ -78,8 +79,7 @@ public class BonbonRadialWindow : MonoBehaviour {
                     }
                     Select();
                 } else if (Input.GetKeyDown(KeyCode.Escape)) {
-                    ResetSlots();
-                    Hide();
+                    ResetSlots(true);
                 } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
                     SelectedSlot();
                 }
@@ -87,8 +87,8 @@ public class BonbonRadialWindow : MonoBehaviour {
             case BonbonSelectState.Craft:
                 if (Input.GetKeyDown(KeyCode.Escape)) {
                     _selectState = BonbonSelectState.Display;
-                    slots[_index].QuickReset();
-                    ResetSlots();
+                    bakeWindow.Deactivate();
+                    ResetSlots(false);
                 }
 
                 break;
@@ -116,6 +116,7 @@ public class BonbonRadialWindow : MonoBehaviour {
     public void SelectedSlot() {
         if (slots[_index].bonbon == null) {
             _selectState = BonbonSelectState.Craft;
+            bakeWindow.Activate();
         }
         MainSelect();
     }
@@ -131,15 +132,17 @@ public class BonbonRadialWindow : MonoBehaviour {
         }
     }
 
-    public void ResetSlots() {
-        StartCoroutine(ResetAction());
+    public void ResetSlots(bool hide) {
+        slots[_index].QuickReset();
+        StartCoroutine(ResetAction(hide));
     }
 
-    public IEnumerator ResetAction() {
-        yield return new WaitForSeconds(0.4f);
+    public IEnumerator ResetAction(bool hide) {
         foreach (BonbonDisplay display in slots) {
             display.Show();
         }
+        yield return new WaitForSeconds(0.2f);
+        if (hide) Hide();
         _index = 0;
         yield return null;
     }
