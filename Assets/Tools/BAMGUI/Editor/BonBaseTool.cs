@@ -273,6 +273,7 @@ namespace BonbonAssetManager {
         private void DrawAvailableActions() {
             using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
                 for (int i = 0; i < actionTypes.Length; i++) {
+                    
                     using (new EditorGUILayout.ToggleGroupScope(actionTypes[i].FullName, foundActions[i] != null)) {
                         if (foundActions[i] != null) foundActions[i].DrawProperty();
                     }

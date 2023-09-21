@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +36,10 @@ namespace BonbonAssetManager {
             List<System.Type> typeList = new List<System.Type>();
             foreach (ImmediateAction action in actionList) typeList.Add(action.GetType());
             if (typeList.Contains(actionType)) Debug.LogWarning("The action is already included in the list;");
-            else { }
+            else {
+                ImmediateAction actionInstance = System.Activator.CreateInstance(actionType, new object[0]) as ImmediateAction;
+                actionList.Add(actionInstance);
+            }
         }
 
         public static void RemoveAction(this List<ImmediateAction> actionList, System.Type actionType) {
