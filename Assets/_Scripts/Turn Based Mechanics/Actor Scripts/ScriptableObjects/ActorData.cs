@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PseudoDataStructures;
 
 public class ActorData : ScriptableObject
 {
@@ -30,6 +31,9 @@ public class ActorData : ScriptableObject
     
     [Tooltip("The amount of stamina the character replenishes per turn.")]
     [SerializeField] private int staminaRegenRate = 10;
+
+    public ArrayArray<SkillObject> skillMap;
+    public ArrayArray<BonbonBlueprint> bonbonMap;
 
     public string DisplayName() { return displayName; }
     public string ID() { return id; }

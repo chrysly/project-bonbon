@@ -14,8 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: damage_default
   skillName: Basic Attack
-  damageAmount: 15
-  healAmount: 0
-  resistanceAmount: 0
-  speedIncreaseAmount: 0
-  attackIncreaseAmount: 0
+  staminaCost: 0
+  aoe: 0
