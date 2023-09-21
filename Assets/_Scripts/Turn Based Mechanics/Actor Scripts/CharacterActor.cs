@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CharacterActor : Actor
 {
-    private CharacterData _characterData;
 
     protected override void Start() {
         base.Start();
@@ -13,7 +12,6 @@ public class CharacterActor : Actor
 
     protected override void InitializeAttributes() {
         base.InitializeAttributes();
-        _characterData = data as CharacterData;
     }
 
     protected override void InitializeLevelObjects() {
@@ -21,12 +19,12 @@ public class CharacterActor : Actor
 
         for (int i = 0; i < GameManager.CurrLevel; i++) {
             /// Load Skills
-            foreach (SkillObject skill in _characterData.skillMap[i]) {
+            foreach (SkillObject skill in data.skillMap[i]) {
                 CreateSkillAction(skill);
             }
 
             /// Load Bonbons
-            foreach (BonbonBlueprint bonbon in _characterData.bonbonMap[i]) {
+            foreach (BonbonBlueprint bonbon in data.bonbonMap[i]) {
                 BonbonList.Add(bonbon);
             }
         }
