@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,11 @@ public class BonbonWindow : MonoBehaviour
 
     private List<BonbonBlueprint> _bonbonObjects;
     private List<GameObject> _activeButtons;
+
+    private void Start() {
+        _bonbonObjects = new List<BonbonBlueprint>();
+        _activeButtons = new List<GameObject>();
+    }
 
     public void ReloadActor(CharacterActor actor) {
         _bonbonObjects = actor.BonbonList;
