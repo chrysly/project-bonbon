@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: AOEtest
   skillName: AOEtest
-  damageAmount: 15
   staminaCost: 5
-  healAmount: 0
-  resistanceAmount: 0
-  speedIncreaseAmount: 0
-  attackIncreaseAmount: 0
-  selfInflictAmount: 0
+  immediateActions: []
   aoe: 1
+  references:
+    version: 2
+    RefIds: []

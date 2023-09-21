@@ -4,10 +4,12 @@ using UnityEngine;
 /// Action to replenish the hitpoints of a target;
 /// </summary>
 [Serializable]
-public class HealAction : ImmediateAction {
+public class HealAction : ImmediateAction.Generic {
 
     /// <summary> Amount to replenish in the target's hitpoint pool; </summary>
     [SerializeField] private int healAmount;
+
+    public HealAction() { }
 
     public HealAction(int healAmount) {
         this.healAmount = healAmount;
@@ -25,12 +27,8 @@ public class HealAction : ImmediateAction {
 
     #if UNITY_EDITOR
 
-    /// <summary>
-    /// EDITOR-ONLY: Change the heal amount in the ScriptableObject;
-    /// </summary>
-    /// <param name="amount"> New heal amount; </param>
-    public void Modify(int amount) {
-        healAmount = amount;
+    protected override void DrawActionGUI() {
+        healAmount = UnityEditor.EditorGUILayout.IntField("Heal Amount:", healAmount);
     }
 
     #endif

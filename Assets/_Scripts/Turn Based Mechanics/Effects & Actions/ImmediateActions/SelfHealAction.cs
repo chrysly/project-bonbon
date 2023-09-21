@@ -4,10 +4,12 @@ using UnityEngine;
 /// Action to replenish the hitpoints of the caster without target selection;
 /// </summary>
 [Serializable]
-public class SelfHealAction : ImmediateAction {
+public class SelfHealAction : ImmediateAction.SkillOnly {
 
     /// <summary> Amount to replenish in the caster's hitpoint pool; </summary>
     [SerializeField] private int healAmount;
+
+    public SelfHealAction() { }
 
     public SelfHealAction(int healAmount) {
         this.healAmount = healAmount;
@@ -25,12 +27,8 @@ public class SelfHealAction : ImmediateAction {
 
     #if UNITY_EDITOR
 
-    /// <summary>
-    /// EDITOR-ONLY: Change the heal amount in the ScriptableObject;
-    /// </summary>
-    /// <param name="amount"> New heal amount; </param>
-    public void Modify(int amount) {
-        healAmount = amount;
+    protected override void DrawActionGUI() {
+        healAmount = UnityEditor.EditorGUILayout.IntField("Self-Heal Amount:", healAmount);
     }
 
     #endif

@@ -1,13 +1,16 @@
 ﻿using System;
 using UnityEngine;
+
 /// <summary>
 /// Action to deplete the hitpoints of a target;
 /// </summary>
 [Serializable]
-public class DamageAction : ImmediateAction {
+public class DamageAction : ImmediateAction.Generic {
 
     /// <summary> Amount to deduct from the target's hitpoint pool; </summary>
     [SerializeField] private int damageAmount;
+
+    public DamageAction() { }
 
     public DamageAction(int damageAmount) {
         this.damageAmount = damageAmount;
@@ -25,12 +28,8 @@ public class DamageAction : ImmediateAction {
 
     #if UNITY_EDITOR
 
-    /// <summary>
-    /// EDITOR-ONLY: Change the damage amount in the ScriptableObject;
-    /// </summary>
-    /// <param name="amount"> New damage amount; </param>
-    public void Modify(int amount) {
-        damageAmount = amount;
+    protected override void DrawActionGUI() {
+        damageAmount = UnityEditor.EditorGUILayout.IntField("Damage Amount:", damageAmount);
     }
 
     #endif
