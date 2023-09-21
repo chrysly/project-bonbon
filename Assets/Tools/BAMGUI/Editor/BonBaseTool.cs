@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿//using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using CJUtils;
@@ -9,14 +10,19 @@ using CJUtils;
 /// thus I'm creating a new tool altogether rather than inheriting from the former's abstract base;
 /// </summary>
 namespace BonbonAssetManager {
-    public abstract class BonBaseTool {
+    public abstract class BonBaseTool : ScriptableObject {
 
         protected BAMGUI MainGUI;
         public string SelectedPath { get; protected set; }
 
-        public BonBaseTool(BAMGUI mainGUI) {
-            MainGUI = mainGUI;
+        public static T CreateTool<T>(BAMGUI mainGUI) where T : BonBaseTool {
+            T tool = CreateInstance<T>();
+            tool.MainGUI = mainGUI;
+            tool.Initialize();
+            return tool;
         }
+
+        protected abstract void Initialize();
 
         public virtual void ShowGUI() { }
     }
@@ -27,7 +33,7 @@ namespace BonbonAssetManager {
         private BonbonBlueprint selectedBonbon;
         private List<BonbonBlueprint> bonbonList;
 
-        public BonbonManager(BAMGUI mainGUI) : base(mainGUI) {
+        protected override void Initialize() {
             bonbonHierarchy = BaseHierarchy<BonbonBlueprint>.CreateHierarchy<BonbonHierarchy>(this);
             bonbonHierarchy.OnPathSelection += BonbonManager_OnPathSelection;
             UpdateBonbonList();
@@ -142,10 +148,12 @@ namespace BonbonAssetManager {
 
         private void UpdateBonbonRecipe(BonbonBlueprint recipeBonbon, BonbonBlueprint ingredientBonbon) {
             recipeBonbon.AddRecipeSlot(ingredientBonbon);
+            EditorUtility.SetDirty(recipeBonbon);
         }
 
         private void RemoveFromRecipe(BonbonBlueprint recipeBonbon, BonbonBlueprint ingredientBonbon) {
             recipeBonbon.RemoveRecipeSlot(ingredientBonbon);
+            EditorUtility.SetDirty(recipeBonbon);
         }
 
         private void DrawEmptyBox() {
@@ -204,35 +212,28 @@ namespace BonbonAssetManager {
         private System.Type[] actionTypes;
         private ImmediateAction[] foundActions;
 
-        public SkillManager(BAMGUI mainGUI) : base(mainGUI) {
+        protected override void Initialize() {
             skillHierarchy = BaseHierarchy<SkillObject>.CreateHierarchy<SkillHierarchy>(this);
             skillHierarchy.OnPathSelection += SkillHierarchy_OnPathSelection;
-            actionTypes = new System.Type[] {
-                typeof(DamageAction),
-                typeof(HealAction),
-                typeof(SkipTurnAction),
-                typeof(StaminaChangeAction),
-                typeof(ApplyEffectsAction),
-            };
-            /*
-            immediateActions = new ImmediateAction[] {
-                new DamageAction(0),
-                new HealAction(0),
-                new SkipTurnAction(),
-                new StaminaChangeAction(0),
-                new ApplyEffectsAction(null),
-            };*/
+            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.Generic),
+                                                                                typeof(ImmediateAction.SkillOnly)});
+        }
+
+        void OnDisable() {
+            DestroyImmediate(skillInspector);
         }
 
         public void SkillHierarchy_OnPathSelection(string path) {
             SelectedPath = path;
+            DestroyImmediate(skillInspector);
+            skillInspector = null;
             SetSelectedSkill(AssetDatabase.LoadAssetAtPath<SkillObject>(path));
-            if (selectedSkill.immediateActions == null) selectedSkill.immediateActions = new List<ImmediateAction>();
         }
 
         private void SetSelectedSkill(SkillObject skill) {
             selectedSkill = skill;
-            FetchAvailableActions();
+            if (selectedSkill.immediateActions == null) selectedSkill.immediateActions = new List<ImmediateAction>();
+            foundActions = ActionUtils.FetchAvailableActions(selectedSkill.immediateActions, actionTypes);
         }
 
         public override void ShowGUI() {
@@ -251,64 +252,79 @@ namespace BonbonAssetManager {
                         else Debug.Log("Nope");
 
                         EditorGUILayout.Separator();
-                        EditorUtils.DrawSeparatorLines("Immediate Actions");
+                        EditorUtils.DrawSeparatorLines(" Immediate Actions");
                         EditorGUILayout.Separator();
 
-                        DrawAvailableActions();
+                        if (ActionUtils.DrawAvailableActions(ref selectedSkill.immediateActions,
+                                                             ref foundActions, actionTypes)) EditorUtility.SetDirty(selectedSkill);
                     } else {
                         EditorUtils.DrawScopeCenteredText("Select a Bonbon to edit it here;");
                     }
                 }
             }
         }
+    }
 
-        private void FetchAvailableActions() {
-            foundActions = new ImmediateAction[actionTypes.Length];
-            for (int i = 0; i < actionTypes.Length; i++) {
-                var action = selectedSkill.immediateActions.FindAction(actionTypes[i]);
-                if (action != null) foundActions[i] = action;
-            }
+    public class EffectManager : BonBaseTool {
+
+        private EffectHierarchy effectHierarchy;
+        private EffectBlueprint selectedEffect;
+        private Editor effectInspector;
+
+        private System.Type[] actionTypes;
+        private ImmediateAction[] foundActions;
+
+        protected override void Initialize() {
+            effectHierarchy = BaseHierarchy<EffectBlueprint>.CreateHierarchy<EffectHierarchy>(this);
+            effectHierarchy.OnPathSelection += EffectHierarchy_OnPathSelection;
+            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.Generic),
+                                                                                typeof(ImmediateAction.EffectOnly)});
         }
 
-        private void DrawAvailableActions() {
-            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
-                for (int i = 0; i < actionTypes.Length; i++) {
+        void OnDisable() {
+            DestroyImmediate(effectInspector);
+        }
+
+        public void EffectHierarchy_OnPathSelection(string path) {
+            SelectedPath = path;
+            DestroyImmediate(effectInspector);
+            effectInspector = null;
+            SetSelectedSkill(AssetDatabase.LoadAssetAtPath<EffectBlueprint>(path));
+        }
+
+        private void SetSelectedSkill(EffectBlueprint effect) {
+            selectedEffect = effect;
+            if (selectedEffect.actions == null) selectedEffect.actions = new List<ImmediateAction>();
+            foundActions = ActionUtils.FetchAvailableActions(selectedEffect.actions, actionTypes);
+        }
+
+        public override void ShowGUI() {
+            using (new EditorGUILayout.HorizontalScope()) {
+                using (new EditorGUILayout.VerticalScope()) {
+                    effectHierarchy.ShowGUI();
+
+                }
                     
-                    using (new EditorGUILayout.ToggleGroupScope(actionTypes[i].FullName, foundActions[i] != null)) {
-                        if (foundActions[i] != null) foundActions[i].DrawProperty();
+                using (new EditorGUILayout.VerticalScope()) {
+                    MainGUI.DrawToolbar();
+
+                    if (selectedEffect != null) {
+                        if (effectInspector is null) effectInspector = Editor.CreateEditor(selectedEffect);
+                        if (selectedEffect != null) effectInspector.OnInspectorGUI();
+                        else Debug.Log("Nope");
+
+                        EditorGUILayout.Separator();
+                        EditorUtils.DrawSeparatorLines(" Immediate Actions", true);
+                        EditorGUILayout.Separator();
+
+                        if (ActionUtils.DrawAvailableActions(ref selectedEffect.actions,
+                                                             ref foundActions, actionTypes)) EditorUtility.SetDirty(selectedEffect);
+                    } else {
+                        EditorUtils.DrawScopeCenteredText("Select a Bonbon to edit it here;");
                     }
                 }
             }
         }
-
-        /*
-        private void DrawAvailableActions() {
-            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
-                foreach (ImmediateAction action in immediateActions) {
-                    BAMUtils.DrawBonbonDragButton(new ImmediateActionWrapper(action), new GUIContent(action.GetType().FullName), 60);
-                }
-            }
-        }
-
-        private void DrawEntryAcceptBox() {
-            ImmediateActionWrapper wrapper = BAMUtils.DrawDragAcceptButton<ImmediateActionWrapper>(GUILayout.Height(300));
-            if (wrapper is not null) selectedSkill.immediateActions.InsertAction(wrapper.action);
-        }
-
-        private void DrawActionObjects() {
-            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
-                foreach (ImmediateAction action in selectedSkill.immediateActions) {
-                    BAMUtils.DrawBonbonDragButton(new ImmediateActionWrapper(action), new GUIContent(action.GetType().FullName), 60);
-
-                }
-            }
-        }
-
-        private void DrawExitAcceptBox() {
-            ImmediateActionWrapper wrapper = BAMUtils.DrawDragAcceptButton<ImmediateActionWrapper>(GUILayout.Height(400));
-            if (wrapper is not null) selectedSkill.immediateActions.RemoveAction(wrapper.action);
-        }
-        */
     }
 
     public class ActorManager : BonBaseTool {
@@ -318,7 +334,7 @@ namespace BonbonAssetManager {
         private List<BonbonBlueprint> bonbonList;
         private List<SkillObject> skillList;
 
-        public ActorManager(BAMGUI mainGUI) : base(mainGUI) {
+        protected override void Initialize() {
             actorHierarchy = BaseHierarchy<ActorData>.CreateHierarchy<ActorHierarchy>(this);
             actorHierarchy.OnPathSelection += ActorManager_OnPathSelection;
         }

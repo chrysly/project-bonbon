@@ -16,6 +16,8 @@ public class SkillObject : ScriptableObject {
 
     public int staminaCost;
 
+    /// <summary> A list of Immediate Actions performed by the skill when used; </summary>
+    [HideInInspector] [SerializeReference]
     public List<ImmediateAction> immediateActions;
 
     public bool aoe = false;

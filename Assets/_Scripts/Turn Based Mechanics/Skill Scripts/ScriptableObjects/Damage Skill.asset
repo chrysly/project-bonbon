@@ -14,8 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: damage_default
   skillName: Basic Attack
-  damageAmount: 15
-  healAmount: 0
-  resistanceAmount: 0
-  speedIncreaseAmount: 0
-  attackIncreaseAmount: 0
+  staminaCost: 0
+  immediateActions:
+  - rid: 6468753952663666695
+  - rid: 6468753952663666696
+  aoe: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6468753952663666695
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        damageAmount: 0
+    - rid: 6468753952663666696
+      type: {class: StaminaChangeAction, ns: , asm: Assembly-CSharp}
+      data:
+        staminaAmount: 0

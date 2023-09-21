@@ -23,7 +23,8 @@ public class SkillWindow : MonoBehaviour
     private List<SkillAction> skills;
 
     private void Start() {
-        
+
+        skills = new List<SkillAction>();
         //skills = new List<SkillObject>(actor.Data().SkillList());
         transform.GetComponent<ScrollRect>().verticalNormalizedPosition = 1f;
         LoadButtons();

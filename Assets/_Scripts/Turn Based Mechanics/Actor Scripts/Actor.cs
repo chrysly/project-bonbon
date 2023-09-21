@@ -54,6 +54,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     }
 
     protected virtual void InitializeLevelObjects() {
+        SkillList = new List<SkillAction>();
+        BonbonList = new List<BonbonBlueprint>();
         EffectList = new List<Effect>();
         ComputeStats();
     }

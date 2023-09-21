@@ -1,9 +1,14 @@
 ﻿using System;
+
 /// <summary>
 /// Generic definition for an action;
 /// </summary>
 [Serializable]
 public abstract class ImmediateAction {
+
+    public abstract class Generic : ImmediateAction { }
+    public abstract class SkillOnly : ImmediateAction { }
+    public abstract class EffectOnly : ImmediateAction { }
 
     /// <summary>
     /// Override to implement AI value yield;
@@ -20,11 +25,13 @@ public abstract class ImmediateAction {
 
     #if UNITY_EDITOR
 
-    public void DrawProperty() {
+    public void OnGUI() {
         using (new UnityEditor.EditorGUILayout.HorizontalScope(CJUtils.UIStyles.WindowBox)) {
-            UnityEditor.EditorGUILayout.IntField(0);
+            DrawActionGUI();
         }
     }
+
+    protected abstract void DrawActionGUI();
 
     #endif
 }

@@ -10,6 +10,57 @@ using System.Collections.Generic;
 namespace PseudoDataStructures {
 
     /// <summary>
+    /// A dystopian map of indeces to a single array of strings to emulate several arrays... Yay ;-;
+    /// </summary>
+    [Serializable]
+    public class ArrayArray<T> {
+
+        public int[] startIndeces;
+        public T[] secondaryElements;
+
+        public ArrayArray(T[][] array) {
+            startIndeces = new int[array.Length];
+            secondaryElements = new T[0];
+            var i = 0;
+            foreach (T[] subArray in array) {
+                secondaryElements = secondaryElements.Concat(subArray).ToArray();
+                startIndeces[i] = secondaryElements.Length - subArray.Length;
+                i++;
+            }
+        }
+
+        public T[] this[int index] {
+            get => ToArray()[index];
+            set => ToArray()[index] = value;
+        }
+
+        /*
+        public static T[] SubArray(this T[] data, int startIndex, int nextIndex) {
+            T[] result = new T[nextIndex - startIndex];
+            Array.Copy(data, startIndex, result, 0, nextIndex - startIndex);
+            return result;
+        }*/
+
+        public ArrayArray() {
+            startIndeces = new int[0];
+            secondaryElements = new T[0];
+        }
+
+        public T[][] ToArray() {
+            var secondaryEList = new List<T>(secondaryElements);
+            T[][] array = new T[startIndeces.Length][];
+            if (startIndeces.Length > 0) {
+                for (int i = 0; i < startIndeces.Length - 1; i++) {
+                    array[i] = secondaryEList.GetRange(startIndeces[i], startIndeces[i + 1] - startIndeces[i]).ToArray();
+                }
+                var lastIndex = startIndeces[startIndeces.Length - 1];
+                array[array.Length - 1] = secondaryEList.GetRange(lastIndex, secondaryEList.Count - lastIndex).ToArray();
+            }
+            return array;
+        }
+    }
+
+    /// <summary>
     /// A basic map of strings to strings... Yay ;-;
     /// </summary>
     [Serializable]

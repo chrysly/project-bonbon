@@ -6,7 +6,7 @@ using UnityEngine;
 /// Action to Apply Effects to the given targets;
 /// </summary>
 [Serializable]
-public class ApplyEffectsAction : ImmediateAction {
+public class ApplyEffectsAction : ImmediateAction.SkillOnly {
 
     /// <summary> List of effects applied by the action; </summary>
     [SerializeField] private List<EffectBlueprint> effects;
@@ -27,11 +27,15 @@ public class ApplyEffectsAction : ImmediateAction {
 
     #if UNITY_EDITOR
 
+    protected override void DrawActionGUI() {
+        
+    }
+
     /// <summary>
     /// EDITOR-ONLY: Add an Effect to the effect list in the ScriptableObject;
     /// </summary>
     /// <param name="effect"> Effect to add; </param>
-    public void AddEffect(EffectBlueprint effect) {
+    private void AddEffect(EffectBlueprint effect) {
         effects.Add(effect);
     }
 
@@ -39,7 +43,7 @@ public class ApplyEffectsAction : ImmediateAction {
     /// EDITOR-ONLY: Remove an Effect from the effect list in the ScriptableObject;
     /// </summary>
     /// <param name="effectIndex"> Index of the effect to remove; </param>
-    public void RemoveEffect(int effectIndex) {
+    private void RemoveEffect(int effectIndex) {
         effects.RemoveAt(effectIndex);
     }
 

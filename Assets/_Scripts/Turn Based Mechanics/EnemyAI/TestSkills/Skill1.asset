@@ -15,4 +15,8 @@ MonoBehaviour:
   skillID: Skill1
   skillName: Skill1
   staminaCost: 10
+  immediateActions: []
   aoe: 0
+  references:
+    version: 2
+    RefIds: []

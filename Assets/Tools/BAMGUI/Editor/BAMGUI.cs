@@ -30,14 +30,14 @@ namespace BonbonAssetManager {
         void OnEnable() {
             IntializeLists();
             tools = new BonBaseTool[] {
-                new BonbonManager(this),
-                new SkillManager(this),
-                //BonBaseTool.CreateTool<ActorManager>(this),
+                BonBaseTool.CreateTool<BonbonManager>(this),
+                BonBaseTool.CreateTool<SkillManager>(this),
+                BonBaseTool.CreateTool<EffectManager>(this),
             };
         }
 
         void OnDisable() {
-            tools = null;
+            for (int i = 0; i < tools.Length; i++) DestroyImmediate(tools[i]);
             Resources.UnloadUnusedAssets();
         }
 
@@ -168,7 +168,7 @@ namespace BonbonAssetManager {
             }
         }
     }
-    /*
+    
     public class EffectHierarchy : BaseHierarchy<EffectBlueprint> {
 
         private EffectManager bonbonManager;
@@ -188,7 +188,7 @@ namespace BonbonAssetManager {
                 OnPathSelection?.Invoke(path);
             }
         }
-    }*/
+    }
 
 
     public class ActorHierarchy : BaseHierarchy<ActorData> {

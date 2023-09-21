@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c358eb00b1732145a73f24acfb6aa50, type: 3}
   m_Name: BonbonMap
   m_EditorClassIdentifier: 
+  bonbonMap:
+    startIndeces: 00000000
+    secondaryElements:
+    - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
+    - {fileID: 11400000, guid: 7e3505e7bbb63bb49a4085045d627bf9, type: 2}
+    - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
