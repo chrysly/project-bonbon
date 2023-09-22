@@ -39,18 +39,18 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _BaseGradientLine: 0.75
-    - _GlowBottomLine: 0.545
-    - _GlowTopLine: 0.8
-    - _Metallic: 0.4
+    - _BaseGradientLine: 0.356
+    - _GlowBottomLine: 0.302
+    - _GlowTopLine: 0.878
+    - _Metallic: 0.47
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.6
-    - _Transparency: 0.75
+    - _Smoothness: 0.783
+    - _Transparency: 0.811
     m_Colors:
-    - _BaseBottomColor: {r: 1, g: 0.49424538, b: 0, a: 1}
-    - _BaseTopColor: {r: 0, g: 1, b: 0.80888844, a: 1}
-    - _GlowBottomColor: {r: 9.734288, g: 3.8730667, b: 0.35675412, a: 1}
+    - _BaseBottomColor: {r: 0, g: 0.359169, b: 1, a: 1}
+    - _BaseTopColor: {r: 0.5754717, g: 0, b: 0.1760267, a: 1}
+    - _GlowBottomColor: {r: 0.40771908, g: 5.8917, b: 9.734288, a: 1}
     - _GlowTopColor: {r: 0, g: 2.7954419, b: 2.675099, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &4804280605269331857
