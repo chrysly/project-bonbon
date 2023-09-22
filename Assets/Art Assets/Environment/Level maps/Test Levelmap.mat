@@ -42,10 +42,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 160.17
+    - _Brightness: 2.4
     - _Glossiness: -10
-    - _Toon_Amount: 0.04
+    - _Rim_Amount: 0
+    - _Rim_Threshold: 0
+    - _Toon_Amount: 0.204
     m_Colors:
-    - _Ambient_Color: {r: 0.404, g: 0.404, b: 0.404, a: 1}
-    - _Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+    - _Ambient_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
