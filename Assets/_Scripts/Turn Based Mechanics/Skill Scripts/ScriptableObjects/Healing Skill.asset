@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: healing_default
   skillName: Basic Heal
-  damageAmount: 0
-  healAmount: 10
-  resistanceAmount: 0
-  speedIncreaseAmount: 0
-  attackIncreaseAmount: 0
+  staminaCost: 0
+  immediateActions:
+  - rid: 3928641313810939904
+  aoe: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 3928641313810939904
+      type: {class: HealAction, ns: , asm: Assembly-CSharp}
+      data:
+        healAmount: 10

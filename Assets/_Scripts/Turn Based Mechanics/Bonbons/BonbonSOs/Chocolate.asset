@@ -20,7 +20,7 @@ MonoBehaviour:
     defenseModifier: 1
     staminaRegenModifier: 1
   recipe:
-  - {fileID: 11400000, guid: 7e3505e7bbb63bb49a4085045d627bf9, type: 2}
-  - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
