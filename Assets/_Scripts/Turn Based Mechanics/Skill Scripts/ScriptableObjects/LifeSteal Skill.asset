@@ -14,9 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: lifeStealAttack_default
   skillName: Life Steal
-  damageAmount: 8
-  healAmount: 0
-  resistanceAmount: 0
-  speedIncreaseAmount: 0
-  attackIncreaseAmount: 0
-  selfInflictAmount: -8
+  staminaCost: 0
+  immediateActions:
+  - rid: 3928641313810939905
+  - rid: 3928641313810939907
+  aoe: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 3928641313810939905
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        damageAmount: 10
+    - rid: 3928641313810939907
+      type: {class: SelfHealAction, ns: , asm: Assembly-CSharp}
+      data:
+        healAmount: 5

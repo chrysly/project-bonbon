@@ -27,6 +27,6 @@ MonoBehaviour:
   bonbonMap:
     startIndeces: 00000000
     secondaryElements:
-    - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
-    - {fileID: 11400000, guid: 7e3505e7bbb63bb49a4085045d627bf9, type: 2}
     - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
+    - {fileID: 11400000, guid: 2710e95bd92df5e4986fb1b931939f93, type: 2}
+    - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
