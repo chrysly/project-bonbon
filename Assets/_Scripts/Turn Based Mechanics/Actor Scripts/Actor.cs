@@ -156,6 +156,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         return _stamina;
     }
 
+    /// <summary> parameter is based on %health </summary>
     public void RefundStamina(int percent) {
         // ensure the % is in valid range
         if (percent < 0)

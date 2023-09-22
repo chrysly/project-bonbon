@@ -9,8 +9,8 @@ public class EnemyAI
         KillUnit = 100,
         Damage = 4,
         HealthPercent = 10,
+        NumOfBonBons = 2
         // later inflict different status conditions
-        // also how many bonsbons the characters have
     }
 
     /// <summary> pass in the current active list of actors and the current actor, returns an ActiveSkillPrep </summary>
@@ -82,48 +82,45 @@ public class EnemyAI
         return bestActiveSkill;
     }
     
-    private static int calculateGoodnessValue(ScenarioSkillData skill)
+    private static int calculateGoodnessValue(ScenarioSkillData skillData)
     {
-        // PROLLY CHANGE TO INTS???? --> i changed them to ints
         int value = 0;
-        value += addValueBasedOnDamage(skill);
-        value += addValueBasedOnHealth(skill);
-        // add value based on status
-
+        foreach (Actor actor in skillData.characterActors)
+        {
+            value += addValueBasedOnDamage(skillData, actor);
+            value += addValueBasedOnHealth(skillData, actor);
+            value += addValueBasedOnNumBonbons(skillData, actor);
+        }
         return value;
     }
 
     // later add functionality with a target array
-    private static int addValueBasedOnDamage(ScenarioSkillData skillData)
+    private static int addValueBasedOnDamage(ScenarioSkillData skillData, Actor actor)
     {
         int point = 0;
-
-        // if the skill can kill the targets
-        foreach (Actor actor in skillData.characterActors)
+        
+        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints())
         {
-            if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints())
-            {
-                point += (int) AiWeights.KillUnit;
-            }
-            else
-            {
-                point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;
-            }
+            point += (int) AiWeights.KillUnit;
         }
-
+        else
+        {
+            point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;
+        } 
         return point;
     }
 
     // based on % health
-    private static int addValueBasedOnHealth(ScenarioSkillData skill)
+    private static int addValueBasedOnHealth(ScenarioSkillData skill, Actor actor)
     {
-        int point = 0;
-
-        foreach (Actor actor in skill.characterActors)
-        {
-            point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent;
-        }
-
+        int point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent; 
         return point;
+    }
+
+    private static int addValueBasedOnNumBonbons(ScenarioSkillData skill, Actor actor)
+    {
+        int point = actor.BonbonList.Count * (int)AiWeights.NumOfBonBons;
+        return point;
+  
     }
 }
