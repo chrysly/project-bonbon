@@ -24,7 +24,6 @@ namespace BonbonAssetManager {
 
         public List<BonbonBlueprint> GlobalBonbonList { get; private set; }
         public List<SkillObject> GlobalSkillList { get; private set; }
-        public List<EffectBlueprint> GlobalEffectList { get; private set; }
         public List<ActorData> GlobalActorList { get; private set; }
 
         void OnEnable() {
@@ -42,22 +41,9 @@ namespace BonbonAssetManager {
         }
 
         private void IntializeLists() {
-            GlobalBonbonList = new List<BonbonBlueprint>();
-            InitializeList(GlobalBonbonList);
-            GlobalSkillList = new List<SkillObject>();
-            InitializeList(GlobalSkillList);
-            GlobalEffectList = new List<EffectBlueprint>();
-            InitializeList(GlobalEffectList);
-            GlobalActorList = new List<ActorData>();
-            InitializeList(GlobalActorList);
-        }
-
-        private void InitializeList<T>(List<T> list) where T : Object {
-            string typeName = typeof(T).FullName;
-            var genericGUIDs = AssetDatabase.FindAssets($"t:{typeName}");
-            for (int i = 0; i < genericGUIDs.Length; i++) {
-                list.Add(AssetDatabase.LoadAssetAtPath<T>(AssetDatabase.GUIDToAssetPath(genericGUIDs[i])));
-            }
+            GlobalBonbonList = BAMUtils.InitializeList<BonbonBlueprint>();
+            GlobalSkillList = BAMUtils.InitializeList<SkillObject>();
+            GlobalActorList = BAMUtils.InitializeList<ActorData>();
         }
 
         void OnGUI() => tools[(int) activeTool].ShowGUI();
