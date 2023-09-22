@@ -138,6 +138,7 @@ public class BonbonRadialWindow : MonoBehaviour {
                     if (_combineIndex < slots.Count - 1) {
                         _combineIndex++;
                         if (_index == _combineIndex) _combineIndex++;
+                        if (_combineIndex > slots.Count - 1) _combineIndex = 0;
                     }
                     else {
                         _combineIndex = 0;
@@ -151,6 +152,7 @@ public class BonbonRadialWindow : MonoBehaviour {
                     if (_combineIndex > 0) {
                         _combineIndex--;
                         if (_index == _combineIndex) _combineIndex--;
+                        if (_combineIndex < 0) _combineIndex = slots.Count - 1;
                     }
                     else {
                         _combineIndex = slots.Count - 1;
@@ -235,6 +237,9 @@ public class BonbonRadialWindow : MonoBehaviour {
                 DrawLine(slots[_combineIndex].transform.position, slots[_index].transform.position,
                     output.transform.position);
                 return blueprint[0];
+            }
+            else {
+                Debug.Log("not valid recipe");
             }
         }
         else {
@@ -341,7 +346,7 @@ public class BonbonRadialWindow : MonoBehaviour {
         foreach (BonbonDisplay display in slots) {
             display.Show();
         }
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         _canvasGroup.DOFade(0, rotateDuration);
         transform.DOScale(0f, rotateDuration);
     }
