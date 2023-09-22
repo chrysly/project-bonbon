@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a1e328ef7550848b63f4350f7b66cf, type: 3}
   m_Name: Cream
   m_EditorClassIdentifier: 
-  name: Cream
+  name: Cherry
   texture: {fileID: 2800000, guid: 53e81017d2fb37c468ed65c85cff8f58, type: 3}
   passiveModifiers:
     attackModifier: 0

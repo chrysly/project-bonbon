@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class BonbonDisplay : MonoBehaviour {
     public BonbonObject bonbon;
-    private Image imageComponent;   //Sprite including container
+    private RawImage imageComponent;   //Sprite including container
 
     private bool _isSelected = false;
     private float _bumpDist = 0.5f;
@@ -15,12 +15,12 @@ public class BonbonDisplay : MonoBehaviour {
     private Vector3 oldPosition;
     
     private void Start() {
-        imageComponent = GetComponent<Image>();
+        imageComponent = GetComponent<RawImage>();
         oldPosition = transform.position;
     }
 
-    public void UpdateSprite(Sprite sprite) {
-        imageComponent.sprite = sprite;
+    public void UpdateSprite(Texture image) {
+        imageComponent.texture = image;
     }
 
     public void Select() {
@@ -50,5 +50,10 @@ public class BonbonDisplay : MonoBehaviour {
     public void QuickReset() {
         _isSelected = false;
         transform.DOMove(oldPosition, 0.1f);
+    }
+
+    public void InstantReset() {
+        _isSelected = false;
+        transform.DOMove(oldPosition, 0f);
     }
 }

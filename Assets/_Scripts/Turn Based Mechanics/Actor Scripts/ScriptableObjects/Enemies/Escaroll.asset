@@ -15,11 +15,16 @@ MonoBehaviour:
   displayName: Escaroll
   id: escaroll
   maxHitpoints: 80
-  baseAttack: 2
+  basePotency: 10
   baseDefense: 5
   baseSpeed: 8
   maxStamina: 100
   staminaRegenRate: 20
-  skillList:
-  - {fileID: 11400000, guid: f0554fb479c9bd14c92b1c3089e23da1, type: 2}
-  ingredientList: []
+  skillMap:
+    startIndeces: 00000000
+    secondaryElements:
+    - {fileID: 11400000, guid: f0554fb479c9bd14c92b1c3089e23da1, type: 2}
+    - {fileID: 11400000, guid: 7fcd51859e99fcc458d94aa84e3627f8, type: 2}
+  bonbonMap:
+    startIndeces: 
+    secondaryElements: []

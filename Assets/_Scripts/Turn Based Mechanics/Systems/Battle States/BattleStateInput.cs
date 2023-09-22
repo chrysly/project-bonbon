@@ -52,7 +52,9 @@ public class BattleStateInput : StateInput {
     }
 
     public void ActivateSkill() {
-        SkillPrep.skill.ActivateSkill(SkillPrep.targets);
+        if (SkillPrep.targets.Length > 0) {
+            SkillPrep.skill.ActivateSkill(SkillPrep.targets);
+        }
         SkillPrep = new ActiveSkillPrep();
     }
 

@@ -83,6 +83,23 @@ public partial class
         }
     }
 
+    public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {
+        if (CurrState is TurnState) {
+            BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor().BonbonInventory, mask);
+            for (int i = 0; i < 4; i++) {
+                BonbonObject bObject = CurrInput.ActiveActor().BonbonInventory[i];
+                if (bObject == null) {
+                    Debug.Log("NULL at " + i);
+                }
+                else {
+                    Debug.Log("Bonbon: " + bObject.Name + " at " + i);
+                }
+            }
+            CurrInput.ActiveActor().InsertBonbon(slot, bonbonObject);
+            Transition<BonbonState>();
+        }
+    }
+
     public void AnimateTurn() {
         CurrState.AnimateTurn();
     }

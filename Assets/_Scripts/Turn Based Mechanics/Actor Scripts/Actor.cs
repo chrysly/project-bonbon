@@ -37,7 +37,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #region Bonbon Inventory
 
-    protected BonbonBlueprint[] bonbonInventory = new BonbonBlueprint[4];
+    public BonbonObject[] BonbonInventory { get; protected set; }
 
     #endregion
 
@@ -56,6 +56,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     protected virtual void InitializeLevelObjects() {
         SkillList = new List<SkillAction>();
         BonbonList = new List<BonbonBlueprint>();
+        BonbonInventory = new BonbonObject[4];
         EffectList = new List<Effect>();
         ComputeStats();
         
@@ -82,8 +83,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     private void ComputeStats() {
         List<PassiveModifier> modifiers = new List<PassiveModifier>();
-        foreach (BonbonBlueprint bonbon in bonbonInventory) {
-            if (bonbon != null) modifiers.Add(bonbon.passiveModifiers);
+        foreach (BonbonObject bonbon in BonbonInventory) {
+            if (bonbon != null) modifiers.Add(bonbon.PassiveModifiers);
         } foreach (Effect effect in EffectList) {
             modifiers.Add(effect.modifiers);
         } ActiveData.ComputeModifiers(modifiers);
@@ -126,9 +127,9 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         return false;
     }
 
-    public void InsertBonbon(int slot, BonbonBlueprint bonbon) {
-        if (bonbonInventory[slot] == null) {
-            bonbonInventory[slot] = bonbon;
+    public void InsertBonbon(int slot, BonbonObject bonbon) {
+        if (BonbonInventory[slot] == null) {
+            BonbonInventory[slot] = bonbon;
         } else Debug.LogError("Inventory slot was not available;");
     }
 
