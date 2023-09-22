@@ -70,8 +70,9 @@ public class EnemyAI
                 bestValue = scene.getGoodnessValue();
             }
         }
-
+        
         // if there's a tie in goodness values, pick a random scenario from the list
+        Debug.Log(bestScenarios.Count);
         Scenario chosenScenario = bestScenarios[Random.Range(0, bestScenarios.Count)];
         BattleStateInput.ActiveSkillPrep bestActiveSkill = new BattleStateInput.ActiveSkillPrep()
         {

@@ -21,8 +21,9 @@ MonoBehaviour:
   maxStamina: 50
   staminaRegenRate: 20
   skillMap:
-    startIndeces: 
-    secondaryElements: []
+    startIndeces: 00000000
+    secondaryElements:
+    - {fileID: 11400000, guid: aeb0e7af1e732af43af0b8f54d08b698, type: 2}
   bonbonMap:
     startIndeces: 
     secondaryElements: []
