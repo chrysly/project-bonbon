@@ -59,26 +59,24 @@ public class EnemyAI
             Debug.Log(scen.getSkillAction().ToString() + " " + scen.getGoodnessValue());
         }
 
-        // edit this so if two ppl have == goodness values it randomlly chooses
-        // return skill with the highest goodnessvalue
-
-        Scenario bestScenario = null;   // better practice would prolly be to just assign the frist skill + random target but it's b4 M1 so
+        // get scenario(s) with the highest goodness values
+        List<Scenario> bestScenarios = null;   // better practice would prolly be to just assign the frist skill + random target but it's b4 M1 so
         int bestValue = -1;
         foreach(Scenario scene in scenarios)
         {
             if (scene.getGoodnessValue() > bestValue)
             {
-                bestScenario = scene;
+                bestScenarios.Add(scene);
                 bestValue = scene.getGoodnessValue();
             }
         }
 
-        //Debug.Log("target: " + bestSkill.Targets() + " skill: " + bestSkill.ToString());
-
+        // if there's a tie in goodness values, pick a random scenario from the list
+        Scenario chosenScenario = bestScenarios[Random.Range(0, bestScenarios.Count)];
         BattleStateInput.ActiveSkillPrep bestActiveSkill = new BattleStateInput.ActiveSkillPrep()
-        { 
-            skill = bestScenario.getSkillAction().skill,
-            targets = bestScenario.getSkillAction().characterActors.ToArray(),
+        {
+            skill = chosenScenario.getSkillAction().skill,
+            targets = chosenScenario.getSkillAction().characterActors.ToArray(),
         };
 
         return bestActiveSkill;
