@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Joseph Seo/TemplateScene1.unity
-    guid: 1410a42d14b76ae4095388228df03cb1
+    path: Assets/Scenes/SceneStructureTest/MainMenu.unity
+    guid: 629fe8271782ddb4fb64d5285d442c8f
   - enabled: 1
-    path: Assets/Scenes/Joseph Seo/TemplateScene2.unity
-    guid: 82205e5479e3694459d371c2e80d09ee
+    path: Assets/Scenes/SceneStructureTest/CampfireScene.unity
+    guid: 1bd99e8ea5363e344984d4ab174a9da9
   - enabled: 1
-    path: Assets/Scenes/Joseph Seo/TemplateScene3.unity
-    guid: b9ba40a3dc5c3714a85366a3e9c5b745
+    path: Assets/Scenes/DevScenes/M1 Build.unity
+    guid: 194d0d2e923fd1a49a7feee171fd1052
   m_configObjects: {}
