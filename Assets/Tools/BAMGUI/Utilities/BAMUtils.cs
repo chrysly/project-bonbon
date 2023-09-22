@@ -2,11 +2,29 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
+
 using UnityEditor;
 using CJUtils;
 
+#endif
+
 namespace BonbonAssetManager {
+
+    #if UNITY_EDITOR
+
     public static class BAMUtils {
+
+        public static List<T> InitializeList<T>() where T : Object {
+            List<T> list = new List<T>();
+            string typeName = typeof(T).FullName;
+            var genericGUIDs = AssetDatabase.FindAssets($"t:{typeName}");
+            for (int i = 0; i < genericGUIDs.Length; i++) {
+                list.Add(AssetDatabase.LoadAssetAtPath<T>(AssetDatabase.GUIDToAssetPath(genericGUIDs[i])));
+            } return list;
+        }
+
         public static void DrawBonbonDragButton<T>(T draggedObject, GUIContent content, float buttonSize) where T : Object {
             using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
                 Rect buttonRect = GUILayoutUtility.GetRect(buttonSize, buttonSize, GUILayout.ExpandWidth(false));
@@ -121,4 +139,5 @@ namespace BonbonAssetManager {
             } return updateObject;
         }
     }
+    #endif
 }
