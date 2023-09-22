@@ -113,24 +113,24 @@ Material:
     - _Foam_Direction: -0.3
     - _Foam_Distortion: 1
     - _Foam_Speed: 0.3
-    - _Foam_Tiling: 4.38
+    - _Foam_Tiling: 7.88
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Horizon_Distance: 10
-    - _Interactive_Foam_Blend: 9.73
-    - _Interactive_Foam_Depth: 0.17
+    - _Interactive_Foam_Blend: 11.28
+    - _Interactive_Foam_Depth: 2.16
     - _Interactive_Foam_Direction: 0.7
-    - _Interactive_Foam_Fade: 1.15
+    - _Interactive_Foam_Fade: 1.03
     - _Interactive_Foam_Speed: 0.3
-    - _Interactive_Foam_Tiling: 4.55
+    - _Interactive_Foam_Tiling: 6.64
     - _Interactive_foam_Cutoff: 0.92
     - _Lighting_Hardness: 0.61
     - _Lighting_Smoothness: 0.86
     - _Metallic: 0
     - _Normals_Scale: 0.497
     - _Normals_Speed: 0.1
-    - _Normals_Strength: 0.41
+    - _Normals_Strength: 1.42
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _PosterizeSteps: 15.61
