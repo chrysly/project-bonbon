@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList: []
   prefabData:
-  - prefab: {fileID: 2488608136728311129, guid: 920d6f37d490266439a4048df9d1ae8b, type: 3}
+  - prefab: {fileID: 1346097984916386761, guid: c0897ea8bacb9e944831880fea0d0c68, type: 3}
     selected: 1
   paintType: 0
-  brushSize: 20
+  brushSize: 1
   minBrushSize: 0.1
   maxBrushSize: 20
   paintDeltaDistance: 0.4
   maxPaintDeltaDistance: 3
   minPaintDeltaDistance: 0.1
-  prefabsPerStroke: 14
+  prefabsPerStroke: 1
   maxprefabsPerStroke: 20
   minprefabsPerStroke: 1
   spawnHeight: 10
@@ -42,32 +42,32 @@ MonoBehaviour:
   maxRequiredSlope: 0
   prefabOriginOffset: {x: 0, y: 0, z: 0}
   prefabRotationOffset: {x: 0, y: 0, z: 0}
-  draggingAction: 0
+  draggingAction: 1
   rotationAxis: 0
   rotationSensitivity: 10
   parentingStyle: 0
   parent: {fileID: 0}
-  rotateToMatchSurface: 1
+  rotateToMatchSurface: 0
   rotateSurfaceDirection: 0
   randomizeRotation: 1
   minXRotation: 0
   maxXRotation: 0
-  minYRotation: 0
-  maxYRotation: 180
+  minYRotation: 230
+  maxYRotation: 240
   minZRotation: 0
   maxZRotation: 0
-  scaleType: 2
+  scaleType: 1
   scaleApplicationType: 0
-  minScale: 1
-  maxScale: 1
-  minXScale: 12
-  maxXScale: 30
-  minYScale: 10
-  maxYScale: 30
-  minZScale: 13
-  maxZScale: 30
+  minScale: 2
+  maxScale: 5
+  minXScale: 1
+  maxXScale: 1
+  minYScale: 1
+  maxYScale: 1
+  minZScale: 1
+  maxZScale: 1
   parentList: []
-  eraseBrushSize: 14.13
+  eraseBrushSize: 1
   minEraseBrushSize: 0.1
   maxEraseBrushSize: 20
   eraseType: 0
