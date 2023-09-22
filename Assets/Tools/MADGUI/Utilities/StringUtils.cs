@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public static class StringUtils {
 
@@ -63,6 +66,8 @@ public static class StringUtils {
         } return new string(nArr);
     }
 
+    #if UNITY_EDITOR
+
     /// <summary>
     /// Transforms a Model path into a Prefab path by changing the name of the root;
     /// <br></br> May trim the file name or replace it by the default Model name if indicated;
@@ -101,4 +106,6 @@ public static class StringUtils {
         targetPath += "/" + AssetDatabase.GUIDToAssetPath(guid).IsolatePathEnd("\\/", true) + ".prefab";
         return targetPath;
     }
+
+    #endif
 }
