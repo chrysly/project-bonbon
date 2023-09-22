@@ -18,7 +18,7 @@ public class DamageAction : ImmediateAction.Generic {
 
     public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) {
         int computedDamage = casterData.ComputePotency(damageAmount);
-        actionValue.immediateDamage -= computedDamage;
+        actionValue.immediateDamage += computedDamage;
     }
 
     public override void Use(StatIteration activeData, Actor target) {

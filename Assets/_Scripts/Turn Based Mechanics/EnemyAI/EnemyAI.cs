@@ -33,6 +33,7 @@ public class EnemyAI
         // calculate the goodness value for each skill and each possible target it could have
         foreach (SkillAction skill in currentActor.SkillList)
         {
+            //Debug.Log("Stamina: " + currentActor.GetStamina());
             // make sure the enemy has enough stamina to use the move
             if (currentActor.GetStamina() >= skill.SkillData.staminaCost)
             {
@@ -107,20 +108,23 @@ public class EnemyAI
         else
         {
             point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;
-        } 
+        }
+        //Debug.Log("dmg: " + skillData.skill.ComputeSkillActionValues(actor).immediateDamage);
         return point;
     }
 
     // based on % health
     private static int addValueBasedOnHealth(ScenarioSkillData skill, Actor actor)
     {
-        int point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent; 
+        int point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent;
+        //Debug.Log("health: " + point);
         return point;
     }
 
     private static int addValueBasedOnNumBonbons(ScenarioSkillData skill, Actor actor)
     {
         int point = actor.BonbonList.Count * (int)AiWeights.NumOfBonBons;
+        //Debug.Log("bonbon: " + point);
         return point;
   
     }
