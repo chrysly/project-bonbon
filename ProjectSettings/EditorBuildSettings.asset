@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SceneStructureTest/CampfireScene.unity
     guid: 1bd99e8ea5363e344984d4ab174a9da9
   - enabled: 1
-    path: Assets/Scenes/DevScenes/M1 Build.unity
-    guid: 194d0d2e923fd1a49a7feee171fd1052
+    path: Assets/Scenes/DialogueTesting.unity
+    guid: c64f1798809d27741b4e42b05fd4c995
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/M1 Build 1.unity
+    guid: 53c4e14c3f56609448e5c3664e111ccb
   m_configObjects: {}

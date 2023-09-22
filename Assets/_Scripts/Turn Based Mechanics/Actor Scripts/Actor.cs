@@ -102,7 +102,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     //Returns true if Actor has no remaining health.
     public bool DepleteHitpoints(int damage) {
-        damage *= 1 - (ActiveData.Defense / 100);
+        damage = ActiveData.ComputeDefense(damage);
 
         if (_hitpoints - damage <= 0) {
             _hitpoints = 0;

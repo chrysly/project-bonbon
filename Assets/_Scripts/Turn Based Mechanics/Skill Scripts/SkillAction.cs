@@ -17,8 +17,8 @@ public class SkillAction {
     public AIActionValue ComputeSkillActionValues(Actor actor) {
         AIActionValue actionValue = new AIActionValue();
         SkillData.ComputeActionValues(ref actionValue, actor.ActiveData);
-        actionValue.immediateDamage *= 1 - (actor.ActiveData.Defense / 100);
-        actionValue.damageOverTime *= 1 - (actor.ActiveData.Defense / 100);
+        actionValue.immediateDamage = actor.ActiveData.ComputeDefense(actionValue.immediateDamage);
+        actionValue.damageOverTime = actor.ActiveData.ComputeDefense(actionValue.damageOverTime);
         return actionValue;
     }
 
@@ -58,12 +58,12 @@ public class StatIteration {
         foreach (PassiveModifier mod in mods) {
             Potency = (int) (mod.attackModifier * Potency);
             Defense = (int) (mod.defenseModifier * Defense);
-            StaminaRegen = (int) (mod.staminaRegenModifier * StaminaRegen);
+            StaminaRegen = (int) (mod.staminaRegenModifier + StaminaRegen);
         }
     }
 
     public int ComputePotency(int rawAmount) {
-        return rawAmount * (Potency / 100);
+        return rawAmount + rawAmount * (Potency / 100);
     }
 
     public int ComputeDefense(int rawAmount) {

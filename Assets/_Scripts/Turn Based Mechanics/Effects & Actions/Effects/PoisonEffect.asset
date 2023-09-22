@@ -15,7 +15,7 @@ MonoBehaviour:
   name: 
   duration: 0
   modifiers:
-    attackModifier: 0
-    healCastModifier: 0
-    defenseModifier: 0
-    staminaRegenModifier: 0
+    attackModifier: 1
+    healCastModifier: 1
+    defenseModifier: 1
+    staminaRegenModifier: 1
