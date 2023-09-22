@@ -91,9 +91,6 @@
             "m_Id": "090b80815cd44a61bf7fb851f6782b7e"
         },
         {
-            "m_Id": "b6a07c36242843e49f5d256a31a1dfe2"
-        },
-        {
             "m_Id": "f65ca147ce304d05a8caedb3112977d1"
         }
     ],
@@ -1043,6 +1040,21 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "6c038794141d42758e6b51594a3095fe",
+    "m_Id": -1551878497,
+    "m_DisplayName": "Smoothness",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Smoothness",
+    "m_StageCapability": 2,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "6d5d5f58bd244e8aaba2b532e93f0580",
     "m_Id": -689299062,
     "m_DisplayName": "Rim Amount",
@@ -1248,42 +1260,6 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.IntegerNode",
-    "m_ObjectId": "b6a07c36242843e49f5d256a31a1dfe2",
-    "m_Group": {
-        "m_Id": ""
-    },
-    "m_Name": "Integer",
-    "m_DrawState": {
-        "m_Expanded": true,
-        "m_Position": {
-            "serializedVersion": "2",
-            "x": 1092.385009765625,
-            "y": 501.2275085449219,
-            "width": 0.0,
-            "height": 0.0
-        }
-    },
-    "m_Slots": [
-        {
-            "m_Id": "e95c40311b634d778bf70c3b60e3be93"
-        }
-    ],
-    "synonyms": [
-        "whole number"
-    ],
-    "m_Precision": 0,
-    "m_PreviewExpanded": true,
-    "m_DismissedVersion": 0,
-    "m_PreviewMode": 0,
-    "m_CustomColors": {
-        "m_SerializableColors": []
-    },
-    "m_Value": 0
 }
 
 {
@@ -1643,13 +1619,13 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "e95c40311b634d778bf70c3b60e3be93",
-    "m_Id": 0,
-    "m_DisplayName": "Out",
-    "m_SlotType": 1,
+    "m_ObjectId": "ea4eaef815fe4499a3f816711db09968",
+    "m_Id": -1604149671,
+    "m_DisplayName": "Hardness",
+    "m_SlotType": 0,
     "m_Hidden": false,
-    "m_ShaderOutputName": "Out",
-    "m_StageCapability": 3,
+    "m_ShaderOutputName": "_Hardness",
+    "m_StageCapability": 2,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -1738,6 +1714,12 @@
             "m_Id": "cb4da0c22e594c0d9bc0b61b5580ecb3"
         },
         {
+            "m_Id": "6c038794141d42758e6b51594a3095fe"
+        },
+        {
+            "m_Id": "ea4eaef815fe4499a3f816711db09968"
+        },
+        {
             "m_Id": "9a5c855fa90c4caaa54f54fab06eb082"
         }
     ],
@@ -1761,7 +1743,9 @@
         "c00775e6-3c92-444d-9be1-152914328ec2",
         "586443cb-1133-4dde-9901-a1adeb72f16e",
         "615f5ad4-52d0-45c3-a766-f47b28626014",
-        "b6c213d1-146e-4ee1-914a-137d45482903"
+        "b6c213d1-146e-4ee1-914a-137d45482903",
+        "d78e4d3f-8c68-4711-9226-fa695ad1e55a",
+        "7610c549-8518-44cd-85d8-fb7a8d0644e8"
     ],
     "m_PropertyIds": [
         -1721505995,
@@ -1774,7 +1758,9 @@
         1876007675,
         -689299062,
         1258818699,
-        -2045180565
+        -2045180565,
+        -1551878497,
+        -1604149671
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
