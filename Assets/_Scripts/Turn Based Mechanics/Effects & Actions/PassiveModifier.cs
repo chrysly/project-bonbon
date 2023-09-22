@@ -7,13 +7,13 @@
 public class PassiveModifier {
 
     /// <summary> Multiplier for the Actor attack attribute; </summary>
-    public float attackModifier;
+    public float attackModifier = 1;
     /// <summary> Multiplier for the Actor heal cast attribute; </summary>
-    public float healCastModifier;
+    public float healCastModifier = 1;
     /// <summary> Multiplier for the Actor attack attribute; </summary>
-    public float defenseModifier;
+    public float defenseModifier = 1;
     /// <summary> Multiplier for the Actor stamina regen attribute; </summary>
-    public float staminaRegenModifier;
+    public float staminaRegenModifier = 1;
 
     //public float speedModifier;
     //public float evasionModifier;
