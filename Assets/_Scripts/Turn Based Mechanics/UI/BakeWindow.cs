@@ -17,8 +17,8 @@ public class BakeWindow : MonoBehaviour {
         transform.DOScale(new Vector3(0, 1, 1), 0);
     }
 
-    public void Activate(CharacterActor actor) {
-        bonbonWindow.ReloadActor(actor);
+    public void Activate(CharacterActor actor, int index) {
+        bonbonWindow.ReloadActor(actor, index);
         transform.DOScale(1, 0.6f);
         transform.DOMove(endPoint, 0.5f);
     }

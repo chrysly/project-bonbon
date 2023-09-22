@@ -14,4 +14,11 @@ public class Movement {
                 .OnComplete(() => { transform.DOMove(originalPos, 0.1f); });
         });
     }
+
+    public void Bump(Transform transform) {
+        float move = 0.5f;
+        Vector3 originalPos = transform.position; 
+        transform.DOMove(originalPos + transform.forward * move, 0.1f)
+                .OnComplete(() => { transform.DOMove(originalPos, 0.1f); });
+    }
 }

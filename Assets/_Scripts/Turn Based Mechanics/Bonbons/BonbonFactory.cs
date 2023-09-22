@@ -10,6 +10,10 @@ public class BonbonFactory : MonoBehaviour {
     [SerializeField] private BonbonMap bonbonMapSO;
     /// <summary> An array referencing all bonbons used in battle; </summary>
     private List<BonbonBlueprint> allBonbons;
+    
+    #region Events
+    public event System.Action<BonbonObject> OnBonbonCreation;
+    #endregion Events
 
     /// <summary>
     /// Initialize the Bonbon Factory;
@@ -32,7 +36,7 @@ public class BonbonFactory : MonoBehaviour {
     public BonbonObject CreateBonbon(string name, ref BonbonObject[] bonbonInventory, bool[] recipeMask) {
         FindBonbon(name, out BonbonBlueprint bonbonBlueprint);
         if (bonbonBlueprint != null) {
-            return CreateBonbon(bonbonBlueprint, ref bonbonInventory, recipeMask);
+            return CreateBonbon(bonbonBlueprint, bonbonInventory, recipeMask);
         } else throw new System.Exception($"InvalidString: No bonbon named \"{name}\" was found;");
     }
 
@@ -42,11 +46,15 @@ public class BonbonFactory : MonoBehaviour {
     /// <param name="bonbon"> A bonbon object to duplicate; </param>
     /// <param name="recipeBonbons"> Bonbons used to create the new bonbon; </param>
     /// <returns> A bonbon object if the recipe is valid, NULL otherwise; </returns>
-    public BonbonObject CreateBonbon(BonbonBlueprint bonbon, ref BonbonObject[] bonbonInventory, bool[] recipeMask) {
+    public BonbonObject CreateBonbon(BonbonBlueprint bonbon, BonbonObject[] bonbonInventory, bool[] recipeMask) {
         BonbonBlueprint[] recipeBonbons = CraftRecipeFromMask(bonbonInventory, recipeMask);
-        if (bonbon.recipe.Equals(recipeBonbons)) {
-            DestroyUsedIngredients(ref bonbonInventory, recipeMask);
-            return bonbon.InstantiateBonbon();
+        if (bonbon.recipe.RecipeEquals(recipeBonbons)) {
+            Debug.Log("Bonbon invoked");
+            BonbonObject newBonbon = bonbon.InstantiateBonbon();
+            OnBonbonCreation?.Invoke(newBonbon);
+            
+            DestroyUsedIngredients(bonbonInventory, recipeMask);
+            return newBonbon;
         } else return null;
     }
 
@@ -55,13 +63,13 @@ public class BonbonFactory : MonoBehaviour {
         List<BonbonBlueprint> maskedList = new List<BonbonBlueprint>();
         for (int i = 0; i < bonbonInventory.Length; i++) {
             if (recipeMask[i]) maskedList.Add(bonbonInventory[i].Data);
-        } return maskedList.ToArray();
+        } return maskedList.Count > 0 ? maskedList.ToArray() : null;
     }
 
     /// <summary>
     /// Destroy the ingredients spent when creating a bonbon object;
     /// </summary>
-    private void DestroyUsedIngredients(ref BonbonObject[] bonbonInventory, bool[] recipeMask) {
+    private void DestroyUsedIngredients(BonbonObject[] bonbonInventory, bool[] recipeMask) {
         for (int i = 0; i < bonbonInventory.Length; i++) {
             if (recipeMask[i]) bonbonInventory[i] = null;
         }

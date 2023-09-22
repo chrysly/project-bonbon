@@ -9,6 +9,7 @@ public class BonbonWindow : MonoBehaviour
     [SerializeField] private Transform buttonContainer;
 
     [SerializeField] private BakeWindow display;
+    [SerializeField] private BonbonRadialWindow _radialWindow;
 
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private BattleStateMachine battleState;
@@ -20,19 +21,21 @@ public class BonbonWindow : MonoBehaviour
         _activeButtons = new List<GameObject>();
     }
 
-    public void ReloadActor(CharacterActor actor) {
-        LoadButtons(actor);
+    public void ReloadActor(CharacterActor actor, int index) {
+        LoadButtons(actor, index);
     }
     
-    private void LoadButtons(CharacterActor actor) {
+    private void LoadButtons(CharacterActor actor, int index) {
         ClearPreviousButtons();
         foreach (BonbonBlueprint bonbonBlueprint in actor.BonbonList) {
             GameObject button = (GameObject) Instantiate(buttonPrefab, buttonContainer);
             BonbonButton bonbonButton = button.GetComponent<BonbonButton>();
             bonbonButton.AssignBonbon(bonbonBlueprint);
             Button btn = button.GetComponent<Button>();
-            btn.onClick.AddListener(delegate { /*battleState.SwitchToTargetSelect(skill);*/ });
+            btn.onClick.AddListener(delegate { battleState.SwitchToBonbonState(bonbonBlueprint, index, new bool[4]); });
+            Debug.Log("Slot Index:" + index);
             btn.onClick.AddListener(delegate { display.Deactivate(); });
+            btn.onClick.AddListener(delegate { _radialWindow.CloseAll(); });
             _activeButtons.Add(button);
         }
     }

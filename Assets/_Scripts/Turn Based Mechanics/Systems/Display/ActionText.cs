@@ -6,17 +6,29 @@ using TMPro;
 public class ActionText : MonoBehaviour
 {
     [SerializeField] private BattleStateMachine stateMachine;
+    [SerializeField] private BonbonFactory bonbonFactory;
     [SerializeField] private float textActiveDuration = 3f;
     private IEnumerator _activeDisplay;
     void Start() {
         stateMachine.OnStateTransition += UpdateActionText;
+        bonbonFactory.OnBonbonCreation += UpdateBonbonActionText;
     }
 
     private void UpdateActionText(BattleStateMachine.BattleState state, BattleStateInput input) {
-        if (state is not BattleStateMachine.AnimateState) return;
+        if (state is BattleStateMachine.AnimateState) {
+            TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
+            text.SetText(input.ActiveActor().data.DisplayName() + " used " + input.SkillPrep.skill.SkillData.name +
+                         " on "
+                         + input.SkillPrep.targets[0].data.DisplayName() +
+                         "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
+            ClearText();
+        }
+    }
+    
+    private void UpdateBonbonActionText(BonbonObject bonbon) {
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-        text.SetText(input.ActiveActor().data.DisplayName() + " used " + input.SkillPrep.skill.SkillData.name + " on "
-                     + input.SkillPrep.targets[0].data.DisplayName() + "!");     //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
+        text.SetText(stateMachine.CurrInput.ActiveActor().data.DisplayName() + " created " + bonbon.Name +
+                     "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
         ClearText();
     }
 
