@@ -24,6 +24,39 @@ public class DamageAction : ImmediateAction.Generic {
     public override void Use(StatIteration activeData, Actor target) {
         int computedDamage = activeData.ComputePotency(damageAmount);
         target.DepleteHitpoints(computedDamage);
+
+        // knock off bonbons % chance ---
+        int damagePercent = (computedDamage / activeData.Actor.Hitpoints()) * 100;
+        int bonbonsToRemove = 0;
+
+        if (damagePercent < 25)
+        {
+            bonbonsToRemove = 0;
+        }
+        else if (damagePercent < 50)
+        {
+            bonbonsToRemove = 1;
+        }
+        else if (damagePercent < 75)
+        {
+            bonbonsToRemove = 2;
+        }
+        else if (damagePercent < 100)
+        {
+            bonbonsToRemove = 3;
+        }
+
+        System.Random rand = new System.Random();
+        bonbonsToRemove += rand.Next(2);
+
+        if (bonbonsToRemove > target.BonbonList.Count)
+            bonbonsToRemove = target.BonbonList.Count;
+
+        for (int i = 0; i < bonbonsToRemove; i++)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, target.BonbonList.Count);
+            target.BonbonList.RemoveAt(randomIndex);
+        }
     }
 
     #if UNITY_EDITOR
