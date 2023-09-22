@@ -60,7 +60,7 @@ public class EnemyAI
         }
 
         // get scenario(s) with the highest goodness values
-        List<Scenario> bestScenarios = null;   // better practice would prolly be to just assign the frist skill + random target but it's b4 M1 so
+        List<Scenario> bestScenarios = new List<Scenario>();   // better practice would prolly be to just assign the frist skill + random target but it's b4 M1 so
         int bestValue = -1;
         foreach(Scenario scene in scenarios)
         {
