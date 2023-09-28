@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08862334, g: 0.55690324, b: 0.8517802, a: 1}
+  m_IndirectSpecularColor: {r: 0.08865037, g: 0.55702084, b: 0.85183114, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1190,7 +1190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241918096}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14565267, y: 0.7081331, z: -0.153093, w: 0.6737176}
+  m_LocalRotation: {x: 0.1468623, y: 0.7027673, z: -0.15193297, w: 0.6793128}
   m_LocalPosition: {x: -29.828835, y: 15.02369, z: 2.013046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3591,6 +3591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e4c6ac46a12a14d80b6841ad3e92e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bonbonFactory: {fileID: 0}
   battleStartAnimationDuration: 0
   enemyTurnDuration: 2
   actorList:
@@ -5373,6 +5374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 1080657832}
+  bonbonFactory: {fileID: 0}
   textActiveDuration: 3
 --- !u!1 &1441484204
 GameObject:
@@ -9460,6 +9462,7 @@ MonoBehaviour:
   buttonLoadDuration: 0
   actor: {fileID: 0}
   buttonContainer: {fileID: 5674463966722547382}
+  battleState: {fileID: 0}
   buttonPrefab: {fileID: 2053959126028085542, guid: 66a856b74dcbc744b8837ef372c0eef4, type: 3}
   panel: {fileID: 5674463966829186518}
 --- !u!222 &5674463965799864566
@@ -10494,6 +10497,7 @@ MonoBehaviour:
   buttonLoadDuration: 0
   actor: {fileID: 0}
   buttonContainer: {fileID: 5674463967421580573}
+  battleState: {fileID: 0}
   buttonPrefab: {fileID: 2053959126028085542, guid: 66a856b74dcbc744b8837ef372c0eef4, type: 3}
   panel: {fileID: 5674463967308748413}
 --- !u!1 &5674463966261048730
