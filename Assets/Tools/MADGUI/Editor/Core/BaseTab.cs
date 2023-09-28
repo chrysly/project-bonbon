@@ -130,8 +130,8 @@ namespace ModelAssetDatabase {
         /// <param name="path"> Path of the Material to read; </param>
         public override void SetSelectedAsset(string path) {
             ResetData();
-            MaterialManager.SetPreviewTarget(MaterialManager.PreviewTarget.Sphere);
             Material material = AssetDatabase.LoadAssetAtPath<Material>(path);
+            MaterialManager.SetPreviewTarget(MaterialManager.PreviewTarget.Sphere, material);
             managedMaterial = new ManagedMaterialData(path, material);
         }
 
@@ -171,7 +171,7 @@ namespace ModelAssetDatabase {
                         EditorUtils.WindowBoxLabel("Material Preview");
                         MaterialManager.DrawMaterialPreview();
                         using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
-                            MaterialManager.DrawMaterialPreviewOptions();
+                            MaterialManager.DrawMaterialPreviewOptions(managedMaterial.material);
                         }
                     }
                 }

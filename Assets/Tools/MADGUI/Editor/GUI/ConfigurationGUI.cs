@@ -77,9 +77,9 @@ namespace ModelAssetDatabase {
                     EditorUtils.DrawSeparatorLines("Data & Documentation", true);
                     GUILayout.FlexibleSpace();
                     if (configIsInvalid) GUI.enabled = false;
-                    if (GUILayout.Button("Open Asset Library")) {
+                    if (GUILayout.Button("Open Asset Database")) {
                         ModelAssetDatabaseGUI.ShowWindow(); 
-                    } if (GUILayout.Button("Reload Asset Library")) {
+                    } if (GUILayout.Button("Reload Asset Database")) {
                         Refresh();
                     } if (configIsInvalid) GUI.enabled = true;
                     if (GUILayout.Button("Open Documentation")) {

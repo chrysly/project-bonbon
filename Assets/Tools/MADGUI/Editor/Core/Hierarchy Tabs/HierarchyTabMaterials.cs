@@ -32,7 +32,7 @@ namespace ModelAssetDatabase {
         }
 
         protected override void DrawHierarchyButton(string path) {
-            bool selected = path == HierarchyBuilder.SelectedAssetPath;
+            bool selected = path == HierarchyBuilder.GUIAssetPath;
             GUIStyle buttonStyle = selected ? UIStyles.HButtonSelected : UIStyles.HButton;
             string pathName = path.IsolatePathEnd("\\/").RemovePathEnd(".");
             float width = EditorUtils.MeasureTextWidth(pathName, GUI.skin.font);

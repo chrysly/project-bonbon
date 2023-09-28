@@ -40,7 +40,7 @@ namespace ModelAssetDatabase {
         /// </summary>
         /// <param name="path"> Path to the file; </param>
         protected override void DrawHierarchyButton(string path) {
-            bool selected = path == HierarchyBuilder.SelectedAssetPath;
+            bool selected = path == HierarchyBuilder.GUIAssetPath;
             GUIStyle buttonStyle = selected ? UIStyles.HButtonSelected : UIStyles.HButton;
             string extension = path.IsolatePathEnd(".");
             string fileName = path.IsolatePathEnd("\\/").Replace(extension, extension.ToUpper());
