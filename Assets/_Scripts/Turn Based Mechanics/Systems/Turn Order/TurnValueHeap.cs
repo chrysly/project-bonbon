@@ -21,18 +21,22 @@ public class TurnValueHeap : MinHeap<TurnValueHandler> {
         }
     }
     public void FlatModify(Actor actor, int modifyTurnValue) {
-        for(int i = 1; i <= _size; i++) {
+        int i;
+        for(i = 1; i <= _size; i++) {
             TurnValueHandler tvh = _backingArray[i];
             if (tvh.Actor.Equals(actor)) {
                 tvh.ActionMeter -= modifyTurnValue * tvh.Speed;
                 break;
             }
         }
+        UpHeap(i);
+        DownHeap(i);
     }
     public void FlatModifyAll(int modifyTurnValue) {
         for(int i = 1; i <= _size; i++) {
             TurnValueHandler tvh = _backingArray[i];
             tvh.ActionMeter -= modifyTurnValue * tvh.Speed;
         }
+        BuildHeap();
     }
 }

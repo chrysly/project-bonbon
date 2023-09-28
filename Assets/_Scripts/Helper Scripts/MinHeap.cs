@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 
 public class MinHeap<T> where T : IComparable<T> {
     private const int InitialCapacity = 5;
@@ -51,7 +50,7 @@ public class MinHeap<T> where T : IComparable<T> {
         _size++;
         UpHeap(_size);
     }
-    private void UpHeap(int currentIdx) {
+    protected void UpHeap(int currentIdx) {
         if (currentIdx > _size || currentIdx < 1) {
             throw new IndexOutOfRangeException("Attempted to access outside of heap, this is a problem with internal implementation!");
         } else if (currentIdx > 1) {
@@ -77,7 +76,7 @@ public class MinHeap<T> where T : IComparable<T> {
         DownHeap(1);
         return removedData;
     }
-    private void DownHeap(int currentIdx) {
+    protected void DownHeap(int currentIdx) {
         if (currentIdx > _size || currentIdx < 1) {
             throw new IndexOutOfRangeException("Attempted to access outside of heap, this is a problem with internal implementation!");
         }
