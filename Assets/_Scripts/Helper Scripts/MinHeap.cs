@@ -68,6 +68,9 @@ public class MinHeap<T> where T : IComparable<T> {
         }
     }
     public T Remove() {
+        if (_size == 0) {
+            throw new IndexOutOfRangeException("Heap is empty, cannot remove from empty heap");
+        }
         T removedData = _backingArray[1];
         _backingArray[1] = _backingArray[_size];
         _backingArray[_size] = default;
@@ -109,6 +112,10 @@ public class MinHeap<T> where T : IComparable<T> {
         }
     }
     public T Peek() {
-        return _backingArray[1];
+        if (_size != 0) {
+            return _backingArray[1];
+        }
+        
+        throw new IndexOutOfRangeException("Heap is empty, cannot return minimum value");
     }
 }

@@ -15,7 +15,6 @@ public class TurnValueHandler : IComparable<TurnValueHandler> {
     public int TurnValue() {
         return ActionMeter / Speed;
     }
-
     public int CompareTo(TurnValueHandler incoming) {
         if (incoming == null) {
             return 0;
@@ -25,5 +24,8 @@ public class TurnValueHandler : IComparable<TurnValueHandler> {
             return -this.Speed.CompareTo(incoming.Speed);
         }
         return this.TurnValue().CompareTo(incoming.TurnValue());
+    }
+    public void ResetActionMeter() {
+        ActionMeter = DefaultActionMeter;
     }
 }

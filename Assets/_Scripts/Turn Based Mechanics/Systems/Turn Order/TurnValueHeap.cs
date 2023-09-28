@@ -6,6 +6,10 @@ public class TurnValueHeap : MinHeap<TurnValueHandler> {
         CreateTurnValueList(actors);
         BuildHeap();
     }
+    public TurnValueHeap(TurnValueHeap turnValueHeap) {
+        _backingArray = (TurnValueHandler[]) turnValueHeap._backingArray.Clone();
+        _size = turnValueHeap._size;
+    }
 
     private void CreateTurnValueList(List<Actor> actors) {
         foreach(Actor actor in actors) {
@@ -20,23 +24,39 @@ public class TurnValueHeap : MinHeap<TurnValueHandler> {
             _size++;
         }
     }
-    public void FlatModify(Actor actor, int modifyTurnValue) {
+    public void FlatModifyTurnValue(Actor actor, int modifyTurnValue) {
         int i;
         for(i = 1; i <= _size; i++) {
             TurnValueHandler tvh = _backingArray[i];
             if (tvh.Actor.Equals(actor)) {
-                tvh.ActionMeter -= modifyTurnValue * tvh.Speed;
+                tvh.ActionMeter += modifyTurnValue * tvh.Speed;
                 break;
             }
         }
         UpHeap(i);
         DownHeap(i);
     }
-    public void FlatModifyAll(int modifyTurnValue) {
+    public void FlatModifyTurnValueAll(int modifyTurnValue) {
         for(int i = 1; i <= _size; i++) {
             TurnValueHandler tvh = _backingArray[i];
-            tvh.ActionMeter -= modifyTurnValue * tvh.Speed;
+            tvh.ActionMeter += modifyTurnValue * tvh.Speed;
         }
+        BuildHeap();
+    }
+    public void RemoveActor(Actor actor) {
+        for(int i = 1; i <= _size; i++) {
+            TurnValueHandler tvh = _backingArray[i];
+            if (tvh.Actor.Equals(actor)) {
+                _backingArray[i] = _backingArray[_size];
+                _backingArray[_size] = null;
+                DownHeap(i);
+                return;
+            }
+        }
+
+        throw new KeyNotFoundException("Provided actor for removal from heap does not exist!");
+    }
+    public void BuildTurnValueHeap() {
         BuildHeap();
     }
 }
