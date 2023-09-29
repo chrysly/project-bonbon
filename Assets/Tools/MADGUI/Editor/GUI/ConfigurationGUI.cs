@@ -58,7 +58,7 @@ namespace ModelAssetDatabase {
                             }
                         } else configIsInvalid = true;
                         if (GUILayout.Button(new GUIContent(EditorUtils.FetchIcon("d_Folder Icon")), GUILayout.MaxWidth(40), GUILayout.MaxHeight(18 ))) {
-                            string res = OpenAndParseFolder();
+                            string res = GeneralUtils.OpenAndParseFolder();
                             if (res != null) {
                                 UpdateRootAssetPath(res);
                                 potentialPath = res;

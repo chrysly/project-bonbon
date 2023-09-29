@@ -13,16 +13,16 @@ namespace BonbonAssetManager {
     public abstract class BonBaseTool : ScriptableObject {
 
         protected BAMGUI MainGUI;
+
         public string SelectedPath { get; protected set; }
 
         public static T CreateTool<T>(BAMGUI mainGUI) where T : BonBaseTool {
             T tool = CreateInstance<T>();
             tool.MainGUI = mainGUI;
-            tool.Initialize();
             return tool;
         }
 
-        protected abstract void Initialize();
+        public abstract void Initialize();
 
         public virtual void ShowGUI() { }
     }
@@ -32,10 +32,13 @@ namespace BonbonAssetManager {
         private BonbonHierarchy bonbonHierarchy;
         private BonbonBlueprint selectedBonbon;
         private List<BonbonBlueprint> bonbonList;
+        private AssetCreator<BonbonBlueprint> assetCreator;
 
-        protected override void Initialize() {
+        public override void Initialize() {
+            assetCreator = new AssetCreator<BonbonBlueprint>(MainGUI.assetPaths[(int) BAMGUI.ToolType.BonbonManager]);
             bonbonHierarchy = BaseHierarchy<BonbonBlueprint>.CreateHierarchy<BonbonHierarchy>(this);
             bonbonHierarchy.OnPathSelection += BonbonManager_OnPathSelection;
+            assetCreator.OnAssetCreation += bonbonHierarchy.ReloadHierarchy;
             UpdateBonbonList();
         }
 
@@ -74,6 +77,7 @@ namespace BonbonAssetManager {
             using (new EditorGUILayout.HorizontalScope()) {
                 using (new EditorGUILayout.VerticalScope()) {
                     bonbonHierarchy.ShowGUI();
+                    assetCreator.ShowCreator();
                 }
                     
                 using (new EditorGUILayout.VerticalScope()) {
@@ -208,13 +212,16 @@ namespace BonbonAssetManager {
         private SkillHierarchy skillHierarchy;
         private SkillObject selectedSkill;
         private Editor skillInspector;
+        private AssetCreator<SkillObject> assetCreator;
 
         private System.Type[] actionTypes;
         private ImmediateAction[] foundActions;
 
-        protected override void Initialize() {
+        public override void Initialize() {
+            assetCreator = new AssetCreator<SkillObject>(MainGUI.assetPaths[(int) BAMGUI.ToolType.SkillManager]);
             skillHierarchy = BaseHierarchy<SkillObject>.CreateHierarchy<SkillHierarchy>(this);
             skillHierarchy.OnPathSelection += SkillHierarchy_OnPathSelection;
+            assetCreator.OnAssetCreation += skillHierarchy.ReloadHierarchy;
             actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.Generic),
                                                                                 typeof(ImmediateAction.SkillOnly)});
         }
@@ -240,7 +247,7 @@ namespace BonbonAssetManager {
             using (new EditorGUILayout.HorizontalScope()) {
                 using (new EditorGUILayout.VerticalScope()) {
                     skillHierarchy.ShowGUI();
-
+                    assetCreator.ShowCreator();
                 }
                     
                 using (new EditorGUILayout.VerticalScope()) {
@@ -270,13 +277,16 @@ namespace BonbonAssetManager {
         private EffectHierarchy effectHierarchy;
         private EffectBlueprint selectedEffect;
         private Editor effectInspector;
+        private AssetCreator<EffectBlueprint> assetCreator;
 
         private System.Type[] actionTypes;
         private ImmediateAction[] foundActions;
 
-        protected override void Initialize() {
+        public override void Initialize() {
+            assetCreator = new AssetCreator<EffectBlueprint>(MainGUI.assetPaths[(int) BAMGUI.ToolType.EffectManager]);
             effectHierarchy = BaseHierarchy<EffectBlueprint>.CreateHierarchy<EffectHierarchy>(this);
             effectHierarchy.OnPathSelection += EffectHierarchy_OnPathSelection;
+            assetCreator.OnAssetCreation += effectHierarchy.ReloadHierarchy;
             actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.Generic),
                                                                                 typeof(ImmediateAction.EffectOnly)});
         }
@@ -302,7 +312,7 @@ namespace BonbonAssetManager {
             using (new EditorGUILayout.HorizontalScope()) {
                 using (new EditorGUILayout.VerticalScope()) {
                     effectHierarchy.ShowGUI();
-
+                    assetCreator.ShowCreator();
                 }
                     
                 using (new EditorGUILayout.VerticalScope()) {
@@ -333,10 +343,13 @@ namespace BonbonAssetManager {
         private ActorData selectedActor;
         private List<BonbonBlueprint> bonbonList;
         private List<SkillObject> skillList;
+        private AssetCreator<ActorData> assetCreator;
 
-        protected override void Initialize() {
+        public override void Initialize() {
+            assetCreator = new AssetCreator<ActorData>(MainGUI.assetPaths[(int) BAMGUI.ToolType.ActorManager]);
             actorHierarchy = BaseHierarchy<ActorData>.CreateHierarchy<ActorHierarchy>(this);
             actorHierarchy.OnPathSelection += ActorManager_OnPathSelection;
+            assetCreator.OnAssetCreation += actorHierarchy.ReloadHierarchy;
         }
 
         private void ActorManager_OnPathSelection(string path) {
@@ -350,7 +363,7 @@ namespace BonbonAssetManager {
             using (new EditorGUILayout.HorizontalScope()) {
                 using (new EditorGUILayout.VerticalScope()) {
                     actorHierarchy.ShowGUI();
-
+                    assetCreator.ShowCreator();
                 }
                     
                 using (new EditorGUILayout.VerticalScope()) {
