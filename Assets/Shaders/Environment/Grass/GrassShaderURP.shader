@@ -47,6 +47,8 @@ Shader "Unlit/GrassShaderURP"
 	
 
 	#define BLADE_SEGMENTS 4
+	#define UNITY_TWO_PI 6.28318530718f
+	#define UNITY_PI 3.14159265359f
 	
 	float _BendRotationRandom;
 	float _BladeHeight;
