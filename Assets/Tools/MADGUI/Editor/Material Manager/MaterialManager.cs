@@ -23,7 +23,7 @@ namespace ModelAssetDatabase {
         public SectionType ActiveSection { get; private set; }
 
         private GameObject previewTarget;
-        private GenericPreview preview;
+        private GenericPreview genericPreview;
 
         private MADAssets customPrefabs;
 
@@ -50,7 +50,10 @@ namespace ModelAssetDatabase {
         /// Change the selected asset in the active tab;
         /// </summary>
         /// <param name="path"> Path to the selected asset; </param>
-        public override void SetSelectedAsset(string path) => tabs[(int) ActiveSection].SetSelectedAsset(path);
+        public override void SetSelectedAsset(string path) {
+            base.SetSelectedAsset(path);
+            tabs[(int) ActiveSection].SetSelectedAsset(path);
+        }
 
         /// <summary>
         /// Sets the GUI's selected Manager Section;
@@ -70,7 +73,8 @@ namespace ModelAssetDatabase {
         public override void DrawToolbar() {
             foreach (SectionType sectionType in System.Enum.GetValues(typeof(SectionType))) {
                 DrawMaterialToolbarButton(sectionType);
-            }
+                GUI.enabled = false;
+            } GUI.enabled = true;
         }
 
         /// <summary>
@@ -95,12 +99,12 @@ namespace ModelAssetDatabase {
 
         public void DrawMaterialPreview() {
             Rect rect = EditorGUILayout.GetControlRect(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-            if (preview == null) {
+            if (genericPreview == null) {
                 if (previewTarget != null) {
-                    preview = GenericPreview.CreatePreview(previewTarget);
+                    genericPreview = GenericPreview.CreatePreview(previewTarget);
                 } else EditorUtils.DrawScopeCenteredText("Select a Preview Object");
             } else {
-                preview.preview.DrawPreview(rect);
+                genericPreview.preview.DrawPreview(rect);
                 CleanPreviewTarget();
             }
         }
@@ -114,14 +118,14 @@ namespace ModelAssetDatabase {
         /// <summary>
         /// Draw an Enum Popup to choose the preview target;
         /// </summary>
-        public void DrawMaterialPreviewOptions() {
+        public void DrawMaterialPreviewOptions(Material material) {
             GUILayout.Label("Preview Object:");
             PreviewTarget selection = (PreviewTarget) EditorGUILayout.EnumPopup(activeTarget);
-            if (activeTarget != selection) SetPreviewTarget(selection);
+            if (activeTarget != selection) SetPreviewTarget(selection, material);
             /// If an object must be selected for preview, wait until the object is assigned;
             if (activeTarget == PreviewTarget.Other) {
                 GameObject potentialObject = EditorGUILayout.ObjectField(previewTarget, typeof(GameObject), false) as GameObject;
-                if (potentialObject != previewTarget) SetPreviewObject(potentialObject);
+                if (potentialObject != previewTarget) SetPreviewObject(potentialObject, material);
             }
         }
 
@@ -129,15 +133,15 @@ namespace ModelAssetDatabase {
         /// Define the target preview object and call for the object creation;
         /// </summary>
         /// <param name="selection"> Selected target preview; </param>
-        public void SetPreviewTarget(PreviewTarget selection) {
+        public void SetPreviewTarget(PreviewTarget selection, Material material) {
             CleanPreview();
             previewTarget = null;
             switch (selection) {
                 case PreviewTarget.Sphere:
-                    SetPreviewObject(customPrefabs.spherePrefab);
+                    SetPreviewObject(customPrefabs.spherePrefab, material);
                     break;
                 case PreviewTarget.Cube:
-                    SetPreviewObject(customPrefabs.cubePrefab);
+                    SetPreviewObject(customPrefabs.cubePrefab, material);
                     break;
             } activeTarget = selection;
         }
@@ -153,15 +157,15 @@ namespace ModelAssetDatabase {
             foreach (Renderer renderer in renderers) {
                 Material[] nArr = new Material[renderer.sharedMaterials.Length];
                 for (int i = 0; i < renderer.sharedMaterials.Length; i++) {
-                    //nArr[i] = material;
-                } //renderer.sharedMaterials = nArr;
+                    nArr[i] = material;
+                } renderer.sharedMaterials = nArr;
             } CleanPreview();
         }
 
         /// <summary>
         /// Destroy the active Material Preview, if any;
         /// </summary>
-        public void CleanPreview() => DestroyImmediate(preview);
+        public void CleanPreview() => DestroyImmediate(genericPreview);
 
         /// <summary>
         /// Destroy the active Preview Object, if any;
