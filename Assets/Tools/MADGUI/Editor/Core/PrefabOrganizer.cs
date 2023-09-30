@@ -34,6 +34,12 @@ namespace ModelAssetDatabase {
         /// <summary> A dictionary of dictionaries mapping a folder name to it's folder dictionary;
         private Dictionary<string, FolderData> folderMap;
 
+        /// <summary> List containing all prefab IDs loaded; </summary>
+        private List<string> globalPrefabIDs;
+
+        /// <summary> List containing all model IDs loaded; </summary>
+        private List<string> globalModelIDs;
+
         /// <summary> Data used to draw prefab cards; </summary>
         private class PrefabCardData {
             /// <summary> Root gameObject atop the prefab file hierarchy; </summary>
@@ -87,6 +93,8 @@ namespace ModelAssetDatabase {
         protected override void InitializeData() {
             prefabCardMap = new Dictionary<string, PrefabCardData>();
             modelCardMap = new Dictionary<string, GameObject>();
+            globalPrefabIDs = new List<string>();
+            globalModelIDs = new List<string>();
             BuildFolderMap();
             SetSearchScope(true);
         }
@@ -94,7 +102,10 @@ namespace ModelAssetDatabase {
         /// <summary>
         /// The tool must be re-initialized upon reselection to prevent errors;
         /// </summary>
-        public override void RefreshData() => InitializeData();
+        public override void RefreshData() {
+            base.RefreshData();
+            InitializeData();
+        }
 
         /// <summary>
         /// Unloads all static data contained in the tool;
@@ -114,10 +125,14 @@ namespace ModelAssetDatabase {
             foreach (KeyValuePair<string, ModelAssetDatabase.FolderData> kvp in extFolderMap) {
                 folderMap[kvp.Key] = new FolderData(kvp.Value.name);
                 foreach (string modelPath in kvp.Value.models) {
-                    folderMap[kvp.Key].modelIDs.Add(AssetDatabase.AssetPathToGUID(modelPath));
+                    string modelID = AssetDatabase.AssetPathToGUID(modelPath);
+                    folderMap[kvp.Key].modelIDs.Add(modelID);
+                    globalModelIDs.Add(modelID);
                 }
                 foreach (string modelID in folderMap[kvp.Key].modelIDs) {
-                    folderMap[kvp.Key].prefabIDs.AddRange(ModelAssetDatabase.ModelDataDict[modelID].prefabIDList);
+                    List<string> prefabIDList = ModelAssetDatabase.ModelDataDict[modelID].prefabIDList;
+                    folderMap[kvp.Key].prefabIDs.AddRange(prefabIDList);
+                    globalPrefabIDs.AddRange(prefabIDList);
                 }
                 LoadFolderData(kvp.Key);
             }
@@ -128,6 +143,7 @@ namespace ModelAssetDatabase {
         /// </summary>
         /// <param name="path"> Folder path to select; </param>
         public override void SetSelectedAsset(string path) {
+            base.SetSelectedAsset(path);
             if (!searchAll) SetSearchScope(!searchAll);
             dragSelectionGroup = new List<Object>();
             SelectedFolder = path;
@@ -222,24 +238,23 @@ namespace ModelAssetDatabase {
         /// Draws the toolbar for the Prefab Organizer;
         /// </summary>
         public override void DrawToolbar() {
-            GUI.enabled = false;
+            if (GUILayout.Button("Show All", EditorStyles.toolbarButton, GUILayout.MinWidth(80))) SelectedFolder = null;
             using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbarButton)) {
-                if (SelectedFolder != null) GUI.enabled = true;
                 GUILayout.Label("Sort By:", new GUIStyle(UIStyles.ToolbarText) { margin = new RectOffset(0, 20, 1, 0) }, GUILayout.Width(80));
             } if (GUILayout.Button("Name", sortMode == PrefabSortMode.Name
-                                           ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton, GUILayout.MinWidth(110), GUILayout.ExpandWidth(true))) {
+                                           ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton, GUILayout.MinWidth(105), GUILayout.ExpandWidth(true))) {
                 SetSortMode(PrefabSortMode.Name);
             } if (GUILayout.Button("Model", sortMode == PrefabSortMode.Model
-                                            ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton, GUILayout.MinWidth(110), GUILayout.ExpandWidth(true))) {
+                                            ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton, GUILayout.MinWidth(105), GUILayout.ExpandWidth(true))) {
                 SetSortMode(PrefabSortMode.Model);
             } GUILayout.FlexibleSpace();
-            string impendingSearch = EditorGUILayout.TextField(searchString, EditorStyles.toolbarSearchField, GUILayout.MinWidth(180));
+            string impendingSearch = EditorGUILayout.TextField(searchString, EditorStyles.toolbarSearchField, GUILayout.MinWidth(175));
             if (searchString != impendingSearch) SetSearchString(impendingSearch);
             GUILayout.Label("in");
             if (GUILayout.Button(searchAll ? "All" : "Folder", EditorStyles.toolbarButton, GUILayout.MinWidth(50), GUILayout.ExpandWidth(true))) {
                 SetSearchScope(!searchAll);
                 searchResultPrefabList = null;
-            } GUI.enabled = true;
+            }
         }
 
         /// <summary>
@@ -247,29 +262,33 @@ namespace ModelAssetDatabase {
         /// </summary>
         public override void ShowGUI() {
 
-            if (SelectedFolder == null) {
-                EditorUtils.DrawScopeCenteredText("Prefabs stored in the Selected Folder will be displayed here;");
-                return;
-            }
+            if (SelectedFolder == null) SetSelectedAsset(ModelAssetDatabase.RootAssetPath);
 
-            bool searchStringActive = string.IsNullOrWhiteSpace(searchString);
+            bool searchStringInactive = string.IsNullOrWhiteSpace(searchString);
             string folderName = SelectedFolder.IsolatePathEnd("\\/");
-            EditorUtils.WindowBoxLabel(searchStringActive ? folderName 
+            EditorUtils.WindowBoxLabel(searchStringInactive ? folderName 
                                            : "Search Results in \"" + ( searchAll ? "All" : folderName) + "\"");
 
             using (new EditorGUILayout.HorizontalScope()) {
-                if (searchStringActive) {
+                if (searchStringInactive) {
+                    bool isRoot = SelectedFolder == ModelAssetDatabase.RootAssetPath;
                     switch (sortMode) {
                         case PrefabSortMode.Name:
-                            DrawPrefabCards(folderMap[SelectedFolder].prefabIDs, 
-                                            "There are no prefabs under this folder;");
-                            break;
+                            if (isRoot) {
+                                using (new EditorGUILayout.VerticalScope()) {
+                                    DrawPrefabCards(globalPrefabIDs, "There are no prefab variants in this section of the project;");
+                                }
+                            } else {
+                                DrawPrefabCards(folderMap[SelectedFolder].prefabIDs,
+                                                "There are no prefabs under this folder;");
+                            } break;
                         case PrefabSortMode.Model:
                             using (var view = new EditorGUILayout.ScrollViewScope(modelSortScroll,
                                                                                     GUILayout.ExpandWidth(false), GUILayout.ExpandHeight(true))) {
                                 modelSortScroll = view.scrollPosition;
                                 using (new EditorGUILayout.HorizontalScope()) {
-                                    foreach (string modelID in folderMap[SelectedFolder].modelIDs) DrawModelColumn(modelID);
+                                    if (isRoot) foreach (string modelID in globalModelIDs) DrawModelColumn(modelID);
+                                    else foreach (string modelID in folderMap[SelectedFolder].modelIDs) DrawModelColumn(modelID);
                                 }
                             } break;
                     }
@@ -297,10 +316,10 @@ namespace ModelAssetDatabase {
                 }
                 GUILayout.FlexibleSpace();
             } else {
-                bool validCount = prefabIDs.Count >= 3;
+                int amountPerRow = Mathf.RoundToInt((MainGUI.position.xMax - MainGUI.position.xMin - 200) / 220);
+                bool validCount = prefabIDs.Count >= amountPerRow;
                 if (validCount) GUILayout.FlexibleSpace();
                 using (new EditorGUILayout.VerticalScope()) {
-                    int amountPerRow = 3;
                     for (int i = 0; i < Mathf.CeilToInt((float) prefabIDs.Count / amountPerRow); i++) {
                         using (new EditorGUILayout.HorizontalScope(GUI.skin.box)) {
                             for (int j = i * amountPerRow; j < Mathf.Min((i + 1) * amountPerRow, prefabIDs.Count); j++) {
@@ -320,13 +339,14 @@ namespace ModelAssetDatabase {
             PrefabCardData data = prefabCardMap[prefabID];
             bool objectInSelection = dragSelectionGroup.Contains(data.rootObject);
             if (objectInSelection) GUI.color = UIColors.DarkBlue;
-            using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox, GUILayout.MaxWidth(200), GUILayout.Height(60))) {
+            using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox, GUILayout.Width(200), GUILayout.Height(60))) {
                 GUI.color = Color.white;
                 DrawDragAndDropPreview(prefabID, objectInSelection);
 
                 using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox, GUILayout.ExpandHeight(true))) {
                     GUILayout.FlexibleSpace();
-                    EditorUtils.WindowBoxLabel(ModelAssetDatabase.PrefabDataDict[prefabID].name);
+                    //GUIStyle labelStyle = new GUIStyle(UIStyles.CenteredLabel) { clipping = TextClipping.Clip };
+                    EditorUtils.WindowBoxLabel(ModelAssetDatabase.PrefabDataDict[prefabID].name, GUILayout.Width(90));
                     using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
                         if (GUILayout.Button("Open Library", GUILayout.MaxHeight(24))) {
                             MainGUI.SwitchToLibrary(ModelAssetDatabase.PrefabDataDict[prefabID].modelID);
