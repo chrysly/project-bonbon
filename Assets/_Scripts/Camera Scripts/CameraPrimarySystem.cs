@@ -9,6 +9,7 @@ public class CameraPrimarySystem : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera aerialCam;
     [SerializeField] private CinemachineVirtualCamera charCam;
     [SerializeField] private BattleStateMachine stateMachine;
+    //[SerializeField] private Transform testTarget;
     // Start is called before the first frame update
 
     private CinemachineVirtualCamera activeCam;
@@ -22,6 +23,7 @@ public class CameraPrimarySystem : MonoBehaviour
     }
 
     private void UpdateCamera(BattleStateMachine.BattleState state, BattleStateInput input) {
+        Debug.Log("call");
         if (state is BattleStateMachine.TurnState) { FocusActor(input); }
         else if (state is BattleStateMachine.AnimateState) { ViewAnimate(input); }
     }
@@ -29,10 +31,12 @@ public class CameraPrimarySystem : MonoBehaviour
     private void FocusActor(BattleStateInput input) {
         charCam.m_LookAt = oldLookAt;
         if (input.ActiveActor() is not CharacterActor) {
+            Debug.Log("to enemy");
             ReturnToBattleView(input);
             return;
         }
 
+        Debug.Log("to chara");
         Transform target = input.ActiveActor().transform.GetChild(0);
         charCam.m_Follow = target;
         SetActiveCam(charCam);
@@ -44,20 +48,27 @@ public class CameraPrimarySystem : MonoBehaviour
     }
 
     private void ViewAnimate(BattleStateInput input) {
-        
+
         Transform target = input.SkillPrep.targets[0].transform.GetChild(0);   // hard coded bc pain
         Transform user = input.ActiveActor().transform.GetChild(0);
 
-        if (input.ActiveActor() is EnemyActor) {
-            charCam.m_LookAt = user;
-            charCam.m_Follow = target;
-        }
-        else {
-            charCam.m_LookAt = target;
-            charCam.m_Follow = user;
+        SetActiveCam(charCam);
+        if (input.ActiveActor() is CharacterActor)
+        {
+            activeCam.m_LookAt = target;
+            //activeCam.m_Follow = testTarget;
         }
 
-        SetActiveCam(charCam);
+        //if (input.ActiveActor() is EnemyActor) {
+        //    charCam.m_LookAt = user;
+        //    charCam.m_Follow = target;
+        //}
+        //else {
+        //    charCam.m_LookAt = target;
+        //    charCam.m_Follow = user;
+        //}
+
+        //SetActiveCam(charCam);
     }
 
     private void SetActiveCam(CinemachineVirtualCamera cam) {
