@@ -9,7 +9,9 @@ public class DisableClassEditDrawer : PropertyDrawer
     bool isUnfolded = false;
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-        isUnfolded = EditorGUI.BeginFoldoutHeaderGroup(position, isUnfolded, label);
+        position.height = EditorGUIUtility.singleLineHeight;
+        isUnfolded = EditorGUI.Foldout(position, isUnfolded, label, true);
+
         if (isUnfolded) {
             bool previuousGUIState = GUI.enabled;
             GUI.enabled = false;
@@ -24,7 +26,6 @@ public class DisableClassEditDrawer : PropertyDrawer
             EditorGUI.indentLevel--;
             GUI.enabled = previuousGUIState;
         }
-        EditorGUI.EndFoldoutHeaderGroup();
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
