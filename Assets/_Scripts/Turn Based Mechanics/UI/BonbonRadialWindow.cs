@@ -232,7 +232,7 @@ public class BonbonRadialWindow : MonoBehaviour {
                 { actor.BonbonInventory[_combineIndex].Data, actor.BonbonInventory[_index].Data, null, null };
             List<BonbonBlueprint> blueprint = factory.FindRecipes(blueprints);
             if (blueprint != null) {
-                Debug.Log("showing thing");
+                Debug.Log(actor.BonbonInventory[_index].Name + "+" + actor.BonbonInventory[_combineIndex].Name + "=" + blueprint[0].name);
                 output.texture = blueprint[0].texture;
                 DrawLine(slots[_combineIndex].transform.position, slots[_index].transform.position,
                     output.transform.position);

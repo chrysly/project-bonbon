@@ -27,8 +27,9 @@ namespace ModelAssetDatabase {
             using (new EditorGUILayout.HorizontalScope()) {
                 bool hasFiles = folderMap[path].models.Count > 0;
                 bool hasSubfolders = folderMap[path].subfolders.Count > 0;
+                bool isRoot = path == ModelAssetDatabase.RootAssetPath;
                 GUIContent folderContent;
-                if (hasFiles) {
+                if (hasFiles || isRoot) {
                     folderContent = new GUIContent("");
                 } else folderContent = new GUIContent(path.IsolatePathEnd("\\/"),
                                                       EditorUtils.FetchIcon(folderMap[path].foldout ? "d_FolderOpened Icon" : "d_Folder Icon"));
@@ -37,7 +38,7 @@ namespace ModelAssetDatabase {
                     Rect rect = GUILayoutUtility.GetRect(0, 18, GUILayout.Width(13));
                     folderMap[path].foldout = EditorGUI.Foldout(rect, folderMap[path].foldout, folderContent,
                                                                        new GUIStyle(EditorStyles.foldout) { stretchWidth = false });
-                } if (hasFiles) DrawPrefabFolderButton(path, worthShowing && folderMap[path].foldout);
+                } if (hasFiles || isRoot) DrawPrefabFolderButton(path, worthShowing && folderMap[path].foldout);
             } EditorGUI.indentLevel++;
 
             if (folderMap[path].foldout) {
@@ -56,7 +57,7 @@ namespace ModelAssetDatabase {
         /// <param name="path"> Path to the folder; </param>
         /// <param name="folderOpened"> Whether the foldout is active, so the Folder icon can reflect it; </param>
         private void DrawPrefabFolderButton(string path, bool folderOpened) {
-            GUIStyle buttonStyle = path == HierarchyBuilder.SelectedAssetPath ? UIStyles.HFButtonSelected : UIStyles.HFButton;
+            GUIStyle buttonStyle = path == HierarchyBuilder.GUIAssetPath ? UIStyles.HFButtonSelected : UIStyles.HFButton;
             GUIContent folderContent = new GUIContent(path.IsolatePathEnd("\\/"), EditorUtils.FetchIcon(folderOpened ? "d_FolderOpened Icon" : "d_Folder Icon"));
             float width = EditorUtils.MeasureTextWidth(folderContent.text, GUI.skin.font);
             if (GUILayout.Button(folderContent, buttonStyle, GUILayout.Width(width + 34), GUILayout.Height(20))) HierarchyBuilder.SetSelectedAsset(path);

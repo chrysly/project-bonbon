@@ -15,12 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DialogueTesting.unity
     guid: c64f1798809d27741b4e42b05fd4c995
   - enabled: 1
-    path: Assets/Scenes/DevScenes/M1 Build 1.unity
-    guid: 53c4e14c3f56609448e5c3664e111ccb
-  - enabled: 1
-    path: Assets/Scenes/Alex K/SceneSaveTest/TestScene1.unity
-    guid: 7c36a132219101f42ab8fc0be5787701
-  - enabled: 1
-    path: Assets/Scenes/Alex K/SceneSaveTest/TestScene2.unity
-    guid: 134a7a0e3174a034792748452220aeb2
+    path: Assets/Scenes/DevScenes/M1 Build Final.unity
+    guid: 419e633457032e74aa3c4b329d7fde6c
   m_configObjects: {}

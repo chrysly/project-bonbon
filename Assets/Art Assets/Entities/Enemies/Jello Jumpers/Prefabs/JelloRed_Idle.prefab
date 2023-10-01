@@ -64,6 +64,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: JelloRed_Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 8898905652728698581, guid: 54b3721474749f143ac4d7ece0b70025, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898905652728698581, guid: 54b3721474749f143ac4d7ece0b70025, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898905652728698581, guid: 54b3721474749f143ac4d7ece0b70025, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898905652728698581, guid: 54b3721474749f143ac4d7ece0b70025, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -3129046527974729244, guid: 54b3721474749f143ac4d7ece0b70025, type: 3}

@@ -12,7 +12,7 @@ namespace ModelAssetDatabase {
         private HierarchyTab[] tabs;
 
         /// <summary> Asset path selected in the hierarchy; </summary>
-        public string SelectedAssetPath { get { return MainGUI.SelectedAssetPath; } }
+        public string GUIAssetPath => MainGUI.SelectedAssetPath;
 
         /// GUI variables;
         private string searchString;

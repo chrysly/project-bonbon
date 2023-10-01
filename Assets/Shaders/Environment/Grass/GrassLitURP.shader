@@ -8,7 +8,6 @@ Shader "Custom/GrassLitURP"
 		_GrassWidth("Grass Width", Float) = 0.06
 		_RandomHeight("Grass Height Randomness", Float) = 0.25
 		_WindSpeed("Wind Speed", Float) = 100
-		_WindStrength("Wind Strength", Float) = 0.05
 		_Radius("Interactor Radius", Float) = 0.3
 		_Strength("Interactor Strength", Float) = 5
 		_Rad("Blade Radius", Range(0,1)) = 0.6
@@ -17,6 +16,9 @@ Shader "Custom/GrassLitURP"
 		_AmbientStrength("Ambient Strength",  Range(0,1)) = 0.5
 		_MinDist("Min Distance", Float) = 40
 		_MaxDist("Max Distance", Float) = 60
+		_WindDistortionMap("Wind Distortion Map", 2D) = "white" {}
+    	_WindFrequency("Wind Frequency", Vector) = (0.05, 0.05, 0, 0)
+		_WindStrength("Wind Strength", Float) = 0.05
 	}
 		HLSLINCLUDE
 #pragma vertex vert
@@ -42,7 +44,10 @@ Shader "Custom/GrassLitURP"
 
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"	
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Shadows.hlsl"
+
+	#define UNITY_TWO_PI 6.28318530718f
+	#define UNITY_PI 3.14159265359f
 
 		struct Attributes
 	{
@@ -67,7 +72,6 @@ Shader "Custom/GrassLitURP"
 	half _GrassHeight;
 	half _GrassWidth;
 	half _WindSpeed;
-	float _WindStrength;
 	half _Radius, _Strength;
 	float _Rad;
 
@@ -78,6 +82,11 @@ Shader "Custom/GrassLitURP"
 	float _MinDist, _MaxDist;
 
 	uniform float3 _PositionMoving;
+
+	sampler2D _WindDistortionMap;
+	float4 _WindDistortionMap_ST;
+	float2 _WindFrequency;
+	float _WindStrength;
 
 	v2g vert(Attributes v)
 	{
@@ -177,9 +186,14 @@ Shader "Custom/GrassLitURP"
 		float distanceFade = 1 - saturate((distanceFromCamera - _MinDist) / _MaxDist);
 		// wind
 		float3 v0 = IN[0].pos.xyz;
-		float3 wind1 = float3(sin(_Time.x * _WindSpeed + v0.x) + sin(_Time.x * _WindSpeed + v0.z * 2) + sin(_Time.x * _WindSpeed * 0.1 + v0.x), 0,
-			cos(_Time.x * _WindSpeed + v0.x * 2) + cos(_Time.x * _WindSpeed + v0.z));
-		wind1 *= _WindStrength;
+		//float3 wind1 = float3(sin(_Time.x * _WindSpeed + v0.x) + sin(_Time.x * _WindSpeed + v0.z * 2) + sin(_Time.x * _WindSpeed * 0.1 + v0.x), 0,
+		//	cos(_Time.x * _WindSpeed + v0.x * 2) + cos(_Time.x * _WindSpeed + v0.z));
+		//wind1 *= _WindStrength;
+
+		float2 uv = IN[0].pos.xz * _WindDistortionMap_ST.xy + _WindDistortionMap_ST.zw + _WindFrequency * _Time.y;
+		float2 windSample = (tex2Dlod(_WindDistortionMap, float4(uv, 0, 0)).xy * 2 - 1) * _WindStrength;
+		float3 wind = normalize(float3(windSample.x, windSample.y, 0));
+		float3x3 windRotation = AngleAxis3x3(UNITY_PI * windSample, wind);
 
 		// Interactivity
 		float3 dis = distance(_PositionMoving, worldPos); // distance for radius
@@ -197,7 +211,7 @@ Shader "Custom/GrassLitURP"
 			// set rotation and radius of the blades
 			float3x3 facingRotationMatrix = AngleAxis3x3(rand(IN[0].pos.xyz) * TWO_PI + j, float3(0, 1, -0.1));
 
-			float3x3 transformationMatrix = facingRotationMatrix;
+			float3x3 transformationMatrix = mul(facingRotationMatrix, windRotation);
 
 			faceNormal = mul(faceNormal, transformationMatrix);
 			float radius = j / (float)GrassBlades;
@@ -218,7 +232,7 @@ Shader "Custom/GrassLitURP"
 				float3x3 transformMatrix = i == 0 ? facingRotationMatrix : transformationMatrix;
 
 				// first grass (0) segment does not get displaced by interactivity
-				float3 newPos = i == 0 ? v0 : v0 + ((float3(sphereDisp.x, sphereDisp.y, sphereDisp.z) + wind1) * t);
+				float3 newPos = i == 0 ? v0 : v0 + ((float3(sphereDisp.x, sphereDisp.y, sphereDisp.z)) * t);
 
 				// every segment adds 2 new triangles
 				triStream.Append(GrassVertex(newPos, segmentWidth, segmentHeight, offset, segmentForward, float2(0, t), transformMatrix, faceNormal, color));
@@ -228,7 +242,7 @@ Shader "Custom/GrassLitURP"
 
 			}
 			// Add just below the loop to insert the vertex at the tip of the blade.
-			triStream.Append(GrassVertex(v0 + float3(sphereDisp.x * 1.5, sphereDisp.y, sphereDisp.z * 1.5) + wind1, 0, _GrassHeight, offset, forward, float2(0.5, 1), transformationMatrix, faceNormal, color));
+			triStream.Append(GrassVertex(v0 + float3(sphereDisp.x * 1.5, sphereDisp.y, sphereDisp.z * 1.5), 0, _GrassHeight, offset, forward, float2(0.5, 1), transformationMatrix, faceNormal, color));
 			// restart the strip to start another grass blade
 			triStream.RestartStrip();
 		}
