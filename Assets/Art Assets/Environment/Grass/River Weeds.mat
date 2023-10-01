@@ -40,10 +40,10 @@ Material:
     m_Floats:
     - _AmbientStrength: 1
     - _BladeCurve: 4
-    - _BladeForward: 0.5
+    - _BladeForward: 1.05
     - _GrassHeight: 2.69
-    - _GrassWidth: 0.25
-    - _Rad: 1
+    - _GrassWidth: -0.1
+    - _Rad: 0
     - _Radius: 0
     - _RandomHeight: 0
     - _Strength: 0
