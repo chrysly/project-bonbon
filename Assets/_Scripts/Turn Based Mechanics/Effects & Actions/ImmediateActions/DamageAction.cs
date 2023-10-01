@@ -55,7 +55,7 @@ public class DamageAction : ImmediateAction.Generic {
         for (int i = 0; i < bonbonsToRemove; i++)
         {
             int randomIndex = UnityEngine.Random.Range(0, target.BonbonList.Count);
-            target.BonbonList.RemoveAt(randomIndex);
+            //target.BonbonInventory[randomIndex] = null; ADD BACK AAAAAA
         }
     }
 

@@ -126,6 +126,8 @@ namespace ModelAssetDatabase {
         /// <br></br> Required to load new information without generating persistent garbage;
         /// </summary>
         public override void FlushData() {
+            GlobalVertexCount = 0;
+            GlobalTriangleCount = 0;
             CleanMeshPreviewDictionary();
             ResetData();
             DestroyImmediate(DummyGameObject);
@@ -147,6 +149,7 @@ namespace ModelAssetDatabase {
         /// </summary>
         /// <param name="path"> Path to the selected asset; </param>
         public override void SetSelectedAsset(string path) {
+            base.SetSelectedAsset(path);
             FlushData();
             LoadSelectedAsset(path);
             SetSelectedAssetMode(ModelExtData.isModel ? AssetMode.Model : AssetMode.Animation);

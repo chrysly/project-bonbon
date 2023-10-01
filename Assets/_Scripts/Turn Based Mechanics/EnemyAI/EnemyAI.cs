@@ -74,6 +74,7 @@ public class EnemyAI
         
         // if there's a tie in goodness values, pick a random scenario from the list
         Debug.Log(bestScenarios.Count);
+        bestScenarios.Add(new Scenario(new ScenarioSkillData(currentActor.SkillList[0], currentActor, characterActors), 5));
         Scenario chosenScenario = bestScenarios[Random.Range(0, bestScenarios.Count)];
         BattleStateInput.ActiveSkillPrep bestActiveSkill = new BattleStateInput.ActiveSkillPrep()
         {

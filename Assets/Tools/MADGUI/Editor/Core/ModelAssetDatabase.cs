@@ -198,7 +198,7 @@ namespace ModelAssetDatabase {
         /// <returns> Whether the model asset exists in the Asset Database </returns>
         private static bool ValidateModelEntry(string modelID) {
             string databasePath = AssetDatabase.GUIDToAssetPath(modelID);
-            if (NoAssetAtPath(databasePath)) {
+            if (GeneralUtils.NoAssetAtPath(databasePath)) {
                 ModelDataDict.Remove(modelID);
                 return false;
             } return true;
@@ -212,7 +212,7 @@ namespace ModelAssetDatabase {
         /// <returns> Whether the prefab asset is linked to a model <b>and</b> exists in the Asset Database </returns>
         private static bool ValidatePrefabEntry(string prefabID) {
             string databasePath = AssetDatabase.GUIDToAssetPath(prefabID);
-            if (NoAssetAtPath(databasePath)) {
+            if (GeneralUtils.NoAssetAtPath(databasePath)) {
                 string associatedModelID = PrefabDataDict[prefabID].modelID;
                 ModelDataDict[associatedModelID].prefabIDList.Remove(prefabID);
                 PrefabDataDict.Remove(prefabID);
@@ -352,7 +352,7 @@ namespace ModelAssetDatabase {
         public static void RelocatePrefab(string prefabID) {
             string modelID = PrefabDataDict[prefabID].modelID;
             string originalFilePath = AssetDatabase.GUIDToAssetPath(prefabID).Replace('\\', '/');
-            if (NoAssetAtPath(originalFilePath)) {
+            if (GeneralUtils.NoAssetAtPath(originalFilePath)) {
                 ModelDataDict[modelID].prefabIDList.Remove(prefabID);
                 ModelDataDict.Remove(prefabID);
                 return;
@@ -413,13 +413,6 @@ namespace ModelAssetDatabase {
                 }
             }
         }
-
-        /// <summary>
-        /// Checks if there's no asset at the given path;
-        /// </summary>
-        /// <param name="path"> Path to check; </param>
-        /// <returns> True if the asset <b>doesn't</b> exist; </returns>
-        public static bool NoAssetAtPath(string path) => string.IsNullOrEmpty(AssetDatabase.AssetPathToGUID(path, AssetPathToGUIDOptions.OnlyExistingAssets));
 
         #endregion
     }

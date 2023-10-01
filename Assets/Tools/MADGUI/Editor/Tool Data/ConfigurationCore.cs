@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 
 namespace ModelAssetDatabase {
-        public static class ConfigurationCore {
+    public static class ConfigurationCore {
 
         /// <summary> Path to the Configuration JSON File; </summary>
         public static string ConfigPath {
@@ -35,14 +35,6 @@ namespace ModelAssetDatabase {
         /// File extension of the assets to look for (without the dot);
         /// </summary>
         public static string ModelFileExtensions { get { return Config.modelFileExtensions; } }
-
-        public static string OpenAndParseFolder() {
-            string res = EditorUtility.OpenFolderPanel("Set Root Path", "Assets", "");
-            if (res != null && res.StartsWith(Application.dataPath)) {
-                res = "Assets" + res.Substring(Application.dataPath.Length);
-                return res;
-            } else return null;
-        }
 
         /// <summary>
         /// Replace the Root Asset Path statically. The path still needs to be saved;

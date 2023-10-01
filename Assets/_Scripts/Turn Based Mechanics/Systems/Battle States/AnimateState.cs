@@ -25,7 +25,7 @@ public partial class BattleStateMachine {
             MySM.OnStateTransition.Invoke(this, Input);
             
             Input.ActivateSkill();
-            MySM.StartBattle(3f);
+            MySM.StartBattle(1f);
         }
         
         public override void Update() {

@@ -30,11 +30,10 @@ public class BonbonWindow : MonoBehaviour
         foreach (BonbonBlueprint bonbonBlueprint in actor.BonbonList) {
             GameObject button = (GameObject) Instantiate(buttonPrefab, buttonContainer);
             BonbonButton bonbonButton = button.GetComponent<BonbonButton>();
-            Debug.Log(bonbonBlueprint.name);
             bonbonButton.AssignBonbon(bonbonBlueprint);
             Button btn = button.GetComponent<Button>();
-            btn.onClick.AddListener(delegate { _radialWindow.CloseAll(); });
             btn.onClick.AddListener(delegate { display.Deactivate(); });
+            btn.onClick.AddListener(delegate { _radialWindow.CloseAll(); });
             btn.onClick.AddListener(delegate { battleState.SwitchToBonbonState(bonbonBlueprint, index, new bool[4]); });
             Debug.Log("Slot Index:" + index);
             _activeButtons.Add(button);
