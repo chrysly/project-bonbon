@@ -7,6 +7,7 @@ public class SlashTest : MonoBehaviour
 {
     public Animator anim;
     public List<Slash> slashes;
+    public HitStop hitStopManager;
 
     private bool attacking;
     
@@ -29,6 +30,9 @@ public class SlashTest : MonoBehaviour
     IEnumerator SlashAttack() {
         for (int i = 0; i < slashes.Count; i++) {
             yield return new WaitForSeconds(slashes[i].delay);
+            if (slashes[i].hitStop) {
+                hitStopManager.Stop(slashes[i].hitStopDur);
+            }
             slashes[i].slashObj.SetActive(true);
         }
 
@@ -48,4 +52,6 @@ public class SlashTest : MonoBehaviour
 public class Slash {
     public GameObject slashObj;
     public float delay;
+    public bool hitStop;
+    public float hitStopDur;
 }
