@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a98e8789bee034f9a681bfba2205a2, type: 3}
   m_Name: Red Jello Jumper
   m_EditorClassIdentifier: 
-  displayName: Green Jello Jumper
-  id: jellogreen
+  displayName: Red Jello Jumper
+  id: jellored
   maxHitpoints: 30
   basePotency: 11
   baseDefense: 2
