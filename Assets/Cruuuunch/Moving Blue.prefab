@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0795d5baa840d6d4d8e66e8d52a644e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.075
+  moveSpeed: 0.15
   innerRB: {fileID: 8977812139624116147}
 --- !u!135 &-1183475349733274791
 SphereCollider:
