@@ -26,5 +26,5 @@ public class DAnim : MonoBehaviour {
         if (begin && jumping) Move();
     }
 
-    private void Move() => outerRB.Move(transform.position + Vector3.forward * moveSpeed, transform.rotation);
+    private void Move() => outerRB.Move(transform.position + Vector3.right * moveSpeed, transform.rotation);
 }
