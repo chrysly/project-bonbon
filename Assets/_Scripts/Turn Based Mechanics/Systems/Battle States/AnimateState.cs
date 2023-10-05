@@ -10,7 +10,7 @@ public partial class BattleStateMachine {
         public override void Enter(BattleStateInput i) {
             base.Enter(i);
             Debug.Log("Entering animate state");
-            
+
             // Old Enemy Code, should implement Enemy AI in TargetSelectState instead
             //
             //if (Input.ActiveActor() is CharacterActor) {
@@ -20,8 +20,8 @@ public partial class BattleStateMachine {
             //    Input.SetActiveSkill(new SkillAction(Input.ActiveActor().data.SkillList()[0], MySM.actorList[target]));
             //    Input.ActiveSkill().ActivateSkill();
             //}
-            
-            _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform);  // HARD CODED (change later bc anumation??? idk)
+            if (Input.ActiveActor() is EnemyActor) Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
+            else _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform);  // HARD CODED (change later bc anumation??? idk)
             MySM.OnStateTransition.Invoke(this, Input);
             
             Input.ActivateSkill();
