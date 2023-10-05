@@ -11,18 +11,18 @@ public partial class GameManager {
         Cutscene = 2,
     }
 
-    private static int reservedIndices = 2;
+    private int reservedIndices = 2;
 
-    public static void TransitionToCore(CoreScene coreScene) {
+    public void TransitionToCore(CoreScene coreScene) {
         SetActiveScene((int) coreScene);
     }
 
-    public static void TransitionToLevel(int levelIndex) {
+    public void TransitionToLevel(int levelIndex) {
         CurrLevel = levelIndex;
         SetActiveScene(levelIndex + reservedIndices);
     }
 
-    private static void SetActiveScene(int sceneIndex) {
+    private void SetActiveScene(int sceneIndex) {
         SceneManager.LoadScene(sceneIndex);
     }
 }
