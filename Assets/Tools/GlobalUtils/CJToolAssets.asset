@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e0ac0e0613aa84b89e4c23ed67f347, type: 3}
+  m_Name: CJToolAssets
+  m_EditorClassIdentifier: 
+  dndFieldAssets:
+    addNormal: {fileID: 2800000, guid: cd5e4ea788964534ba18c89de26a7d14, type: 3}
+    addHover: {fileID: 2800000, guid: 360ac5e88f7b43c4683ab952b998446d, type: 3}
+    removeNormal: {fileID: 2800000, guid: 80b47e4ae14c2004fa6e54847d5f0c3c, type: 3}
+    removeHover: {fileID: 2800000, guid: f434b5c0a733132498eeb84acb314e80, type: 3}
+  statFieldAssets:
+    hitpoints: {fileID: 2800000, guid: d1cc07f45bfe2dd4b9853fd73c4833c4, type: 3}
+    stamina: {fileID: 2800000, guid: ae9ae48e34fbf2d43a00353538d9ae80, type: 3}
+    staminaRegen: {fileID: 2800000, guid: 738f8b43d73d9ce4c953eacc59921e0a, type: 3}
+    attack: {fileID: 2800000, guid: de862a402d120084f9e37fd7bc6ef160, type: 3}
+    heal: {fileID: 2800000, guid: 73521ffbce1d83b47a4cf20bb3316506, type: 3}
+    paralysis: {fileID: 2800000, guid: 0b534f3d8f47c934283ccf73a87db870, type: 3}
+    defense: {fileID: 2800000, guid: 0c4f3543f514d5b47a68536b0c9bab25, type: 3}
+    speed: {fileID: 2800000, guid: b9bcbd551e34e6f4fbbcfc6ac5886548, type: 3}
+    time: {fileID: 2800000, guid: 429e9eca39c537b4180acaa93be66c5f, type: 3}

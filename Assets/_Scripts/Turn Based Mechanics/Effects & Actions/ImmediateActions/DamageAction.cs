@@ -26,7 +26,7 @@ public class DamageAction : ImmediateAction.Generic {
         target.DepleteHitpoints(computedDamage);
 
         // knock off bonbons % chance ---
-        int damagePercent = (computedDamage / activeData.Actor.Hitpoints()) * 100;
+        int damagePercent = (computedDamage / activeData.Actor.Hitpoints) * 100;
         int bonbonsToRemove = 0;
 
         if (damagePercent < 25)

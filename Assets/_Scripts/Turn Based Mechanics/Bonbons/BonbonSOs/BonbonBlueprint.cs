@@ -19,6 +19,10 @@ public class BonbonBlueprint : ScriptableObject {
     /// <summary> A dictionary containing the bonbons required to make the bonbon, mapped to the required quantity; </summary>
     public BonbonBlueprint[] recipe;
 
+    public BonbonBlueprint() {
+        recipe = new BonbonBlueprint[4];
+    }
+
     public BonbonObject InstantiateBonbon() {
         return new BonbonObject(this);
     }
@@ -60,6 +64,12 @@ public class BonbonBlueprint : ScriptableObject {
             for (int i = 0; i < recipe.Length; i++) nRecipe[i] = recipe[i];
             recipe = nRecipe;
         }
+    }
+
+    public static GUIContent GUIContent(object bonbonBlueprint) {
+        BonbonBlueprint bp = bonbonBlueprint as BonbonBlueprint;
+        if (bp.texture == null) return new GUIContent(bp.name);
+        else return new GUIContent(bp.texture);
     }
 
     #endif

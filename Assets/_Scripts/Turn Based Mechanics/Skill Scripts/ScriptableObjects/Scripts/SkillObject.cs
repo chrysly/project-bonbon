@@ -38,4 +38,13 @@ public class SkillObject : ScriptableObject {
 
     public string GetSkillID() { return skillID; }
     public string GetSkillName() { return skillName; }
+
+    #if UNITY_EDITOR
+
+    public static GUIContent GUIContent(object skillBlueprint) {
+        SkillObject bp = skillBlueprint as SkillObject;
+        return new GUIContent(bp.skillName);
+    }
+
+    #endif
 }

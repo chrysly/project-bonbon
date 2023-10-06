@@ -49,9 +49,9 @@ public class StatIteration {
     }
 
     public void Reset() {
-        Potency = baseData.BasePotency();
-        Defense = baseData.BaseDefense();
-        StaminaRegen = baseData.StaminaRegenRate();
+        Potency = baseData.BasePotency;
+        Defense = baseData.BaseDefense;
+        StaminaRegen = baseData.StaminaRegenRate;
     }
 
     public void ComputeModifiers(List<PassiveModifier> mods) {

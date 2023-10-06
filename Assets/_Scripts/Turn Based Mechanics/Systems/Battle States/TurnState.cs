@@ -8,7 +8,7 @@ public partial class BattleStateMachine {
         public override void Enter(BattleStateInput i) {
             base.Enter(i);
             MySM.OnStateTransition.Invoke(this, Input);
-            Debug.Log("[" + Input.CurrTurn() + "] " + "Entering " + Input.ActiveActor().data.DisplayName() + "'s Turn");
+            Debug.Log("[" + Input.CurrTurn() + "] " + "Entering " + Input.ActiveActor().Data.DisplayName + "'s Turn");
             Input.ActiveActor().TurnStart();
             if (Input.ActiveActor() is EnemyActor) {
                 MySM.Transition<TargetSelectState>();

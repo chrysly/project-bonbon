@@ -65,7 +65,7 @@ public class BattleStateInput : StateInput {
     {
         Debug.Log("test");
         // some event sequencer tests (DELETE LATER)        // i think the seq check should be here bc it checks stuff at the end of a turn. not sure how to check how to start a seq rn other than a fkcing long switch statemtn or smthing lol
-        if (ActiveActor().Hitpoints() == 115)
+        if (ActiveActor().Hitpoints == 115)
         {
             Debug.Log("It got here");
             eventSequencer.StartEventSequence();
@@ -74,7 +74,7 @@ public class BattleStateInput : StateInput {
         Actor initialActor = ActiveActor();
         do {
             currActorIndex = (currActorIndex + 1) % turnQueue.Count;
-        } while (ActiveActor().Defeated() && !initialActor.Equals(ActiveActor()));
+        } while (ActiveActor().Defeated && !initialActor.Equals(ActiveActor()));
         currentTurn++;
     }
 
