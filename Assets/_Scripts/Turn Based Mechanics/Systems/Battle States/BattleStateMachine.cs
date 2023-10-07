@@ -49,7 +49,7 @@ public partial class
         bool allEnemiesDead = true;
         bool allCharactersDead = true;
         foreach (Actor actor in actorList) {
-            if (actor.Defeated()) {
+            if (actor.Defeated) {
                 continue;
             }
             if (actor is EnemyActor) {

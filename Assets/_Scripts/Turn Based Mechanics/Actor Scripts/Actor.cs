@@ -6,15 +6,15 @@ using UnityEngine;
 public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #region Data Attributes
-    [SerializeField] public ActorData data;
+    [SerializeField] private ActorData data;
     public StatIteration ActiveData { get; private set; }
     [SerializeField] private string uniqueID;
     #endregion Data Attributes
 
     #region Accessors
-    public ActorData Data() { return data; }
+    public ActorData Data => data;
 
-    public string UniqueID() { return uniqueID; }
+    public string UniqueID => uniqueID;
     #endregion Accessors
 
     #region Variable Attributes
@@ -22,6 +22,10 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     [SerializeField] private int _hitpoints;
     private bool _defeated;
     private int _stamina;
+
+    public int Hitpoints => _hitpoints;
+    public bool Defeated => _defeated;
+    public int Stamina => _stamina;
 
     #endregion Variable Attributes
 
@@ -48,8 +52,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     protected virtual void InitializeAttributes() {
         ActiveData = new StatIteration(this, data);
-        _hitpoints = data.MaxHitpoints();
-        _stamina = data.MaxStamina();
+        _hitpoints = data.MaxHitpoints;
+        _stamina = data.MaxStamina;
         _defeated = false;
     }
 
@@ -82,6 +86,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     }
 
     private void ComputeStats() {
+        ActiveData.Reset();
         List<PassiveModifier> modifiers = new List<PassiveModifier>();
         foreach (BonbonObject bonbon in BonbonInventory) {
             if (bonbon != null) modifiers.Add(bonbon.PassiveModifiers);
@@ -107,7 +112,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         if (_hitpoints - damage <= 0) {
             _hitpoints = 0;
             _defeated = true;
-            Debug.Log($"{data.DisplayName()} has fallen!");
+            Debug.Log($"{data.DisplayName} has fallen!");
             return true;
         }
         _hitpoints -= damage;
@@ -117,8 +122,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     //Returns true if over maximum hitpoints.
     //Does not heal if Actor is defeated.
     public bool RestoreHitpoints(int heal) {
-        if (_hitpoints + heal > data.MaxHitpoints()) {
-            _hitpoints = data.MaxHitpoints();
+        if (_hitpoints + heal > data.MaxHitpoints) {
+            _hitpoints = data.MaxHitpoints;
             return true;
         }
         if (!_defeated) {
@@ -137,13 +142,6 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         SkillList.Add(new SkillAction(skillData, this, SkillList.Count));
     }
 
-    public int Hitpoints() {
-        return _hitpoints;
-    }
-
-    public bool Defeated() {
-        return _defeated;
-    }
 
     public bool HasRemainingStamina() {
         return _stamina > 0;
@@ -166,7 +164,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
             percent = 100;
 
         // calculate
-        int maxStamina = data.MaxStamina();
+        int maxStamina = data.MaxStamina;
         int refillAmount = (int) (maxStamina * percent / 100);
 
         if (_stamina + refillAmount > maxStamina)
@@ -177,7 +175,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #region Comparators
     public int CompareTo(Actor actor) {
-        return data.BaseSpeed() - actor.data.BaseSpeed();
+        return data.BaseSpeed - actor.data.BaseSpeed;
     }
 
     public override bool Equals(object obj) {
@@ -187,7 +185,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
             return false;
         }
 
-        return item.Data().ID() == data.ID();
+        return item.Data.ID == data.ID;
     }
 
     public override int GetHashCode() {

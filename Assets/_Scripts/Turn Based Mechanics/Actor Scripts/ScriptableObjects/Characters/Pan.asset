@@ -21,11 +21,11 @@ MonoBehaviour:
   maxStamina: 100
   staminaRegenRate: 12
   skillMap:
-    startIndeces: 00000000
+    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
     secondaryElements:
     - {fileID: 11400000, guid: f0554fb479c9bd14c92b1c3089e23da1, type: 2}
   bonbonMap:
-    startIndeces: 00000000
+    startIndeces: 0000000003000000030000000300000003000000030000000300000003000000
     secondaryElements:
     - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
     - {fileID: 11400000, guid: 2710e95bd92df5e4986fb1b931939f93, type: 2}
