@@ -114,16 +114,6 @@ namespace BonbonAssetManager {
             } return false;
         }
 
-        /*
-        private void AddBonbonRec(List<BonbonBlueprint> invalidBonbonList, BonbonBlueprint bonbon) {
-            invalidBonbonList.Add(bonbon);
-            foreach (BonbonBlueprint ingredient in bonbon.recipe) {
-                if (ingredient != null) {
-                    AddBonbonRec(invalidBonbonList, ingredient);
-                }
-            }
-        }
-        */
         public override void ShowGUI() {
             using (new EditorGUILayout.HorizontalScope()) {
                 using (new EditorGUILayout.VerticalScope()) {
