@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +24,7 @@ public class ApplyEffectsAction : ImmediateAction.SkillOnly {
         foreach (EffectBlueprint effect in effects) effect.ComputeEffectValue(ref actionValue, casterData);
     }
 
-    public override void Use(StatIteration activeData, Actor target = null) {
+    public override void Use(StatIteration activeData, Actor target = null, SkillAugmentation augment = null) {
         List<Effect> appliedEffectList = new List<Effect>();
         foreach (EffectBlueprint effect in effects) appliedEffectList.Add(effect.InstantiateEffect(activeData));
         target.ApplyEffects(appliedEffectList);
