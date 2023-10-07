@@ -96,13 +96,22 @@ namespace BonbonAssetManager {
                     continue;
                 }
 
-                foreach (BonbonBlueprint ingredient in bonbon.recipe) {
-                    if (ingredient == selectedBonbon) {
-                        invalidBonbons.Add(bonbon);
-                        break;
-                    }
-                }
+                FindInvalidBonbons(invalidBonbons, bonbon);
             } foreach (BonbonBlueprint bonbon in invalidBonbons) bonbonList.Remove(bonbon);
+        }
+
+        private bool FindInvalidBonbons(List<BonbonBlueprint> invalidBonbons, BonbonBlueprint bonbon) {
+            if (bonbon == null) return false;
+            bool bonbonInList = invalidBonbons.Contains(bonbon);
+            foreach (BonbonBlueprint ingredient in bonbon.recipe) {
+                if (ingredient == selectedBonbon) {
+                    if (!bonbonInList) invalidBonbons.Add(bonbon);
+                    return true;
+                } else if (FindInvalidBonbons(invalidBonbons, ingredient)) {
+                    if (!bonbonInList) invalidBonbons.Add(bonbon);
+                    return true;
+                }
+            } return false;
         }
 
         public override void ShowGUI() {
