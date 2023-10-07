@@ -17,9 +17,9 @@ public class ActionText : MonoBehaviour
     private void UpdateActionText(BattleStateMachine.BattleState state, BattleStateInput input) {
         if (state is BattleStateMachine.AnimateState) {
             TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-            text.SetText(input.ActiveActor().data.DisplayName() + " used " + input.SkillPrep.skill.SkillData.name +
+            text.SetText(input.ActiveActor().Data.DisplayName + " used " + input.SkillPrep.skill.SkillData.name +
                          " on "
-                         + input.SkillPrep.targets[0].data.DisplayName() +
+                         + input.SkillPrep.targets[0].Data.DisplayName +
                          "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
             ClearText();
         }
@@ -27,7 +27,7 @@ public class ActionText : MonoBehaviour
     
     private void UpdateBonbonActionText(BonbonObject bonbon) {
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-        text.SetText(stateMachine.CurrInput.ActiveActor().data.DisplayName() + " created " + bonbon.Name +
+        text.SetText(stateMachine.CurrInput.ActiveActor().Data.DisplayName + " created " + bonbon.Name +
                      "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
         ClearText();
     }

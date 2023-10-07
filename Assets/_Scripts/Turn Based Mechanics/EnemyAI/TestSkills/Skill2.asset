@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: Skill2
   skillName: Skill2
-  damageAmount: 10
   staminaCost: 60
-  healAmount: 0
-  resistanceAmount: 0
-  speedIncreaseAmount: 0
-  attackIncreaseAmount: 0
-  selfInflictAmount: 0
+  immediateActions:
+  - rid: 4810083093603680260
+  aoe: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4810083093603680260
+      type: {class: ApplyEffectsAction, ns: , asm: Assembly-CSharp}
+      data:
+        effects:
+        - {fileID: 11400000, guid: 0176473a0af2aca49b3805b061785e59, type: 2}

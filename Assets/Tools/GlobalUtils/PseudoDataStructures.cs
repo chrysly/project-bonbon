@@ -18,17 +18,6 @@ namespace PseudoDataStructures {
         public int[] startIndeces;
         public T[] secondaryElements;
 
-        public ArrayArray(T[][] array) {
-            startIndeces = new int[array.Length];
-            secondaryElements = new T[0];
-            var i = 0;
-            foreach (T[] subArray in array) {
-                secondaryElements = secondaryElements.Concat(subArray).ToArray();
-                startIndeces[i] = secondaryElements.Length - subArray.Length;
-                i++;
-            }
-        }
-
         public T[] this[int index] {
             get => ToArray()[index];
             set => ToArray()[index] = value;
@@ -46,6 +35,30 @@ namespace PseudoDataStructures {
             secondaryElements = new T[0];
         }
 
+        public ArrayArray(T[][] array) {
+            startIndeces = new int[array.Length];
+            secondaryElements = new T[0];
+            var i = 0;
+            foreach (T[] subArray in array) {
+                secondaryElements = secondaryElements.Concat(subArray).ToArray();
+                startIndeces[i] = secondaryElements.Length - subArray.Length;
+                i++;
+            }
+        }
+
+        public ArrayArray(List<T>[] array) {
+            startIndeces = new int[array.Length];
+            secondaryElements = new T[0];
+            var i = 0;
+            foreach (List<T> subArray in array) {
+                if (subArray != null) {
+                    secondaryElements = secondaryElements.Concat(subArray.ToArray()).ToArray();
+                    startIndeces[i] = secondaryElements.Length - subArray.Count;
+                } else startIndeces[i] = secondaryElements.Length;
+                i++;
+            }
+        }
+
         public T[][] ToArray() {
             var secondaryEList = new List<T>(secondaryElements);
             T[][] array = new T[startIndeces.Length][];
@@ -55,6 +68,19 @@ namespace PseudoDataStructures {
                 }
                 var lastIndex = startIndeces[startIndeces.Length - 1];
                 array[array.Length - 1] = secondaryEList.GetRange(lastIndex, secondaryEList.Count - lastIndex).ToArray();
+            }
+            return array;
+        }
+
+        public List<T>[] ToListArray() {
+            var secondaryEList = new List<T>(secondaryElements);
+            List<T>[] array = new List<T>[startIndeces.Length];
+            if (startIndeces.Length > 0) {
+                for (int i = 0; i < startIndeces.Length - 1; i++) {
+                    array[i] = secondaryEList.GetRange(startIndeces[i], startIndeces[i + 1] - startIndeces[i]);
+                }
+                var lastIndex = startIndeces[startIndeces.Length - 1];
+                array[array.Length - 1] = secondaryEList.GetRange(lastIndex, secondaryEList.Count - lastIndex);
             }
             return array;
         }

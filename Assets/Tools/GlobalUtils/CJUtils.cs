@@ -50,6 +50,113 @@ namespace CJUtils {
 
     #if UNITY_EDITOR
 
+    public static class FieldUtils {
+        
+        public enum DnDFieldType {
+            Add,
+            Remove,
+        }
+
+        public static CJToolAssets GetToolAssets() {
+            string assetGUID = AssetDatabase.FindAssets($"t:{nameof(CJToolAssets)}")[0];
+            string assetPath = AssetDatabase.GUIDToAssetPath(assetGUID);
+            return AssetDatabase.LoadAssetAtPath<CJToolAssets>(assetPath);
+        }
+
+        public static CJToolAssets.DnDFieldAssets GetDnDFieldAssets() {
+            string assetGUID = AssetDatabase.FindAssets($"t:{nameof(CJToolAssets)}")[0];
+            string assetPath = AssetDatabase.GUIDToAssetPath(assetGUID);
+            CJToolAssets.DnDFieldAssets assets = AssetDatabase.LoadAssetAtPath<CJToolAssets>(assetPath).dndFieldAssets;
+            Resources.UnloadUnusedAssets();
+            return assets;
+        }
+
+        public static Object DnDField(System.Type objType, DnDFieldType fieldType, CJToolAssets.DnDFieldAssets assets, params GUILayoutOption[] options) {
+            using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
+                Rect dropRect = EditorGUILayout.GetControlRect(options);
+                Object currObj = null;
+                int id = DragAndDrop.activeControlID;
+
+                Event evt = Event.current;
+                EventType eventType = evt.type;
+
+                switch (eventType) {
+
+                    case EventType.DragExited:
+                        if (GUI.enabled) HandleUtility.Repaint();
+                        break;
+                    case EventType.DragUpdated:
+                    case EventType.DragPerform:
+
+                        if (eventType == EventType.DragPerform) {
+                            if (!ValidDroppedObject(DragAndDrop.objectReferences, objType)) {
+                                Debug.LogWarning("Reference Mismatch: Object cannot be assigned;");
+                                break;
+                            }
+                        }
+
+                        if (dropRect.Contains(Event.current.mousePosition) && GUI.enabled) {
+                            if (DragAndDrop.objectReferences.Length == 0) break;
+
+                            Object validatedObject = DragAndDrop.objectReferences[0];
+
+                            if (validatedObject != null) {
+                                if (!EditorUtility.IsPersistent(validatedObject)) break;
+
+                                if (DragAndDrop.visualMode == DragAndDropVisualMode.None) {
+                                    DragAndDrop.visualMode = DragAndDropVisualMode.Generic;
+                                }
+                                
+
+                                if (eventType == EventType.DragPerform) {
+                                    currObj = validatedObject;
+
+                                    GUI.changed = true;
+                                    DragAndDrop.AcceptDrag();
+                                    DragAndDrop.activeControlID = 0;
+                                } else DragAndDrop.activeControlID = id;
+                                Event.current.Use();
+                            }
+                        } break;
+                    case EventType.Repaint:
+
+                        Texture normal;
+                        Texture hover;
+                        switch (fieldType) {
+                            default:
+                            case DnDFieldType.Add:
+                                normal = assets.addNormal;
+                                hover = assets.addHover;
+                                break;
+                            case DnDFieldType.Remove:
+                                normal = assets.removeNormal;
+                                hover = assets.removeHover;
+                                break;
+                        }
+                   
+                        if (dropRect.Contains(Event.current.mousePosition)) {
+                            GUI.DrawTexture(dropRect, hover);
+                        } else {
+                            GUI.DrawTexture(dropRect, normal);
+                        } break;
+                } return currObj;
+            }
+        }
+
+        private static bool ValidDroppedObject(Object[] references, System.Type objType) {
+            if (references == null || references.Length == 0) return true;
+
+            var reference = references[0];
+            Object obj = EditorUtility.InstanceIDToObject(reference.GetInstanceID());
+            if (obj is MonoBehaviour || obj is ScriptableObject) {
+                if (!HasValidScript(obj, objType)) return false;
+            } else return false;
+            return true;
+        }
+
+        private static bool HasValidScript(Object obj, System.Type objType) => obj.GetType() == objType;
+    }
+
     /// <summary>
     /// A collection of functions to draw custom bundles of UI Elements;
     /// </summary>

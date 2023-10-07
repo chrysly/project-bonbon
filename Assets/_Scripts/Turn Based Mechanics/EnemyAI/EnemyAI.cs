@@ -101,7 +101,7 @@ public class EnemyAI
     {
         int point = 0;
         
-        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints())
+        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints)
         {
             point += (int) AiWeights.KillUnit;
         }
@@ -115,7 +115,7 @@ public class EnemyAI
     // based on % health
     private static int addValueBasedOnHealth(ScenarioSkillData skill, Actor actor)
     {
-        int point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent; 
+        int point = (1 - (actor.Hitpoints / actor.Data.MaxHitpoints)) * (int)AiWeights.HealthPercent; 
         return point;
     }
 
