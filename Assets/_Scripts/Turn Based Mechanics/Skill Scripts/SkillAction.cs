@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class SkillAction {
 
-    public class SkillAugmentation {
-        public PassiveModifier modifiers;
-
-    }
-
     public SkillObject SkillData { get; private set; }
     public Actor Caster { get; private set; }
     public List<Effect> Effects { get; private set; }
@@ -33,7 +28,20 @@ public class SkillAction {
         }
     }
 
+    public void AugmentSkill(Actor[] targets, SkillAugmentation augment) {
+        foreach(Actor target in targets) {
+            SkillData.PerformActions(Caster.ActiveData, target);
+        }
+    }
+
     public override string ToString() {
         return SkillData.GetSkillName();
     }
+}
+
+[System.Serializable]
+public class SkillAugmentation {
+    public int damageBoost;
+    public int healBoost;
+    public bool aoeOverride;
 }
