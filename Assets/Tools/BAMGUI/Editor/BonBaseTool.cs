@@ -39,6 +39,8 @@ namespace BonbonAssetManager {
         private BonbonMap bonbonMapSO;
         private List<BonbonBlueprint>[] globalBonbonMap;
 
+        private System.Type[] actionTypes;
+        private ImmediateAction[] foundActions;
         private Editor bonbonInspector;
 
         private enum Mode {
@@ -55,6 +57,8 @@ namespace BonbonAssetManager {
 
             UpdateBonbonList();
             LoadBonbonMap();
+            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.Generic),
+                                                                                typeof(ImmediateAction.SkillOnly)});
         }
 
         void OnDisable() {
@@ -70,6 +74,8 @@ namespace BonbonAssetManager {
         public void SetSelectedBonbon(BonbonBlueprint bonbon) {
             selectedBonbon = bonbon;
             UpdateBonbonList();
+            if (selectedBonbon.augmentData.immediateActions == null) selectedBonbon.augmentData.immediateActions = new List<ImmediateAction>();
+            foundActions = ActionUtils.FetchAvailableActions(selectedBonbon.augmentData.immediateActions, actionTypes);
         }
 
         private void LoadBonbonMap() {
@@ -135,6 +141,14 @@ namespace BonbonAssetManager {
                                 case Mode.Attributes:
                                     if (bonbonInspector is null) bonbonInspector = Editor.CreateEditor(selectedBonbon);
                                     bonbonInspector.OnInspectorGUI();
+
+                                    EditorGUILayout.Separator();
+                                    EditorUtils.DrawSeparatorLines(" Use Immediate Actions");
+                                    EditorGUILayout.Separator();
+
+                                    if (ActionUtils.DrawAvailableActions(ref selectedBonbon.augmentData.immediateActions,
+                                                                         ref foundActions, actionTypes)) EditorUtility.SetDirty(selectedBonbon);
+
                                     break;
                                 case Mode.Recipe:
                                     BAMUtils.DrawAssetGroup(bonbonList, bonbonScroll, BonbonBlueprint.GUIContent,

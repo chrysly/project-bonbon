@@ -3,7 +3,7 @@
 [Serializable]
 public class SkipTurnAction : ImmediateAction.EffectOnly {
 
-    public override void Use(StatIteration activeData, Actor target = null) {
+    public override void Use(StatIteration activeData, Actor target = null, SkillAugment augment = null) {
         // Skip Turn;
     }
 

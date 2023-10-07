@@ -28,10 +28,17 @@ public class SkillAction {
         }
     }
 
-    public void AugmentSkill(Actor[] targets, SkillAugmentation augment) {
-        foreach(Actor target in targets) {
-            SkillData.PerformActions(Caster.ActiveData, target);
-        }
+    public void AugmentSkill(Actor[] targets, SkillAugment augment) {
+        /// Apply Bonbon Effect to Caster;
+        new ApplyEffectsAction(new List<EffectBlueprint>(new[] { augment.bonbonEffect })).Use(Caster.ActiveData, Caster);
+        /// Trigger a series of immediate actions on the augment;
+        foreach (ImmediateAction action in augment.immediateActions) action.Use(Caster.ActiveData, Caster);
+        /// Ensure that the skill applies effects if it originally didn't;
+        var aea = new ApplyEffectsAction();
+        if (augment.augmentEffects != null
+            && !SkillData.immediateActions.Contains(aea)) SkillData.immediateActions.Add(aea);
+        /// Perform the actions on the caster with new computations;
+        foreach (Actor target in targets) SkillData.PerformActions(Caster.ActiveData, target, augment);
     }
 
     public override string ToString() {
@@ -40,8 +47,18 @@ public class SkillAction {
 }
 
 [System.Serializable]
-public class SkillAugmentation {
+public class SkillAugment {
+    /// <summary> Base boost for damaging abilities; </summary>
     public int damageBoost;
+    /// <summary> Base boost for healing abilities; </summary>
     public int healBoost;
+    /// <summary> Effects applied to targets through the Augment; </summary>
+    public List<EffectBlueprint> augmentEffects;
+
+    /// <summary> Actions performed on the caster by the Augment; </summary>
+    public List<ImmediateAction> immediateActions;
+    /// <summary> Bonbon effect; </summary>
+    public EffectBlueprint bonbonEffect;
+    /// <summary> New AoE protocol through the augment; </summary>
     public bool aoeOverride;
 }

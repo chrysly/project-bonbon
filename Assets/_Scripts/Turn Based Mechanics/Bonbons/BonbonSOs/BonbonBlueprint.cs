@@ -13,8 +13,11 @@ public class BonbonBlueprint : ScriptableObject {
     /// <summary> A description of the bonbon for later use in the UI; </summary>
     public readonly string description;
 
-    /// <summary> An array of status effects granted by the bonbon; </summary>
+    /// <summary> An bundle of modifiers granted by the bonbon; </summary>
     public PassiveModifier passiveModifiers;
+
+    /// <summary> A bundle of modifiers and actions for bonbon usage; </summary>
+    public SkillAugment augmentData;
 
     /// <summary> A dictionary containing the bonbons required to make the bonbon, mapped to the required quantity; </summary>
     public BonbonBlueprint[] recipe;

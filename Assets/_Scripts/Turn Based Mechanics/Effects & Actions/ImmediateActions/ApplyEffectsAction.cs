@@ -20,17 +20,26 @@ public class ApplyEffectsAction : ImmediateAction.SkillOnly {
         effects = new List<EffectBlueprint>();
     }
 
+    public ApplyEffectsAction(List<EffectBlueprint> effects) {
+        this.effects = effects;
+    }
+
     public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) {
         foreach (EffectBlueprint effect in effects) effect.ComputeEffectValue(ref actionValue, casterData);
     }
 
-    public override void Use(StatIteration activeData, Actor target = null, SkillAugmentation augment = null) {
+    public override void Use(StatIteration activeData, Actor target = null, SkillAugment augment = null) {
         List<Effect> appliedEffectList = new List<Effect>();
-        foreach (EffectBlueprint effect in effects) appliedEffectList.Add(effect.InstantiateEffect(activeData));
-        target.ApplyEffects(appliedEffectList);
+        foreach (EffectBlueprint effect in effects) {
+            appliedEffectList.Add(effect.InstantiateEffect(activeData));
+        } if (augment != null && augment.augmentEffects != null) {
+            foreach (EffectBlueprint effect in augment.augmentEffects) {
+                appliedEffectList.Add(effect.InstantiateEffect(activeData));
+            }
+        } target.ApplyEffects(appliedEffectList);
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
 
     private CJToolAssets.DnDFieldAssets fieldAssets;
     private List<EffectBlueprint> globalEffects;
@@ -86,5 +95,5 @@ public class ApplyEffectsAction : ImmediateAction.SkillOnly {
         }
     }
 
-#endif
+    #endif
 }
