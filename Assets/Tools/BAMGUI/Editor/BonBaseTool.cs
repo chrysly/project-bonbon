@@ -39,6 +39,8 @@ namespace BonbonAssetManager {
         private BonbonMap bonbonMapSO;
         private List<BonbonBlueprint>[] globalBonbonMap;
 
+        private Editor bonbonInspector;
+
         private enum Mode {
             Attributes,
             Recipe,
@@ -50,8 +52,13 @@ namespace BonbonAssetManager {
             bonbonHierarchy = new BaseHierarchy<BonbonBlueprint>(this);
             bonbonHierarchy.OnPathSelection += BonbonManager_OnPathSelection;
             assetCreator.OnAssetCreation += bonbonHierarchy.ReloadHierarchy;
+
             UpdateBonbonList();
             LoadBonbonMap();
+        }
+
+        void OnDisable() {
+            DestroyImmediate(bonbonInspector);
         }
 
         private int buttonSize = 50;
@@ -126,7 +133,8 @@ namespace BonbonAssetManager {
                         if (selectedBonbon != null || mode == Mode.GlobalMap) {
                             switch (mode) {
                                 case Mode.Attributes:
-
+                                    if (bonbonInspector is null) bonbonInspector = Editor.CreateEditor(selectedBonbon);
+                                    bonbonInspector.OnInspectorGUI();
                                     break;
                                 case Mode.Recipe:
                                     BAMUtils.DrawAssetGroup(bonbonList, bonbonScroll, BonbonBlueprint.GUIContent,
@@ -151,6 +159,8 @@ namespace BonbonAssetManager {
 
         private void BonbonManager_OnPathSelection(string path) {
             SelectedPath = path;
+            DestroyImmediate(bonbonInspector);
+            bonbonInspector = null;
             SetSelectedBonbon(AssetDatabase.LoadAssetAtPath<BonbonBlueprint>(path));
         }
 
@@ -297,7 +307,6 @@ namespace BonbonAssetManager {
                         if (selectedSkill != null) {
                             if (skillInspector is null) skillInspector = Editor.CreateEditor(selectedSkill);
                             if (selectedSkill != null) skillInspector.OnInspectorGUI();
-                            else Debug.Log("Nope");
 
                             EditorGUILayout.Separator();
                             EditorUtils.DrawSeparatorLines(" Immediate Actions");
@@ -495,8 +504,8 @@ namespace BonbonAssetManager {
                                                                 selectedActor.MaxHitpoints));
                             selectedActor.SetMaxStamina(EditorGUILayout.IntField(new GUIContent(" Max Stamina", statAssets.stamina),
                                                                 selectedActor.MaxStamina));
-                            selectedActor.SetStaminaRegenRate(EditorGUILayout.IntField(new GUIContent(" Stamina Regen", statAssets.staminaRegen),
-                                                                selectedActor.StaminaRegenRate));
+                            selectedActor.SetStaminaRegenRate(EditorGUILayout.FloatField(new GUIContent(" Stamina Regen", statAssets.staminaRegen),
+                                                              selectedActor.StaminaRegenRate));
                         } EditorGUILayout.Separator();
                         using (new EditorGUILayout.VerticalScope()) {
                             selectedActor.SetBasePotency(EditorGUILayout.IntField(new GUIContent(" Base Potency", statAssets.attack),

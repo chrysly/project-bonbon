@@ -30,7 +30,7 @@ public class ActorData : ScriptableObject
     [SerializeField] private int maxStamina = 100;
     
     [Tooltip("The amount of stamina the character replenishes per turn.")]
-    [SerializeField] private int staminaRegenRate = 10;
+    [SerializeField] private float staminaRegenRate = 0.2f;
 
     public ArrayArray<SkillObject> skillMap;
     public ArrayArray<BonbonBlueprint> bonbonMap;
@@ -42,7 +42,7 @@ public class ActorData : ScriptableObject
     public int BaseDefense => baseDefense;
     public int BaseSpeed => baseSpeed;
     public int MaxStamina => maxStamina;
-    public int StaminaRegenRate => staminaRegenRate;
+    public float StaminaRegenRate => staminaRegenRate;
 
     #if UNITY_EDITOR
 
@@ -60,7 +60,7 @@ public class ActorData : ScriptableObject
 
     public void SetMaxStamina(int maxStamina) => this.maxStamina = maxStamina;
 
-    public void SetStaminaRegenRate(int staminaRegenRate) => this.staminaRegenRate = staminaRegenRate;
+    public void SetStaminaRegenRate(float staminaRegenRate) => this.staminaRegenRate = staminaRegenRate;
 
     #endif
 }
