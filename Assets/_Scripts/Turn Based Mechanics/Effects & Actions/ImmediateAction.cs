@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 /// <summary>
 /// Generic definition for an action;
@@ -21,7 +21,7 @@ public abstract class ImmediateAction {
     /// </summary>
     /// <param name="activeData"> Active data of the casting actor; </param>
     /// <param name="target"> Target actor for the skill; </param>
-    public abstract void Use(StatIteration activeData, Actor target = null);
+    public abstract void Use(StatIteration activeData, Actor target = null, SkillAugmentation augment = null);
 
     #if UNITY_EDITOR
 
