@@ -25,22 +25,20 @@ public class SceneTransition : MonoBehaviour
     //Increment scenes up and down 1 index from the build index by pressing the respective arrow key
     public void IncrementScene()
     {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings -1)
+            if (currentSceneIndex < SceneManager.sceneCountInBuildSettings -1)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                sliderPanel.SetActive(true);
-                StartCoroutine(LoadSceneSync(SceneManager.GetActiveScene().buildIndex + 1));
+                SwitchToScene(currentSceneIndex + 1);
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (SceneManager.GetActiveScene().buildIndex > 0)
+            if (currentSceneIndex > 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-                sliderPanel.SetActive(true);
-                StartCoroutine(LoadSceneSync(SceneManager.GetActiveScene().buildIndex - 1));
+                SwitchToScene(currentSceneIndex - 1);
             }
         }
     }
@@ -49,9 +47,7 @@ public class SceneTransition : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            SceneManager.LoadScene(sceneWant);
-            sliderPanel.SetActive(true);
-            StartCoroutine(LoadSceneSync(sceneWant));
+            SwitchToScene(sceneWant);
         }
     }
     
@@ -67,5 +63,9 @@ public class SceneTransition : MonoBehaviour
             yield return null;
         }
     }
-    
+
+    public void SwitchToScene(int sceneIndex) {
+        sliderPanel.SetActive(true);
+        StartCoroutine(LoadSceneSync(sceneIndex));
+    }
 }
