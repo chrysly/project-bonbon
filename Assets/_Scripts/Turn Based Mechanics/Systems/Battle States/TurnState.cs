@@ -22,11 +22,6 @@ public partial class BattleStateMachine {
 
         public override void Exit(BattleStateInput input) {
             base.Exit(input);
-
-            SkillAction skill = Input.ActiveActor().SkillList[0];    //hard coded for pitch demo
-            Input.SetSkillPrep(skill);
-
-            Debug.Log(Input.SkillPrep.skill.ToString());
         }
     }
 }
