@@ -8,7 +8,7 @@ public class TurnValueHandler : IComparable<TurnValueHandler> {
 
     public TurnValueHandler(Actor actor) {
         Actor = actor;
-        Speed = actor.Data().BaseSpeed();
+        Speed = actor.Data.BaseSpeed;
         ActionMeter = DefaultActionMeter;
     }
 
