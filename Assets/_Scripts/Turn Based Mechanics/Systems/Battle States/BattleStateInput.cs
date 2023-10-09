@@ -80,7 +80,7 @@ public class BattleStateInput : StateInput {
         Actor initialActor = ActiveActor();
         do {
             currActorIndex = (currActorIndex + 1) % turnQueue.Count;
-        } while (ActiveActor().Available && !initialActor.Equals(ActiveActor()));
+        } while (ActiveActor().Defeated && !initialActor.Equals(ActiveActor()));
         currentTurn++;
     }
 

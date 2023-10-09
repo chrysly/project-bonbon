@@ -10,6 +10,7 @@ public partial class BattleStateMachine {
             MySM.OnStateTransition.Invoke(this, Input);
             Debug.Log("[" + Input.CurrTurn() + "] " + "Entering " + Input.ActiveActor().Data.DisplayName + "'s Turn");
             Input.ActiveActor().TurnStart();
+            if (!Input.ActiveActor().Available) Input.AdvanceTurn();
             if (Input.ActiveActor() is EnemyActor) {
                 MySM.Transition<TargetSelectState>();
             }

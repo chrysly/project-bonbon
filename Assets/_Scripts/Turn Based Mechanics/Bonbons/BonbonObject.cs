@@ -12,6 +12,8 @@ public class BonbonObject {
     public string Name => Data.name;
     public Texture Texture => Data.texture;
     public string Description => Data.description;
+
+    public int CraftStamina => Data.craftStamina;
     public PassiveModifier PassiveModifiers => Data.passiveModifiers;
     public BonbonBlueprint[] Recipe => Data.recipe;
 

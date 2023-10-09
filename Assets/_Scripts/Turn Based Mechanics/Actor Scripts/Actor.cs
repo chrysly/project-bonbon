@@ -145,6 +145,10 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         return false;
     }
 
+    public void ConsumeStamina(int amount) {
+        _stamina -= amount;
+    }
+
     public void InsertBonbon(int slot, BonbonObject bonbon) {
         if (BonbonInventory[slot] == null) {
             BonbonInventory[slot] = bonbon;
