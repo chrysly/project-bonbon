@@ -59,7 +59,7 @@ public class BattleStateInput : StateInput {
     public void ActivateSkill() {
         if (SkillPrep.targets.Length > 0) {
             if (SkillPrep.bonbon == null) SkillPrep.skill.ActivateSkill(SkillPrep.targets);
-            else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon.Data.augmentData);
+            else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon);
         }
         SkillPrep = new ActiveSkillPrep();
     }
