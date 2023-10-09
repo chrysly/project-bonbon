@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <uie:PropertyField binding-path="window" style="padding-bottom: 0;" />
+    <ui:Label tabindex="-1" text="Test Fields" display-tooltip-when-elided="true" style="padding-top: 0; -unity-font-style: bold; margin-top: 10px;" />
+    <uie:ObjectField label="Source Actor" type="Actor, Assembly-CSharp" binding-path="source" tabindex="0" style="padding-left: 10px;" />
+    <uie:ObjectField label="Target Actor" binding-path="target" type="Actor, Assembly-CSharp" style="padding-left: 10px;" />
+    <ui:IntegerField label="Source Inventory" value="0" binding-path="sourceInventory" style="padding-left: 10px;" />
+    <ui:IntegerField label="Target Inventory" value="0" binding-path="targetInventory" style="padding-left: 10px;" />
+    <ui:Button text="Pass Bonbon" display-tooltip-when-elided="true" name="passBonbon" style="padding-top: 1px; margin-top: 5px;" />
+</ui:UXML>

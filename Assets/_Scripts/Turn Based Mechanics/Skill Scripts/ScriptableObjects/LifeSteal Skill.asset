@@ -18,6 +18,7 @@ MonoBehaviour:
   immediateActions:
   - rid: 3928641313810939905
   - rid: 3928641313810939907
+  - rid: 4810083093603680257
   aoe: 0
   references:
     version: 2
@@ -30,3 +31,7 @@ MonoBehaviour:
       type: {class: SelfHealAction, ns: , asm: Assembly-CSharp}
       data:
         healAmount: 5
+    - rid: 4810083093603680257
+      type: {class: ApplyEffectsAction, ns: , asm: Assembly-CSharp}
+      data:
+        effects: []

@@ -14,11 +14,11 @@ public class SkillAction {
         SkillIndex = skillIndex;
     }
 
-    public AIActionValue ComputeSkillActionValues(Actor actor) {
+    public AIActionValue ComputeSkillActionValues(Actor target) {
         AIActionValue actionValue = new AIActionValue();
-        SkillData.ComputeActionValues(ref actionValue, actor.ActiveData);
-        actionValue.immediateDamage = actor.ActiveData.ComputeDefense(actionValue.immediateDamage);
-        actionValue.damageOverTime = actor.ActiveData.ComputeDefense(actionValue.damageOverTime);
+        SkillData.ComputeActionValues(ref actionValue, target.ActiveData);
+        actionValue.immediateDamage = target.ActiveData.ComputeDefense(actionValue.immediateDamage);
+        actionValue.damageOverTime = target.ActiveData.ComputeDefense(actionValue.damageOverTime);
         return actionValue;
     }
 
@@ -28,45 +28,37 @@ public class SkillAction {
         }
     }
 
+    public void AugmentSkill(Actor[] targets, SkillAugment augment) {
+        /// Apply Bonbon Effect to Caster;
+        new ApplyEffectsAction(new List<EffectBlueprint>(new[] { augment.bonbonEffect })).Use(Caster.ActiveData, Caster);
+        /// Trigger a series of immediate actions on the augment;
+        foreach (ImmediateAction action in augment.immediateActions) action.Use(Caster.ActiveData, Caster);
+        /// Ensure that the skill applies effects if it originally didn't;
+        var aea = new ApplyEffectsAction();
+        if (augment.augmentEffects != null
+            && !SkillData.immediateActions.Contains(aea)) SkillData.immediateActions.Add(aea);
+        /// Perform the actions on the caster with new computations;
+        foreach (Actor target in targets) SkillData.PerformActions(Caster.ActiveData, target, augment);
+    }
+
     public override string ToString() {
         return SkillData.GetSkillName();
     }
 }
 
-public class StatIteration {
+[System.Serializable]
+public class SkillAugment {
+    /// <summary> Base boost for damaging abilities; </summary>
+    public int damageBoost;
+    /// <summary> Base boost for healing abilities; </summary>
+    public int healBoost;
+    /// <summary> Effects applied to targets through the Augment; </summary>
+    public List<EffectBlueprint> augmentEffects;
 
-    public readonly Actor Actor;
-    private readonly ActorData baseData;
-
-    public int Potency { get; private set; }
-    public int Defense { get; private set; }
-    public int StaminaRegen { get; private set; }
-
-    public StatIteration(Actor actor, ActorData data) {
-        Actor = actor;
-        baseData = data;
-        Reset();
-    }
-
-    public void Reset() {
-        Potency = baseData.BasePotency();
-        Defense = baseData.BaseDefense();
-        StaminaRegen = baseData.StaminaRegenRate();
-    }
-
-    public void ComputeModifiers(List<PassiveModifier> mods) {
-        foreach (PassiveModifier mod in mods) {
-            Potency = (int) (mod.attackModifier * Potency);
-            Defense = (int) (mod.defenseModifier * Defense);
-            StaminaRegen = (int) (mod.staminaRegenModifier + StaminaRegen);
-        }
-    }
-
-    public int ComputePotency(int rawAmount) {
-        return rawAmount + rawAmount * (Potency / 100);
-    }
-
-    public int ComputeDefense(int rawAmount) {
-        return rawAmount * (1 - (Defense / 100));
-    }
+    /// <summary> Actions performed on the caster by the Augment; </summary>
+    public List<ImmediateAction> immediateActions;
+    /// <summary> Bonbon effect; </summary>
+    public EffectBlueprint bonbonEffect;
+    /// <summary> New AoE protocol through the augment; </summary>
+    public bool aoeOverride;
 }

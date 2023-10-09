@@ -11,6 +11,8 @@ namespace ModelAssetDatabase {
 
         protected ModelAssetDatabaseGUI MainGUI;
 
+        public string SelectedAssetPath { get; protected set; }
+
         /// <summary>
         /// Initialize base tool data when constructing the tool;
         /// </summary>
@@ -29,6 +31,7 @@ namespace ModelAssetDatabase {
         /// Override this method to refresh tool values when the tool is reselected;
         /// </summary>
         public virtual void RefreshData() { }
+
         /// <summary>
         /// Override this method to reset tool values when another tool is selected;
         /// </summary>
@@ -41,7 +44,7 @@ namespace ModelAssetDatabase {
         /// Override this method to change the selected asset on a Hierarchy Builder call;
         /// </summary>
         /// <param name="path"> Path of the asset to select; </param>
-        public virtual void SetSelectedAsset(string path) { }
+        public virtual void SetSelectedAsset(string path) => SelectedAssetPath = path;
 
         void OnDisable() => FlushData() ;
 

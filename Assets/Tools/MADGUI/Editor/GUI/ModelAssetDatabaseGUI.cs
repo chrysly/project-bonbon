@@ -14,7 +14,7 @@ namespace ModelAssetDatabase {
         /// </summary>
         [MenuItem("Tools/Model Asset Database")]
         public static void ShowWindow() {
-            if (HasOpenInstances<ModelAssetDatabaseGUI>()) MainGUI.Close();
+            if (MainGUI != null && HasOpenInstances<ModelAssetDatabaseGUI>()) MainGUI.Close();
             ConfigurationCore.LoadConfig();
             if (string.IsNullOrWhiteSpace(ModelAssetDatabase.RootAssetPath)) {
                 ConfigurationGUI.ShowWindow();
@@ -57,17 +57,14 @@ namespace ModelAssetDatabase {
         public Reader ModelReader { get { return Subtools[(int) ToolMode.ModelReader] as Reader; } }
         public PrefabOrganizer PrefabOrganizer { get { return Subtools[(int) ToolMode.PrefabOrganizer] as PrefabOrganizer; } }
         public MaterialManager MaterialManager { get { return Subtools[(int) ToolMode.MaterialManager] as MaterialManager; } }
-        public string SelectedAssetPath { get; private set; }
+        public string SelectedAssetPath => Subtools[(int) ActiveTool].SelectedAssetPath;
 
         /// <summary>
         /// Sets the selected asset on the active tool;
         /// <br></br> The tool chooses whether the change is valid;
         /// </summary>
         /// <param name="path"></param>
-        public void SetSelectedAsset(string path) {
-            SelectedAssetPath = path;
-            Subtools[(int) ActiveTool].SetSelectedAsset(path);
-        }
+        public void SetSelectedAsset(string path) => Subtools[(int) ActiveTool].SetSelectedAsset(path);
 
         /// <summary>
         /// Switch to the Prefabs Section of the Model Reader on the corresponding model;
@@ -187,7 +184,7 @@ namespace ModelAssetDatabase {
         /// Unloads all data contained in the tool components;
         /// </summary>
         private void FlushGlobalData() {
-            //ModelAssetLibrary.UnloadDictionaries();
+            ModelAssetDatabase.UnloadDictionaries();
             Resources.UnloadUnusedAssets();
             SetHighRepaintFrequency(false);
             ActiveTool = 0;

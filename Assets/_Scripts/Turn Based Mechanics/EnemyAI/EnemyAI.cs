@@ -73,6 +73,7 @@ public class EnemyAI
         
         // if there's a tie in goodness values, pick a random scenario from the list
         Debug.Log(bestScenarios.Count);
+        bestScenarios.Add(new Scenario(new ScenarioSkillData(currentActor.SkillList[0], currentActor, characterActors), 5));
         Scenario chosenScenario = bestScenarios[Random.Range(0, bestScenarios.Count)];
         BattleStateInput.ActiveSkillPrep bestActiveSkill = new BattleStateInput.ActiveSkillPrep()
         {
@@ -100,7 +101,7 @@ public class EnemyAI
     {
         int point = 0;
         
-        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints())
+        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints)
         {
             point += (int) AiWeights.KillUnit;
         }
@@ -114,7 +115,7 @@ public class EnemyAI
     // based on % health
     private static int addValueBasedOnHealth(ScenarioSkillData skill, Actor actor)
     {
-        int point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent; 
+        int point = (1 - (actor.Hitpoints / actor.Data.MaxHitpoints)) * (int)AiWeights.HealthPercent; 
         return point;
     }
 

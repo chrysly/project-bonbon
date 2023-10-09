@@ -2,7 +2,6 @@
 using UnityEditor;
 using UnityEngine;
 using CJUtils;
-using ModelAssetDatabase.MADUtils;
 using static ModelAssetDatabase.ModelAssetDatabaseGUI;
 
 namespace ModelAssetDatabase {
@@ -64,7 +63,7 @@ namespace ModelAssetDatabase {
                 name = ModelAssetDatabase.ModelDataDict[ModelID].name.Replace(' ', '_');
                 if (char.IsLetter(name[0]) && char.IsLower(name[0])) name = name.Substring(0, 1).ToUpper() + name[1..];
             } string annexedName = name + (annex > 0 ? "_" + annex : "");
-            if (ModelAssetDatabase.NoAssetAtPath(basePath + "/" + annexedName + ".prefab")) {
+            if (GeneralUtils.NoAssetAtPath(basePath + "/" + annexedName + ".prefab")) {
                 SetDefaultPrefabName(annexedName);
             } else if (annex < 100) { /// Cheap stack overflow error prevention;
                 annex++;
@@ -77,7 +76,7 @@ namespace ModelAssetDatabase {
         /// </summary>
         /// <param name="name"> New default name; </param>
         private void SetDefaultPrefabName(string name) {
-            this.prefabName = name;
+            prefabName = name;
             GUIUtility.keyboardControl = 0;
             GUIUtility.hotControl = 0;
         }
