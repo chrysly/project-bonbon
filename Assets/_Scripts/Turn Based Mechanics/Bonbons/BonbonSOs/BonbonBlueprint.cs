@@ -13,6 +13,8 @@ public class BonbonBlueprint : ScriptableObject {
     /// <summary> A description of the bonbon for later use in the UI; </summary>
     public readonly string description;
 
+    public int craftStamina;
+
     /// <summary> An bundle of modifiers granted by the bonbon; </summary>
     public PassiveModifier passiveModifiers;
 
