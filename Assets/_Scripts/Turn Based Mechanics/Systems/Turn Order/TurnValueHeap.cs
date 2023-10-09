@@ -59,4 +59,10 @@ public class TurnValueHeap : MinHeap<TurnValueHandler> {
     public void BuildTurnValueHeap() {
         BuildHeap();
     }
+
+    public void ResetTop()
+    {
+        Peek().ResetActionMeter();
+        BuildHeap();
+    }
 }

@@ -11,6 +11,11 @@ public class MinHeap<T> where T : IComparable<T> {
         _size = 0;
     }
     public MinHeap(List<T> list) : this() {
+        if (list == null)
+        {
+            throw new ArgumentNullException("Provided list for heap creation is null!");
+        }
+        
         CopyList(list);
         BuildHeap();
     }
@@ -29,13 +34,9 @@ public class MinHeap<T> where T : IComparable<T> {
         }
     }
     protected void BuildHeap() {
-        int startingPos = _size / 2;
-        BuildHeap(startingPos);
-    }
-    private void BuildHeap(int i) {
-        if (i > 0) {
+        for (int i = _size / 2; i > 0; i--)
+        {
             DownHeap(i);
-            BuildHeap(i - 1);
         }
     }
     public void Add(T data) {
@@ -68,15 +69,15 @@ public class MinHeap<T> where T : IComparable<T> {
         }
     }
     public T Remove() {
-        if (_size == 0) {
-            throw new IndexOutOfRangeException("Heap is empty, cannot remove from empty heap");
-        }
         T removedData = _backingArray[1];
         _backingArray[1] = _backingArray[_size];
         _backingArray[_size] = default;
 
         _size--;
-        DownHeap(1);
+        if (_size != 0)
+        {
+            DownHeap(1);
+        }
         return removedData;
     }
     protected void DownHeap(int currentIdx) {
@@ -112,10 +113,6 @@ public class MinHeap<T> where T : IComparable<T> {
         }
     }
     public T Peek() {
-        if (_size != 0) {
-            return _backingArray[1];
-        }
-        
-        throw new IndexOutOfRangeException("Heap is empty, cannot return minimum value");
+        return _backingArray[1];
     }
 }
