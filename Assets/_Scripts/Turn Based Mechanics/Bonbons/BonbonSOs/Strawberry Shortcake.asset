@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80a1e328ef7550848b63f4350f7b66cf, type: 3}
-  m_Name: Strawberry Toast
+  m_Name: Strawberry Shortcake
   m_EditorClassIdentifier: 
   name: Strawberry Shortcake
   texture: {fileID: 0}
-  craftStamina: 0
+  craftStamina: 10
   passiveModifiers:
     flatAttack: 0
     percentAttack: 0
