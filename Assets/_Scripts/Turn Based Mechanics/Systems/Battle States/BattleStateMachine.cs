@@ -8,7 +8,7 @@ public partial class
 
     #region SerializeFields
     [SerializeField] private BonbonFactory bonbonFactory;
-    [SerializeField] private float battleStartAnimationDuration;
+    [SerializeField] private BattleUIStateMachine _uiStateMachine;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     [SerializeField] private List<Actor> actorList;
     #endregion SerializeFields
