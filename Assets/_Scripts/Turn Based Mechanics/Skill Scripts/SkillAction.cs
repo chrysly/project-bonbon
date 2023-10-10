@@ -36,10 +36,6 @@ public class SkillAction {
     public void AugmentSkill(Actor[] targets, BonbonObject bonbon) {
         PayStamina();
         SkillAugment augment = bonbon.Data.augmentData;
-        /// Apply Bonbon Effect to Caster;
-        new ApplyEffectsAction(new List<EffectBlueprint>(new[] { augment.bonbonEffect })).Use(Caster.ActiveData, Caster);
-        /// Trigger a series of immediate actions on the augment;
-        foreach (ImmediateAction action in augment.immediateActions) action.Use(Caster.ActiveData, Caster);
         /// Ensure that the skill applies effects if it originally didn't;
         var aea = new ApplyEffectsAction();
         if (augment.augmentEffects != null

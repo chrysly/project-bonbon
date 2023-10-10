@@ -14,7 +14,7 @@ public class BonbonObject {
     public string Description => Data.description;
 
     public int CraftStamina => Data.craftStamina;
-    public PassiveModifier PassiveModifiers => Data.passiveModifiers;
+    public SkillAugment AugmentData => Data.augmentData;
     public BonbonBlueprint[] Recipe => Data.recipe;
 
     public BonbonObject(BonbonBlueprint blueprint) => Data = blueprint;
