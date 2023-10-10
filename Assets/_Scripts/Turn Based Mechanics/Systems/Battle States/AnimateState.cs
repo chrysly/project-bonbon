@@ -21,7 +21,8 @@ public partial class BattleStateMachine {
             //    Input.ActiveSkill().ActivateSkill();
             //}
             if (Input.ActiveActor() is EnemyActor) Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
-            else _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform);  // HARD CODED (change later bc anumation??? idk)
+            //else _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform);  // HARD CODED (change later bc anumation??? idk)
+            else Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
             MySM.OnStateTransition.Invoke(this, Input);
             
             Input.ActivateSkill();
