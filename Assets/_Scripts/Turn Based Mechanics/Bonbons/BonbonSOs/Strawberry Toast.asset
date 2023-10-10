@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80a1e328ef7550848b63f4350f7b66cf, type: 3}
-  m_Name: Mango
+  m_Name: Strawberry Toast
   m_EditorClassIdentifier: 
-  name: Mango
-  texture: {fileID: 2800000, guid: 17fc329e95e2c4a449c440217d96f16d, type: 3}
+  name: Strawberry Shortcake
+  texture: {fileID: 0}
+  craftStamina: 0
   passiveModifiers:
     flatAttack: 0
     percentAttack: 0
@@ -22,16 +23,16 @@ MonoBehaviour:
     flatDefense: 0
     percentDefense: 0
     flatSpeed: 0
-    percentSpeed: 0
+    percentSpeed: 0.3
     percentStaminaRegen: 0
   augmentData:
-    damageBoost: 0
-    healBoost: 0
+    damageBoost: 5
+    healBoost: 2
     augmentEffects: []
-    bonbonEffect: {fileID: 11400000, guid: 2b4f92bbf41fc604aafa587f51868a22, type: 2}
+    bonbonEffect: {fileID: 11400000, guid: d59b4c6dc5ba34a4cb5cf2e9bf4ebed4, type: 2}
     aoeOverride: 0
   recipe:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b213808cf87af4843b808ecfb190468c, type: 2}
+  - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
   - {fileID: 0}
   - {fileID: 0}
