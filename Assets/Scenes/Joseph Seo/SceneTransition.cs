@@ -9,6 +9,8 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private int sceneWant;
     [SerializeField] private GameObject sliderPanel;
     [SerializeField] private Slider slider;
+    private float currentValue;
+    [SerializeField] private float progressMultiplier = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -49,21 +51,27 @@ public class SceneTransition : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            SceneManager.LoadScene(sceneWant);
             sliderPanel.SetActive(true);
             StartCoroutine(LoadSceneSync(sceneWant));
+            //SceneManager.LoadScene(sceneWant);
         }
     }
     
     
-    IEnumerator LoadSceneSync(int sceneToLoad)
+
+    IEnumerator LoadSceneSync(int scene)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
-        while (!operation.isDone)
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+        while(!operation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress);
-            //Debug.Log("-------------------------------------------------------------------------------------------------------------------------");
-            slider.value = progress;
+            operation.allowSceneActivation = false;
+            float progress = Mathf.Clamp01(operation.progress/0.9f);
+            currentValue = Mathf.MoveTowards(currentValue, progress, progressMultiplier * Time.deltaTime);
+            slider.value = currentValue;
+            if (Mathf.Approximately(currentValue, 1))
+            {
+                operation.allowSceneActivation = true;
+            }
             yield return null;
         }
     }
