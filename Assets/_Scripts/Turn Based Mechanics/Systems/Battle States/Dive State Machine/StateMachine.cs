@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
@@ -6,7 +7,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //The following code is heavily influenced from a state machine used in Side By Side (Producer: Yoon Lee)
-//Repurposed for Bonbon: Origins
+//Repurposed for Dive
+//Stolen by Bonbon
 
 /// <summary>
 /// Defines a Finite State Machine that can be extended for more functionality.
@@ -23,6 +25,8 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
     public I CurrInput { get; private set; }
 
     private Dictionary<Type, S> _stateMap = new Dictionary<Type, S>();
+    
+    private IEnumerator _transitionAction = null;
 
     public event Action StateTransition; //(State, PrevState)
 
@@ -62,6 +66,24 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
         SetState<NextStateType>();
         CurrState.Enter(CurrInput);
 
+        StateTransition?.Invoke();
+    }
+    
+    //Edit by Chris Lee: Added delayed transition, intended for programmed UI animation between states :O
+    public void DelayedTransition<NextStateType>(float delay, bool overrideCurrState) where NextStateType : S, new() {
+        if (overrideCurrState) _transitionAction = null;
+        if (_transitionAction == null) {
+            _transitionAction = DelayedTransitionAction<NextStateType>(delay);
+            StartCoroutine(_transitionAction);
+        }
+    }
+
+    private IEnumerator DelayedTransitionAction<NextStateType>(float delay) where NextStateType : S, new() {
+        CurrState?.Exit(CurrInput);
+        yield return new WaitForSeconds(delay);
+        SetState<NextStateType>();
+        CurrState.Enter(CurrInput);
+        
         StateTransition?.Invoke();
     }
 

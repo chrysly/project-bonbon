@@ -11,12 +11,13 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
     }
 
     protected override void SetInitialState() {
-        SetState<InitUIState>();
+        Transition<BattleUI_Limbo>();
     }
 
     protected void Refresh(BattleStateMachine.BattleState state, BattleStateInput input) {
         if (state is BattleStateMachine.TurnState) {
-            SetState<InitUIState>();
+            CurrInput.AnimationHandler = input.ActiveActor().transform.GetComponent<UIAnimationHandler>();
+            Transition<InitUIState>();
         }
     }
 
