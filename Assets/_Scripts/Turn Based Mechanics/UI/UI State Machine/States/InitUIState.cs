@@ -4,6 +4,7 @@ using UnityEngine;
 
 public partial class BattleUIStateMachine {
     public class InitUIState : BattleUIState {
+        
         public override void Enter(BattleUIStateInput i) {
             base.Enter(i);
             RunPreAnimation();
@@ -11,11 +12,19 @@ public partial class BattleUIStateMachine {
         
         public override void Update() {
             base.Update();
+            
         }
 
         public override void Exit(BattleUIStateInput i) {
             base.Exit(i);
             RunPostAnimation();
+        }
+
+        //Potato arrow keybinds
+        private void CheckInput() {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.W)) {
+                
+            }
         }
         
         #region Animations

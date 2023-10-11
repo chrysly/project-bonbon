@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,14 @@ public class UIAnimationHandler : MonoBehaviour {
 
     public IEnumerator activeUIAction = null;
 
+    public void Start() {
+        DisableAll();
+    }
+
+    public void DisableAll() {
+        ToggleMainPanel(false);
+    }
+
     public bool QueueIsEmpty() {
         return activeUIAction == null;
     }
@@ -14,7 +23,12 @@ public class UIAnimationHandler : MonoBehaviour {
     #region Main Window
     [Header("Main Panel")] 
     [SerializeField] private CanvasGroup mainPanel;
-    [SerializeField] private float mainPanelToggleDuration;
+    [SerializeField] private float mainPanelToggleDuration = 0.3f;
+
+    [SerializeField] private List<BattleButton> mainPanelButtons;
+    [SerializeField] private Vector3 mainPanelButtonScaleVector = new Vector3(1.2f, 1.2f, 1.2f);
+    [SerializeField] private float mainPanelButtonScaleDuration = 0.2f;
+    private int mainButtonIndex = -1;
 
     public void ToggleMainPanel(bool enable) {
         if (QueueIsEmpty()) {
@@ -23,7 +37,6 @@ public class UIAnimationHandler : MonoBehaviour {
             StartCoroutine(activeUIAction);
         }
     }
-
     private IEnumerator MainPanelAction(bool enable) {
         mainPanel.DOFade(enable ? 1 : 0, mainPanelToggleDuration);
         yield return new WaitForSeconds(mainPanelToggleDuration);
@@ -31,7 +44,34 @@ public class UIAnimationHandler : MonoBehaviour {
         activeUIAction = null;
         yield return null;
     }
-    #endregion Primary Window
+
+    public void SelectMainPanelButton(bool directionDown) {
+        if (activeUIAction == null) {
+            activeUIAction = SelectMainPanelButtonAction(directionDown);
+            StartCoroutine(activeUIAction);
+        }
+    }
+    private IEnumerator SelectMainPanelButtonAction(bool directionDown) {
+        mainButtonIndex = mainButtonIndex == -1 ? 0 : mainButtonIndex;
+        if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count ? 0 : mainButtonIndex + 1;
+        else mainButtonIndex = mainButtonIndex < 0 ? mainPanelButtons.Count - 1 : mainButtonIndex - 1;
+
+        for (int i = 0; i < mainPanelButtons.Count; i++) {
+            if (i == mainButtonIndex) {
+                mainPanelButtons[mainButtonIndex].Scale(mainPanelButtonScaleVector, mainPanelButtonScaleDuration);
+            }
+            else {
+                mainPanelButtons[i].Scale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration);
+            }
+        }
+
+        yield return new WaitForSeconds(mainPanelButtonScaleDuration);
+        yield return null;
+    }
+    private void ActivateMainPanelButton() {
+        
+    }
+    #endregion Main Window
     
     
     
