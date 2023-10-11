@@ -22,7 +22,12 @@ public class BattleStateInput : StateInput {
     } public ActiveSkillPrep SkillPrep { get; private set; }
     #endregion Turn Variables
 
-    public void Initialize() => SkillPrep = new ActiveSkillPrep();
+    private EventSequencer eventSequencer;
+    public void Initialize(EventSequencer eventSeq)    // short hand (normal Initialize method) => method that has a single line !!
+    {
+        SkillPrep = new ActiveSkillPrep();
+        eventSequencer = eventSeq;
+    }
 
     public void InsertTurnQueue(List<Actor> queue) {
         turnQueue = queue;
@@ -53,10 +58,17 @@ public class BattleStateInput : StateInput {
     }
 
     public void ActivateSkill() {
+        Debug.Log("Skill activated");
         if (SkillPrep.targets.Length > 0) {
             if (SkillPrep.bonbon == null) SkillPrep.skill.ActivateSkill(SkillPrep.targets);
             else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon);
         }
+
+        // bleh ig for now if a skill has multiple targets check all targets
+        for (int i = 0; i < SkillPrep.targets.Length; i++) {
+            eventSequencer.CheckForEvents(SkillPrep.skill.ComputeSkillActionValues(SkillPrep.targets[i]));
+        }
+
         SkillPrep = new ActiveSkillPrep();
     }
 

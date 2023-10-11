@@ -6,7 +6,7 @@ using Yarn.Unity;
 /// <summary>
 /// Event runner --> holds events for each scene, and runs them when conditions are met
 /// </summary>
-public class EventSequencer
+public class EventSequencer : MonoBehaviour
 {
     DialogueRunner _dialogueRunner;
     public List<EventObject> eventSequence;
