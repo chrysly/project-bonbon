@@ -78,7 +78,9 @@ public class UIAnimationHandler : MonoBehaviour {
     #region Skill Window
 
     [SerializeField] private CanvasGroup skillPanel;
-    [SerializeField] private float skillPanelDuration;
+    [SerializeField] private float skillPanelToggleDuration;
+    
+    
 
     #endregion Skill Window
 

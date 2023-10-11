@@ -22,12 +22,10 @@ public partial class BattleUIStateMachine {
 
         protected override void RunPreAnimation() {
             base.RunPreAnimation();
-            Input.AnimationHandler.ToggleMainPanel(true);
         }
 
         protected override void RunPostAnimation() {
             base.RunPostAnimation();
-            Input.AnimationHandler.ToggleMainPanel(false);
         }
 
         #endregion Animations
