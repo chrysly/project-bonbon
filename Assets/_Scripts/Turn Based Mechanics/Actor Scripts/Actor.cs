@@ -97,9 +97,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     private void ComputeStats() {
         ActiveData.Reset();
         List<PassiveModifier> modifiers = new List<PassiveModifier>();
-        foreach (BonbonObject bonbon in BonbonInventory) {
-            if (bonbon != null) modifiers.Add(bonbon.PassiveModifiers);
-        } foreach (Effect effect in EffectList) {
+        foreach (Effect effect in EffectList) {
             modifiers.Add(effect.modifiers);
         } ActiveData.ComputeModifiers(modifiers);
     }

@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _Skill_1_Thrust
+  m_Name: _Skewer
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -43,7 +43,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -204813896747370266, guid: e6b9ca303bb88934f95aa1f98596ed92, type: 3}
+  m_Motion: {fileID: 7114018852796891402, guid: 4d7fdfff54fcd7045b8a8389b48e395d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -115,7 +115,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
