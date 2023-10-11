@@ -9,10 +9,11 @@ public partial class
     #region SerializeFields
     [SerializeField] private BonbonFactory bonbonFactory;
     [SerializeField] private BattleUIStateMachine _uiStateMachine;
+    [SerializeField] private EventSequencer eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     [SerializeField] private List<Actor> actorList;
     #endregion SerializeFields
-    
+
     #region Events
     public new delegate void StateTransition(BattleState state, BattleStateInput input);
     public event StateTransition OnStateTransition ;
@@ -22,7 +23,7 @@ public partial class
         SetState<BattleStart>();
         actorList.Sort();       //sort by lowest speed
         actorList.Reverse();    //highest speed = higher priority
-        CurrInput.Initialize();
+        CurrInput.Initialize(eventSequencer);
         CurrInput.InsertTurnQueue(actorList);
         CurrInput.OpenBonbonFactory(bonbonFactory);
     }

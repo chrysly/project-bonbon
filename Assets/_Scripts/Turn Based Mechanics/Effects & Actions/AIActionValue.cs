@@ -13,4 +13,7 @@ public class AIActionValue {
     public int healOverTime;
     /// <summary> Special skill priority; </summary>
     public int specialValue;
+
+    public Actor caster;
+    public Actor target;
 }
