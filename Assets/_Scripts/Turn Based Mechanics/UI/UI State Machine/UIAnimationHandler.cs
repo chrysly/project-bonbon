@@ -7,6 +7,7 @@ using DG.Tweening;
 public class UIAnimationHandler : MonoBehaviour {
 
     public IEnumerator activeUIAction = null;
+    [SerializeField] private BattleUIStateMachine _stateMachine;
 
     public void Start() {
         DisableAll();
@@ -53,9 +54,8 @@ public class UIAnimationHandler : MonoBehaviour {
     }
     private IEnumerator SelectMainPanelButtonAction(bool directionDown) {
         mainButtonIndex = mainButtonIndex == -1 ? 0 : mainButtonIndex;
-        if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count ? 0 : mainButtonIndex + 1;
-        else mainButtonIndex = mainButtonIndex < 0 ? mainPanelButtons.Count - 1 : mainButtonIndex - 1;
-
+        if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count - 1 ? 0 : mainButtonIndex + 1;
+        else mainButtonIndex = mainButtonIndex <= 0 ? mainPanelButtons.Count - 1 : mainButtonIndex - 1;
         for (int i = 0; i < mainPanelButtons.Count; i++) {
             if (i == mainButtonIndex) {
                 mainPanelButtons[mainButtonIndex].Scale(mainPanelButtonScaleVector, mainPanelButtonScaleDuration);
@@ -66,13 +66,22 @@ public class UIAnimationHandler : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(mainPanelButtonScaleDuration);
+        activeUIAction = null;
         yield return null;
     }
-    private void ActivateMainPanelButton() {
-        
+    public void ActivateMainPanelButton() {
+        mainPanelButtons[mainButtonIndex].Scale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration);
+        mainPanelButtons[mainButtonIndex].Activate(_stateMachine, mainPanelButtonScaleDuration);
     }
     #endregion Main Window
     
+    #region Skill Window
+
+    [SerializeField] private CanvasGroup skillPanel;
+    [SerializeField] private float skillPanelToggleDuration;
     
     
+
+    #endregion Skill Window
+
 }

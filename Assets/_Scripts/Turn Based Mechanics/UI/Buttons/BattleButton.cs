@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BattleButton : MonoBehaviour
 {
-    public virtual void Activate(BattleUIStateMachine stateMachine) {}
+    public virtual void Activate(BattleUIStateMachine stateMachine, float delay) {}
     public void Scale(Vector3 scale, float duration) {
         transform.DOScale(scale, duration);
     }
