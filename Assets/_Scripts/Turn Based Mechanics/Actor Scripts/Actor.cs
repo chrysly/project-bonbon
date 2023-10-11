@@ -20,16 +20,23 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     #region Variable Attributes
 
     [SerializeField] private int _hitpoints;
-    private bool _defeated;
     private int _stamina;
 
     public int Hitpoints => _hitpoints;
-    public bool Defeated => _defeated;
+    public bool Defeated => State == ActorState.Fainted;
+    public bool Available => (int) State < 3;
     public int Stamina => _stamina;
 
     #endregion Variable Attributes
 
     #region Level Skills, Bonbons & Modifiers
+
+    public enum ActorState {
+        Normal = 0,
+        Confused = 1,
+        Paralyzed = 2,
+        Fainted = 3,
+    } public ActorState State { get; private set; }
 
     public List<SkillAction> SkillList { get; protected set; }
 
@@ -54,7 +61,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         ActiveData = new StatIteration(this, data);
         _hitpoints = data.MaxHitpoints;
         _stamina = data.MaxStamina;
-        _defeated = false;
+        State = ActorState.Normal;
     }
 
     protected virtual void InitializeLevelObjects() {
@@ -78,6 +85,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     }
 
     public void TurnStart() {
+        if (Defeated) return;
+        State = 0;
         List<int> spentEffects = new List<int>();
         for (int i = 0; i < EffectList.Count; i++) {
             EffectList[i].PerformActions(this);
@@ -88,11 +97,13 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     private void ComputeStats() {
         ActiveData.Reset();
         List<PassiveModifier> modifiers = new List<PassiveModifier>();
-        foreach (BonbonObject bonbon in BonbonInventory) {
-            if (bonbon != null) modifiers.Add(bonbon.PassiveModifiers);
-        } foreach (Effect effect in EffectList) {
+        foreach (Effect effect in EffectList) {
             modifiers.Add(effect.modifiers);
         } ActiveData.ComputeModifiers(modifiers);
+    }
+
+    public void ApplyState(ActorState actorState) {
+        if ((int) actorState > (int) this.State) this.State = actorState;
     }
 
     public void ApplyEffects(List<Effect> effects) {
@@ -111,7 +122,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
         if (_hitpoints - damage <= 0) {
             _hitpoints = 0;
-            _defeated = true;
+            ApplyState(ActorState.Fainted);
             Debug.Log($"{data.DisplayName} has fallen!");
             return true;
         }
@@ -126,10 +137,14 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
             _hitpoints = data.MaxHitpoints;
             return true;
         }
-        if (!_defeated) {
+        if (!Defeated) {
             _hitpoints += heal;
         }
         return false;
+    }
+
+    public void ConsumeStamina(int amount) {
+        _stamina -= amount;
     }
 
     public void InsertBonbon(int slot, BonbonObject bonbon) {

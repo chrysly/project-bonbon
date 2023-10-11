@@ -22,17 +22,20 @@ public class SkillAction {
         return actionValue;
     }
 
+    public bool Available => SkillData.staminaCost <= Caster.Stamina;
+
+    private void PayStamina() => Caster.ConsumeStamina(SkillData.staminaCost);
+
     public void ActivateSkill(Actor[] targets) {
+        PayStamina();
         foreach(Actor target in targets) {
             SkillData.PerformActions(Caster.ActiveData, target);
         }
     }
 
-    public void AugmentSkill(Actor[] targets, SkillAugment augment) {
-        /// Apply Bonbon Effect to Caster;
-        new ApplyEffectsAction(new List<EffectBlueprint>(new[] { augment.bonbonEffect })).Use(Caster.ActiveData, Caster);
-        /// Trigger a series of immediate actions on the augment;
-        foreach (ImmediateAction action in augment.immediateActions) action.Use(Caster.ActiveData, Caster);
+    public void AugmentSkill(Actor[] targets, BonbonObject bonbon) {
+        PayStamina();
+        SkillAugment augment = bonbon.Data.augmentData;
         /// Ensure that the skill applies effects if it originally didn't;
         var aea = new ApplyEffectsAction();
         if (augment.augmentEffects != null

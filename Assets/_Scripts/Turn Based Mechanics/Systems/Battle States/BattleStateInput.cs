@@ -17,6 +17,7 @@ public class BattleStateInput : StateInput {
     #region Turn Variables
     public class ActiveSkillPrep {
         public SkillAction skill;
+        public BonbonObject bonbon;
         public Actor[] targets;
     } public ActiveSkillPrep SkillPrep { get; private set; }
     #endregion Turn Variables
@@ -46,6 +47,10 @@ public class BattleStateInput : StateInput {
         SkillPrep.targets = targets;
     }
 
+    public void SetSkillPrep(BonbonObject bonbon) {
+        SkillPrep.bonbon = bonbon;
+    }
+
     public void SetSkillPrep(SkillAction skillAction, Actor[] targets) {
         SkillPrep.skill = skillAction;
         SkillPrep.targets = targets;
@@ -53,7 +58,8 @@ public class BattleStateInput : StateInput {
 
     public void ActivateSkill() {
         if (SkillPrep.targets.Length > 0) {
-            SkillPrep.skill.ActivateSkill(SkillPrep.targets);
+            if (SkillPrep.bonbon == null) SkillPrep.skill.ActivateSkill(SkillPrep.targets);
+            else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon);
         }
         SkillPrep = new ActiveSkillPrep();
     }

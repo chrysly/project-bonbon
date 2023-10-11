@@ -4,6 +4,14 @@ using UnityEngine;
 
 public static class BonbonSortingUtils {
 
+    public static void ConsumeBonbon(this BonbonObject[] inventory, Actor actor, int index) {
+        SkillAugment augment = inventory[index].AugmentData;
+        /// Apply Bonbon Effect to Caster;
+        new ApplyEffectsAction(new List<EffectBlueprint>(new[] { augment.bonbonEffect })).Use(actor.ActiveData, actor);
+        /// Trigger a series of immediate actions on the augment;
+        foreach (ImmediateAction action in augment.immediateActions) action.Use(actor.ActiveData, actor);
+    }
+
     /// <summary>
     /// Compare two recipe arrays for content equality;
     /// </summary>

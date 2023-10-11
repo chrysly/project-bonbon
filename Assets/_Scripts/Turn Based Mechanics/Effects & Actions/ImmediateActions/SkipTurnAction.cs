@@ -4,7 +4,7 @@
 public class SkipTurnAction : ImmediateAction.EffectOnly {
 
     public override void Use(StatIteration activeData, Actor target = null, SkillAugment augment = null) {
-        // Skip Turn;
+        target.ApplyState(Actor.ActorState.Paralyzed);
     }
 
     #if UNITY_EDITOR
