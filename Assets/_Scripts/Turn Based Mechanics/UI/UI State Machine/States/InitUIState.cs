@@ -12,19 +12,18 @@ public partial class BattleUIStateMachine {
         
         public override void Update() {
             base.Update();
-            
+            int input = MySM.CheckInput();
+            if (input == 0 || input == 2) {
+                Debug.Log("Checking valid input");
+                Input.AnimationHandler.SelectMainPanelButton(input != 0);
+            } else if (input == 1) {
+                Input.AnimationHandler.ActivateMainPanelButton();
+            }
         }
 
         public override void Exit(BattleUIStateInput i) {
             base.Exit(i);
             RunPostAnimation();
-        }
-
-        //Potato arrow keybinds
-        private void CheckInput() {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.W)) {
-                
-            }
         }
         
         #region Animations

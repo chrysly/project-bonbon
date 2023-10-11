@@ -21,6 +21,23 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
         }
     }
 
+    /// <summary>
+    /// Potato Input:
+    /// 0 NORTH
+    /// 1 EAST
+    /// 2 SOUTH
+    /// 3 WEST
+    /// 4 NONE
+    /// </summary>
+    /// <returns></returns>
+    private int CheckInput() {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) return 0;
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.RightArrow)) return 1;
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) return 2;
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow)) return 3;
+        return 4;
+    }
+
     protected void LockUI() {
         CurrInput.Locked = true;
     }
