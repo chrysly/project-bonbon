@@ -13,7 +13,6 @@ public class BattleStateInput : StateInput {
 
     #region Managers
     public BonbonFactory BonbonFactory { get; private set; }
-    public EventSequencer eventSequencer;  // does it go here????
     #endregion
 
     #region Turn Variables
@@ -24,10 +23,9 @@ public class BattleStateInput : StateInput {
     } public ActiveSkillPrep SkillPrep { get; private set; }
     #endregion Turn Variables
 
-    public void Initialize(EventSequencer eventSeq)    // short hand (normal Initialize method) => method that has a single line !!
+    public void Initialize()    // short hand (normal Initialize method) => method that has a single line !!
     {
         SkillPrep = new ActiveSkillPrep();
-        eventSequencer = eventSeq;
     }
 
     public void InsertTurnQueue(List<Actor> queue) {

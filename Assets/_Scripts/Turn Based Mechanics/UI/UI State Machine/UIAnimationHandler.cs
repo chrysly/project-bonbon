@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using Image = UnityEngine.UIElements.Image;
 
 public class UIAnimationHandler : MonoBehaviour {
 
+    //Everything should pass through activeUIAction! This is to prevent other animations overlapping
     public IEnumerator activeUIAction = null;
     [SerializeField] private BattleUIStateMachine _stateMachine;
 
@@ -29,6 +32,7 @@ public class UIAnimationHandler : MonoBehaviour {
     [SerializeField] private List<BattleButton> mainPanelButtons;
     [SerializeField] private Vector3 mainPanelButtonScaleVector = new Vector3(1.2f, 1.2f, 1.2f);
     [SerializeField] private float mainPanelButtonScaleDuration = 0.2f;
+    [SerializeField] private float mainPanelButtonEmergeDuration = 1f;
     private int mainButtonIndex = -1;
 
     public void ToggleMainPanel(bool enable) {
@@ -39,8 +43,19 @@ public class UIAnimationHandler : MonoBehaviour {
         }
     }
     private IEnumerator MainPanelAction(bool enable) {
-        mainPanel.DOFade(enable ? 1 : 0, mainPanelToggleDuration);
-        yield return new WaitForSeconds(mainPanelToggleDuration);
+        //mainPanel.DOFade(enable ? 1 : 0, mainPanelToggleDuration); FADE
+        foreach (BattleButton button in mainPanelButtons) {
+            if (enable) {
+                button.gameObject.SetActive(true);
+                button.transform.DOScale(new Vector3(1, 1, 1), mainPanelButtonEmergeDuration);
+                yield return new WaitForSeconds(mainPanelButtonEmergeDuration);
+            }
+            else {
+                button.transform.DOScale(new Vector3(0, 0, 0), mainPanelButtonEmergeDuration);
+                yield return new WaitForSeconds(mainPanelButtonEmergeDuration);
+                button.gameObject.SetActive(false);
+            }
+        }
         if (!enable) mainPanel.gameObject.SetActive(false);
         activeUIAction = null;
         yield return null;
