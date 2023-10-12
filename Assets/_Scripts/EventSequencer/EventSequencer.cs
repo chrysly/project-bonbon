@@ -8,7 +8,6 @@ using Yarn.Unity;
 /// </summary>
 public class EventSequencer : MonoBehaviour
 {
-    DialogueRunner _dialogueRunner;
     public List<EventObject> eventSequence;
     Queue<EventObject> events = new Queue<EventObject>();
 
@@ -25,5 +24,9 @@ public class EventSequencer : MonoBehaviour
             EventObject next = events.Dequeue();
             next.OnTrigger();
         }
+    }
+
+    public void CheckForEventEnd() { 
+        
     }
 }

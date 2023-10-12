@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static BattleStateMachine;
 
 public class BattleStateInput : StateInput {
 
@@ -12,6 +13,7 @@ public class BattleStateInput : StateInput {
 
     #region Managers
     public BonbonFactory BonbonFactory { get; private set; }
+    public EventSequencer eventSequencer;  // does it go here????
     #endregion
 
     #region Turn Variables
@@ -22,7 +24,6 @@ public class BattleStateInput : StateInput {
     } public ActiveSkillPrep SkillPrep { get; private set; }
     #endregion Turn Variables
 
-    private EventSequencer eventSequencer;
     public void Initialize(EventSequencer eventSeq)    // short hand (normal Initialize method) => method that has a single line !!
     {
         SkillPrep = new ActiveSkillPrep();
@@ -58,17 +59,19 @@ public class BattleStateInput : StateInput {
     }
 
     public void ActivateSkill() {
-        Debug.Log("Skill activated");
         if (SkillPrep.targets.Length > 0) {
             if (SkillPrep.bonbon == null) SkillPrep.skill.ActivateSkill(SkillPrep.targets);
             else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon);
         }
 
         // bleh ig for now if a skill has multiple targets check all targets
-        for (int i = 0; i < SkillPrep.targets.Length; i++) {
-            eventSequencer.CheckForEvents(SkillPrep.skill.ComputeSkillActionValues(SkillPrep.targets[i]));
-        }
+        //for (int i = 0; i < SkillPrep.targets.Length; i++)
+        //{
+        //    eventSequencer.CheckForEvents(SkillPrep.skill.ComputeSkillActionValues(SkillPrep.targets[i]));
+        //}
+    }
 
+    public void resetSkillPrep() {
         SkillPrep = new ActiveSkillPrep();
     }
 

@@ -25,7 +25,6 @@ public class CameraPrimarySystem : MonoBehaviour
     }
 
     private void UpdateCamera(BattleStateMachine.BattleState state, BattleStateInput input) {
-        Debug.Log("call");
         if (state is BattleStateMachine.TurnState) { FocusActor(input); }
         else if (state is BattleStateMachine.AnimateState) { ViewAnimate(input); }
     }
@@ -33,7 +32,6 @@ public class CameraPrimarySystem : MonoBehaviour
     private void FocusActor(BattleStateInput input) {
         charCam.m_LookAt = enemyLookTarget;
         if (input.ActiveActor() is not CharacterActor) {
-            Debug.Log("to enemy");
             ReturnToBattleView(input);
             return;
         }
