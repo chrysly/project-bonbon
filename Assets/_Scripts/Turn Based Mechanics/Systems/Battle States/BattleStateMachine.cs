@@ -82,6 +82,7 @@ public partial class
     /// </summary>
     public void ContinueBattle() {
         if (CurrState is AnimateState) {
+            ToggleMachine(false);
             StartBattle(0.3f);
         }
     }

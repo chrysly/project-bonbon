@@ -36,7 +36,7 @@ public partial class BattleStateMachine {
             }
 
             MySM._eventSequencer.RunNextEvent();
-            MySM.ToggleMachine<TurnState>(false);
+            MySM.ToggleMachine(true);
             Input.resetSkillPrep();
             //MySM.StartBattle(1f);
         }

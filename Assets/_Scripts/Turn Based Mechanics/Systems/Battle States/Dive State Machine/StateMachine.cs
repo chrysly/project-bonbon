@@ -123,10 +123,7 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
     }
 
     //Edit by Chris Lee: Functionality for disabling state transitions, resumes next state if enabled
-    public void ToggleMachine<NextStateType>(bool disable) where NextStateType : S, new() {
-        if (!disable) {
-            Transition<NextStateType>();
-        }
+    public void ToggleMachine(bool disable) {
         _locked = disable;
     }
 

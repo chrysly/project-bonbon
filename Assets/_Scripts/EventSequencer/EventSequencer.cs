@@ -40,6 +40,7 @@ public class EventSequencer : MonoBehaviour
     }
 
     public void CheckForEventEnd() {
+        Debug.Log("noice");
         OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
     }
 }
