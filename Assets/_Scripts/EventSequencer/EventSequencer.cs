@@ -10,6 +10,11 @@ public class EventSequencer : MonoBehaviour
 {
     public List<EventObject> eventSequence;
     Queue<EventObject> events = new Queue<EventObject>();
+    
+    #region Events
+    public delegate void EventTerminate();
+    public event EventTerminate OnEventTerminate;
+    #endregion Events
 
     public void CheckForEvents(AIActionValue package) { 
         // add any events that meet activate conditions to a queue
@@ -26,7 +31,7 @@ public class EventSequencer : MonoBehaviour
         }
     }
 
-    public void CheckForEventEnd() { 
-        
+    public void CheckForEventEnd() {
+        OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
     }
 }

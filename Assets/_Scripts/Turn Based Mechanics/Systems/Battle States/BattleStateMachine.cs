@@ -9,7 +9,7 @@ public partial class
     #region SerializeFields
     [SerializeField] private BonbonFactory bonbonFactory;
     [SerializeField] private BattleUIStateMachine _uiStateMachine;
-    [SerializeField] private EventSequencer eventSequencer;
+    [SerializeField] private EventSequencer _eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     [SerializeField] private List<Actor> actorList;
     #endregion SerializeFields
@@ -23,9 +23,13 @@ public partial class
         SetState<BattleStart>();
         actorList.Sort();       //sort by lowest speed
         actorList.Reverse();    //highest speed = higher priority
-        CurrInput.Initialize(eventSequencer);
         CurrInput.InsertTurnQueue(actorList);
         CurrInput.OpenBonbonFactory(bonbonFactory);
+    }
+
+    protected override void Start() {
+        base.Start();
+        _eventSequencer.OnEventTerminate += ContinueBattle;
     }
 
     protected override void Init() {
@@ -71,6 +75,15 @@ public partial class
 
     public void StartBattle(float delay) {
         StartCoroutine(ScheduleNextTurn(delay));
+    }
+
+    /// <summary>
+    /// Continuation method when BSM is frozen on animate state
+    /// </summary>
+    public void ContinueBattle() {
+        if (CurrState is AnimateState) {
+            StartBattle(0.3f);
+        }
     }
 
     public void SkipEnemySelection() {
