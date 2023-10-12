@@ -30,13 +30,16 @@ public class EventSequencer : MonoBehaviour
         }
     }
 
-    public void RunNextEvent() {
+    public bool RunNextEvent() {
         // run the next event in queue
         if (events.Count > 0)
         {
+            Debug.Log("event");
             EventObject next = events.Dequeue();
             next.OnTrigger();
+            return true;
         }
+        return false;
     }
 
     public void CheckForEventEnd() {

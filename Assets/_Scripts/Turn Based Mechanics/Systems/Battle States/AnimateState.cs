@@ -35,10 +35,14 @@ public partial class BattleStateMachine {
                 MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
             }
 
-            MySM._eventSequencer.RunNextEvent();
-            MySM.ToggleMachine(true);
-            Input.resetSkillPrep();
-            //MySM.StartBattle(1f);
+            if (MySM._eventSequencer.RunNextEvent()) {
+                MySM.ToggleMachine(true);
+                Input.resetSkillPrep();
+            }
+            else {
+                Input.resetSkillPrep();
+                MySM.StartBattle(1f);
+            }
         }
         
         public override void Update() {
