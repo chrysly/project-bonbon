@@ -25,17 +25,18 @@ public partial class BattleStateMachine {
             else Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
             MySM.OnStateTransition.Invoke(this, Input);
 
-            
-            
             Input.ActivateSkill();
+
+            //Debug.Log(Input.SkillPrep.targets.Length);
 
             // here?
             for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
             {
                 MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
-                MySM.ToggleMachine<TurnState>(false);
             }
 
+            MySM._eventSequencer.RunNextEvent();
+            MySM.ToggleMachine<TurnState>(false);
             Input.resetSkillPrep();
             //MySM.StartBattle(1f);
         }

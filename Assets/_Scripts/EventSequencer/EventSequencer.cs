@@ -24,8 +24,16 @@ public class EventSequencer : MonoBehaviour
             }
         }
 
+        // jank bc fck it's 5am
+        foreach (EventObject q in events) {
+            eventSequence.Remove(q);
+        }
+    }
+
+    public void RunNextEvent() {
         // run the next event in queue
-        if (events.Count > 0) {
+        if (events.Count > 0)
+        {
             EventObject next = events.Dequeue();
             next.OnTrigger();
         }
