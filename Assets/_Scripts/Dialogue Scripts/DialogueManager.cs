@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
     YarnProject _yarnProject;
 
     [Header("References")]
+    [SerializeField] EventSequencer _eventSequencer;    // J
     [SerializeField] GameObject _viewport;
     [SerializeField] GameObject _dialogueViewPrefab;
     [SerializeField] GameObject _dialoguePortraitPrefab;
@@ -223,7 +224,7 @@ public class DialogueManager : MonoBehaviour
                 readingDialogue = false;
                 previousName = null;
             });
-
+        _eventSequencer.CheckForEventEnd(); // J
     }
     #endregion
 
