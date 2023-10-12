@@ -30,12 +30,13 @@ public partial class BattleStateMachine {
             Input.ActivateSkill();
 
             // here?
-            //for (int j = 0; j < Input.SkillPrep.targets.Length; j++) {
-            //    Input.eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
-            //    MySM.ToggleMachine<TurnState>(false);
-            //}
+            for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
+            {
+                Input.eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
+                MySM.ToggleMachine<TurnState>(false);
+            }
 
-            MySM.ToggleMachine<TurnState>(false);
+            Input.resetSkillPrep();
             //MySM.StartBattle(1f);
         }
         

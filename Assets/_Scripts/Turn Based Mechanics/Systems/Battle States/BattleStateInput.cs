@@ -65,11 +65,13 @@ public class BattleStateInput : StateInput {
         }
 
         // bleh ig for now if a skill has multiple targets check all targets
-        for (int i = 0; i < SkillPrep.targets.Length; i++)
-        {
-            eventSequencer.CheckForEvents(SkillPrep.skill.ComputeSkillActionValues(SkillPrep.targets[i]));
-        }
+        //for (int i = 0; i < SkillPrep.targets.Length; i++)
+        //{
+        //    eventSequencer.CheckForEvents(SkillPrep.skill.ComputeSkillActionValues(SkillPrep.targets[i]));
+        //}
+    }
 
+    public void resetSkillPrep() {
         SkillPrep = new ActiveSkillPrep();
     }
 

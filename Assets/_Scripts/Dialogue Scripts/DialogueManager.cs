@@ -70,11 +70,12 @@ public class DialogueManager : MonoBehaviour
             {
                 _dialogueView.UserRequestedViewAdvancement();
                 AdvanceDialogue();
-            } else {
-                //NOTE: Just invoke this event from another script with the node you want to call to start dialogue.
-                //dialogueRequestEvent.Invoke("BrookeTestScript1");
-                dialogueRequestEvent.Invoke("BrookeTestScript2");
-            }
+            } 
+            //else {
+            //    //NOTE: Just invoke this event from another script with the node you want to call to start dialogue.
+            //    //dialogueRequestEvent.Invoke("BrookeTestScript1");
+            //    dialogueRequestEvent.Invoke("BrookeTestScript2");
+            //}
         }
     }
     #endregion
@@ -145,7 +146,7 @@ public class DialogueManager : MonoBehaviour
 
     public void AdvanceDialogue()
     {
-        Debug.Log("DialogueManager.AdvanceDialogue()");
+        //Debug.Log("DialogueManager.AdvanceDialogue()");
         if (_dialogueRunner.CurrentNodeName == null || _dialogueRunner.CurrentNodeName == "")
         {
             EndDialogue();
@@ -156,7 +157,7 @@ public class DialogueManager : MonoBehaviour
     }
     void ProcessDialogue()
     {
-        Debug.Log("DialogueManager.ProcessDialogue()");
+        //Debug.Log("DialogueManager.ProcessDialogue()");
         //identify speaker from line
         SetupDialogueBox();
 
@@ -195,7 +196,7 @@ public class DialogueManager : MonoBehaviour
     }
     void EndDialogue()
     {
-        Debug.Log("DialogueManager.EndDialogue()");
+        //Debug.Log("DialogueManager.EndDialogue()");
         foreach (GameObject o in activeDialogueBoxList)
         {
             CanvasGroup dialogueViewCG = o.GetComponent<CanvasGroup>();
@@ -222,6 +223,7 @@ public class DialogueManager : MonoBehaviour
                 readingDialogue = false;
                 previousName = null;
             });
+
     }
     #endregion
 
@@ -322,7 +324,7 @@ public class DialogueManager : MonoBehaviour
         Timer.Register(0.01f, () => { //this timer is needed so that the text content size filter can apply to the bg before it moves behind the text
             textBG.transform.SetParent(currentDialogueBox.transform);
             textBG.transform.SetAsFirstSibling();
-            Debug.Log("Setting color: " + currentSpeaker.dialogueCharacter.dialogueBoxColor);
+            //Debug.Log("Setting color: " + currentSpeaker.dialogueCharacter.dialogueBoxColor);
             textBG.GetComponent<Image>().color = currentSpeaker.dialogueCharacter.dialogueBoxColor;
         });
     }
