@@ -24,9 +24,20 @@ public partial class BattleStateMachine {
             //else _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform);  // HARD CODED (change later bc anumation??? idk)
             else Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
             MySM.OnStateTransition.Invoke(this, Input);
+
+            
             
             Input.ActivateSkill();
-            MySM.StartBattle(1f);
+
+            // here?
+            for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
+            {
+                Input.eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
+                MySM.ToggleMachine<TurnState>(false);
+            }
+
+            Input.resetSkillPrep();
+            //MySM.StartBattle(1f);
         }
         
         public override void Update() {
