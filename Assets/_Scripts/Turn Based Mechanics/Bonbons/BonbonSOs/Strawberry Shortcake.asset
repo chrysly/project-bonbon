@@ -29,6 +29,7 @@ MonoBehaviour:
     damageBoost: 5
     healBoost: 2
     augmentEffects: []
+    immediateActions: []
     bonbonEffect: {fileID: 11400000, guid: d59b4c6dc5ba34a4cb5cf2e9bf4ebed4, type: 2}
     aoeOverride: 0
   recipe:
@@ -36,3 +37,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
   - {fileID: 0}
   - {fileID: 0}
+  references:
+    version: 2
+    RefIds: []

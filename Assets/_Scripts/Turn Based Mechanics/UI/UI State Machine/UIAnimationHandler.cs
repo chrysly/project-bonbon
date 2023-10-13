@@ -129,6 +129,7 @@ public class UIAnimationHandler : MonoBehaviour {
     }
     
     public void ActivateMainPanelButton() {
+        if (mainButtonIndex == -1) return;
         mainPanelButtons[mainButtonIndex].Scale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration);
         mainPanelButtons[mainButtonIndex].Activate(_stateMachine, mainPanelButtonScaleDuration);
     }
