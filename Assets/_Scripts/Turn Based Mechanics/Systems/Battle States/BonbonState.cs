@@ -13,7 +13,6 @@ public partial class BattleStateMachine {
             
             _movement.Bump(Input.ActiveActor().transform);  // HARD CODED (change later bc anumation??? idk)
             MySM.OnStateTransition.Invoke(this, Input);
-            MySM.StartBattle(3f);
         }
         
         public override void Update() {
