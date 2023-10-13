@@ -49,25 +49,13 @@ public class CameraPrimarySystem : MonoBehaviour
     private void ViewAnimate(BattleStateInput input) {
 
         Transform target = input.SkillPrep.targets[0].transform.GetChild(0);   // hard coded bc pain
-        Transform user = input.ActiveActor().transform.GetChild(0);
+        //Transform user = input.ActiveActor().transform.GetChild(0);
 
         SetActiveCam(charCam);
         if (input.ActiveActor() is CharacterActor)
         {
             activeCam.m_LookAt = target;
-            //activeCam.m_Follow = testTarget;
         }
-
-        //if (input.ActiveActor() is EnemyActor) {
-        //    charCam.m_LookAt = user;
-        //    charCam.m_Follow = target;
-        //}
-        //else {
-        //    charCam.m_LookAt = target;
-        //    charCam.m_Follow = user;
-        //}
-
-        //SetActiveCam(charCam);
     }
 
     private void SetActiveCam(CinemachineVirtualCamera cam) {

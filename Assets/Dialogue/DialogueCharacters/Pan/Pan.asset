@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce7eda58ad45554b9ab3a35d9b28d97, type: 3}
+  m_Name: Pan
+  m_EditorClassIdentifier: 
+  characterName: pan
+  portraitList:
+  - expression: neutral
+    portrait: {fileID: 21300000, guid: 562bb281ee1291a409f1c6331f7d5ce6, type: 3}
+  - expression: slight_smile
+    portrait: {fileID: 21300000, guid: 4687a7072915d0044ae0cd8ee1c350d9, type: 3}
+  - expression: happy
+    portrait: {fileID: 21300000, guid: dcfd26df9338c4843b044a72cdd8a4ac, type: 3}
+  - expression: angry
+    portrait: {fileID: 21300000, guid: 89674ac11347ab14392391c84d3dfa6a, type: 3}
+  - expression: confused
+    portrait: {fileID: 21300000, guid: 5fdee891a4fd03f478a7a3dafacfafaf, type: 3}
+  - expression: startled
+    portrait: {fileID: 21300000, guid: 4d11572e763ae9140ba1a9133491731d, type: 3}
+  defaultToRightSide: 0
+  dialogueBoxColor: {r: 0.6981132, g: 0.3523496, b: 0.63996893, a: 1}

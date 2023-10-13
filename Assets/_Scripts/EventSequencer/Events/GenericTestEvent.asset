@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4826118d5c6be4baf32b74ee4aafd4, type: 3}
   m_Name: GenericTestEvent
   m_EditorClassIdentifier: 
-  yarnFile: {fileID: -8253061345870894857, guid: f63b90001411d7946819d07ed5e20420, type: 3}
+  yarnFile: {fileID: -8253061345870894857, guid: 0e539d29f90f6a94e8431bc446c8cb7a, type: 3}

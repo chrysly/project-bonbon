@@ -36,6 +36,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         Confused = 1,
         Paralyzed = 2,
         Fainted = 3,
+        Benched = 4,
     } public ActorState State { get; private set; }
 
     public List<SkillAction> SkillList { get; protected set; }

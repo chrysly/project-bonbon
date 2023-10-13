@@ -206,7 +206,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1773369437
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &8473051397823085646
 MonoBehaviour:
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1391,6 +1391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc67ae203ae17774e8af7b36a3dca021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eventSequencer: {fileID: 0}
   _viewport: {fileID: 7578882629820358480}
   _dialogueViewPrefab: {fileID: 2239816723467315020, guid: 83071ba3ae9511a4f8a385b3dee0c96b, type: 3}
   _dialoguePortraitPrefab: {fileID: 2237448201068572721, guid: 62e6c3bc8d34ecb4987075b205a5bf06, type: 3}
@@ -1398,7 +1399,7 @@ MonoBehaviour:
   characterList:
   - {fileID: 11400000, guid: 7bac719bae000c24bbbf2b232dea8314, type: 2}
   - {fileID: 11400000, guid: edc93176751111547970d5065b837abf, type: 2}
-  - {fileID: 11400000, guid: c0dff10a7f6d47d40ab248ddcadfe5b6, type: 2}
+  - {fileID: 11400000, guid: 9af6b0707d0ddf042b08a977a4140008, type: 2}
   activeCharacterList: []
   rightCharacterList: []
   leftCharacterList: []
