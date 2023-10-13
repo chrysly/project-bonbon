@@ -29,17 +29,24 @@ namespace CJUtils {
             }
         }
 
+        public static Color DarkBlue {
+            get {
+                return new Vector4(0.3f, 0.8f, 1.0f, 1);
+            }
+        }
+
+        public static Color DarkGreen {
+            get {
+                return new Vector4(0.6f, 0.9f, 0.6f, 1);
+            }
+        }
+
         public static Color DarkRed {
             get {
                 return new Vector4(1.0f, 0.5f, 0.5f, 1);
             }
         }
 
-        public static Color DarkBlue {
-            get {
-                return new Vector4(0.3f, 0.8f, 1.0f, 1);
-            }
-        }
 
         public static Color Cyan {
             get {

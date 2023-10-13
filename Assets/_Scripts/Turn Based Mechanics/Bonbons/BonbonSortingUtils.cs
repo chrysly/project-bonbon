@@ -12,6 +12,24 @@ public static class BonbonSortingUtils {
         foreach (ImmediateAction action in augment.immediateActions) action.Use(actor.ActiveData, actor);
     }
 
+    public static bool PassBonbon(this Actor sourceActor, int sourceSlot, Actor targetActor) {
+        if (sourceActor.BonbonInventory[sourceSlot] == null) {
+            Debug.Log($"Source inventory #{sourceSlot} is empty...");
+            return false;
+        }
+        int targetSlot = -1;
+        for (int i = 0; i < targetActor.BonbonInventory.Length; i++) {
+            if (targetActor.BonbonInventory[i] == null) {
+                targetSlot = i;
+                break;
+            }
+        } if (targetSlot == -1) return false;
+        else {
+            targetActor.BonbonInventory[targetSlot] = sourceActor.BonbonInventory[sourceSlot];
+            sourceActor.BonbonInventory[sourceSlot] = null;
+        } return true;
+    }
+
     /// <summary>
     /// Compare two recipe arrays for content equality;
     /// </summary>
