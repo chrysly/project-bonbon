@@ -14,13 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Chocolate Cake
   texture: {fileID: 2800000, guid: 22f05256a6f11bb4fac818478a3a6050, type: 3}
+  craftStamina: 0
   passiveModifiers:
-    attackModifier: 1
-    healCastModifier: 1
-    defenseModifier: 1
-    staminaRegenModifier: 1
+    flatAttack: 0
+    percentAttack: 0
+    flatHeal: 0
+    percentHealCast: 0
+    flatDefense: 0
+    percentDefense: 0
+    flatSpeed: 0
+    percentSpeed: 0
+    percentStaminaRegen: 0
+  augmentData:
+    damageBoost: 0
+    healBoost: 0
+    augmentEffects: []
+    immediateActions: []
+    bonbonEffect: {fileID: 0}
+    aoeOverride: 0
   recipe:
   - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
   - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
   - {fileID: 0}
   - {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
