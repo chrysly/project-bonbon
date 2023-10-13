@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: pan
   portraitList:
-  - expression: neutral
+  - expression: idle
     portrait: {fileID: 21300000, guid: 562bb281ee1291a409f1c6331f7d5ce6, type: 3}
   - expression: slight_smile
     portrait: {fileID: 21300000, guid: 4687a7072915d0044ae0cd8ee1c350d9, type: 3}

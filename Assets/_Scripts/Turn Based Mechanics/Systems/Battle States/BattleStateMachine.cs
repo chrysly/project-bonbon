@@ -54,6 +54,7 @@ public partial class
     public void OnStart() {
         // hard coded bc it's fcking 5am fml
         _eventSequencer.StartEvent();
+        ToggleMachine(true);
         StartBattle();
     }
 
@@ -93,6 +94,10 @@ public partial class
         if (CurrState is AnimateState) {
             ToggleMachine(false);
             StartBattle(0.3f);
+        }
+        if (CurrState is BattleState) { // fix m2
+            ToggleMachine(false);
+            StartBattle();
         }
     }
 

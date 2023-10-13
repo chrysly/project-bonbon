@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: mochi
   portraitList:
-  - expression: neutral_1
+  - expression: idle
     portrait: {fileID: 21300000, guid: d7ae925fb82e9684b83fd867a6942fb0, type: 3}
   - expression: neutral_2
     portrait: {fileID: 21300000, guid: 095b92b3e2146bc44b70b3c302492d37, type: 3}

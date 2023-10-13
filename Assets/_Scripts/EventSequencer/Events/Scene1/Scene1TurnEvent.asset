@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Scene1TurnEvent
   m_EditorClassIdentifier: 
   yarnFile: {fileID: 0}
-  turnNum: 0
+  turnNum: 4
