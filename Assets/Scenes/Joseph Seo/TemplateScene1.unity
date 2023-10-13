@@ -1190,7 +1190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241918096}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14677346, y: 0.7031642, z: -0.15201879, w: 0.67890203}
+  m_LocalRotation: {x: 0.14629874, y: 0.70527774, z: -0.15247568, w: 0.67670614}
   m_LocalPosition: {x: -29.828835, y: 15.02369, z: 2.013046}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1588,9 +1588,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495f5e2310cdfb74ea6c04b50e35cac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneWant: 0
+  sceneWant: 4
   sliderPanel: {fileID: 1709700940}
   slider: {fileID: 1796294896}
+  progressMultiplier: 0.5
 --- !u!4 &344629278
 Transform:
   m_ObjectHideFlags: 0
@@ -3847,6 +3848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e4c6ac46a12a14d80b6841ad3e92e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bonbonFactory: {fileID: 0}
   battleStartAnimationDuration: 0
   enemyTurnDuration: 2
   actorList:
@@ -4365,8 +4367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1204.4712, y: 563.6}
+  m_AnchoredPosition: {x: -0.003112793, y: 0.00021362}
+  m_SizeDelta: {x: 1676.3999, y: 844.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1215319111
 MonoBehaviour:
@@ -5742,6 +5744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateMachine: {fileID: 1080657832}
+  bonbonFactory: {fileID: 0}
   textActiveDuration: 3
 --- !u!1 &1441484204
 GameObject:
@@ -7040,7 +7043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1709700941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8635,7 +8638,7 @@ RectTransform:
   m_Father: {fileID: 1247668988}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 5.3120117, y: 0}
   m_SizeDelta: {x: 20.625, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10095,6 +10098,7 @@ MonoBehaviour:
   buttonLoadDuration: 0
   actor: {fileID: 0}
   buttonContainer: {fileID: 5674463966722547382}
+  battleState: {fileID: 0}
   buttonPrefab: {fileID: 2053959126028085542, guid: 66a856b74dcbc744b8837ef372c0eef4, type: 3}
   panel: {fileID: 5674463966829186518}
 --- !u!222 &5674463965799864566
@@ -11129,6 +11133,7 @@ MonoBehaviour:
   buttonLoadDuration: 0
   actor: {fileID: 0}
   buttonContainer: {fileID: 5674463967421580573}
+  battleState: {fileID: 0}
   buttonPrefab: {fileID: 2053959126028085542, guid: 66a856b74dcbc744b8837ef372c0eef4, type: 3}
   panel: {fileID: 5674463967308748413}
 --- !u!1 &5674463966261048730

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a1e328ef7550848b63f4350f7b66cf, type: 3}
+  m_Name: Strawberry Shortcake
+  m_EditorClassIdentifier: 
+  name: Strawberry Shortcake
+  texture: {fileID: 0}
+  craftStamina: 10
+  passiveModifiers:
+    flatAttack: 0
+    percentAttack: 0
+    flatHeal: 0
+    percentHealCast: 0
+    flatDefense: 0
+    percentDefense: 0
+    flatSpeed: 0
+    percentSpeed: 0.3
+    percentStaminaRegen: 0
+  augmentData:
+    damageBoost: 5
+    healBoost: 2
+    augmentEffects: []
+    bonbonEffect: {fileID: 11400000, guid: d59b4c6dc5ba34a4cb5cf2e9bf4ebed4, type: 2}
+    aoeOverride: 0
+  recipe:
+  - {fileID: 11400000, guid: b213808cf87af4843b808ecfb190468c, type: 2}
+  - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
