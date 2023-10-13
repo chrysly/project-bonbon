@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14142bd7c92aef1418ae58a98e3f393a, type: 3}
-  m_Name: Basic Heal
+  m_Name: DoubleBounce
   m_EditorClassIdentifier: 
-  skillID: doub
-  skillName: Basic Heal
-  staminaCost: 7
+  skillID: double_bounce
+  skillName: Double Bounce
+  staminaCost: 20
   immediateActions:
-  - rid: 3928641313810939904
+  - rid: 5257609831424983040
   aoe: 0
   references:
     version: 2
     RefIds:
-    - rid: 3928641313810939904
-      type: {class: HealAction, ns: , asm: Assembly-CSharp}
+    - rid: 5257609831424983040
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
-        healAmount: 10
+        damageAmount: 7
