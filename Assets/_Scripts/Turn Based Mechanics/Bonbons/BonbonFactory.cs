@@ -30,7 +30,6 @@ public class BonbonFactory : MonoBehaviour {
     /// Create a bonbon with a given name using an assortment of bonbon objects;
     /// </summary>
     /// <param name="name"> Name of the bonbon to create (a bonbon object with this name MUST exist!); </param>
-    /// <param name="recipeBonbons"> Bonbons used to create the new bonbon; </param>
     /// <returns> A bonbon object if the recipe is valid, NULL otherwise;
     /// <br></br> Note: This method will throw an Exception if the string is invalid! </returns>
     public BonbonObject CreateBonbon(string name, ref BonbonObject[] bonbonInventory, bool[] recipeMask) {
