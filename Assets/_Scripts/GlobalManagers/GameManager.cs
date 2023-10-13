@@ -5,7 +5,7 @@ public partial class GameManager : MonoBehaviour {
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
 
-    public static int CurrLevel { get; private set; }
+    public static int CurrLevel { get { return 2; } set { } }
 
     void Awake() {
         /// Initialize Singleton;
