@@ -528,7 +528,7 @@ namespace BonbonAssetManager {
                                                                 selectedActor.MaxHitpoints));
                             selectedActor.SetMaxStamina(EditorGUILayout.IntField(new GUIContent(" Max Stamina", statAssets.stamina),
                                                                 selectedActor.MaxStamina));
-                            selectedActor.SetStaminaRegenRate(EditorGUILayout.FloatField(new GUIContent(" Stamina Regen", statAssets.staminaRegen),
+                            selectedActor.SetStaminaRegenRate(EditorGUILayout.IntField(new GUIContent(" Stamina Regen", statAssets.staminaRegen),
                                                               selectedActor.StaminaRegenRate));
                         } EditorGUILayout.Separator();
                         using (new EditorGUILayout.VerticalScope()) {
