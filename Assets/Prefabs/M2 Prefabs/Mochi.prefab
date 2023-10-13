@@ -1499,7 +1499,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8067573261568829474}
-  - component: {fileID: 8462601252610309673}
   - component: {fileID: 2936901844820303966}
   - component: {fileID: 1280533827547510581}
   - component: {fileID: 1573801884385529681}
@@ -1531,27 +1530,6 @@ Transform:
   - {fileID: 6309210264687160859}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8462601252610309673
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827239753294562356}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2936901844820303966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3703,6 +3681,7 @@ MonoBehaviour:
   bonbonOperationButtons:
   - {fileID: 6043450671675744039}
   mainButtonIndex: -1
+  bonbonOperationsIndex: 0
   bonbonOperationEnabled: 0
 --- !u!1 &6441968287519643267
 GameObject:
