@@ -113,7 +113,7 @@ public partial class
     }
 
     public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {
-        if (CurrState is TurnState) {
+        if (CurrState is TurnState || CurrState is BonbonState) {
             BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor().BonbonInventory, mask);
             for (int i = 0; i < 4; i++) {
                 BonbonObject bObject = CurrInput.ActiveActor().BonbonInventory[i];
@@ -125,7 +125,7 @@ public partial class
                 }
             }
             CurrInput.ActiveActor().InsertBonbon(slot, bonbonObject);
-            Transition<BonbonState>();
+            Debug.Log("Bonbon: " + CurrInput.ActiveActor().BonbonInventory[slot]);
         }
     }
 

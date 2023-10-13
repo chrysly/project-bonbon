@@ -6,8 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class BattleBonbonWindow : MonoBehaviour
-{
+public class BattleBonbonWindow : MonoBehaviour {
     public IEnumerator activeUIAction = null;
 
     [SerializeField] private Transform icon;
@@ -18,16 +17,20 @@ public class BattleBonbonWindow : MonoBehaviour
     [SerializeField] private Transform consumeButton;
     [SerializeField] private Transform shareButton;
     [SerializeField] private Transform bonbonSelectLocation;
-    
+
     [SerializeField] private Transform cursor;
-    
+
     [SerializeField] private float animationDuration = 0.4f;
 
     private BonbonObject[] bonbons;
     [SerializeField] private List<BonbonIcon> bonbonSlots;
+    [SerializeField] private List<BattleButton> bonbonOperationButtons;
 
-    private int mainButtonIndex = -1;
-    
+    public int mainButtonIndex = -1;
+    private int bonbonOperationsIndex = 0;
+
+    public bool bonbonOperationEnabled = false;
+
     // Start is called before the first frame update
     void Start() {
         bonbons = new BonbonObject[4];
@@ -50,7 +53,9 @@ public class BattleBonbonWindow : MonoBehaviour
     private void ClearButtons() {
         foreach (BonbonIcon bonbonSlot in bonbonSlots) {
             bonbonSlot.Disable();
-        };
+        }
+
+        ;
         bonbons = new BonbonObject[4];
     }
 
@@ -58,6 +63,7 @@ public class BattleBonbonWindow : MonoBehaviour
         for (int i = 0; i < bonbonSlots.Count; i++) {
             bonbons[i] = bonbonArray[i];
         }
+
         ToggleMainDisplay(true);
     }
 
@@ -76,7 +82,7 @@ public class BattleBonbonWindow : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         tray2.DOScale(1f, animationDuration);
         yield return new WaitForSeconds(0.2f);
-        
+
         //Bonbon Icons
         for (int i = 0; i < bonbons.Length; i++) {
             if (bonbons[i] != null) {
@@ -106,17 +112,24 @@ public class BattleBonbonWindow : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         tray2.DOScale(0f, animationDuration / 2);
         mainButtonIndex = -1;
-        
+
         activeUIAction = null;
         yield return null;
     }
 
     public void BonbonSelect(bool directionDown) {
         if (activeUIAction == null) {
-            activeUIAction = SelectMainPanelButtonAction(directionDown);
+            if (!bonbonOperationEnabled) {
+                activeUIAction = SelectMainPanelButtonAction(directionDown);
+            }
+            else {
+                activeUIAction = OperationSelect(directionDown);
+            }
+
             StartCoroutine(activeUIAction);
         }
     }
+
     private IEnumerator SelectMainPanelButtonAction(bool directionDown) {
         InitCursor();
         if (mainButtonIndex == -1) mainButtonIndex = 0;
@@ -138,7 +151,7 @@ public class BattleBonbonWindow : MonoBehaviour
         else {
             ToggleOccupiedSlot();
         }
-        
+
         UpdateCursor(bonbonSlots[mainButtonIndex]);
 
         yield return new WaitForSeconds(0.1f);
@@ -178,7 +191,26 @@ public class BattleBonbonWindow : MonoBehaviour
         Debug.Log("moved cursor");
         cursor.DOMove(button.targetPoint.position, 0.1f);
     }
-    
+
+    public void ToggleBonbonOperations(bool enable) {
+        bonbonOperationEnabled = enable;
+        if (enable) UpdateCursor(bonbonOperationButtons[bonbonOperationsIndex]);
+        else UpdateCursor(bonbonSlots[mainButtonIndex]);
+    }
+
     //BONBON OPERATION METHODS
-    
+    private IEnumerator OperationSelect(bool directionDown) {
+        if (bonbons[mainButtonIndex] == null) {
+            UpdateCursor(bonbonOperationButtons[bonbonOperationsIndex]);
+        }
+        else {
+            if (bonbonOperationsIndex == -1) bonbonOperationsIndex = 0;
+            else if (directionDown) bonbonOperationsIndex = bonbonOperationsIndex >= bonbonOperationButtons.Count - 1 ? 0 : bonbonOperationsIndex + 1;
+            else bonbonOperationsIndex = bonbonOperationsIndex <= 0 ? bonbonOperationButtons.Count - 1 : bonbonOperationsIndex - 1;
+            UpdateCursor(bonbonOperationButtons[bonbonOperationsIndex]);
+        }
+        yield return new WaitForSeconds(0.1f);
+        activeUIAction = null;
+        yield return null;
+    }
 }

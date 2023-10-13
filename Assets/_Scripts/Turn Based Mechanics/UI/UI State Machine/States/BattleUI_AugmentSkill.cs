@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public partial class BattleUIStateMachine {
-    public class BattleUI_SkillSelect : BattleUIStateMachine.BattleUIState {
+    public class BattleUI_AugmentSkill : BattleUIStateMachine.BattleUIState {
         public override void Enter(BattleUIStateInput i) {
             base.Enter(i);
             RunPreAnimation();
@@ -16,6 +16,7 @@ public partial class BattleUIStateMachine {
             if (input == 0 || input == 2) {
                 Input.AnimationHandler.skillWindow.ButtonSelect(input != 0);
             } else if (input == 1) {
+                SkillAction skillAction = Input.AnimationHandler.skillWindow.ConfirmSkill();
                 MySM._battleStateMachine.SwitchToTargetSelect(Input.AnimationHandler.skillWindow.ConfirmSkill());
                 MySM.Transition<BattleUI_TargetSelect>();
             } else if (input == 3) {

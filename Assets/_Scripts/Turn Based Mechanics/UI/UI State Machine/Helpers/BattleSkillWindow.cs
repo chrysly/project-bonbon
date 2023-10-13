@@ -132,10 +132,4 @@ public class BattleSkillWindow : MonoBehaviour
     public SkillAction ConfirmSkill() {
         return skillButtons[activeIndex].Confirm();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
