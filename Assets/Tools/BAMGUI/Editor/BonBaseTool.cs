@@ -75,6 +75,7 @@ namespace BonbonAssetManager {
             selectedBonbon = bonbon;
             UpdateBonbonList();
             if (selectedBonbon.augmentData.immediateActions == null) selectedBonbon.augmentData.immediateActions = new List<ImmediateAction>();
+            if (selectedBonbon.augmentData.augmentEffects == null) selectedBonbon.augmentData.augmentEffects = new List<EffectBlueprint>();
             foundActions = ActionUtils.FetchAvailableActions(selectedBonbon.augmentData.immediateActions, actionTypes);
         }
 
