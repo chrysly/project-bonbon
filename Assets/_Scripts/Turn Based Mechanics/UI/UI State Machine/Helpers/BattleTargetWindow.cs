@@ -19,6 +19,7 @@ public class BattleTargetWindow : MonoBehaviour {
         activeIndex = 0;
         active = true;
         targets = new List<Actor>(actors);
+        targets.Remove(gameObject.GetComponent<Actor>());
         activeCursor = Instantiate(entityCursor, targets[0].transform.position, targets[0].transform.rotation).transform;
     }
 
