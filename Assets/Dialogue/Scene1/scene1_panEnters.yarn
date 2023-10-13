@@ -1,0 +1,12 @@
+﻿title: scene1_panEnters
+tags: Pan:startled:right
+---
+Pan_startled: Mochi! Are you ok! 
+
+<<add_char mochi false>>
+Mochi_suprised: Sis!!!
+Mochi_suprised: What are you doing here!
+
+Pan_slight_smile: Saving you, we’ll talk about this after we deal with the sweeture!
+
+===
