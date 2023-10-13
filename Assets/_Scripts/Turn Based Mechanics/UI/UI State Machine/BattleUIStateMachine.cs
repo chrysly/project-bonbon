@@ -4,6 +4,9 @@ using UnityEngine;
 
 public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, BattleUIStateMachine.BattleUIState, BattleUIStateInput> {
     [SerializeField] public BattleStateMachine _battleStateMachine;
+    
+    public new delegate void StateTransition(BattleUIState state, BattleUIStateInput input);
+    public event StateTransition OnStateTransition ;
 
     protected override void Start() {
         base.Start();
