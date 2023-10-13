@@ -32,6 +32,7 @@ public partial class BattleUIStateMachine {
                         Input.actor.PassBonbon(Input.AnimationHandler.ingredientWindow.slot, character);
                     } else if (Input.AnimationHandler.bonbonWindow.ConfirmButton() is ConsumeButton) {
                         Input.actor.BonbonInventory.ConsumeBonbon(Input.actor, Input.AnimationHandler.ingredientWindow.slot);
+                        Input.actor.BonbonInventory[Input.AnimationHandler.ingredientWindow.slot] = null;
                     }
                     Input.AnimationHandler.bonbonWindow.ConfirmButton().Activate(MySM, 0.2f);
                     Input.AnimationHandler.bonbonWindow.ToggleBonbonOperations(false);
