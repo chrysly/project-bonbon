@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14142bd7c92aef1418ae58a98e3f393a, type: 3}
   m_Name: Pounce
   m_EditorClassIdentifier: 
-  skillID: DEFAULT
-  skillName: VANILLA
+  skillID: pounce
+  skillName: Pounce
   staminaCost: 0
   immediateActions:
   - rid: 3928641323615649792
