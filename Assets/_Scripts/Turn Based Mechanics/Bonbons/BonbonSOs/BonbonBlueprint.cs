@@ -13,11 +13,20 @@ public class BonbonBlueprint : ScriptableObject {
     /// <summary> A description of the bonbon for later use in the UI; </summary>
     public readonly string description;
 
-    /// <summary> An array of status effects granted by the bonbon; </summary>
+    public int craftStamina;
+
+    /// <summary> An bundle of modifiers granted by the bonbon; </summary>
     public PassiveModifier passiveModifiers;
+
+    /// <summary> A bundle of modifiers and actions for bonbon usage; </summary>
+    public SkillAugment augmentData;
 
     /// <summary> A dictionary containing the bonbons required to make the bonbon, mapped to the required quantity; </summary>
     public BonbonBlueprint[] recipe;
+
+    public BonbonBlueprint() {
+        recipe = new BonbonBlueprint[4];
+    }
 
     public BonbonObject InstantiateBonbon() {
         return new BonbonObject(this);
@@ -60,6 +69,12 @@ public class BonbonBlueprint : ScriptableObject {
             for (int i = 0; i < recipe.Length; i++) nRecipe[i] = recipe[i];
             recipe = nRecipe;
         }
+    }
+
+    public static GUIContent GUIContent(object bonbonBlueprint) {
+        BonbonBlueprint bp = bonbonBlueprint as BonbonBlueprint;
+        if (bp.texture == null) return new GUIContent(bp.name);
+        else return new GUIContent(bp.texture);
     }
 
     #endif

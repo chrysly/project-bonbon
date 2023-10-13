@@ -76,7 +76,7 @@ namespace ModelAssetDatabase {
         /// </summary>
         /// <param name="name"> New default name; </param>
         private void SetDefaultPrefabName(string name) {
-            this.prefabName = name;
+            prefabName = name;
             GUIUtility.keyboardControl = 0;
             GUIUtility.hotControl = 0;
         }

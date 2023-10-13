@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Reflection;
 using System.Linq;
 using System.Collections.Generic;
@@ -6,7 +7,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //The following code is heavily influenced from a state machine used in Side By Side (Producer: Yoon Lee)
-//Repurposed for Bonbon: Origins
+//Repurposed for Dive
+//Stolen by Bonbon
 
 /// <summary>
 /// Defines a Finite State Machine that can be extended for more functionality.
@@ -23,6 +25,9 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
     public I CurrInput { get; private set; }
 
     private Dictionary<Type, S> _stateMap = new Dictionary<Type, S>();
+    
+    private IEnumerator _transitionAction = null;
+    private bool _locked = false;
 
     public event Action StateTransition; //(State, PrevState)
 
@@ -58,10 +63,32 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
     #endregion
 
     public void Transition<NextStateType>() where NextStateType : S, new() {
+        if (!_locked) {
+            CurrState?.Exit(CurrInput);
+            SetState<NextStateType>();
+            CurrState.Enter(CurrInput);
+
+            StateTransition?.Invoke();
+        }
+    }
+    
+    //Edit by Chris Lee: Added delayed transition, intended for programmed UI animation between states :O
+    public void DelayedTransition<NextStateType>(float delay, bool overrideCurrState) where NextStateType : S, new() {
+        if (!_locked) {
+            if (overrideCurrState) _transitionAction = null;
+            if (_transitionAction == null) {
+                _transitionAction = DelayedTransitionAction<NextStateType>(delay);
+                StartCoroutine(_transitionAction);
+            }
+        }
+    }
+
+    private IEnumerator DelayedTransitionAction<NextStateType>(float delay) where NextStateType : S, new() {
         CurrState?.Exit(CurrInput);
+        yield return new WaitForSeconds(delay);
         SetState<NextStateType>();
         CurrState.Enter(CurrInput);
-
+        
         StateTransition?.Invoke();
     }
 
@@ -71,15 +98,16 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
 
     protected void SetState<T>() where T : S, new()
     {
-        Type stateType = typeof(T);
-        if (!_stateMap.ContainsKey(stateType))
-        {
-            CreateNewState(stateType);
-        }
+        if (!_locked) {
+            Type stateType = typeof(T);
+            if (!_stateMap.ContainsKey(stateType)) {
+                CreateNewState(stateType);
+            }
 
-        PrevState = CurrState;
-        CurrState = _stateMap[stateType];
-        if (PrevState == null) PrevState = CurrState;
+            PrevState = CurrState;
+            CurrState = _stateMap[stateType];
+            if (PrevState == null) PrevState = CurrState;
+        }
     }
 
     public bool PrevStateEquals<T>() where T : S
@@ -92,6 +120,11 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
         S newState = (S) Activator.CreateInstance(state);
         newState.MySM = (M) this;
         _stateMap.Add(state, newState);
+    }
+
+    //Edit by Chris Lee: Functionality for disabling state transitions, resumes next state if enabled
+    public void ToggleMachine(bool disable) {
+        _locked = disable;
     }
 
     protected virtual void Init() { }

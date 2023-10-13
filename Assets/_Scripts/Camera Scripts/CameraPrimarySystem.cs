@@ -9,6 +9,8 @@ public class CameraPrimarySystem : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera aerialCam;
     [SerializeField] private CinemachineVirtualCamera charCam;
     [SerializeField] private BattleStateMachine stateMachine;
+
+    [SerializeField] private Transform enemyLookTarget;
     //[SerializeField] private Transform testTarget;
     // Start is called before the first frame update
 
@@ -23,20 +25,17 @@ public class CameraPrimarySystem : MonoBehaviour
     }
 
     private void UpdateCamera(BattleStateMachine.BattleState state, BattleStateInput input) {
-        Debug.Log("call");
         if (state is BattleStateMachine.TurnState) { FocusActor(input); }
         else if (state is BattleStateMachine.AnimateState) { ViewAnimate(input); }
     }
 
     private void FocusActor(BattleStateInput input) {
-        charCam.m_LookAt = oldLookAt;
+        charCam.m_LookAt = enemyLookTarget;
         if (input.ActiveActor() is not CharacterActor) {
-            Debug.Log("to enemy");
             ReturnToBattleView(input);
             return;
         }
-
-        Debug.Log("to chara");
+        
         Transform target = input.ActiveActor().transform.GetChild(0);
         charCam.m_Follow = target;
         SetActiveCam(charCam);

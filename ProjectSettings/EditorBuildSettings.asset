@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SceneStructureTest/MainMenu.unity
     guid: 629fe8271782ddb4fb64d5285d442c8f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SceneStructureTest/CampfireScene.unity
     guid: 1bd99e8ea5363e344984d4ab174a9da9
   - enabled: 1
-    path: Assets/Scenes/Joseph Seo/1MainMenu.unity
-    guid: 1540565b177d99a409ffec8c643384bb
-  - enabled: 1
-    path: Assets/Scenes/Joseph Seo/1CampfireScene.unity
-    guid: 75b55248233c83e4ca9646611d9d340f
-  - enabled: 1
-    path: Assets/Scenes/DialogueTesting.unity
+    path: Assets/Scenes/DevScenes/DialogueTesting.unity
     guid: c64f1798809d27741b4e42b05fd4c995
   - enabled: 1
-    path: Assets/Scenes/DevScenes/M1 Build Final.unity
+    path: Assets/Scenes/DevScenes/M1 Build.unity
     guid: 419e633457032e74aa3c4b329d7fde6c
+  - enabled: 1
+    path: Assets/Scenes/Alex K/SceneSaveTest/TestScene1.unity
+    guid: 7c36a132219101f42ab8fc0be5787701
+  - enabled: 1
+    path: Assets/Scenes/Alex K/SceneSaveTest/TestScene2.unity
+    guid: 134a7a0e3174a034792748452220aeb2
   m_configObjects: {}

@@ -1,40 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
-public class EventSequencer : MonoBehaviour // not sure if should be monobehabior
+/// <summary>
+/// Event runner --> holds events for each scene, and runs them when conditions are met
+/// </summary>
+public class EventSequencer : MonoBehaviour
 {
     public List<EventObject> eventSequence;
-    public Transform spawnPoint;    // temporary
+    Queue<EventObject> events = new Queue<EventObject>();
+    
+    #region Events
+    public delegate void EventTerminate();
+    public event EventTerminate OnEventTerminate;
+    #endregion Events
 
-    private int currentEventIndex = 0;
+    public void CheckForEvents(AIActionValue package) { 
+        // add any events that meet activate conditions to a queue
+        foreach (EventObject ev in eventSequence) { 
+            if (ev.CheckConitions(package)) {
+                events.Enqueue(ev);
+            }
+        }
 
-    // where we need to execute events --> eventSequencer.StartEventSequence();
-    public void StartEventSequence()
-    {
-        currentEventIndex = 0;
-        ExecuteNextEvent();
+        // jank bc fck it's 5am
+        foreach (EventObject q in events) {
+            eventSequence.Remove(q);
+        }
     }
 
-    private void ExecuteNextEvent()
-    {
-        if (currentEventIndex < eventSequence.Count)
+    public bool RunNextEvent() {
+        // run the next event in queue
+        if (events.Count > 0)
         {
-            EventObject currentEvent = eventSequence[currentEventIndex];
-
-            // check if you need to load prefab
-            if (currentEvent.prefabToLoad != null)
-            {
-                Instantiate(currentEvent.prefabToLoad, spawnPoint.position, Quaternion.identity);
-            }
-
-            currentEvent.OnTrigger();
-            currentEventIndex++;
+            Debug.Log("event");
+            EventObject next = events.Dequeue();
+            next.OnTrigger();
+            return true;
         }
-        else
-        {
-            // it's done with all events
-            Debug.Log("No more sequence");
-        }
+        return false;
+    }
+
+    public void CheckForEventEnd() {
+        Debug.Log("noice");
+        OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
     }
 }

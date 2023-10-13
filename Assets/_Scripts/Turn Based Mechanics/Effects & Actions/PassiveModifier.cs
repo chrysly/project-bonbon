@@ -6,15 +6,22 @@
 [Serializable]
 public class PassiveModifier {
 
+    /// <summary> </summary>
+    public int flatAttack;
     /// <summary> Multiplier for the Actor attack attribute; </summary>
-    public float attackModifier = 1;
+    public float percentAttack;
+    /// <summary> </summary>
+    public int flatHeal;
     /// <summary> Multiplier for the Actor heal cast attribute; </summary>
-    public float healCastModifier = 1;
+    public float percentHealCast;
+    /// <summary> </summary>
+    public int flatDefense;
     /// <summary> Multiplier for the Actor attack attribute; </summary>
-    public float defenseModifier = 1;
+    public float percentDefense;
+    /// <summary> </summary>
+    public int flatSpeed;
+    /// <summary> </summary>
+    public float percentSpeed;
     /// <summary> Multiplier for the Actor stamina regen attribute; </summary>
-    public float staminaRegenModifier = 1;
-
-    //public float speedModifier;
-    //public float evasionModifier;
+    public float percentStaminaRegen;
 }

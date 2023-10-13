@@ -6,26 +6,37 @@ using UnityEngine;
 public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #region Data Attributes
-    [SerializeField] public ActorData data;
+    [SerializeField] private ActorData data;
     public StatIteration ActiveData { get; private set; }
     [SerializeField] private string uniqueID;
     #endregion Data Attributes
 
     #region Accessors
-    public ActorData Data() { return data; }
+    public ActorData Data => data;
 
-    public string UniqueID() { return uniqueID; }
+    public string UniqueID => uniqueID;
     #endregion Accessors
 
     #region Variable Attributes
 
     [SerializeField] private int _hitpoints;
-    private bool _defeated;
     private int _stamina;
+
+    public int Hitpoints => _hitpoints;
+    public bool Defeated => State == ActorState.Fainted;
+    public bool Available => (int) State < 3;
+    public int Stamina => _stamina;
 
     #endregion Variable Attributes
 
     #region Level Skills, Bonbons & Modifiers
+
+    public enum ActorState {
+        Normal = 0,
+        Confused = 1,
+        Paralyzed = 2,
+        Fainted = 3,
+    } public ActorState State { get; private set; }
 
     public List<SkillAction> SkillList { get; protected set; }
 
@@ -48,9 +59,9 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     protected virtual void InitializeAttributes() {
         ActiveData = new StatIteration(this, data);
-        _hitpoints = data.MaxHitpoints();
-        _stamina = data.MaxStamina();
-        _defeated = false;
+        _hitpoints = data.MaxHitpoints;
+        _stamina = data.MaxStamina;
+        State = ActorState.Normal;
     }
 
     protected virtual void InitializeLevelObjects() {
@@ -74,6 +85,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     }
 
     public void TurnStart() {
+        if (Defeated) return;
+        State = 0;
         List<int> spentEffects = new List<int>();
         for (int i = 0; i < EffectList.Count; i++) {
             EffectList[i].PerformActions(this);
@@ -82,12 +95,15 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     }
 
     private void ComputeStats() {
+        ActiveData.Reset();
         List<PassiveModifier> modifiers = new List<PassiveModifier>();
-        foreach (BonbonObject bonbon in BonbonInventory) {
-            if (bonbon != null) modifiers.Add(bonbon.PassiveModifiers);
-        } foreach (Effect effect in EffectList) {
+        foreach (Effect effect in EffectList) {
             modifiers.Add(effect.modifiers);
         } ActiveData.ComputeModifiers(modifiers);
+    }
+
+    public void ApplyState(ActorState actorState) {
+        if ((int) actorState > (int) this.State) this.State = actorState;
     }
 
     public void ApplyEffects(List<Effect> effects) {
@@ -106,8 +122,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
         if (_hitpoints - damage <= 0) {
             _hitpoints = 0;
-            _defeated = true;
-            Debug.Log($"{data.DisplayName()} has fallen!");
+            ApplyState(ActorState.Fainted);
+            Debug.Log($"{data.DisplayName} has fallen!");
             return true;
         }
         _hitpoints -= damage;
@@ -117,14 +133,18 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     //Returns true if over maximum hitpoints.
     //Does not heal if Actor is defeated.
     public bool RestoreHitpoints(int heal) {
-        if (_hitpoints + heal > data.MaxHitpoints()) {
-            _hitpoints = data.MaxHitpoints();
+        if (_hitpoints + heal > data.MaxHitpoints) {
+            _hitpoints = data.MaxHitpoints;
             return true;
         }
-        if (!_defeated) {
+        if (!Defeated) {
             _hitpoints += heal;
         }
         return false;
+    }
+
+    public void ConsumeStamina(int amount) {
+        _stamina -= amount;
     }
 
     public void InsertBonbon(int slot, BonbonObject bonbon) {
@@ -137,13 +157,6 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         SkillList.Add(new SkillAction(skillData, this, SkillList.Count));
     }
 
-    public int Hitpoints() {
-        return _hitpoints;
-    }
-
-    public bool Defeated() {
-        return _defeated;
-    }
 
     public bool HasRemainingStamina() {
         return _stamina > 0;
@@ -166,7 +179,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
             percent = 100;
 
         // calculate
-        int maxStamina = data.MaxStamina();
+        int maxStamina = data.MaxStamina;
         int refillAmount = (int) (maxStamina * percent / 100);
 
         if (_stamina + refillAmount > maxStamina)
@@ -177,7 +190,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #region Comparators
     public int CompareTo(Actor actor) {
-        return data.BaseSpeed() - actor.data.BaseSpeed();
+        return data.BaseSpeed - actor.data.BaseSpeed;
     }
 
     public override bool Equals(object obj) {
@@ -187,7 +200,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
             return false;
         }
 
-        return item.Data().ID() == data.ID();
+        return item.Data.ID == data.ID;
     }
 
     public override int GetHashCode() {

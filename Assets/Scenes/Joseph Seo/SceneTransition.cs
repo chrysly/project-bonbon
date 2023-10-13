@@ -9,8 +9,6 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] private int sceneWant;
     [SerializeField] private GameObject sliderPanel;
     [SerializeField] private Slider slider;
-    private float currentValue;
-    [SerializeField] private float progressMultiplier = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,22 +25,20 @@ public class SceneTransition : MonoBehaviour
     //Increment scenes up and down 1 index from the build index by pressing the respective arrow key
     public void IncrementScene()
     {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings -1)
+            if (currentSceneIndex < SceneManager.sceneCountInBuildSettings -1)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-                sliderPanel.SetActive(true);
-                StartCoroutine(LoadSceneSync(SceneManager.GetActiveScene().buildIndex + 1));
+                SwitchToScene(currentSceneIndex + 1);
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (SceneManager.GetActiveScene().buildIndex > 0)
+            if (currentSceneIndex > 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-                sliderPanel.SetActive(true);
-                StartCoroutine(LoadSceneSync(SceneManager.GetActiveScene().buildIndex - 1));
+                SwitchToScene(currentSceneIndex - 1);
             }
         }
     }
@@ -51,29 +47,25 @@ public class SceneTransition : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            sliderPanel.SetActive(true);
-            StartCoroutine(LoadSceneSync(sceneWant));
-            //SceneManager.LoadScene(sceneWant);
+            SwitchToScene(sceneWant);
         }
     }
     
     
-
-    IEnumerator LoadSceneSync(int scene)
+    IEnumerator LoadSceneSync(int sceneToLoad)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
-        while(!operation.isDone)
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
+        while (!operation.isDone)
         {
-            operation.allowSceneActivation = false;
-            float progress = Mathf.Clamp01(operation.progress/0.9f);
-            currentValue = Mathf.MoveTowards(currentValue, progress, progressMultiplier * Time.deltaTime);
-            slider.value = currentValue;
-            if (Mathf.Approximately(currentValue, 1))
-            {
-                operation.allowSceneActivation = true;
-            }
+            float progress = Mathf.Clamp01(operation.progress);
+            //Debug.Log("-------------------------------------------------------------------------------------------------------------------------");
+            slider.value = progress;
             yield return null;
         }
     }
-    
+
+    public void SwitchToScene(int sceneIndex) {
+        sliderPanel.SetActive(true);
+        StartCoroutine(LoadSceneSync(sceneIndex));
+    }
 }

@@ -90,8 +90,11 @@ public class EnemyAI
         foreach (Actor actor in skillData.characterActors)
         {
             value += addValueBasedOnDamage(skillData, actor);
+            Debug.Log("dmg" + value);
             value += addValueBasedOnHealth(skillData, actor);
+            Debug.Log("health" + value);
             value += addValueBasedOnNumBonbons(skillData, actor);
+            Debug.Log(value);
         }
         return value;
     }
@@ -101,12 +104,13 @@ public class EnemyAI
     {
         int point = 0;
         
-        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints())
+        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints)
         {
             point += (int) AiWeights.KillUnit;
         }
         else
         {
+            //Debug.Log(skillData.skill.ComputeSkillActionValues(actor).immediateDamage);
             point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;
         } 
         return point;
@@ -115,13 +119,15 @@ public class EnemyAI
     // based on % health
     private static int addValueBasedOnHealth(ScenarioSkillData skill, Actor actor)
     {
-        int point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent; 
+        int point = 0;
+        point = (1 - (actor.Hitpoints / actor.Data.MaxHitpoints)) * (int)AiWeights.HealthPercent;
         return point;
     }
 
     private static int addValueBasedOnNumBonbons(ScenarioSkillData skill, Actor actor)
     {
-        int point = actor.BonbonList.Count * (int)AiWeights.NumOfBonBons;
+        int point = 0;
+        point = actor.BonbonList.Count * (int)AiWeights.NumOfBonBons;
         return point;
   
     }
