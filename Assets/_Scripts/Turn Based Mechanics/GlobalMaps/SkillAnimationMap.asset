@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf5aac47cf74a54ea5dedaeca158fbd, type: 3}
+  m_Name: SkillAnimationMap
+  m_EditorClassIdentifier: 
+  animationMap:
+    Keys:
+    - {fileID: 11400000, guid: f7d952e674ea4864081ae1d138d9c718, type: 2}
+    - {fileID: 11400000, guid: f0554fb479c9bd14c92b1c3089e23da1, type: 2}
+    - {fileID: 11400000, guid: 7fcd51859e99fcc458d94aa84e3627f8, type: 2}
+    Values:
+    - Keys:
+      - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
+      Values:
+      - actorAnimator: {fileID: 9100000, guid: 3fd8b0f640740ff4897fb648836df986, type: 2}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
+      Values:
+      - actorAnimator: {fileID: 9100000, guid: 4df97b0a6434cd74aab3778831d46c56, type: 2}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
+      - {fileID: 11400000, guid: a6ac0735501b31b418532e1c52bac788, type: 2}
+      Values:
+      - actorAnimator: {fileID: 0}
+        triggerIndex: 0
+      - actorAnimator: {fileID: 0}
+        triggerIndex: 0

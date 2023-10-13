@@ -1,0 +1,15 @@
+{
+  "projectFileVersion": 2,
+  "sourceFiles": [
+    "**/*.yarn",
+    "**/*.yarn"
+  ],
+  "excludeFiles": [],
+  "localisation": {
+    "en": {
+      "assets": "${UnityProjectRoot}/Assets/Dialogue"
+    }
+  },
+  "baseLanguage": "en",
+  "compilerOptions": {}
+}

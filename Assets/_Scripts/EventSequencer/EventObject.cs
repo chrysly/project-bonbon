@@ -16,4 +16,6 @@ public class EventObject : ScriptableObject {
     public virtual void OnTrigger() {
         DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
     }
+
+    public virtual void OnEventEnd() { }
 }
