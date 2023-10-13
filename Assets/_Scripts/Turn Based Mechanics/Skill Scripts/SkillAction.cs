@@ -14,13 +14,14 @@ public class SkillAction {
         SkillIndex = skillIndex;
     }
 
-    public AIActionValue ComputeSkillActionValues(Actor target) {
+    public AIActionValue ComputeSkillActionValues(Actor target, int currTurn) {
         AIActionValue actionValue = new AIActionValue();
         SkillData.ComputeActionValues(ref actionValue, target.ActiveData);
         actionValue.immediateDamage = target.ActiveData.ComputeDefense(actionValue.immediateDamage);
         actionValue.damageOverTime = target.ActiveData.ComputeDefense(actionValue.damageOverTime);
         //actionValue.caster = target.ActiveData. aaa
         //actionValue.target = target;
+        actionValue.currentTurn = currTurn;
         return actionValue;
     }
 
