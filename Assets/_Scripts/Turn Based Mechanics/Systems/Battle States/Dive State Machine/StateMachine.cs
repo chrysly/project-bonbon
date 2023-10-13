@@ -90,6 +90,8 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
         CurrState.Enter(CurrInput);
         
         StateTransition?.Invoke();
+        _transitionAction = null;
+        yield return null;
     }
 
     public bool IsOnState<CheckStateType>() where CheckStateType : S, new() {

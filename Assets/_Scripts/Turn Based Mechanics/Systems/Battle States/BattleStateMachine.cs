@@ -98,6 +98,11 @@ public partial class
         }
     }
 
+    public void ConfirmTargetSelect(Actor actor) {
+        CurrInput.SetSkillPrep(new Actor[] { actor });
+        Transition<AnimateState>();
+    }
+
     public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {
         if (CurrState is TurnState) {
             BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor().BonbonInventory, mask);

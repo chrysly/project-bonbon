@@ -92,9 +92,10 @@ public class UIAnimationHandler : MonoBehaviour {
     }
     private IEnumerator SelectMainPanelButtonAction(bool directionDown) {
         InitCursor();
-        mainButtonIndex = mainButtonIndex == -1 ? 0 : mainButtonIndex;
-        if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count - 1 ? 0 : mainButtonIndex + 1;
+        if (mainButtonIndex == -1) mainButtonIndex = 0;
+        else if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count - 1 ? 0 : mainButtonIndex + 1;
         else mainButtonIndex = mainButtonIndex <= 0 ? mainPanelButtons.Count - 1 : mainButtonIndex - 1;
+        Debug.Log(mainButtonIndex);
         for (int i = 0; i < mainPanelButtons.Count; i++) {
             if (i == mainButtonIndex) {
                 mainPanelButtons[mainButtonIndex].Scale(mainPanelButtonScaleVector, mainPanelButtonScaleDuration);
@@ -120,6 +121,7 @@ public class UIAnimationHandler : MonoBehaviour {
 
     private void CollapseCursor() {
         cursor.DOScale(new Vector3(0, 0, 0), mainPanelButtonScaleDuration);
+        mainButtonIndex = -1;
     }
 
     private void UpdateCursor(BattleButton button) {
@@ -134,11 +136,14 @@ public class UIAnimationHandler : MonoBehaviour {
     
     #region Skill Window
 
-    [SerializeField] private CanvasGroup skillPanel;
-    [SerializeField] private float skillPanelToggleDuration;
+    public BattleSkillWindow skillWindow;
     
-    
-
     #endregion Skill Window
+
+    #region TargetSelect
+
+    public BattleTargetWindow targetWindow;
+
+    #endregion
 
 }
