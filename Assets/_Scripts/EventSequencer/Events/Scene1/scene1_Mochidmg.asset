@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be78a82774b8eac4aa53d79c92549382, type: 3}
-  m_Name: Scene1Turn2
+  m_Name: scene1_Mochidmg
   m_EditorClassIdentifier: 
-  yarnFile: {fileID: 0}
+  yarnFile: {fileID: -8253061345870894857, guid: db09318606f149947b83b3d64a6a20d9, type: 3}
   character: {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
   damageAmount: 0
