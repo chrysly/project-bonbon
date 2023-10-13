@@ -123,7 +123,7 @@ public partial class
 
     public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {
         if (CurrState is TurnState || CurrState is BonbonState) {
-            BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor().BonbonInventory, mask);
+            BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor(), mask);
             for (int i = 0; i < 4; i++) {
                 BonbonObject bObject = CurrInput.ActiveActor().BonbonInventory[i];
                 if (bObject == null) {

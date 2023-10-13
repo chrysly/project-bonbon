@@ -93,6 +93,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
             EffectList[i].PerformActions(this);
             if (EffectList[i].IsSpent()) spentEffects.Add(i);
         } RemoveEffects(spentEffects);
+        ComputeStats();
+        RefundStamina(ActiveData.StaminaRegen);
     }
 
     private void ComputeStats() {

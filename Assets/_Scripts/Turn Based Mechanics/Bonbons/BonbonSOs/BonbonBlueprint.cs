@@ -28,7 +28,8 @@ public class BonbonBlueprint : ScriptableObject {
         recipe = new BonbonBlueprint[4];
     }
 
-    public BonbonObject InstantiateBonbon() {
+    public BonbonObject InstantiateBonbon(Actor actor) {
+        actor.ConsumeStamina(craftStamina);
         return new BonbonObject(this);
     }
 
