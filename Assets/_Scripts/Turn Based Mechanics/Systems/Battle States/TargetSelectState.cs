@@ -23,11 +23,11 @@ public partial class BattleStateMachine {
 
         public override void Update() {
             base.Update();
-            // Actor actor = _selectManager.CheckForSelect();
-            // if (actor != null) {
-            //     Input.SetSkillPrep(new Actor[] { actor });
-            //     MySM.Transition<AnimateState>();
-            // }
+            Actor actor = _selectManager.CheckForSelect();
+            if (actor != null) {
+                 Input.SetSkillPrep(new Actor[] { actor });
+                 MySM.Transition<AnimateState>();
+            }
         }
 
         public override void Exit(BattleStateInput input) {
