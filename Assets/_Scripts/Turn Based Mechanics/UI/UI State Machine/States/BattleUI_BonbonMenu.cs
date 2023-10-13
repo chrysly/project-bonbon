@@ -30,7 +30,7 @@ public partial class BattleUIStateMachine {
                                 character = (CharacterActor)actor;
                             }
                         }
-                        
+                        character.Pass
                     }
                     Input.AnimationHandler.bonbonWindow.ConfirmButton().Activate(MySM, 0.2f);
                     Input.AnimationHandler.bonbonWindow.ToggleBonbonOperations(false);
