@@ -62,7 +62,8 @@ public class SkillAugment {
     public List<EffectBlueprint> augmentEffects;
 
     /// <summary> Actions performed on the caster by the Augment; </summary>
-    public List<ImmediateAction> immediateActions;
+    [HideInInspector]
+    [SerializeReference] public List<ImmediateAction> immediateActions;
     /// <summary> Bonbon effect; </summary>
     public EffectBlueprint bonbonEffect;
     /// <summary> New AoE protocol through the augment; </summary>

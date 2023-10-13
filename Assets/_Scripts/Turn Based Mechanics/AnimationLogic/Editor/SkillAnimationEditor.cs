@@ -31,7 +31,7 @@ public class SkillAnimationEditor : EditorWindow {
     void OnEnable() {
         sam = LoadAssets<SkillAnimationMap>()[0];
 
-        animationMap = ProcessInternalDictionary(sam.animationMap);
+        animationMap = SKAEUtils.ProcessInternalDictionary(sam.animationMap);
         skills = LoadAssets<SkillObject>();
         actors = LoadAssets<ActorData>();
     }
@@ -49,23 +49,6 @@ public class SkillAnimationEditor : EditorWindow {
         Resources.UnloadUnusedAssets();
     }
 
-    private Dictionary<T1, Dictionary<T2, T3>> 
-            ProcessInternalDictionary<T1, T2, T3>(PseudoDictionary<T1, PseudoDictionary<T2, T3>> complexMap) {
-        Dictionary<T1, PseudoDictionary<T2, T3>> pseudoInternalDict = complexMap.ToDictionary();
-        Dictionary<T1, Dictionary<T2, T3>> outDict = new Dictionary<T1, Dictionary<T2, T3>>();
-        foreach (KeyValuePair<T1, PseudoDictionary<T2, T3>> kvp in pseudoInternalDict) {
-            outDict[kvp.Key] = kvp.Value.ToDictionary();
-        } return outDict;
-    }
-
-    private PseudoDictionary<T1, PseudoDictionary<T2, T3>>
-            RevertInternalDictionary<T1, T2, T3>(Dictionary<T1, Dictionary<T2, T3>> simpleMap) {
-        Dictionary<T1, PseudoDictionary<T2, T3>> outMap = new Dictionary<T1, PseudoDictionary<T2, T3>>();
-        foreach (KeyValuePair<T1, Dictionary<T2, T3>> kvp in simpleMap) {
-            outMap[kvp.Key] = new PseudoDictionary<T2, T3>(kvp.Value);
-        } return new PseudoDictionary<T1, PseudoDictionary<T2, T3>>(outMap);
-    }
-
     private T[] LoadAssets<T>() where T : ScriptableObject {
         string[] guids = AssetDatabase.FindAssets($"t:{typeof(T).FullName}");
         string[] assetPaths = guids.Select(guid => AssetDatabase.GUIDToAssetPath(guid)).ToArray();
@@ -77,8 +60,11 @@ public class SkillAnimationEditor : EditorWindow {
             using (new EditorGUILayout.VerticalScope(GUILayout.Width(180))) {
                 using (new EditorGUILayout.HorizontalScope(UIStyles.PaddedToolbar)) {
                     EditorGUILayout.TextField("", EditorStyles.toolbarSearchField);
-                } using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true))) {
-                    DrawMapEntries();
+                } using (var scope = new EditorGUILayout.ScrollViewScope(hierarchyScroll)) {
+                    hierarchyScroll = scope.scrollPosition;
+                    using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox, GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true))) {
+                        DrawMapEntries();
+                    }
                 } using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
                     Rect rect = EditorGUILayout.GetControlRect();
                     if (GUI.Button(rect, EditorUtils.FetchIcon("d_P4_AddedRemote"))) {
@@ -196,7 +182,7 @@ public class SkillAnimationEditor : EditorWindow {
     }
 
     private void SaveMap() {
-        sam.animationMap = RevertInternalDictionary(animationMap);
+        sam.animationMap = SKAEUtils.RevertInternalDictionary(animationMap);
         EditorUtility.SetDirty(sam);
     }
 }
