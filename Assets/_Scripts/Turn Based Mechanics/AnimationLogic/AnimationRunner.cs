@@ -13,7 +13,7 @@ public class AnimationRunner : MonoBehaviour {
 
     public void OnSkillTrigger(SkillAction skillAction, BonbonBlueprint bonbon = null) {
         SkillAnimation sa = SkillAMap[skillAction.SkillData][skillAction.Caster.Data];
-        skillAction.Caster.GetComponentInChildren<Animator>().SetTrigger(sa.AnimationTrigger);
+        skillAction.Caster.GetComponentInChildren<Animator>(true).SetTrigger(sa.AnimationTrigger);
         if (bonbon != null) ; /// Do VFXs
     }
 }
