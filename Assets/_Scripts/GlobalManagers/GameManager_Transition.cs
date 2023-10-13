@@ -11,6 +11,7 @@ public partial class GameManager {
     [SerializeField] private Slider slider;
     private float currentValue;
     private float progressMultiplier = 0.5f;
+
     public enum CoreScene {
         MainMenu = 0,
         Campfire = 1,
