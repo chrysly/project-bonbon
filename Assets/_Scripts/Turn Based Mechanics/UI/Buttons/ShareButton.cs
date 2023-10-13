@@ -7,6 +7,6 @@ public class ShareButton : BattleButton
     public override void Activate(BattleUIStateMachine stateMachine, float delay) {
         base.Activate(stateMachine, delay);
         
-        stateMachine.DelayedTransition<BattleUIStateMachine.BattleUI_BonbonMenu>(0.5f, true);
+        stateMachine.DelayedTransition<BattleUIStateMachine.InitUIState>(0.2f, true);
     }
 }

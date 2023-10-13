@@ -30,9 +30,13 @@ public partial class BattleUIStateMachine {
                             }
                         }
                         Input.actor.PassBonbon(Input.AnimationHandler.ingredientWindow.slot, character);
+                    } else if (Input.AnimationHandler.bonbonWindow.ConfirmButton() is ConsumeButton) {
+                        Input.actor.BonbonInventory.ConsumeBonbon(Input.actor, Input.AnimationHandler.ingredientWindow.slot);
                     }
                     Input.AnimationHandler.bonbonWindow.ConfirmButton().Activate(MySM, 0.2f);
                     Input.AnimationHandler.bonbonWindow.ToggleBonbonOperations(false);
+                    Input.AnimationHandler.bonbonWindow.mainButtonIndex = -1;
+                    Input.AnimationHandler.bonbonWindow.bonbonOperationsIndex = 0;
                 }
             } else if (input == 3) {
                 if (Input.AnimationHandler.bonbonWindow.bonbonOperationEnabled)

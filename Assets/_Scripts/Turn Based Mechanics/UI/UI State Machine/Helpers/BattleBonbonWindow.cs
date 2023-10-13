@@ -27,7 +27,7 @@ public class BattleBonbonWindow : MonoBehaviour {
     [SerializeField] private List<BattleButton> bonbonOperationButtons;
 
     public int mainButtonIndex = -1;
-    private int bonbonOperationsIndex = 0;
+    public int bonbonOperationsIndex = 0;
 
     public bool bonbonOperationEnabled = false;
 
@@ -57,6 +57,7 @@ public class BattleBonbonWindow : MonoBehaviour {
 
         ingredientsButton.GetComponent<MainIngredientButton>().merge = false;
         bonbons = new BonbonObject[4];
+        bonbonOperationEnabled = false;
     }
 
     public void Initialize(BonbonObject[] bonbonArray) {
@@ -197,7 +198,7 @@ public class BattleBonbonWindow : MonoBehaviour {
     public void ToggleBonbonOperations(bool enable) {
         bonbonOperationEnabled = enable;
         if (enable) UpdateCursor(bonbonOperationButtons[bonbonOperationsIndex]);
-        else UpdateCursor(bonbonSlots[mainButtonIndex]);
+        else UpdateCursor(bonbonSlots[bonbonOperationsIndex]);
     }
 
     //BONBON OPERATION METHODS
