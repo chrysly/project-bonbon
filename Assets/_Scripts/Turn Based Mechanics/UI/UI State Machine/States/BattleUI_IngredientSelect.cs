@@ -42,7 +42,7 @@ public partial class BattleUIStateMachine {
             Debug.Log(Input.actor.BonbonInventory[slot].Data.name + " and " + bonbon.name);
             List<BonbonBlueprint> blueprint = factory.FindRecipes(Input.actor.BonbonInventory[slot].Data, bonbon);
             if (blueprint != null) {
-                Input.actor.BonbonInventory[slot] = blueprint[0].InstantiateBonbon();
+                Input.actor.BonbonInventory[slot] = blueprint[0].InstantiateBonbon(Input.actor);
             }
             else {
                 Debug.Log("not valid recipe");

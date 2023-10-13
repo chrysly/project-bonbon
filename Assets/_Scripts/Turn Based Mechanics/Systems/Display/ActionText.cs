@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using TMPro;
 
@@ -8,10 +9,15 @@ public class ActionText : MonoBehaviour
     [SerializeField] private BattleStateMachine stateMachine;
     [SerializeField] private BonbonFactory bonbonFactory;
     [SerializeField] private float textActiveDuration = 3f;
+    [SerializeField] private Transform window;
+    [SerializeField] private Transform pivot;
     private IEnumerator _activeDisplay;
+    private Vector3 originalPosition;
+    
     void Start() {
         stateMachine.OnStateTransition += UpdateActionText;
         bonbonFactory.OnBonbonCreation += UpdateBonbonActionText;
+        originalPosition = window.position;
     }
 
     private void UpdateActionText(BattleStateMachine.BattleState state, BattleStateInput input) {
@@ -29,6 +35,8 @@ public class ActionText : MonoBehaviour
                              + input.SkillPrep.targets[0].Data.DisplayName +
                              "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
             }
+
+            window.DOMove(pivot.position, 0.5f);
 
             ClearText();
         }
@@ -53,6 +61,7 @@ public class ActionText : MonoBehaviour
         yield return new WaitForSeconds(delay);
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
         text.SetText("");
+        window.DOMove(originalPosition, 0.5f);
         yield return null;
     }
 }

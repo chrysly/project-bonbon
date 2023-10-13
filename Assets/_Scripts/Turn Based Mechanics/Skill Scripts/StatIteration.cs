@@ -8,7 +8,7 @@ public class StatIteration {
     public int Potency { get; private set; }
     public int Defense { get; private set; }
     public int Speed { get; private set; }
-    public float StaminaRegen { get; private set; }
+    public int StaminaRegen { get; private set; }
 
     public StatIteration(Actor actor, ActorData data) {
         Actor = actor;
@@ -28,7 +28,7 @@ public class StatIteration {
             Potency += mod.flatAttack;
             Defense += mod.flatDefense;
             Speed += mod.flatSpeed;
-            StaminaRegen += mod.percentStaminaRegen;
+            StaminaRegen += mod.flatStaminaRegen;
         }
 
         foreach (PassiveModifier mod in mods) {
