@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: healing_default
   skillName: Basic Heal
-  staminaCost: 0
+  staminaCost: 7
   immediateActions:
   - rid: 3928641313810939904
   aoe: 0

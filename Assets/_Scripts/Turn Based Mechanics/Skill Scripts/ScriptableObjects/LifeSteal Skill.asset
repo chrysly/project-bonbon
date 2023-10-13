@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: lifeStealAttack_default
   skillName: Life Steal
-  staminaCost: 0
+  staminaCost: 13
   immediateActions:
   - rid: 3928641313810939905
   - rid: 3928641313810939907

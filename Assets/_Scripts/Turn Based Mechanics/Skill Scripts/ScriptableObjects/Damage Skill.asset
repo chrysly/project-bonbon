@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: damage_default
   skillName: Basic Attack
-  staminaCost: 0
+  staminaCost: 5
   immediateActions:
   - rid: 6468753952663666695
   aoe: 0

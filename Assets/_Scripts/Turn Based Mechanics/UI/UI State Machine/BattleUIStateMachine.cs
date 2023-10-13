@@ -15,10 +15,16 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
     }
 
     protected void Refresh(BattleStateMachine.BattleState state, BattleStateInput input) {
-        if (state is BattleStateMachine.TurnState) {
+        if (state is BattleStateMachine.TurnState && input.ActiveActor() is CharacterActor) {
             CurrInput.AnimationHandler = input.ActiveActor().transform.GetComponent<UIAnimationHandler>();
+            CurrInput.actor = (CharacterActor) input.ActiveActor();
             Transition<InitUIState>();
         }
+    }
+
+    protected void ExitUI() {
+        CurrInput.AnimationHandler = null;
+        CurrInput.actor = null;
     }
 
     /// <summary>
