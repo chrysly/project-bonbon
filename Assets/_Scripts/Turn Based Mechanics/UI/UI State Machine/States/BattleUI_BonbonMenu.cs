@@ -23,14 +23,13 @@ public partial class BattleUIStateMachine {
                 else {
                     Input.AnimationHandler.ingredientWindow.slot = Input.AnimationHandler.bonbonWindow.mainButtonIndex;
                     if (Input.AnimationHandler.bonbonWindow.ConfirmButton() is ShareButton) {   //POTATO CODE AAAAA
-                        List<Actor> actors = new List<Actor>();
-                        CharacterActor character;
+                        CharacterActor character = null;
                         foreach (Actor actor in MySM._battleStateMachine.GetActors()) {
                             if (actor is CharacterActor) {
                                 character = (CharacterActor)actor;
                             }
                         }
-                        character.Pass
+                        Input.actor.PassBonbon(Input.AnimationHandler.ingredientWindow.slot, character);
                     }
                     Input.AnimationHandler.bonbonWindow.ConfirmButton().Activate(MySM, 0.2f);
                     Input.AnimationHandler.bonbonWindow.ToggleBonbonOperations(false);
