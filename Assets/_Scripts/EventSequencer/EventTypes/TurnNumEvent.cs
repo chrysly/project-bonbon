@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurnNumEvent : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+[CreateAssetMenu(fileName = "New Damage Event", menuName = "Event System/Turn Number Event")]
+public class TurnNumEvent : EventObject {
+    public int turnNum;
+    public virtual bool CheckConditions(int turn) { 
+        if (turnNum == turn) { 
+            return true;
+        }
+        return false;
     }
 }
