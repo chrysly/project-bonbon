@@ -17,10 +17,19 @@ public class ActionText : MonoBehaviour
     private void UpdateActionText(BattleStateMachine.BattleState state, BattleStateInput input) {
         if (state is BattleStateMachine.AnimateState) {
             TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-            text.SetText(input.ActiveActor().Data.DisplayName + " used " + input.SkillPrep.skill.SkillData.name +
-                         " on "
-                         + input.SkillPrep.targets[0].Data.DisplayName +
-                         "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
+            if (input.SkillPrep.bonbon != null) {
+                text.SetText(input.ActiveActor().Data.DisplayName + " used " + input.SkillPrep.bonbon.Name + " " + input.SkillPrep.skill.SkillData.name +
+                             " on "
+                             + input.SkillPrep.targets[0].Data.DisplayName +
+                             "!");
+            }
+            else {
+                text.SetText(input.ActiveActor().Data.DisplayName + " used " + input.SkillPrep.skill.SkillData.name +
+                             " on "
+                             + input.SkillPrep.targets[0].Data.DisplayName +
+                             "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
+            }
+
             ClearText();
         }
     }

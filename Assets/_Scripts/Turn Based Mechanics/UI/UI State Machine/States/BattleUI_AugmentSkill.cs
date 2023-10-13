@@ -16,11 +16,12 @@ public partial class BattleUIStateMachine {
             if (input == 0 || input == 2) {
                 Input.AnimationHandler.skillWindow.ButtonSelect(input != 0);
             } else if (input == 1) {
-                SkillAction skillAction = Input.AnimationHandler.skillWindow.ConfirmSkill();
+                MySM._battleStateMachine.AugmentSkill(Input.actor.BonbonInventory[Input.slot]);
                 MySM._battleStateMachine.SwitchToTargetSelect(Input.AnimationHandler.skillWindow.ConfirmSkill());
                 MySM.Transition<BattleUI_TargetSelect>();
             } else if (input == 3) {
-                MySM.Transition<InitUIState>();
+                MySM.Transition<BattleUI_BonbonMenu>();
+                Input.slot = -1;
             }
         }
 
@@ -39,6 +40,7 @@ public partial class BattleUIStateMachine {
         protected override void RunPostAnimation() {
             base.RunPostAnimation();
             Input.AnimationHandler.skillWindow.ToggleMainDisplay(false);
+            Input.slot = -1;
         }
 
         #endregion Animations

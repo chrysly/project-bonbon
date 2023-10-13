@@ -55,7 +55,7 @@ public class BattleBonbonWindow : MonoBehaviour {
             bonbonSlot.Disable();
         }
 
-        ;
+        ingredientsButton.GetComponent<MainIngredientButton>().merge = false;
         bonbons = new BonbonObject[4];
     }
 
@@ -162,6 +162,7 @@ public class BattleBonbonWindow : MonoBehaviour {
     private void ToggleEmptySlot() {
         ingredientsButton.DOScaleX(1f, 0.15f);
         ingredientsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Ingredients";
+        ingredientsButton.GetComponent<MainIngredientButton>().merge = false;
         augmentButton.DOScaleX(0f, 0.15f);
         consumeButton.DOScaleX(0f, 0.15f);
         shareButton.DOScale(0f, 0.15f);
@@ -170,6 +171,7 @@ public class BattleBonbonWindow : MonoBehaviour {
     private void ToggleOccupiedSlot() {
         ingredientsButton.DOScaleX(1f, 0.15f);
         ingredientsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Bake";
+        ingredientsButton.GetComponent<MainIngredientButton>().merge = true;
         augmentButton.DOScaleX(1f, 0.15f);
         consumeButton.DOScaleX(1f, 0.15f);
         shareButton.DOScale(1f, 0.15f);
@@ -212,5 +214,9 @@ public class BattleBonbonWindow : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         activeUIAction = null;
         yield return null;
+    }
+
+    public BattleButton ConfirmButton() {
+        return bonbonOperationButtons[bonbonOperationsIndex];
     }
 }

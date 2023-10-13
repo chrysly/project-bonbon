@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, BattleUIStateMachine.BattleUIState, BattleUIStateInput> {
-    [SerializeField] private BattleStateMachine _battleStateMachine;
+    [SerializeField] public BattleStateMachine _battleStateMachine;
 
     protected override void Start() {
         base.Start();

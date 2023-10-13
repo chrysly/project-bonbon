@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConsumeButton : MonoBehaviour
+public class ConsumeButton : BattleButton
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public override void Activate(BattleUIStateMachine stateMachine, float delay) {
+        base.Activate(stateMachine, delay);
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        stateMachine.DelayedTransition<BattleUIStateMachine.BattleUI_BonbonMenu>(0.5f, true);
     }
 }
