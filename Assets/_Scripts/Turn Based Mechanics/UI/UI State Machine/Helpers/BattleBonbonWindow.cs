@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BattleBonbonWindow : MonoBehaviour
 {
@@ -129,12 +131,35 @@ public class BattleBonbonWindow : MonoBehaviour
                 bonbonSlots[mainButtonIndex].Deselect();
             }
         }
+
+        if (bonbons[mainButtonIndex] == null) {
+            ToggleEmptySlot();
+        }
+        else {
+            ToggleOccupiedSlot();
+        }
         
         UpdateCursor(bonbonSlots[mainButtonIndex]);
 
         yield return new WaitForSeconds(0.1f);
         activeUIAction = null;
         yield return null;
+    }
+
+    private void ToggleEmptySlot() {
+        ingredientsButton.DOScaleX(1f, 0.15f);
+        ingredientsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Ingredients";
+        augmentButton.DOScaleX(0f, 0.15f);
+        consumeButton.DOScaleX(0f, 0.15f);
+        shareButton.DOScale(0f, 0.15f);
+    }
+
+    private void ToggleOccupiedSlot() {
+        ingredientsButton.DOScaleX(1f, 0.15f);
+        ingredientsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Bake";
+        augmentButton.DOScaleX(1f, 0.15f);
+        consumeButton.DOScaleX(1f, 0.15f);
+        shareButton.DOScale(1f, 0.15f);
     }
 
     private void InitCursor() {
@@ -153,4 +178,7 @@ public class BattleBonbonWindow : MonoBehaviour
         Debug.Log("moved cursor");
         cursor.DOMove(button.targetPoint.position, 0.1f);
     }
+    
+    //BONBON OPERATION METHODS
+    
 }
