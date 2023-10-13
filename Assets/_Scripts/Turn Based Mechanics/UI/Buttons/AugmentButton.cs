@@ -6,9 +6,7 @@ public class AugmentButton : BattleButton
 {
     public override void Activate(BattleUIStateMachine stateMachine, float delay) {
         base.Activate(stateMachine, delay);
-    }
-
-    public void Augment(BattleUIStateMachine stateMachine, float delay, int slot) {
-        stateMachine.DelayedTransition<BattleUIStateMachine.BattleUI_SkillSelect>(delay, false);
+        stateMachine.CurrInput.slot = stateMachine.CurrInput.AnimationHandler.bonbonWindow.mainButtonIndex;
+        stateMachine.DelayedTransition<BattleUIStateMachine.BattleUI_AugmentSkill>(0.2f, false);
     }
 }

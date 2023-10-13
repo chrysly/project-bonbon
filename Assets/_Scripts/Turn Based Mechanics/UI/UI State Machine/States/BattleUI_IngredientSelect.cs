@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public partial class BattleUIStateMachine {
@@ -7,6 +8,7 @@ public partial class BattleUIStateMachine {
         public override void Enter(BattleUIStateInput i) {
             base.Enter(i);
             RunPreAnimation();
+            Debug.Log("IN INGREDIENT SELECT");
         }
         
         public override void Update() {
@@ -15,9 +17,16 @@ public partial class BattleUIStateMachine {
             if (input == 0 || input == 2) {
                 Input.AnimationHandler.ingredientWindow.ButtonSelect(input == 0);
             } else if (input == 1) {
-                MySM._battleStateMachine.SwitchToBonbonState(Input.AnimationHandler.ingredientWindow.ConfirmBonbon(),
-                    Input.AnimationHandler.ingredientWindow.slot, new bool[4]);
-                MySM.DelayedTransition<BattleUI_BonbonMenu>(0.2f, false);
+                if (Input.actor.BonbonInventory[Input.AnimationHandler.ingredientWindow.slot] != null) {
+                    MatchRecipe(Input.AnimationHandler.ingredientWindow.slot,
+                        Input.AnimationHandler.ingredientWindow.ConfirmBonbon());
+                }
+                else {
+                    MySM._battleStateMachine.SwitchToBonbonState(
+                        Input.AnimationHandler.ingredientWindow.ConfirmBonbon(),
+                        Input.AnimationHandler.ingredientWindow.slot, new bool[4]);
+                    MySM.DelayedTransition<BattleUI_BonbonMenu>(0.2f, false);
+                }
             } else if (input == 3) {
                 MySM.DelayedTransition<BattleUI_BonbonMenu>(0.2f, false);
             }
@@ -26,6 +35,18 @@ public partial class BattleUIStateMachine {
         public override void Exit(BattleUIStateInput i) {
             base.Exit(i);
             RunPostAnimation();
+        }
+
+        private void MatchRecipe(int slot, BonbonBlueprint bonbon) {
+            BonbonFactory factory = MySM._battleStateMachine.CurrInput.BonbonFactory;
+            Debug.Log(Input.actor.BonbonInventory[slot].Data.name + " and " + bonbon.name);
+            List<BonbonBlueprint> blueprint = factory.FindRecipes(Input.actor.BonbonInventory[slot].Data, bonbon);
+            if (blueprint != null) {
+                Input.actor.BonbonInventory[slot] = blueprint[0].InstantiateBonbon();
+            }
+            else {
+                Debug.Log("not valid recipe");
+            }
         }
         
         #region Animations

@@ -104,6 +104,10 @@ public partial class
         Transition<AnimateState>();
     }
 
+    public void AugmentSkill(BonbonObject bonbon) {
+        CurrInput.SetSkillPrep(bonbon);
+    }
+
     public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {
         if (CurrState is TurnState || CurrState is BonbonState) {
             BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor().BonbonInventory, mask);
