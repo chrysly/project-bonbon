@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dreamhack/Level 1.unity
     guid: 319dca55fbaf3834999faaecd0abd874
+  - enabled: 1
+    path: Assets/Scenes/Dreamhack/Level 1 Final.unity
+    guid: 6fc09467dfb06534d8d4f66f02b3be4a
+  - enabled: 1
+    path: Assets/Scenes/Dreamhack/Level 1 Night Campfire Scene.unity
+    guid: ae9afdcaf7f18514bb8bb718763805a2
   m_configObjects: {}

@@ -15,7 +15,7 @@ public class TurnNumEvent : EventObject {
 
     // hard coded for M2 
     public virtual void OnEventEnd() {
-        SceneManager.LoadScene("Pan Attack");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

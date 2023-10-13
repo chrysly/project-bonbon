@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31c35cbf965bdc46844f569f2b97e8e, type: 3}
   m_Name: Scene1TurnEvent
   m_EditorClassIdentifier: 
-  yarnFile: {fileID: 0}
+  yarnFile: {fileID: -8253061345870894857, guid: 371cbcac79d976042ae8f40702396e69, type: 3}
   turnNum: 4
