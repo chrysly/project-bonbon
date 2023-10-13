@@ -17,9 +17,18 @@ public partial class BattleUIStateMachine {
                 Debug.Log("checking input");
                 Input.AnimationHandler.bonbonWindow.BonbonSelect(input != 0);
             } else if (input == 1) {
-                Debug.Log("oof");
+                if (!Input.AnimationHandler.bonbonWindow.bonbonOperationEnabled) {
+                    Input.AnimationHandler.bonbonWindow.ToggleBonbonOperations(true);
+                }
+                else {
+                    Input.AnimationHandler.ingredientWindow.slot = Input.AnimationHandler.bonbonWindow.mainButtonIndex;
+                    Input.AnimationHandler.bonbonWindow.ToggleBonbonOperations(false);
+                    MySM.Transition<BattleUI_IngredientSelect>();
+                }
             } else if (input == 3) {
-                MySM.Transition<InitUIState>();
+                if (Input.AnimationHandler.bonbonWindow.bonbonOperationEnabled)
+                    Input.AnimationHandler.bonbonWindow.ToggleBonbonOperations(false);
+                else MySM.Transition<InitUIState>();
             }
         }
 

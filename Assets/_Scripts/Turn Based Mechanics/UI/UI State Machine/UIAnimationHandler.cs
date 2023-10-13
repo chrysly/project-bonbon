@@ -149,6 +149,7 @@ public class UIAnimationHandler : MonoBehaviour {
     #region Bonbon Window
 
     public BattleBonbonWindow bonbonWindow;
+    public IngredientSelectWindow ingredientWindow;
 
     #endregion Bonbon Window
 }
