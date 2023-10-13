@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Pan
   id: 0_Pan
-  maxHitpoints: 70
+  maxHitpoints: 130
   basePotency: 10
   baseDefense: 10
   baseSpeed: 11
