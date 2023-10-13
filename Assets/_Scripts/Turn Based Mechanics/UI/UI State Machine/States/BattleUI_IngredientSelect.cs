@@ -47,6 +47,7 @@ public partial class BattleUIStateMachine {
             else {
                 Debug.Log("not valid recipe");
             }
+            MySM.DelayedTransition<BattleUI_BonbonMenu>(0.2f, false);
         }
         
         #region Animations
