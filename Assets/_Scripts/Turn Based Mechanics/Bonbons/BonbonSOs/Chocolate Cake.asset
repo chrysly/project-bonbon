@@ -24,13 +24,13 @@ MonoBehaviour:
     percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0
-    percentStaminaRegen: 0
+    flatStaminaRegen: 0
   augmentData:
     damageBoost: 0
     healBoost: 0
     augmentEffects: []
     immediateActions: []
-    bonbonEffect: {fileID: 0}
+    bonbonEffect: {fileID: 11400000, guid: 3a5a30ac8c8a46446b3d9b65392b0f51, type: 2}
     aoeOverride: 0
   recipe:
   - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
