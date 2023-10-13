@@ -36,7 +36,8 @@ public partial class
         base.Init();
     }
 
-    protected void OnEnable() { }
+    protected void OnEnable() {
+    }
 
     protected void OnDisable() { }
     
@@ -49,6 +50,13 @@ public partial class
     }
 
     #region State Handlers
+    // jasmine's jank asf code whooo
+    public void OnStart() {
+        // hard coded bc it's fcking 5am fml
+        _eventSequencer.StartEvent();
+        StartBattle();
+    }
+
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
         bool allEnemiesDead = true;
