@@ -145,5 +145,10 @@ public class UIAnimationHandler : MonoBehaviour {
     public BattleTargetWindow targetWindow;
 
     #endregion
+    
+    #region Bonbon Window
 
+    public BattleBonbonWindow bonbonWindow;
+
+    #endregion Bonbon Window
 }

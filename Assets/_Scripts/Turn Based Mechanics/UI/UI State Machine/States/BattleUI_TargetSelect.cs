@@ -32,7 +32,7 @@ public partial class BattleUIStateMachine {
 
         protected override void RunPreAnimation() {
             base.RunPreAnimation();
-            List<Actor> actors = MySM._battleStateMachine.GetActors();
+            List<Actor> actors = new List<Actor>(MySM._battleStateMachine.GetActors());
             actors.Remove(MySM._battleStateMachine.CurrInput.ActiveActor());
             Input.AnimationHandler.targetWindow.Initialize(actors);
         }

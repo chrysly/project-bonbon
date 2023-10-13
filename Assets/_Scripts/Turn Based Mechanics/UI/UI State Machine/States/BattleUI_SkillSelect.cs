@@ -17,6 +17,7 @@ public partial class BattleUIStateMachine {
                 Input.AnimationHandler.skillWindow.ButtonSelect(input != 0);
             } else if (input == 1) {
                 MySM._battleStateMachine.SwitchToTargetSelect(Input.AnimationHandler.skillWindow.ConfirmSkill());
+                Debug.Log(MySM._battleStateMachine.CurrInput.ActiveActor());
                 MySM.Transition<BattleUI_TargetSelect>();
             } else if (input == 3) {
                 MySM.Transition<InitUIState>();
