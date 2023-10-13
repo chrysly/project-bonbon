@@ -11,23 +11,13 @@ public partial class BattleStateMachine {
             base.Enter(i);
             Debug.Log("Entering animate state");
 
-            // Old Enemy Code, should implement Enemy AI in TargetSelectState instead
-            //
-            //if (Input.ActiveActor() is CharacterActor) {
-            //    Input.ActiveSkill().ActivateSkill();
-            //} else if (Input.ActiveActor() is EnemyActor) {    //get rid of this aaaaa
-            //    int target = Input.CurrTurn() % 2 == 0 ? 0 : MySM.actorList.Count - 1;
-            //    Input.SetActiveSkill(new SkillAction(Input.ActiveActor().data.SkillList()[0], MySM.actorList[target]));
-            //    Input.ActiveSkill().ActivateSkill();
-            //}
-            if (Input.ActiveActor() is EnemyActor) Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
-            else Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
             MySM.OnStateTransition.Invoke(this, Input);
 
+            MySM.GetComponentInParent<AnimationRunner>().OnSkillTrigger(Input.SkillPrep.skill);
             Input.ActivateSkill();
 
             //Debug.Log(Input.SkillPrep.targets.Length);
-            if (Input.ActiveActor() is CharacterActor) _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform); // HARD CODED (change later bc anumation??? idk)
+            //if (Input.ActiveActor() is CharacterActor) _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform); // HARD CODED (change later bc anumation??? idk)
 
             // here?
             for (int j = 0; j < Input.SkillPrep.targets.Length; j++)

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14142bd7c92aef1418ae58a98e3f393a, type: 3}
-  m_Name: Healing Skill
+  m_Name: Basic Attack
   m_EditorClassIdentifier: 
-  skillID: healing_default
-  skillName: Basic Heal
-  staminaCost: 7
+  skillID: damage_default
+  skillName: Basic Attack
+  staminaCost: 5
   immediateActions:
-  - rid: 3928641313810939904
+  - rid: 6468753952663666695
   aoe: 0
   references:
     version: 2
     RefIds:
-    - rid: 3928641313810939904
-      type: {class: HealAction, ns: , asm: Assembly-CSharp}
+    - rid: 6468753952663666695
+      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
-        healAmount: 10
+        damageAmount: 15
