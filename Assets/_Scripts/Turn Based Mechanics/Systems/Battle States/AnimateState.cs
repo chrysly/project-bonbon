@@ -21,13 +21,13 @@ public partial class BattleStateMachine {
             //    Input.ActiveSkill().ActivateSkill();
             //}
             if (Input.ActiveActor() is EnemyActor) Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
-            //else _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform);  // HARD CODED (change later bc anumation??? idk)
             else Input.ActiveActor().GetComponentInChildren<Animator>().SetTrigger("_Attack");
             MySM.OnStateTransition.Invoke(this, Input);
 
             Input.ActivateSkill();
 
             //Debug.Log(Input.SkillPrep.targets.Length);
+            if (Input.ActiveActor() is CharacterActor) _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform); // HARD CODED (change later bc anumation??? idk)
 
             // here?
             for (int j = 0; j < Input.SkillPrep.targets.Length; j++)

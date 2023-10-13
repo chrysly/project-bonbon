@@ -18,7 +18,7 @@ public class BattleTargetWindow : MonoBehaviour {
     public void Initialize(List<Actor> actors) {
         activeIndex = 0;
         active = true;
-        targets = actors;
+        targets = new List<Actor>(actors);
         activeCursor = Instantiate(entityCursor, targets[0].transform.position, targets[0].transform.rotation).transform;
     }
 
