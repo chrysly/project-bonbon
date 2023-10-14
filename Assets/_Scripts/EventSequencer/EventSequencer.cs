@@ -31,14 +31,15 @@ public class EventSequencer : MonoBehaviour
             }
         }
 
-        // jank bc fck it's 5am
-        foreach (EventObject q in events) {
-            eventSequence.Remove(q);
-        }
+        //// jank bc fck it's 5am
+        //foreach (EventObject q in events) {
+        //    eventSequence.Remove(q);
+        //}
     }
 
     public bool RunNextEvent() {
         // run the next event in queue
+        Debug.Log("Queue count: " + events.Count);
         if (events.Count > 0)
         {
             Debug.Log("event");
@@ -52,7 +53,9 @@ public class EventSequencer : MonoBehaviour
         Debug.Log("noice");
 
         if (events.Count != 0) {
+            Debug.Log("actually nice");
             events.Peek().OnEventEnd();
+            eventSequence.Remove(events.Peek());
             events.Dequeue();
         }
         OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ

@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Mochi
   id: 0_Pan
-  maxHitpoints: 130
-  basePotency: 10
-  baseDefense: 10
-  baseSpeed: 11
+  maxHitpoints: 25
+  basePotency: 2
+  baseDefense: 2
+  baseSpeed: 7
   maxStamina: 100
-  staminaRegenRate: 12
+  staminaRegenRate: 15
   skillMap:
     startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
     secondaryElements:
-    - {fileID: 11400000, guid: f0554fb479c9bd14c92b1c3089e23da1, type: 2}
+    - {fileID: 11400000, guid: dad2abed660d4a8429c2fd524b6d202f, type: 2}
   bonbonMap:
     startIndeces: 0000000003000000030000000300000003000000030000000300000003000000
     secondaryElements:
-    - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
     - {fileID: 11400000, guid: 2710e95bd92df5e4986fb1b931939f93, type: 2}
     - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
+    - {fileID: 11400000, guid: b213808cf87af4843b808ecfb190468c, type: 2}

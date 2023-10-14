@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Blue Jello Jumper
   id: jelloblue
-  maxHitpoints: 30
-  basePotency: 5
-  baseDefense: 1
-  baseSpeed: 2
-  maxStamina: 50
+  maxHitpoints: 14
+  basePotency: 7
+  baseDefense: 5
+  baseSpeed: 3
+  maxStamina: 80
   staminaRegenRate: 20
   skillMap:
-    startIndeces: 00000000
+    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
     secondaryElements:
     - {fileID: 11400000, guid: aeb0e7af1e732af43af0b8f54d08b698, type: 2}
   bonbonMap:
-    startIndeces: 
+    startIndeces: 0000000000000000000000000000000000000000000000000000000000000000
     secondaryElements: []
