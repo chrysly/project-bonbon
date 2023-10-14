@@ -24,7 +24,7 @@ MonoBehaviour:
     percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0
-    percentStaminaRegen: 0
+    flatStaminaRegen: 0
   augmentData:
     damageBoost: 0
     healBoost: 0
@@ -34,8 +34,8 @@ MonoBehaviour:
     aoeOverride: 0
   recipe:
   - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
-  - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
   - {fileID: 0}
   references:
     version: 2

@@ -22,7 +22,7 @@ public class Staminabar : MonoBehaviour {
         slider.value = currHealth / maxHealth;
     }
 
-    private void UpdateStaminaBar() {
+    private void UpdateStaminaBarOnState() {
         float currHealth = actor.Stamina;
         float maxHealth = actor.Data.MaxStamina;
         Debug.Log("Stamina: " + actor.GetStamina());
