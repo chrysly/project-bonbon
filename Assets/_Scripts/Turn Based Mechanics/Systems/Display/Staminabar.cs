@@ -11,11 +11,19 @@ public class Staminabar : MonoBehaviour {
     [SerializeField] private Actor actor;
     void Start() {
         slider = GetComponent<Slider>();
-        _stateMachine.StateTransition += UpdateStaminaBar;
+        _stateMachine.OnStateTransition += UpdateStaminaBar;
     }
 
-    private void UpdateStaminaBar() {
-        float currHealth = actor.GetStamina();
+    private void UpdateStaminaBar(BattleUIStateMachine.BattleUIState state, BattleUIStateInput input) {
+        float currHealth = actor.Stamina;
+        float maxHealth = actor.Data.MaxStamina;
+        Debug.Log("Stamina: " + actor.GetStamina());
+
+        slider.value = currHealth / maxHealth;
+    }
+
+    private void UpdateStaminaBarOnState() {
+        float currHealth = actor.Stamina;
         float maxHealth = actor.Data.MaxStamina;
         Debug.Log("Stamina: " + actor.GetStamina());
 

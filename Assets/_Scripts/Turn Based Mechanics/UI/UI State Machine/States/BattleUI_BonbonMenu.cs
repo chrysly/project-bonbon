@@ -56,6 +56,10 @@ public partial class BattleUIStateMachine {
         protected override void RunPreAnimation() {
             base.RunPreAnimation();
             Input.AnimationHandler.bonbonWindow.Initialize(MySM._battleStateMachine.CurrInput.ActiveActor().BonbonInventory);
+
+            if (Input.actor.Stamina <= 0) {
+                MySM.Transition<BattleUI_Limbo>();
+            }
         }
 
         protected override void RunPostAnimation() {
