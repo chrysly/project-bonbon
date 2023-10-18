@@ -19,7 +19,6 @@ public class EventSequencer : MonoBehaviour
 
     // hard coded because fml
     public void StartEvent() {
-        Debug.Log("start event");
         onStartEvent.OnTrigger();
     }
 

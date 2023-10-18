@@ -26,7 +26,7 @@ public class BattleBonbonWindow : MonoBehaviour {
     [SerializeField] private List<BonbonIcon> bonbonSlots;
     [SerializeField] private List<BattleButton> bonbonOperationButtons;
 
-    public int mainButtonIndex = -1;
+    public int mainButtonIndex = 0;
     public int bonbonOperationsIndex = 0;
 
     public bool bonbonOperationEnabled = false;
@@ -91,8 +91,10 @@ public class BattleBonbonWindow : MonoBehaviour {
                 yield return new WaitForSeconds(0.1f);
             }
         }
-
+        
         activeUIAction = null;
+        BonbonSelect(true);
+        
         yield return null;
     }
 
