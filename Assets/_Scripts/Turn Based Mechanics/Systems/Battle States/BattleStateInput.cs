@@ -11,6 +11,25 @@ public class BattleStateInput : StateInput {
     private int currentTurn = 0;
     #endregion Global Variables
 
+    #region | Events |
+
+    public event System.Func<SkillAction, Actor[], BonbonObject, ActiveSkillPrep> OnSkillUpdate;
+    public void UpdateSkill(SkillAction sa, Actor[] targets, BonbonObject bonbon = null) => OnSkillUpdate?.Invoke(sa, targets, bonbon);
+
+    public event System.Func<ActiveSkillPrep> OnRetrieveSkillPrep;
+    public ActiveSkillPrep SkillPrep => OnRetrieveSkillPrep?.Invoke();
+
+    public event System.Action OnSkillReset;
+    public void ResetSkill() => OnSkillReset?.Invoke();
+
+    public event System.Func<ActiveSkillPrep> OnSkillActivate;
+    public ActiveSkillPrep ActivateSkill() => OnSkillActivate?.Invoke();
+
+    public event System.Action<SkillAction> OnSkillAnimation;
+    public void AnimateSkill(SkillAction sa) => OnSkillAnimation?.Invoke(sa);
+
+    #endregion
+
     #region Managers
     public BonbonFactory BonbonFactory { get; private set; }
     #endregion

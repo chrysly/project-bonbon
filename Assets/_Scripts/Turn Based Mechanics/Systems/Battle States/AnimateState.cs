@@ -13,8 +13,8 @@ public partial class BattleStateMachine {
 
             MySM.OnStateTransition.Invoke(this, Input);
 
-            MySM.GetComponentInParent<AnimationHandler>().OnSkillTrigger(Input.SkillPrep.skill);
-            Input.ActivateSkill();
+            var res = Input.ActivateSkill();
+            if (res != null) Input.AnimateSkill(res.skill);
 
             //Debug.Log(Input.SkillPrep.targets.Length);
             //if (Input.ActiveActor() is CharacterActor) _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform); // HARD CODED (change later bc anumation??? idk)
@@ -27,10 +27,10 @@ public partial class BattleStateMachine {
 
             if (MySM._eventSequencer.RunNextEvent()) {
                 MySM.ToggleMachine(true);
-                Input.resetSkillPrep();
+                Input.ResetSkill();
             }
             else {
-                Input.resetSkillPrep();
+                Input.ResetSkill();
                 MySM.StartBattle(1f);
             }
         }

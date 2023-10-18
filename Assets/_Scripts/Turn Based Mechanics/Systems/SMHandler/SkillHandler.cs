@@ -6,40 +6,32 @@ public class SkillHandler : MonoBehaviour {
 
     [SerializeField] private BattleStateMachine bsm;
 
-    public class ActiveSkillPrep {
-        public SkillAction skill;
-        public BonbonObject bonbon;
-        public Actor[] targets;
-    } public ActiveSkillPrep SkillPrep { get; private set; }
-
-    public event System.Action<ActiveSkillPrep> OnSkillTrigger;
+    public ActiveSkillPrep SkillPrep { get; private set; }
 
     void Awake() {
         SkillPrep = new ActiveSkillPrep();
     }
 
     void Start() {
-        
+        bsm.CurrInput.OnSkillUpdate += SkillHandler_OnSkillUpdate;
+        bsm.CurrInput.OnSkillReset += SkillHandler_OnSkillReset;
+        bsm.CurrInput.OnSkillActivate += SkillHandler_OnSkillActivate;
     }
     
-    public void SkillHandler_OnSkillUpdate(SkillAction skillAction, Actor[] targets, BonbonObject bonbon = null) {
+    public ActiveSkillPrep SkillHandler_OnSkillUpdate(SkillAction skillAction, Actor[] targets, BonbonObject bonbon = null) {
         if (skillAction != null) SkillPrep.skill = skillAction;
         if (targets != null) SkillPrep.targets = targets;
         SkillPrep.bonbon = bonbon;
+        return SkillPrep;
     }
 
     public void SkillHandler_OnSkillReset() => Reset();
 
-    public void SkillHandler_OnSkillActivate() {
-        OnSkillTrigger?.Invoke(SkillPrep);
-        ActivateSkill();
-    }
-
-    public void ActivateSkill() {
+    public ActiveSkillPrep SkillHandler_OnSkillActivate() {
         if (SkillPrep.targets.Length > 0) {
             if (SkillPrep.bonbon == null) SkillPrep.skill.ActivateSkill(SkillPrep.targets);
             else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon);
-        }
+        } return SkillPrep;
     }
 
     public void Reset() => SkillPrep = new ActiveSkillPrep();

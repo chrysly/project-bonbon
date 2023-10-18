@@ -15,8 +15,10 @@ public partial class
     #endregion SerializeFields
 
     #region Events
+
     public new delegate void StateTransition(BattleState state, BattleStateInput input);
-    public event StateTransition OnStateTransition ;
+    public event StateTransition OnStateTransition;
+
     #endregion Events
     
     protected override void SetInitialState() {
@@ -108,17 +110,17 @@ public partial class
     public void SwitchToTargetSelect(SkillAction skill) {
         if (CurrState is TurnState) {
             Transition<TargetSelectState>();
-            CurrInput.SetSkillPrep(skill);
+            CurrInput.UpdateSkill(skill, null);
         }
     }
 
     public void ConfirmTargetSelect(Actor actor) {
-        CurrInput.SetSkillPrep(new Actor[] { actor });
+        CurrInput.UpdateSkill(null, new Actor[] { actor });
         Transition<AnimateState>();
     }
 
     public void AugmentSkill(BonbonObject bonbon) {
-        CurrInput.SetSkillPrep(bonbon);
+        CurrInput.UpdateSkill(null, null, bonbon);
     }
 
     public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {

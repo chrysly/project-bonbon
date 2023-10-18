@@ -11,8 +11,8 @@ public partial class BattleStateMachine {
             Debug.Log("Entering target select state");
             if (Input.ActiveActor() is EnemyActor) {
                 // Enemy Actor Skill Selection
-                BattleStateInput.ActiveSkillPrep activeSkill = EnemyAI.ChooseEnemyAISkill(Input.ActiveActor(), Input.GetTurnQueue());
-                Input.SetSkillPrep(activeSkill.skill, activeSkill.targets);
+                ActiveSkillPrep skillPrep = EnemyAI.ChooseEnemyAISkill(Input.ActiveActor(), Input.GetTurnQueue());
+                Input.UpdateSkill(skillPrep.skill, skillPrep.targets);
 
                 // i don't think we need this line but i don't want to delete it just in case
                 //_nextSelectedActor = (_nextSelectedActor == 0) ? MySM.actorList.Count - 1 : 0;
@@ -25,7 +25,7 @@ public partial class BattleStateMachine {
             base.Update();
             Actor actor = _selectManager.CheckForSelect();
             if (actor != null) {
-                 Input.SetSkillPrep(new Actor[] { actor });
+                 Input.UpdateSkill(null, new Actor[] { actor });
                  MySM.Transition<AnimateState>();
             }
         }

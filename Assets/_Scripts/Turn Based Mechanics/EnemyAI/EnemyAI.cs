@@ -14,8 +14,8 @@ public class EnemyAI
     }
 
     /// <summary> pass in the current active list of actors and the current actor, returns an ActiveSkillPrep </summary>
-    public static SkillHandler.ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors)
-    {
+    public static ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors) {
+
         // enemy generates stamina (%)
         currentActor.RefundStamina(50);
 
@@ -75,7 +75,7 @@ public class EnemyAI
         Debug.Log(bestScenarios.Count);
         bestScenarios.Add(new Scenario(new ScenarioSkillData(currentActor.SkillList[0], currentActor, characterActors), 5));
         Scenario chosenScenario = bestScenarios[Random.Range(0, bestScenarios.Count)];
-        BattleStateInput.ActiveSkillPrep bestActiveSkill = new BattleStateInput.ActiveSkillPrep()
+        ActiveSkillPrep bestActiveSkill = new ActiveSkillPrep()
         {
             skill = chosenScenario.getSkillAction().skill,
             targets = chosenScenario.getSkillAction().characterActors.ToArray(),
