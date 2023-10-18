@@ -13,7 +13,7 @@ public partial class BattleStateMachine {
 
             MySM.OnStateTransition.Invoke(this, Input);
 
-            MySM.GetComponentInParent<AnimationRunner>().OnSkillTrigger(Input.SkillPrep.skill);
+            MySM.GetComponentInParent<AnimationHandler>().OnSkillTrigger(Input.SkillPrep.skill);
             Input.ActivateSkill();
 
             //Debug.Log(Input.SkillPrep.targets.Length);

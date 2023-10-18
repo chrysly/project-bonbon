@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationRunner : MonoBehaviour {
+public class AnimationHandler : MonoBehaviour {
 
     [SerializeField] private SkillAnimationMap skillAnimationMap;
     public Dictionary<SkillObject, Dictionary<ActorData, SkillAnimation>> SkillAMap { get; private set; }

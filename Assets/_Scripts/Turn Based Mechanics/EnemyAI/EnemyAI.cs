@@ -14,7 +14,7 @@ public class EnemyAI
     }
 
     /// <summary> pass in the current active list of actors and the current actor, returns an ActiveSkillPrep </summary>
-    public static BattleStateInput.ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors)
+    public static SkillHandler.ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors)
     {
         // enemy generates stamina (%)
         currentActor.RefundStamina(50);
