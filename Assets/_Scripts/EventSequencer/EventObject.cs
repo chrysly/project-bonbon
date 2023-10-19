@@ -29,6 +29,7 @@ public class EventObject : ScriptableObject {
     /// what happens when an event is called
     /// </summary>
     public virtual void OnTrigger() {
+        Debug.Log("here2");
         DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
     }
 
@@ -40,15 +41,18 @@ public class EventObject : ScriptableObject {
     //because Unity's inspector doesn't natively support that.
 
     // for now we use context menus for simplicity --> later we can do custom unity Generengine stuff
-    [ContextMenu("Add Generic Event")]
+    [ContextMenu("Add Generic Condition")]
     void AddGenericCondition() {
-        //bases.Add(new Base());
         eventConditions.Add(new Condition());
     }
 
-    [ContextMenu("Add Damage Event")]
+    [ContextMenu("Add Damage Condition")]
     void AddDamageCondition() {
-        //bases.Add(new Base());
         eventConditions.Add(new DamageCondition());
+    }
+
+    [ContextMenu("Add Turn Number Condition")]
+    void AddTurnNumCondition() {
+        eventConditions.Add(new TurnNumberCondition());
     }
 }

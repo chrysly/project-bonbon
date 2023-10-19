@@ -9,9 +9,9 @@ using Yarn.Unity;
 public class EventSequencer : MonoBehaviour
 {
     public List<EventObject> eventSequence;
-    public EventObject onBattleStart;
+    public EventObject onStartEvent;
     Queue<EventObject> events = new Queue<EventObject>();
-    
+
     #region Events
     public delegate void EventTerminate();
     public event EventTerminate OnEventTerminate;
@@ -19,8 +19,7 @@ public class EventSequencer : MonoBehaviour
 
     // hard coded because fml
     public void StartEvent() {
-        Debug.Log("start event");
-        onBattleStart.OnTrigger();
+        onStartEvent.OnTrigger();
     }
 
     public void CheckForEvents(AIActionValue package) {

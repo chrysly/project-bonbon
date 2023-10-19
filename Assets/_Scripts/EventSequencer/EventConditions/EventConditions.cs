@@ -37,6 +37,21 @@ public class EventConditions {
         }
 
     }
+
+    /// <summary>
+    /// Condition: check if it's a specific turn
+    /// </summary>
+    [Serializable]
+    public class TurnNumberCondition : Condition {
+        public int turnNum;
+        public override bool Check(AIActionValue package) {
+            if (package.currentTurn == turnNum) {
+                return true;
+            }
+            return false;
+        }
+
+    }
 }
 
 

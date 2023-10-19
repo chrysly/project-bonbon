@@ -1,20 +1,5 @@
 ﻿title: s1_combat03
-tags: Pan:startled:right
+tags: Mochi:suprised:left
 ---
-Pan_startled: Mochi! Are you ok! 
-
-<<add_char mochi false>>
-Mochi_suprised: Sis!!!
-Mochi_suprised: What are you doing here!
-
-Pan_slight_smile: Saving you, we’ll talk about this after we deal with the sweeture!
-
-<<remove_char pan>>
-<<remove_char mochi>>
-
-<<add_char narr true>>
-Narr: EPIC NARRATOR INTERJECTION
-Narr: Upon creating a Bonbon, you can choose to consume it to gain stat increases or empower Pán and Mochi’s skills with special effects!
-Narr: Goodluck~
-
+Mochi_suprised: Aaaaa!!!
 ===
