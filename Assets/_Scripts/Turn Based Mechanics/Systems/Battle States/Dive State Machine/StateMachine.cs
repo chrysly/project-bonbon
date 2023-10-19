@@ -32,8 +32,10 @@ public abstract class StateMachine<M, S, I> : MonoBehaviour
     public event Action StateTransition; //(State, PrevState)
 
     #region Unity Messages
+
+    protected virtual void Awake() => CurrInput = (I) Activator.CreateInstance(typeof(I));
+
     protected virtual void Start() {
-        CurrInput = (I) Activator.CreateInstance(typeof(I));
         Init();
 
         //The below code was provided by Side By Side (Producer: Yoon Lee), who got it from Brandon Shockley

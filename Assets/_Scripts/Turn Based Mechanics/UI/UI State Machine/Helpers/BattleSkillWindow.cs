@@ -131,6 +131,7 @@ public class BattleSkillWindow : MonoBehaviour
     }
 
     public SkillAction ConfirmSkill() {
+        Debug.Log(activeIndex);
         return skillButtons[activeIndex].Confirm();
     }
 }

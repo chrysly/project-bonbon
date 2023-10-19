@@ -48,7 +48,7 @@ public class CameraPrimarySystem : MonoBehaviour
 
     private void ViewAnimate(BattleStateInput input) {
 
-        Transform target = input.SkillPrep.targets[0].transform.GetChild(0);   // hard coded bc pain
+        Transform target = input.ActiveActor().transform.GetChild(0);   // hard coded bc pain
         //Transform user = input.ActiveActor().transform.GetChild(0);
 
         SetActiveCam(charCam);
