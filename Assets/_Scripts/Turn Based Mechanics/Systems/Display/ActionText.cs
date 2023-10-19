@@ -50,6 +50,12 @@ public class ActionText : MonoBehaviour
             window.DOMove(pivot.position, 0.5f);
 
             ClearText();
+        } else if (state is BattleStateMachine.WinState) {
+            TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
+            text.SetText(@"You won!");
+        } else if (state is BattleStateMachine.LoseState) {
+            TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
+            text.SetText(@"You were defeated!");
         }
     }
     

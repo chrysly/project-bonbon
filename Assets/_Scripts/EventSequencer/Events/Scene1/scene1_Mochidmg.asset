@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yarnFile: {fileID: -8253061345870894857, guid: db09318606f149947b83b3d64a6a20d9, type: 3}
   character: {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
-  damageAmount: 0
+  damageAmount: 1
