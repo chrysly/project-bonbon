@@ -69,7 +69,6 @@ public partial class
             if (actor is EnemyActor) {
                 allEnemiesDead = false;
             } else if (actor is CharacterActor) {
-                Debug.Log("am alive");
                 allCharactersDead = false;
             }
         }

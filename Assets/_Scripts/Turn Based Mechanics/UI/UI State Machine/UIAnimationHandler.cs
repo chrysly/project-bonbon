@@ -79,8 +79,9 @@ public class UIAnimationHandler : MonoBehaviour {
                 //decoration.gameObject.SetActive(false);
             }
         }
-        if (!enable) mainPanel.gameObject.SetActive(false);
         activeUIAction = null;
+        if (!enable) mainPanel.gameObject.SetActive(false);
+        else SelectMainPanelButton(true);
         yield return null;
     }
 

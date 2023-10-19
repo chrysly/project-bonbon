@@ -112,11 +112,11 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Line_Noise: 10
+    - _Line_Noise: 20
     - _Metallic: 0
     - _Minimum_Outline: 1.14
     - _OcclusionStrength: 1
-    - _Outline_Thickness: 1
+    - _Outline_Thickness: 0.16
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0

@@ -20,7 +20,7 @@ public class BattleSkillWindow : MonoBehaviour
 
     private List<SkillAction> skills;
     private List<SkillSelectButton> skillButtons;
-    private int activeIndex = -1;
+    private int activeIndex = 0;
     
     private bool tooltipActive = false;
     // Start is called before the first frame update
@@ -81,6 +81,7 @@ public class BattleSkillWindow : MonoBehaviour
         }
 
         activeUIAction = null;
+        ButtonSelect(true);
         yield return null;
     }
 

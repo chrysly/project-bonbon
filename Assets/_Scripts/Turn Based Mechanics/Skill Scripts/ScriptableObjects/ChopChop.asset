@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChopChop
   m_EditorClassIdentifier: 
   skillID: chop_chop
-  skillName: Chop! Chop
+  skillName: Chop Chop
   staminaCost: 25
   immediateActions:
   - rid: 5257609831424983043
