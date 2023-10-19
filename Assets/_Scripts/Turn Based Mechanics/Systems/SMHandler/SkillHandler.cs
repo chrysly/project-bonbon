@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillHandler : MonoBehaviour {
 
-    [SerializeField] private BattleStateMachine bsm;
+    [SerializeField] private BattleStateMachine battleStateMachine;
 
     public ActiveSkillPrep SkillPrep { get; private set; }
 
@@ -13,9 +13,10 @@ public class SkillHandler : MonoBehaviour {
     }
 
     void Start() {
-        bsm.CurrInput.OnSkillUpdate += SkillHandler_OnSkillUpdate;
-        bsm.CurrInput.OnSkillReset += SkillHandler_OnSkillReset;
-        bsm.CurrInput.OnSkillActivate += SkillHandler_OnSkillActivate;
+        battleStateMachine.CurrInput.OnSkillUpdate += SkillHandler_OnSkillUpdate;
+        battleStateMachine.CurrInput.OnRetrieveSkillPrep += () => SkillPrep;
+        battleStateMachine.CurrInput.OnSkillReset += SkillHandler_OnSkillReset;
+        battleStateMachine.CurrInput.OnSkillActivate += SkillHandler_OnSkillActivate;
     }
     
     public ActiveSkillPrep SkillHandler_OnSkillUpdate(SkillAction skillAction, Actor[] targets, BonbonObject bonbon = null) {

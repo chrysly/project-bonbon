@@ -52,6 +52,7 @@ public partial class
     }
 
     #region State Handlers
+    
     // jasmine's jank asf code whooo
     public void OnStart() {
         // hard coded bc it's fcking 5am fml
@@ -62,19 +63,8 @@ public partial class
 
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
-        bool allEnemiesDead = true;
-        bool allCharactersDead = true;
-        foreach (Actor actor in actorList) {
-            if (actor.Defeated) {
-                continue;
-            }
-            if (actor is EnemyActor) {
-                allEnemiesDead = false;
-            } else if (actor is CharacterActor) {
-                Debug.Log("am alive");
-                allCharactersDead = false;
-            }
-        }
+        bool allEnemiesDead = !actorList.Any(actor => actor is EnemyActor && !actor.Defeated);
+        bool allCharactersDead = !actorList.Any(actor => actor is CharacterActor && !actor.Defeated);
 
         if (allEnemiesDead) {
             CurrState.TriggerBattleWin();
@@ -93,14 +83,10 @@ public partial class
     /// Continuation method when BSM is frozen on animate state
     /// </summary>
     public void ContinueBattle() {
+        ToggleMachine(false);
         if (CurrState is AnimateState) {
-            ToggleMachine(false);
             StartBattle(0.3f);
-        }
-        if (CurrState is BattleState) { // fix m2
-            ToggleMachine(false);
-            StartBattle();
-        }
+        } else StartBattle();
     }
 
     public void SkipEnemySelection() {

@@ -17,7 +17,12 @@ public class BattleStateInput : StateInput {
     public void UpdateSkill(SkillAction sa, Actor[] targets, BonbonObject bonbon = null) => OnSkillUpdate?.Invoke(sa, targets, bonbon);
 
     public event System.Func<ActiveSkillPrep> OnRetrieveSkillPrep;
-    public ActiveSkillPrep SkillPrep => OnRetrieveSkillPrep?.Invoke();
+    public ActiveSkillPrep SkillPrep {
+        get {
+            ActiveSkillPrep skillPrep = OnRetrieveSkillPrep?.Invoke();
+            return skillPrep == null ? new ActiveSkillPrep() : skillPrep;
+        }
+    }
 
     public event System.Action OnSkillReset;
     public void ResetSkill() => OnSkillReset?.Invoke();
@@ -25,8 +30,8 @@ public class BattleStateInput : StateInput {
     public event System.Func<ActiveSkillPrep> OnSkillActivate;
     public ActiveSkillPrep ActivateSkill() => OnSkillActivate?.Invoke();
 
-    public event System.Action<SkillAction> OnSkillAnimation;
-    public void AnimateSkill(SkillAction sa) => OnSkillAnimation?.Invoke(sa);
+    public event System.Action<SkillAction, BonbonObject> OnSkillAnimation;
+    public void AnimateSkill(SkillAction sa, BonbonObject bonbon) => OnSkillAnimation?.Invoke(sa, bonbon);
 
     #endregion
 

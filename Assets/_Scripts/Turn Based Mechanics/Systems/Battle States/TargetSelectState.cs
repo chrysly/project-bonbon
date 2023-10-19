@@ -9,15 +9,6 @@ public partial class BattleStateMachine {
         public override void Enter(BattleStateInput i) {
             base.Enter(i);
             Debug.Log("Entering target select state");
-            if (Input.ActiveActor() is EnemyActor) {
-                // Enemy Actor Skill Selection
-                ActiveSkillPrep skillPrep = EnemyAI.ChooseEnemyAISkill(Input.ActiveActor(), Input.GetTurnQueue());
-                Input.UpdateSkill(skillPrep.skill, skillPrep.targets);
-
-                // i don't think we need this line but i don't want to delete it just in case
-                //_nextSelectedActor = (_nextSelectedActor == 0) ? MySM.actorList.Count - 1 : 0;
-                MySM.Transition<AnimateState>();
-            }
             MySM.OnStateTransition.Invoke(this, Input);
         }
 

@@ -18,13 +18,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f27f82fe1f0812b49b86b628e8b7a788, type: 2}
     - {fileID: 11400000, guid: aeb0e7af1e732af43af0b8f54d08b698, type: 2}
     - {fileID: 11400000, guid: 7fcd51859e99fcc458d94aa84e3627f8, type: 2}
+    - {fileID: 11400000, guid: dad2abed660d4a8429c2fd524b6d202f, type: 2}
     Values:
     - Keys:
-      - {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
       - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
       Values:
-      - actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
-        triggerIndex: 0
       - actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
     - Keys:
@@ -44,4 +42,9 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 1271cb75a5bd7a549b2045f53cde9d9d, type: 2}
       Values:
       - actorAnimator: {fileID: 0}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
+      Values:
+      - actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
         triggerIndex: 0
