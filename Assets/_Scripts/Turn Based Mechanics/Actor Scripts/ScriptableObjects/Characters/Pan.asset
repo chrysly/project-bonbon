@@ -25,7 +25,7 @@ MonoBehaviour:
     secondaryElements:
     - {fileID: 11400000, guid: cb9aa26bef6f9944d93d8bd98cd4241d, type: 2}
   bonbonMap:
-    startIndeces: 0000000001000000020000000200000002000000020000000200000002000000
+    startIndeces: 0000000002000000020000000200000002000000020000000200000002000000
     secondaryElements:
-    - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
-    - {fileID: 11400000, guid: 01dbbab3207bdf143a719d9f2005504a, type: 2}
+    - {fileID: 11400000, guid: fd9ac9772436d1a48ad06e80419fd4a6, type: 2}
+    - {fileID: 11400000, guid: 2710e95bd92df5e4986fb1b931939f93, type: 2}
