@@ -63,8 +63,8 @@ public partial class
 
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
-        bool allEnemiesDead = !actorList.Any(actor => actor is EnemyActor && !actor.Defeated);
-        bool allCharactersDead = !actorList.Any(actor => actor is CharacterActor && !actor.Defeated);
+        bool allEnemiesDead = actorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
+        bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) && actor.Defeated);
 
         if (allEnemiesDead) {
             CurrState.TriggerBattleWin();
