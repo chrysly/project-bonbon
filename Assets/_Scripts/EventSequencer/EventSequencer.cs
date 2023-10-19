@@ -9,7 +9,7 @@ using Yarn.Unity;
 public class EventSequencer : MonoBehaviour
 {
     public List<EventObject> eventSequence;
-    public EventObject onStartEvent;
+    public EventObject onBattleStart;
     Queue<EventObject> events = new Queue<EventObject>();
     
     #region Events
@@ -20,21 +20,16 @@ public class EventSequencer : MonoBehaviour
     // hard coded because fml
     public void StartEvent() {
         Debug.Log("start event");
-        onStartEvent.OnTrigger();
+        onBattleStart.OnTrigger();
     }
 
-    public void CheckForEvents(AIActionValue package) { 
+    public void CheckForEvents(AIActionValue package) {
         // add any events that meet activate conditions to a queue
-        foreach (EventObject ev in eventSequence) { 
+        foreach (EventObject ev in eventSequence) {
             if (ev.CheckConitions(package)) {
                 events.Enqueue(ev);
             }
         }
-
-        //// jank bc fck it's 5am
-        //foreach (EventObject q in events) {
-        //    eventSequence.Remove(q);
-        //}
     }
 
     public bool RunNextEvent() {

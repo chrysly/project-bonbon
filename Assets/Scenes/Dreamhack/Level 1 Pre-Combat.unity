@@ -179,6 +179,18 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2892453937195297932, guid: 60bf1231e7159374684e91eb948c1a2a, type: 3}
+      propertyPath: yarnProject
+      value: 
+      objectReference: {fileID: 7545569452688597077, guid: df13bab3b3f620c4a9fda9cf58986a17, type: 3}
+    - target: {fileID: 3287898162382485036, guid: 60bf1231e7159374684e91eb948c1a2a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3287898162382485036, guid: 60bf1231e7159374684e91eb948c1a2a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3415564768409627662, guid: 60bf1231e7159374684e91eb948c1a2a, type: 3}
       propertyPath: _eventSequencer
       value: 
@@ -386,6 +398,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a173e1dd138dcde40b5065f75ac46189, type: 3}
+--- !u!114 &716318901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2084825832030571353, guid: 265f4420a815064428a526f1810e4e69, type: 3}
+  m_PrefabInstance: {fileID: 2018576609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca36e04ccd999984fab5199469cc8e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1435766405
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,6 +535,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4055191134087223876, guid: 265f4420a815064428a526f1810e4e69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 716318901}
+    - target: {fileID: 4055191134087223876, guid: 265f4420a815064428a526f1810e4e69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: startDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055191134087223876, guid: 265f4420a815064428a526f1810e4e69, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Hide
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630718638795916097, guid: 265f4420a815064428a526f1810e4e69, type: 3}
+      propertyPath: yarnFile
+      value: 
+      objectReference: {fileID: -8253061345870894857, guid: bd650d97120e74f42b28b80d2bc3f37a, type: 3}
     - target: {fileID: 7898528202450018385, guid: 265f4420a815064428a526f1810e4e69, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -646,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSequence: []
-  onStartEvent: {fileID: 0}
+  onBattleStart: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
