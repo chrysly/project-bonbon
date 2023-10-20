@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 2892453937195297932, guid: 60bf1231e7159374684e91eb948c1a2a, type: 3}
       propertyPath: yarnProject
       value: 
-      objectReference: {fileID: 7545569452688597077, guid: df13bab3b3f620c4a9fda9cf58986a17, type: 3}
+      objectReference: {fileID: 7545569452688597077, guid: 4d9a156653a17364cbfd56c2b22df015, type: 3}
     - target: {fileID: 3287898162382485036, guid: 60bf1231e7159374684e91eb948c1a2a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSequence: []
-  onBattleStart: {fileID: 0}
+  onStartEvent: {fileID: 11400000, guid: 7b8f97ea597e18248bd0bcb8be640608, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

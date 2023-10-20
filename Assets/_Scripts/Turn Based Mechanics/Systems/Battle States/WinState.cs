@@ -6,6 +6,7 @@ public partial class BattleStateMachine {
     public class WinState : BattleState {
         public override void Enter(BattleStateInput i) {
             base.Enter(i);
+            MySM.OnStateTransition.Invoke(this, Input);
             Debug.Log($"You won the battle!");
         }
     }

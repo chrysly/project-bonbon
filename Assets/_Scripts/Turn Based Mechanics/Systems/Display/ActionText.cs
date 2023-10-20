@@ -30,21 +30,11 @@ public class ActionText : MonoBehaviour
                              "!");
             }
             else {
-                if (input.SkillPrep == null) {
-                    text.SetText("Input is null");
-                } else if (input.ActiveActor() == null) {
-                    text.SetText("Actor is null");
-                } else if (input.SkillPrep.skill.SkillData == null) {
-                    text.SetText("Skill data is null");
-                } else if (input.SkillPrep.targets[0] == null) {
-                    text.SetText("Target is null");
-                } else {
-                    text.SetText(input.ActiveActor().Data.DisplayName + " used " +
+                text.SetText(input.ActiveActor().Data.DisplayName + " used " +
                                  input.SkillPrep.skill.SkillData.name +
                                  " on "
                                  + input.SkillPrep.targets[0].Data.DisplayName +
                                  "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
-                }
             }
 
             window.DOMove(pivot.position, 0.5f);
