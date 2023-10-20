@@ -9,7 +9,8 @@ using Image = UnityEngine.UIElements.Image;
 public class UIAnimationHandler : MonoBehaviour {
 
     //Everything should pass through activeUIAction! This is to prevent other animations overlapping
-    public IEnumerator activeUIAction = null;
+    public IEnumerator activeUIAction;
+    
     [SerializeField] private BattleUIStateMachine _stateMachine;
     [SerializeField] private Canvas mainCanvas;
 
@@ -51,6 +52,7 @@ public class UIAnimationHandler : MonoBehaviour {
             StartCoroutine(activeUIAction);
         }
     }
+    
     private IEnumerator MainPanelAction(bool enable, bool force) {
         //mainPanel.DOFade(enable ? 1 : 0, mainPanelToggleDuration); FADE
         if (!enable) CollapseCursor();
@@ -115,8 +117,8 @@ public class UIAnimationHandler : MonoBehaviour {
 
     private void InitCursor() {
         if (mainButtonIndex == -1) {
-            cursor.DOScale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration).SetEase(Ease.Flash);
             cursor.gameObject.SetActive(true);
+            cursor.DOScale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration).SetEase(Ease.Flash);
         }
     }
 
