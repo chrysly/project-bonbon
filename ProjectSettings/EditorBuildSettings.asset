@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/SceneStructureTest/MainMenu.unity
+    guid: 629fe8271782ddb4fb64d5285d442c8f
+  - enabled: 1
     path: Assets/Scenes/Dreamhack/Level 1 Pre-Combat.unity
     guid: fa0fd02b179bd984185d135fa9502ce4
   - enabled: 1

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,32 +11,34 @@ public partial class GameManager {
     private float currentValue;
     private float progressMultiplier = 0.5f;
 
-    public enum CoreScene {
-        MainMenu = 0,
-        Campfire = 1,
-        Cutscene = 2,
-    }
-    private int reservedIndices = 2;
+    /// <summary>
+    /// Transition to the next scene;
+    /// </summary>
+    public void TransitionToNext() => TransitionToLevel(SceneManager.GetActiveScene().buildIndex + 1);
 
-    public void TransitionToCore(CoreScene coreScene) {
-        SetActiveScene((int) coreScene);
-    }
-
+    /// <summary>
+    /// Transition to the scene designated by a given index;
+    /// </summary>
+    /// <param name="levelIndex"> Index of the scene to load; </param>
     public void TransitionToLevel(int levelIndex) {
         CurrLevel = levelIndex;
-        SetActiveScene(levelIndex + reservedIndices);
+        SetActiveScene(levelIndex);
     }
 
+    /// <summary>
+    /// Initiate a coroutine with the corresponding loading sequence;
+    /// </summary>
+    /// <param name="sceneIndex"> Index of the scene to load; </param>
     private void SetActiveScene(int sceneIndex) {
-        //SceneManager.LoadScene(sceneIndex);
-        Debug.Log("1");
         sliderPanel.SetActive(true);
-        Debug.Log("2");
         StartCoroutine(LoadSceneSync(sceneIndex));
-        Debug.Log("3");
     }
 
-    IEnumerator LoadSceneSync(int sceneToLoad)
+    /// <summary>
+    /// Coroutine to load scenes asynchronously;
+    /// </summary>
+    /// <param name="sceneToLoad"> Index of the scene to load; </param>
+    private IEnumerator LoadSceneSync(int sceneToLoad)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
         while (!operation.isDone)
@@ -51,6 +52,6 @@ public partial class GameManager {
                 operation.allowSceneActivation = true;
             }
             yield return null;
-        }
+        } sliderPanel.SetActive(false);
     }
 }
