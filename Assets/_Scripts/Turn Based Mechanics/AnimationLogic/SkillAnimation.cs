@@ -9,13 +9,16 @@ using UnityEditor.Animations;
 [System.Serializable]
 public class SkillAnimation {
 
-    public string AnimationTrigger { get; private set; }
-    public GameObject VFXPrefab { get; private set; }
+    [SerializeField] private string animationTrigger;
+    public string AnimationTrigger => animationTrigger;
+
+    [SerializeField] private GameObject vfxPrefab;
+    public GameObject VFXPrefab => vfxPrefab;
 
 #if UNITY_EDITOR
 
     /// Animation Editor ///
-    public void SetAnimationTrigger(string trigger) => AnimationTrigger = trigger;
+    public void SetAnimationTrigger(string trigger) => animationTrigger = trigger;
 
     public void SetActorAnimator(AnimatorController controller) {
         triggerIndex = 0;
@@ -45,7 +48,7 @@ public class SkillAnimation {
 
     public void SetVFXPrefab(GameObject prefab) {
         CleanDelayEditor();
-        VFXPrefab = prefab;
+        vfxPrefab = prefab;
     }
 
     public UnityEditor.Editor DelayScriptEditor {

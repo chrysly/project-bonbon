@@ -23,28 +23,40 @@ MonoBehaviour:
     - Keys:
       - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
       Values:
-      - actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
+      - animationTrigger: 
+        vfxPrefab: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
     - Keys:
       - {fileID: 11400000, guid: a6ac0735501b31b418532e1c52bac788, type: 2}
       - {fileID: 11400000, guid: c58fa5e0cfdec884daac7cc6fdd3e138, type: 2}
       Values:
-      - actorAnimator: {fileID: 9100000, guid: 3fd8b0f640740ff4897fb648836df986, type: 2}
+      - animationTrigger: 
+        vfxPrefab: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 3fd8b0f640740ff4897fb648836df986, type: 2}
         triggerIndex: 0
-      - actorAnimator: {fileID: 9100000, guid: 7c024bb658a0375429c34d49fc68dd6e, type: 2}
+      - animationTrigger: 
+        vfxPrefab: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 7c024bb658a0375429c34d49fc68dd6e, type: 2}
         triggerIndex: 0
     - Keys:
       - {fileID: 11400000, guid: dc8857a6470f59644abcfdc3114d2e4e, type: 2}
       Values:
-      - actorAnimator: {fileID: 9100000, guid: 0e57d98b12432ca4f81441b7f91189ce, type: 2}
+      - animationTrigger: _Attack
+        vfxPrefab: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 0e57d98b12432ca4f81441b7f91189ce, type: 2}
         triggerIndex: 0
     - Keys:
       - {fileID: 11400000, guid: 1271cb75a5bd7a549b2045f53cde9d9d, type: 2}
       Values:
-      - actorAnimator: {fileID: 0}
+      - animationTrigger: 
+        vfxPrefab: {fileID: 0}
+        actorAnimator: {fileID: 0}
         triggerIndex: 0
     - Keys:
       - {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
       Values:
-      - actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
+      - animationTrigger: _Attack
+        vfxPrefab: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
         triggerIndex: 0
