@@ -8,9 +8,11 @@ public class SkillObject : ScriptableObject {
     [Header("Skill Identifiers")]
     [Tooltip("The string ID of the skill. See drive for naming conventions.")]
     [SerializeField] private string skillID = "DEFAULT";
+    public string ID => skillID;
 
     [Tooltip("The name of the skill. Type how this skill name would appear in game.")]
     [SerializeField] private string skillName = "VANILLA";
+    public string Name => skillName;
 
     [Header("Skill Attributes")]
 
@@ -22,8 +24,8 @@ public class SkillObject : ScriptableObject {
 
     public bool aoe = false;
 
-    public void PerformActions(StatIteration casterData, Actor target) {
-        foreach (ImmediateAction action in immediateActions) action.Use(casterData, target);
+    public void PerformActions(StatIteration casterData, Actor target, SkillAugment augment = null) {
+        foreach (ImmediateAction action in immediateActions) action.Use(casterData, target, augment);
     }
 
     /// <summary>
@@ -38,4 +40,13 @@ public class SkillObject : ScriptableObject {
 
     public string GetSkillID() { return skillID; }
     public string GetSkillName() { return skillName; }
+
+    #if UNITY_EDITOR
+
+    public static GUIContent GUIContent(object skillBlueprint) {
+        SkillObject bp = skillBlueprint as SkillObject;
+        return new GUIContent(bp.skillName);
+    }
+
+    #endif
 }

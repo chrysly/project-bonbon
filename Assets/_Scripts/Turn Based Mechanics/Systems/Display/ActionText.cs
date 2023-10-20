@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using TMPro;
 
@@ -8,26 +9,53 @@ public class ActionText : MonoBehaviour
     [SerializeField] private BattleStateMachine stateMachine;
     [SerializeField] private BonbonFactory bonbonFactory;
     [SerializeField] private float textActiveDuration = 3f;
+    [SerializeField] private Transform window;
+    [SerializeField] private Transform pivot;
     private IEnumerator _activeDisplay;
+    private Vector3 originalPosition;
+    
     void Start() {
         stateMachine.OnStateTransition += UpdateActionText;
         bonbonFactory.OnBonbonCreation += UpdateBonbonActionText;
+        originalPosition = window.position;
     }
 
     private void UpdateActionText(BattleStateMachine.BattleState state, BattleStateInput input) {
         if (state is BattleStateMachine.AnimateState) {
             TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-            text.SetText(input.ActiveActor().data.DisplayName() + " used " + input.SkillPrep.skill.SkillData.name +
-                         " on "
-                         + input.SkillPrep.targets[0].data.DisplayName() +
-                         "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
+            if (input.SkillPrep.bonbon != null) {
+                text.SetText(input.ActiveActor().Data.DisplayName + " used " + input.SkillPrep.bonbon.Name + " " + input.SkillPrep.skill.SkillData.name +
+                             " on "
+                             + input.SkillPrep.targets[0].Data.DisplayName +
+                             "!");
+            }
+            else {
+                if (input.SkillPrep == null) {
+                    text.SetText("Input is null");
+                } else if (input.ActiveActor() == null) {
+                    text.SetText("Actor is null");
+                } else if (input.SkillPrep.skill.SkillData == null) {
+                    text.SetText("Skill data is null");
+                } else if (input.SkillPrep.targets[0] == null) {
+                    text.SetText("Target is null");
+                } else {
+                    text.SetText(input.ActiveActor().Data.DisplayName + " used " +
+                                 input.SkillPrep.skill.SkillData.name +
+                                 " on "
+                                 + input.SkillPrep.targets[0].Data.DisplayName +
+                                 "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
+                }
+            }
+
+            window.DOMove(pivot.position, 0.5f);
+
             ClearText();
         }
     }
     
     private void UpdateBonbonActionText(BonbonObject bonbon) {
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-        text.SetText(stateMachine.CurrInput.ActiveActor().data.DisplayName() + " created " + bonbon.Name +
+        text.SetText(stateMachine.CurrInput.ActiveActor().Data.DisplayName + " created " + bonbon.Name +
                      "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
         ClearText();
     }
@@ -44,6 +72,7 @@ public class ActionText : MonoBehaviour
         yield return new WaitForSeconds(delay);
         TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
         text.SetText("");
+        window.DOMove(originalPosition, 0.5f);
         yield return null;
     }
 }

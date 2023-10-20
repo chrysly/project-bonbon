@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static BattleStateMachine;
 
 public class BattleStateInput : StateInput {
 
@@ -10,22 +11,35 @@ public class BattleStateInput : StateInput {
     private int currentTurn = 0;
     #endregion Global Variables
 
+    #region | Events |
+
+    public event System.Func<SkillAction, Actor[], BonbonObject, ActiveSkillPrep> OnSkillUpdate;
+    public void UpdateSkill(SkillAction sa, Actor[] targets, BonbonObject bonbon = null) => OnSkillUpdate?.Invoke(sa, targets, bonbon);
+
+    public event System.Func<ActiveSkillPrep> OnRetrieveSkillPrep;
+    public ActiveSkillPrep SkillPrep {
+        get {
+            ActiveSkillPrep skillPrep = OnRetrieveSkillPrep?.Invoke();
+            return skillPrep == null ? new ActiveSkillPrep() : skillPrep;
+        }
+    }
+
+    public event System.Action OnSkillReset;
+    public void ResetSkill() => OnSkillReset?.Invoke();
+
+    public event System.Func<ActiveSkillPrep> OnSkillActivate;
+    public ActiveSkillPrep ActivateSkill() => OnSkillActivate?.Invoke();
+
+    public event System.Action<SkillAction, BonbonObject> OnSkillAnimation;
+    public void AnimateSkill(SkillAction sa, BonbonObject bonbon) => OnSkillAnimation?.Invoke(sa, bonbon);
+
+    #endregion
+
     #region Managers
     public BonbonFactory BonbonFactory { get; private set; }
     #endregion
 
-    #region Turn Variables
-    public class ActiveSkillPrep {
-        public SkillAction skill;
-        public Actor[] targets;
-    } public ActiveSkillPrep SkillPrep { get; private set; }
-    #endregion Turn Variables
-
-    // event sequencer tests (DEL LATER)
-    public EventSequencer eventSequencer = GameObject.FindAnyObjectByType<EventSequencer>();
-
-
-    public void Initialize() => SkillPrep = new ActiveSkillPrep();
+    public void Initialize() { }
 
     public void InsertTurnQueue(List<Actor> queue) {
         turnQueue = queue;
@@ -36,45 +50,13 @@ public class BattleStateInput : StateInput {
         BonbonFactory.OpenFactory(GameManager.CurrLevel);
     }
 
-    #region Skill Preparation
-
-    public void SetSkillPrep(SkillAction skillAction) {
-        SkillPrep.skill = skillAction;
-    }
-
-    public void SetSkillPrep(Actor[] targets) {
-        SkillPrep.targets = targets;
-    }
-
-    public void SetSkillPrep(SkillAction skillAction, Actor[] targets) {
-        SkillPrep.skill = skillAction;
-        SkillPrep.targets = targets;
-    }
-
-    public void ActivateSkill() {
-        if (SkillPrep.targets.Length > 0) {
-            SkillPrep.skill.ActivateSkill(SkillPrep.targets);
-        }
-        SkillPrep = new ActiveSkillPrep();
-    }
-
-    #endregion
-
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>
     public void AdvanceTurn() 
     {
-        Debug.Log("test");
-        // some event sequencer tests (DELETE LATER)        // i think the seq check should be here bc it checks stuff at the end of a turn. not sure how to check how to start a seq rn other than a fkcing long switch statemtn or smthing lol
-        if (ActiveActor().Hitpoints() == 115)
-        {
-            Debug.Log("It got here");
-            eventSequencer.StartEventSequence();
-        }
-
         Actor initialActor = ActiveActor();
         do {
             currActorIndex = (currActorIndex + 1) % turnQueue.Count;
-        } while (ActiveActor().Defeated() && !initialActor.Equals(ActiveActor()));
+        } while (ActiveActor().Defeated && !initialActor.Equals(ActiveActor()));
         currentTurn++;
     }
 

@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Red Jello Jumper
   id: jellored
-  maxHitpoints: 30
-  basePotency: 11
-  baseDefense: 2
-  baseSpeed: 8
-  maxStamina: 100
+  maxHitpoints: 15
+  basePotency: 8
+  baseDefense: 3
+  baseSpeed: 10
+  maxStamina: 80
   staminaRegenRate: 20
   skillMap:
-    startIndeces: 00000000
+    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
     secondaryElements:
-    - {fileID: 11400000, guid: f27f82fe1f0812b49b86b628e8b7a788, type: 2}
+    - {fileID: 11400000, guid: 21264717e1192cb45b03b68e6b9ca697, type: 2}
   bonbonMap:
-    startIndeces: 
+    startIndeces: 0000000000000000000000000000000000000000000000000000000000000000
     secondaryElements: []

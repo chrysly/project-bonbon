@@ -33,4 +33,13 @@ public class EffectBlueprint : ScriptableObject {
     public Effect InstantiateEffect(StatIteration originStats) {
         return new Effect(this, originStats);
     }
+
+    #if UNITY_EDITOR
+
+    public static GUIContent GUIContent(object effectBlueprint) {
+        EffectBlueprint bp = effectBlueprint as EffectBlueprint;
+        return new GUIContent(bp.name);
+    }
+
+    #endif
 }

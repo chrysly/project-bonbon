@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Instantiable effect class;
@@ -28,6 +29,7 @@ public class Effect {
     /// </summary>
     /// <param name="actor"> Actor affected by this effect; </param>
     public void PerformActions(Actor actor) {
+        if (actions == null) return;
         foreach (ImmediateAction action in actions) action.Use(originStats, actor);
     }
 

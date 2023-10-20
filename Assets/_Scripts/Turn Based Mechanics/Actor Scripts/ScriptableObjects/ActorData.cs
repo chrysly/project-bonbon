@@ -30,17 +30,37 @@ public class ActorData : ScriptableObject
     [SerializeField] private int maxStamina = 100;
     
     [Tooltip("The amount of stamina the character replenishes per turn.")]
-    [SerializeField] private int staminaRegenRate = 10;
+    [SerializeField] private int staminaRegenRate = 20;
 
     public ArrayArray<SkillObject> skillMap;
     public ArrayArray<BonbonBlueprint> bonbonMap;
 
-    public string DisplayName() { return displayName; }
-    public string ID() { return id; }
-    public int MaxHitpoints() { return maxHitpoints; }
-    public int BasePotency() { return basePotency; }
-    public int BaseDefense() { return baseDefense; }
-    public int BaseSpeed() { return baseSpeed; }
-    public int MaxStamina() { return maxStamina; }
-    public int StaminaRegenRate() { return staminaRegenRate; }
+    public string DisplayName => displayName;
+    public string ID => id;
+    public int MaxHitpoints => maxHitpoints;
+    public int BasePotency => basePotency;
+    public int BaseDefense => baseDefense;
+    public int BaseSpeed => baseSpeed;
+    public int MaxStamina => maxStamina;
+    public int StaminaRegenRate => staminaRegenRate;
+
+    #if UNITY_EDITOR
+
+    public void SetDisplayName(string displayName) => this.displayName = displayName;
+
+    public void SetID(string id) => this.id = id;
+
+    public void SetMaxHitpoints(int maxHitpoints) => this.maxHitpoints = maxHitpoints;
+
+    public void SetBasePotency(int basePotency) => this.basePotency = basePotency;
+
+    public void SetBaseDefense(int baseDefense) => this.baseDefense = baseDefense;
+
+    public void SetBaseSpeed(int baseSpeed) => this.baseSpeed = baseSpeed;
+
+    public void SetMaxStamina(int maxStamina) => this.maxStamina = maxStamina;
+
+    public void SetStaminaRegenRate(int staminaRegenRate) => this.staminaRegenRate = staminaRegenRate;
+
+    #endif
 }

@@ -21,12 +21,12 @@ public class DamageAction : ImmediateAction.Generic {
         actionValue.immediateDamage += computedDamage;
     }
 
-    public override void Use(StatIteration activeData, Actor target) {
-        int computedDamage = activeData.ComputePotency(damageAmount);
+    public override void Use(StatIteration activeData, Actor target, SkillAugment augment) {
+        int computedDamage = activeData.ComputePotency(damageAmount) + (augment != null ? augment.damageBoost : 0);
         target.DepleteHitpoints(computedDamage);
 
         // knock off bonbons % chance ---
-        int damagePercent = (computedDamage / activeData.Actor.Hitpoints()) * 100;
+        int damagePercent = (computedDamage / activeData.Actor.Hitpoints) * 100;
         int bonbonsToRemove = 0;
 
         if (damagePercent < 25)

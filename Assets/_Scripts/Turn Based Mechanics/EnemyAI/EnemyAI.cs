@@ -14,8 +14,8 @@ public class EnemyAI
     }
 
     /// <summary> pass in the current active list of actors and the current actor, returns an ActiveSkillPrep </summary>
-    public static BattleStateInput.ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors)
-    {
+    public static ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors) {
+
         // enemy generates stamina (%)
         currentActor.RefundStamina(50);
 
@@ -51,8 +51,8 @@ public class EnemyAI
                         ScenarioSkillData newSkillData = new ScenarioSkillData(skill, currentActor, new List<Actor> {actor}); // idk if this is right owell
                         scenarios.Add(new Scenario(newSkillData, calculateGoodnessValue(newSkillData)));
                     }
-                } 
-            }      
+                }
+            }
         }
 
         foreach(Scenario scen in scenarios)
@@ -71,12 +71,12 @@ public class EnemyAI
                 bestValue = scene.getGoodnessValue();
             }
         }
-        
+
         // if there's a tie in goodness values, pick a random scenario from the list
         Debug.Log(bestScenarios.Count);
         bestScenarios.Add(new Scenario(new ScenarioSkillData(currentActor.SkillList[0], currentActor, characterActors), 5));
         Scenario chosenScenario = bestScenarios[Random.Range(0, bestScenarios.Count)];
-        BattleStateInput.ActiveSkillPrep bestActiveSkill = new BattleStateInput.ActiveSkillPrep()
+        ActiveSkillPrep bestActiveSkill = new ActiveSkillPrep()
         {
             skill = chosenScenario.getSkillAction().skill,
             targets = chosenScenario.getSkillAction().characterActors.ToArray(),
@@ -84,15 +84,18 @@ public class EnemyAI
 
         return bestActiveSkill;
     }
-    
+
     private static int calculateGoodnessValue(ScenarioSkillData skillData)
     {
         int value = 0;
         foreach (Actor actor in skillData.characterActors)
         {
             value += addValueBasedOnDamage(skillData, actor);
+            Debug.Log("dmg" + value);
             value += addValueBasedOnHealth(skillData, actor);
+            Debug.Log("health" + value);
             value += addValueBasedOnNumBonbons(skillData, actor);
+            Debug.Log(value);
         }
         return value;
     }
@@ -101,32 +104,32 @@ public class EnemyAI
     private static int addValueBasedOnDamage(ScenarioSkillData skillData, Actor actor)
     {
         int point = 0;
-        
-        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints())
+
+        if (skillData.skill.ComputeSkillActionValues(actor, -1).immediateDamage > actor.Hitpoints)  // -1 ._. (jank)
         {
             point += (int) AiWeights.KillUnit;
         }
         else
         {
-            point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;
+            //Debug.Log(skillData.skill.ComputeSkillActionValues(actor).immediateDamage);
+            point += skillData.skill.ComputeSkillActionValues(actor, -1).immediateDamage * (int) AiWeights.Damage;  // -1 ._.
         }
-        //Debug.Log("dmg: " + skillData.skill.ComputeSkillActionValues(actor).immediateDamage);
         return point;
     }
 
     // based on % health
     private static int addValueBasedOnHealth(ScenarioSkillData skill, Actor actor)
     {
-        int point = (1 - (actor.Hitpoints() / actor.data.MaxHitpoints())) * (int)AiWeights.HealthPercent;
-        //Debug.Log("health: " + point);
+        int point = 0;
+        point = (1 - (actor.Hitpoints / actor.Data.MaxHitpoints)) * (int)AiWeights.HealthPercent;
         return point;
     }
 
     private static int addValueBasedOnNumBonbons(ScenarioSkillData skill, Actor actor)
     {
-        int point = actor.BonbonList.Count * (int)AiWeights.NumOfBonBons;
-        //Debug.Log("bonbon: " + point);
+        int point = 0;
+        point = actor.BonbonList.Count * (int)AiWeights.NumOfBonBons;
         return point;
-  
+
     }
 }
