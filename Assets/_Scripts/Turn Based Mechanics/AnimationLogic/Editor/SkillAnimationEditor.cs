@@ -106,7 +106,7 @@ public class SkillAnimationEditor : EditorWindow {
                                 }
                             } else EditorUtils.DrawScopeCenteredText("Select an Animation Entry to edit;");
                         }
-                    } if (changeScope.changed) SaveMap();
+                    } /*if (changeScope.changed)*/ SaveMap();
                 }
             }
         }
