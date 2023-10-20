@@ -11,7 +11,7 @@ public class EventSequencer : MonoBehaviour
     public List<EventObject> eventSequence;
     public EventObject onStartEvent;
     Queue<EventObject> events = new Queue<EventObject>();
-    
+
     #region Events
     public delegate void EventTerminate();
     public event EventTerminate OnEventTerminate;
@@ -22,18 +22,13 @@ public class EventSequencer : MonoBehaviour
         onStartEvent.OnTrigger();
     }
 
-    public void CheckForEvents(AIActionValue package) { 
+    public void CheckForEvents(AIActionValue package) {
         // add any events that meet activate conditions to a queue
-        foreach (EventObject ev in eventSequence) { 
+        foreach (EventObject ev in eventSequence) {
             if (ev.CheckConitions(package)) {
                 events.Enqueue(ev);
             }
         }
-
-        //// jank bc fck it's 5am
-        //foreach (EventObject q in events) {
-        //    eventSequence.Remove(q);
-        //}
     }
 
     public bool RunNextEvent() {

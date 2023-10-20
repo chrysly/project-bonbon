@@ -13,13 +13,9 @@ public partial class BattleStateMachine {
 
             MySM.OnStateTransition.Invoke(this, Input);
 
-            MySM.GetComponentInParent<AnimationRunner>().OnSkillTrigger(Input.SkillPrep.skill);
-            Input.ActivateSkill();
+            var res = Input.ActivateSkill();
+            if (res != null) Input.AnimateSkill(res.skill, res.bonbon);
 
-            //Debug.Log(Input.SkillPrep.targets.Length);
-            //if (Input.ActiveActor() is CharacterActor) _movement.Bump(Input.ActiveActor().transform, Input.SkillPrep.targets[0].transform); // HARD CODED (change later bc anumation??? idk)
-
-            // here?
             for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
             {
                 MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j], Input.CurrTurn()));
@@ -27,17 +23,17 @@ public partial class BattleStateMachine {
 
             if (MySM._eventSequencer.RunNextEvent()) {
                 MySM.ToggleMachine(true);
-                Input.resetSkillPrep();
+                Input.ResetSkill();
             }
             else {
-                Input.resetSkillPrep();
+                Input.ResetSkill();
                 MySM.StartBattle(1f);
             }
         }
         
         public override void Update() {
             base.Update();
-            Debug.Log("Running animate state");
+            //Debug.Log("Running animate state");
         }
 
         public override void Exit(BattleStateInput input) {
