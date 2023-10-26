@@ -30,13 +30,12 @@ public class BonbonFactory : MonoBehaviour {
     /// Create a bonbon with a given name using an assortment of bonbon objects;
     /// </summary>
     /// <param name="name"> Name of the bonbon to create (a bonbon object with this name MUST exist!); </param>
-    /// <param name="recipeBonbons"> Bonbons used to create the new bonbon; </param>
     /// <returns> A bonbon object if the recipe is valid, NULL otherwise;
     /// <br></br> Note: This method will throw an Exception if the string is invalid! </returns>
-    public BonbonObject CreateBonbon(string name, ref BonbonObject[] bonbonInventory, bool[] recipeMask) {
+    public BonbonObject CreateBonbon(string name, Actor actor, bool[] recipeMask) {
         FindBonbon(name, out BonbonBlueprint bonbonBlueprint);
         if (bonbonBlueprint != null) {
-            return CreateBonbon(bonbonBlueprint, bonbonInventory, recipeMask);
+            return CreateBonbon(bonbonBlueprint, actor, recipeMask);
         } else throw new System.Exception($"InvalidString: No bonbon named \"{name}\" was found;");
     }
 
@@ -46,11 +45,12 @@ public class BonbonFactory : MonoBehaviour {
     /// <param name="bonbon"> A bonbon object to duplicate; </param>
     /// <param name="recipeBonbons"> Bonbons used to create the new bonbon; </param>
     /// <returns> A bonbon object if the recipe is valid, NULL otherwise; </returns>
-    public BonbonObject CreateBonbon(BonbonBlueprint bonbon, BonbonObject[] bonbonInventory, bool[] recipeMask) {
+    public BonbonObject CreateBonbon(BonbonBlueprint bonbon, Actor actor, bool[] recipeMask) {
+        BonbonObject[] bonbonInventory = actor.BonbonInventory;
         BonbonBlueprint[] recipeBonbons = CraftRecipeFromMask(bonbonInventory, recipeMask);
         if (bonbon.recipe.RecipeEquals(recipeBonbons)) {
             Debug.Log("Bonbon invoked");
-            BonbonObject newBonbon = bonbon.InstantiateBonbon();
+            BonbonObject newBonbon = bonbon.InstantiateBonbon(actor);
             OnBonbonCreation?.Invoke(newBonbon);
             
             DestroyUsedIngredients(bonbonInventory, recipeMask);

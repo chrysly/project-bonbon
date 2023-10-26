@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Green Jello Jumper
   id: jellogreen
-  maxHitpoints: 40
-  basePotency: 8
+  maxHitpoints: 20
+  basePotency: 7
   baseDefense: 3
-  baseSpeed: 5
-  maxStamina: 100
+  baseSpeed: 3
+  maxStamina: 80
   staminaRegenRate: 20
   skillMap:
-    startIndeces: 00000000
+    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
     secondaryElements:
     - {fileID: 11400000, guid: f27f82fe1f0812b49b86b628e8b7a788, type: 2}
   bonbonMap:
-    startIndeces: 
+    startIndeces: 0000000000000000000000000000000000000000000000000000000000000000
     secondaryElements: []

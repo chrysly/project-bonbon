@@ -36,6 +36,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         Confused = 1,
         Paralyzed = 2,
         Fainted = 3,
+        Benched = 4,
     } public ActorState State { get; private set; }
 
     public List<SkillAction> SkillList { get; protected set; }
@@ -92,6 +93,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
             EffectList[i].PerformActions(this);
             if (EffectList[i].IsSpent()) spentEffects.Add(i);
         } RemoveEffects(spentEffects);
+        ComputeStats();
+        RefundStamina(ActiveData.StaminaRegen);
     }
 
     private void ComputeStats() {

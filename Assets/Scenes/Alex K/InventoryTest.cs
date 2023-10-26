@@ -8,11 +8,11 @@ public class InventoryTest : MonoBehaviour
     [SerializeField] private Actor target;
     [SerializeField] private int sourceInventory;
     [SerializeField] private int targetInventory;
-    [SerializeField] private BonbonRadialWindow window;
+    //[SerializeField] private BonbonRadialWindow window;
 
     public void PassBonbonEvent() {
         if (BonbonInventoryUtils.PassBonbonBetween(source, target, sourceInventory, targetInventory)) {
-            window.UpdateSlots();
+            //window.UpdateSlots();
         }
     }
 }

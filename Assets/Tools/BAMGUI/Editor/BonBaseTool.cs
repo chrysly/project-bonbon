@@ -75,6 +75,7 @@ namespace BonbonAssetManager {
             selectedBonbon = bonbon;
             UpdateBonbonList();
             if (selectedBonbon.augmentData.immediateActions == null) selectedBonbon.augmentData.immediateActions = new List<ImmediateAction>();
+            if (selectedBonbon.augmentData.augmentEffects == null) selectedBonbon.augmentData.augmentEffects = new List<EffectBlueprint>();
             foundActions = ActionUtils.FetchAvailableActions(selectedBonbon.augmentData.immediateActions, actionTypes);
         }
 
@@ -527,7 +528,7 @@ namespace BonbonAssetManager {
                                                                 selectedActor.MaxHitpoints));
                             selectedActor.SetMaxStamina(EditorGUILayout.IntField(new GUIContent(" Max Stamina", statAssets.stamina),
                                                                 selectedActor.MaxStamina));
-                            selectedActor.SetStaminaRegenRate(EditorGUILayout.FloatField(new GUIContent(" Stamina Regen", statAssets.staminaRegen),
+                            selectedActor.SetStaminaRegenRate(EditorGUILayout.IntField(new GUIContent(" Stamina Regen", statAssets.staminaRegen),
                                                               selectedActor.StaminaRegenRate));
                         } EditorGUILayout.Separator();
                         using (new EditorGUILayout.VerticalScope()) {

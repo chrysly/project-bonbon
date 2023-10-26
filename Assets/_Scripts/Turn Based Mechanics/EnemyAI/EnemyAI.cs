@@ -14,8 +14,8 @@ public class EnemyAI
     }
 
     /// <summary> pass in the current active list of actors and the current actor, returns an ActiveSkillPrep </summary>
-    public static BattleStateInput.ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors)
-    {
+    public static ActiveSkillPrep ChooseEnemyAISkill(Actor currentActor, List<Actor> activeactors) {
+
         // enemy generates stamina (%)
         currentActor.RefundStamina(50);
 
@@ -75,7 +75,7 @@ public class EnemyAI
         Debug.Log(bestScenarios.Count);
         bestScenarios.Add(new Scenario(new ScenarioSkillData(currentActor.SkillList[0], currentActor, characterActors), 5));
         Scenario chosenScenario = bestScenarios[Random.Range(0, bestScenarios.Count)];
-        BattleStateInput.ActiveSkillPrep bestActiveSkill = new BattleStateInput.ActiveSkillPrep()
+        ActiveSkillPrep bestActiveSkill = new ActiveSkillPrep()
         {
             skill = chosenScenario.getSkillAction().skill,
             targets = chosenScenario.getSkillAction().characterActors.ToArray(),
@@ -104,14 +104,14 @@ public class EnemyAI
     {
         int point = 0;
         
-        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints)
+        if (skillData.skill.ComputeSkillActionValues(actor, -1).immediateDamage > actor.Hitpoints)  // -1 ._. (jank)
         {
             point += (int) AiWeights.KillUnit;
         }
         else
         {
             //Debug.Log(skillData.skill.ComputeSkillActionValues(actor).immediateDamage);
-            point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;
+            point += skillData.skill.ComputeSkillActionValues(actor, -1).immediateDamage * (int) AiWeights.Damage;  // -1 ._.
         } 
         return point;
     }

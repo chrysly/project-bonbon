@@ -9,34 +9,35 @@ using Yarn.Unity;
 public class EventSequencer : MonoBehaviour
 {
     public List<EventObject> eventSequence;
+    public EventObject onStartEvent;
     Queue<EventObject> events = new Queue<EventObject>();
-    
+
     #region Events
     public delegate void EventTerminate();
     public event EventTerminate OnEventTerminate;
     #endregion Events
 
-    public void CheckForEvents(AIActionValue package) { 
+    // hard coded because fml
+    public void StartEvent() {
+        onStartEvent.OnTrigger();
+    }
+
+    public void CheckForEvents(AIActionValue package) {
         // add any events that meet activate conditions to a queue
-        foreach (EventObject ev in eventSequence) { 
+        foreach (EventObject ev in eventSequence) {
             if (ev.CheckConitions(package)) {
                 events.Enqueue(ev);
             }
-        }
-
-        // jank bc fck it's 5am
-        foreach (EventObject q in events) {
-            eventSequence.Remove(q);
         }
     }
 
     public bool RunNextEvent() {
         // run the next event in queue
+        Debug.Log("Queue count: " + events.Count);
         if (events.Count > 0)
         {
             Debug.Log("event");
-            EventObject next = events.Dequeue();
-            next.OnTrigger();
+            events.Peek().OnTrigger();
             return true;
         }
         return false;
@@ -44,6 +45,13 @@ public class EventSequencer : MonoBehaviour
 
     public void CheckForEventEnd() {
         Debug.Log("noice");
+
+        if (events.Count != 0) {
+            Debug.Log("actually nice");
+            events.Peek().OnEventEnd();
+            eventSequence.Remove(events.Peek());
+            events.Dequeue();
+        }
         OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
     }
 }

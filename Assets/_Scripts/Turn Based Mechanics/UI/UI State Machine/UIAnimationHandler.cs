@@ -9,7 +9,8 @@ using Image = UnityEngine.UIElements.Image;
 public class UIAnimationHandler : MonoBehaviour {
 
     //Everything should pass through activeUIAction! This is to prevent other animations overlapping
-    public IEnumerator activeUIAction = null;
+    public IEnumerator activeUIAction;
+    
     [SerializeField] private BattleUIStateMachine _stateMachine;
     [SerializeField] private Canvas mainCanvas;
 
@@ -51,6 +52,7 @@ public class UIAnimationHandler : MonoBehaviour {
             StartCoroutine(activeUIAction);
         }
     }
+    
     private IEnumerator MainPanelAction(bool enable, bool force) {
         //mainPanel.DOFade(enable ? 1 : 0, mainPanelToggleDuration); FADE
         if (!enable) CollapseCursor();
@@ -79,8 +81,9 @@ public class UIAnimationHandler : MonoBehaviour {
                 //decoration.gameObject.SetActive(false);
             }
         }
-        if (!enable) mainPanel.gameObject.SetActive(false);
         activeUIAction = null;
+        if (!enable) mainPanel.gameObject.SetActive(false);
+        else SelectMainPanelButton(true);
         yield return null;
     }
 
@@ -92,9 +95,10 @@ public class UIAnimationHandler : MonoBehaviour {
     }
     private IEnumerator SelectMainPanelButtonAction(bool directionDown) {
         InitCursor();
-        mainButtonIndex = mainButtonIndex == -1 ? 0 : mainButtonIndex;
-        if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count - 1 ? 0 : mainButtonIndex + 1;
+        if (mainButtonIndex == -1) mainButtonIndex = 0;
+        else if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count - 1 ? 0 : mainButtonIndex + 1;
         else mainButtonIndex = mainButtonIndex <= 0 ? mainPanelButtons.Count - 1 : mainButtonIndex - 1;
+        Debug.Log(mainButtonIndex);
         for (int i = 0; i < mainPanelButtons.Count; i++) {
             if (i == mainButtonIndex) {
                 mainPanelButtons[mainButtonIndex].Scale(mainPanelButtonScaleVector, mainPanelButtonScaleDuration);
@@ -113,13 +117,14 @@ public class UIAnimationHandler : MonoBehaviour {
 
     private void InitCursor() {
         if (mainButtonIndex == -1) {
-            cursor.DOScale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration).SetEase(Ease.Flash);
             cursor.gameObject.SetActive(true);
+            cursor.DOScale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration).SetEase(Ease.Flash);
         }
     }
 
     private void CollapseCursor() {
         cursor.DOScale(new Vector3(0, 0, 0), mainPanelButtonScaleDuration);
+        mainButtonIndex = -1;
     }
 
     private void UpdateCursor(BattleButton button) {
@@ -127,6 +132,7 @@ public class UIAnimationHandler : MonoBehaviour {
     }
     
     public void ActivateMainPanelButton() {
+        if (mainButtonIndex == -1) return;
         mainPanelButtons[mainButtonIndex].Scale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration);
         mainPanelButtons[mainButtonIndex].Activate(_stateMachine, mainPanelButtonScaleDuration);
     }
@@ -134,11 +140,20 @@ public class UIAnimationHandler : MonoBehaviour {
     
     #region Skill Window
 
-    [SerializeField] private CanvasGroup skillPanel;
-    [SerializeField] private float skillPanelToggleDuration;
+    public BattleSkillWindow skillWindow;
     
-    
-
     #endregion Skill Window
 
+    #region TargetSelect
+
+    public BattleTargetWindow targetWindow;
+
+    #endregion
+    
+    #region Bonbon Window
+
+    public BattleBonbonWindow bonbonWindow;
+    public IngredientSelectWindow ingredientWindow;
+
+    #endregion Bonbon Window
 }

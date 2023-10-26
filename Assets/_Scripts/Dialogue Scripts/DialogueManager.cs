@@ -65,7 +65,7 @@ public class DialogueManager : MonoBehaviour
     void Update()
     {
         //Debug Input
-        if (Input.GetKeyDown(KeyCode.Space) && !tweeningDialogue)
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !tweeningDialogue)
         {
             if (readingDialogue)
             {
@@ -89,7 +89,7 @@ public class DialogueManager : MonoBehaviour
             CreateDialogueBox();
             _dialogueRunner.StartDialogue(node);
             ProcessNode();
-            _dialogueTransform.DOAnchorPosY(0f, 0.3f)
+            _dialogueTransform.DOAnchorPosY(73f, 0.3f)
                 .SetEase(Ease.OutCirc)
                 .OnStart(() => tweeningDialogue = true)
                 .OnComplete(() => tweeningDialogue = false);

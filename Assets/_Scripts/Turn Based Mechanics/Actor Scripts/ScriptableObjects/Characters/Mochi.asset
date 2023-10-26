@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95eb7628462183d4e9f10be019e4ec2e, type: 3}
+  m_Name: Mochi
+  m_EditorClassIdentifier: 
+  displayName: Mochi
+  id: 0_Pan
+  maxHitpoints: 25
+  basePotency: 2
+  baseDefense: 2
+  baseSpeed: 7
+  maxStamina: 100
+  staminaRegenRate: 15
+  skillMap:
+    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
+    secondaryElements:
+    - {fileID: 11400000, guid: dad2abed660d4a8429c2fd524b6d202f, type: 2}
+  bonbonMap:
+    startIndeces: 0000000002000000020000000200000002000000020000000200000002000000
+    secondaryElements:
+    - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
+    - {fileID: 11400000, guid: b213808cf87af4843b808ecfb190468c, type: 2}

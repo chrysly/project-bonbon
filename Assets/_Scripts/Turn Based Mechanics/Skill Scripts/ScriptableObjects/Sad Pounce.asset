@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14142bd7c92aef1418ae58a98e3f393a, type: 3}
   m_Name: Sad Pounce
   m_EditorClassIdentifier: 
-  skillID: DEFAULT
-  skillName: VANILLA
-  staminaCost: 0
+  skillID: sad_pounce
+  skillName: Sad Pounce
+  staminaCost: 20
   immediateActions:
   - rid: 3928641323615649793
   aoe: 0
@@ -24,4 +24,4 @@ MonoBehaviour:
     - rid: 3928641323615649793
       type: {class: DamageAction, ns: , asm: Assembly-CSharp}
       data:
-        damageAmount: 2
+        damageAmount: 4

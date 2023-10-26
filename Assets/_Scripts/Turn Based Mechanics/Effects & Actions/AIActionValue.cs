@@ -16,4 +16,5 @@ public class AIActionValue {
 
     public Actor caster;
     public Actor target;
+    public int currentTurn;
 }

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, BattleUIStateMachine.BattleUIState, BattleUIStateInput> {
-    [SerializeField] private BattleStateMachine _battleStateMachine;
+    [SerializeField] public BattleStateMachine _battleStateMachine;
+    
+    public new delegate void StateTransition(BattleUIState state, BattleUIStateInput input);
+    public event StateTransition OnStateTransition ;
 
     protected override void Start() {
         base.Start();
@@ -15,10 +18,16 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
     }
 
     protected void Refresh(BattleStateMachine.BattleState state, BattleStateInput input) {
-        if (state is BattleStateMachine.TurnState) {
+        if (state is BattleStateMachine.TurnState && input.ActiveActor() is CharacterActor) {
             CurrInput.AnimationHandler = input.ActiveActor().transform.GetComponent<UIAnimationHandler>();
+            CurrInput.actor = (CharacterActor) input.ActiveActor();
             Transition<InitUIState>();
         }
+    }
+
+    protected void ExitUI() {
+        CurrInput.AnimationHandler = null;
+        CurrInput.actor = null;
     }
 
     /// <summary>

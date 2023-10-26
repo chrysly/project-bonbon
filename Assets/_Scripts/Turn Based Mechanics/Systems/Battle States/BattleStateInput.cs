@@ -11,22 +11,35 @@ public class BattleStateInput : StateInput {
     private int currentTurn = 0;
     #endregion Global Variables
 
+    #region | Events |
+
+    public event System.Func<SkillAction, Actor[], BonbonObject, ActiveSkillPrep> OnSkillUpdate;
+    public void UpdateSkill(SkillAction sa, Actor[] targets, BonbonObject bonbon = null) => OnSkillUpdate?.Invoke(sa, targets, bonbon);
+
+    public event System.Func<ActiveSkillPrep> OnRetrieveSkillPrep;
+    public ActiveSkillPrep SkillPrep {
+        get {
+            ActiveSkillPrep skillPrep = OnRetrieveSkillPrep?.Invoke();
+            return skillPrep == null ? new ActiveSkillPrep() : skillPrep;
+        }
+    }
+
+    public event System.Action OnSkillReset;
+    public void ResetSkill() => OnSkillReset?.Invoke();
+
+    public event System.Func<ActiveSkillPrep> OnSkillActivate;
+    public ActiveSkillPrep ActivateSkill() => OnSkillActivate?.Invoke();
+
+    public event System.Action<SkillAction, BonbonObject> OnSkillAnimation;
+    public void AnimateSkill(SkillAction sa, BonbonObject bonbon) => OnSkillAnimation?.Invoke(sa, bonbon);
+
+    #endregion
+
     #region Managers
     public BonbonFactory BonbonFactory { get; private set; }
     #endregion
 
-    #region Turn Variables
-    public class ActiveSkillPrep {
-        public SkillAction skill;
-        public BonbonObject bonbon;
-        public Actor[] targets;
-    } public ActiveSkillPrep SkillPrep { get; private set; }
-    #endregion Turn Variables
-
-    public void Initialize()    // short hand (normal Initialize method) => method that has a single line !!
-    {
-        SkillPrep = new ActiveSkillPrep();
-    }
+    public void Initialize() { }
 
     public void InsertTurnQueue(List<Actor> queue) {
         turnQueue = queue;
@@ -36,44 +49,6 @@ public class BattleStateInput : StateInput {
         BonbonFactory = bonbonFactory;
         BonbonFactory.OpenFactory(GameManager.CurrLevel);
     }
-
-    #region Skill Preparation
-
-    public void SetSkillPrep(SkillAction skillAction) {
-        SkillPrep.skill = skillAction;
-    }
-
-    public void SetSkillPrep(Actor[] targets) {
-        SkillPrep.targets = targets;
-    }
-
-    public void SetSkillPrep(BonbonObject bonbon) {
-        SkillPrep.bonbon = bonbon;
-    }
-
-    public void SetSkillPrep(SkillAction skillAction, Actor[] targets) {
-        SkillPrep.skill = skillAction;
-        SkillPrep.targets = targets;
-    }
-
-    public void ActivateSkill() {
-        if (SkillPrep.targets.Length > 0) {
-            if (SkillPrep.bonbon == null) SkillPrep.skill.ActivateSkill(SkillPrep.targets);
-            else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon);
-        }
-
-        // bleh ig for now if a skill has multiple targets check all targets
-        //for (int i = 0; i < SkillPrep.targets.Length; i++)
-        //{
-        //    eventSequencer.CheckForEvents(SkillPrep.skill.ComputeSkillActionValues(SkillPrep.targets[i]));
-        //}
-    }
-
-    public void resetSkillPrep() {
-        SkillPrep = new ActiveSkillPrep();
-    }
-
-    #endregion
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>
     public void AdvanceTurn() 

@@ -15,7 +15,12 @@ MonoBehaviour:
   name: 
   duration: 0
   modifiers:
-    attackModifier: 1
-    healCastModifier: 1
-    defenseModifier: 1
-    staminaRegenModifier: 1
+    flatAttack: 0
+    percentAttack: 0
+    flatHeal: 0
+    percentHealCast: 0
+    flatDefense: 0
+    percentDefense: 0
+    flatSpeed: 0
+    percentSpeed: 0
+    percentStaminaRegen: 0

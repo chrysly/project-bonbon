@@ -15,8 +15,10 @@ public partial class
     #endregion SerializeFields
 
     #region Events
+
     public new delegate void StateTransition(BattleState state, BattleStateInput input);
-    public event StateTransition OnStateTransition ;
+    public event StateTransition OnStateTransition;
+
     #endregion Events
     
     protected override void SetInitialState() {
@@ -36,7 +38,8 @@ public partial class
         base.Init();
     }
 
-    protected void OnEnable() { }
+    protected void OnEnable() {
+    }
 
     protected void OnDisable() { }
     
@@ -49,20 +52,19 @@ public partial class
     }
 
     #region State Handlers
+    
+    // jasmine's jank asf code whooo
+    public void OnStart() {
+        // hard coded bc it's fcking 5am fml
+        _eventSequencer.StartEvent();
+        ToggleMachine(true);
+        StartBattle();
+    }
+
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
-        bool allEnemiesDead = true;
-        bool allCharactersDead = true;
-        foreach (Actor actor in actorList) {
-            if (actor.Defeated) {
-                continue;
-            }
-            if (actor is EnemyActor) {
-                allEnemiesDead = false;
-            } else if (actor is CharacterActor) {
-                allCharactersDead = false;
-            }
-        }
+        bool allEnemiesDead = actorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
+        bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) && actor.Defeated);
 
         if (allEnemiesDead) {
             CurrState.TriggerBattleWin();
@@ -81,10 +83,10 @@ public partial class
     /// Continuation method when BSM is frozen on animate state
     /// </summary>
     public void ContinueBattle() {
+        ToggleMachine(false);
         if (CurrState is AnimateState) {
-            ToggleMachine(false);
             StartBattle(0.3f);
-        }
+        } else StartBattle();
     }
 
     public void SkipEnemySelection() {
@@ -94,13 +96,22 @@ public partial class
     public void SwitchToTargetSelect(SkillAction skill) {
         if (CurrState is TurnState) {
             Transition<TargetSelectState>();
-            CurrInput.SetSkillPrep(skill);
+            CurrInput.UpdateSkill(skill, null);
         }
     }
 
+    public void ConfirmTargetSelect(Actor actor) {
+        CurrInput.UpdateSkill(null, new Actor[] { actor });
+        Transition<AnimateState>();
+    }
+
+    public void AugmentSkill(BonbonObject bonbon) {
+        CurrInput.UpdateSkill(null, null, bonbon);
+    }
+
     public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {
-        if (CurrState is TurnState) {
-            BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor().BonbonInventory, mask);
+        if (CurrState is TurnState || CurrState is BonbonState) {
+            BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor(), mask);
             for (int i = 0; i < 4; i++) {
                 BonbonObject bObject = CurrInput.ActiveActor().BonbonInventory[i];
                 if (bObject == null) {
@@ -111,7 +122,7 @@ public partial class
                 }
             }
             CurrInput.ActiveActor().InsertBonbon(slot, bonbonObject);
-            Transition<BonbonState>();
+            Debug.Log("Bonbon: " + CurrInput.ActiveActor().BonbonInventory[slot]);
         }
     }
 

@@ -194,4 +194,31 @@ namespace PseudoDataStructures {
             } return array;
         }
     } /// An empty space, with a single bracket protecting this 3 AM script against an infinite, dark void... Yay ;-;
+
+    [System.Serializable]
+    public class PseudoDictionary<T1, T2> {
+
+        public T1[] Keys;
+        public T2[] Values;
+
+        public PseudoDictionary(Dictionary<T1, T2> dict) {
+
+            Keys = new T1[dict.Count];
+            Values = new T2[dict.Count];
+
+            int i = 0;
+            foreach (KeyValuePair<T1, T2> kvp in dict) {
+                Keys[i] = kvp.Key;
+                Values[i] = kvp.Value;
+                i++;
+            }
+        }
+
+        public Dictionary<T1, T2> ToDictionary() {
+            Dictionary<T1, T2> dict = new Dictionary<T1, T2>();
+            for (int i = 0; i < Keys.Length; i++) {
+                dict[Keys[i]] = Values[i];
+            } return dict;
+        }
+    }
 }

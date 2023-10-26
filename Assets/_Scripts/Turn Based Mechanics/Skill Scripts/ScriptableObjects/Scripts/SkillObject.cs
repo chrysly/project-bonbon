@@ -8,9 +8,11 @@ public class SkillObject : ScriptableObject {
     [Header("Skill Identifiers")]
     [Tooltip("The string ID of the skill. See drive for naming conventions.")]
     [SerializeField] private string skillID = "DEFAULT";
+    public string ID => skillID;
 
     [Tooltip("The name of the skill. Type how this skill name would appear in game.")]
     [SerializeField] private string skillName = "VANILLA";
+    public string Name => skillName;
 
     [Header("Skill Attributes")]
 
