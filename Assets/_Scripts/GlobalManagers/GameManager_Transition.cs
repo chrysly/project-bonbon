@@ -21,10 +21,7 @@ public partial class GameManager {
     /// Transition to the scene designated by a given index;
     /// </summary>
     /// <param name="levelIndex"> Index of the scene to load; </param>
-    public void TransitionToLevel(int levelIndex) {
-        CurrLevel = levelIndex;
-        SetActiveScene(levelIndex);
-    }
+    public void TransitionToLevel(int levelIndex) => SetActiveScene(levelIndex);
 
     /// <summary>
     /// Initiate a coroutine with the corresponding loading sequence;
