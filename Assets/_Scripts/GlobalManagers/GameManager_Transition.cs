@@ -9,8 +9,11 @@ public partial class GameManager {
 
     [SerializeField] private GameObject sliderPanel;
     [SerializeField] private Slider slider;
+    [SerializeField] private GameObject loadingCanvas;
     private float currentValue;
     private float progressMultiplier = 0.5f;
+    fadeInOut fa;
+
     public enum CoreScene {
         MainMenu = 0,
         Campfire = 1,
@@ -28,12 +31,11 @@ public partial class GameManager {
     }
 
     private void SetActiveScene(int sceneIndex) {
-        //SceneManager.LoadScene(sceneIndex);
-        Debug.Log("1");
         sliderPanel.SetActive(true);
-        Debug.Log("2");
         StartCoroutine(LoadSceneSync(sceneIndex));
-        Debug.Log("3");
+        //fa = GameObject.FindGameObjectWithTag("loading").GetComponent<fadeInOut>();
+        loadingCanvas.GetComponent<fadeInOut>().FadeIn();
+        // loadingCanvas.FadeIn();
     }
 
     IEnumerator LoadSceneSync(int sceneToLoad)
@@ -49,7 +51,32 @@ public partial class GameManager {
             {
                 operation.allowSceneActivation = true;
             }
+
+
             yield return null;
         }
     }
+    
+    void Start(){
+        SceneManager.sceneLoaded+=OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+    {
+        loadingCanvas.GetComponent<fadeInOut>().FadeOut();
+        StartCoroutine(threesec());
+        currentValue=0f;
+        
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    IEnumerator threesec(){
+        yield return new WaitForSeconds(1);
+        loadingCanvas.SetActive(false);
+    }
+
 }
