@@ -27,7 +27,7 @@ public partial class BattleStateMachine {
             }
             else {
                 Input.ResetSkill();
-                MySM.StartBattle(1f);
+                MySM.StartBattle(MySM.enemyTurnDuration);
             }
         }
         
