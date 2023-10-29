@@ -58,7 +58,7 @@ public partial class GameManager {
 
 
             yield return null;
-        } sliderPanel.SetActive(false);
+        } //sliderPanel.SetActive(false);
     }
     
     void Start(){
@@ -67,6 +67,7 @@ public partial class GameManager {
 
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {
+        //Debug.Log("here");
         loadingCanvas.GetComponent<fadeInOut>().FadeOut();
         StartCoroutine(threesec());
         currentValue=0f;
