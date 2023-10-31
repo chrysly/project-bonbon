@@ -72,7 +72,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         EffectList = new List<Effect>();
         ComputeStats();
         
-        for (int i = 0; i < GameManager.CurrLevel; i++) {
+        for (int i = 0; i < GameManager.Instance.CurrLevel; i++) {
             /// Load Skills
             foreach (SkillObject skill in data.skillMap[i]) {
                 CreateSkillAction(skill);
