@@ -8,6 +8,7 @@ public partial class BattleStateMachine {
             base.Enter(i);
             MySM.OnStateTransition.Invoke(this, Input);
             Debug.Log($"You won the battle!");
+            MySM.winCanvas.gameObject.SetActive(true);
         }
     }
 }

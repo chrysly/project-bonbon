@@ -12,6 +12,8 @@ public partial class
     [SerializeField] private EventSequencer _eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     [SerializeField] private List<Actor> actorList;
+    [SerializeField] private Canvas winCanvas;
+    [SerializeField] private Canvas loseCanvas;
     #endregion SerializeFields
 
     #region Events
@@ -64,7 +66,7 @@ public partial class
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
         bool allEnemiesDead = actorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
-        bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) && actor.Defeated);
+        bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
 
         if (allEnemiesDead) {
             CurrState.TriggerBattleWin();
