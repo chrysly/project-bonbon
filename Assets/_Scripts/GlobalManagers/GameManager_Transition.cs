@@ -8,6 +8,7 @@ public partial class GameManager {
 
     [SerializeField] private GameObject sliderPanel;
     [SerializeField] private Slider slider;
+    [SerializeField] private GameObject loadingCanvas;
     private float currentValue;
     private float progressMultiplier = 0.5f;
 
@@ -20,10 +21,7 @@ public partial class GameManager {
     /// Transition to the scene designated by a given index;
     /// </summary>
     /// <param name="levelIndex"> Index of the scene to load; </param>
-    public void TransitionToLevel(int levelIndex) {
-        CurrLevel = levelIndex;
-        SetActiveScene(levelIndex);
-    }
+    public void TransitionToLevel(int levelIndex) => SetActiveScene(levelIndex);
 
     /// <summary>
     /// Initiate a coroutine with the corresponding loading sequence;
@@ -32,6 +30,9 @@ public partial class GameManager {
     private void SetActiveScene(int sceneIndex) {
         sliderPanel.SetActive(true);
         StartCoroutine(LoadSceneSync(sceneIndex));
+        //fa = GameObject.FindGameObjectWithTag("loading").GetComponent<fadeInOut>();
+        loadingCanvas.GetComponent<fadeInOut>().FadeIn();
+        // loadingCanvas.FadeIn();
     }
 
     /// <summary>
@@ -51,7 +52,32 @@ public partial class GameManager {
             {
                 operation.allowSceneActivation = true;
             }
+
+
             yield return null;
         } sliderPanel.SetActive(false);
     }
+    
+    void Start(){
+        SceneManager.sceneLoaded+=OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
+    {
+        loadingCanvas.GetComponent<fadeInOut>().FadeOut();
+        StartCoroutine(threesec());
+        currentValue=0f;
+        
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    IEnumerator threesec(){
+        yield return new WaitForSeconds(1);
+        loadingCanvas.SetActive(false);
+    }
+
 }

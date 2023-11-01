@@ -725,6 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderPanel: {fileID: 7917357955285904693}
   slider: {fileID: 2834001420166022683}
+  loadingCanvas: {fileID: 7917357955285904693}
 --- !u!4 &830251659
 Transform:
   m_ObjectHideFlags: 0
@@ -1268,7 +1269,7 @@ RectTransform:
   m_GameObject: {fileID: 545786009435482515}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.47814998, y: 0.47814998, z: 0.47814998}
+  m_LocalScale: {x: 0.6163457, y: 0.61356276, z: 0.47814998}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1296691364359508344}
@@ -1468,7 +1469,7 @@ RectTransform:
   m_Father: {fileID: 3372351187687862022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 5.3120117, y: 0}
   m_SizeDelta: {x: 20.625, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1492,9 +1493,12 @@ GameObject:
   - component: {fileID: 6596555363815486924}
   - component: {fileID: 7944471954571678657}
   - component: {fileID: 5330179372648981229}
+  - component: {fileID: 7944471954571678659}
+  - component: {fileID: 7944471954571678660}
+  - component: {fileID: 7944471954571678661}
   m_Layer: 5
   m_Name: Loading
-  m_TagString: Untagged
+  m_TagString: loading
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1522,6 +1526,46 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
+--- !u!225 &7944471954571678659
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917357955285904693}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7944471954571678660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917357955285904693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1aa1c798a3de342a9a732a24882094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionRate: 1
+  myCanvasGroup: {fileID: 7944471954571678659}
+  fadeIn: 0
+  fadeOut: 0
+--- !u!114 &7944471954571678661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917357955285904693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 974945b1e987ec94082147f3ea550c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &8494602123810292907
 CanvasRenderer:
   m_ObjectHideFlags: 0
