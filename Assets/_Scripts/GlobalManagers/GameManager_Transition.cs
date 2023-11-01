@@ -34,7 +34,7 @@ public partial class GameManager {
         sliderPanel.SetActive(true);
         StartCoroutine(LoadSceneSync(sceneIndex));
         //fa = GameObject.FindGameObjectWithTag("loading").GetComponent<fadeInOut>();
-        loadingCanvas.GetComponent<fadeInOut>().FadeIn();
+        loadingCanvas.GetComponentInChildren<fadeInOut>(true).FadeIn();
         // loadingCanvas.FadeIn();
     }
 
