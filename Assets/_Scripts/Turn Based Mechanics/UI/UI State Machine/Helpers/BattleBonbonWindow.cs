@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class BattleBonbonWindow : MonoBehaviour {
+    public event System.Action<IEnumerator, bool> OnAnimationEndpoint;
     public IEnumerator activeUIAction = null;
 
     [SerializeField] private Transform icon;
@@ -72,6 +73,7 @@ public class BattleBonbonWindow : MonoBehaviour {
         if (activeUIAction == null) {
             if (!enable) CollapseCursor();
             activeUIAction = enable ? EnableAnimation() : DisableAnimation();
+            OnAnimationEndpoint?.Invoke(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
@@ -91,11 +93,12 @@ public class BattleBonbonWindow : MonoBehaviour {
                 yield return new WaitForSeconds(0.1f);
             }
         }
-        
+
+        var action = activeUIAction;
         activeUIAction = null;
         BonbonSelect(true);
-        
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     private IEnumerator DisableAnimation() {
@@ -116,8 +119,10 @@ public class BattleBonbonWindow : MonoBehaviour {
         tray2.DOScale(0f, animationDuration / 2);
         mainButtonIndex = -1;
 
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     public void BonbonSelect(bool directionDown) {
@@ -129,6 +134,7 @@ public class BattleBonbonWindow : MonoBehaviour {
                 activeUIAction = OperationSelect(directionDown);
             }
 
+            OnAnimationEndpoint?.Invoke(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
@@ -158,8 +164,11 @@ public class BattleBonbonWindow : MonoBehaviour {
         UpdateCursor(bonbonSlots[mainButtonIndex]);
 
         yield return new WaitForSeconds(0.1f);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     private void ToggleEmptySlot() {
@@ -215,8 +224,11 @@ public class BattleBonbonWindow : MonoBehaviour {
             UpdateCursor(bonbonOperationButtons[bonbonOperationsIndex]);
         }
         yield return new WaitForSeconds(0.1f);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     public BattleButton ConfirmButton() {
