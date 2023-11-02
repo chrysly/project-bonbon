@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class BattleTargetWindow : MonoBehaviour {
+    public event Action<IEnumerator, bool> OnAnimationEndpoint;
     private IEnumerator _activeAnimation;
 
     [SerializeField] private GameObject entityCursor;
@@ -32,6 +33,7 @@ public class BattleTargetWindow : MonoBehaviour {
     public void Select(bool down) {
         if (_activeAnimation == null) {
             _activeAnimation = SelectAction(down);
+            OnAnimationEndpoint?.Invoke(_activeAnimation, true);
             StartCoroutine(_activeAnimation);
         }
     }
@@ -48,8 +50,11 @@ public class BattleTargetWindow : MonoBehaviour {
 
         activeCursor.DOMove(targets[activeIndex].transform.position, moveDuration);
         yield return new WaitForSeconds(moveDuration);
+
+        var action = _activeAnimation;
         _activeAnimation = null;
-        yield return null;
+
+        OnAnimationEndpoint(action, false);
     }
 
     public Actor Confirm() {
