@@ -597,6 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d539a5202d532040b5849c28ab03a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelIndeces: 0100000005000000
   sliderPanel: {fileID: 7266787990502868890}
   slider: {fileID: 8214438717909672025}
   loadingCanvas: {fileID: 7266787990502868890}
