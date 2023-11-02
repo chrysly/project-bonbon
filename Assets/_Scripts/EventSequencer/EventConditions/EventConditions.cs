@@ -17,7 +17,7 @@ public class EventConditions {
         /// <summary>
         /// A that must be passed for an event to start
         /// </summary>
-        public virtual bool Check(AIActionValue package) {
+        public virtual bool Check(AIActionValue package, BattleStateMachine.BattleState state = null) {
             return true;
         }
     }
@@ -29,7 +29,7 @@ public class EventConditions {
     public class DamageCondition : Condition {
         public CharacterData character;
         public int damage;
-        public override bool Check(AIActionValue package) {
+        public override bool Check(AIActionValue package, BattleStateMachine.BattleState state = null) {
             if (package.target.name == character.name && package.immediateDamage >= damage) {
                 return true;
             }
@@ -44,13 +44,12 @@ public class EventConditions {
     [Serializable]
     public class TurnNumberCondition : Condition {
         public int turnNum;
-        public override bool Check(AIActionValue package) {
+        public override bool Check(AIActionValue package, BattleStateMachine.BattleState state = null) {
             if (package.currentTurn == turnNum) {
                 return true;
             }
             return false;
         }
-
     }
 }
 

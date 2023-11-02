@@ -23,7 +23,7 @@ MonoBehaviour:
     - Keys:
       - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
       Values:
-      - animationTrigger: 
+      - animationTrigger: _Attack
         vfxPrefab: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
