@@ -3,12 +3,11 @@ using System;
 public class TurnValueHandler : IComparable<TurnValueHandler> {
     private const ushort DefaultActionMeter = 10000;
     public int ActionMeter;
-    public int Speed {get; private set;}
+    public int Speed => Actor != null ? Actor.Data.BaseSpeed : 0;
     public Actor Actor;
 
     public TurnValueHandler(Actor actor) {
         Actor = actor;
-        Speed = actor.Data.BaseSpeed;
         ActionMeter = DefaultActionMeter;
     }
 
