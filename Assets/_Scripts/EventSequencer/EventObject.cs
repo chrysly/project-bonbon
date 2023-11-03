@@ -29,7 +29,6 @@ public class EventObject : ScriptableObject {
     /// what happens when an event is called
     /// </summary>
     public virtual void OnTrigger() {
-        Debug.Log("here2");
         DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
     }
 

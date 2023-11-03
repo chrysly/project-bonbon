@@ -188,10 +188,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a3c2dbb94c61a4e9abb8f1d5afb79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bsm: {fileID: 6162223603595957290}
   eventSequence:
   - {fileID: 11400000, guid: 9db59b9c6d6422840b24eff3c4934c45, type: 2}
   - {fileID: 11400000, guid: 1e4be29a6af61d44d9134ded816f2554, type: 2}
   onStartEvent: {fileID: 11400000, guid: 4b34fcdf418c426419d98269a58ce54d, type: 2}
+  onWinEvent: {fileID: 0}
 --- !u!1 &6789311938255744618
 GameObject:
   m_ObjectHideFlags: 0

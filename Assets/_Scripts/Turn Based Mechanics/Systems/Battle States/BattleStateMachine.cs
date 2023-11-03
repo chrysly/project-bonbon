@@ -56,8 +56,8 @@ public partial class
     // jasmine's jank asf code whooo
     public void OnStart() {
         // hard coded bc it's fcking 5am fml
-        _eventSequencer.StartEvent();
-        ToggleMachine(true);
+        //_eventSequencer.StartEvent();
+
         StartBattle();
     }
 
