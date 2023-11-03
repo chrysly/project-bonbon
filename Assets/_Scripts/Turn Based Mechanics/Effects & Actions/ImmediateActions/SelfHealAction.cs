@@ -20,8 +20,8 @@ public class SelfHealAction : ImmediateAction.SkillOnly {
         actionValue.immediateHeal += computedHeal;
     }
 
-    public override void Use(StatIteration activeData, Actor target = null, SkillAugment augment = null) {
-        int computedHeal = activeData.ComputePotency(healAmount) + (augment != null ? augment.healBoost : 0);
+    public override void Use(StatIteration activeData, Actor target = null) {
+        int computedHeal = activeData.ComputePotency(healAmount);
         activeData.Actor.RestoreHitpoints(computedHeal);
     }
 

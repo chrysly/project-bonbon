@@ -20,8 +20,8 @@ public class HealAction : ImmediateAction.Generic {
         actionValue.immediateHeal += computedHeal;
     }
 
-    public override void Use(StatIteration activeData, Actor target, SkillAugment augment) {
-        int computedHeal = activeData.ComputePotency(healAmount) + (augment != null ? augment.healBoost : 0); ;
+    public override void Use(StatIteration activeData, Actor target) {
+        int computedHeal = activeData.ComputePotency(healAmount);
         target.RestoreHitpoints(computedHeal);
     }
 

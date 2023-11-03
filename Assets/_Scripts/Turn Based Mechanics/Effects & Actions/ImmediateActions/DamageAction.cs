@@ -21,8 +21,8 @@ public class DamageAction : ImmediateAction.Generic {
         actionValue.immediateDamage += computedDamage;
     }
 
-    public override void Use(StatIteration activeData, Actor target, SkillAugment augment) {
-        int computedDamage = activeData.ComputePotency(damageAmount) + (augment != null ? augment.damageBoost : 0);
+    public override void Use(StatIteration activeData, Actor target) {
+        int computedDamage = activeData.ComputePotency(damageAmount);
         target.DepleteHitpoints(computedDamage);
 
         // knock off bonbons % chance ---

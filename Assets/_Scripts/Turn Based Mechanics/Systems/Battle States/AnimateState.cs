@@ -5,8 +5,6 @@ using UnityEngine;
 public partial class BattleStateMachine {
     public class AnimateState : BattleState {
 
-        private Movement _movement = new Movement();    //potato code
-        
         public override void Enter(BattleStateInput i) {
             base.Enter(i);
             Debug.Log("Entering animate state");
@@ -24,10 +22,8 @@ public partial class BattleStateMachine {
             if (MySM._eventSequencer.RunNextEvent()) {
                 MySM.ToggleMachine(true);
                 Input.ResetSkill();
-            }
-            else {
+            } else {
                 Input.ResetSkill();
-                MySM.StartBattle(MySM.enemyTurnDuration);
             }
         }
         

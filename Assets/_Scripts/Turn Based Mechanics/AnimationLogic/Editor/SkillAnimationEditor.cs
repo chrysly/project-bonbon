@@ -93,7 +93,9 @@ public class SkillAnimationEditor : EditorWindow {
                                             GUI.color = UIColors.DarkRed;
                                             GUILayout.Label("Invalid Animator Assignment;");
                                             GUI.color = Color.white;
-                                        } break;
+                                        } selectedAnimation.SetAnimationDuration(EditorGUILayout.FloatField("Animation Length", selectedAnimation.AnimationDuration));
+                                        selectedAnimation.SetHitDelay(EditorGUILayout.FloatField("Hit Delay", selectedAnimation.HitDelay));
+                                        break;
                                     case SectionType.VFX:
                                         selectedAnimation.SetVFXPrefab(EditorGUILayout.ObjectField(selectedAnimation.VFXPrefab,
                                                                                                    typeof(GameObject), false) as GameObject);

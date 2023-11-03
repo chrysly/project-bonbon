@@ -24,8 +24,8 @@ public class SkillObject : ScriptableObject {
 
     public bool aoe = false;
 
-    public void PerformActions(StatIteration casterData, Actor target, SkillAugment augment = null) {
-        foreach (ImmediateAction action in immediateActions) action.Use(casterData, target, augment);
+    public void PerformActions(StatIteration casterData, Actor target) {
+        foreach (ImmediateAction action in immediateActions) action.Use(casterData, target);
     }
 
     /// <summary>
