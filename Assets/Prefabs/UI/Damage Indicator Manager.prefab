@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7260921506324576124
+--- !u!1 &6515273819907996428
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3179222093997859122}
-  - component: {fileID: 4920214201999903622}
+  - component: {fileID: 5151139650800840573}
+  - component: {fileID: 449946578297865566}
   m_Layer: 0
   m_Name: Damage Indicator Manager
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3179222093997859122
+--- !u!4 &5151139650800840573
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7260921506324576124}
+  m_GameObject: {fileID: 6515273819907996428}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4920214201999903622
+--- !u!114 &449946578297865566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7260921506324576124}
+  m_GameObject: {fileID: 6515273819907996428}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef86581dec390674e89c1b2939cb7b81, type: 3}
@@ -47,4 +47,4 @@ MonoBehaviour:
   textPrefab: {fileID: 1086587533687293907, guid: cf3069645cdd68349a5dab254851511f, type: 3}
   stateMachine: {fileID: 0}
   textDelay: 1
-  textDuration: 0.5
+  textDuration: 1
