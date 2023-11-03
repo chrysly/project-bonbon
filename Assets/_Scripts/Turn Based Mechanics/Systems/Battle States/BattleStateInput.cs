@@ -6,8 +6,9 @@ using static BattleStateMachine;
 public class BattleStateInput : StateInput {
 
     #region Global Variables
-    private List<Actor> turnQueue;
-    private int currActorIndex = 0;
+    private TurnOrderHandler turnHandler;
+    private Actor currActor;
+    public List<Actor> TurnQueue => turnHandler != null ? turnHandler.GetTurnDisplay() : null;
     private int currentTurn = 0;
     #endregion Global Variables
 
@@ -41,8 +42,9 @@ public class BattleStateInput : StateInput {
 
     public void Initialize() { }
 
-    public void InsertTurnQueue(List<Actor> queue) {
-        turnQueue = queue;
+    public void InsertTurnHandler(TurnOrderHandler toh) {
+        turnHandler = toh;
+        currActor = turnHandler.GetTurnDisplay()[0];
     }
 
     public void OpenBonbonFactory(BonbonFactory bonbonFactory) {
@@ -51,25 +53,22 @@ public class BattleStateInput : StateInput {
     }
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>
-    public void AdvanceTurn() 
-    {
+    public void AdvanceTurn() {
+        turnHandler.Advance();
+        currentTurn++;
+    }
+    /*
+        {
         Actor initialActor = ActiveActor();
         do {
             currActorIndex = (currActorIndex + 1) % turnQueue.Count;
         } while (ActiveActor().Defeated && !initialActor.Equals(ActiveActor()));
         currentTurn++;
-    }
+    }*/
 
-    public Actor ActiveActor() {
-        return turnQueue[currActorIndex];
-    }
+    public Actor ActiveActor() => currActor;
 
     public int CurrTurn() {
         return currentTurn;
-    }
-
-    public List<Actor> GetTurnQueue()
-    {
-        return turnQueue;
     }
 }

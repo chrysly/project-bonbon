@@ -17,7 +17,7 @@ public class PanGoBurr : MonoBehaviour
         timer += Time.deltaTime;
 
         if (timer > timeUntilLoad && keepGoing) {
-            GameManager.Instance.TransitionToLevel(GameManager.Instance.CurrLevel + 1);
+            GameManager.Instance.TransitionToNext();
             keepGoing = false;
         }
     }
