@@ -20,12 +20,11 @@ public partial class
     public event StateTransition OnStateTransition;
 
     #endregion Events
-    
+
     protected override void SetInitialState() {
         SetState<BattleStart>();
-        actorList.Sort();       //sort by lowest speed
-        actorList.Reverse();    //highest speed = higher priority
-        CurrInput.InsertTurnQueue(actorList);
+        TurnOrderHandler toh = new TurnOrderHandler(actorList);
+        CurrInput.InsertTurnHandler(toh);
         CurrInput.OpenBonbonFactory(bonbonFactory);
     }
 
@@ -64,7 +63,7 @@ public partial class
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
         bool allEnemiesDead = actorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
-        bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) && actor.Defeated);
+        bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
 
         if (allEnemiesDead) {
             CurrState.TriggerBattleWin();
@@ -145,8 +144,5 @@ public partial class
     #endregion
 
     // idk if this is ok
-    public List<Actor> GetActors()
-    {
-        return actorList;
-    }
+    public List<Actor> GetActors() => CurrInput.TurnQueue;
 }
