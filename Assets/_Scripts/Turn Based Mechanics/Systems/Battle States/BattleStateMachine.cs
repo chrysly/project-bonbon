@@ -56,6 +56,7 @@ public partial class
 
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
+        CurrInput.ResetSkill();
         bool allEnemiesDead = actorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
         bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
 

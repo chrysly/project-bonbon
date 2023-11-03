@@ -16,8 +16,8 @@ public partial class BattleStateMachine {
             base.Update();
             Actor actor = _selectManager.CheckForSelect();
             if (actor != null) {
-                 Input.UpdateSkill(null, new Actor[] { actor });
-                 MySM.Transition<AnimateState>();
+                Input.UpdateSkill(null, new Actor[] { actor });
+                MySM.Transition<AnimateState>();
             }
         }
 

@@ -9,7 +9,6 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
     public event StateTransition OnStateTransition ;
 
     public new delegate void StaminaConsumption(BattleUIStateInput input);
-
     public event StaminaConsumption OnStaminaConsumption;
 
     protected override void Start() {
