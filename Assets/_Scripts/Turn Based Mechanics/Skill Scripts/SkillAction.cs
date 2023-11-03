@@ -14,9 +14,9 @@ public class SkillAction {
         SkillIndex = skillIndex;
     }
 
-    public AIActionValue ComputeSkillActionValues(Actor target, int currTurn, BonbonBlueprint bonbon = null) {
+    public AIActionValue ComputeSkillActionValues(Actor target, int currTurn, BonbonObject bonbon = null) {
         AIActionValue actionValue = new AIActionValue();
-        SkillData.ComputeActionValues(ref actionValue, bonbon == null ? target.ActiveData : target.ActiveData.Augment(bonbon.augmentData));
+        SkillData.ComputeActionValues(ref actionValue, bonbon == null ? target.ActiveData : target.ActiveData.Augment(bonbon.Data.augmentData));
         actionValue.immediateDamage = target.ActiveData.ComputeDefense(actionValue.immediateDamage);
         actionValue.damageOverTime = target.ActiveData.ComputeDefense(actionValue.damageOverTime);
         //actionValue.caster = target.ActiveData. aaa
