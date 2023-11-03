@@ -8,7 +8,7 @@ public partial class
 
     #region SerializeFields
     [SerializeField] private BonbonFactory bonbonFactory;
-    [SerializeField] private BattleUIStateMachine _uiStateMachine;
+    [SerializeField] public BattleUIStateMachine uiStateMachine;
     [SerializeField] private EventSequencer _eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     [SerializeField] private List<Actor> actorList;
@@ -83,6 +83,7 @@ public partial class
     /// </summary>
     public void ContinueBattle() {
         ToggleMachine(false);
+        uiStateMachine.ToggleMachine(false);
         if (CurrState is AnimateState) {
             StartBattle(0.3f);
         } else StartBattle();
