@@ -16,7 +16,7 @@ public class StaminaChangeAction : ImmediateAction.Generic {
         this.staminaAmount = staminaAmount;
     }
 
-    public override void Use(StatIteration activeData, Actor target = null, SkillAugment augment = null) {
+    public override void Use(StatIteration activeData, Actor target = null) {
         target.RefundStamina(staminaAmount);
     }
 

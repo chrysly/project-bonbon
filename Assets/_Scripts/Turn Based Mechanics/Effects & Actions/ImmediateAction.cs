@@ -21,7 +21,7 @@ public abstract class ImmediateAction {
     /// </summary>
     /// <param name="activeData"> Active data of the casting actor; </param>
     /// <param name="target"> Target actor for the skill; </param>
-    public abstract void Use(StatIteration activeData, Actor target = null, SkillAugment augment = null);
+    public abstract void Use(StatIteration activeData, Actor target = null);
 
     #if UNITY_EDITOR
 

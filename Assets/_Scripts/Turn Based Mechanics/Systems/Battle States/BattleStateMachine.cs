@@ -32,6 +32,7 @@ public partial class
     protected override void Start() {
         base.Start();
         _eventSequencer.OnEventTerminate += ContinueBattle;
+        StartCoroutine(StartGame(1.75f));
     }
 
     protected override void Init() {
@@ -52,14 +53,6 @@ public partial class
     }
 
     #region State Handlers
-    
-    // jasmine's jank asf code whooo
-    public void OnStart() {
-        // hard coded bc it's fcking 5am fml
-        //_eventSequencer.StartEvent();
-
-        StartBattle();
-    }
 
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
@@ -147,4 +140,9 @@ public partial class
 
     // idk if this is ok
     public List<Actor> GetActors() => CurrInput.TurnQueue;
+
+    private IEnumerator StartGame(float duration) {
+        yield return new WaitForSeconds(duration);
+        StartBattle();
+    }
 }
