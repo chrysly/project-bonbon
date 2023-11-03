@@ -23,8 +23,9 @@ public partial class
 
     protected override void SetInitialState() {
         SetState<BattleStart>();
-        TurnOrderHandler toh = new TurnOrderHandler(actorList);
-        CurrInput.InsertTurnHandler(toh);
+        actorList.Sort();       //sort by lowest speed
+        actorList.Reverse();    //highest speed = higher priority
+        CurrInput.InsertTurnQueue(actorList);
         CurrInput.OpenBonbonFactory(bonbonFactory);
     }
 

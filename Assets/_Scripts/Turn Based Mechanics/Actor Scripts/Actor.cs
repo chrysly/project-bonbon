@@ -124,13 +124,18 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         damage = ActiveData.ComputeDefense(damage);
 
         if (_hitpoints - damage <= 0) {
-            _hitpoints = 0;
-            ApplyState(ActorState.Fainted);
-            Debug.Log($"{data.DisplayName} has fallen!");
+            Faint();
             return true;
         }
         _hitpoints -= damage;
         return false;
+    }
+
+    private void Faint() {
+        _hitpoints = 0;
+        ApplyState(ActorState.Fainted);
+        Debug.Log($"{data.DisplayName} has fallen!");
+        gameObject.SetActive(false);
     }
 
     //Returns true if over maximum hitpoints.

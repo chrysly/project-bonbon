@@ -9,7 +9,9 @@ public class ActorData : ScriptableObject
     
     [Tooltip("As displayed in game.")]
     [SerializeField] private string displayName = "Dummy";
-    
+
+    [SerializeField] private Sprite portrait;
+
     [Tooltip("See programming guidelines for ID conventions.")]
     [SerializeField] private string id;
     
@@ -36,6 +38,7 @@ public class ActorData : ScriptableObject
     public ArrayArray<BonbonBlueprint> bonbonMap;
 
     public string DisplayName => displayName;
+    public Sprite Portrait => portrait;
     public string ID => id;
     public int MaxHitpoints => maxHitpoints;
     public int BasePotency => basePotency;
