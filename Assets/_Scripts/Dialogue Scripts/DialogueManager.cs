@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     //References
     DialogueRunner _dialogueRunner;
     CustomDialogueView _dialogueView;
+    VoiceOverView _voiceOverView;
     YarnProject _yarnProject;
 
     [Header("References")]
@@ -55,6 +56,7 @@ public class DialogueManager : MonoBehaviour
         _dialogueRunner = GetComponent<DialogueRunner>();
         _yarnProject = _dialogueRunner.yarnProject;
         _dialogueView = (CustomDialogueView) _dialogueRunner.dialogueViews[0];
+        _voiceOverView = (VoiceOverView) _dialogueRunner.dialogueViews[1];
         _dialogueTransform = GameObject.Find("Dialogue Transform").GetComponent<RectTransform>();
         float transformScale = Mathf.Round(Screen.width * 0.00113122f * 100f)/100f;
         _dialogueTransform.localScale = new Vector3 (transformScale, transformScale, 1);
@@ -69,6 +71,9 @@ public class DialogueManager : MonoBehaviour
         {
             if (readingDialogue)
             {
+                // Order Matters here since interrupts are invoked sequentially
+                // let voiceOverView know to finish voice log then skip to next dialogue text
+                _voiceOverView.UserRequestedViewAdvancement();
                 _dialogueView.UserRequestedViewAdvancement();
                 AdvanceDialogue();
             } 
