@@ -4,7 +4,11 @@
     "**/*.yarn"
   ],
   "excludeFiles": [],
-  "localisation": {},
+  "localisation": {
+    "en": {
+      "assets": "${UnityProjectRoot}/Assets/Sound Assets/Dialogue Voices/EN"
+    }
+  },
   "baseLanguage": "en",
   "compilerOptions": {}
 }

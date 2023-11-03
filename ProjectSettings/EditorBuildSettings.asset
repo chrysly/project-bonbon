@@ -26,4 +26,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dreamhack/Level 2 M2.unity
     guid: 5100592f24dba3e4a84ca169135f784a
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: d46b53ad6da5a094b9846d2610049f54, type: 2}
