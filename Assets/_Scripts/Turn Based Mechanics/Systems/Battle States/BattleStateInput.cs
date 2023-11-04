@@ -47,7 +47,7 @@ public class BattleStateInput : StateInput {
 
     public void OpenBonbonFactory(BonbonFactory bonbonFactory) {
         BonbonFactory = bonbonFactory;
-        BonbonFactory.OpenFactory(GameManager.CurrLevel);
+        BonbonFactory.OpenFactory(GameManager.Instance.CurrLevel);
     }
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>

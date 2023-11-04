@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class BattleSkillWindow : MonoBehaviour
 {
+    public event System.Action<IEnumerator, bool> OnAnimationEndpoint;
     public IEnumerator activeUIAction = null;
 
     [SerializeField] private Transform icon;
@@ -57,6 +58,7 @@ public class BattleSkillWindow : MonoBehaviour
     public void ToggleMainDisplay(bool enable) {
         if (activeUIAction == null) {
             activeUIAction = enable ? EnableAnimation() : DisableAnimation();
+            OnAnimationEndpoint?.Invoke(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
@@ -79,10 +81,11 @@ public class BattleSkillWindow : MonoBehaviour
             obj.transform.DOScaleX(1f, animationDuration);
             yield return new WaitForSeconds(animationDuration / 2);
         }
-
+        var action = activeUIAction;
         activeUIAction = null;
         ButtonSelect(true);
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     private IEnumerator DisableAnimation() {
@@ -93,13 +96,17 @@ public class BattleSkillWindow : MonoBehaviour
         yield return new WaitForSeconds(animationDuration / 2);
         icon.DOScale(0f, animationDuration);
         display.DOScaleY(0f, animationDuration);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     public void ButtonSelect(bool downwards) {
         if (activeUIAction == null) {
             activeUIAction = ButtonSelectAction(downwards);
+            OnAnimationEndpoint?.Invoke(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
@@ -126,8 +133,11 @@ public class BattleSkillWindow : MonoBehaviour
         }
 
         yield return new WaitForSeconds(animationDuration / 2);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     public SkillAction ConfirmSkill() {

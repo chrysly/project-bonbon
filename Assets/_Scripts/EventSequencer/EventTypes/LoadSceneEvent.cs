@@ -8,6 +8,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New EventObject", menuName ="Event System/LoadSceneEvent" )]
 public class LoadSceneEvent : EventObject {
     public override void OnEventEnd() {
-        GameManager.Instance.TransitionToLevel(GameManager.CurrLevel + 1);
+        GameManager.Instance.TransitionToNext();
     }
 }

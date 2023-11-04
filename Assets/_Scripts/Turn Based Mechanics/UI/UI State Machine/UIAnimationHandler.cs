@@ -14,9 +14,36 @@ public class UIAnimationHandler : MonoBehaviour {
     [SerializeField] private BattleUIStateMachine _stateMachine;
     [SerializeField] private Canvas mainCanvas;
 
+    private Dictionary<IEnumerator, Coroutine> coroutineDict;
+
+    void Awake() {
+        coroutineDict = new Dictionary<IEnumerator, Coroutine>();
+    }
+
     public void Start() {
         DisableAll();
         cursor.gameObject.SetActive(false);
+        skillWindow.OnAnimationEndpoint += ProcessAnimation;
+        targetWindow.OnAnimationEndpoint += ProcessAnimation;
+        bonbonWindow.OnAnimationEndpoint += ProcessAnimation;
+        ingredientWindow.OnAnimationEndpoint += ProcessAnimation;
+    }
+
+    public void ProcessAnimation(IEnumerator animation, bool start) {
+        if (start) {
+            coroutineDict[animation] = StartCoroutine(LockUI());
+        } else {
+            StopCoroutine(coroutineDict[animation]);
+            coroutineDict.Remove(animation);
+            if (coroutineDict.Count == 0) _stateMachine.UnlockUI();
+        }
+    }
+
+    private IEnumerator LockUI() {
+        while (true) {
+            _stateMachine.LockUI();
+            yield return null;
+        }
     }
 
     private void LateUpdate() {
@@ -49,10 +76,11 @@ public class UIAnimationHandler : MonoBehaviour {
         if (QueueIsEmpty()) {
             if (enable) mainPanel.gameObject.SetActive(true);
             activeUIAction = MainPanelAction(enable, force);
+            ProcessAnimation(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
-    
+
     private IEnumerator MainPanelAction(bool enable, bool force) {
         //mainPanel.DOFade(enable ? 1 : 0, mainPanelToggleDuration); FADE
         if (!enable) CollapseCursor();
@@ -81,15 +109,20 @@ public class UIAnimationHandler : MonoBehaviour {
                 //decoration.gameObject.SetActive(false);
             }
         }
+
+        var action = activeUIAction;
         activeUIAction = null;
+
         if (!enable) mainPanel.gameObject.SetActive(false);
         else SelectMainPanelButton(true);
-        yield return null;
+
+        ProcessAnimation(action, false);
     }
 
     public void SelectMainPanelButton(bool directionDown) {
         if (activeUIAction == null) {
             activeUIAction = SelectMainPanelButtonAction(directionDown);
+            ProcessAnimation(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
@@ -111,8 +144,11 @@ public class UIAnimationHandler : MonoBehaviour {
         UpdateCursor(mainPanelButtons[mainButtonIndex]);
 
         yield return new WaitForSeconds(mainPanelButtonScaleDuration);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        ProcessAnimation(action, false);
     }
 
     private void InitCursor() {
