@@ -1,5 +1,1049 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5938412e-5f52-4830-88a0-72e3ee58e7c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_01.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_01.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_01_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_01_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_01_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_01_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_02.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_02.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_02_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_02_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_02_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_02_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_03.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_03.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_03_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_03_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_03_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_03_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_04.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_04.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_04_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_04_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_04_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_04_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_05.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_05.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_05_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_05_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_05_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_05_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_06.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_06.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_06.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_06_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_06_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_06_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Day_06_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_01.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_01.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_01_Moonless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_01_Moonless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_01_Moonless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_01_Moonless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_02.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_02.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_02_Moonless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_02_Moonless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_02_Moonless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_02_Moonless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_03.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_03.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_03_Moonless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_03_Moonless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_03_Moonless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/Classic/FS000_Night_03_Moonless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Day_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Day_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Day_Sunless_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Day_Sunless_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Night_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Night_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Night_Moonless_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Night_Moonless_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Rainy_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Rainy_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Snowy_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Snowy_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Sunrise_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Sunrise_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Sunset_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/FS002_Sunset_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Day_Sunless_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Night_Moonless_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Rainy_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Snowy_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunrise_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS002/Images/FS002_Sunset_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Day_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Day_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Day_Sunless_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Day_Sunless_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Night_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Night_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Night_Moonless_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Night_Moonless_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Rainy_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Rainy_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Snowy_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Snowy_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Sunrise_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Sunrise_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Sunset_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/FS003_Sunset_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Day_Sunless_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Night_Moonless_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Rainy_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Snowy_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunrise_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS003/Images/FS003_Sunset_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Day_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Day_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Day_Sunless_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Day_Sunless_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Night_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Night_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Night_Moonless_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Night_Moonless_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Rainy_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Rainy_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Snowy_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Snowy_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Sunrise_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Sunrise_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Sunset_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/FS013_Sunset_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Day_Sunless_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Night_Moonless_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Rainy_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Snowy_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunrise_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS013/Images/FS013_Sunset_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Day_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Day_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Day_Sunless_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Day_Sunless_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Night_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Night_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Night_Moonless_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Night_Moonless_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Rainy_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Rainy_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Snowy_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Snowy_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Sunrise_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Sunrise_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Sunset_Cubemap.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/FS017_Sunset_Cubemap.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Day_Sunless_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Night_Moonless_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Rainy_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Snowy_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunrise_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap.cubemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap.cubemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_back.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_front.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_front.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Cubemaps/FS017/Images/FS017_Sunset_Cubemap_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Day.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Day.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Day.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Day.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Day_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Day_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Day_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Day_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Night.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Night.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Night.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Night.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Night_Moonless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Night_Moonless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Night_Moonless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Night_Moonless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Rainy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Rainy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Rainy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Rainy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Snowy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Snowy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Snowy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Snowy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunrise.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunrise.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunrise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunrise.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunset.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunset.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunset.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS002/FS002_Sunset.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Day.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Day.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Day.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Day.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Day_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Day_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Day_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Day_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Night.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Night.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Night.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Night.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Night_Moonless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Night_Moonless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Night_Moonless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Night_Moonless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Rainy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Rainy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Rainy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Rainy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Snowy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Snowy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Snowy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Snowy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Sunrise.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Sunrise.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Sunrise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Sunrise.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Sunset.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Sunset.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Sunset.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS003/FS003_Sunset.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Day_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Night.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Night.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Night.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Night.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Night_Moonless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Night_Moonless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Night_Moonless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Night_Moonless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Rainy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Rainy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Rainy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Rainy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Snowy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Snowy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Snowy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Snowy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunrise.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunrise.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunrise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunrise.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunset.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunset.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunset.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS013/FS013_Sunset.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day_Sunless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day_Sunless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day_Sunless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Day_Sunless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night_Moonless.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night_Moonless.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night_Moonless.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Night_Moonless.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Rainy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Rainy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Rainy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Rainy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Snowy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Snowy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Snowy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Snowy.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunrise.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunrise.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunrise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunrise.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunset.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunset.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunset.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Panoramics/FS017/FS017_Sunset.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Readme.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/ReleaseNotes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/ReleaseNotes.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Brush_Flower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Brush_Flower.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Brush_Grass_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Brush_Grass_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Brush_Grass_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Brush_Grass_02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain/LightingData.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain/LightingData.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain/Lightmap-0_comp_dir.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain/Lightmap-0_comp_dir.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain/Lightmap-0_comp_light.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain/Lightmap-0_comp_light.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain/ReflectionProbe-0.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo with terrain/ReflectionProbe-0.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo without test terrain.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Demo without test terrain.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/SampleTerrain.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/SampleTerrain.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/TerrainDirt.terrainlayer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/TerrainDirt.terrainlayer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/TerrainGrass.terrainlayer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/TerrainGrass.terrainlayer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/TerrainRock.terrainlayer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/TerrainRock.terrainlayer.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Dirt_Diffuse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Dirt_Diffuse.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Dirt_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Dirt_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Grass_Diffuse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Grass_Diffuse.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Grass_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Grass_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Rock_Diffuse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texture_Rock_Diffuse.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texure_Rock_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Fantasy Skybox FREE/Scenes/Texure_Rock_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_03_Day_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_03_Day_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_11_morning_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_11_morning_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_15_Day_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_15_Day_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_18_day_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_Anime_18_day_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_LowPoly_01_Day_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_LowPoly_01_Day_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_LowPoly_02_Night_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Materials/Sky_LowPoly_02_Night_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_Anime_03_Day_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_Anime_03_Day_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_Anime_11_morning_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_Anime_11_morning_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_Anime_15_Day_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_Anime_15_Day_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_Anime_18_day_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_Anime_18_day_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_LowPoly_01_Day_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_LowPoly_01_Day_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_LowPoly_02_Night_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/CubeMap/Textures/Sky_LowPoly_02_Night_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Morning.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Morning.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_Anime_03_Day_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_Anime_03_Day_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_Anime_11_morning_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_Anime_11_morning_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_Anime_15_Day_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_Anime_15_Day_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_Anime_18_day_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_Anime_18_day_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_LowPoly_01_Day_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_LowPoly_01_Day_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_LowPoly_02_Night_a.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Materials/Sky_LowPoly_02_Night_a.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_Anime_03_Day_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_Anime_03_Day_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_Anime_11_morning_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_Anime_11_morning_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_Anime_15_Day_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_Anime_15_Day_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_Anime_18_day_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_Anime_18_day_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_LowPoly_01_Day_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_LowPoly_01_Day_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_LowPoly_02_Night_a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Panoramic/Textures/Sky_LowPoly_02_Night_a.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/ReadMe.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/ReadMe.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Scene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Free Stylized Skybox/Scene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/6SidedFluffball.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/6SidedFluffball.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/6SidedMegaSun.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/6SidedMegaSun.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/6sidedCosmicCoolCloud.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/6sidedCosmicCoolCloud.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/AmbienceExposure.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/AmbienceExposure.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/CasualDay.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/CasualDay.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/CloudedSunGlow.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/CloudedSunGlow.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/Cloudymorning.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/Cloudymorning.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/CoriolisNight4k.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/CoriolisNight4k.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/CosmicCoolCloud_Eq.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/CosmicCoolCloud_Eq.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/DarkStorm.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/DarkStorm.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/DayInTheClouds.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/DayInTheClouds.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/AmbienceExposure.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/AmbienceExposure.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/CasualDay.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/CasualDay.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/CloudyMorning.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/CloudyMorning.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/CosmicCoolCloud.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/CosmicCoolCloud.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/DarkStorm.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/DarkStorm.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/DayInTheClouds.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/DayInTheClouds.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/Daylightfreebiedemo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/Daylightfreebiedemo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/HighFantasy.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/HighFantasy.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/MidNightFreebieDemo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/MidNightFreebieDemo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/PlanetaryFreebie.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/PlanetaryFreebie.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/2_10.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/2_10.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/4_10.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/4_10.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/6_10.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/6_10.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/8_10.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/8_10.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/DemoObjects.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/DemoObjects.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/Full.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SceneObjects/Full.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SkyhighFreebieDemo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SkyhighFreebieDemo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SundownFreebieDemo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SundownFreebieDemo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SunlessFreebieDemo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/SunlessFreebieDemo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/UnEarthlyRed.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/UnEarthlyRed.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/UnderTheSea.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/ExampleScenes/UnderTheSea.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FluffballDay.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FluffballDay.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/AmbienceExposure4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/AmbienceExposure4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CasualDay4K.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CasualDay4K.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CloudedSunGlow4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CloudedSunGlow4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/Cloudymorning4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/Cloudymorning4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CoriolisNight4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CoriolisNight4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudBack.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudBack.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudBottom.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudBottom.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudEQ_hdr.exr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudEQ_hdr.exr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudFront.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudFront.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudLeft.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudLeft.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudRight.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudRight.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudTop.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/CosmicCoolCloudTop.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/DarkStorm4K.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/DarkStorm4K.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/DayInTheClouds4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/DayInTheClouds4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDay4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDay4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayBack.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayBack.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayBottom.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayBottom.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayFront.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayFront.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayLeft.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayLeft.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayRight.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayRight.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayTop.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/FluffballDayTop.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/HighFantasy4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/HighFantasy4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSun4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSun4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunBack.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunBack.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunBottom.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunBottom.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunFront.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunFront.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunLeft.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunLeft.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunRight.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunRight.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunTop.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/MegaSunTop.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/PlanetaryEarth4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/PlanetaryEarth4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/SkyhighFluffycloudField4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/SkyhighFluffycloudField4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/SunlessCirruscover4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/SunlessCirruscover4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/UnderTheSea4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/UnderTheSea4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/UnearthlyRed4k.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/FreebieHdri/UnearthlyRed4k.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/Hdri setup.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/Hdri setup.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/HighFantasy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/HighFantasy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/MegaSun.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/MegaSun.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/PlanetaryEarth.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/PlanetaryEarth.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/SkyhighFluffycloudField.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/SkyhighFluffycloudField.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/SunlessCirruscover.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/SunlessCirruscover.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/UnderTheSea4k.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/UnderTheSea4k.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/UnearthlyRed.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/UnearthlyRed.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/Wheat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/SkySeries Freebie/Wheat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Cubemaps.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Cubemaps/daytime.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Cubemaps/daytime.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Cubemaps/sunset.hdr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Cubemaps/sunset.hdr.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Materials/Skybox_Daytime.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Materials/Skybox_Daytime.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Materials/Skybox_Sunset.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Materials/Skybox_Sunset.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Scene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Scene/mainScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Scene/mainScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Scene/mainSceneSettings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Skybox/Scene/mainSceneSettings.lighting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_camp2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_camp2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_combat1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_combat1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Render Pipeline.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Render Pipeline.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2XgeLNCHxmaiNmBmESxAWdjfVln" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\vucoo\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\vucoo\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\vucoo\\AppData\\Local\\Symbols\\src"
+    ]
+  }
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity 2022.3.5f1\Editor\Unity.exe" />
@@ -38,4 +1082,21 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5938412e-5f52-4830-88a0-72e3ee58e7c3" name="Changes" comment="" />
+      <created>1699055098118</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699055098118</updated>
+      <workItem from="1699055102600" duration="738000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
 </project>
