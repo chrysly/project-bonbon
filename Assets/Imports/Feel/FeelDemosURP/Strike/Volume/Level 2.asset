@@ -18,13 +18,13 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1.05
+    m_Value: 0.74
   intensity:
     m_OverrideState: 1
     m_Value: 0.64
   scatter:
     m_OverrideState: 1
-    m_Value: 0.772
+    m_Value: 0.373
   clamp:
     m_OverrideState: 0
     m_Value: 65398.72
@@ -81,16 +81,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.6541474, g: 0.7044237, b: 0.7924528, a: 1}
+    m_Value: {r: 0.6178968, g: 0.62352943, b: 0.37254903, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.694
+    m_Value: 0.588
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.415
+    m_Value: 0.331
   rounded:
     m_OverrideState: 0
     m_Value: 0
@@ -150,10 +150,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.08
   contrast:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 20.1
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -184,7 +184,7 @@ MonoBehaviour:
     m_Value: 2
   intensity:
     m_OverrideState: 1
-    m_Value: 0.42
+    m_Value: 0.736
   clamp:
     m_OverrideState: 1
     m_Value: 0
@@ -203,10 +203,10 @@ MonoBehaviour:
   active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2
   tint:
     m_OverrideState: 1
-    m_Value: 33
+    m_Value: 18
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Level 1
+  m_Name: Level 2
   m_EditorClassIdentifier: 
   components:
   - {fileID: 849379129802519247}
@@ -289,7 +289,7 @@ MonoBehaviour:
     m_Value: 100
   redOutGreenIn:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 35
   redOutBlueIn:
     m_OverrideState: 1
     m_Value: 0

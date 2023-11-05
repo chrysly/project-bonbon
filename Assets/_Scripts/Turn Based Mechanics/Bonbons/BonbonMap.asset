@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: BonbonMap
   m_EditorClassIdentifier: 
   bonbonMap:
-    startIndeces: 0000000004000000060000000600000006000000060000000600000006000000
+    startIndeces: 0000000002000000020000000200000002000000020000000200000002000000
     secondaryElements:
-    - {fileID: 11400000, guid: 327b1f7f5736670479e455d2e97ac05b, type: 2}
-    - {fileID: 11400000, guid: 2710e95bd92df5e4986fb1b931939f93, type: 2}
     - {fileID: 11400000, guid: b213808cf87af4843b808ecfb190468c, type: 2}
     - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
-    - {fileID: 11400000, guid: 01dbbab3207bdf143a719d9f2005504a, type: 2}
-    - {fileID: 11400000, guid: 6a513e4081591c4499a53f620c47780b, type: 2}

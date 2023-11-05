@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: DefenseUpEffect
   m_EditorClassIdentifier: 
   name: +DEF
-  duration: 1
+  duration: 2
   modifiers:
     flatAttack: 0
     percentAttack: 0
     flatHeal: 0
     percentHealCast: 0
-    flatDefense: 0
-    percentDefense: 0.3
+    flatDefense: 2
+    percentDefense: 50
     flatSpeed: 0
     percentSpeed: 0
-    percentStaminaRegen: 0
+    flatStaminaRegen: 0

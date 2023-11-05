@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Strawberry
   texture: {fileID: 2800000, guid: 1b872274f949f9d459abe94a896d8488, type: 3}
-  craftStamina: 5
+  craftStamina: 15
   passiveModifiers:
     flatAttack: 0
     percentAttack: 0
@@ -24,16 +24,19 @@ MonoBehaviour:
     percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0
-    percentStaminaRegen: 0
+    flatStaminaRegen: 0
   augmentData:
-    damageBoost: 3
-    healBoost: 2
-    augmentEffects:
-    - {fileID: 11400000, guid: 3a5a30ac8c8a46446b3d9b65392b0f51, type: 2}
-    bonbonEffect: {fileID: 11400000, guid: 2b4f92bbf41fc604aafa587f51868a22, type: 2}
+    damageBoost: 6
+    healBoost: 0
+    augmentEffects: []
+    immediateActions: []
+    bonbonEffect: {fileID: 11400000, guid: 3a5a30ac8c8a46446b3d9b65392b0f51, type: 2}
     aoeOverride: 0
   recipe:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
