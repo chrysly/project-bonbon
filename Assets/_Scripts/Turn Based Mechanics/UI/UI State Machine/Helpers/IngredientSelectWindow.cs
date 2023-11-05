@@ -59,8 +59,8 @@ public class IngredientSelectWindow : MonoBehaviour
     }
     
     private IEnumerator EnableAnimation() {
-        backdrop.DOMove(ingredientDisplayPoint.position, 1f);
-        yield return new WaitForSeconds(1f);
+        backdrop.DOMove(ingredientDisplayPoint.position, .3f);
+        yield return new WaitForSeconds(.15f);
 
         foreach (BonbonBlueprint bonbon in _blueprints) {
             GameObject obj = Instantiate(ingredientPrefab, horizontalView);
