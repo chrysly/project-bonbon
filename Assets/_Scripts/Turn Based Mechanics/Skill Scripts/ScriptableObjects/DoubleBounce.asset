@@ -15,13 +15,5 @@ MonoBehaviour:
   skillID: double_bounce
   skillName: Double Bounce
   staminaCost: 20
-  immediateActions:
-  - rid: 5257609831424983040
+  targetType: 0
   aoe: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 5257609831424983040
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
-      data:
-        damageAmount: 7

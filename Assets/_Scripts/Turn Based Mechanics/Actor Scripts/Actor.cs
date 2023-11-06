@@ -135,7 +135,6 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         _hitpoints = 0;
         ApplyState(ActorState.Fainted);
         Debug.Log($"{data.DisplayName} has fallen!");
-        gameObject.SetActive(false);
     }
 
     //Returns true if over maximum hitpoints.

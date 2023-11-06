@@ -15,13 +15,5 @@ MonoBehaviour:
   skillID: straw_shot
   skillName: Straw Shot
   staminaCost: 20
-  immediateActions:
-  - rid: 5257609831424983041
+  targetType: 0
   aoe: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 5257609831424983041
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
-      data:
-        damageAmount: 7

@@ -23,8 +23,6 @@ public partial class
 
     protected override void SetInitialState() {
         SetState<BattleStart>();
-        actorList.Sort();       //sort by lowest speed
-        actorList.Reverse();    //highest speed = higher priority
         CurrInput.InsertTurnQueue(actorList);
         CurrInput.OpenBonbonFactory(bonbonFactory);
     }
@@ -140,7 +138,19 @@ public partial class
     #endregion
 
     // idk if this is ok
-    public List<Actor> GetActors() => CurrInput.TurnQueue;
+    public List<Actor> GetActors() => CurrInput.ActorList;
+    public List<Actor> FilterActorsBySkill() {
+        SkillAction sa = CurrInput.SkillPrep.skill;
+        SkillObject.TargetConstraint targetType = sa.SkillData.TargetType;
+        switch (targetType) {
+            case SkillObject.TargetConstraint.Enemies:
+                return CurrInput.ActorList.Where(actor => sa.Caster.GetType() != actor.GetType()).ToList();
+            case SkillObject.TargetConstraint.Allies:
+                return CurrInput.ActorList.Where(actor => sa.Caster.GetType() == actor.GetType()).ToList();
+            default:
+                return CurrInput.ActorList;
+        }
+    }
 
     private IEnumerator StartGame(float duration) {
         yield return new WaitForSeconds(duration);

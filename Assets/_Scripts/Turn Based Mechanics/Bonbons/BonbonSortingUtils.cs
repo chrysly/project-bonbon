@@ -10,7 +10,7 @@ public static class BonbonSortingUtils {
         /// Apply Bonbon Effect to Caster;
         new ApplyEffectsAction(new List<EffectBlueprint>(new[] { augment.bonbonEffect })).Use(actor.ActiveData, actor);
         /// Trigger a series of immediate actions on the augment;
-        foreach (ImmediateAction action in augment.immediateActions) action.Use(actor.ActiveData, actor);
+        foreach (ImmediateAction.SkillOnly action in augment.immediateActions) action.Use(actor.ActiveData, actor);
     }
 
     public static bool PassBonbon(this Actor sourceActor, int sourceSlot, Actor targetActor) {

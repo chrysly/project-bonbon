@@ -14,71 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationMap:
     Keys:
-    - {fileID: 11400000, guid: f0554fb479c9bd14c92b1c3089e23da1, type: 2}
-    - {fileID: 11400000, guid: f27f82fe1f0812b49b86b628e8b7a788, type: 2}
     - {fileID: 11400000, guid: aeb0e7af1e732af43af0b8f54d08b698, type: 2}
-    - {fileID: 11400000, guid: 7fcd51859e99fcc458d94aa84e3627f8, type: 2}
-    - {fileID: 11400000, guid: dad2abed660d4a8429c2fd524b6d202f, type: 2}
     - {fileID: 11400000, guid: cb9aa26bef6f9944d93d8bd98cd4241d, type: 2}
+    - {fileID: 11400000, guid: dad2abed660d4a8429c2fd524b6d202f, type: 2}
     Values:
-    - Keys:
-      - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
-      Values:
-      - animationTrigger: _Attack
-        animationDuration: 0
-        hitDelay: 0
-        vfxPrefab: {fileID: 0}
-        actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
-        triggerIndex: 0
-    - Keys:
-      - {fileID: 11400000, guid: a6ac0735501b31b418532e1c52bac788, type: 2}
-      - {fileID: 11400000, guid: c58fa5e0cfdec884daac7cc6fdd3e138, type: 2}
-      Values:
-      - animationTrigger: 
-        animationDuration: 0
-        hitDelay: 0
-        vfxPrefab: {fileID: 0}
-        actorAnimator: {fileID: 9100000, guid: 3fd8b0f640740ff4897fb648836df986, type: 2}
-        triggerIndex: 0
-      - animationTrigger: 
-        animationDuration: 0
-        hitDelay: 0
-        vfxPrefab: {fileID: 0}
-        actorAnimator: {fileID: 9100000, guid: 7c024bb658a0375429c34d49fc68dd6e, type: 2}
-        triggerIndex: 0
     - Keys:
       - {fileID: 11400000, guid: dc8857a6470f59644abcfdc3114d2e4e, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 3
+        animationDuration: 2
         hitDelay: 0
         vfxPrefab: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 0e57d98b12432ca4f81441b7f91189ce, type: 2}
         triggerIndex: 0
     - Keys:
-      - {fileID: 11400000, guid: 1271cb75a5bd7a549b2045f53cde9d9d, type: 2}
+      - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
       Values:
-      - animationTrigger: 
-        animationDuration: 0
+      - animationTrigger: _Attack
+        animationDuration: 1.5
         hitDelay: 0
         vfxPrefab: {fileID: 0}
-        actorAnimator: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
     - Keys:
       - {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 3
+        animationDuration: 2.5
         hitDelay: 0
         vfxPrefab: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
-        triggerIndex: 0
-    - Keys:
-      - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
-      Values:
-      - animationTrigger: _Attack
-        animationDuration: 3
-        hitDelay: 0
-        vfxPrefab: {fileID: 0}
-        actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0

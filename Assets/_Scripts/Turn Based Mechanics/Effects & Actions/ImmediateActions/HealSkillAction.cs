@@ -1,27 +1,28 @@
 ﻿using System;
 using UnityEngine;
+
 /// <summary>
-/// Action to replenish the hitpoints of a target;
+/// Action to replenish the hitpoints of a target, skill version;
 /// </summary>
 [Serializable]
-public class HealAction : ImmediateAction.Generic {
+public class HealSkillAction : ImmediateAction.SkillOnly {
 
     /// <summary> Amount to replenish in the target's hitpoint pool; </summary>
     [SerializeField] private int healAmount;
 
-    public HealAction() { }
+    public HealSkillAction() { }
 
-    public HealAction(int healAmount) {
+    public HealSkillAction(int healAmount) {
         this.healAmount = healAmount;
     }
 
     public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) {
-        int computedHeal = casterData.ComputePotency(healAmount);
+        int computedHeal = casterData.ComputeHeal(healAmount);
         actionValue.immediateHeal += computedHeal;
     }
 
     public override void Use(StatIteration activeData, Actor target) {
-        int computedHeal = activeData.ComputePotency(healAmount);
+        int computedHeal = activeData.ComputeHeal(healAmount);
         target.RestoreHitpoints(computedHeal);
     }
 

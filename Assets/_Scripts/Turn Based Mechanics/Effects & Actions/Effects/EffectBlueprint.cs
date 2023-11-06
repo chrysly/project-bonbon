@@ -15,7 +15,9 @@ public class EffectBlueprint : ScriptableObject {
     /// <summary> Modifiers applied while the effect is active; </summary>
     public PassiveModifier modifiers;
     /// <summary> Actions carried at the beginning of every turn; </summary>
-    public List<ImmediateAction> actions;
+    public List<ImmediateAction.EffectOnly> actions;
+    public enum EffectType { Buff, Debuff }
+    public EffectType effectType;
 
     /// <summary>
     /// Compute action values for each element of the effect;
@@ -23,11 +25,9 @@ public class EffectBlueprint : ScriptableObject {
     /// <param name="actionValue"> AI Value bundle passed down for data collection; </param>
     public void ComputeEffectValue(ref AIActionValue actionValue, StatIteration casterData) {
         AIActionValue compoundValue = new AIActionValue();
-        foreach (ImmediateAction action in actions) {
-            action.ComputeActionValue(ref compoundValue, casterData);
+        foreach (ImmediateAction.EffectOnly action in actions) {
+            for (int i = 0; i < duration; i++) action.ComputeActionValue(ref compoundValue, casterData, i);
         }
-        actionValue.damageOverTime = compoundValue.immediateDamage * duration;
-        actionValue.healOverTime = compoundValue.immediateHeal * duration;
     }
 
     public Effect InstantiateEffect(StatIteration originStats) {

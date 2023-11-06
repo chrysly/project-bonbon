@@ -9,125 +9,127 @@ public class TurnOrderDisplay : MonoBehaviour {
     [SerializeField] private GameObject portraitPrefab;
     [SerializeField] private BattleStateMachine bsm;
 
-    private List<Actor> turnQueue => bsm.CurrInput.TurnQueue;
     private List<Actor> currQueue;
+    private List<Actor> oldQueue;
 
-    private Dictionary<Actor, GameObject> portraitMap;
+    private List<Portrait> portraitList;
     private float portraitSpace;
 
-    private Dictionary<Actor, Coroutine> animMap;
+    private Dictionary<GameObject, Coroutine> animMap;
 
-    void Awake() {
-        currQueue = new List<Actor>();
-        portraitMap = new Dictionary<Actor, GameObject>();
-        animMap = new Dictionary<Actor, Coroutine>();
+    public struct Portrait {
+        public Actor actor;
+        public GameObject gameObject;
 
-        var portraitTransform = portraitPrefab.GetComponent<Image>().rectTransform;
-        portraitSpace = portraitTransform.rect.width * 1.1f;
+        public Portrait(Actor actor, GameObject gameObject) {
+            this.actor = actor;
+            this.gameObject = gameObject;
+        }
     }
 
-    void Update() {
-        if (turnQueue != null) {
-            string content = "| ";
-            foreach (Actor actor in turnQueue) content += actor.Data.DisplayName + " | ";
-            //Debug.LogWarning(content);
-            if (!CompareActorList(turnQueue, currQueue)) UpdateQueue();
-        }
+    void Awake() {
+        oldQueue = new List<Actor>();
+        portraitList = new List<Portrait>();
+        animMap = new Dictionary<GameObject, Coroutine>();
+
+        var portraitTransform = portraitPrefab.GetComponent<Image>().rectTransform;
+        portraitSpace = portraitTransform.rect.height * 1.1f;
+    }
+
+    void Start() => bsm.CurrInput.OnTurnChange += TurnOrderDisplay_OnTurnChange;
+
+    void TurnOrderDisplay_OnTurnChange(List<Actor> queue) {
+        currQueue = queue;
+        string content = "| ";
+        foreach (Actor actor in currQueue) content += actor.Data.DisplayName + " | ";
+        Debug.LogWarning(content);
+        if (!CompareActorList(currQueue, oldQueue)) UpdateQueue();
     }
 
     private void UpdateQueue() {
-        IEnumerable<Actor> newActors = turnQueue.Where(actor => !currQueue.Contains(actor));
-        IEnumerable<Actor> removedActors = currQueue.Where(actor => !turnQueue.Contains(actor));
-        IEnumerable<Actor> survivingActors = turnQueue.Except(newActors);
+        StopAllCoroutines();
+        if (oldQueue.Count < currQueue.Count) oldQueue = ResizeQueue(oldQueue, currQueue);
+        List<Portrait> oldPortraitList = new List<Portrait>(portraitList);
+        for (int i = 0; i < currQueue.Count; i++) {
+            if (currQueue[i] != oldQueue[i]) {
+                Vector2 destination = new Vector2(transform.position.x,
+                                                  transform.position.y - i * portraitSpace);
 
-        Dictionary<Actor, Vector2> posMap = MapActorPositions(turnQueue);
-        float currQueueEndX = ComputeListEnd(currQueue);
-
-        foreach (Actor actor in newActors) InterpolateActor(actor, posMap[actor], Anim.Add);
-        foreach (Actor actor in removedActors) InterpolateActor(actor, posMap[actor], Anim.Remove);
-        foreach (Actor actor in survivingActors) InterpolateActor(actor, posMap[actor], Anim.Move);
-
-        currQueue = turnQueue;
+                GameObject portrait = FindPortrait(currQueue[i], oldPortraitList);
+                if (portrait) {
+                    MovePortrait(portrait, destination);
+                    RemovePortrait(oldPortraitList, portrait);
+                } else SpawnPortrait(currQueue[i], destination);
+            }
+        } for (int i = 0; i < oldPortraitList.Count; i++) {
+            RemovePortrait(oldPortraitList[i].gameObject);
+        } oldQueue = currQueue;
     }
-
-    private Dictionary<Actor, Vector2> MapActorPositions(List<Actor> to) {
-        Dictionary<Actor, Vector2> posMap = new Dictionary<Actor, Vector2>();
-        for (int i = 0; i < to.Count; i++) {
-            posMap[to[i]] = new Vector2(transform.position.x + i * portraitSpace, transform.position.y);
-        } return posMap;
-    }
-
-    private float ComputeListEnd(List<Actor> to) => transform.position.x + to.Count * portraitSpace;
-
-    private bool CompareActorList(List<Actor> list1, List<Actor> list2) => list1.Count == list2.Count
-                                                                           && Enumerable.Range(0, list1.Count).ToList().TrueForAll(i => list1[i].Equals(list2[i]));
 
     /// Animations ///
-    
-    private enum Anim { Add, Remove, Move }
 
-    private void InterpolateActor(Actor actor, Vector2 destination, Anim animationType) {
-        try {
-            Coroutine coroutine = animMap[actor];
-            StopCoroutine(coroutine);
-        } catch (KeyNotFoundException) {
-            /// It's ok;
-        } finally {
-            IEnumerator animSeq;
-            switch (animationType) {
-                case Anim.Add:
-                    animSeq = _SpawnPortrait(actor, destination);
-                    break;
-                case Anim.Remove:
-                    animSeq = _RemovePortrait(actor, destination);
-                    break;
-                default:
-                    animSeq = _MovePortrait(actor, destination);
-                    break;
-            } Coroutine sequence = StartCoroutine(animSeq);
-            animMap[actor] = sequence;
-        }
+    private void SpawnPortrait(Actor actor, Vector2 destination) {
+        GameObject portraitGO = Instantiate(portraitPrefab, destination, transform.rotation, transform);
+        portraitGO.GetComponent<Image>().sprite = actor.Data.Portrait;
+        portraitGO.transform.position = destination;
+        Portrait portrait = new Portrait(actor, portraitGO);
+        portraitList.Add(portrait);
+        StartCoroutine(_SpawnPortrait(portraitGO));
     }
 
-    private IEnumerator _SpawnPortrait(Actor actor, Vector2 destination) {
-        GameObject portrait;
-        try {
-            portrait = portraitMap[actor];
-            portrait.transform.position = destination;
-        } catch (KeyNotFoundException) {
-            portrait = Instantiate(portraitPrefab, destination, transform.rotation, transform);
-            portrait.GetComponent<Image>().sprite = actor.Data.Portrait;
-            portraitMap[actor] = portrait;
-        } portrait.transform.localScale = Vector2.zero;
+    private void RemovePortrait(GameObject portrait) {
+        RemovePortrait(portraitList, portrait);
+        StartCoroutine(_RemovePortrait(portrait.gameObject));
+    }
+
+    private void MovePortrait(GameObject portrait, Vector2 destination) => StartCoroutine(_MovePortrait(portrait, destination));
+
+    private IEnumerator _SpawnPortrait(GameObject portrait) {
+        portrait.transform.localScale = Vector2.zero;
         while ((Vector2) portrait.transform.localScale != Vector2.one) {
             portrait.transform.localScale = Vector2.MoveTowards(portrait.transform.localScale, Vector2.one, Time.deltaTime * 3);
             yield return null;
-        } animMap.Remove(actor);
+        }
     }
 
-    private IEnumerator _RemovePortrait(Actor actor, Vector2 destination) {
-        GameObject portrait;
-        try {
-            portrait = portraitMap[actor];
-        } catch (KeyNotFoundException) {
-            yield break;
-        } while ((Vector2) portrait.transform.localScale != Vector2.zero) {
+    private IEnumerator _RemovePortrait(GameObject portrait) {
+        while ((Vector2) portrait.transform.localScale != Vector2.zero) {
             portrait.transform.localScale = Vector2.MoveTowards(portrait.transform.localScale, Vector2.zero, Time.deltaTime * 3);
             yield return null;
         } Destroy(portrait);
-        portraitMap.Remove(actor);
-        animMap.Remove(actor);
     }
 
-    private IEnumerator _MovePortrait(Actor actor, Vector2 destination) {
-        GameObject portrait;
-        try {
-            portrait = portraitMap[actor];
-        } catch (KeyNotFoundException) {
-            yield break;
-        } while ((Vector2) portrait.transform.position != destination) {
-            portrait.transform.position = Vector2.MoveTowards(portrait.transform.position, destination, Time.deltaTime);
+    private IEnumerator _MovePortrait(GameObject portrait, Vector2 destination) {
+        while ((Vector2) portrait.transform.position != destination) {
+            portrait.transform.position = Vector2.MoveTowards(portrait.transform.position, destination, Time.deltaTime * 600);
             yield return null;
-        } animMap.Remove(actor);
+        }
     }
+
+    /// Helpers ///
+
+    private GameObject FindPortrait(Actor actor, List<Portrait> portraitList) {
+        for (int i = 1; i < portraitList.Count; i++) {
+            if (portraitList[i].actor == actor) return portraitList[i].gameObject;
+        } return null;
+    }
+
+    private void RemovePortrait(List<Portrait> list, GameObject portraitGO) {
+        foreach (Portrait portrait in list) {
+            if (portrait.gameObject == portraitGO) {
+                list.Remove(portrait);
+                break;
+            }
+        }
+    }
+
+    private List<Actor> ResizeQueue(List<Actor> oldQueue, List<Actor> referenceQueue) {
+        List<Actor> resList = new List<Actor>(new Actor[referenceQueue.Count]);
+        for (int i = 0; i < oldQueue.Count; i++) {
+            resList[i] = oldQueue[i];
+        } return resList;
+    }
+
+    private bool CompareActorList(List<Actor> list1, List<Actor> list2) => list1.Count == list2.Count
+                                                                           && Enumerable.Range(0, list1.Count).ToList().TrueForAll(i => list1[i].Equals(list2[i]));
 }
