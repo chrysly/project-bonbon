@@ -61,15 +61,15 @@ public class UIAnimationHandler : MonoBehaviour {
     #region Main Window
     [Header("Main Panel")] 
     [SerializeField] private CanvasGroup mainPanel;
-    [SerializeField] private float mainPanelToggleDuration = 0.3f;
+    [SerializeField] private float mainPanelToggleDuration = 0.06f;
 
     [SerializeField] private Transform cursor;
 
     [SerializeField] private List<BattleButton> mainPanelButtons;
     [SerializeField] private List<Transform> decorations;
     [SerializeField] private Vector3 mainPanelButtonScaleVector = new Vector3(1.2f, 1.2f, 1.2f);
-    [SerializeField] private float mainPanelButtonScaleDuration = 0.2f;
-    [SerializeField] private float mainPanelButtonEmergeDuration = 1f;
+    [SerializeField] private float mainPanelButtonScaleDuration = 0.04f;
+    [SerializeField] private float mainPanelButtonEmergeDuration = .2f;
     private int mainButtonIndex = -1;
 
     public void ToggleMainPanel(bool enable, bool force = false) {

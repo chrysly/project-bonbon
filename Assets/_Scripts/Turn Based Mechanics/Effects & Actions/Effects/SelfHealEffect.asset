@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: SelfHealEffect
   m_EditorClassIdentifier: 
   name: Heal
-  duration: 2
+  duration: 1
   modifiers:
     flatAttack: 0
     percentAttack: 0
-    flatHeal: 0
+    flatHeal: 5
     percentHealCast: 0
     flatDefense: 0
     percentDefense: 0

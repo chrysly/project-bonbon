@@ -3665,7 +3665,8 @@ MonoBehaviour:
   shareButton: {fileID: 7282624539928704215}
   bonbonSelectLocation: {fileID: 3902399643482643146}
   cursor: {fileID: 5357487462807340797}
-  animationDuration: 0.5
+  animationDuration: 0.05
+  animationDelay: 0.05
   bonbonSlots:
   - {fileID: 8101536711983627241}
   - {fileID: 9107478729368162950}
@@ -4677,6 +4678,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2561108927444208890}
     - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: mainPanelToggleDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: decorations.Array.data[0]
       value: 
       objectReference: {fileID: 7629304885248707675}
@@ -4697,6 +4702,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1635343446280212388}
     - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: mainPanelButtonScaleDuration
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: mainPanelButtonEmergeDuration
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: mainPanelButtons.Array.data[0]
       value: 
       objectReference: {fileID: 3796603680299583595}
@@ -4716,6 +4729,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0cfd4d2af761e0e48b776de1d15db8f7, type: 2}
+    - target: {fileID: 4572740758657064665, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: moveDuration
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5912312475948334162, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
