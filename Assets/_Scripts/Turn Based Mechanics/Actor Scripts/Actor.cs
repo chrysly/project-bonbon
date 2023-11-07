@@ -53,7 +53,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #endregion
 
-    protected virtual void Start() {
+    protected virtual void Awake() {
         InitializeAttributes();
         InitializeLevelObjects();
     }
