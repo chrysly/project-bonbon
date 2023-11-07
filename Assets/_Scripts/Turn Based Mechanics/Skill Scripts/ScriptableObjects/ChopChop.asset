@@ -15,5 +15,14 @@ MonoBehaviour:
   skillID: chop_chop
   skillName: Chop Chop
   staminaCost: 25
+  immediateActions:
+  - rid: 1640337368647991296
   targetType: 0
   aoe: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 1640337368647991296
+      type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
+      data:
+        damageAmount: 4

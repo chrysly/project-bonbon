@@ -15,5 +15,19 @@ MonoBehaviour:
   skillID: lifeStealAttack_default
   skillName: Life Steal
   staminaCost: 13
+  immediateActions:
+  - rid: 1640337368647991298
+  - rid: 1640337368647991299
   targetType: 0
   aoe: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 1640337368647991298
+      type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
+      data:
+        damageAmount: 10
+    - rid: 1640337368647991299
+      type: {class: SelfDamageAction, ns: , asm: Assembly-CSharp}
+      data:
+        damageAmount: 5
