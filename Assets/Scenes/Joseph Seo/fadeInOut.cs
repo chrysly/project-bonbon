@@ -4,73 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class fadeInOut : MonoBehaviour
+public class FadeInOut : MonoBehaviour
 {
-    [SerializeField] private float transitionRate=3f;
+    [SerializeField] private float transitionRate=0.03f;
     [SerializeField] public CanvasGroup myCanvasGroup;
-    private bool fadeIn=false;
-    private bool fadeOut=false;
+    [SerializeField] private GameObject loadingCanvas;
+    private float fadeValues;
 
-    // Start is called before the first frame update
-    void Start(){
-        FadeOut();
+
+    public void Fade(float goTo){
+        fadeValues = goTo;
+        StartCoroutine(_Fade(fadeValues));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(fadeIn==true){
-            if(myCanvasGroup.alpha<1){
-                myCanvasGroup.alpha = Mathf.MoveTowards(myCanvasGroup.alpha,1,transitionRate*Time.deltaTime);
-                if(myCanvasGroup.alpha>=1){
-                    fadeIn = false;
+    IEnumerator _Fade(float goTo){
+        while(myCanvasGroup.alpha!=goTo){
+            myCanvasGroup.alpha = Mathf.MoveTowards(myCanvasGroup.alpha,goTo,transitionRate*Time.deltaTime);
+            if(myCanvasGroup.alpha==goTo){
+                if(myCanvasGroup.alpha<0.5f){
+                    loadingCanvas.SetActive(false);
                 }
             }
-        }
-
-        if(fadeOut==true){
-            if(myCanvasGroup.alpha>=0){
-                myCanvasGroup.alpha = Mathf.MoveTowards(myCanvasGroup.alpha,0,transitionRate*Time.deltaTime);
-                if(myCanvasGroup.alpha<=0){
-                    fadeOut = false;
-                }
-            }
+            yield return null;
         }
     }
-
-    public void FadeIn(){
-        fadeIn=true;
-        //StartCoroutine(ffadeIn());
-    }
-
-    public void FadeOut(){
-        fadeOut=true;
-        //Debug.Log("yuh");
-        //StartCoroutine(ffadeOut());
-    }
-    // IEnumerator ffadeIn(){
-    //     while(fadeIn==true){
-    //         if(myCanvasGroup.alpha<1){
-    //             myCanvasGroup.alpha = Mathf.MoveTowards(myCanvasGroup.alpha,1,transitionRate*Time.deltaTime);
-    //             if(myCanvasGroup.alpha>=1){
-    //                 fadeIn = false;
-    //             }
-    //         }
-    //         yield return null;
-    //     }
-    // }
-
-    // IEnumerator ffadeOut(){
-    //     while(fadeOut==true){
-    //         if(myCanvasGroup.alpha>=0){
-    //             myCanvasGroup.alpha = Mathf.MoveTowards(myCanvasGroup.alpha,0,transitionRate*Time.deltaTime);
-    //             if(myCanvasGroup.alpha<=0){
-    //                 fadeOut = false;
-    //             }
-    //         }
-    //         yield return null;
-    //     }
-    // }
 
 
 }
