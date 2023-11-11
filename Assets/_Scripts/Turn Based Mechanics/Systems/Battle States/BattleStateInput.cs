@@ -32,8 +32,8 @@ public class BattleStateInput : StateInput {
     public event System.Func<ActiveSkillPrep> OnSkillActivate;
     public ActiveSkillPrep ActivateSkill() => OnSkillActivate?.Invoke();
 
-    public event System.Action<SkillAction, BonbonObject> OnSkillAnimation;
-    public void AnimateSkill(SkillAction sa, BonbonObject bonbon) => OnSkillAnimation?.Invoke(sa, bonbon);
+    public event System.Action<ActiveSkillPrep> OnSkillAnimation;
+    public void AnimateSkill(ActiveSkillPrep skillPrep) => OnSkillAnimation?.Invoke(skillPrep);
 
     #endregion
 

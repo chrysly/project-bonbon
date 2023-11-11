@@ -15,7 +15,7 @@ public partial class BattleStateMachine {
             MySM.OnStateTransition.Invoke(this, Input);
 
             var res = Input.ActivateSkill();
-            if (res != null) Input.AnimateSkill(res.skill, res.bonbon);
+            if (res != null) Input.AnimateSkill(res);
 
             for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
             {
