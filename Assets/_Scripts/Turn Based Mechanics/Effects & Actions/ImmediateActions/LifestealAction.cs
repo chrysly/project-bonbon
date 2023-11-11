@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LifestealAction : ImmediateAction.Generic {
+public class LifestealAction : ImmediateAction.SkillOnly {
 
     /// <summary> Amount to deduct from the target's hitpoint pool; </summary>
     [SerializeField] private int damageAmount;
@@ -17,23 +17,23 @@ public class LifestealAction : ImmediateAction.Generic {
 
     public override void ComputeActionValue(ref AIActionValue actionValue, StatIteration casterData) {
         // damage
-        int computedDamage = casterData.ComputePotency(damageAmount);
+        int computedDamage = casterData.ComputeDamage(damageAmount);
         actionValue.immediateDamage += computedDamage;
 
         // life steal
         lifestealAmount = (int)(computedDamage * lifestealPercent / 100);
-        int computedHeal = casterData.ComputePotency(lifestealAmount);
+        int computedHeal = casterData.ComputeHeal(lifestealAmount);
         actionValue.immediateHeal += computedHeal;
     }
 
     public override void Use(StatIteration activeData, Actor target) {
         // damage
-        int computedDamage = activeData.ComputePotency(damageAmount);
+        int computedDamage = activeData.ComputeDamage(damageAmount);
         target.DepleteHitpoints(computedDamage);
 
         // lifesteal
         lifestealAmount = (int)(computedDamage * lifestealPercent / 100);
-        int computedHeal = activeData.ComputePotency(lifestealAmount);
+        int computedHeal = activeData.ComputeHeal(lifestealAmount);
         activeData.Actor.RestoreHitpoints(computedHeal);
     }
 

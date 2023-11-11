@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class DamagePercentAction : ImmediateAction.Generic
+public class DamagePercentAction : ImmediateAction.SkillOnly
 {
     [SerializeField] private int percentDamageAmount;
 
@@ -20,8 +20,8 @@ public class DamagePercentAction : ImmediateAction.Generic
 
     }
 
-    public override void Use(StatIteration activeData, Actor target, SkillAugment augment) {
-        int computedDamage = (int)(activeData.Actor.Hitpoints * (percentDamageAmount*0.01));
+    public override void Use(StatIteration activeData, Actor target) {
+        int computedDamage = (int)(activeData.Actor.Hitpoints * (percentDamageAmount * 0.01));
         target.DepleteHitpoints(computedDamage);
     }
     
