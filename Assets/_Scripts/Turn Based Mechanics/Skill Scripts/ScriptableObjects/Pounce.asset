@@ -16,12 +16,13 @@ MonoBehaviour:
   skillName: Pounce
   staminaCost: 0
   immediateActions:
-  - rid: 3928641323615649792
+  - rid: 1640337368647991300
+  targetType: 0
   aoe: 0
   references:
     version: 2
     RefIds:
-    - rid: 3928641323615649792
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 1640337368647991300
+      type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
       data:
         damageAmount: 5

@@ -41,7 +41,7 @@ namespace BonbonAssetManager {
         public CJToolAssets assetRefs { get; private set; }
 
         void OnEnable() {
-            IntializeLists();
+            RefreshLists();
             tools = new BonBaseTool[] {
                 BonBaseTool.CreateTool<BonbonManager>(this),
                 BonBaseTool.CreateTool<SkillManager>(this),
@@ -61,7 +61,7 @@ namespace BonbonAssetManager {
         /// <summary>
         /// Initialize the global lists in the Main GUI;
         /// </summary>
-        private void IntializeLists() {
+        public void RefreshLists() {
             GlobalBonbonList = BAMUtils.InitializeList<BonbonBlueprint>();
             GlobalSkillList = BAMUtils.InitializeList<SkillObject>();
         }

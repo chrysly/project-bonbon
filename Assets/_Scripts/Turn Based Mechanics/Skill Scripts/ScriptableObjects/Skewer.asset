@@ -16,12 +16,13 @@ MonoBehaviour:
   skillName: Skewer
   staminaCost: 20
   immediateActions:
-  - rid: 5257609831424983042
+  - rid: 1640337368647991302
+  targetType: 0
   aoe: 0
   references:
     version: 2
     RefIds:
-    - rid: 5257609831424983042
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 1640337368647991302
+      type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
       data:
         damageAmount: 7

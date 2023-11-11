@@ -14,14 +14,12 @@ public class SkillAction {
         SkillIndex = skillIndex;
     }
 
-    public AIActionValue ComputeSkillActionValues(Actor target, int currTurn, BonbonObject bonbon = null) {
+    public AIActionValue ComputeSkillActionValues(Actor target, BonbonObject bonbon = null) {
         AIActionValue actionValue = new AIActionValue();
         SkillData.ComputeActionValues(ref actionValue, bonbon == null ? target.ActiveData : target.ActiveData.Augment(bonbon.Data.augmentData));
         actionValue.immediateDamage = target.ActiveData.ComputeDefense(actionValue.immediateDamage);
         actionValue.damageOverTime = target.ActiveData.ComputeDefense(actionValue.damageOverTime);
-        //actionValue.caster = target.ActiveData. aaa
         actionValue.target = target;
-        actionValue.currentTurn = currTurn;
         return actionValue;
     }
 
@@ -63,7 +61,7 @@ public class SkillAugment {
 
     /// <summary> Actions performed on the caster by the Augment; </summary>
     [HideInInspector]
-    [SerializeReference] public List<ImmediateAction> immediateActions;
+    [SerializeReference] public List<ImmediateAction.SkillOnly> immediateActions;
     /// <summary> Bonbon effect; </summary>
     public EffectBlueprint bonbonEffect;
     /// <summary> New AoE protocol through the augment; </summary>

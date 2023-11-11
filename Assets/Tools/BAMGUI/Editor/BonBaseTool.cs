@@ -57,8 +57,7 @@ namespace BonbonAssetManager {
 
             UpdateBonbonList();
             LoadBonbonMap();
-            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.Generic),
-                                                                                typeof(ImmediateAction.SkillOnly)});
+            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.SkillOnly) } );
         }
 
         void OnDisable() {
@@ -74,7 +73,7 @@ namespace BonbonAssetManager {
         public void SetSelectedBonbon(BonbonBlueprint bonbon) {
             selectedBonbon = bonbon;
             UpdateBonbonList();
-            if (selectedBonbon.augmentData.immediateActions == null) selectedBonbon.augmentData.immediateActions = new List<ImmediateAction>();
+            if (selectedBonbon.augmentData.immediateActions == null) selectedBonbon.augmentData.immediateActions = new List<ImmediateAction.SkillOnly>();
             if (selectedBonbon.augmentData.augmentEffects == null) selectedBonbon.augmentData.augmentEffects = new List<EffectBlueprint>();
             foundActions = ActionUtils.FetchAvailableActions(selectedBonbon.augmentData.immediateActions, actionTypes);
         }
@@ -167,7 +166,7 @@ namespace BonbonAssetManager {
                                     DrawRecipePreview(selectedBonbon);
                                     break;
                                 case Mode.GlobalMap:
-                                    BAMUtils.DrawAssetGroup(bonbonList, bonbonScroll, BonbonBlueprint.GUIContent,
+                                    BAMUtils.DrawAssetGroup(MainGUI.GlobalBonbonList, bonbonScroll, BonbonBlueprint.GUIContent,
                                                             MainGUI.position, buttonSize);
                                     BAMUtils.DrawMap(globalBonbonMap, ref scrollGroup, BonbonBlueprint.GUIContent, buttonSize, 
                                                      MainGUI.assetRefs.dndFieldAssets, SaveMap);
@@ -296,8 +295,7 @@ namespace BonbonAssetManager {
             skillHierarchy = new BaseHierarchy<SkillObject>(this);
             skillHierarchy.OnPathSelection += SkillHierarchy_OnPathSelection;
             assetCreator.OnAssetCreation += skillHierarchy.ReloadHierarchy;
-            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.Generic),
-                                                                                typeof(ImmediateAction.SkillOnly)});
+            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.SkillOnly) });
         }
 
         void OnDisable() {
@@ -313,7 +311,7 @@ namespace BonbonAssetManager {
 
         private void SetSelectedSkill(SkillObject skill) {
             selectedSkill = skill;
-            if (selectedSkill.immediateActions == null) selectedSkill.immediateActions = new List<ImmediateAction>();
+            if (selectedSkill.immediateActions == null) selectedSkill.immediateActions = new List<ImmediateAction.SkillOnly>();
             foundActions = ActionUtils.FetchAvailableActions(selectedSkill.immediateActions, actionTypes);
         }
 
@@ -330,7 +328,16 @@ namespace BonbonAssetManager {
                         mainScroll = scope.scrollPosition;
                         if (selectedSkill != null) {
                             if (skillInspector is null) skillInspector = Editor.CreateEditor(selectedSkill);
-                            if (selectedSkill != null) skillInspector.OnInspectorGUI();
+                            if (selectedSkill != null) {
+                                if (SerializationUtility.HasManagedReferencesWithMissingTypes(selectedSkill)) {
+                                    GUI.color = UIColors.Red;
+                                    if (GUILayout.Button("Clear Missing References")) {
+                                        SerializationUtility.ClearAllManagedReferencesWithMissingTypes(selectedSkill);
+                                        selectedSkill.immediateActions = new List<ImmediateAction.SkillOnly>();
+                                        EditorUtility.SetDirty(selectedSkill);
+                                    } GUI.color = Color.white;
+                                } skillInspector.OnInspectorGUI();
+                            }
 
                             EditorGUILayout.Separator();
                             EditorUtils.DrawSeparatorLines(" Immediate Actions");
@@ -362,8 +369,7 @@ namespace BonbonAssetManager {
             effectHierarchy = new BaseHierarchy<EffectBlueprint>(this);
             effectHierarchy.OnPathSelection += EffectHierarchy_OnPathSelection;
             assetCreator.OnAssetCreation += effectHierarchy.ReloadHierarchy;
-            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.Generic),
-                                                                                typeof(ImmediateAction.EffectOnly)});
+            actionTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(ImmediateAction.EffectOnly) });
         }
 
         void OnDisable() {
@@ -374,12 +380,12 @@ namespace BonbonAssetManager {
             SelectedPath = path;
             DestroyImmediate(effectInspector);
             effectInspector = null;
-            SetSelectedSkill(AssetDatabase.LoadAssetAtPath<EffectBlueprint>(path));
+            SetSelectedEffect(AssetDatabase.LoadAssetAtPath<EffectBlueprint>(path));
         }
 
-        private void SetSelectedSkill(EffectBlueprint effect) {
+        private void SetSelectedEffect(EffectBlueprint effect) {
             selectedEffect = effect;
-            if (selectedEffect.actions == null) selectedEffect.actions = new List<ImmediateAction>();
+            if (selectedEffect.actions == null) selectedEffect.actions = new List<ImmediateAction.EffectOnly>();
             foundActions = ActionUtils.FetchAvailableActions(selectedEffect.actions, actionTypes);
         }
 
@@ -397,8 +403,16 @@ namespace BonbonAssetManager {
                         mainScroll = scope.scrollPosition;
                         if (selectedEffect != null) {
                             if (effectInspector is null) effectInspector = Editor.CreateEditor(selectedEffect);
-                            if (selectedEffect != null) effectInspector.OnInspectorGUI();
-                            else Debug.Log("Nope");
+                            if (selectedEffect != null) {
+                                if (SerializationUtility.HasManagedReferencesWithMissingTypes(selectedEffect)) {
+                                    GUI.color = UIColors.Red;
+                                    if (GUILayout.Button("Clear Missing References")) {
+                                        SerializationUtility.ClearAllManagedReferencesWithMissingTypes(selectedEffect);
+                                        selectedEffect.actions = new List<ImmediateAction.EffectOnly>();
+                                        EditorUtility.SetDirty(selectedEffect);
+                                    } GUI.color = Color.white;
+                                } effectInspector.OnInspectorGUI();
+                            } else Debug.Log("Nope");
 
                             EditorGUILayout.Separator();
                             EditorUtils.DrawSeparatorLines(" Immediate Actions", true);

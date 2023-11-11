@@ -20,12 +20,16 @@ public class SkillObject : ScriptableObject {
 
     /// <summary> A list of Immediate Actions performed by the skill when used; </summary>
     [HideInInspector] [SerializeReference]
-    public List<ImmediateAction> immediateActions;
+    public List<ImmediateAction.SkillOnly> immediateActions;
+
+    public enum TargetConstraint { Enemies, Allies, All }
+    [SerializeField] private TargetConstraint targetType;
+    public TargetConstraint TargetType => targetType;
 
     public bool aoe = false;
 
     public void PerformActions(StatIteration casterData, Actor target) {
-        foreach (ImmediateAction action in immediateActions) action.Use(casterData, target);
+        foreach (ImmediateAction.SkillOnly action in immediateActions) action.Use(casterData, target);
     }
 
     /// <summary>
@@ -33,7 +37,7 @@ public class SkillObject : ScriptableObject {
     /// </summary>
     /// <param name="actionValue"> AI Value bundle passed down for data collection; </param>
     public void ComputeActionValues(ref AIActionValue actionValue, StatIteration casterStats) {
-        foreach (ImmediateAction action in immediateActions) {
+        foreach (ImmediateAction.SkillOnly action in immediateActions) {
             action.ComputeActionValue(ref actionValue, casterStats);
         }
     }

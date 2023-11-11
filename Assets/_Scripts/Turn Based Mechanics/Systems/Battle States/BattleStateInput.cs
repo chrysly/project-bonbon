@@ -6,9 +6,10 @@ using static BattleStateMachine;
 public class BattleStateInput : StateInput {
 
     #region Global Variables
-    private List<Actor> turnQueue;
-    public List<Actor> TurnQueue => turnQueue;
-    private int currActorIndex = 0;
+    private TurnOrderHandler turnOrderHandler;
+    public List<Actor> ActorList { get; private set; }
+
+    private Actor activeActor;
     private int currentTurn = 0;
 
     #endregion Global Variables
@@ -35,6 +36,8 @@ public class BattleStateInput : StateInput {
     public event System.Action<ActiveSkillPrep> OnSkillAnimation;
     public void AnimateSkill(ActiveSkillPrep skillPrep) => OnSkillAnimation?.Invoke(skillPrep);
 
+    public event System.Action<List<Actor>> OnTurnChange;
+    public void PropagateTurnChange(List<Actor> previewList) => OnTurnChange?.Invoke(previewList);
     #endregion
 
     #region Managers
@@ -43,8 +46,11 @@ public class BattleStateInput : StateInput {
 
     public void Initialize() { }
 
-    public void InsertTurnQueue(List<Actor> queue) {
-        turnQueue = queue;
+    public void InsertTurnQueue(List<Actor> actorList) {
+        turnOrderHandler = new TurnOrderHandler(actorList);
+        ActorList = actorList;
+        PropagateTurnChange(turnOrderHandler.GetTurnPreview(6));
+        activeActor = turnOrderHandler.Advance();
     }
 
     public void OpenBonbonFactory(BonbonFactory bonbonFactory) {
@@ -54,14 +60,14 @@ public class BattleStateInput : StateInput {
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>
     public void AdvanceTurn() {
-        Actor initialActor = ActiveActor();
         do {
-            currActorIndex = (currActorIndex + 1) % turnQueue.Count;
-        } while (ActiveActor().Defeated && !initialActor.Equals(ActiveActor()));
+            PropagateTurnChange(turnOrderHandler.GetTurnPreview(6));
+            activeActor = turnOrderHandler.Advance();
+        } while (activeActor.Defeated);
         currentTurn++;
     }
 
-        public Actor ActiveActor() => turnQueue[currActorIndex];
+    public Actor ActiveActor() => activeActor;
 
     public int CurrTurn() {
         return currentTurn;
