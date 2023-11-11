@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3582622979197147412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 530014663036476752}
+  - component: {fileID: 6162223603595957290}
+  - component: {fileID: 2790887836359901993}
+  m_Layer: 0
+  m_Name: State Machine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &530014663036476752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582622979197147412}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4429349973849333193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6162223603595957290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582622979197147412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e4c6ac46a12a14d80b6841ad3e92e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonbonFactory: {fileID: 2790887836359901993}
+  _uiStateMachine: {fileID: 7305130411921023833}
+  _eventSequencer: {fileID: 8016658437882586487}
+  enemyTurnDuration: 2
+  actorList: []
+--- !u!114 &2790887836359901993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582622979197147412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfce9b2bbbeaf3743830979f173babda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonbonMapSO: {fileID: 11400000, guid: c5cef39661d95934b8ac1e1856bebdfd, type: 2}
 --- !u!1 &3727895201422170709
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc07f6a57ceb51b40a3e9d2ddfddd5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleStateMachine: {fileID: 0}
+  battleStateMachine: {fileID: 6162223603595957290}
 --- !u!1 &4429349973849333192
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,10 +137,63 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 530014663036476752}
+  - {fileID: 6683670382288868343}
+  - {fileID: 2758420419086115811}
   - {fileID: 3743533915890147755}
   - {fileID: 2685321606390205588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4551035295478905270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6683670382288868343}
+  - component: {fileID: 8016658437882586487}
+  m_Layer: 0
+  m_Name: Event Sequencer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6683670382288868343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551035295478905270}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4429349973849333193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8016658437882586487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4551035295478905270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a3c2dbb94c61a4e9abb8f1d5afb79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bsm: {fileID: 6162223603595957290}
+  eventSequence:
+  - {fileID: 11400000, guid: 9db59b9c6d6422840b24eff3c4934c45, type: 2}
+  - {fileID: 11400000, guid: 1e4be29a6af61d44d9134ded816f2554, type: 2}
+  onStartEvent: {fileID: 11400000, guid: 4b34fcdf418c426419d98269a58ce54d, type: 2}
+  onWinEvent: {fileID: 0}
 --- !u!1 &6789311938255744618
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,5 +238,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc9b0513615bb84bb6740dc193237a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleStateMachine: {fileID: 0}
+  battleStateMachine: {fileID: 6162223603595957290}
   skillAnimationMap: {fileID: 11400000, guid: 17d10292ef8184446919a6513a1f9435, type: 2}
+--- !u!1 &6837574246337379980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2758420419086115811}
+  - component: {fileID: 7305130411921023833}
+  m_Layer: 0
+  m_Name: UI State Machine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2758420419086115811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837574246337379980}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4429349973849333193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7305130411921023833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6837574246337379980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13975653986cd840b10fcdbc2315207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battleStateMachine: {fileID: 6162223603595957290}

@@ -8,6 +8,9 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
     public new delegate void StateTransition(BattleUIState state, BattleUIStateInput input);
     public event StateTransition OnStateTransition ;
 
+    public new delegate void StaminaConsumption(BattleUIStateInput input);
+    public event StaminaConsumption OnStaminaConsumption;
+
     protected override void Start() {
         base.Start();
         _battleStateMachine.OnStateTransition += Refresh;
@@ -40,6 +43,7 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
     /// </summary>
     /// <returns></returns>
     private int CheckInput() {
+        if (CurrInput.Locked) return 4;
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) return 0;
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.RightArrow)) return 1;
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) return 2;
@@ -47,11 +51,11 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
         return 4;
     }
 
-    protected void LockUI() {
+    public void LockUI() {
         CurrInput.Locked = true;
     }
 
-    protected void UnlockUI() {
+    public void UnlockUI() {
         CurrInput.Locked = false;
     }
     

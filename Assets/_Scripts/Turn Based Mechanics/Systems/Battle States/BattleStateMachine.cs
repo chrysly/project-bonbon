@@ -8,7 +8,7 @@ public partial class
 
     #region SerializeFields
     [SerializeField] private BonbonFactory bonbonFactory;
-    [SerializeField] private BattleUIStateMachine _uiStateMachine;
+    [SerializeField] public BattleUIStateMachine uiStateMachine;
     [SerializeField] private EventSequencer _eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     [SerializeField] private List<Actor> actorList;
@@ -22,7 +22,7 @@ public partial class
     public event StateTransition OnStateTransition;
 
     #endregion Events
-    
+
     protected override void SetInitialState() {
         SetState<BattleStart>();
         actorList.Sort();       //sort by lowest speed
@@ -34,6 +34,7 @@ public partial class
     protected override void Start() {
         base.Start();
         _eventSequencer.OnEventTerminate += ContinueBattle;
+        StartCoroutine(StartGame(1.75f));
     }
 
     protected override void Init() {
@@ -54,17 +55,10 @@ public partial class
     }
 
     #region State Handlers
-    
-    // jasmine's jank asf code whooo
-    public void OnStart() {
-        // hard coded bc it's fcking 5am fml
-        _eventSequencer.StartEvent();
-        ToggleMachine(true);
-        StartBattle();
-    }
 
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
+        CurrInput.ResetSkill();
         bool allEnemiesDead = actorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
         bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
 
@@ -86,6 +80,7 @@ public partial class
     /// </summary>
     public void ContinueBattle() {
         ToggleMachine(false);
+        uiStateMachine.ToggleMachine(false);
         if (CurrState is AnimateState) {
             StartBattle(0.3f);
         } else StartBattle();
@@ -147,8 +142,10 @@ public partial class
     #endregion
 
     // idk if this is ok
-    public List<Actor> GetActors()
-    {
-        return actorList;
+    public List<Actor> GetActors() => CurrInput.TurnQueue;
+
+    private IEnumerator StartGame(float duration) {
+        yield return new WaitForSeconds(duration);
+        StartBattle();
     }
 }

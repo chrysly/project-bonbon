@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class BattleBonbonWindow : MonoBehaviour {
+    public event System.Action<IEnumerator, bool> OnAnimationEndpoint;
     public IEnumerator activeUIAction = null;
 
     [SerializeField] private Transform icon;
@@ -21,6 +22,7 @@ public class BattleBonbonWindow : MonoBehaviour {
     [SerializeField] private Transform cursor;
 
     [SerializeField] private float animationDuration = 0.4f;
+    [SerializeField] private float animationDelay = 0.05f;
 
     private BonbonObject[] bonbons;
     [SerializeField] private List<BonbonIcon> bonbonSlots;
@@ -72,52 +74,56 @@ public class BattleBonbonWindow : MonoBehaviour {
         if (activeUIAction == null) {
             if (!enable) CollapseCursor();
             activeUIAction = enable ? EnableAnimation() : DisableAnimation();
+            OnAnimationEndpoint?.Invoke(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
 
     private IEnumerator EnableAnimation() {
         icon.DOScale(1f, animationDuration);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(animationDelay);
         tray1.DOScale(1f, animationDuration);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(animationDelay);
         tray2.DOScale(1f, animationDuration);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(animationDelay);
 
         //Bonbon Icons
         for (int i = 0; i < bonbons.Length; i++) {
             if (bonbons[i] != null) {
                 bonbonSlots[i].Initialize(bonbons[i]);
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(animationDelay);
             }
         }
-        
+
+        var action = activeUIAction;
         activeUIAction = null;
         BonbonSelect(true);
-        
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     private IEnumerator DisableAnimation() {
         cursor.DOScale(0f, 0);
-        shareButton.DOScaleX(0f, animationDuration / 2);
-        yield return new WaitForSeconds(0.1f);
-        consumeButton.DOScaleX(0f, animationDuration / 2);
-        yield return new WaitForSeconds(0.1f);
-        augmentButton.DOScaleX(0f, animationDuration / 2);
-        yield return new WaitForSeconds(0.1f);
-        ingredientsButton.DOScaleX(0f, animationDuration / 2);
-        yield return new WaitForSeconds(0.1f);
-        icon.DOScale(0f, animationDuration / 2);
-        yield return new WaitForSeconds(0.1f);
+        shareButton.DOScaleX(0f, animationDuration);
+        yield return new WaitForSeconds(animationDelay);
+        consumeButton.DOScaleX(0f, animationDuration);
+        yield return new WaitForSeconds(animationDelay);
+        augmentButton.DOScaleX(0f, animationDuration);
+        yield return new WaitForSeconds(animationDelay);
+        ingredientsButton.DOScaleX(0f, animationDuration);
+        yield return new WaitForSeconds(animationDelay);
+        icon.DOScale(0f, animationDuration);
+        yield return new WaitForSeconds(animationDelay);
         ClearButtons();
-        tray1.DOScale(0f, animationDuration / 2);
-        yield return new WaitForSeconds(0.1f);
-        tray2.DOScale(0f, animationDuration / 2);
+        tray1.DOScale(0f, animationDuration);
+        yield return new WaitForSeconds(animationDelay);
+        tray2.DOScale(0f, animationDuration);
         mainButtonIndex = -1;
 
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     public void BonbonSelect(bool directionDown) {
@@ -129,6 +135,7 @@ public class BattleBonbonWindow : MonoBehaviour {
                 activeUIAction = OperationSelect(directionDown);
             }
 
+            OnAnimationEndpoint?.Invoke(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
@@ -157,44 +164,47 @@ public class BattleBonbonWindow : MonoBehaviour {
 
         UpdateCursor(bonbonSlots[mainButtonIndex]);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(animationDelay);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     private void ToggleEmptySlot() {
-        ingredientsButton.DOScaleX(1f, 0.15f);
+        ingredientsButton.DOScaleX(1f, 0.1f);
         ingredientsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Ingredients";
         ingredientsButton.GetComponent<MainIngredientButton>().merge = false;
-        augmentButton.DOScaleX(0f, 0.15f);
-        consumeButton.DOScaleX(0f, 0.15f);
-        shareButton.DOScale(0f, 0.15f);
+        augmentButton.DOScaleX(0f, 0.1f);
+        consumeButton.DOScaleX(0f, 0.1f);
+        shareButton.DOScale(0f, 0.1f);
     }
 
     private void ToggleOccupiedSlot() {
-        ingredientsButton.DOScaleX(1f, 0.15f);
+        ingredientsButton.DOScaleX(1f, 0.1f);
         ingredientsButton.GetComponentInChildren<TextMeshProUGUI>().text = "Bake";
         ingredientsButton.GetComponent<MainIngredientButton>().merge = true;
-        augmentButton.DOScaleX(1f, 0.15f);
-        consumeButton.DOScaleX(1f, 0.15f);
-        shareButton.DOScale(1f, 0.15f);
+        augmentButton.DOScaleX(1f, 0.1f);
+        consumeButton.DOScaleX(1f, 0.1f);
+        shareButton.DOScale(1f, 0.1f);
     }
 
     private void InitCursor() {
         if (mainButtonIndex == -1) {
-            cursor.DOScale(new Vector3(1, 1, 1), 0.2f).SetEase(Ease.Flash);
+            cursor.DOScale(new Vector3(1, 1, 1), 0.07f).SetEase(Ease.Flash);
             cursor.gameObject.SetActive(true);
         }
     }
 
     private void CollapseCursor() {
-        cursor.DOScale(new Vector3(0, 0, 0), 0.1f);
+        cursor.DOScale(new Vector3(0, 0, 0), 0.07f);
         mainButtonIndex = -1;
     }
 
     private void UpdateCursor(BattleButton button) {
         Debug.Log("moved cursor");
-        cursor.DOMove(button.targetPoint.position, 0.1f);
+        cursor.DOMove(button.targetPoint.position, 0.06f);
     }
 
     public void ToggleBonbonOperations(bool enable) {
@@ -214,9 +224,12 @@ public class BattleBonbonWindow : MonoBehaviour {
             else bonbonOperationsIndex = bonbonOperationsIndex <= 0 ? bonbonOperationButtons.Count - 1 : bonbonOperationsIndex - 1;
             UpdateCursor(bonbonOperationButtons[bonbonOperationsIndex]);
         }
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(animationDelay);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     public BattleButton ConfirmButton() {

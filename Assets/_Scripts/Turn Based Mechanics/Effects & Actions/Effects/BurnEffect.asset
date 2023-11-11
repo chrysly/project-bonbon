@@ -23,4 +23,4 @@ MonoBehaviour:
     percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0
-    percentStaminaRegen: 0
+    flatStaminaRegen: 0

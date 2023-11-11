@@ -22,11 +22,11 @@ public class SkillHandler : MonoBehaviour {
     public ActiveSkillPrep SkillHandler_OnSkillUpdate(SkillAction skillAction, Actor[] targets, BonbonObject bonbon = null) {
         if (skillAction != null) SkillPrep.skill = skillAction;
         if (targets != null) SkillPrep.targets = targets;
-        SkillPrep.bonbon = bonbon;
+        if (bonbon != null) SkillPrep.bonbon = bonbon;
         return SkillPrep;
     }
 
-    public void SkillHandler_OnSkillReset() => Reset();
+    public void SkillHandler_OnSkillReset() => Reset(); 
 
     public ActiveSkillPrep SkillHandler_OnSkillActivate() {
         if (SkillPrep.targets.Length > 0) {

@@ -805,7 +805,7 @@ MonoBehaviour:
   ribbon2: {fileID: 6186006690193123597}
   display: {fileID: 3789947394201116696}
   skillLayout: {fileID: 501637777653170340}
-  animationDuration: 0.5
+  animationDuration: 0.1
   buttonPrefab: {fileID: 5492831396512457482, guid: e6d102211063df947adb3739327eed0e, type: 3}
 --- !u!1 &6293357388004096485
 GameObject:
@@ -1011,7 +1011,7 @@ MonoBehaviour:
   horizontalView: {fileID: 2731881634578616080}
   ingredientDisplayPoint: {fileID: 1067475504937629043}
   ingredientPrefab: {fileID: 8502032677846900028, guid: 948411ec690171642b0f7547393eb8e7, type: 3}
-  animationDuration: 0.5
+  animationDuration: 0.1
   slot: -1
 --- !u!1 &6855934227515966658
 GameObject:

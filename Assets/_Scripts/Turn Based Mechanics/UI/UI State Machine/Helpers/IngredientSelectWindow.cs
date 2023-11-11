@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class IngredientSelectWindow : MonoBehaviour
 {
+    public event System.Action<IEnumerator, bool> OnAnimationEndpoint;
     public IEnumerator activeUIAction = null;
 
     [SerializeField] private Transform backdrop;
@@ -52,13 +53,14 @@ public class IngredientSelectWindow : MonoBehaviour
     public void ToggleMainDisplay(bool enable) {
         if (activeUIAction == null) {
             activeUIAction = enable ? EnableAnimation() : DisableAnimation();
+            OnAnimationEndpoint.Invoke(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
     
     private IEnumerator EnableAnimation() {
-        backdrop.DOMove(ingredientDisplayPoint.position, 1f);
-        yield return new WaitForSeconds(1f);
+        backdrop.DOMove(ingredientDisplayPoint.position, .3f);
+        yield return new WaitForSeconds(.15f);
 
         foreach (BonbonBlueprint bonbon in _blueprints) {
             GameObject obj = Instantiate(ingredientPrefab, horizontalView);
@@ -70,8 +72,10 @@ public class IngredientSelectWindow : MonoBehaviour
             yield return new WaitForSeconds(animationDuration / 2);
         }
 
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
 
     private IEnumerator DisableAnimation() {
@@ -79,13 +83,17 @@ public class IngredientSelectWindow : MonoBehaviour
         ClearButtons();
         backdrop.DOMove(_originalPos, 0.5f);
         yield return new WaitForSeconds(animationDuration);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
     
     public void ButtonSelect(bool downwards) {
         if (activeUIAction == null) {
             activeUIAction = ButtonSelectAction(downwards);
+            OnAnimationEndpoint.Invoke(activeUIAction, true);
             StartCoroutine(activeUIAction);
         }
     }
@@ -112,8 +120,11 @@ public class IngredientSelectWindow : MonoBehaviour
         }
 
         yield return new WaitForSeconds(animationDuration / 2);
+
+        var action = activeUIAction;
         activeUIAction = null;
-        yield return null;
+
+        OnAnimationEndpoint?.Invoke(action, false);
     }
     
     public BonbonBlueprint ConfirmBonbon() {

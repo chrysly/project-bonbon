@@ -14,9 +14,9 @@ public class SkillAction {
         SkillIndex = skillIndex;
     }
 
-    public AIActionValue ComputeSkillActionValues(Actor target, int currTurn) {
+    public AIActionValue ComputeSkillActionValues(Actor target, int currTurn, BonbonObject bonbon = null) {
         AIActionValue actionValue = new AIActionValue();
-        SkillData.ComputeActionValues(ref actionValue, target.ActiveData);
+        SkillData.ComputeActionValues(ref actionValue, bonbon == null ? target.ActiveData : target.ActiveData.Augment(bonbon.Data.augmentData));
         actionValue.immediateDamage = target.ActiveData.ComputeDefense(actionValue.immediateDamage);
         actionValue.damageOverTime = target.ActiveData.ComputeDefense(actionValue.damageOverTime);
         //actionValue.caster = target.ActiveData. aaa
@@ -44,7 +44,7 @@ public class SkillAction {
         if (augment.augmentEffects != null
             && !SkillData.immediateActions.Contains(aea)) SkillData.immediateActions.Add(aea);
         /// Perform the actions on the caster with new computations;
-        foreach (Actor target in targets) SkillData.PerformActions(Caster.ActiveData, target, augment);
+        foreach (Actor target in targets) SkillData.PerformActions(Caster.ActiveData.Augment(augment), target);
     }
 
     public override string ToString() {

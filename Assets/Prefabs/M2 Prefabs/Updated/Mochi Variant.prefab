@@ -3665,7 +3665,8 @@ MonoBehaviour:
   shareButton: {fileID: 7282624539928704215}
   bonbonSelectLocation: {fileID: 3902399643482643146}
   cursor: {fileID: 5357487462807340797}
-  animationDuration: 0.5
+  animationDuration: 0.05
+  animationDelay: 0.05
   bonbonSlots:
   - {fileID: 8101536711983627241}
   - {fileID: 9107478729368162950}
@@ -4652,6 +4653,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 588745334679423564, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0cfd4d2af761e0e48b776de1d15db8f7, type: 2}
+    - target: {fileID: 588745334679423564, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 191ccc27f1ffcfa48a864e66bf66cac5, type: 2}
     - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: cursor
       value: 
@@ -4668,6 +4677,10 @@ PrefabInstance:
       propertyPath: bonbonWindow
       value: 
       objectReference: {fileID: 2561108927444208890}
+    - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: mainPanelToggleDuration
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: decorations.Array.data[0]
       value: 
@@ -4689,6 +4702,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1635343446280212388}
     - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: mainPanelButtonScaleDuration
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: mainPanelButtonEmergeDuration
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1573801884385529681, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: mainPanelButtons.Array.data[0]
       value: 
       objectReference: {fileID: 3796603680299583595}
@@ -4704,6 +4725,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mochi Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2849827069708943498, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0cfd4d2af761e0e48b776de1d15db8f7, type: 2}
+    - target: {fileID: 4572740758657064665, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: moveDuration
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912312475948334162, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0cfd4d2af761e0e48b776de1d15db8f7, type: 2}
+    - target: {fileID: 5912312475948334162, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 191ccc27f1ffcfa48a864e66bf66cac5, type: 2}
     - target: {fileID: 6309210264687160859, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.99219114
@@ -4716,6 +4753,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 14.33
       objectReference: {fileID: 0}
+    - target: {fileID: 6505742021188525632, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505742021188525632, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0cfd4d2af761e0e48b776de1d15db8f7, type: 2}
+    - target: {fileID: 6736732760885119514, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0cfd4d2af761e0e48b776de1d15db8f7, type: 2}
+    - target: {fileID: 6779761295406151566, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4163e0341daae5c4990cb8fc7aec5924, type: 2}
+    - target: {fileID: 6779761295406151566, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42709099c1c7cc4439273aae08040caa, type: 2}
     - target: {fileID: 8067573261568829474, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.78
@@ -4760,6 +4817,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
+    - target: {fileID: 8919638880934030747, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0cfd4d2af761e0e48b776de1d15db8f7, type: 2}
+    - target: {fileID: 8919638880934030747, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 191ccc27f1ffcfa48a864e66bf66cac5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7448187656500950727, guid: ea089f3f94526a146b2b843761202041, type: 3}

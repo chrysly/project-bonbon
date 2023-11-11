@@ -7,8 +7,10 @@ public class BattleStateInput : StateInput {
 
     #region Global Variables
     private List<Actor> turnQueue;
+    public List<Actor> TurnQueue => turnQueue;
     private int currActorIndex = 0;
     private int currentTurn = 0;
+
     #endregion Global Variables
 
     #region | Events |
@@ -51,8 +53,7 @@ public class BattleStateInput : StateInput {
     }
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>
-    public void AdvanceTurn() 
-    {
+    public void AdvanceTurn() {
         Actor initialActor = ActiveActor();
         do {
             currActorIndex = (currActorIndex + 1) % turnQueue.Count;
@@ -60,16 +61,9 @@ public class BattleStateInput : StateInput {
         currentTurn++;
     }
 
-    public Actor ActiveActor() {
-        return turnQueue[currActorIndex];
-    }
+        public Actor ActiveActor() => turnQueue[currActorIndex];
 
     public int CurrTurn() {
         return currentTurn;
-    }
-
-    public List<Actor> GetTurnQueue()
-    {
-        return turnQueue;
     }
 }

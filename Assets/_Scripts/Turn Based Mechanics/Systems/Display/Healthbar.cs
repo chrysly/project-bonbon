@@ -15,7 +15,7 @@ public class Healthbar : MonoBehaviour {
     }
 
     private void UpdateHealthBar(BattleStateMachine.BattleState state, BattleStateInput input) {
-        if (state is not BattleStateMachine.AnimateState) return;
+        if (state is BattleStateMachine.TargetSelectState) return;
         float currHealth = actor.Hitpoints;
         float maxHealth = actor.Data.MaxHitpoints;
 

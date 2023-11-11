@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Strawberry Shortcake
   m_EditorClassIdentifier: 
   name: Strawberry Crepe
-  texture: {fileID: 0}
+  texture: {fileID: 2800000, guid: a12f88e09dfd233499e62e2ac5e6f341, type: 3}
   craftStamina: 10
   passiveModifiers:
     flatAttack: 0
@@ -24,10 +24,10 @@ MonoBehaviour:
     percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0.3
-    percentStaminaRegen: 0
+    flatStaminaRegen: 0
   augmentData:
-    damageBoost: 5
-    healBoost: 2
+    damageBoost: 10
+    healBoost: 0
     augmentEffects: []
     immediateActions: []
     bonbonEffect: {fileID: 11400000, guid: d59b4c6dc5ba34a4cb5cf2e9bf4ebed4, type: 2}
@@ -35,8 +35,6 @@ MonoBehaviour:
   recipe:
   - {fileID: 11400000, guid: b213808cf87af4843b808ecfb190468c, type: 2}
   - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
   references:
     version: 2
     RefIds: []

@@ -19,7 +19,7 @@ public class SelfDamageAction : ImmediateAction.SkillOnly {
         actionValue.immediateHeal -= damageAmount;
     }
 
-    public override void Use(StatIteration activeData, Actor target = null, SkillAugment augment = null) {
+    public override void Use(StatIteration activeData, Actor target = null) {
         activeData.Actor.DepleteHitpoints(damageAmount);
     }
 

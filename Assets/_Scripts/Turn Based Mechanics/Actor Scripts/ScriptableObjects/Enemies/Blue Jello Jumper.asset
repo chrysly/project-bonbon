@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Blue Jello Jumper
   m_EditorClassIdentifier: 
   displayName: Blue Jello Jumper
+  portrait: {fileID: 21300008, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
   id: jelloblue
   maxHitpoints: 14
   basePotency: 7
