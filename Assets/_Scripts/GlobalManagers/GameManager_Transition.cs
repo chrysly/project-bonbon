@@ -30,9 +30,7 @@ public partial class GameManager {
     private void SetActiveScene(int sceneIndex) {
         sliderPanel.SetActive(true);
         StartCoroutine(LoadSceneSync(sceneIndex));
-        //fa = GameObject.FindGameObjectWithTag("loading").GetComponent<fadeInOut>();
-        loadingCanvas.GetComponentInChildren<fadeInOut>(true).FadeIn();
-        // loadingCanvas.FadeIn();
+        loadingCanvas.GetComponent<FadeInOut>().Fade(1f);
     }
 
     /// <summary>
@@ -46,7 +44,7 @@ public partial class GameManager {
         {
             operation.allowSceneActivation = false;
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
-            currentValue = Mathf.MoveTowards(currentValue, progress, progressMultiplier * Time.deltaTime);
+            currentValue = Mathf.MoveTowards(currentValue, progress, progressMultiplier * Time.unscaledDeltaTime);
             slider.value = currentValue;
             if (Mathf.Approximately(currentValue, 1))
             {
@@ -55,17 +53,21 @@ public partial class GameManager {
 
 
             yield return null;
-        } sliderPanel.SetActive(false);
+        }
     }
     
     void Start(){
         SceneManager.sceneLoaded+=OnSceneLoaded;
+        loadingCanvas.GetComponent<FadeInOut>().Fade(0f);
+        //StartCoroutine(OneSec());
+        currentValue=0f;
     }
 
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {
-        loadingCanvas.GetComponent<fadeInOut>().FadeOut();
-        StartCoroutine(threesec());
+        loadingCanvas.GetComponent<FadeInOut>().Fade(0f);
+        //Debug.Log("fadingOut");
+        //StartCoroutine(OneSec());
         currentValue=0f;
         
     }
@@ -75,9 +77,9 @@ public partial class GameManager {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    IEnumerator threesec(){
-        yield return new WaitForSeconds(1);
-        loadingCanvas.SetActive(false);
-    }
+    // IEnumerator OneSec(){
+    //     yield return new WaitForSeconds(1);
+    //     loadingCanvas.SetActive(false);
+    // }
 
 }
