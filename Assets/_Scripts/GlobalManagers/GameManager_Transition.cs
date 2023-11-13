@@ -30,7 +30,7 @@ public partial class GameManager {
     private void SetActiveScene(int sceneIndex) {
         sliderPanel.SetActive(true);
         StartCoroutine(LoadSceneSync(sceneIndex));
-        loadingCanvas.GetComponent<FadeInOut>().Fade(1f);
+        loadingCanvas.GetComponent<FadeInOut>().Fade(1f,true,Color.yellow);
     }
 
     /// <summary>
@@ -58,16 +58,13 @@ public partial class GameManager {
     
     void Start(){
         SceneManager.sceneLoaded+=OnSceneLoaded;
-        loadingCanvas.GetComponent<FadeInOut>().Fade(0f);
-        //StartCoroutine(OneSec());
+        loadingCanvas.GetComponent<FadeInOut>().Fade(0f,false);
         currentValue=0f;
     }
 
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, LoadSceneMode mode)
     {
-        loadingCanvas.GetComponent<FadeInOut>().Fade(0f);
-        //Debug.Log("fadingOut");
-        //StartCoroutine(OneSec());
+        loadingCanvas.GetComponent<FadeInOut>().Fade(0f,true,Color.yellow);
         currentValue=0f;
         
     }
@@ -77,9 +74,5 @@ public partial class GameManager {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // IEnumerator OneSec(){
-    //     yield return new WaitForSeconds(1);
-    //     loadingCanvas.SetActive(false);
-    // }
 
 }
