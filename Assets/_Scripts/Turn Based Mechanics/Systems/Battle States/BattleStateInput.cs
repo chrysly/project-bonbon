@@ -12,50 +12,37 @@ public class BattleStateInput : StateInput {
     private Actor activeActor;
     private int currentTurn = 0;
 
-    #endregion Global Variables
-
-    #region | Events |
-
-    public event System.Func<SkillAction, Actor[], BonbonObject, ActiveSkillPrep> OnSkillUpdate;
-    public void UpdateSkill(SkillAction sa, Actor[] targets, BonbonObject bonbon = null) => OnSkillUpdate?.Invoke(sa, targets, bonbon);
-
-    public event System.Func<ActiveSkillPrep> OnRetrieveSkillPrep;
-    public ActiveSkillPrep SkillPrep {
-        get {
-            ActiveSkillPrep skillPrep = OnRetrieveSkillPrep?.Invoke();
-            return skillPrep == null ? new ActiveSkillPrep() : skillPrep;
-        }
-    }
-
-    public event System.Action OnSkillReset;
-    public void ResetSkill() => OnSkillReset?.Invoke();
-
-    public event System.Func<ActiveSkillPrep> OnSkillActivate;
-    public ActiveSkillPrep ActivateSkill() => OnSkillActivate?.Invoke();
-
-    public event System.Action<ActiveSkillPrep> OnSkillAnimation;
-    public void AnimateSkill(ActiveSkillPrep skillPrep) => OnSkillAnimation?.Invoke(skillPrep);
+    public ActiveSkillPrep SkillPrep => SkillHandler.SkillPrep;
 
     public event System.Action<List<Actor>> OnTurnChange;
     public void PropagateTurnChange(List<Actor> previewList) => OnTurnChange?.Invoke(previewList);
-    #endregion
+
+    #endregion Global Variables
 
     #region Managers
-    public BonbonFactory BonbonFactory { get; private set; }
+    public SkillHandler SkillHandler { get; private set; }
+    public AnimationHandler AnimationHandler { get; private set; }
+    public BonbonHandler BonbonHandler { get; private set; }
     #endregion
 
-    public void Initialize() { }
+    /// <summary>
+    /// Initialize the State Machine Handlers in order;
+    /// </summary>
+    /// <param name="handlers"></param>
+    public void Initialize(StateMachineHandler[] handlers) {
+        /// First loop => Grab references;
+        foreach (StateMachineHandler smh in handlers) {
+            if (smh is SkillHandler) SkillHandler = smh as SkillHandler;
+            if (smh is AnimationHandler) AnimationHandler = smh as AnimationHandler;
+        } /// Second loop => Initialize Handlers;
+        foreach (StateMachineHandler smh in handlers) smh.Initialize(this);
+    }
 
     public void InsertTurnQueue(List<Actor> actorList) {
         turnOrderHandler = new TurnOrderHandler(actorList);
         ActorList = actorList;
         PropagateTurnChange(turnOrderHandler.GetTurnPreview(6));
         activeActor = turnOrderHandler.Advance();
-    }
-
-    public void OpenBonbonFactory(BonbonFactory bonbonFactory) {
-        BonbonFactory = bonbonFactory;
-        BonbonFactory.OpenFactory(GameManager.Instance.CurrLevel);
     }
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>

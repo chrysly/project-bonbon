@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 530014663036476752}
   - component: {fileID: 6162223603595957290}
+  - component: {fileID: 3623975581694680877}
+  - component: {fileID: 7740568649006607722}
   - component: {fileID: 2790887836359901993}
   m_Layer: 0
   m_Name: State Machine
@@ -46,10 +48,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonbonFactory: {fileID: 2790887836359901993}
-  _uiStateMachine: {fileID: 7305130411921023833}
+  uiStateMachine: {fileID: 0}
   _eventSequencer: {fileID: 8016658437882586487}
   enemyTurnDuration: 2
   actorList: []
+--- !u!114 &3623975581694680877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582622979197147412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc07f6a57ceb51b40a3e9d2ddfddd5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleStateMachine: {fileID: 6162223603595957290}
+--- !u!114 &7740568649006607722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582622979197147412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc9b0513615bb84bb6740dc193237a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleStateMachine: {fileID: 6162223603595957290}
+  skillAnimationMap: {fileID: 11400000, guid: 17d10292ef8184446919a6513a1f9435, type: 2}
 --- !u!114 &2790887836359901993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,51 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonbonMapSO: {fileID: 11400000, guid: c5cef39661d95934b8ac1e1856bebdfd, type: 2}
---- !u!1 &3727895201422170709
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3743533915890147755}
-  - component: {fileID: 2095844952793648233}
-  m_Layer: 0
-  m_Name: Skill Handler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3743533915890147755
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3727895201422170709}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4429349973849333193}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2095844952793648233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3727895201422170709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc07f6a57ceb51b40a3e9d2ddfddd5cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleStateMachine: {fileID: 6162223603595957290}
 --- !u!1 &4429349973849333192
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,8 +124,6 @@ Transform:
   - {fileID: 530014663036476752}
   - {fileID: 6683670382288868343}
   - {fileID: 2758420419086115811}
-  - {fileID: 3743533915890147755}
-  - {fileID: 2685321606390205588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4551035295478905270
@@ -194,52 +176,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1e4be29a6af61d44d9134ded816f2554, type: 2}
   onStartEvent: {fileID: 11400000, guid: 4b34fcdf418c426419d98269a58ce54d, type: 2}
   onWinEvent: {fileID: 0}
---- !u!1 &6789311938255744618
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2685321606390205588}
-  - component: {fileID: 3180492194830979758}
-  m_Layer: 0
-  m_Name: Animation Handler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2685321606390205588
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789311938255744618}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4429349973849333193}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3180492194830979758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6789311938255744618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bc9b0513615bb84bb6740dc193237a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleStateMachine: {fileID: 6162223603595957290}
-  skillAnimationMap: {fileID: 11400000, guid: 17d10292ef8184446919a6513a1f9435, type: 2}
 --- !u!1 &6837574246337379980
 GameObject:
   m_ObjectHideFlags: 0

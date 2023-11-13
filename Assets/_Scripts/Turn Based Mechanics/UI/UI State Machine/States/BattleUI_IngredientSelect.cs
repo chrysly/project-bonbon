@@ -38,7 +38,7 @@ public partial class BattleUIStateMachine {
         }
 
         private void MatchRecipe(int slot, BonbonBlueprint bonbon) {
-            BonbonFactory factory = MySM._battleStateMachine.CurrInput.BonbonFactory;
+            BonbonHandler factory = MySM._battleStateMachine.CurrInput.BonbonHandler;
             Debug.Log(Input.actor.BonbonInventory[slot].Data.name + " and " + bonbon.name);
             List<BonbonBlueprint> blueprint = factory.FindRecipes(Input.actor.BonbonInventory[slot].Data, bonbon);
             if (blueprint != null) {
