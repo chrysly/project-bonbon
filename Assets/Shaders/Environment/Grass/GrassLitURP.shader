@@ -21,10 +21,10 @@ Shader "Custom/GrassLitURP"
 		_WindStrength("Wind Strength", Float) = 0.05
 	}
 		HLSLINCLUDE
-#pragma vertex vert
-#pragma fragment frag
-#pragma require geometry
-#pragma geometry geom
+		#pragma vertex vert
+		#pragma fragment frag
+		#pragma require geometry
+		#pragma geometry geom
 
 #define GrassSegments 5 // segments per blade
 #define GrassBlades 4 // blades per vertex
@@ -253,8 +253,9 @@ Shader "Custom/GrassLitURP"
 		// color pass
 		SubShader
 	{
-		Tags{ "RenderType" = "Opaque" "RenderPipeline" = "UniversalRenderPipeline" }
-
+		//Tags{ "RenderType" = "Opaque" "RenderPipeline" = "UniversalRenderPipeline" }
+		Tags { "LightMode" = "UniversalForward" }
+		
 		Cull Off
 		Pass
 	{

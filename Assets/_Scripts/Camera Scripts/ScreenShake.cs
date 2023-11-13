@@ -9,8 +9,16 @@ public class ScreenShake : MonoBehaviour {
     public AnimationCurve curve;
     public float duration;
     [SerializeField] private Transform camera;
+    public bool start = false;
 
-    public void Shake() {
+    private void Update() {
+        if (start) {
+            start = false;
+            Shake();
+        }
+    }
+
+    private void Shake() {
         if (shakeAction == null) {
             shakeAction = ShakeAction();
             StartCoroutine(shakeAction);
@@ -23,7 +31,8 @@ public class ScreenShake : MonoBehaviour {
 
         while (elapsedTime < duration) {
             elapsedTime += Time.deltaTime;
-            camera.position = startPos + Random.insideUnitSphere;
+            float strength = curve.Evaluate(elapsedTime / duration);
+            camera.position = startPos + Random.insideUnitSphere * strength;
             yield return null;
         }
 
