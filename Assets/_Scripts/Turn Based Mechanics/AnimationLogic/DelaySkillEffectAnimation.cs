@@ -24,7 +24,7 @@ public class DelaySkillEffectAnimation : DelaySkillAnimation
 #if UNITY_EDITOR
     protected override void InnerGUI() {
         using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
-            triggerTime = EditorGUILayout.FloatField("Apply all effects at", triggerTime);
+            triggerTime = Mathf.Max(EditorGUILayout.FloatField("Apply all effects at", triggerTime), 0);
             EditorGUILayout.LabelField("s", GUILayout.Width(24));
         }
     }
