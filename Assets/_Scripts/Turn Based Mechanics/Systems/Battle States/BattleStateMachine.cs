@@ -12,6 +12,8 @@ public partial class
     [SerializeField] private EventSequencer _eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     [SerializeField] private List<Actor> actorList;
+    [SerializeField] private Canvas winCanvas;
+    [SerializeField] private Canvas loseCanvas;
     #endregion SerializeFields
 
     #region Events
