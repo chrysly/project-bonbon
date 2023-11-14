@@ -23,7 +23,7 @@ public class DamageIndicatorManager : MonoBehaviour {
 
             bool hasBonbon = input.SkillPrep.bonbon != null;
             
-            int damage = input.SkillPrep.skill.ComputeSkillActionValues(target, input.CurrTurn(), input.SkillPrep.bonbon).immediateDamage;
+            int damage = input.SkillPrep.skill.ComputeSkillActionValues(target, input.SkillPrep.bonbon).immediateDamage;
             if (damage > 0) {
                 GameObject text = Instantiate(textPrefab, GenerateOffset(target.transform.position), target.transform.rotation);
                 text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + damage;

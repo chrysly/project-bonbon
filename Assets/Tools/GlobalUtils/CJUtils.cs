@@ -59,6 +59,26 @@ namespace CJUtils {
 
     public static class FieldUtils {
         
+        public static void IntSpreadField(ref bool flat, ref int flatAmount, ref int[] spreadAmount, ref int spreadArraySize) {
+            EditorGUIUtility.labelWidth = 30;
+            flat = EditorGUILayout.Toggle("Flat:", flat, GUILayout.Width(48));
+            GUILayout.Label("|", GUILayout.Width(8));
+            if (flat) {
+                EditorGUIUtility.labelWidth = 105;
+                flatAmount = EditorGUILayout.IntField("Damage Amount:", flatAmount);
+            } else {
+                EditorGUIUtility.labelWidth = 55;
+                if (spreadAmount == null) spreadAmount = new int[1];
+                spreadArraySize = Mathf.Max(1, UnityEditor.EditorGUILayout.IntField("Duration:", spreadArraySize, GUILayout.Width(80)));
+                GUILayout.Label("|", GUILayout.Width(8));
+                if (spreadAmount.Length != spreadArraySize) spreadAmount = new int[spreadArraySize];
+                for (int i = 0; i < spreadAmount.Length; i++) {
+                    EditorGUIUtility.labelWidth = 8 * (i + 1).ToString().Length + 9;
+                    spreadAmount[i] = EditorGUILayout.IntField($"{i + 1} |", spreadAmount[i]);
+                }
+            } EditorGUIUtility.labelWidth = 0;
+        }
+
         public enum DnDFieldType {
             Add,
             Remove,

@@ -104,14 +104,14 @@ public class EnemyAI
     {
         int point = 0;
         
-        if (skillData.skill.ComputeSkillActionValues(actor, -1).immediateDamage > actor.Hitpoints)  // -1 ._. (jank)
+        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints)  // -1 ._. (jank)
         {
             point += (int) AiWeights.KillUnit;
         }
         else
         {
             //Debug.Log(skillData.skill.ComputeSkillActionValues(actor).immediateDamage);
-            point += skillData.skill.ComputeSkillActionValues(actor, -1).immediateDamage * (int) AiWeights.Damage;  // -1 ._.
+            point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;  // -1 ._.
         } 
         return point;
     }

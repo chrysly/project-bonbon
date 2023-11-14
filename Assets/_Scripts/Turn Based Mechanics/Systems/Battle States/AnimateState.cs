@@ -19,7 +19,7 @@ public partial class BattleStateMachine {
 
             for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
             {
-                MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j], Input.CurrTurn()));
+                MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
             }
             
             

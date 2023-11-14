@@ -10,7 +10,7 @@ public class Effect {
     /// <summary> Stats of the original effector; </summary>
     public int duration;
     public PassiveModifier modifiers => Data.modifiers;
-    public List<ImmediateAction> actions => Data.actions;
+    public List<ImmediateAction.EffectOnly> actions => Data.actions;
 
     private StatIteration originStats;
 
@@ -30,7 +30,7 @@ public class Effect {
     /// <param name="actor"> Actor affected by this effect; </param>
     public void PerformActions(Actor actor) {
         if (actions == null) return;
-        foreach (ImmediateAction action in actions) action.Use(originStats, actor);
+        foreach (ImmediateAction.EffectOnly action in actions) action.Use(originStats, actor, Data.duration - duration);
     }
 
     /// <summary>
