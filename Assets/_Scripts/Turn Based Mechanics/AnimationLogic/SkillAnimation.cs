@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor.Animations;
@@ -20,8 +21,8 @@ public class SkillAnimation {
 
     [SerializeField] private GameObject vfxPrefab;
     public GameObject VFXPrefab => vfxPrefab;
-    [SerializeField] private List<AnimationEventTrigger> animationEventTriggers;
-    public List<AnimationEventTrigger> AnimationEventTriggers => animationEventTriggers;
+    [SerializeReference] private List<DelaySkillAnimation> delaySkills = DelaySkillAnimation.subTypes.Select(type => (DelaySkillAnimation) System.Activator.CreateInstance(type)).ToList();
+    public List<DelaySkillAnimation> DelaySkills => delaySkills;
 
 #if UNITY_EDITOR
 
