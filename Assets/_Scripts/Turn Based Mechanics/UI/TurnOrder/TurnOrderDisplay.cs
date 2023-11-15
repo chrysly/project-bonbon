@@ -70,7 +70,7 @@ public class TurnOrderDisplay : MonoBehaviour {
 
     private void SpawnPortrait(Actor actor, Vector2 destination) {
         GameObject portraitGO = Instantiate(portraitPrefab, destination, transform.rotation, transform);
-        portraitGO.GetComponent<Image>().sprite = actor.Data.Portrait;
+        portraitGO.GetComponent<Image>().sprite = actor.Data.Icon;
         portraitGO.transform.position = destination;
         Portrait portrait = new Portrait(actor, portraitGO);
         portraitList.Add(portrait);

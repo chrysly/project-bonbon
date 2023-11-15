@@ -37,6 +37,7 @@ namespace BonbonAssetManager {
         public List<BonbonBlueprint> GlobalBonbonList { get; private set; }
         /// <summary> A list of all the skill assets in the project; </summary>
         public List<SkillObject> GlobalSkillList { get; private set; }
+        public List<ActorData> GlobalActorList { get; private set; }
 
         public CJToolAssets assetRefs { get; private set; }
 
@@ -64,6 +65,7 @@ namespace BonbonAssetManager {
         public void RefreshLists() {
             GlobalBonbonList = BAMUtils.InitializeList<BonbonBlueprint>();
             GlobalSkillList = BAMUtils.InitializeList<SkillObject>();
+            GlobalActorList = BAMUtils.InitializeList<ActorData>();
         }
 
         private void InitializeAssetRefs() => assetRefs = FieldUtils.GetToolAssets();

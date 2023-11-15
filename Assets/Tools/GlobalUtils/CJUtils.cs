@@ -47,6 +47,11 @@ namespace CJUtils {
             }
         }
 
+        public static Color Yellow {
+            get {
+                return new Vector4(0.9804f, 0.8156f, 0.1725f, 1);
+            }
+        }
 
         public static Color Cyan {
             get {

@@ -434,6 +434,7 @@ namespace BonbonAssetManager {
         private BaseHierarchy<ActorData> actorHierarchy;
         private ActorData selectedActor;
         private AssetCreator<ActorData> assetCreator;
+        private ActorMap prefabMapSO;
 
         private List<BonbonBlueprint> bonbonList => MainGUI.GlobalBonbonList;
         private List<SkillObject> skillList => MainGUI.GlobalSkillList;
@@ -445,6 +446,11 @@ namespace BonbonAssetManager {
         private List<SkillObject>[] skillMap;
         private List<BonbonBlueprint>[] bonbonMap;
 
+        private enum Mode {
+            ActorEditor,
+            ActorVisuals
+        } private Mode mode;
+
         private enum MapEditor {
             Skill,
             Bonbon,
@@ -455,6 +461,23 @@ namespace BonbonAssetManager {
             actorHierarchy = new BaseHierarchy<ActorData>(this);
             actorHierarchy.OnPathSelection += ActorManager_OnPathSelection;
             assetCreator.OnAssetCreation += actorHierarchy.ReloadHierarchy;
+            LoadPrefabMap();
+        }
+
+        private void LoadPrefabMap() {
+            var guid = AssetDatabase.FindAssets($"t:{nameof(ActorMap)}")[0];
+            prefabMapSO = AssetDatabase.LoadAssetAtPath<ActorMap>(AssetDatabase.GUIDToAssetPath(guid));
+            prefabMapSO.PseudoActorMap = UpdatePrefabMap(prefabMapSO.PseudoActorMap);
+        }
+
+        private Dictionary<ActorData, GameObject> UpdatePrefabMap(Dictionary<ActorData, GameObject> prefabMap) {
+            /// Cleanup of deprecated entries;
+            foreach (KeyValuePair<ActorData, GameObject> kvp in prefabMap) {
+                if (!MainGUI.GlobalActorList.Contains(kvp.Key)) prefabMap.Remove(kvp.Key);
+            } /// Assignment of new entries;
+            foreach (ActorData actorData in MainGUI.GlobalActorList) {
+                if (!prefabMap.ContainsKey(actorData)) prefabMap[actorData] = null;
+            } return prefabMap;
         }
 
         private void ActorManager_OnPathSelection(string path) {
@@ -487,41 +510,105 @@ namespace BonbonAssetManager {
                 using (new EditorGUILayout.VerticalScope()) {
                     MainGUI.DrawToolbar();
 
+                    using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar)) {
+                        GUILayout.Label("Mode:", GUILayout.Width(50));
+                        if (GUILayout.Button("Actor Editor", mode == Mode.ActorEditor
+                                                        ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
+                                                        GUILayout.ExpandWidth(true))) {
+                            mode = Mode.ActorEditor;
+                        } if (GUILayout.Button("Actor Visuals", mode == Mode.ActorVisuals
+                                                        ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
+                                                        GUILayout.ExpandWidth(true))) {
+                            mode = Mode.ActorVisuals;
+                        }
+                    }
+
                     using (var scope = new EditorGUILayout.ScrollViewScope(mainScroll)) {
                         mainScroll = scope.scrollPosition;
                         if (selectedActor != null) {
-                            DrawActorStats();
-                            using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar)) {
-                                GUILayout.Label("Map:", GUILayout.Width(50));
-                                if (GUILayout.Button("Skills", mapEditor == MapEditor.Skill
-                                                               ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
-                                                               GUILayout.ExpandWidth(true))) {
-                                    mapEditor = MapEditor.Skill;
-                                } if (GUILayout.Button("Bonbons", mapEditor == MapEditor.Bonbon
-                                                                  ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
-                                                                  GUILayout.ExpandWidth(true))) {
-                                    mapEditor = MapEditor.Bonbon;
-                                }
-                            }
+                            switch (mode) {
+                                case Mode.ActorEditor:
+                                        DrawActorStats();
+                                        using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar)) {
+                                            GUILayout.Label("Map:", GUILayout.Width(50));
+                                            if (GUILayout.Button("Skills", mapEditor == MapEditor.Skill
+                                                                           ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
+                                                                           GUILayout.ExpandWidth(true))) {
+                                                mapEditor = MapEditor.Skill;
+                                            } if (GUILayout.Button("Bonbons", mapEditor == MapEditor.Bonbon
+                                                                              ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
+                                                                              GUILayout.ExpandWidth(true))) {
+                                                mapEditor = MapEditor.Bonbon;
+                                            }
+                                        }
 
-                            switch (mapEditor) {
-                                case MapEditor.Skill:
-                                    BAMUtils.DrawAssetGroup(skillList, upperScroll, SkillObject.GUIContent,
-                                                            MainGUI.position, buttonSize);
-                                    BAMUtils.DrawMap(skillMap, ref scrollGroup, SkillObject.GUIContent, buttonSize,
-                                                     MainGUI.assetRefs.dndFieldAssets, SaveMap);
-                                    break;
-                                case MapEditor.Bonbon:
-                                    BAMUtils.DrawAssetGroup(bonbonList, upperScroll, BonbonBlueprint.GUIContent,
-                                                        MainGUI.position, buttonSize);
-                                    BAMUtils.DrawMap(bonbonMap, ref scrollGroup, BonbonBlueprint.GUIContent, buttonSize,
-                                                     MainGUI.assetRefs.dndFieldAssets, SaveMap);
-                                    break;
-                        }
-                            
-                        } else {
-                            EditorUtils.DrawScopeCenteredText("Select an Actor to edit it here;");
-                        }
+                                        switch (mapEditor) {
+                                            case MapEditor.Skill:
+                                                BAMUtils.DrawAssetGroup(skillList, upperScroll, SkillObject.GUIContent,
+                                                                        MainGUI.position, buttonSize);
+                                                BAMUtils.DrawMap(skillMap, ref scrollGroup, SkillObject.GUIContent, buttonSize,
+                                                                 MainGUI.assetRefs.dndFieldAssets, SaveMap);
+                                                break;
+                                            case MapEditor.Bonbon:
+                                                BAMUtils.DrawAssetGroup(bonbonList, upperScroll, BonbonBlueprint.GUIContent,
+                                                                    MainGUI.position, buttonSize);
+                                                BAMUtils.DrawMap(bonbonMap, ref scrollGroup, BonbonBlueprint.GUIContent, buttonSize,
+                                                                 MainGUI.assetRefs.dndFieldAssets, SaveMap);
+                                                break;
+                                        } break;
+                                case Mode.ActorVisuals:
+                                    using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox, GUILayout.Height(200))) {
+                                        using (var changeScope1 = new EditorGUI.ChangeCheckScope()) {
+                                            using (new EditorGUILayout.VerticalScope(GUILayout.Width(164))) {
+                                                EditorUtils.WindowBoxLabel("Icon");
+                                                using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
+                                                    if (selectedActor.Icon != null) {
+                                                        if (GUILayout.Button(selectedActor.Icon.texture, 
+                                                            GUILayout.Height(164), GUILayout.Width(164))) EditorGUIUtility.PingObject(selectedActor.Icon);
+                                                    } else {
+                                                        using (new EditorGUILayout.VerticalScope(EditorStyles.numberField, GUILayout.Width(164), GUILayout.Height(164))) {
+                                                            EditorUtils.DrawScopeCenteredText("No Sprite Selected;");
+                                                        }
+                                                    }
+                                                } using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
+                                                    if (GUILayout.Button("Select")) {
+                                                        EditorGUIUtility.ShowObjectPicker<Sprite>(selectedActor.Icon, false, "", GUIUtility.GetControlID(FocusType.Passive) + 100);
+                                                    } if (Event.current.commandName == "ObjectSelectorUpdated") {
+                                                        var icon = EditorGUIUtility.GetObjectPickerObject();
+                                                        if (icon is Sprite) selectedActor.SetIcon(icon as Sprite);
+                                                    }
+                                                }
+                                            } EditorUtils.WindowBoxLabel("", GUILayout.Width(20), GUILayout.ExpandHeight(true));
+                                            if (changeScope1.changed) EditorUtility.SetDirty(selectedActor);
+                                        } using (var changeScope2 = new EditorGUI.ChangeCheckScope()) {
+                                            using (new EditorGUILayout.VerticalScope()) {
+                                                EditorUtils.WindowBoxLabel("Prefab");
+                                                using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
+                                                    GameObject potentialPrefab = EditorGUILayout.ObjectField("Prefab:", prefabMapSO.PseudoActorMap[selectedActor],
+                                                                                                                typeof(GameObject), false) as GameObject;
+                                                    if (potentialPrefab != prefabMapSO.PseudoActorMap[selectedActor]) {
+                                                        var dict = new Dictionary<ActorData, GameObject>(prefabMapSO.PseudoActorMap);
+                                                        dict[selectedActor] = potentialPrefab;
+                                                        prefabMapSO.PseudoActorMap = dict;
+                                                    }
+                                                } EditorUtils.WindowBoxLabel("Preview");
+                                                using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox, GUILayout.Height(150))) {
+                                                    if (prefabMapSO.PseudoActorMap[selectedActor] != null) {
+                                                        GUILayout.FlexibleSpace();
+                                                        using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
+                                                            GUILayout.Label(AssetPreview.GetAssetPreview(prefabMapSO.PseudoActorMap[selectedActor]));
+                                                        } GUILayout.FlexibleSpace();
+                                                    } else {
+                                                        using (new EditorGUILayout.VerticalScope()) {
+                                                            EditorUtils.DrawScopeCenteredText("No prefab has been assigned to this Actor;");
+                                                        }
+                                                    }
+                                                }
+                                            } if (changeScope2.changed) EditorUtility.SetDirty(prefabMapSO);
+                                        } 
+                                    } break; 
+                            } 
+                        } else EditorUtils.DrawScopeCenteredText("Select an Actor to edit it here;");
                     }
                 }
             }

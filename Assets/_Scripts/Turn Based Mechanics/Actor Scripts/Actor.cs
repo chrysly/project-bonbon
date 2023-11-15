@@ -9,6 +9,9 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     [SerializeField] private ActorData data;
     public StatIteration ActiveData { get; private set; }
     [SerializeField] private string uniqueID;
+
+    private ActorHandler handler;
+    public void InjectHandler(ActorHandler handler) => this.handler = handler;
     #endregion Data Attributes
 
     #region Accessors
