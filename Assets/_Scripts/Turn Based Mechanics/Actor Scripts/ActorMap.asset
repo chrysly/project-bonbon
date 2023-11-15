@@ -13,5 +13,23 @@ MonoBehaviour:
   m_Name: ActorMap
   m_EditorClassIdentifier: 
   pseudoActorMap:
-    Keys: []
-    Values: []
+    Keys:
+    - {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
+    - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
+    - {fileID: 11400000, guid: dc8857a6470f59644abcfdc3114d2e4e, type: 2}
+    - {fileID: 11400000, guid: 22f1451bfe9ff65468f2822d24fc2975, type: 2}
+    - {fileID: 11400000, guid: a6ac0735501b31b418532e1c52bac788, type: 2}
+    - {fileID: 11400000, guid: c58fa5e0cfdec884daac7cc6fdd3e138, type: 2}
+    - {fileID: 11400000, guid: 14ce6143ed740b1448b3af48cebab646, type: 2}
+    - {fileID: 11400000, guid: 6a541fab6c2d6a94a8b43d4b06524e3e, type: 2}
+    - {fileID: 11400000, guid: e88e166a5dcff6e41aeadffe8025994a, type: 2}
+    Values:
+    - {fileID: 0}
+    - {fileID: 2827239753294562356, guid: 541b3c26c5d462f41a0011f8cea2ce9f, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

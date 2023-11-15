@@ -62,6 +62,25 @@ namespace CJUtils {
 
     #if UNITY_EDITOR
 
+    public static class SceneUtils {
+
+        /// <summary>
+        /// Simple transform sorting method, based on a public rendition by <a href="https://gist.github.com/AShim3D/d76e2026c5655b3b34e2">AShim3D</a>;
+        /// </summary>
+        /// <param name="transform"> Transform whose children must be reordered; </param>
+        public static void SortChildren(Transform transform) {
+            List<Transform> children = new List<Transform>();
+            for (int i = transform.childCount - 1; i >= 0; i--) {
+                Transform child = transform.GetChild(i);
+                children.Add(child);
+                child.parent = null;
+            } children.Sort((Transform t1, Transform t2) => { return t1.name.CompareTo(t2.name); });
+            foreach (Transform child in children) {
+                child.parent = transform;
+            }
+        }
+    }
+
     public static class FieldUtils {
         
         public static void IntSpreadField(ref bool flat, ref int flatAmount, ref int[] spreadAmount, ref int spreadArraySize) {
@@ -213,6 +232,14 @@ namespace CJUtils {
             using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
                 GUILayout.Label(text, UIStyles.CenteredLabelBold, options);
             }
+        }
+
+        /// <summary>
+        /// Quick extension to show the Object picker for a given object;
+        /// </summary>
+        /// <param name="obj"> Object whose type will be included in the Object Picker; </param>
+        public static void ShowObjectPicker<T>(T obj, string filter = "") where T : Object {
+            EditorGUIUtility.ShowObjectPicker<ActorData>(obj, false, filter, GUIUtility.GetControlID(FocusType.Passive) + 100);
         }
 
         /// <summary>
