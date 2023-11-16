@@ -74,8 +74,9 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         BonbonInventory = new BonbonObject[4];
         EffectList = new List<Effect>();
         ComputeStats();
-        
-        for (int i = 0; i < GameManager.Instance.CurrLevel; i++) {
+
+        int level = GameManager.Instance != null ? GameManager.Instance.CurrLevel : 5;
+        for (int i = 0; i < level; i++) {
             /// Load Skills
             foreach (SkillObject skill in data.skillMap[i]) {
                 CreateSkillAction(skill);

@@ -16,7 +16,7 @@ public partial class BattleUIStateMachine {
             if (input == 0 || input == 2) {
                 Input.AnimationHandler.targetWindow.Select(input != 0);
             } else if (input == 1) {
-                MySM._battleStateMachine.ConfirmTargetSelect(Input.AnimationHandler.targetWindow.Confirm());
+                MySM.battleStateMachine.ConfirmTargetSelect(Input.AnimationHandler.targetWindow.Confirm());
                 MySM.Transition<BattleUI_Limbo>();
             } else if (input == 3) {
                 MySM.Transition<BattleUI_SkillSelect>();
@@ -32,8 +32,8 @@ public partial class BattleUIStateMachine {
 
         protected override void RunPreAnimation() {
             base.RunPreAnimation();
-            List<Actor> actors = new List<Actor>(MySM._battleStateMachine.FilterActorsBySkill());
-            actors.Remove(MySM._battleStateMachine.CurrInput.ActiveActor());
+            List<Actor> actors = new List<Actor>(MySM.battleStateMachine.FilterActorsBySkill());
+            actors.Remove(MySM.battleStateMachine.CurrInput.ActiveActor());
             Input.AnimationHandler.targetWindow.Initialize(actors);
         }
 

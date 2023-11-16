@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 
 public class CharacterPanel : MonoBehaviour {
-    [SerializeField] private BattleStateMachine stateMachine;
+    private BattleStateMachine stateMachine => BattleStateMachine.Instance;
     private Vector3 resetPos;
     private Vector3 newPos;
     private bool active = false;

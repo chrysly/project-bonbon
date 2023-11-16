@@ -7,6 +7,6 @@ public class EndTurnButton : BattleButton
     public override void Activate(BattleUIStateMachine stateMachine, float delay) {
         base.Activate(stateMachine, delay);
         stateMachine.DelayedTransition<BattleUIStateMachine.BattleUI_Limbo>(delay, false);
-        stateMachine._battleStateMachine.StartBattle(0.5f);
+        BattleStateMachine.Instance.StartBattle(0.5f);
     }
 }

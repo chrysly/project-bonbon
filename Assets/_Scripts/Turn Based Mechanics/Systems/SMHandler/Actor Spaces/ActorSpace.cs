@@ -7,19 +7,19 @@ public abstract class ActorSpace : MonoBehaviour {
     protected Dictionary<ActorData, GameObject> prefabMap => handler.PrefabMap.ActorPrefabMap;
 
     [SerializeField] private ActorData initialActor;
-    public ActorData CurrActor { get; private set; }
+    public Actor CurrActor { get; private set; }
     [SerializeField] protected GameObject actorPrefab;
 
     void Awake() {
         if (initialActor != null && actorPrefab == null) {
             SpawnActor(initialActor);
-        }
+        } else CurrActor = actorPrefab.GetComponentInChildren<Actor>(true);
     }
 
     public void SpawnActor(ActorData actorData) {
         if (actorPrefab != null) throw new System.Exception("There was already an actor here;");
-        CurrActor = actorData;
         actorPrefab = Instantiate(prefabMap[actorData], transform.position, transform.rotation, transform);
+        CurrActor = actorPrefab.GetComponentInChildren<Actor>(true);
         handler.InitializePrefab(actorPrefab);
     }
 
@@ -59,8 +59,10 @@ public abstract class ActorSpace : MonoBehaviour {
 
     public void SpawnActorEditor(ActorData actorData) {
         if (actorPrefab != null) throw new System.Exception("There was already an actor here;");
-        CurrActor = actorData;
-        actorPrefab = Instantiate(handler.PrefabMap.PseudoActorMap[actorData], transform.position, transform.rotation, transform);
+        actorPrefab = UnityEditor.PrefabUtility.InstantiatePrefab(handler.PrefabMap.PseudoActorMap[actorData]) as GameObject;
+        actorPrefab.transform.position = transform.position;
+        actorPrefab.transform.rotation = transform.rotation;
+        actorPrefab.transform.parent = transform;
         handler.InitializePrefab(actorPrefab);
         UnityEditor.EditorUtility.SetDirty(this);
     }
@@ -68,7 +70,6 @@ public abstract class ActorSpace : MonoBehaviour {
     public void EditorDespawnActor() {
         DestroyImmediate(actorPrefab);
         actorPrefab = null;
-        CurrActor = null;
         UnityEditor.EditorUtility.SetDirty(this);
     }
 

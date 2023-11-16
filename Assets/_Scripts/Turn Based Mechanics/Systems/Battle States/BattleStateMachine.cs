@@ -7,11 +7,9 @@ public partial class
     BattleStateMachine : StateMachine<BattleStateMachine, BattleStateMachine.BattleState, BattleStateInput> {
 
     #region SerializeFields
-    [SerializeField] private BonbonHandler bonbonFactory;
     [SerializeField] public BattleUIStateMachine uiStateMachine;
     [SerializeField] private EventSequencer _eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
-    [SerializeField] private List<Actor> actorList;
     #endregion SerializeFields
 
     #region Events
@@ -21,9 +19,22 @@ public partial class
 
     #endregion Events
 
+    #region Singleton
+
+    private static BattleStateMachine instance;
+    public static BattleStateMachine Instance => instance;
+
+    #endregion
+
+    protected override void Awake() {
+        base.Awake();
+        if (instance != null) {
+            Destroy(gameObject);
+        } else instance = this;
+    }
+
     protected override void SetInitialState() {
         SetState<BattleStart>();
-        CurrInput.InsertTurnQueue(actorList);
         CurrInput.Initialize(GetComponents<StateMachineHandler>());
     }
 
@@ -55,8 +66,8 @@ public partial class
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
         CurrInput.SkillHandler.SkillReset();
-        bool allEnemiesDead = actorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
-        bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
+        bool allEnemiesDead = CurrInput.ActorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
+        bool allCharactersDead = CurrInput.ActorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
 
         if (allEnemiesDead) {
             CurrState.TriggerBattleWin();

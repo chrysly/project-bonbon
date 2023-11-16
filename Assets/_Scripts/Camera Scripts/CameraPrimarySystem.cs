@@ -8,7 +8,7 @@ public class CameraPrimarySystem : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera orbitalCam;
     [SerializeField] private CinemachineVirtualCamera aerialCam;
     [SerializeField] private CinemachineVirtualCamera charCam;
-    [SerializeField] private BattleStateMachine stateMachine;
+    private BattleStateMachine stateMachine => BattleStateMachine.Instance;
 
     [SerializeField] private Transform enemyLookTarget;
     //[SerializeField] private Transform testTarget;

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TurnOrderDisplay : MonoBehaviour {
 
     [SerializeField] private GameObject portraitPrefab;
-    [SerializeField] private BattleStateMachine bsm;
+    private BattleStateMachine battleStateMachine => BattleStateMachine.Instance;
 
     private List<Actor> currQueue;
     private List<Actor> oldQueue;
@@ -36,7 +36,7 @@ public class TurnOrderDisplay : MonoBehaviour {
         portraitSpace = portraitTransform.rect.height * 1.1f;
     }
 
-    void Start() => bsm.CurrInput.OnTurnChange += TurnOrderDisplay_OnTurnChange;
+    void Start() => battleStateMachine.CurrInput.OnTurnChange += TurnOrderDisplay_OnTurnChange;
 
     void TurnOrderDisplay_OnTurnChange(List<Actor> queue) {
         currQueue = queue;

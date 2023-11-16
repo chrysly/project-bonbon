@@ -24,7 +24,7 @@ public partial class BattleUIStateMachine {
                     Input.AnimationHandler.ingredientWindow.slot = Input.AnimationHandler.bonbonWindow.mainButtonIndex;
                     if (Input.AnimationHandler.bonbonWindow.ConfirmButton() is ShareButton) {   //POTATO CODE AAAAA
                         CharacterActor character = null;
-                        foreach (Actor actor in MySM._battleStateMachine.GetActors()) {
+                        foreach (Actor actor in MySM.battleStateMachine.GetActors()) {
                             if (actor is CharacterActor) {
                                 character = (CharacterActor)actor;
                             }
@@ -55,7 +55,7 @@ public partial class BattleUIStateMachine {
 
         protected override void RunPreAnimation() {
             base.RunPreAnimation();
-            Input.AnimationHandler.bonbonWindow.Initialize(MySM._battleStateMachine.CurrInput.ActiveActor().BonbonInventory);
+            Input.AnimationHandler.bonbonWindow.Initialize(MySM.battleStateMachine.CurrInput.ActiveActor().BonbonInventory);
 
             if (Input.actor.Stamina <= 0) {
                 MySM.Transition<BattleUI_Limbo>();

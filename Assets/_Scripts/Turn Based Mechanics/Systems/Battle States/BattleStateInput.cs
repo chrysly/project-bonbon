@@ -7,7 +7,7 @@ public class BattleStateInput : StateInput {
 
     #region Global Variables
     private TurnOrderHandler turnOrderHandler;
-    public List<Actor> ActorList { get; private set; }
+    public List<Actor> ActorList => ActorHandler.ActorList;
 
     private Actor activeActor;
     private int currentTurn = 0;
@@ -20,6 +20,7 @@ public class BattleStateInput : StateInput {
     #endregion Global Variables
 
     #region Managers
+    public ActorHandler ActorHandler { get; private set; }
     public SkillHandler SkillHandler { get; private set; }
     public AnimationHandler AnimationHandler { get; private set; }
     public BonbonHandler BonbonHandler { get; private set; }
@@ -32,15 +33,16 @@ public class BattleStateInput : StateInput {
     public void Initialize(StateMachineHandler[] handlers) {
         /// First loop => Grab references;
         foreach (StateMachineHandler smh in handlers) {
+            if (smh is ActorHandler) ActorHandler = smh as ActorHandler;
             if (smh is SkillHandler) SkillHandler = smh as SkillHandler;
             if (smh is AnimationHandler) AnimationHandler = smh as AnimationHandler;
+            if (smh is BonbonHandler) BonbonHandler = smh as BonbonHandler;
         } /// Second loop => Initialize Handlers;
         foreach (StateMachineHandler smh in handlers) smh.Initialize(this);
     }
 
-    public void InsertTurnQueue(List<Actor> actorList) {
+    public void InitializeTurnOrder(List<Actor> actorList) {
         turnOrderHandler = new TurnOrderHandler(actorList);
-        ActorList = actorList;
         PropagateTurnChange(turnOrderHandler.GetTurnPreview(6));
         activeActor = turnOrderHandler.Advance();
     }

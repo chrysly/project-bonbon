@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Singleton class that holds persistent data and handles transitions;
@@ -16,7 +17,7 @@ public partial class GameManager : MonoBehaviour {
     public int CurrLevel { get {
             if (levelIndeces == null) return 0;
             else {
-                int sceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+                int sceneIndex = SceneManager.GetActiveScene().buildIndex;
                 int currLevel = 0;
                 foreach (int lvlIndex in levelIndeces) {
                     if (lvlIndex <= sceneIndex) currLevel++;
@@ -31,8 +32,8 @@ public partial class GameManager : MonoBehaviour {
         if (_instance != null) {
             Destroy(gameObject);
         } else {
-            DontDestroyOnLoad(gameObject);
             _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 }

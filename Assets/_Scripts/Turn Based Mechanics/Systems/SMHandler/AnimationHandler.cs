@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class AnimationHandler : StateMachineHandler {
 
-    [SerializeField] private BattleStateMachine battleStateMachine;
     [SerializeField] private SkillAnimationMap skillAnimationMap;
+    private BattleStateMachine battleStateMachine => BattleStateMachine.Instance;
 
     #region Events
     public event Action<int, Actor> DamageEvent;

@@ -1,5 +1,5 @@
 using System.Linq;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ActorHandler : StateMachineHandler {
@@ -34,7 +34,15 @@ public class ActorHandler : StateMachineHandler {
     [HideInInspector]
     [SerializeField] private EnemySpace[] enemySpaces;
 
-    private Actor[] actorList;
+    public List<Actor> ActorList => characterSpaces.Where(space => space.CurrActor != null)
+                                                   .Select(space => space.CurrActor)
+                                                   .Concat(enemySpaces.Where(space => space.CurrActor != null)
+                                                                      .Select(space => space.CurrActor)).ToList();
+
+    public override void Initialize(BattleStateInput input) {
+        base.Initialize(input);
+        input.InitializeTurnOrder(ActorList);
+    }
 
     public void InitializePrefab(GameObject actorPrefab) {
         Actor actor = actorPrefab.GetComponentInChildren<Actor>(true);
