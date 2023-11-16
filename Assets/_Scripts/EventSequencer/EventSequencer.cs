@@ -68,7 +68,6 @@ public class EventSequencer : MonoBehaviour {
         // run the next event in queue
         if (events.Count > 0)
         {
-            Debug.Log("event");
             events.Peek().OnTrigger();
             return true;
         }
