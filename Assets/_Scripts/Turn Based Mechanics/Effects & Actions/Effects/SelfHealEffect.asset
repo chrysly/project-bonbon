@@ -17,7 +17,7 @@ MonoBehaviour:
   modifiers:
     flatAttack: 0
     percentAttack: 0
-    flatHeal: 5
+    flatHeal: 0
     percentHealCast: 0
     flatDefense: 0
     percentDefense: 0
