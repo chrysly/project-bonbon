@@ -646,7 +646,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 285496039}
         m_TargetAssemblyTypeName: DummyControl, Assembly-CSharp
-        m_MethodName: SetCore
+        m_MethodName: SetLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1550,10 +1550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1aa1c798a3de342a9a732a24882094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionRate: 1
+  transitionRate: 2
   myCanvasGroup: {fileID: 7944471954571678659}
-  fadeIn: 0
-  fadeOut: 0
 --- !u!114 &7944471954571678661
 MonoBehaviour:
   m_ObjectHideFlags: 0

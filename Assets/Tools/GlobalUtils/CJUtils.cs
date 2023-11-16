@@ -47,6 +47,11 @@ namespace CJUtils {
             }
         }
 
+        public static Color Yellow {
+            get {
+                return new Vector4(0.9804f, 0.8156f, 0.1725f, 1);
+            }
+        }
 
         public static Color Cyan {
             get {
@@ -57,8 +62,47 @@ namespace CJUtils {
 
     #if UNITY_EDITOR
 
+    public static class SceneUtils {
+
+        /// <summary>
+        /// Simple transform sorting method, based on a public rendition by <a href="https://gist.github.com/AShim3D/d76e2026c5655b3b34e2">AShim3D</a>;
+        /// </summary>
+        /// <param name="transform"> Transform whose children must be reordered; </param>
+        public static void SortChildren(Transform transform) {
+            List<Transform> children = new List<Transform>();
+            for (int i = transform.childCount - 1; i >= 0; i--) {
+                Transform child = transform.GetChild(i);
+                children.Add(child);
+                child.parent = null;
+            } children.Sort((Transform t1, Transform t2) => { return t1.name.CompareTo(t2.name); });
+            foreach (Transform child in children) {
+                child.parent = transform;
+            }
+        }
+    }
+
     public static class FieldUtils {
         
+        public static void IntSpreadField(ref bool flat, ref int flatAmount, ref int[] spreadAmount, ref int spreadArraySize) {
+            EditorGUIUtility.labelWidth = 30;
+            flat = EditorGUILayout.Toggle("Flat:", flat, GUILayout.Width(48));
+            GUILayout.Label("|", GUILayout.Width(8));
+            if (flat) {
+                EditorGUIUtility.labelWidth = 105;
+                flatAmount = EditorGUILayout.IntField("Damage Amount:", flatAmount);
+            } else {
+                EditorGUIUtility.labelWidth = 55;
+                if (spreadAmount == null) spreadAmount = new int[1];
+                spreadArraySize = Mathf.Max(1, UnityEditor.EditorGUILayout.IntField("Duration:", spreadArraySize, GUILayout.Width(80)));
+                GUILayout.Label("|", GUILayout.Width(8));
+                if (spreadAmount.Length != spreadArraySize) spreadAmount = new int[spreadArraySize];
+                for (int i = 0; i < spreadAmount.Length; i++) {
+                    EditorGUIUtility.labelWidth = 8 * (i + 1).ToString().Length + 9;
+                    spreadAmount[i] = EditorGUILayout.IntField($"{i + 1} |", spreadAmount[i]);
+                }
+            } EditorGUIUtility.labelWidth = 0;
+        }
+
         public enum DnDFieldType {
             Add,
             Remove,
@@ -188,6 +232,25 @@ namespace CJUtils {
             using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
                 GUILayout.Label(text, UIStyles.CenteredLabelBold, options);
             }
+        }
+
+        /// <summary>
+        /// Quick extension to show the Object picker for a given object type;
+        /// </summary>
+        /// <param name="obj"> Object whose type will be included in the Object Picker; </param>
+        public static void ShowObjectPicker<T>(T obj, string filter = "") where T : Object {
+            EditorGUIUtility.ShowObjectPicker<ActorData>(obj, false, filter, GUIUtility.GetControlID(FocusType.Passive) + 100);
+        }
+
+        /// <summary>
+        /// Quick extension to catch Object picker output;
+        /// </summary>
+        /// <returns> Object caputer in the picker event; </returns>
+        public static T CatchOPEvent<T>() where T : Object {
+            if (Event.current.commandName == "ObjectSelectorUpdated") {
+                var obj = EditorGUIUtility.GetObjectPickerObject();
+                if (obj is T) return obj as T;
+            } return null;
         }
 
         /// <summary>
@@ -368,11 +431,19 @@ namespace CJUtils {
         /// </summary>
         /// <param name="text"> Help Box message; </param>
         /// <param name="texture"> Help Box icon; </param>
-        /// <param name="width"> Help Box width; </param>
         public static void DrawCustomHelpBox(string text, Texture texture, float width, float height) {
+            DrawCustomHelpBox(text, texture, GUILayout.Width(width), GUILayout.Height(height),
+                              GUILayout.ExpandWidth(width == 0), GUILayout.ExpandHeight(height == 0));
+        }
+
+        /// <summary>
+        /// Draws a Help Box with a custom icon;
+        /// </summary>
+        /// <param name="text"> Help Box message; </param>
+        /// <param name="texture"> Help Box icon; </param>
+        public static void DrawCustomHelpBox(string text, Texture texture, params GUILayoutOption[] options) {
             GUIContent messageContent = new GUIContent(text, texture);
-            GUILayout.Label(messageContent, UIStyles.HelpBoxLabel, GUILayout.Width(width), GUILayout.Height(height),
-                            GUILayout.ExpandWidth(width == 0), GUILayout.ExpandHeight(height == 0));
+            GUILayout.Label(messageContent, UIStyles.HelpBoxLabel, options);
         }
 
         /// <summary>
@@ -382,7 +453,8 @@ namespace CJUtils {
         /// <param name="texture"> Help Box icon; </param>
         public static void DrawCustomHelpBox(string text, Texture texture) {
             GUIContent messageContent = new GUIContent(text, texture);
-            GUILayout.Label(messageContent, UIStyles.HelpBoxLabel);
+            GUILayout.Label(messageContent, UIStyles.HelpBoxLabel, 
+                            GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(false));
         }
     }
 

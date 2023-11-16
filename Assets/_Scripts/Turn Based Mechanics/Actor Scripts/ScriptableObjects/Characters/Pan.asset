@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pan
   m_EditorClassIdentifier: 
   displayName: Pan
-  portrait: {fileID: 21300000, guid: 2b691732f41c3ce45ad0b3456d2bc6e3, type: 3}
+  icon: {fileID: 21300000, guid: e46987e33e526af418ee060940498a44, type: 3}
   id: 0_Pan
   maxHitpoints: 20
   basePotency: 5
@@ -26,6 +26,6 @@ MonoBehaviour:
     secondaryElements:
     - {fileID: 11400000, guid: cb9aa26bef6f9944d93d8bd98cd4241d, type: 2}
   bonbonMap:
-    startIndeces: 0000000002000000020000000200000002000000020000000200000002000000
+    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
     secondaryElements:
     - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}

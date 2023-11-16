@@ -26,7 +26,7 @@ MonoBehaviour:
     percentSpeed: 0
     flatStaminaRegen: 0
   augmentData:
-    damageBoost: 8
+    damageBoost: 4
     healBoost: 0
     augmentEffects: []
     immediateActions:

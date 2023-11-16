@@ -88,6 +88,8 @@ public class SkillAnimationEditor : EditorWindow {
                                             Rect rect = EditorGUILayout.GetControlRect();
                                             selectedAnimation.triggerIndex = EditorGUI.Popup(rect, selectedAnimation.triggerIndex, selectedAnimation.Triggers);
                                             selectedAnimation.SetAnimationTrigger(selectedAnimation.Triggers[selectedAnimation.triggerIndex]);
+                                            EditorGUILayout.Separator();
+                                            DrawAnimationEventList();
                                         } else {
                                             EditorGUILayout.Separator();
                                             GUI.color = UIColors.DarkRed;
@@ -117,7 +119,7 @@ public class SkillAnimationEditor : EditorWindow {
     private void DrawToolbar() {
         using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar)) {
             foreach (SectionType section in System.Enum.GetValues(typeof(SectionType))) {
-                var name = System.Enum.GetName(typeof(SectionType), section).CamelSpace();
+                var name = System.Enum.GetName(typeof(SectionType), section).ToCamelSpace();
                 if (GUILayout.Button(name, activeSection == section
                                            ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
                                            GUILayout.MinWidth(150), GUILayout.ExpandWidth(true))) activeSection = section;
@@ -178,6 +180,34 @@ public class SkillAnimationEditor : EditorWindow {
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    private void DrawAnimationEventList() {
+        using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
+            using (new EditorGUILayout.HorizontalScope()) {
+                GUILayout.Label("Animation Event List", UIStyles.ArrangedLabel);
+                GUI.color = UIColors.Cyan;
+                Rect rect = EditorGUILayout.GetControlRect(GUILayout.Width(42));
+                GUI.color = UIColors.Blue;
+                if (GUI.Button(rect, EditorUtils.FetchIcon("d_P4_AddedRemote"), EditorStyles.miniButtonMid)) {
+                    selectedAnimation.AnimationEventTriggers.Add(new AnimationEventTrigger());
+                } GUI.color = Color.white;
+            }
+            foreach (AnimationEventTrigger eventTrigger in selectedAnimation.AnimationEventTriggers) {
+                using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
+                    using (new EditorGUILayout.HorizontalScope()) {
+                        GUILayout.Label("Event Type");
+                        eventTrigger.SwitchEventType((AnimationEventTrigger.EventType)EditorGUILayout.EnumPopup(eventTrigger.Type));
+                        GUI.color = UIColors.Red;
+                        if (GUILayout.Button(EditorUtils.FetchIcon("TreeEditor.Trash"), EditorStyles.miniButtonMid)) {
+                            selectedAnimation.AnimationEventTriggers.Remove(eventTrigger);
+                            GUIUtility.ExitGUI();
+                        } GUI.color = Color.white;
+                    }
+                    eventTrigger.DrawProperty();
                 }
             }
         }

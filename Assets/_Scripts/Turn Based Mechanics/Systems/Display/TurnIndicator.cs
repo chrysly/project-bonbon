@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 public class TurnIndicator : MonoBehaviour {
-    [SerializeField] private BattleStateMachine stateMachine;
+    private BattleStateMachine stateMachine => BattleStateMachine.Instance;
     void Start() {
         stateMachine.OnStateTransition += UpdateTurnIndicator;
     }

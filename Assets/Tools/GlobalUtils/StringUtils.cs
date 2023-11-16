@@ -11,15 +11,14 @@ public static class StringUtils {
     /// </summary>
     /// <param name="str"> String to manipulate; </param>
     /// <returns> String with spaces after uppercase letters; </returns>
-    public static string CamelSpace(this string str) {
-        var nStr = str;
-        int spaceCount = 0;
-        for (int i = 1; i < str.Length; i++) {
-            if (char.IsUpper(str[i])) {
-                nStr = str.Insert(i + spaceCount, " ");
-                spaceCount++;
+    public static string ToCamelSpace(this string str) {
+        var nStr = new List<char>(str.ToCharArray());
+        for (int i = 1; i < nStr.Count; i++) {
+            if (char.IsUpper(nStr[i])) {
+                nStr.Insert(i, ' ');
+                i++;
             }
-        } return nStr;
+        } return string.Join("", nStr);
     }
 
     /// <summary>

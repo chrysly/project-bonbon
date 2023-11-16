@@ -9,16 +9,13 @@ public partial class BattleStateMachine {
             base.Enter(i);
             Debug.Log("Entering animate state");
             
-            if (Input.SkillPrep.bonbon != null) Debug.Log("Bonbon Name: " + Input.SkillPrep.bonbon.Data.name);
-            
             MySM.OnStateTransition.Invoke(this, Input);
 
-            var res = Input.ActivateSkill();
-            if (res != null) Input.AnimateSkill(res.skill, res.bonbon);
+            Input.SkillHandler.SkillActivate();
 
             for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
             {
-                MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j], Input.CurrTurn()));
+                MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
             }
             
             

@@ -26,10 +26,11 @@ MonoBehaviour:
     percentSpeed: 0
     flatStaminaRegen: 0
   augmentData:
-    damageBoost: 6
+    damageBoost: 3
     healBoost: 0
     augmentEffects: []
-    immediateActions: []
+    immediateActions:
+    - rid: 883123501746356237
     bonbonEffect: {fileID: 11400000, guid: 3a5a30ac8c8a46446b3d9b65392b0f51, type: 2}
     aoeOverride: 0
   recipe:
@@ -39,4 +40,8 @@ MonoBehaviour:
   - {fileID: 0}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 883123501746356237
+      type: {class: HealSkillAction, ns: , asm: Assembly-CSharp}
+      data:
+        healAmount: 5

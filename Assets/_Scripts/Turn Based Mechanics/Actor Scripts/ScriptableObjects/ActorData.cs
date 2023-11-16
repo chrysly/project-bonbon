@@ -10,7 +10,7 @@ public class ActorData : ScriptableObject
     [Tooltip("As displayed in game.")]
     [SerializeField] private string displayName = "Dummy";
 
-    [SerializeField] private Sprite portrait;
+    [SerializeField] private Sprite icon;
 
     [Tooltip("See programming guidelines for ID conventions.")]
     [SerializeField] private string id;
@@ -38,7 +38,7 @@ public class ActorData : ScriptableObject
     public ArrayArray<BonbonBlueprint> bonbonMap;
 
     public string DisplayName => displayName;
-    public Sprite Portrait => portrait;
+    public Sprite Icon => icon;
     public string ID => id;
     public int MaxHitpoints => maxHitpoints;
     public int BasePotency => basePotency;
@@ -50,6 +50,8 @@ public class ActorData : ScriptableObject
     #if UNITY_EDITOR
 
     public void SetDisplayName(string displayName) => this.displayName = displayName;
+
+    public void SetIcon(Sprite icon) => this.icon = icon;
 
     public void SetID(string id) => this.id = id;
 

@@ -20,6 +20,8 @@ public class SkillAnimation {
 
     [SerializeField] private GameObject vfxPrefab;
     public GameObject VFXPrefab => vfxPrefab;
+    [SerializeField] private List<AnimationEventTrigger> animationEventTriggers;
+    public List<AnimationEventTrigger> AnimationEventTriggers => animationEventTriggers;
 
 #if UNITY_EDITOR
 

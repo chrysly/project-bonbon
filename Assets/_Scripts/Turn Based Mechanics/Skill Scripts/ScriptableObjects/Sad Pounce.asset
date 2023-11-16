@@ -16,12 +16,13 @@ MonoBehaviour:
   skillName: Sad Pounce
   staminaCost: 20
   immediateActions:
-  - rid: 3928641323615649793
+  - rid: 1640337368647991301
+  targetType: 0
   aoe: 0
   references:
     version: 2
     RefIds:
-    - rid: 3928641323615649793
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 1640337368647991301
+      type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
       data:
         damageAmount: 4

@@ -15,10 +15,10 @@ public partial class BattleStateMachine {
 
             if (Input.ActiveActor() is EnemyActor) {
                 // Enemy Actor Skill Selection
-                ActiveSkillPrep skillPrep = EnemyAI.ChooseEnemyAISkill(Input.ActiveActor(), Input.TurnQueue);
-                Input.UpdateSkill(skillPrep.skill, skillPrep.targets);
+                ActiveSkillPrep skillPrep = EnemyAI.ChooseEnemyAISkill(Input.ActiveActor(), Input.ActorList);
+                Input.SkillHandler.SkillUpdate(skillPrep.skill, skillPrep.targets);
                 MySM.Transition<AnimateState>();
-            } Input.Initialize();
+            }
         }
         
         public override void Update() {

@@ -9,7 +9,7 @@ using Yarn.Unity;
 /// </summary>
 public class EventSequencer : MonoBehaviour {
 
-    [SerializeField] private BattleStateMachine bsm;
+    private BattleStateMachine bsm => BattleStateMachine.Instance;
 
     public List<EventObject> eventSequence;
     public EventObject onStartEvent;
@@ -84,5 +84,9 @@ public class EventSequencer : MonoBehaviour {
             events.Dequeue();
         }
         OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
+    }
+    
+    public void addEvent(EventObject eventToAdd) {
+        events.Enqueue(eventToAdd);
     }
 }

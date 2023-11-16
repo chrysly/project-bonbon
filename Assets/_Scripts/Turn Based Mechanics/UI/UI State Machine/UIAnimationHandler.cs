@@ -11,7 +11,7 @@ public class UIAnimationHandler : MonoBehaviour {
     //Everything should pass through activeUIAction! This is to prevent other animations overlapping
     public IEnumerator activeUIAction;
     
-    [SerializeField] private BattleUIStateMachine _stateMachine;
+    public BattleUIStateMachine _stateMachine;
     [SerializeField] private Canvas mainCanvas;
 
     private Dictionary<IEnumerator, Coroutine> coroutineDict;
