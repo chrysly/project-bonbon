@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Class used to handle the creation and combination of bonbon objects;
 /// </summary>
-public class BonbonFactory : MonoBehaviour {
+public class BonbonHandler : StateMachineHandler {
 
     [SerializeField] private BonbonMap bonbonMapSO;
     /// <summary> An array referencing all bonbons used in battle; </summary>
@@ -15,13 +15,9 @@ public class BonbonFactory : MonoBehaviour {
     public event System.Action<BonbonObject> OnBonbonCreation;
     #endregion Events
 
-    /// <summary>
-    /// Initialize the Bonbon Factory;
-    /// </summary>
-    /// <param name="lvlIndex"> Index of the current level; </param>
-    public void OpenFactory(int lvlIndex) {
+    public override void Initialize(BattleStateInput input) {
         allBonbons = new List<BonbonBlueprint>();
-        for (int i = 0; i < lvlIndex; i++) {
+        for (int i = 0; i < GameManager.Instance.CurrLevel; i++) {
             foreach (BonbonBlueprint bonbon in bonbonMapSO.bonbonMap[i]) allBonbons.Add(bonbon);
         }
     }
@@ -43,7 +39,9 @@ public class BonbonFactory : MonoBehaviour {
     /// Create an instance of a given bonbon object using an assortment of bonbon objects;
     /// </summary>
     /// <param name="bonbon"> A bonbon object to duplicate; </param>
-    /// <param name="recipeBonbons"> Bonbons used to create the new bonbon; </param>
+    /// <param name="actor"> Actor whose inventory must be observed; </param>
+    /// <param name="recipeMask"> Boolean mask for the inventory spaces to check;
+    /// <br></br> i.e: [true, false, true, false] checks inventory indeces 0 and 3; </param>
     /// <returns> A bonbon object if the recipe is valid, NULL otherwise; </returns>
     public BonbonObject CreateBonbon(BonbonBlueprint bonbon, Actor actor, bool[] recipeMask) {
         BonbonObject[] bonbonInventory = actor.BonbonInventory;

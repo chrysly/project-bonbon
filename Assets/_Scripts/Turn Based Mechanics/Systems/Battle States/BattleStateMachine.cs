@@ -7,11 +7,9 @@ public partial class
     BattleStateMachine : StateMachine<BattleStateMachine, BattleStateMachine.BattleState, BattleStateInput> {
 
     #region SerializeFields
-    [SerializeField] private BonbonFactory bonbonFactory;
     [SerializeField] public BattleUIStateMachine uiStateMachine;
     [SerializeField] private EventSequencer _eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
-    [SerializeField] private List<Actor> actorList;
     #endregion SerializeFields
 
     #region Events
@@ -21,10 +19,23 @@ public partial class
 
     #endregion Events
 
+    #region Singleton
+
+    private static BattleStateMachine instance;
+    public static BattleStateMachine Instance => instance;
+
+    #endregion
+
+    protected override void Awake() {
+        base.Awake();
+        if (instance != null) {
+            Destroy(gameObject);
+        } else instance = this;
+    }
+
     protected override void SetInitialState() {
         SetState<BattleStart>();
-        CurrInput.InsertTurnQueue(actorList);
-        CurrInput.OpenBonbonFactory(bonbonFactory);
+        CurrInput.Initialize(GetComponents<StateMachineHandler>());
     }
 
     protected override void Start() {
@@ -54,9 +65,9 @@ public partial class
 
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
-        CurrInput.ResetSkill();
-        bool allEnemiesDead = actorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
-        bool allCharactersDead = actorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
+        CurrInput.SkillHandler.SkillReset();
+        bool allEnemiesDead = CurrInput.ActorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
+        bool allCharactersDead = CurrInput.ActorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
 
         if (allEnemiesDead) {
             CurrState.TriggerBattleWin();
@@ -89,22 +100,22 @@ public partial class
     public void SwitchToTargetSelect(SkillAction skill) {
         if (CurrState is TurnState) {
             Transition<TargetSelectState>();
-            CurrInput.UpdateSkill(skill, null);
+            CurrInput.SkillHandler.SkillUpdate(skill);
         }
     }
 
     public void ConfirmTargetSelect(Actor actor) {
-        CurrInput.UpdateSkill(null, new Actor[] { actor });
+        CurrInput.SkillHandler.SkillUpdate(new Actor[] { actor });
         Transition<AnimateState>();
     }
 
     public void AugmentSkill(BonbonObject bonbon) {
-        CurrInput.UpdateSkill(null, null, bonbon);
+        CurrInput.SkillHandler.SkillUpdate(bonbon);
     }
 
     public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {
         if (CurrState is TurnState || CurrState is BonbonState) {
-            BonbonObject bonbonObject = CurrInput.BonbonFactory.CreateBonbon(bonbon, CurrInput.ActiveActor(), mask);
+            BonbonObject bonbonObject = CurrInput.BonbonHandler.CreateBonbon(bonbon, CurrInput.ActiveActor(), mask);
             for (int i = 0; i < 4; i++) {
                 BonbonObject bObject = CurrInput.ActiveActor().BonbonInventory[i];
                 if (bObject == null) {

@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationHandler : MonoBehaviour {
+public class AnimationHandler : StateMachineHandler {
 
-    [SerializeField] private BattleStateMachine battleStateMachine;
     [SerializeField] private SkillAnimationMap skillAnimationMap;
+    private BattleStateMachine battleStateMachine => BattleStateMachine.Instance;
 
     #region Events
     public event Action<int, Actor> DamageEvent;
@@ -21,8 +21,9 @@ public class AnimationHandler : MonoBehaviour {
         SkillAMap = SKAEUtils.ProcessInternalDictionary(skillAnimationMap.animationMap);
     }
 
-    void Start() {
-        battleStateMachine.CurrInput.OnSkillAnimation += OnSkillTrigger;
+    public override void Initialize(BattleStateInput input) {
+        base.Initialize(input);
+        input.SkillHandler.OnSkillTrigger += OnSkillTrigger;
     }
 
     public void OnSkillTrigger(ActiveSkillPrep skillPrep) {

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Escaroll
   m_EditorClassIdentifier: 
   displayName: Escaroll
+  icon: {fileID: 21300000, guid: 7895477d0c1f4784a839dcb3f034d4de, type: 3}
   id: escaroll
   maxHitpoints: 14
   basePotency: 7

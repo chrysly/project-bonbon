@@ -143,7 +143,7 @@ namespace BonbonAssetManager {
                                       float buttonSize, CJToolAssets.DnDFieldAssets dndFieldAssets, System.Action saveCallback) where T : ScriptableObject {
             if (scrollGroup == null || scrollGroup.Length < listArr.Length) scrollGroup = new Vector2[listArr.Length];
             using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
-                EditorUtils.WindowBoxLabel($"Actor {typeof(T).FullName.CamelSpace().RemovePathEnd(" ")} Map");
+                EditorUtils.WindowBoxLabel($"Actor {typeof(T).FullName.ToCamelSpace().RemovePathEnd(" ")} Map");
                 for (int i = 0; i < listArr.Length; i++) {
                     using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
                         EditorUtils.WindowBoxLabel($"Level {i + 1}", GUILayout.Width(48), GUILayout.Height(45));
@@ -192,7 +192,7 @@ namespace BonbonAssetManager {
 
         public static void DrawAssetGroup<T>(List<T> assetList, Vector2 scrollVar, System.Func<object, GUIContent> contentFunc,
                                              Rect position, float buttonSize) where T : ScriptableObject {
-            EditorUtils.WindowBoxLabel($"Available {typeof(T).FullName.CamelSpace().RemovePathEnd(" ")}s");
+            EditorUtils.WindowBoxLabel($"Available {typeof(T).FullName.ToCamelSpace().RemovePathEnd(" ")}s");
 
             using (var vscope = new EditorGUILayout.VerticalScope(GUILayout.ExpandWidth(true))) {
                 using (var scope = new EditorGUILayout.ScrollViewScope(scrollVar, GUILayout.Height(buttonSize + 25))) {

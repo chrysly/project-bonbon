@@ -8,7 +8,7 @@ using Random = System.Random;
 
 public class DamageIndicatorManager : MonoBehaviour {
     [SerializeField] private GameObject textPrefab;
-    [SerializeField] private BattleStateMachine stateMachine;
+    private BattleStateMachine stateMachine => BattleStateMachine.Instance;
     [SerializeField] private float textDelay = 1f;
     [SerializeField] private float textDuration = 1f;
     private IEnumerator _textQueue;

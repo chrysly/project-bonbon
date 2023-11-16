@@ -9,7 +9,7 @@ using Yarn.Unity;
 /// </summary>
 public class EventSequencer : MonoBehaviour {
 
-    [SerializeField] private BattleStateMachine bsm;
+    private BattleStateMachine bsm => BattleStateMachine.Instance;
 
     public List<EventObject> eventSequence;
     public EventObject onStartEvent;
