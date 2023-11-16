@@ -13,10 +13,23 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   animationList:
-  - delay: 0
-    lookAt: 0
-    doOffset: 0
-    offset: {x: 0, y: 0, z: 0, w: 0}
+  - delay: 1.1
+    lookAt: 3
+    doOffset: 1
+    offset: {x: -13.24879, y: 16.99, z: 27.61619, w: 2}
+    doRotation: 0
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    doFOV: 0
+    fov: {x: 0, y: 0}
+    doDutch: 0
+    dutch: {x: 0, y: 0}
+    doScreenShake: 0
+    shakeVelocity: {x: 0, y: 0, z: 0}
+    shakeTimeCurve: {x: 0, y: 0, z: 0}
+  - delay: 1.1
+    lookAt: 3
+    doOffset: 1
+    offset: {x: 7.821209, y: -11.73759, z: 21.43619, w: 1}
     doRotation: 0
     rotation: {x: 0, y: 0, z: 0, w: 0}
     doFOV: 0

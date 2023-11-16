@@ -10,7 +10,6 @@ public partial class BattleStateMachine {
             Debug.Log("Entering animate state");
             
             if (Input.SkillPrep.bonbon != null) Debug.Log("Bonbon Name: " + Input.SkillPrep.bonbon.Data.name);
-            else Debug.Log("NO BONBON AAAAAAAAAAA");
             
             MySM.OnStateTransition.Invoke(this, Input);
 
