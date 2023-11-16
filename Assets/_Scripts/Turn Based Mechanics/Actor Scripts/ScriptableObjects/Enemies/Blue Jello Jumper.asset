@@ -15,8 +15,8 @@ MonoBehaviour:
   displayName: Blue Jello Jumper
   portrait: {fileID: 21300008, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
   id: jelloblue
-  maxHitpoints: 14
-  basePotency: 7
+  maxHitpoints: 25
+  basePotency: 25
   baseDefense: 5
   baseSpeed: 3
   maxStamina: 80
