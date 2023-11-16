@@ -25,6 +25,7 @@ MonoBehaviour:
         animationDuration: 2
         hitDelay: 0
         vfxPrefab: {fileID: 0}
+        animationEventTriggers: []
         actorAnimator: {fileID: 9100000, guid: 0e57d98b12432ca4f81441b7f91189ce, type: 2}
         triggerIndex: 0
     - Keys:
@@ -34,6 +35,7 @@ MonoBehaviour:
         animationDuration: 1.5
         hitDelay: 0
         vfxPrefab: {fileID: 0}
+        animationEventTriggers: []
         actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
     - Keys:
@@ -43,5 +45,6 @@ MonoBehaviour:
         animationDuration: 2.5
         hitDelay: 0
         vfxPrefab: {fileID: 0}
+        animationEventTriggers: []
         actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
         triggerIndex: 0

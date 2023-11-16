@@ -13,7 +13,7 @@ namespace BonbonAssetManager {
 
         [MenuItem("Testing/Bonbon Asset Manager")]
         public static void ShowWindow() {
-            var window = GetWindow<BAMGUI>();
+            GetWindow<BAMGUI>();
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace BonbonAssetManager {
         public void DrawToolbar() {
             using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar)) {
                 foreach (ToolType toolType in System.Enum.GetValues(typeof(ToolType))) {
-                    var name = System.Enum.GetName(typeof(ToolType), toolType).CamelSpace();
+                    var name = System.Enum.GetName(typeof(ToolType), toolType).ToCamelSpace();
                     if (GUILayout.Button(name, activeTool == toolType
                                                ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
                                                GUILayout.MinWidth(150), GUILayout.ExpandWidth(true))) SwitchTool(toolType);
@@ -87,6 +87,18 @@ namespace BonbonAssetManager {
             BAMUtils.ResetHotControl();
             activeTool = toolType;
         }
+
+        #region | External Extensions |
+
+        public static void ActorPrefabFix(ActorData actorData) {
+            var window = GetWindow<BAMGUI>();
+            window.SwitchTool(ToolType.ActorManager);
+            ActorManager actorManager = window.tools[(int) window.activeTool] as ActorManager;
+            actorManager.SetMode(ActorManager.Mode.ActorVisuals);
+            actorManager.ExternalActorSelection(actorData);
+        }
+
+        #endregion
     }
 
     public class BaseHierarchy<O> {

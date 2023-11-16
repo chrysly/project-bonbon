@@ -8,16 +8,17 @@ public abstract class ActorSpace : MonoBehaviour {
 
     [SerializeField] private ActorData initialActor;
     public ActorData CurrActor { get; private set; }
-    protected GameObject actorPrefab;
+    [SerializeField] protected GameObject actorPrefab;
 
     void Awake() {
-        if (initialActor != null && actorPrefab == null) SpawnActor(initialActor);
+        if (initialActor != null && actorPrefab == null) {
+            SpawnActor(initialActor);
+        }
     }
 
     public void SpawnActor(ActorData actorData) {
         if (actorPrefab != null) throw new System.Exception("There was already an actor here;");
         CurrActor = actorData;
-        Debug.Log(prefabMap[actorData]);
         actorPrefab = Instantiate(prefabMap[actorData], transform.position, transform.rotation, transform);
         handler.InitializePrefab(actorPrefab);
     }
@@ -30,14 +31,45 @@ public abstract class ActorSpace : MonoBehaviour {
 
     #if UNITY_EDITOR
 
-    public void Initialize(ActorHandler handler) => this.handler = handler;
-    public ActorData InitialActor { get => initialActor; set => initialActor = value; }
+    float offset = 1;
+
+    public void OnDrawGizmosSelected() {
+        
+        offset = Mathf.Abs(Mathf.Sin((float) UnityEditor.EditorApplication.timeSinceStartup * 2f)) * 0.3f;
+
+        UnityEditor.Handles.color = this is CharacterSpace ? Color.green : Color.red;
+        UnityEditor.Handles.DrawSolidDisc(transform.position, transform.up,
+                                         0.7f + offset);
+        UnityEditor.Handles.DrawWireDisc(transform.position, transform.up,
+                                         0.85f + offset * 1.5f);
+        UnityEditor.Handles.DrawWireDisc(transform.position, transform.up,
+                                         0.86f + offset * 1.5f);
+        Color color = this is CharacterSpace ? new Color(0, 0.31f, 0.2f, 1) : new Color(0.3f, 0, 0, 1);
+        GUIStyle style = new GUIStyle(CJUtils.UIStyles.CenteredLabelBold) { fontSize = 48 };
+        style.normal.textColor = color;
+        UnityEditor.Handles.Label(transform.position, gameObject.name.IsolatePathEnd(" "), style);
+    }
+
+    public void Initialize(ActorHandler handler) {
+        this.handler = handler;
+        UnityEditor.EditorUtility.SetDirty(this);
+    }
+    public ActorData InitialActor { get => initialActor; set { initialActor = value; UnityEditor.EditorUtility.SetDirty(this); } }
     public GameObject ActorPrefab => actorPrefab;
+
+    public void SpawnActorEditor(ActorData actorData) {
+        if (actorPrefab != null) throw new System.Exception("There was already an actor here;");
+        CurrActor = actorData;
+        actorPrefab = Instantiate(handler.PrefabMap.PseudoActorMap[actorData], transform.position, transform.rotation, transform);
+        handler.InitializePrefab(actorPrefab);
+        UnityEditor.EditorUtility.SetDirty(this);
+    }
 
     public void EditorDespawnActor() {
         DestroyImmediate(actorPrefab);
         actorPrefab = null;
         CurrActor = null;
+        UnityEditor.EditorUtility.SetDirty(this);
     }
 
     #endif

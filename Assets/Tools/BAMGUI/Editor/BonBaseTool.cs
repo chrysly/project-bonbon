@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using CJUtils;
+using ASEUtilities;
 using PseudoDataStructures;
 
 /// <summary>
@@ -247,18 +248,12 @@ namespace BonbonAssetManager {
             using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
                 var levelRect = DrawPaddedButton(bonbonObject);
                 if (bonbonObject.recipe == null) bonbonObject.UpdateRecipeSize();
-                /*float levelStart = 0;
-                float levelWidth = 0;
-                int buttonCount = 0;*/
                 
                 using (new EditorGUILayout.HorizontalScope()) {
                     foreach (BonbonBlueprint ingredient in bonbonObject.recipe) {
                         if (ingredient != null) DrawPreviewLevel(ingredient);
-                        //if (buttonCount == 0) levelStart = (rect.xMax - rect.x) / 2;
-                        //levelWidth = (rect.xMax - rect.x) / 2 - levelStart;
                     }
-                } /*var lineHeight = levelRect.y - 2;
-                Handles.DrawLine(new Vector2(levelStart, lineHeight), new Vector2(levelStart + levelWidth, lineHeight));*/
+                }
             }
         }
 
@@ -446,10 +441,10 @@ namespace BonbonAssetManager {
         private List<SkillObject>[] skillMap;
         private List<BonbonBlueprint>[] bonbonMap;
 
-        private enum Mode {
+        public enum Mode {
             ActorEditor,
             ActorVisuals
-        } private Mode mode;
+        } public Mode mode;
 
         private enum MapEditor {
             Skill,
@@ -463,6 +458,8 @@ namespace BonbonAssetManager {
             assetCreator.OnAssetCreation += actorHierarchy.ReloadHierarchy;
             LoadPrefabMap();
         }
+
+        public void SetMode(Mode mode) => this.mode = mode;
 
         private void LoadPrefabMap() {
             var guid = AssetDatabase.FindAssets($"t:{nameof(ActorMap)}")[0];
@@ -490,6 +487,12 @@ namespace BonbonAssetManager {
             InitializeActorMaps();
         }
 
+        public void ExternalActorSelection(ActorData actorData) {
+            string path = AssetDatabase.GetAssetPath(actorData);
+            SelectedPath = path;
+            SetSelectedActor(actorData);
+        }
+
         private void InitializeActorMaps() {
             if (selectedActor.skillMap != null) {
                 selectedActor.skillMap = BAMUtils.VerifyMapSize(selectedActor.skillMap);
@@ -515,11 +518,11 @@ namespace BonbonAssetManager {
                         if (GUILayout.Button("Actor Editor", mode == Mode.ActorEditor
                                                         ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
                                                         GUILayout.ExpandWidth(true))) {
-                            mode = Mode.ActorEditor;
+                            SetMode(Mode.ActorEditor);
                         } if (GUILayout.Button("Actor Visuals", mode == Mode.ActorVisuals
                                                         ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
                                                         GUILayout.ExpandWidth(true))) {
-                            mode = Mode.ActorVisuals;
+                            SetMode(Mode.ActorVisuals);
                         }
                     }
 
@@ -591,13 +594,47 @@ namespace BonbonAssetManager {
                                                         dict[selectedActor] = potentialPrefab;
                                                         prefabMapSO.PseudoActorMap = dict;
                                                     }
-                                                } EditorUtils.WindowBoxLabel("Preview");
-                                                using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox, GUILayout.Height(150))) {
+                                                } using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox, GUILayout.Height(175))) {
                                                     if (prefabMapSO.PseudoActorMap[selectedActor] != null) {
-                                                        GUILayout.FlexibleSpace();
-                                                        using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
-                                                            GUILayout.Label(AssetPreview.GetAssetPreview(prefabMapSO.PseudoActorMap[selectedActor]));
-                                                        } GUILayout.FlexibleSpace();
+                                                        using (new EditorGUILayout.VerticalScope(GUILayout.Width(128))) {
+                                                            EditorUtils.WindowBoxLabel("Preview");
+                                                            using (new EditorGUILayout.HorizontalScope()) {
+                                                                GUILayout.FlexibleSpace();
+                                                                using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
+                                                                    GUILayout.Label(AssetPreview.GetAssetPreview(prefabMapSO.PseudoActorMap[selectedActor]));
+                                                                } GUILayout.FlexibleSpace();
+                                                            }
+                                                        } using (new EditorGUILayout.VerticalScope()) {
+                                                            EditorUtils.WindowBoxLabel("Prefab Status");
+                                                            using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
+                                                                List<PrefabWarning> warnings = ASEUtils.VerifyPrefabStatus(prefabMapSO.PseudoActorMap[selectedActor], selectedActor);
+                                                                bool invalidActorScript = warnings.Contains(PrefabWarning.InvalidActorScript);
+                                                                if (invalidActorScript) {
+                                                                    EditorUtils.DrawCustomHelpBox(ASEUtils.PrefabWarningText[PrefabWarning.InvalidActorScript],
+                                                                                                  EditorUtils.FetchIcon("Error"));
+                                                                } else {
+                                                                    EditorUtils.DrawCustomHelpBox("Valid Actor Script;",
+                                                                                                  EditorUtils.FetchIcon("Valid"));
+                                                                } bool invalidUIHandler = warnings.Contains(PrefabWarning.InvalidUIHandler);
+                                                                if (invalidUIHandler) {
+                                                                    EditorUtils.DrawCustomHelpBox(ASEUtils.PrefabWarningText[PrefabWarning.InvalidActorScript],
+                                                                                                  EditorUtils.FetchIcon("Error"));
+                                                                } else {
+                                                                    string message = selectedActor is CharacterData ? "Valid UIHandler Script;" : "Doesn't require a UIHandler;";
+                                                                    EditorUtils.DrawCustomHelpBox(message, EditorUtils.FetchIcon("Valid"));
+                                                                } if (!(invalidUIHandler || invalidActorScript)) {
+                                                                    GUILayout.FlexibleSpace();
+                                                                    using (new EditorGUILayout.HorizontalScope()) {
+                                                                        GUILayout.FlexibleSpace();
+                                                                        using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox)) {
+                                                                            EditorGUILayout.Space();
+                                                                            GUILayout.Label(" All Good! ", UIStyles.CenteredLabelBold);
+                                                                            EditorGUILayout.Space();
+                                                                        } GUILayout.FlexibleSpace();
+                                                                    } GUILayout.FlexibleSpace();
+                                                                }
+                                                            }
+                                                        }
                                                     } else {
                                                         using (new EditorGUILayout.VerticalScope()) {
                                                             EditorUtils.DrawScopeCenteredText("No prefab has been assigned to this Actor;");

@@ -235,11 +235,22 @@ namespace CJUtils {
         }
 
         /// <summary>
-        /// Quick extension to show the Object picker for a given object;
+        /// Quick extension to show the Object picker for a given object type;
         /// </summary>
         /// <param name="obj"> Object whose type will be included in the Object Picker; </param>
         public static void ShowObjectPicker<T>(T obj, string filter = "") where T : Object {
             EditorGUIUtility.ShowObjectPicker<ActorData>(obj, false, filter, GUIUtility.GetControlID(FocusType.Passive) + 100);
+        }
+
+        /// <summary>
+        /// Quick extension to catch Object picker output;
+        /// </summary>
+        /// <returns> Object caputer in the picker event; </returns>
+        public static T CatchOPEvent<T>() where T : Object {
+            if (Event.current.commandName == "ObjectSelectorUpdated") {
+                var obj = EditorGUIUtility.GetObjectPickerObject();
+                if (obj is T) return obj as T;
+            } return null;
         }
 
         /// <summary>
@@ -420,11 +431,19 @@ namespace CJUtils {
         /// </summary>
         /// <param name="text"> Help Box message; </param>
         /// <param name="texture"> Help Box icon; </param>
-        /// <param name="width"> Help Box width; </param>
         public static void DrawCustomHelpBox(string text, Texture texture, float width, float height) {
+            DrawCustomHelpBox(text, texture, GUILayout.Width(width), GUILayout.Height(height),
+                              GUILayout.ExpandWidth(width == 0), GUILayout.ExpandHeight(height == 0));
+        }
+
+        /// <summary>
+        /// Draws a Help Box with a custom icon;
+        /// </summary>
+        /// <param name="text"> Help Box message; </param>
+        /// <param name="texture"> Help Box icon; </param>
+        public static void DrawCustomHelpBox(string text, Texture texture, params GUILayoutOption[] options) {
             GUIContent messageContent = new GUIContent(text, texture);
-            GUILayout.Label(messageContent, UIStyles.HelpBoxLabel, GUILayout.Width(width), GUILayout.Height(height),
-                            GUILayout.ExpandWidth(width == 0), GUILayout.ExpandHeight(height == 0));
+            GUILayout.Label(messageContent, UIStyles.HelpBoxLabel, options);
         }
 
         /// <summary>
@@ -434,7 +453,8 @@ namespace CJUtils {
         /// <param name="texture"> Help Box icon; </param>
         public static void DrawCustomHelpBox(string text, Texture texture) {
             GUIContent messageContent = new GUIContent(text, texture);
-            GUILayout.Label(messageContent, UIStyles.HelpBoxLabel);
+            GUILayout.Label(messageContent, UIStyles.HelpBoxLabel, 
+                            GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(false));
         }
     }
 

@@ -17,7 +17,7 @@ namespace BonbonAssetManager {
             toolLength = MainGUI.tools.Length - 1;
             entryNames = new string[toolLength];
             for (int i = 0; i < toolLength; i++) {
-                entryNames[i] = System.Enum.GetName(typeof(BAMGUI.ToolType), (BAMGUI.ToolType) i).CamelSpace() + " Path:";
+                entryNames[i] = System.Enum.GetName(typeof(BAMGUI.ToolType), (BAMGUI.ToolType) i).ToCamelSpace() + " Path:";
             } assetPaths = LoadConfig();
             return assetPaths;
         }

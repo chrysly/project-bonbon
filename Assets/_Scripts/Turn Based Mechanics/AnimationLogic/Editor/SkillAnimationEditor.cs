@@ -119,7 +119,7 @@ public class SkillAnimationEditor : EditorWindow {
     private void DrawToolbar() {
         using (new EditorGUILayout.HorizontalScope(EditorStyles.toolbar)) {
             foreach (SectionType section in System.Enum.GetValues(typeof(SectionType))) {
-                var name = System.Enum.GetName(typeof(SectionType), section).CamelSpace();
+                var name = System.Enum.GetName(typeof(SectionType), section).ToCamelSpace();
                 if (GUILayout.Button(name, activeSection == section
                                            ? UIStyles.SelectedToolbar : EditorStyles.toolbarButton,
                                            GUILayout.MinWidth(150), GUILayout.ExpandWidth(true))) activeSection = section;
