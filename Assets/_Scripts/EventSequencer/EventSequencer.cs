@@ -66,10 +66,8 @@ public class EventSequencer : MonoBehaviour {
 
     public bool RunNextEvent() {
         // run the next event in queue
-        Debug.Log("Queue count: " + events.Count);
         if (events.Count > 0)
         {
-            Debug.Log("event");
             events.Peek().OnTrigger();
             return true;
         }
@@ -86,5 +84,9 @@ public class EventSequencer : MonoBehaviour {
             events.Dequeue();
         }
         OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
+    }
+    
+    public void addEvent(EventObject eventToAdd) {
+        events.Enqueue(eventToAdd);
     }
 }
