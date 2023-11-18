@@ -24,6 +24,7 @@ public class BattleStateInput : StateInput {
     public SkillHandler SkillHandler { get; private set; }
     public AnimationHandler AnimationHandler { get; private set; }
     public BonbonHandler BonbonHandler { get; private set; }
+    public GlobalCameraManager CameraHandler { get; private set; }
     #endregion
 
     /// <summary>
@@ -34,9 +35,10 @@ public class BattleStateInput : StateInput {
         /// First loop => Grab references;
         foreach (StateMachineHandler smh in handlers) {
             if (smh is ActorHandler) ActorHandler = smh as ActorHandler;
-            if (smh is SkillHandler) SkillHandler = smh as SkillHandler;
-            if (smh is AnimationHandler) AnimationHandler = smh as AnimationHandler;
-            if (smh is BonbonHandler) BonbonHandler = smh as BonbonHandler;
+            else if (smh is SkillHandler) SkillHandler = smh as SkillHandler;
+            else if (smh is AnimationHandler) AnimationHandler = smh as AnimationHandler;
+            else if (smh is BonbonHandler) BonbonHandler = smh as BonbonHandler;
+            else if (smh is GlobalCameraManager) CameraHandler = smh as GlobalCameraManager;
         } /// Second loop => Initialize Handlers;
         foreach (StateMachineHandler smh in handlers) smh.Initialize(this);
     }
