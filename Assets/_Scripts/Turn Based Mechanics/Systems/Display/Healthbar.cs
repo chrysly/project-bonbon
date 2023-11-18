@@ -12,11 +12,10 @@ public class Healthbar : MonoBehaviour {
     [SerializeField] private Actor actor;
     void Start() {
         slider = GetComponent<Slider>();
-        stateMachine.OnStateTransition += UpdateHealthBar;
+        stateMachine.OnDisplayUpdate += UpdateHealthBar;
     }
 
-    private void UpdateHealthBar(BattleStateMachine.BattleState state, BattleStateInput input) {
-        if (state is BattleStateMachine.TargetSelectState) return;
+    private void UpdateHealthBar(BattleStateInput input) {
         float currHealth = actor.Hitpoints;
         float maxHealth = actor.Data.MaxHitpoints;
 
