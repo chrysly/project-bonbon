@@ -94,7 +94,6 @@ public class SkillAnimationEditor : EditorWindow {
                                             GUILayout.Label("Invalid Animator Assignment;");
                                             GUI.color = Color.white;
                                         } selectedAnimation.SetAnimationDuration(EditorGUILayout.FloatField("Animation Length", selectedAnimation.AnimationDuration));
-                                        selectedAnimation.SetHitDelay(EditorGUILayout.FloatField("Hit Delay", selectedAnimation.HitDelay));
                                         EditorGUILayout.Separator();
                                         foreach (DelaySkillAnimation delaySkillAnimation in selectedAnimation.DelaySkills) {
                                             delaySkillAnimation.OnGUI();

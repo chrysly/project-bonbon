@@ -16,8 +16,6 @@ public class AnimationHandler : StateMachineHandler {
     #endregion Events
     public Dictionary<SkillObject, Dictionary<ActorData, SkillAnimation>> SkillAMap { get; private set; }
 
-    public event System.Action OnSkillHit;
-
     void Awake() {
         SkillAMap = SKAEUtils.ProcessInternalDictionary(skillAnimationMap.animationMap);
     }
@@ -35,7 +33,6 @@ public class AnimationHandler : StateMachineHandler {
             SkillAnimation sa = SkillAMap[skillAction.SkillData][skillAction.Caster.Data];
             skillAction.Caster.GetComponentInChildren<Animator>(true).SetTrigger(sa.AnimationTrigger);
             battleStateMachine.StartBattle(sa.AnimationDuration);
-            StartCoroutine(HitDelay(sa.HitDelay));
             if (bonbon != null) ; /// Do VFXs
 
             foreach (DelaySkillAnimation delaySkillAnimation in sa.DelaySkills) {
@@ -48,22 +45,17 @@ public class AnimationHandler : StateMachineHandler {
         }
     }
 
-    private IEnumerator HitDelay(float delay) {
-        yield return new WaitForSeconds(delay);
-        OnSkillHit?.Invoke();
-    }
-
     #region Events
     public void TriggerDamage(int damage, Actor actor) {
-        DamageEvent.Invoke(damage, actor);
+        DamageEvent?.Invoke(damage, actor);
     }
 
     public void TriggerHeal(int heal, Actor actor) {
-        HealEvent.Invoke(heal, actor);
+        HealEvent?.Invoke(heal, actor);
     }
 
     public void TriggerEffect(EffectBlueprint effect, Actor actor) {
-        EffectEvent.Invoke(effect, actor);
+        EffectEvent?.Invoke(effect, actor);
     }
     #endregion Events
 }

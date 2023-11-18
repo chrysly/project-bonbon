@@ -193,12 +193,12 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
         // calculate
         int maxStamina = data.MaxStamina;
-        int refillAmount = (int) (maxStamina * percent / 100);
+        int refillAmount = (int) (maxStamina * (percent / 100f));
 
         if (_stamina + refillAmount > maxStamina)
             _stamina = maxStamina;
         else
-            _stamina = refillAmount;
+            _stamina += refillAmount;
     }
 
     #region Comparators
