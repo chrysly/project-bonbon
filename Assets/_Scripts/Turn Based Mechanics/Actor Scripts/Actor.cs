@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Actor : MonoBehaviour, IComparable<Actor> {
@@ -138,6 +139,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     private void Faint() {
         _hitpoints = 0;
         ApplyState(ActorState.Fainted);
+        transform.DOScale(Vector3.zero, 1f).SetEase(Ease.InOutBounce);
         Debug.Log($"{data.DisplayName} has fallen!");
     }
 
