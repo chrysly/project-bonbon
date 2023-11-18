@@ -6,7 +6,7 @@ using DG.Tweening;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 
-public class GlobalCameraManager : MonoBehaviour {
+public class GlobalCameraManager : StateMachineHandler {
     public CinemachineVirtualCamera staticCamera;
     public CinemachineVirtualCamera dynamicCamera;
     public MMF_Player impulse;
@@ -84,7 +84,7 @@ public class GlobalCameraManager : MonoBehaviour {
     }
 
     private void LookAtOperation(CameraAnimation.LookAt lookAt) {
-        //To be implemented
+        //if (look)
     }
 
     private void OffsetOperation(Vector4 operation) {
