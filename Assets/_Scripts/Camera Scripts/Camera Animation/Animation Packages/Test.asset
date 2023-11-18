@@ -27,7 +27,7 @@ MonoBehaviour:
     shakeVelocity: {x: 0, y: 0, z: 0}
     shakeTimeCurve: {x: 0, y: 0, z: 0}
   - delay: 1.1
-    lookAt: 3
+    lookAt: 2
     doOffset: 1
     offset: {x: 7.821209, y: -11.73759, z: 21.43619, w: 1}
     doRotation: 0
@@ -38,4 +38,43 @@ MonoBehaviour:
     dutch: {x: 0, y: 0}
     doScreenShake: 0
     shakeVelocity: {x: 0, y: 0, z: 0}
+    shakeTimeCurve: {x: 0, y: 0, z: 0}
+  - delay: 1.1
+    lookAt: 3
+    doOffset: 0
+    offset: {x: 7.821209, y: -11.73759, z: 21.43619, w: 1}
+    doRotation: 0
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    doFOV: 1
+    fov: {x: 14.04, y: 1.35}
+    doDutch: 0
+    dutch: {x: 0, y: 0}
+    doScreenShake: 0
+    shakeVelocity: {x: 0, y: 0, z: 0}
+    shakeTimeCurve: {x: 0, y: 0, z: 0}
+  - delay: 1.1
+    lookAt: 3
+    doOffset: 0
+    offset: {x: 7.821209, y: -11.73759, z: 21.43619, w: 1}
+    doRotation: 0
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    doFOV: 0
+    fov: {x: 14.04, y: 1.35}
+    doDutch: 1
+    dutch: {x: 360, y: 2.18}
+    doScreenShake: 0
+    shakeVelocity: {x: 0, y: 0, z: 0}
+    shakeTimeCurve: {x: 0, y: 0, z: 0}
+  - delay: 1.1
+    lookAt: 3
+    doOffset: 0
+    offset: {x: 7.821209, y: -11.73759, z: 21.43619, w: 1}
+    doRotation: 0
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    doFOV: 0
+    fov: {x: 14.04, y: 1.35}
+    doDutch: 0
+    dutch: {x: 360, y: 2.18}
+    doScreenShake: 1
+    shakeVelocity: {x: 8.87, y: 0, z: 0}
     shakeTimeCurve: {x: 0, y: 0, z: 0}

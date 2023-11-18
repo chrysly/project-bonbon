@@ -11,9 +11,11 @@ public abstract class ActorSpace : MonoBehaviour {
     [SerializeField] protected GameObject actorPrefab;
 
     void Awake() {
-        if (initialActor != null && actorPrefab == null) {
-            SpawnActor(initialActor);
-        } else CurrActor = actorPrefab.GetComponentInChildren<Actor>(true);
+        if (initialActor != null) {
+            if (actorPrefab == null) {
+                SpawnActor(initialActor);
+            } else CurrActor = actorPrefab.GetComponentInChildren<Actor>(true);
+        }
     }
 
     public void SpawnActor(ActorData actorData) {

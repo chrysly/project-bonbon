@@ -70,10 +70,33 @@ public class UIAnimationHandler : MonoBehaviour {
     [SerializeField] private Vector3 mainPanelButtonScaleVector = new Vector3(1.2f, 1.2f, 1.2f);
     [SerializeField] private float mainPanelButtonScaleDuration = 0.04f;
     [SerializeField] private float mainPanelButtonEmergeDuration = .2f;
+    [SerializeField] private bool hideBakeOnFirstTurn = false;
     private int mainButtonIndex = -1;
+    private bool toggledBakeButton = false;
 
     public void ToggleMainPanel(bool enable, bool force = false) {
         if (QueueIsEmpty()) {
+            if (hideBakeOnFirstTurn && BattleStateMachine.Instance.CurrInput.CurrTurn() == 0) {
+                MainBonbonButton bakeButton = null;
+                foreach (BattleButton button in mainPanelButtons) {
+                    if (button is MainBonbonButton) {
+                        bakeButton = (MainBonbonButton) button;
+                    }
+                }
+
+                toggledBakeButton = true;
+                bakeButton.GetComponent<CanvasGroup>().alpha = 0.6f;
+            }
+            else if (toggledBakeButton){
+                MainBonbonButton bakeButton = null;
+                foreach (BattleButton button in mainPanelButtons) {
+                    if (button is MainBonbonButton) {
+                        bakeButton = (MainBonbonButton) button;
+                    }
+                }
+                bakeButton.GetComponent<CanvasGroup>().alpha = 1f;
+                toggledBakeButton = false;
+            }
             if (enable) mainPanel.gameObject.SetActive(true);
             activeUIAction = MainPanelAction(enable, force);
             ProcessAnimation(activeUIAction, true);
@@ -131,7 +154,6 @@ public class UIAnimationHandler : MonoBehaviour {
         if (mainButtonIndex == -1) mainButtonIndex = 0;
         else if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count - 1 ? 0 : mainButtonIndex + 1;
         else mainButtonIndex = mainButtonIndex <= 0 ? mainPanelButtons.Count - 1 : mainButtonIndex - 1;
-        Debug.Log(mainButtonIndex);
         for (int i = 0; i < mainPanelButtons.Count; i++) {
             if (i == mainButtonIndex) {
                 mainPanelButtons[mainButtonIndex].Scale(mainPanelButtonScaleVector, mainPanelButtonScaleDuration);
@@ -169,6 +191,8 @@ public class UIAnimationHandler : MonoBehaviour {
     
     public void ActivateMainPanelButton() {
         if (mainButtonIndex == -1) return;
+        if (hideBakeOnFirstTurn && mainPanelButtons[mainButtonIndex] is MainBonbonButton &&
+            BattleStateMachine.Instance.CurrInput.CurrTurn() == 0) return;
         mainPanelButtons[mainButtonIndex].Scale(new Vector3(1, 1, 1), mainPanelButtonScaleDuration);
         mainPanelButtons[mainButtonIndex].Activate(_stateMachine, mainPanelButtonScaleDuration);
     }

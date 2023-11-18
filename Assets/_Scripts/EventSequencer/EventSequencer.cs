@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,10 @@ public class EventSequencer : MonoBehaviour {
         bsm.OnStateTransition += RunEvent;
     }
 
+    void Start() {
+        bsm.CurrInput.SkillHandler.OnSkillTrigger += CheckSkillEvent;
+    }
+
     /// <summary>
     /// Every time the bsm.OnStateTransition event is invoked this method is called
     /// </summary>
@@ -50,19 +55,38 @@ public class EventSequencer : MonoBehaviour {
         }
     }
 
-    //// hard coded because fml
-    //public void StartEvent() {  // CHANGE TO EVENTS DUMMY
-    //    onStartEvent.OnTrigger();
-    //}
+    /// <summary>
+    /// Should be called every time a skill is used, and checks if events should run based on that
+    /// </summary>
+    private void CheckSkillEvent(ActiveSkillPrep activeSkillPrep) {
+        Debug.Log("triggered skill event");
 
-    public void CheckForEvents(AIActionValue package) {
-        // add any events that meet activate conditions to a queue
-        foreach (EventObject ev in eventSequence) {
-            if (ev.CheckConitions(package)) {
-                events.Enqueue(ev);
+        for (int i = 0; i < activeSkillPrep.targets. Length; ++i) {
+            AIActionValue package = activeSkillPrep.skill.ComputeSkillActionValues(activeSkillPrep.targets[i]);
+            package.currentTurn = bsm.CurrInput.CurrTurn();
+
+            // add any events that meet activate conditions to a queue
+            foreach (EventObject ev in eventSequence) {
+                if (ev.CheckConitions(package)) {
+                    Debug.Log("Event added to queue");
+                    events.Enqueue(ev);
+                }
             }
         }
+
+        if (RunNextEvent()) {
+            bsm.ToggleMachine(true);
+        }
     }
+
+    //public void CheckForEvents(AIActionValue package) {
+    //    // add any events that meet activate conditions to a queue
+    //    foreach (EventObject ev in eventSequence) {
+    //        if (ev.CheckConitions(package)) {
+    //            events.Enqueue(ev);
+    //        }
+    //    }
+    //}
 
     public bool RunNextEvent() {
         // run the next event in queue

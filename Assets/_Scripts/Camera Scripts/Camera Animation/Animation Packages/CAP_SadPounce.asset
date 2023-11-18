@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b614211dc12bda644863461b02224891, type: 3}
+  m_Name: CAP_SadPounce
+  m_EditorClassIdentifier: 
+  animationList:
+  - delay: 0.33
+    lookAt: 1
+    doOffset: 1
+    offset: {x: -2.598791, y: -4.437592, z: 8.476192, w: 0}
+    doRotation: 0
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    doFOV: 1
+    fov: {x: 33.88, y: 0.23}
+    doDutch: 0
+    dutch: {x: 0, y: 0}
+    doScreenShake: 0
+    shakeVelocity: {x: 0, y: 0, z: 0}
+    shakeTimeCurve: {x: 0, y: 0, z: 0}
+  - delay: 0.66
+    lookAt: 1
+    doOffset: 1
+    offset: {x: -7.368791, y: -4.497591, z: 11.88619, w: 0}
+    doRotation: 0
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    doFOV: 1
+    fov: {x: 68.62, y: 1.19}
+    doDutch: 0
+    dutch: {x: 0, y: 0}
+    doScreenShake: 0
+    shakeVelocity: {x: 0, y: 0, z: 0}
+    shakeTimeCurve: {x: 0, y: 0, z: 0}
+  - delay: 0.66
+    lookAt: 1
+    doOffset: 0
+    offset: {x: -7.368791, y: -4.497591, z: 11.88619, w: 0}
+    doRotation: 0
+    rotation: {x: 0, y: 0, z: 0, w: 0}
+    doFOV: 1
+    fov: {x: 57.1, y: 1.13}
+    doDutch: 0
+    dutch: {x: 0, y: 0}
+    doScreenShake: 1
+    shakeVelocity: {x: 0, y: 0, z: 0}
+    shakeTimeCurve: {x: 0, y: 0, z: 0}

@@ -12,16 +12,18 @@ public partial class BattleStateMachine {
             MySM.OnStateTransition.Invoke(this, Input);
 
             Input.SkillHandler.SkillActivate();
+            MySM.OnDisplayUpdate.Invoke(Input);
 
-            for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
-            {
-                MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
-            }
+            //OLD --> eve seq code
+            //for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
+            //{
+            //    MySM._eventSequencer.CheckForEvents(Input.SkillPrep.skill.ComputeSkillActionValues(Input.SkillPrep.targets[j]));
+            //}
             
             
-            if (MySM._eventSequencer.RunNextEvent()) {
-                MySM.ToggleMachine(true);
-            }
+            //if (MySM._eventSequencer.RunNextEvent()) {
+            //    MySM.ToggleMachine(true);
+            //}
         }
         
         public override void Update() {

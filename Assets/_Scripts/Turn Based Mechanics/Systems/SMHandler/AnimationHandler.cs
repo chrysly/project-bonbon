@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AnimationHandler : StateMachineHandler {
@@ -29,15 +30,18 @@ public class AnimationHandler : StateMachineHandler {
     public void OnSkillTrigger(ActiveSkillPrep skillPrep) {
         SkillAction skillAction = skillPrep.skill;
         BonbonObject bonbon = skillPrep.bonbon;
+        AIActionValue[] avs = skillPrep.targets.Select(target => skillAction.ComputeSkillActionValues(target)).ToArray();
         try {
             SkillAnimation sa = SkillAMap[skillAction.SkillData][skillAction.Caster.Data];
             skillAction.Caster.GetComponentInChildren<Animator>(true).SetTrigger(sa.AnimationTrigger);
             battleStateMachine.StartBattle(sa.AnimationDuration);
             StartCoroutine(HitDelay(sa.HitDelay));
             if (bonbon != null) ; /// Do VFXs
-            
-            foreach (AnimationEventTrigger eventTrigger in sa.AnimationEventTriggers) {
-                eventTrigger.QueueTrigger(this, skillPrep.targets);
+
+            foreach (DelaySkillAnimation delaySkillAnimation in sa.DelaySkills) {
+                foreach (IEnumerator ie in delaySkillAnimation.GetCoroutines(this, avs, skillPrep.targets)) {
+                    StartCoroutine(ie);
+                }
             }
         } catch (KeyNotFoundException) {
             Debug.LogWarning($"Animation Undefined for {skillAction.SkillData.Name} -> {skillAction.Caster.Data.DisplayName}");

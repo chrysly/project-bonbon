@@ -11,7 +11,7 @@ public class BonbonBlueprint : ScriptableObject {
     public Texture texture;
 
     /// <summary> A description of the bonbon for later use in the UI; </summary>
-    public readonly string description;
+    public string description;
 
     public int craftStamina;
 

@@ -23,7 +23,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     #region Variable Attributes
 
     [SerializeField] private int _hitpoints;
-    private int _stamina;
+    [SerializeField] private int _stamina;
 
     public int Hitpoints => _hitpoints;
     public bool Defeated => State == ActorState.Fainted;
