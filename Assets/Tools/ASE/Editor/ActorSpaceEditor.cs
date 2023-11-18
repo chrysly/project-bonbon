@@ -303,16 +303,17 @@ public class ActorSpaceEditor : EditorWindow {
                                 } GUI.color = Color.white;
                             }
                         }
+                    } EditorUtils.WindowBoxLabel("Spatial Adjustment Subtools");
+                    using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
+                        GUILayout.Label("Reference:");
+                        spatialReference = EditorGUILayout.ObjectField(spatialReference, typeof(Transform), true) as Transform;
+                        GUI.enabled = spatialReference != null;
+                        if (GUILayout.Button("Adjust To Match")) {
+                            selectedSpace.transform.position = spatialReference.transform.position;
+                            selectedSpace.transform.rotation = spatialReference.transform.rotation;
+                            spatialReference = null;
+                        } GUI.enabled = true;
                     }
-                }
-            } EditorUtils.WindowBoxLabel("Spatial Adjustment Subtools");
-            using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
-                GUILayout.Label("Reference:");
-                spatialReference = EditorGUILayout.ObjectField(spatialReference, typeof(Transform), true) as Transform;
-                if (GUILayout.Button("Adjust To Match")) {
-                    selectedSpace.transform.position = spatialReference.transform.position;
-                    selectedSpace.transform.rotation = spatialReference.transform.rotation;
-                    spatialReference = null;
                 }
             } EditorUtils.WindowBoxLabel("Space Assignment Status");
             using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
@@ -418,7 +419,7 @@ public class ActorSpaceEditor : EditorWindow {
                 GUI.color = Color.white;
             }
         } using (new EditorGUILayout.HorizontalScope()) {
-            EditorUtils.WindowBoxLabel("Global Canvas References", GUILayout.Height(19));
+            EditorUtils.WindowBoxLabel("Assign Global Canvas References", GUILayout.Height(19));
             using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
                 if (GUILayout.Button("Auto-Assign")) {
                     var healthbars = actorHandler.transform.parent.GetComponentsInChildren<Healthbar>();
@@ -428,6 +429,17 @@ public class ActorSpaceEditor : EditorWindow {
                             healthbar.Actor = match.GetComponentInChildren<Actor>();
                             EditorUtility.SetDirty(healthbar);
                         }
+                    }
+                }
+            }
+        } using (new EditorGUILayout.HorizontalScope()) {
+            EditorUtils.WindowBoxLabel("Revise Actor Handler References", GUILayout.Height(19));
+            using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
+                if (GUILayout.Button("Auto-Assign")) {
+                    var actors = ((ActorSpace[]) actorHandler.EditorCharacterSpaces).Concat(actorHandler.EditorEnemySpaces).Select(space => space.GetComponentInChildren<Actor>(true));
+                    foreach (Actor actor in actors) {
+                        actor.InjectHandler(actorHandler);
+                        EditorUtility.SetDirty(actor);
                     }
                 }
             }

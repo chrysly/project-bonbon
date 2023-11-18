@@ -11,7 +11,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     public StatIteration ActiveData { get; private set; }
     [SerializeField] private string uniqueID;
 
-    private ActorHandler handler;
+    [HideInInspector]
+    [SerializeField] private ActorHandler handler;
     public void InjectHandler(ActorHandler handler) => this.handler = handler;
     #endregion Data Attributes
 
@@ -140,6 +141,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         _hitpoints = 0;
         ApplyState(ActorState.Fainted);
         transform.DOScale(Vector3.zero, 1f).SetEase(Ease.InOutBounce);
+        handler.KillActor(this);
         Debug.Log($"{data.DisplayName} has fallen!");
     }
 
