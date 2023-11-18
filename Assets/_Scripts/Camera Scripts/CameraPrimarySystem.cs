@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CameraPrimarySystem : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera orbitalCam;
-    [SerializeField] private CinemachineVirtualCamera aerialCam;
     [SerializeField] private CinemachineVirtualCamera charCam;
     private BattleStateMachine stateMachine => BattleStateMachine.Instance;
 
@@ -18,8 +16,6 @@ public class CameraPrimarySystem : MonoBehaviour
     private Transform oldLookAt;
     
     void Start() {
-        orbitalCam.Priority = 5;
-        activeCam = orbitalCam;
         oldLookAt = charCam.m_LookAt;
         stateMachine.OnStateTransition += UpdateCamera;
     }
@@ -38,30 +34,20 @@ public class CameraPrimarySystem : MonoBehaviour
         
         Transform target = input.ActiveActor().transform.GetChild(0);
         charCam.m_Follow = target;
-        SetActiveCam(charCam);
     }
 
     private void ReturnToBattleView(BattleStateInput input) {
         if (input.ActiveActor() is not EnemyActor) return;
-        SetActiveCam(orbitalCam);
     }
 
     private void ViewAnimate(BattleStateInput input) {
 
         Transform target = input.SkillPrep.targets[0].transform.GetChild(0);   // hard coded bc pain
         //Transform user = input.ActiveActor().transform.GetChild(0);
-
-        SetActiveCam(charCam);
-        if (input.ActiveActor() is CharacterActor)
-        {
-            activeCam.m_LookAt = target;
-        }
-    }
-
-    private void SetActiveCam(CinemachineVirtualCamera cam) {
-        if (cam == activeCam) return;
-        activeCam.m_Priority = 0;
-        activeCam = cam;
-        activeCam.m_Priority = 5;
+        
+        // if (input.ActiveActor() is CharacterActor)
+        // {
+        //     activeCam.m_LookAt = target;
+        // }
     }
 }
