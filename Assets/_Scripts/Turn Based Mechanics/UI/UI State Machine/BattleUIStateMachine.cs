@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, BattleUIStateMachine.BattleUIState, BattleUIStateInput> {
-    [SerializeField] public BattleStateMachine _battleStateMachine;
+    private BattleStateMachine battleStateMachine => BattleStateMachine.Instance;
     
     public new delegate void StateTransition(BattleUIState state, BattleUIStateInput input);
     public event StateTransition OnStateTransition ;
 
+    public new delegate void StaminaConsumption(BattleUIStateInput input);
+    public event StaminaConsumption OnStaminaConsumption;
+
     protected override void Start() {
         base.Start();
-        _battleStateMachine.OnStateTransition += Refresh;
+        battleStateMachine.OnStateTransition += Refresh;
     }
 
     protected override void SetInitialState() {

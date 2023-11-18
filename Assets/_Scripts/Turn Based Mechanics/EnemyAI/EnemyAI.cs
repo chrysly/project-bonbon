@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -61,21 +62,11 @@ public class EnemyAI
         }
 
         // get scenario(s) with the highest goodness values
-        List<Scenario> bestScenarios = new List<Scenario>();   // better practice would prolly be to just assign the frist skill + random target but it's b4 M1 so
-        int bestValue = -1;
-        foreach(Scenario scene in scenarios)
-        {
-            if (scene.getGoodnessValue() > bestValue)
-            {
-                bestScenarios.Add(scene);
-                bestValue = scene.getGoodnessValue();
-            }
-        }
+        int max = scenarios.Max(scene => scene.getGoodnessValue());
+        scenarios = scenarios.Where(scene => scene.getGoodnessValue() == max).ToList();
 
         // if there's a tie in goodness values, pick a random scenario from the list
-        Debug.Log(bestScenarios.Count);
-        bestScenarios.Add(new Scenario(new ScenarioSkillData(currentActor.SkillList[0], currentActor, characterActors), 5));
-        Scenario chosenScenario = bestScenarios[Random.Range(0, bestScenarios.Count)];
+        Scenario chosenScenario = scenarios[Random.Range(0, scenarios.Count)];
         ActiveSkillPrep bestActiveSkill = new ActiveSkillPrep()
         {
             skill = chosenScenario.getSkillAction().skill,
@@ -105,14 +96,14 @@ public class EnemyAI
     {
         int point = 0;
 
-        if (skillData.skill.ComputeSkillActionValues(actor, -1).immediateDamage > actor.Hitpoints)  // -1 ._. (jank)
+        if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints)  // -1 ._. (jank)
         {
             point += (int) AiWeights.KillUnit;
         }
         else
         {
             //Debug.Log(skillData.skill.ComputeSkillActionValues(actor).immediateDamage);
-            point += skillData.skill.ComputeSkillActionValues(actor, -1).immediateDamage * (int) AiWeights.Damage;  // -1 ._.
+            point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;  // -1 ._.
         }
         return point;
     }

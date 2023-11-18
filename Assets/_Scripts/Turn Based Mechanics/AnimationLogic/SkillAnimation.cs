@@ -12,13 +12,24 @@ public class SkillAnimation {
     [SerializeField] private string animationTrigger;
     public string AnimationTrigger => animationTrigger;
 
+    [SerializeField] private float animationDuration;
+    public float AnimationDuration => animationDuration;
+
+    [SerializeField] private float hitDelay;
+    public float HitDelay => hitDelay;
+
     [SerializeField] private GameObject vfxPrefab;
     public GameObject VFXPrefab => vfxPrefab;
+    [SerializeField] private List<AnimationEventTrigger> animationEventTriggers;
+    public List<AnimationEventTrigger> AnimationEventTriggers => animationEventTriggers;
 
 #if UNITY_EDITOR
 
     /// Animation Editor ///
     public void SetAnimationTrigger(string trigger) => animationTrigger = trigger;
+
+    public void SetAnimationDuration(float duration) => animationDuration = duration;
+    public void SetHitDelay(float delay) => hitDelay = delay;
 
     public void SetActorAnimator(AnimatorController controller) {
         triggerIndex = 0;

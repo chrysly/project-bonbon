@@ -232,35 +232,5 @@ Shader "Unlit/GrassShader"
             }
             ENDHLSL
         }
-        
-        Pass
-		{
-			Tags
-			{
-				"LightMode" = "UniversalForward"
-			}
-			Blend OneMinusDstColor One
-			ZWrite Off
-			
-			HLSLPROGRAM
-			#pragma vertex vert
-			#pragma geometry geo
-			#pragma fragment frag
-			#pragma hull hull
-			#pragma domain domain
-			#pragma target 4.6
-			#pragma multi_compile_fwdadd_fullshadows
-
-			float4 frag(geometryOutput i) : SV_Target
-			{
-				//UNITY_LIGHT_ATTENUATION(atten, i, i.pos);
-				//float3 pointlights = atten * unity_LightColor0.rgb;
-
-				//return float4(atten, 0, 0, 1);
-				//return float4(pointlights, 1);
-			}
-
-			ENDHLSL
-		}
     }
 }

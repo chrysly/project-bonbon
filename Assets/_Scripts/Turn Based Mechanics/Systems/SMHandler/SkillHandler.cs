@@ -2,38 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillHandler : MonoBehaviour {
+public class SkillHandler : StateMachineHandler {
 
-    [SerializeField] private BattleStateMachine battleStateMachine;
+    public event System.Action<ActiveSkillPrep> OnSkillTrigger;
 
-    public ActiveSkillPrep SkillPrep { get; private set; }
-
-    void Awake() {
-        SkillPrep = new ActiveSkillPrep();
+    private ActiveSkillPrep skillPrep;
+    public ActiveSkillPrep SkillPrep {
+        get {
+            if (skillPrep == null) skillPrep = new ActiveSkillPrep();
+            return skillPrep;
+        }
     }
 
-    void Start() {
-        battleStateMachine.CurrInput.OnSkillUpdate += SkillHandler_OnSkillUpdate;
-        battleStateMachine.CurrInput.OnRetrieveSkillPrep += () => SkillPrep;
-        battleStateMachine.CurrInput.OnSkillReset += SkillHandler_OnSkillReset;
-        battleStateMachine.CurrInput.OnSkillActivate += SkillHandler_OnSkillActivate;
-    }
-    
-    public ActiveSkillPrep SkillHandler_OnSkillUpdate(SkillAction skillAction, Actor[] targets, BonbonObject bonbon = null) {
-        if (skillAction != null) SkillPrep.skill = skillAction;
-        if (targets != null) SkillPrep.targets = targets;
-        SkillPrep.bonbon = bonbon;
-        return SkillPrep;
+    public void SkillUpdate(SkillAction skillAction, Actor[] targets) {
+        SkillPrep.skill = skillAction;
+        SkillPrep.targets = targets;
     }
 
-    public void SkillHandler_OnSkillReset() => Reset();
+    public void SkillUpdate(SkillAction skillAction) => SkillPrep.skill = skillAction;
+    public void SkillUpdate(Actor[] targets) => SkillPrep.targets = targets;
+    public void SkillUpdate(BonbonObject bonbon) => SkillPrep.bonbon = bonbon;
 
-    public ActiveSkillPrep SkillHandler_OnSkillActivate() {
+    public void SkillActivate() {
         if (SkillPrep.targets.Length > 0) {
             if (SkillPrep.bonbon == null) SkillPrep.skill.ActivateSkill(SkillPrep.targets);
             else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon);
-        } return SkillPrep;
+            OnSkillTrigger?.Invoke(skillPrep);
+        }
     }
 
-    public void Reset() => SkillPrep = new ActiveSkillPrep();
+    public void SkillReset() => skillPrep = new ActiveSkillPrep();
 }

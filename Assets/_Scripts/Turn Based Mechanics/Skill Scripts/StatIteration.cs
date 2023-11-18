@@ -3,7 +3,8 @@
 public class StatIteration {
 
     public readonly Actor Actor;
-    private readonly ActorData baseData;
+    public readonly ActorData BaseData;
+    public readonly SkillAugment Augmentation;
 
     public int Potency { get; private set; }
     public int Defense { get; private set; }
@@ -12,15 +13,22 @@ public class StatIteration {
 
     public StatIteration(Actor actor, ActorData data) {
         Actor = actor;
-        baseData = data;
+        BaseData = data;
+        Reset();
+    }
+
+    public StatIteration(StatIteration si, SkillAugment sa) {
+        Actor = si.Actor;
+        BaseData = si.BaseData;
+        Augmentation = sa;
         Reset();
     }
 
     public void Reset() {
-        Potency = baseData.BasePotency;
-        Defense = baseData.BaseDefense;
-        Speed = baseData.BaseSpeed;
-        StaminaRegen = baseData.StaminaRegenRate;
+        Potency = BaseData.BasePotency;
+        Defense = BaseData.BaseDefense;
+        Speed = BaseData.BaseSpeed;
+        StaminaRegen = BaseData.StaminaRegenRate;
     }
 
     public void ComputeModifiers(List<PassiveModifier> mods) {
@@ -38,8 +46,14 @@ public class StatIteration {
         }
     }
 
-    public int ComputePotency(int rawAmount) {
-        return rawAmount + rawAmount * (Potency / 100);
+    public StatIteration Augment(SkillAugment sa) => new StatIteration(this, sa);
+
+    public int ComputeDamage(int rawAmount) {
+        return rawAmount + rawAmount * (Potency / 100) + (Augmentation != null ? Augmentation.damageBoost : 0);
+    }
+
+    public int ComputeHeal(int rawAmount) {
+        return rawAmount + rawAmount * (Potency / 100) + (Augmentation != null ? Augmentation.healBoost : 0);
     }
 
     public int ComputeDefense(int rawAmount) {

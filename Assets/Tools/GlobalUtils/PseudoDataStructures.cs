@@ -201,6 +201,11 @@ namespace PseudoDataStructures {
         public T1[] Keys;
         public T2[] Values;
 
+        public PseudoDictionary() {
+            Keys = new T1[0];
+            Values = new T2[0];
+        }
+
         public PseudoDictionary(Dictionary<T1, T2> dict) {
 
             Keys = new T1[dict.Count];

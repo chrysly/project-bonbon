@@ -17,7 +17,7 @@ MonoBehaviour:
   maxHitpoints: 15
   basePotency: 8
   baseDefense: 3
-  baseSpeed: 10
+  baseSpeed: 7
   maxStamina: 80
   staminaRegenRate: 20
   skillMap:

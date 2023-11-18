@@ -14,14 +14,12 @@ public class SkillAction {
         SkillIndex = skillIndex;
     }
 
-    public AIActionValue ComputeSkillActionValues(Actor target, int currTurn) {
+    public AIActionValue ComputeSkillActionValues(Actor target, BonbonObject bonbon = null) {
         AIActionValue actionValue = new AIActionValue();
-        SkillData.ComputeActionValues(ref actionValue, target.ActiveData);
+        SkillData.ComputeActionValues(ref actionValue, bonbon == null ? target.ActiveData : target.ActiveData.Augment(bonbon.Data.augmentData));
         actionValue.immediateDamage = target.ActiveData.ComputeDefense(actionValue.immediateDamage);
         actionValue.damageOverTime = target.ActiveData.ComputeDefense(actionValue.damageOverTime);
-        //actionValue.caster = target.ActiveData. aaa
         actionValue.target = target;
-        actionValue.currentTurn = currTurn;
         return actionValue;
     }
 
@@ -44,7 +42,7 @@ public class SkillAction {
         if (augment.augmentEffects != null
             && !SkillData.immediateActions.Contains(aea)) SkillData.immediateActions.Add(aea);
         /// Perform the actions on the caster with new computations;
-        foreach (Actor target in targets) SkillData.PerformActions(Caster.ActiveData, target, augment);
+        foreach (Actor target in targets) SkillData.PerformActions(Caster.ActiveData.Augment(augment), target);
     }
 
     public override string ToString() {
@@ -63,7 +61,7 @@ public class SkillAugment {
 
     /// <summary> Actions performed on the caster by the Augment; </summary>
     [HideInInspector]
-    [SerializeReference] public List<ImmediateAction> immediateActions;
+    [SerializeReference] public List<ImmediateAction.SkillOnly> immediateActions;
     /// <summary> Bonbon effect; </summary>
     public EffectBlueprint bonbonEffect;
     /// <summary> New AoE protocol through the augment; </summary>

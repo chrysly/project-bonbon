@@ -1,66 +1,58 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 
-public class TurnOrderHandler
-{
-    private TurnValueHeap TurnOrder;
-    private const ushort MaxTurnsInDisplay = 6;
-    
-    public TurnOrderHandler() {
-        TurnOrder = new TurnValueHeap();
-    }
-    public TurnOrderHandler(List<Actor> actors) {
-        TurnOrder = new TurnValueHeap(actors);
-    }
-    
-    public Actor Advance() {
-        TurnValueHandler currentTurn;
-        try {
-            currentTurn = TurnOrder.Peek();
-        } catch (IndexOutOfRangeException) {
-            throw new EmptyTurnOrderException("Turn Order is empty! Make sure to populate TurnOrder using AddActor() " +
-            "or pass in a list of actors to constructor!");
+/// <summary>
+/// C# Object Handler for the Battle Turn Order;
+/// </summary>
+public class TurnOrderHandler {
+
+    /// <summary> Unordered list of TOV packets, used to generate the turn order dynamically; </summary>
+    private List<TurnOrderValue> turnQueue;
+
+    /// <summary> A sequential variable to distinguish turn order priority for worst case scenarios; </summary>
+    private int priority;
+    /// <summary> Accessor for the turn priority. Increases the count on access; </summary>
+    private int Priority => priority++;
+
+    /// <summary>
+    /// Creates a Turn Order Handler with TurnOrderValue packets for each actor in the given list;
+    /// </summary>
+    /// <param name="actorList"></param>
+    public TurnOrderHandler(List<Actor> actorList) {
+        turnQueue = new List<TurnOrderValue>();
+        foreach (Actor actor in actorList) {
+            turnQueue.Add(actor, Priority);
         }
-
-        Actor currentActor = currentTurn.Actor;
-        TurnOrder.FlatModifyTurnValueAll(-currentTurn.TurnValue());
-        currentTurn.ResetActionMeter();
-        TurnOrder.BuildTurnValueHeap();
-
-        return currentActor;
-    }
-    public List<Actor> GetTurnDisplay() {
-        List<Actor> turnDisplay = new List<Actor>();
-
-        TurnValueHeap fastForwardCopy = new TurnValueHeap(TurnOrder);
-
-        for (int i = 0; i < MaxTurnsInDisplay; i++) {
-            TurnValueHandler current = fastForwardCopy.Peek();
-            fastForwardCopy.FlatModifyTurnValueAll(-current.TurnValue());
-            current.ResetActionMeter();
-            fastForwardCopy.BuildTurnValueHeap();
-
-            turnDisplay.Add(current.Actor);
-        }
-
-        return turnDisplay;
-    }
-    public void ModifyActor(Actor actor, int modifyTurnValue) {
-        TurnOrder.FlatModifyTurnValue(actor, modifyTurnValue);
-    }
-    public void AddActor(Actor actor) {
-        TurnOrder.Add(new TurnValueHandler(actor));
-    }
-    public void RemoveActor(Actor actor) {
-        TurnOrder.RemoveActor(actor);
     }
 
-    internal class EmptyTurnOrderException : Exception {
-        public EmptyTurnOrderException() : base() {}
-        public EmptyTurnOrderException(string message) : base(message) {}
+    /// <summary>
+    /// Generate an ordered list of actors that will be return in subsequent turns;
+    /// </summary>
+    /// <param name="turns"> How many turns in the future to preview; </param>
+    /// <returns> An ordered list of actors in the prospective turn order; </returns>
+    public List<Actor> GetTurnPreview(int turns) {
+        List<Actor> turnPreview = new List<Actor>();
+        List<TurnOrderValue> queueReplica = new List<TurnOrderValue>();
+        turnQueue.ForEach(tov => queueReplica.Add(new TurnOrderValue(tov)));
+        for (int i = 0; i < turns; i++) turnPreview.Add(queueReplica.Advance());
+        return turnPreview;
     }
-    internal class OutOfOrderException : Exception {
-        public OutOfOrderException() : base() {}
-        public OutOfOrderException(string message) : base(message) {}
-    }
+
+    /// <summary>
+    /// Advance the turn order and return the active actor;
+    /// </summary>
+    /// <returns> Actor selected for the new turn; </returns>
+    public Actor Advance() => turnQueue.Advance();
+
+    /// <summary>
+    /// Add an actor to the Turn Order list;
+    /// </summary>
+    /// <param name="actor"> Actor to add; </param>
+    public void Add(Actor actor) => turnQueue.Add(actor, Priority);
+
+    /// <summary>
+    /// Remove an actor from the Turn Order list;
+    /// </summary>
+    /// <param name="actor"> Actor to remove; </param>
+    public void Remove(Actor actor) => turnQueue.Remove(actor); 
 }

@@ -20,7 +20,7 @@ public class BonbonIcon : BattleButton {
         gameObject.SetActive(true);
         _bonbonObject = bonbonObject;
         GetComponent<RawImage>().texture = _bonbonObject.Texture;
-        transform.DOScale(1f, 0.5f).SetEase(Ease.OutBounce);
+        transform.DOScale(1f, 0.1f).SetEase(Ease.OutBounce);
     }
 
     public void Disable() {

@@ -6,8 +6,8 @@ using TMPro;
 
 public class ActionText : MonoBehaviour
 {
-    [SerializeField] private BattleStateMachine stateMachine;
-    [SerializeField] private BonbonFactory bonbonFactory;
+    private BattleStateMachine stateMachine => BattleStateMachine.Instance;
+    [SerializeField] private BonbonHandler bonbonFactory;
     [SerializeField] private float textActiveDuration = 3f;
     [SerializeField] private Transform window;
     [SerializeField] private Transform pivot;

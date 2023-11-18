@@ -143,7 +143,7 @@ namespace BonbonAssetManager {
                                       float buttonSize, CJToolAssets.DnDFieldAssets dndFieldAssets, System.Action saveCallback) where T : ScriptableObject {
             if (scrollGroup == null || scrollGroup.Length < listArr.Length) scrollGroup = new Vector2[listArr.Length];
             using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
-                EditorUtils.WindowBoxLabel($"Actor {typeof(T).FullName.CamelSpace().RemovePathEnd(" ")} Map");
+                EditorUtils.WindowBoxLabel($"Actor {typeof(T).FullName.ToCamelSpace().RemovePathEnd(" ")} Map");
                 for (int i = 0; i < listArr.Length; i++) {
                     using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
                         EditorUtils.WindowBoxLabel($"Level {i + 1}", GUILayout.Width(48), GUILayout.Height(45));
@@ -192,7 +192,7 @@ namespace BonbonAssetManager {
 
         public static void DrawAssetGroup<T>(List<T> assetList, Vector2 scrollVar, System.Func<object, GUIContent> contentFunc,
                                              Rect position, float buttonSize) where T : ScriptableObject {
-            EditorUtils.WindowBoxLabel($"Available {typeof(T).FullName.CamelSpace().RemovePathEnd(" ")}s");
+            EditorUtils.WindowBoxLabel($"Available {typeof(T).FullName.ToCamelSpace().RemovePathEnd(" ")}s");
 
             using (var vscope = new EditorGUILayout.VerticalScope(GUILayout.ExpandWidth(true))) {
                 using (var scope = new EditorGUILayout.ScrollViewScope(scrollVar, GUILayout.Height(buttonSize + 25))) {
@@ -238,17 +238,17 @@ namespace BonbonAssetManager {
 
         #region | Action Helpers |
 
-        public static void InsertAction(this List<ImmediateAction> actionList, System.Type actionType) {
+        public static void InsertAction<T>(this List<T> actionList, System.Type actionType) where T : ImmediateAction {
             List<System.Type> typeList = new List<System.Type>();
             foreach (ImmediateAction action in actionList) typeList.Add(action.GetType());
             if (typeList.Contains(actionType)) Debug.LogWarning("The action is already included in the list;");
             else {
                 ImmediateAction actionInstance = System.Activator.CreateInstance(actionType, new object[0]) as ImmediateAction;
-                actionList.Add(actionInstance);
+                actionList.Add(actionInstance as T);
             }
         }
 
-        public static void RemoveAction(this List<ImmediateAction> actionList, System.Type actionType) {
+        public static void RemoveAction<T>(this List<T> actionList, System.Type actionType) where T : ImmediateAction {
             for (int i = 0; i < actionList.Count; i++) {
                 if (actionList[i].GetType() == actionType) {
                     actionList.RemoveAt(i);
@@ -257,7 +257,7 @@ namespace BonbonAssetManager {
             } Debug.LogWarning("There was no such action in the list");
         }
 
-        public static ImmediateAction FindAction(this List<ImmediateAction> actionList, System.Type actionType) {
+        public static ImmediateAction FindAction<T>(this List<T> actionList, System.Type actionType) where T : ImmediateAction {
             foreach (ImmediateAction action in actionList) {
                 if (action.GetType() == actionType) return action;
             } return null;
@@ -292,7 +292,7 @@ namespace BonbonAssetManager {
         /// <param name="actionBank"> List of Actions to process; </param>
         /// <param name="actionTypes"> Arrays to search for; </param>
         /// <returns> An array of Immediate Actions in a specific format; </returns>
-        public static ImmediateAction[] FetchAvailableActions(List<ImmediateAction> actionBank, System.Type[] actionTypes) {
+        public static ImmediateAction[] FetchAvailableActions<T>(List<T> actionBank, System.Type[] actionTypes) where T : ImmediateAction{
             ImmediateAction[] foundActions = new ImmediateAction[actionTypes.Length];
             for (int i = 0; i < actionTypes.Length; i++) {
                 var action = actionBank.FindAction(actionTypes[i]);
@@ -308,8 +308,8 @@ namespace BonbonAssetManager {
         /// <param name="foundActions"> Array of found actions to process; </param>
         /// <param name="actionTypes"> Action types to draw; </param>
         /// <returns> Whether the Object was updated in the GUI; </returns>
-        public static bool DrawAvailableActions(ref List<ImmediateAction> actionList, 
-                                                ref ImmediateAction[] foundActions, System.Type[] actionTypes) {
+        public static bool DrawAvailableActions<T>(ref List<T> actionList,
+                                                   ref ImmediateAction[] foundActions, System.Type[] actionTypes) where T : ImmediateAction {
             bool updateObject = false;
             using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
                 for (int i = 0; i < actionTypes.Length; i++) {

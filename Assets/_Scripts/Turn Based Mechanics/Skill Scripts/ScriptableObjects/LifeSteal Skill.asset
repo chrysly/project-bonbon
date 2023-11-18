@@ -16,22 +16,18 @@ MonoBehaviour:
   skillName: Life Steal
   staminaCost: 13
   immediateActions:
-  - rid: 3928641313810939905
-  - rid: 3928641313810939907
-  - rid: 4810083093603680257
+  - rid: 1640337368647991298
+  - rid: 1640337368647991299
+  targetType: 0
   aoe: 0
   references:
     version: 2
     RefIds:
-    - rid: 3928641313810939905
-      type: {class: DamageAction, ns: , asm: Assembly-CSharp}
+    - rid: 1640337368647991298
+      type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
       data:
         damageAmount: 10
-    - rid: 3928641313810939907
-      type: {class: SelfHealAction, ns: , asm: Assembly-CSharp}
+    - rid: 1640337368647991299
+      type: {class: SelfDamageAction, ns: , asm: Assembly-CSharp}
       data:
-        healAmount: 5
-    - rid: 4810083093603680257
-      type: {class: ApplyEffectsAction, ns: , asm: Assembly-CSharp}
-      data:
-        effects: []
+        damageAmount: 5

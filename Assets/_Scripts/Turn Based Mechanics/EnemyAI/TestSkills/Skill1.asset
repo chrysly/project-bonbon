@@ -15,13 +15,5 @@ MonoBehaviour:
   skillID: Skill1
   skillName: Skill1
   staminaCost: 10
-  immediateActions:
-  - rid: 4810083140810833920
+  targetType: 0
   aoe: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 4810083140810833920
-      type: {class: ApplyEffectsAction, ns: , asm: Assembly-CSharp}
-      data:
-        effects: []

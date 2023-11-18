@@ -9,6 +9,9 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     [SerializeField] private ActorData data;
     public StatIteration ActiveData { get; private set; }
     [SerializeField] private string uniqueID;
+
+    private ActorHandler handler;
+    public void InjectHandler(ActorHandler handler) => this.handler = handler;
     #endregion Data Attributes
 
     #region Accessors
@@ -53,7 +56,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #endregion
 
-    protected virtual void Start() {
+    protected virtual void Awake() {
         InitializeAttributes();
         InitializeLevelObjects();
     }
@@ -71,8 +74,9 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         BonbonInventory = new BonbonObject[4];
         EffectList = new List<Effect>();
         ComputeStats();
-        
-        for (int i = 0; i < GameManager.Instance.CurrLevel; i++) {
+
+        int level = GameManager.Instance != null ? GameManager.Instance.CurrLevel : 5;
+        for (int i = 0; i < level; i++) {
             /// Load Skills
             foreach (SkillObject skill in data.skillMap[i]) {
                 CreateSkillAction(skill);
@@ -124,13 +128,17 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         damage = ActiveData.ComputeDefense(damage);
 
         if (_hitpoints - damage <= 0) {
-            _hitpoints = 0;
-            ApplyState(ActorState.Fainted);
-            Debug.Log($"{data.DisplayName} has fallen!");
+            Faint();
             return true;
         }
         _hitpoints -= damage;
         return false;
+    }
+
+    private void Faint() {
+        _hitpoints = 0;
+        ApplyState(ActorState.Fainted);
+        Debug.Log($"{data.DisplayName} has fallen!");
     }
 
     //Returns true if over maximum hitpoints.

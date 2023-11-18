@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabList: []
   prefabData:
-  - prefab: {fileID: 341885853533849491, guid: 41640cb5e5df8454c949da6556bb1fdf, type: 3}
+  - prefab: {fileID: 4022837215716891634, guid: b2365c137991e8145b4d7783b01a7a79, type: 3}
     selected: 1
   paintType: 0
   brushSize: 8.23

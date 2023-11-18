@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Yarn.Unity;
 
 /// <summary>
 /// Event runner --> holds events for each scene, and runs them when conditions are met
 /// </summary>
-public class EventSequencer : MonoBehaviour
-{
+public class EventSequencer : MonoBehaviour {
+
+    private BattleStateMachine bsm => BattleStateMachine.Instance;
+
     public List<EventObject> eventSequence;
     public EventObject onStartEvent;
+    public EventObject onWinEvent;
     Queue<EventObject> events = new Queue<EventObject>();
 
     #region Events
@@ -17,10 +21,39 @@ public class EventSequencer : MonoBehaviour
     public event EventTerminate OnEventTerminate;
     #endregion Events
 
-    // hard coded because fml
-    public void StartEvent() {
-        onStartEvent.OnTrigger();
+    void Awake() {
+        if (bsm == null)
+            return;
+
+        bsm.OnStateTransition += RunEvent;
     }
+
+    /// <summary>
+    /// Every time the bsm.OnStateTransition event is invoked this method is called
+    /// </summary>
+    private void RunEvent(BattleStateMachine.BattleState state, BattleStateInput input) {
+
+        if (bsm == null)
+            return;
+
+        if (state.GetType() == typeof(BattleStateMachine.WinState)) {
+            events.Enqueue(onWinEvent);
+            RunNextEvent();
+        } else if (state.GetType() == typeof(BattleStateMachine.LoseState)) {
+            DialogueManager.dialogueRequestEvent.Invoke("death_dialogue.yarn");
+            bsm.ToggleMachine(true);
+            bsm.uiStateMachine.ToggleMachine(true);
+        } else if (bsm.PrevState.GetType() == typeof(BattleStateMachine.BattleStart)) {
+            onStartEvent.OnTrigger();
+            bsm.ToggleMachine(true);
+            bsm.uiStateMachine.ToggleMachine(true);
+        }
+    }
+
+    //// hard coded because fml
+    //public void StartEvent() {  // CHANGE TO EVENTS DUMMY
+    //    onStartEvent.OnTrigger();
+    //}
 
     public void CheckForEvents(AIActionValue package) {
         // add any events that meet activate conditions to a queue
@@ -33,10 +66,8 @@ public class EventSequencer : MonoBehaviour
 
     public bool RunNextEvent() {
         // run the next event in queue
-        Debug.Log("Queue count: " + events.Count);
         if (events.Count > 0)
         {
-            Debug.Log("event");
             events.Peek().OnTrigger();
             return true;
         }
@@ -53,5 +84,9 @@ public class EventSequencer : MonoBehaviour
             events.Dequeue();
         }
         OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
+    }
+    
+    public void addEvent(EventObject eventToAdd) {
+        events.Enqueue(eventToAdd);
     }
 }

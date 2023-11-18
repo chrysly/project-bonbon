@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Mochi
   m_EditorClassIdentifier: 
   displayName: Mochi
-  id: 0_Pan
+  icon: {fileID: 21300000, guid: 23f8768c734de284383fa55f73172ca7, type: 3}
+  id: 0_Mochi
   maxHitpoints: 25
   basePotency: 2
   baseDefense: 2
@@ -25,7 +26,6 @@ MonoBehaviour:
     secondaryElements:
     - {fileID: 11400000, guid: dad2abed660d4a8429c2fd524b6d202f, type: 2}
   bonbonMap:
-    startIndeces: 0000000002000000020000000200000002000000020000000200000002000000
+    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
     secondaryElements:
-    - {fileID: 11400000, guid: 7ef95ef89aa222d48bccee4ecaf14390, type: 2}
     - {fileID: 11400000, guid: b213808cf87af4843b808ecfb190468c, type: 2}

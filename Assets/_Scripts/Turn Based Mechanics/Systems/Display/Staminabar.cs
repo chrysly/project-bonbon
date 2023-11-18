@@ -12,9 +12,18 @@ public class Staminabar : MonoBehaviour {
     void Start() {
         slider = GetComponent<Slider>();
         _stateMachine.OnStateTransition += UpdateStaminaBar;
+        _stateMachine._battleStateMachine.OnStateTransition += UpdateStaminaBar;
     }
 
     private void UpdateStaminaBar(BattleUIStateMachine.BattleUIState state, BattleUIStateInput input) {
+        float currStamina = actor.Stamina;
+        float maxStamina = actor.Data.MaxStamina;
+        Debug.Log("Stamina: " + actor.GetStamina());
+
+        slider.value = currStamina / maxStamina;
+    }
+
+    private void UpdateStaminaBar(BattleStateMachine.BattleState state, BattleStateInput input) {
         float currHealth = actor.Stamina;
         float maxHealth = actor.Data.MaxStamina;
         Debug.Log("Stamina: " + actor.GetStamina());
