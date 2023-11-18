@@ -1,7 +1,7 @@
 ﻿title: s1_combat01
 tags: Mochi:neutral_2:left
 ---
-Mochi: Alright, that should be far enough. No way Pan catches up to me this time!
+Mochi: Hmmm, now where could that ingredient be...
 
 <<add_char narr true>>
 Narr_idle: *rustling noises*
@@ -10,12 +10,11 @@ Mochi_suprised: Huh? Who’s there!?
 
 Narr: *A blue jell-o jumper ambushes Mochi.*
 
-Mochi_suprised: Agh!
-Mochi_suprised: What’s a Jello Jumper doing all the way out here? I’m barely even past the city gates!
+Mochi_suprised: Agh! A Jello Jumper!!
 
 Narr: Jello-Jumper- *grumble grumble*
 
 Mochi_thinking: Wait a second...
 Mochi_thinking: This thing can barely even jump!
-Mochi_thinking: Alright,you’re going down!
+Mochi_thinking: Heh, you’re going down!!
 ===
