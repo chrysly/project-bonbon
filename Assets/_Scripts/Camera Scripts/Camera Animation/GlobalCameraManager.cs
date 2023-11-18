@@ -3,14 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using DG.Tweening;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
-public class GlobalCameraManager : MonoBehaviour {
+public class GlobalCameraManager : StateMachineHandler {
     public CinemachineVirtualCamera staticCamera;
     public CinemachineVirtualCamera dynamicCamera;
+    public MMF_Player impulse;
+    [SerializeField] private Transform fieldTarget;
     
     //FOR TESTING
     [SerializeField] private CameraAnimationPackage cameraPackage;
+    [SerializeField] private Animator animator;
+    
     
     private BattleStateInput _data;
     private Transform _followTarget;
@@ -25,22 +30,22 @@ public class GlobalCameraManager : MonoBehaviour {
 
     public void Update() {
         if (Input.GetKeyDown(KeyCode.C)) {
-            PlayAnimation();
+            PlayAnimation(cameraPackage);
+            animator.Play("_Skill1");
         }
     }
 
-    public void PlayAnimation() {
+    public void PlayAnimation(CameraAnimationPackage package) {
         if (_action == null) {
             Debug.Log("Camera activated");
-            _action = AnimationAction();
+            _action = AnimationAction(package);
             StartCoroutine(_action);
         }
     }
     
-    public IEnumerator AnimationAction() {
+    public IEnumerator AnimationAction(CameraAnimationPackage package) {
         ToggleDynamicCamera(true);
-        int runs = 0;
-        foreach (CameraAnimation camAnim in cameraPackage.animationList) {
+        foreach (CameraAnimation camAnim in package.animationList) {
             CycleOperations(camAnim);
             yield return new WaitForSeconds(camAnim.delay);
         }
@@ -54,12 +59,21 @@ public class GlobalCameraManager : MonoBehaviour {
     #region Camera Operations
     private void ToggleDynamicCamera(bool isEnabled) {
         if (isEnabled) {
+            ResetDynamicCamera();
+            //_lookTarget.position = animator.transform.GetChild(0).position; //Potato
             dynamicCamera.m_Priority = 10;
             staticCamera.m_Priority = 0;
         } else {
             staticCamera.m_Priority = 10;
             dynamicCamera.m_Priority = 0;
         }
+    }
+
+    private void ResetDynamicCamera() {
+        _followTarget.position = staticCamera.transform.position;
+        dynamicCamera.m_Follow.rotation = new Quaternion(0, 0, 0, 0);
+        dynamicCamera.m_Lens.FieldOfView = staticCamera.m_Lens.FieldOfView;
+        dynamicCamera.m_Lens.Dutch = staticCamera.m_Lens.Dutch;
     }
 
     private void CycleOperations(CameraAnimation camAnim) {
@@ -72,39 +86,39 @@ public class GlobalCameraManager : MonoBehaviour {
     }
 
     private void LookAtOperation(CameraAnimation.LookAt lookAt) {
-        
+        switch (lookAt) {
+            case CameraAnimation.LookAt.Field:
+                _lookTarget.position = fieldTarget.position;
+                break;
+            case CameraAnimation.LookAt.Target:
+                _lookTarget.position = BattleStateMachine.Instance.CurrInput.SkillPrep.targets[0].transform.position;
+                break;
+            case CameraAnimation.LookAt.User:
+                _lookTarget.position = BattleStateMachine.Instance.CurrInput.ActiveActor().transform.position;
+                break;
+        }
     }
 
     private void OffsetOperation(Vector4 operation) {
-        Debug.Log("Moved");
         _followTarget.DOMove(_lookTarget.position - (Vector3) operation, operation.w);
     }
-    
+
     private void RotationOperation(Vector4 operation) {
+        _followTarget.DORotate(operation, operation.z);
     }
 
-    private IEnumerator RotationAction(Vector4 operation) {
-        yield return null;
-    }
-    
     private void FOVOperation(Vector2 operation) {
-        
-    }
-
-    private IEnumerator FOVAction(Vector2 operation) {
-        yield return null;
+        DOTween.To(() => dynamicCamera.m_Lens.FieldOfView, x => dynamicCamera.m_Lens.FieldOfView = x, operation.x,
+            operation.y);
     }
     
     private void DutchOperation(Vector2 operation) {
-        
-    }
-
-    private IEnumerator DutchAction(Vector2 operation) {
-        yield return null;
+        DOTween.To(() => dynamicCamera.m_Lens.Dutch, x => dynamicCamera.m_Lens.Dutch = x, operation.x,
+            operation.y);
     }
     
     private void ScreenShakeOperation(Vector3 vector, Vector3 timing) {
-        
+        impulse.PlayFeedbacks();
     }
 
     private IEnumerator ScreenShakeAction(Vector3 vector, Vector3 timing) {

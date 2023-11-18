@@ -28,6 +28,13 @@ public class BattleBonbonWindow : MonoBehaviour {
     [SerializeField] private List<BonbonIcon> bonbonSlots;
     [SerializeField] private List<BattleButton> bonbonOperationButtons;
 
+
+
+    //[SerializeField] private GameObject tooltipPanel;
+    //[SerializeField] private TMP_Text tooltipDescription;
+    public bool tooltipsEnabled;
+
+
     public int mainButtonIndex = 0;
     public int bonbonOperationsIndex = 0;
 
@@ -37,9 +44,13 @@ public class BattleBonbonWindow : MonoBehaviour {
     void Start() {
         bonbons = new BonbonObject[4];
         QuickDisable();
+
     }
 
     public void QuickDisable() {
+
+        //tooltipPanel.SetActive(false);
+        
         icon.DOScale(0f, 0);
         tray1.DOScale(0f, 0);
         tray2.DOScale(0f, 0);
@@ -160,7 +171,10 @@ public class BattleBonbonWindow : MonoBehaviour {
         }
         else {
             ToggleOccupiedSlot();
+            ToggleToolTipPanel(mainButtonIndex);
+
         }
+
 
         UpdateCursor(bonbonSlots[mainButtonIndex]);
 
@@ -179,6 +193,9 @@ public class BattleBonbonWindow : MonoBehaviour {
         augmentButton.DOScaleX(0f, 0.1f);
         consumeButton.DOScaleX(0f, 0.1f);
         shareButton.DOScale(0f, 0.1f);
+
+
+
     }
 
     private void ToggleOccupiedSlot() {
@@ -188,7 +205,22 @@ public class BattleBonbonWindow : MonoBehaviour {
         augmentButton.DOScaleX(1f, 0.1f);
         consumeButton.DOScaleX(1f, 0.1f);
         shareButton.DOScale(1f, 0.1f);
+
+
     }
+
+
+    private void ToggleToolTipPanel(int x)
+    {
+        if (tooltipsEnabled)
+        {
+            //tooltipPanel.SetActive(true);
+            //tooltipDescription.text = bonbons[x].Description;
+        }
+
+
+    }
+
 
     private void InitCursor() {
         if (mainButtonIndex == -1) {
