@@ -15,7 +15,6 @@ public class EventObject : ScriptableObject {
     /// <summary>
     /// checks if an events conditions are met. if yes, add it to the event queue
     /// </summary>
-    /// <param name="package"></param>
     public virtual bool CheckConitions(AIActionValue package) {
         foreach (Condition condition in eventConditions) {
             if (!condition.Check(package)) {
