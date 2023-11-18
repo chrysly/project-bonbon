@@ -34,6 +34,7 @@ public class EnemyAI
         // calculate the goodness value for each skill and each possible target it could have
         foreach (SkillAction skill in currentActor.SkillList)
         {
+            //Debug.Log("Stamina: " + currentActor.GetStamina());
             // make sure the enemy has enough stamina to use the move
             if (currentActor.GetStamina() >= skill.SkillData.staminaCost)
             {
@@ -51,8 +52,8 @@ public class EnemyAI
                         ScenarioSkillData newSkillData = new ScenarioSkillData(skill, currentActor, new List<Actor> {actor}); // idk if this is right owell
                         scenarios.Add(new Scenario(newSkillData, calculateGoodnessValue(newSkillData)));
                     }
-                } 
-            }      
+                }
+            }
         }
 
         //foreach(Scenario scen in scenarios)
@@ -63,7 +64,7 @@ public class EnemyAI
         // get scenario(s) with the highest goodness values
         int max = scenarios.Max(scene => scene.getGoodnessValue());
         scenarios = scenarios.Where(scene => scene.getGoodnessValue() == max).ToList();
-        
+
         // if there's a tie in goodness values, pick a random scenario from the list
         Scenario chosenScenario = scenarios[Random.Range(0, scenarios.Count)];
         ActiveSkillPrep bestActiveSkill = new ActiveSkillPrep()
@@ -74,7 +75,7 @@ public class EnemyAI
 
         return bestActiveSkill;
     }
-    
+
     private static int calculateGoodnessValue(ScenarioSkillData skillData)
     {
         int value = 0;
@@ -91,7 +92,7 @@ public class EnemyAI
     private static int addValueBasedOnDamage(ScenarioSkillData skillData, Actor actor)
     {
         int point = 0;
-        
+
         if (skillData.skill.ComputeSkillActionValues(actor).immediateDamage > actor.Hitpoints)  // -1 ._. (jank)
         {
             point += (int) AiWeights.KillUnit;
@@ -100,7 +101,7 @@ public class EnemyAI
         {
             //Debug.Log(skillData.skill.ComputeSkillActionValues(actor).immediateDamage);
             point += skillData.skill.ComputeSkillActionValues(actor).immediateDamage * (int) AiWeights.Damage;  // -1 ._.
-        } 
+        }
         return point;
     }
 
@@ -117,6 +118,6 @@ public class EnemyAI
         int point = 0;
         point = actor.BonbonList.Count * (int)AiWeights.NumOfBonBons;
         return point;
-  
+
     }
 }

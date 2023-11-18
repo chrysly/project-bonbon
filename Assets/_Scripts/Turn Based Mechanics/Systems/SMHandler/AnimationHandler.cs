@@ -31,10 +31,12 @@ public class AnimationHandler : StateMachineHandler {
         AIActionValue[] avs = skillPrep.targets.Select(target => skillAction.ComputeSkillActionValues(target)).ToArray();
         try {
             SkillAnimation sa = SkillAMap[skillAction.SkillData][skillAction.Caster.Data];
+
             CameraAnimationPackage cap = sa.CameraAnimationPackage;
             if (cap != null) input.CameraHandler.PlayAnimation(cap);
             Animator casterAnimator = skillAction.Caster.GetComponentInChildren<Animator>(true);
             casterAnimator.SetTrigger(sa.AnimationTrigger);
+
             battleStateMachine.StartBattle(sa.AnimationDuration);
             if (bonbon != null) ; /// Do VFXs
 
