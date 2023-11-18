@@ -61,8 +61,7 @@ MonoBehaviour:
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 1
-          percentMultiplier: 100
+        - rid: 7741419896445599744
     - rid: 7741419895652352001
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
       data:
@@ -71,14 +70,12 @@ MonoBehaviour:
       type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0
-          percentMultiplier: 100
+        - rid: 7741419896445599745
     - rid: 7741419895652352003
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0.5
-          percentMultiplier: 100
+        - rid: 7741419896445599746
     - rid: 7741419895652352004
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
       data:
@@ -87,18 +84,14 @@ MonoBehaviour:
       type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0
-          percentMultiplier: 100
+        - rid: 7741419896445599747
     - rid: 7741419895652352006
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 1
-          percentMultiplier: 25
-        - triggerTime: 1.5
-          percentMultiplier: 25
-        - triggerTime: 2.2
-          percentMultiplier: 50
+        - rid: 7741419896445599748
+        - rid: 7741419896445599755
+        - rid: 7741419896445599756
     - rid: 7741419895652352007
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
       data:
@@ -107,5 +100,44 @@ MonoBehaviour:
       type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0
-          percentMultiplier: 100
+        - rid: 7741419896445599749
+    - rid: 7741419896445599744
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 1
+        percentMultiplier: 100
+    - rid: 7741419896445599745
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+        percentMultiplier: 100
+    - rid: 7741419896445599746
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+        percentMultiplier: 100
+    - rid: 7741419896445599747
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+        percentMultiplier: 100
+    - rid: 7741419896445599748
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0.5
+        percentMultiplier: 25
+    - rid: 7741419896445599749
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+        percentMultiplier: 100
+    - rid: 7741419896445599755
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 1
+        percentMultiplier: 25
+    - rid: 7741419896445599756
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 1.5
+        percentMultiplier: 50
