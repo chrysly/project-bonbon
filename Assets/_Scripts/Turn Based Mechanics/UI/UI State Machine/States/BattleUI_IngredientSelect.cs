@@ -22,10 +22,13 @@ public partial class BattleUIStateMachine {
                         Input.AnimationHandler.ingredientWindow.ConfirmBonbon());
                 }
                 else {
-                    MySM.battleStateMachine.SwitchToBonbonState(
-                        Input.AnimationHandler.ingredientWindow.ConfirmBonbon(),
-                        Input.AnimationHandler.ingredientWindow.slot, new bool[4]);
-                    MySM.DelayedTransition<BattleUI_BonbonMenu>(0.2f, false);
+                    if (BattleStateMachine.Instance.CurrInput.ActiveActor().GetStamina()
+                        >= Input.AnimationHandler.ingredientWindow.ConfirmBonbon().craftStamina) {
+                        MySM.battleStateMachine.SwitchToBonbonState(
+                            Input.AnimationHandler.ingredientWindow.ConfirmBonbon(),
+                            Input.AnimationHandler.ingredientWindow.slot, new bool[4]);
+                        MySM.DelayedTransition<BattleUI_BonbonMenu>(0.2f, false);
+                    }
                 }
             } else if (input == 3) {
                 MySM.DelayedTransition<BattleUI_BonbonMenu>(0.2f, false);

@@ -8,6 +8,7 @@ public class IngredientSelectWindow : MonoBehaviour
     public event System.Action<IEnumerator, bool> OnAnimationEndpoint;
     public IEnumerator activeUIAction = null;
 
+    [SerializeField] private float grayoutAlpha;
     [SerializeField] private Transform backdrop;
     [SerializeField] private Transform horizontalView;
     [SerializeField] private Transform ingredientDisplayPoint;
@@ -68,6 +69,12 @@ public class IngredientSelectWindow : MonoBehaviour
             IngredientButton button = obj.GetComponent<IngredientButton>();
             _ingredientButtons.Add(button);
             button.Initialize(bonbon);
+
+            if (activeIndex >= 0 && activeIndex < _ingredientButtons.Count) {
+                bool insufficientStamina = BattleStateMachine.Instance.CurrInput.ActiveActor().GetStamina() <= ConfirmBonbon().craftStamina;
+                UIUtils.SetupButton(obj, insufficientStamina, grayoutAlpha);
+            }
+
             obj.transform.DOScale(1f, animationDuration).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(animationDuration / 2);
         }
