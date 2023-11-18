@@ -69,13 +69,17 @@ public class ActorHandler : StateMachineHandler {
         get {
             if (enemySpaces == null) enemySpaces = new EnemySpace[0];
             return enemySpaces;
-        } set => enemySpaces = value;
+        } set {
+            enemySpaces = value;
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
     }
 
     public void SetupCanvasReferences() {
         screenCanvasRefs.stateMachine = transform.parent.GetComponentInChildren<BattleUIStateMachine>(true);
         screenCanvasRefs.skillWindow = transform.parent.GetComponentInChildren<BattleSkillWindow>(true);
         screenCanvasRefs.ingredientWindow = transform.parent.GetComponentInChildren<IngredientSelectWindow>(true);
+        UnityEditor.EditorUtility.SetDirty(this);
     }
 
     #endif
