@@ -11,6 +11,7 @@ public class BattleSkillWindow : MonoBehaviour
     public event System.Action<IEnumerator, bool> OnAnimationEndpoint;
     public IEnumerator activeUIAction = null;
 
+    [SerializeField] private float grayoutAlpha;
     [SerializeField] private Transform icon;
     [SerializeField] private Transform ribbon;
     [SerializeField] private Transform ribbon2;
@@ -19,9 +20,9 @@ public class BattleSkillWindow : MonoBehaviour
     [SerializeField] private float animationDuration = 0.5f;
     [SerializeField] private GameObject buttonPrefab;
 
-    private List<SkillAction> skills;
+    public List<SkillAction> skills { get; private set; }
     private List<SkillSelectButton> skillButtons;
-    private int activeIndex = 0;
+    public int activeIndex { get; private set; }
     
     private bool tooltipActive = false;
     // Start is called before the first frame update
@@ -29,7 +30,7 @@ public class BattleSkillWindow : MonoBehaviour
     {
         skills = new List<SkillAction>();
         skillButtons = new List<SkillSelectButton>();
-        QuickDisable();
+        QuickDisable(); 
     }
 
     public void QuickDisable() {
@@ -78,6 +79,10 @@ public class BattleSkillWindow : MonoBehaviour
             SkillSelectButton button = obj.GetComponent<SkillSelectButton>();
             skillButtons.Add(button);
             button.Initialize(skillObject);
+
+            bool insufficientStamina = BattleStateMachine.Instance.CurrInput.ActiveActor().GetStamina() <= skills[activeIndex].SkillData.staminaCost;
+            UIUtils.SetupButton(obj, insufficientStamina, grayoutAlpha);
+            
             obj.transform.DOScaleX(1f, animationDuration);
             yield return new WaitForSeconds(animationDuration / 2);
         }

@@ -30,6 +30,9 @@ public class EventSequencer : MonoBehaviour {
     }
 
     void Start() {
+        if (bsm == null)
+            return;
+
         bsm.CurrInput.SkillHandler.OnSkillTrigger += CheckSkillEvent;
     }
 

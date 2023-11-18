@@ -16,8 +16,11 @@ public partial class BattleUIStateMachine {
             if (input == 0 || input == 2) {
                 Input.AnimationHandler.skillWindow.ButtonSelect(input != 0);
             } else if (input == 1) {
-                MySM.battleStateMachine.SwitchToTargetSelect(Input.AnimationHandler.skillWindow.ConfirmSkill());
-                MySM.Transition<BattleUI_TargetSelect>();
+                if (MySM.battleStateMachine.CurrInput.ActiveActor().GetStamina() 
+                    >= Input.AnimationHandler.skillWindow.skills[Input.AnimationHandler.skillWindow.activeIndex].SkillData.staminaCost) {
+                    MySM.battleStateMachine.SwitchToTargetSelect(Input.AnimationHandler.skillWindow.ConfirmSkill());
+                    MySM.Transition<BattleUI_TargetSelect>();
+                }
             } else if (input == 3) {
                 MySM.Transition<InitUIState>();
             }
