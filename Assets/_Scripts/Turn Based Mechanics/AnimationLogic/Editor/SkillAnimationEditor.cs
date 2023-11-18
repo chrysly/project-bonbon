@@ -105,7 +105,8 @@ public class SkillAnimationEditor : EditorWindow {
                                             selectedAnimation.DelayScriptEditor.OnInspectorGUI();
                                         } break;
                                     case SectionType.Camera:
-                                        EditorUtils.DrawScopeCenteredText("This section has not been implemented yet;");
+                                        selectedAnimation.SetCap(EditorGUILayout.ObjectField(selectedAnimation.CameraAnimationPackage, 
+                                                                                             typeof(CameraAnimationPackage), false) as CameraAnimationPackage);
                                         break;
                                 }
                             } else EditorUtils.DrawScopeCenteredText("Select an Animation Entry to edit;");
