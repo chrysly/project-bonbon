@@ -10,11 +10,7 @@ public class GlobalCameraManager : StateMachineHandler {
     public CinemachineVirtualCamera staticCamera;
     public CinemachineVirtualCamera dynamicCamera;
     public MMF_Player impulse;
-    [SerializeField] private Transform fieldTarget;
-    
-    //FOR TESTING
-    [SerializeField] private CameraAnimationPackage cameraPackage;
-    [SerializeField] private Animator animator;
+    //[SerializeField] private Transform fieldTarget;
     
     
     private BattleStateInput _data;
@@ -28,12 +24,12 @@ public class GlobalCameraManager : StateMachineHandler {
         _lookTarget = dynamicCamera.m_LookAt;
     }
 
-    public void Update() {
-        if (Input.GetKeyDown(KeyCode.C)) {
-            PlayAnimation(cameraPackage);
-            animator.Play("_Skill1");
-        }
-    }
+    // public void Update() {
+    //     if (Input.GetKeyDown(KeyCode.C)) {
+    //         PlayAnimation(cameraPackage);
+    //         animator.Play("_Skill1");
+    //     }
+    // }
 
     public void PlayAnimation(CameraAnimationPackage package) {
         if (_action == null) {
@@ -88,7 +84,7 @@ public class GlobalCameraManager : StateMachineHandler {
     private void LookAtOperation(CameraAnimation.LookAt lookAt) {
         switch (lookAt) {
             case CameraAnimation.LookAt.Field:
-                _lookTarget.position = fieldTarget.position;
+                //_lookTarget.position = fieldTarget.position;
                 break;
             case CameraAnimation.LookAt.Target:
                 _lookTarget.position = BattleStateMachine.Instance.CurrInput.SkillPrep.targets[0].transform.position;
