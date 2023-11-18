@@ -52,6 +52,13 @@ public class ActorHandler : StateMachineHandler {
         } actor.InjectHandler(this);
     }
 
+    public void KillActor(Actor actor) {
+        ActorSpace[] targetSpace = actor is CharacterActor ? characterSpaces : enemySpaces;
+        ActorSpace space = targetSpace.FirstOrDefault(actor => actor.CurrActor == actor);
+        if (space != null) space.DespawnActor();
+        input.TurnOrderHandler.Remove(actor);
+    }
+
     #if UNITY_EDITOR
 
     [HideInInspector] public Transform anchorTransform;

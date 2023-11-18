@@ -6,7 +6,7 @@ using static BattleStateMachine;
 public class BattleStateInput : StateInput {
 
     #region Global Variables
-    private TurnOrderHandler turnOrderHandler;
+    public TurnOrderHandler TurnOrderHandler { get; private set; }
     public List<Actor> ActorList => ActorHandler.ActorList;
 
     private Actor activeActor;
@@ -44,16 +44,16 @@ public class BattleStateInput : StateInput {
     }
 
     public void InitializeTurnOrder(List<Actor> actorList) {
-        turnOrderHandler = new TurnOrderHandler(actorList);
-        PropagateTurnChange(turnOrderHandler.GetTurnPreview(6));
-        activeActor = turnOrderHandler.Advance();
+        TurnOrderHandler = new TurnOrderHandler(actorList);
+        PropagateTurnChange(TurnOrderHandler.GetTurnPreview(6));
+        activeActor = TurnOrderHandler.Advance();
     }
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>
     public void AdvanceTurn() {
         do {
-            PropagateTurnChange(turnOrderHandler.GetTurnPreview(6));
-            activeActor = turnOrderHandler.Advance();
+            PropagateTurnChange(TurnOrderHandler.GetTurnPreview(6));
+            activeActor = TurnOrderHandler.Advance();
         } while (activeActor.Defeated);
         currentTurn++;
     }
