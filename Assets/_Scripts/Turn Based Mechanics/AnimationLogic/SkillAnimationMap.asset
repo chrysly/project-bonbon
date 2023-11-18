@@ -30,7 +30,7 @@ MonoBehaviour:
         - rid: 7741419895652352000
         - rid: 7741419895652352001
         - rid: 7741419895652352002
-        cap: {fileID: 0}
+        cap: {fileID: 11400000, guid: b0c9143f69087684ba48bb269de8869a, type: 2}
         actorAnimator: {fileID: 9100000, guid: 0e57d98b12432ca4f81441b7f91189ce, type: 2}
         triggerIndex: 0
     - Keys:
@@ -56,7 +56,7 @@ MonoBehaviour:
         - rid: 7741419895652352006
         - rid: 7741419895652352007
         - rid: 7741419895652352008
-        cap: {fileID: 0}
+        cap: {fileID: 11400000, guid: 3513c84b1b9866e41a53e78425a983d4, type: 2}
         actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
         triggerIndex: 0
     - Keys:
@@ -156,12 +156,8 @@ MonoBehaviour:
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 1
-          percentMultiplier: 25
-        - triggerTime: 1.5
-          percentMultiplier: 25
-        - triggerTime: 2.2
-          percentMultiplier: 50
+        - triggerTime: 0
+          percentMultiplier: 100
     - rid: 7741419895652352007
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
       data:
