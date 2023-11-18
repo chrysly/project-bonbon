@@ -131,7 +131,6 @@ public class UIAnimationHandler : MonoBehaviour {
         if (mainButtonIndex == -1) mainButtonIndex = 0;
         else if (directionDown) mainButtonIndex = mainButtonIndex >= mainPanelButtons.Count - 1 ? 0 : mainButtonIndex + 1;
         else mainButtonIndex = mainButtonIndex <= 0 ? mainPanelButtons.Count - 1 : mainButtonIndex - 1;
-        Debug.Log(mainButtonIndex);
         for (int i = 0; i < mainPanelButtons.Count; i++) {
             if (i == mainButtonIndex) {
                 mainPanelButtons[mainButtonIndex].Scale(mainPanelButtonScaleVector, mainPanelButtonScaleDuration);

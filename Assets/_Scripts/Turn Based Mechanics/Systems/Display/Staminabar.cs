@@ -12,7 +12,7 @@ public class Staminabar : MonoBehaviour {
     void Start() {
         slider = GetComponent<Slider>();
         _stateMachine.OnStateTransition += UpdateStaminaBar;
-        _stateMachine._battleStateMachine.OnStateTransition += UpdateStaminaBar;
+        BattleStateMachine.Instance.OnStateTransition += UpdateStaminaBar;
     }
 
     private void UpdateStaminaBar(BattleUIStateMachine.BattleUIState state, BattleUIStateInput input) {
