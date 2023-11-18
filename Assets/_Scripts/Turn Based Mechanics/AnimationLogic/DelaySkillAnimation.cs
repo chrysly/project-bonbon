@@ -10,9 +10,19 @@ using UnityEditor;
 [System.Serializable]
 public abstract class DelaySkillAnimation
 {
-    public static System.Type[] subTypes = ActionUtils.FetchAssemblyChildren(new System.Type[] { typeof(DelaySkillAnimation) });
+    public static System.Type[] subTypes = FetchAssemblyChildren(new System.Type[] { typeof(DelaySkillAnimation) });
 
     public abstract IEnumerable<IEnumerator> GetCoroutines(AnimationHandler handler, AIActionValue[] avs, Actor[] targets);
+
+    public static System.Type[] FetchAssemblyChildren(System.Type[] superTypes) {
+        List<System.Type> typeList = new List<System.Type>();
+        foreach (System.Type superType in superTypes) {
+            System.Type[] assemblies = System.Reflection.Assembly.GetAssembly(superType).GetTypes();
+            foreach (System.Type type in assemblies) {
+                if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(superType)) typeList.Add(type);
+            }
+        } return typeList.ToArray();
+    }
 
 #if UNITY_EDITOR
     private bool enabled;
