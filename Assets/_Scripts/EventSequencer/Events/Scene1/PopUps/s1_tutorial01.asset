@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb371b3905524e4aaa3c53c34b1b8d7, type: 3}
   m_Name: s1_tutorial01
   m_EditorClassIdentifier: 
-  eventConditions: []
+  eventConditions:
+  - rid: -2
   yarnFile: {fileID: 0}
   popUps: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
