@@ -23,9 +23,11 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 2
-        hitDelay: 0
         vfxPrefab: {fileID: 0}
-        animationEventTriggers: []
+        delaySkills:
+        - rid: 7741419895652352000
+        - rid: 7741419895652352001
+        - rid: 7741419895652352002
         actorAnimator: {fileID: 9100000, guid: 0e57d98b12432ca4f81441b7f91189ce, type: 2}
         triggerIndex: 0
     - Keys:
@@ -33,18 +35,77 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 1.5
-        hitDelay: 0
         vfxPrefab: {fileID: 0}
-        animationEventTriggers: []
+        delaySkills:
+        - rid: 7741419895652352003
+        - rid: 7741419895652352004
+        - rid: 7741419895652352005
         actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
     - Keys:
       - {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 2.5
-        hitDelay: 0
+        animationDuration: 3.5
         vfxPrefab: {fileID: 0}
-        animationEventTriggers: []
+        delaySkills:
+        - rid: 7741419895652352006
+        - rid: 7741419895652352007
+        - rid: 7741419895652352008
         actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
         triggerIndex: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7741419895652352000
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 1
+          percentMultiplier: 100
+    - rid: 7741419895652352001
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 7741419895652352002
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 0
+          percentMultiplier: 100
+    - rid: 7741419895652352003
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 0.5
+          percentMultiplier: 100
+    - rid: 7741419895652352004
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 7741419895652352005
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 0
+          percentMultiplier: 100
+    - rid: 7741419895652352006
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 1
+          percentMultiplier: 25
+        - triggerTime: 1.5
+          percentMultiplier: 25
+        - triggerTime: 2.2
+          percentMultiplier: 50
+    - rid: 7741419895652352007
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 7741419895652352008
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 0
+          percentMultiplier: 100

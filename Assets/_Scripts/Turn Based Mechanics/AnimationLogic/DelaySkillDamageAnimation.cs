@@ -12,10 +12,10 @@ public class DelaySkillDamageAnimation : DelaySkillPercentAnimation
         }
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     protected override void InnerGUI() {
         description = "damage";
         base.InnerGUI();
     }
-#endif
+    #endif
 }

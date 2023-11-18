@@ -39,7 +39,8 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
     /// 1 EAST
     /// 2 SOUTH
     /// 3 WEST
-    /// 4 NONE
+    /// 4 RETURN
+    /// 5 CONFIRM
     /// </summary>
     /// <returns></returns>
     private int CheckInput() {
@@ -48,7 +49,9 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.RightArrow)) return 1;
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) return 2;
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow)) return 3;
-        return 4;
+        if (Input.GetKeyDown(KeyCode.Q)) return 4;
+        if (Input.GetKeyDown(KeyCode.E)) return 5;
+        return 6;
     }
 
     public void LockUI() {
