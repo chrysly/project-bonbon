@@ -30,8 +30,8 @@ public class BattleBonbonWindow : MonoBehaviour {
 
 
 
-    [SerializeField] private GameObject tooltipPanel;
-    [SerializeField] private TMP_Text tooltipDescription;
+    //[SerializeField] private GameObject tooltipPanel;
+    //[SerializeField] private TMP_Text tooltipDescription;
     public bool tooltipsEnabled;
 
 
@@ -49,7 +49,7 @@ public class BattleBonbonWindow : MonoBehaviour {
 
     public void QuickDisable() {
 
-        tooltipPanel.SetActive(false);
+        //tooltipPanel.SetActive(false);
         
         icon.DOScale(0f, 0);
         tray1.DOScale(0f, 0);
@@ -214,8 +214,8 @@ public class BattleBonbonWindow : MonoBehaviour {
     {
         if (tooltipsEnabled)
         {
-            tooltipPanel.SetActive(true);
-            tooltipDescription.text = bonbons[x].Description;
+            //tooltipPanel.SetActive(true);
+            //tooltipDescription.text = bonbons[x].Description;
         }
 
 
