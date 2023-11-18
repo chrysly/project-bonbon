@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5938412e-5f52-4830-88a0-72e3ee58e7c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.project-bonbon2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.project-bonbon2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Turn Order/TurnOrderDisplay.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Turn Order/TurnOrderDisplay.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_camp1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_camp1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/EventSequencer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/EventSequencer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_camp01.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_camp01.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_camp01.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_camp01.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Actor Scripts/ScriptableObjects/Characters/Pan.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Actor Scripts/ScriptableObjects/Characters/Pan.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Actor Scripts/ScriptableObjects/Enemies/Blue Jello Jumper.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Actor Scripts/ScriptableObjects/Enemies/Blue Jello Jumper.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Bonbons/BonbonMap.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Bonbons/BonbonMap.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Bonbons/BonbonSOs/Dough.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Bonbons/BonbonSOs/Dough.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Bonbons/BonbonSOs/Strawberry.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Bonbons/BonbonSOs/Strawberry.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Effects &amp; Actions/Effects/SelfHealEffect.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Effects &amp; Actions/Effects/SelfHealEffect.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Skill Scripts/ScriptableObjects/Skewer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Skill Scripts/ScriptableObjects/Skewer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_combat1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_combat1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Render Pipeline.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Render Pipeline.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +87,7 @@
       <updated>1699055098118</updated>
       <workItem from="1699055102600" duration="738000" />
       <workItem from="1699323024420" duration="3757000" />
+      <workItem from="1700331095846" duration="391000" />
     </task>
     <servers />
   </component>
