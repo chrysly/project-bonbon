@@ -11,7 +11,7 @@ using CJUtils;
 [System.Serializable]
 public abstract class DelaySkillPercentAnimation : DelaySkillAnimation
 {
-    [SerializeReference] protected List<PercentTrigger> triggers = new List<PercentTrigger> { new PercentTrigger(0, 100) };
+    [SerializeField] protected List<PercentTrigger> triggers = new List<PercentTrigger> { new PercentTrigger(0, 100) };
 
     public override IEnumerable<IEnumerator> GetCoroutines(AnimationHandler handler, AIActionValue[] avs, Actor[] targets) {
         return triggers.Select(target => CreateCoroutine(handler, avs, targets, target));
@@ -24,19 +24,18 @@ public abstract class DelaySkillPercentAnimation : DelaySkillAnimation
 
     protected override void InnerGUI() {
         using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox)) {
-            for (int i = 0; i < triggers.Count; i++) {
-                if (triggers[i] == null) triggers.RemoveAt(i);
+            foreach (var trigger in triggers) {
                 using (new EditorGUILayout.HorizontalScope()) {
                     using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
                         GUI.color = UIColors.Red;
                         GUIContent deleteButton = new GUIContent(EditorUtils.FetchIcon("TreeEditor.Trash"));
                         if (GUILayout.Button(deleteButton, GUILayout.Width(30), GUILayout.Height(EditorGUIUtility.singleLineHeight))) {
-                            triggers.Remove(triggers[i]);
+                            triggers.Remove(trigger);
                             GUIUtility.ExitGUI();
                         } GUI.color = Color.white;
                     }
                     using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
-                        triggers[i].OnGUI(description);
+                        trigger.OnGUI(description);
                     }
                 }
             }

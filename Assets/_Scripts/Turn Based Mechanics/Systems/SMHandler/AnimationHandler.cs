@@ -31,8 +31,7 @@ public class AnimationHandler : StateMachineHandler {
         AIActionValue[] avs = skillPrep.targets.Select(target => skillAction.ComputeSkillActionValues(target)).ToArray();
         try {
             SkillAnimation sa = SkillAMap[skillAction.SkillData][skillAction.Caster.Data];
-            Animator casterAnimator = skillAction.Caster.GetComponentInChildren<Animator>(true);
-            casterAnimator.SetTrigger(sa.AnimationTrigger);
+            skillAction.Caster.GetComponentInChildren<Animator>(true).SetTrigger(sa.AnimationTrigger);
             battleStateMachine.StartBattle(sa.AnimationDuration);
             if (bonbon != null) ; /// Do VFXs
 

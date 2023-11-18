@@ -97,7 +97,8 @@ public class SkillAnimationEditor : EditorWindow {
                                         EditorGUILayout.Separator();
                                         foreach (DelaySkillAnimation delaySkillAnimation in selectedAnimation.DelaySkills) {
                                             delaySkillAnimation.OnGUI();
-                                        } break;
+                                        }
+                                        break;
                                     case SectionType.VFX:
                                         selectedAnimation.SetVFXPrefab(EditorGUILayout.ObjectField(selectedAnimation.VFXPrefab,
                                                                                                    typeof(GameObject), false) as GameObject);
