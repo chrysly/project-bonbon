@@ -55,10 +55,10 @@ public class EnemyAI
             }      
         }
 
-        foreach(Scenario scen in scenarios)
-        {
-            Debug.Log(scen.getSkillAction().ToString() + " " + scen.getGoodnessValue());
-        }
+        //foreach(Scenario scen in scenarios)
+        //{
+        //    Debug.Log(scen.getSkillAction().ToString() + " " + scen.getGoodnessValue());
+        //}
 
         // get scenario(s) with the highest goodness values
         int max = scenarios.Max(scene => scene.getGoodnessValue());
@@ -81,11 +81,8 @@ public class EnemyAI
         foreach (Actor actor in skillData.characterActors)
         {
             value += addValueBasedOnDamage(skillData, actor);
-            Debug.Log("dmg" + value);
             value += addValueBasedOnHealth(skillData, actor);
-            Debug.Log("health" + value);
             value += addValueBasedOnNumBonbons(skillData, actor);
-            Debug.Log(value);
         }
         return value;
     }

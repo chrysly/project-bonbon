@@ -30,7 +30,10 @@ public class EventConditions {
         public CharacterData character;
         public int damage;
         public override bool Check(AIActionValue package) {
-            if (package.target.name == character.name && package.immediateDamage >= damage) {
+
+            Debug.Log("got here");
+            if (package.target.Data.DisplayName == character.DisplayName && package.immediateDamage >= damage) {
+                Debug.Log("passed check");
                 return true;
             }
             return false;
