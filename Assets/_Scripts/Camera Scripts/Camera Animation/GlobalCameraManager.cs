@@ -28,23 +28,22 @@ public class GlobalCameraManager : MonoBehaviour {
 
     public void Update() {
         if (Input.GetKeyDown(KeyCode.C)) {
-            PlayAnimation();
+            PlayAnimation(cameraPackage);
             animator.Play("_Skill1");
         }
     }
 
-    public void PlayAnimation() {
+    public void PlayAnimation(CameraAnimationPackage package) {
         if (_action == null) {
             Debug.Log("Camera activated");
-            _action = AnimationAction();
+            _action = AnimationAction(package);
             StartCoroutine(_action);
         }
     }
     
-    public IEnumerator AnimationAction() {
+    public IEnumerator AnimationAction(CameraAnimationPackage package) {
         ToggleDynamicCamera(true);
-        int runs = 0;
-        foreach (CameraAnimation camAnim in cameraPackage.animationList) {
+        foreach (CameraAnimation camAnim in package.animationList) {
             CycleOperations(camAnim);
             yield return new WaitForSeconds(camAnim.delay);
         }
