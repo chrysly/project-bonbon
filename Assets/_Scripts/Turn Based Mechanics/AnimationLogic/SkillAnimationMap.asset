@@ -17,6 +17,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: aeb0e7af1e732af43af0b8f54d08b698, type: 2}
     - {fileID: 11400000, guid: cb9aa26bef6f9944d93d8bd98cd4241d, type: 2}
     - {fileID: 11400000, guid: dad2abed660d4a8429c2fd524b6d202f, type: 2}
+    - {fileID: 11400000, guid: 21264717e1192cb45b03b68e6b9ca697, type: 2}
+    - {fileID: 11400000, guid: f27f82fe1f0812b49b86b628e8b7a788, type: 2}
     Values:
     - Keys:
       - {fileID: 11400000, guid: dc8857a6470f59644abcfdc3114d2e4e, type: 2}
@@ -28,6 +30,7 @@ MonoBehaviour:
         - rid: 7741419895652352000
         - rid: 7741419895652352001
         - rid: 7741419895652352002
+        cap: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 0e57d98b12432ca4f81441b7f91189ce, type: 2}
         triggerIndex: 0
     - Keys:
@@ -40,6 +43,7 @@ MonoBehaviour:
         - rid: 7741419895652352003
         - rid: 7741419895652352004
         - rid: 7741419895652352005
+        cap: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
     - Keys:
@@ -52,11 +56,86 @@ MonoBehaviour:
         - rid: 7741419895652352006
         - rid: 7741419895652352007
         - rid: 7741419895652352008
+        cap: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: c58fa5e0cfdec884daac7cc6fdd3e138, type: 2}
+      Values:
+      - animationTrigger: 
+        animationDuration: 0
+        vfxPrefab: {fileID: 0}
+        delaySkills:
+        - rid: 883123758755479580
+        - rid: 883123758755479581
+        - rid: 883123758755479582
+        cap: {fileID: 0}
+        actorAnimator: {fileID: 0}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: a6ac0735501b31b418532e1c52bac788, type: 2}
+      Values:
+      - animationTrigger: 
+        animationDuration: 0
+        vfxPrefab: {fileID: 0}
+        delaySkills:
+        - rid: 883123758755479583
+        - rid: 883123758755479584
+        - rid: 883123758755479585
+        cap: {fileID: 0}
+        actorAnimator: {fileID: 0}
         triggerIndex: 0
   references:
     version: 2
     RefIds:
+    - rid: 883123758755479580
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - rid: 883123758755479586
+    - rid: 883123758755479581
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 883123758755479582
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - rid: 883123758755479587
+    - rid: 883123758755479583
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - rid: 883123758755479588
+    - rid: 883123758755479584
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 883123758755479585
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - rid: 883123758755479589
+    - rid: 883123758755479586
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+        percentMultiplier: 100
+    - rid: 883123758755479587
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+        percentMultiplier: 100
+    - rid: 883123758755479588
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+        percentMultiplier: 100
+    - rid: 883123758755479589
+      type: {class: PercentTrigger, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+        percentMultiplier: 100
     - rid: 7741419895652352000
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
