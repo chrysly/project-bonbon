@@ -15,8 +15,6 @@ public class TurnOrderDisplay : MonoBehaviour {
     private List<Portrait> portraitList;
     private float portraitSpace;
 
-    private Dictionary<GameObject, Coroutine> animMap;
-
     public struct Portrait {
         public Actor actor;
         public GameObject gameObject;
@@ -30,7 +28,6 @@ public class TurnOrderDisplay : MonoBehaviour {
     void Awake() {
         oldQueue = new List<Actor>();
         portraitList = new List<Portrait>();
-        animMap = new Dictionary<GameObject, Coroutine>();
 
         var portraitTransform = portraitPrefab.GetComponent<Image>().rectTransform;
         portraitSpace = portraitTransform.rect.height * 1.1f;
@@ -51,16 +48,14 @@ public class TurnOrderDisplay : MonoBehaviour {
         if (oldQueue.Count < currQueue.Count) oldQueue = ResizeQueue(oldQueue, currQueue);
         List<Portrait> oldPortraitList = new List<Portrait>(portraitList);
         for (int i = 0; i < currQueue.Count; i++) {
-            if (currQueue[i] != oldQueue[i]) {
-                Vector2 destination = new Vector2(transform.position.x,
-                                                  transform.position.y - i * portraitSpace);
+            Vector2 destination = new Vector2(transform.position.x,
+                                                transform.position.y - i * portraitSpace);
 
-                GameObject portrait = FindPortrait(currQueue[i], oldPortraitList);
-                if (portrait) {
-                    MovePortrait(portrait, destination);
-                    RemovePortrait(oldPortraitList, portrait);
-                } else SpawnPortrait(currQueue[i], destination);
-            }
+            GameObject portrait = FindPortrait(currQueue[i], oldPortraitList);
+            if (portrait) {
+                MovePortrait(portrait, destination);
+                RemovePortrait(oldPortraitList, portrait);
+            } else SpawnPortrait(currQueue[i], destination);
         } for (int i = 0; i < oldPortraitList.Count; i++) {
             RemovePortrait(oldPortraitList[i].gameObject);
         } oldQueue = currQueue;
