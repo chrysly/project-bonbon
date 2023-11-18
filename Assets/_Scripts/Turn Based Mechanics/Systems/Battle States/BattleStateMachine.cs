@@ -39,7 +39,7 @@ public partial class
 
     protected override void SetInitialState() {
         SetState<BattleStart>();
-        CurrInput.Initialize(GetComponents<StateMachineHandler>());
+        CurrInput.Initialize(GetComponentsInChildren<StateMachineHandler>(true));
     }
 
     protected override void Start() {

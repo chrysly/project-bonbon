@@ -1771,7 +1771,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "X",
     "m_StageCapability": 3,
-    "m_Value": 1.0,
+    "m_Value": 0.5,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
@@ -7596,9 +7596,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1505.0,
-            "y": -806.0,
-            "width": 129.0001220703125,
+            "x": 1509.0,
+            "y": -1004.0,
+            "width": 129.0,
             "height": 34.0
         }
     },

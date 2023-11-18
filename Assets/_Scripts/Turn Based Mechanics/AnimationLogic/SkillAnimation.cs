@@ -21,6 +21,9 @@ public class SkillAnimation {
     [SerializeReference] private List<DelaySkillAnimation> delaySkills = DelaySkillAnimation.subTypes.Select(type => (DelaySkillAnimation) System.Activator.CreateInstance(type)).ToList();
     public List<DelaySkillAnimation> DelaySkills => delaySkills;
 
+    [SerializeField] private CameraAnimationPackage cap;
+    public CameraAnimationPackage CameraAnimationPackage => cap;
+
 #if UNITY_EDITOR
 
     /// Animation Editor ///
@@ -57,6 +60,10 @@ public class SkillAnimation {
     public void SetVFXPrefab(GameObject prefab) {
         CleanDelayEditor();
         vfxPrefab = prefab;
+    }
+
+    public void SetCap(CameraAnimationPackage cap) {
+        this.cap = cap;
     }
 
     public UnityEditor.Editor DelayScriptEditor {
