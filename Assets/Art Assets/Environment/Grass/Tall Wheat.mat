@@ -179,12 +179,12 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BottomColor: {r: 0.3882353, g: 0.2304972, b: 0.16470589, a: 1}
+    - _BottomColor: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TipColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TopColor: {r: 0.78699994, g: 0.69255996, b: 0.279385, a: 1}
+    - _TopColor: {r: 0.78039217, g: 0.59290576, b: 0.36862746, a: 1}
     - _WindFrequency: {r: 0.03, g: 0, b: 0, a: 0}
     - _WindVelocity: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
