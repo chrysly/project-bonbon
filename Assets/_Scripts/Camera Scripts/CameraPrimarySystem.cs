@@ -31,7 +31,6 @@ public class CameraPrimarySystem : MonoBehaviour
             ReturnToBattleView(input);
             return;
         }
-        
         Transform target = input.ActiveActor().transform.GetChild(0);
         charCam.m_Follow = target;
     }

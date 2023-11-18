@@ -20,8 +20,11 @@ public class GlobalCameraManager : StateMachineHandler {
     private IEnumerator _action;
 
     public void Start() {
-        _followTarget = dynamicCamera.m_Follow;
-        _lookTarget = dynamicCamera.m_LookAt;
+        _followTarget = new GameObject("Follow Target").transform;
+        _lookTarget = new GameObject("Look Target").transform;
+        dynamicCamera.m_LookAt = _lookTarget;
+        dynamicCamera.m_Follow = _followTarget;
+        _followTarget.position = staticCamera.transform.position;
     }
 
     // public void Update() {
@@ -87,16 +90,16 @@ public class GlobalCameraManager : StateMachineHandler {
                 //_lookTarget.position = fieldTarget.position;
                 break;
             case CameraAnimation.LookAt.Target:
-                _lookTarget.position = BattleStateMachine.Instance.CurrInput.SkillPrep.targets[0].transform.position;
+                _lookTarget.position = BattleStateMachine.Instance.CurrInput.SkillPrep.targets[0].transform.GetChild(0).transform.position;
                 break;
             case CameraAnimation.LookAt.User:
-                _lookTarget.position = BattleStateMachine.Instance.CurrInput.ActiveActor().transform.position;
+                _lookTarget.position = BattleStateMachine.Instance.CurrInput.ActiveActor().transform.GetChild(0).transform.position;
                 break;
         }
     }
 
     private void OffsetOperation(Vector4 operation) {
-        _followTarget.DOMove(_lookTarget.position - (Vector3) operation, operation.w);
+        _followTarget.DOMove((_lookTarget.position - (Vector3) operation), operation.w);
     }
 
     private void RotationOperation(Vector4 operation) {

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationList:
   - delay: 0.16
-    lookAt: 0
+    lookAt: 1
     doOffset: 1
-    offset: {x: 5.96, y: 0.1400003, z: -11.67, w: 0}
+    offset: {x: -9.469892, y: -1.217591, z: 6.0941, w: 0}
     doRotation: 0
     rotation: {x: 0, y: 0, z: 0, w: 0}
     doFOV: 1
@@ -27,7 +27,7 @@ MonoBehaviour:
     shakeVelocity: {x: 0, y: 0, z: 0}
     shakeTimeCurve: {x: 0, y: 0, z: 0}
   - delay: 0.55
-    lookAt: 0
+    lookAt: 3
     doOffset: 0
     offset: {x: 1.839729, y: -1.24297, z: 1.839729, w: 0}
     doRotation: 0
@@ -40,9 +40,9 @@ MonoBehaviour:
     shakeVelocity: {x: 0, y: 0, z: 0}
     shakeTimeCurve: {x: 0, y: 0, z: 0}
   - delay: 1.64
-    lookAt: 0
+    lookAt: 3
     doOffset: 1
-    offset: {x: 3.87, y: 0.21, z: -9.07, w: 0.81}
+    offset: {x: -4.729892, y: 0.5124092, z: 4.634099, w: 0.81}
     doRotation: 0
     rotation: {x: 0, y: 0, z: 0, w: 0}
     doFOV: 1
@@ -53,7 +53,7 @@ MonoBehaviour:
     shakeVelocity: {x: 0, y: 0, z: 0}
     shakeTimeCurve: {x: 0, y: 0, z: 0}
   - delay: 0.33
-    lookAt: 0
+    lookAt: 3
     doOffset: 0
     offset: {x: 3.87, y: 0.21, z: -9.07, w: 0.81}
     doRotation: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     shakeVelocity: {x: 0, y: 0, z: 0}
     shakeTimeCurve: {x: 0, y: 0, z: 0}
   - delay: 0.55
-    lookAt: 0
+    lookAt: 3
     doOffset: 0
     offset: {x: 3.87, y: 0.21, z: -9.07, w: 0.81}
     doRotation: 0
