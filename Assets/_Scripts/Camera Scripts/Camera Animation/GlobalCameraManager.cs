@@ -6,14 +6,16 @@ using DG.Tweening;
 using MoreMountains.Feedbacks;
 using UnityEngine;
 
-public class GlobalCameraManager : MonoBehaviour {
+public class GlobalCameraManager : StateMachineHandler {
     public CinemachineVirtualCamera staticCamera;
     public CinemachineVirtualCamera dynamicCamera;
     public MMF_Player impulse;
+    [SerializeField] private Transform fieldTarget;
     
     //FOR TESTING
     [SerializeField] private CameraAnimationPackage cameraPackage;
     [SerializeField] private Animator animator;
+    
     
     private BattleStateInput _data;
     private Transform _followTarget;
@@ -84,7 +86,17 @@ public class GlobalCameraManager : MonoBehaviour {
     }
 
     private void LookAtOperation(CameraAnimation.LookAt lookAt) {
-        //To be implemented
+        switch (lookAt) {
+            case CameraAnimation.LookAt.Field:
+                _lookTarget.position = fieldTarget.position;
+                break;
+            case CameraAnimation.LookAt.Target:
+                _lookTarget.position = BattleStateMachine.Instance.CurrInput.SkillPrep.targets[0].transform.position;
+                break;
+            case CameraAnimation.LookAt.User:
+                _lookTarget.position = BattleStateMachine.Instance.CurrInput.ActiveActor().transform.position;
+                break;
+        }
     }
 
     private void OffsetOperation(Vector4 operation) {

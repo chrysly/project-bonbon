@@ -298,6 +298,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2803788701879313174}
   - component: {fileID: 8379634769217506168}
+  - component: {fileID: 3284549736476514217}
   m_Layer: 0
   m_Name: Bonbon Button
   m_TagString: Untagged
@@ -341,6 +342,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 8637732652922041895}
+--- !u!225 &3284549736476514217
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106912007438816275}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1181329626815947961
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,6 +3690,7 @@ MonoBehaviour:
   - {fileID: 8913216648914375672}
   - {fileID: 303796075246082266}
   - {fileID: 3906182794808685835}
+  tooltipsEnabled: 0
   mainButtonIndex: -1
   bonbonOperationsIndex: 0
   bonbonOperationEnabled: 0

@@ -27,7 +27,7 @@ MonoBehaviour:
     shakeVelocity: {x: 0, y: 0, z: 0}
     shakeTimeCurve: {x: 0, y: 0, z: 0}
   - delay: 1.1
-    lookAt: 3
+    lookAt: 2
     doOffset: 1
     offset: {x: 7.821209, y: -11.73759, z: 21.43619, w: 1}
     doRotation: 0
