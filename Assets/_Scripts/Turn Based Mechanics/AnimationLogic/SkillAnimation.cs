@@ -16,9 +16,6 @@ public class SkillAnimation {
     [SerializeField] private float animationDuration;
     public float AnimationDuration => animationDuration;
 
-    [SerializeField] private float hitDelay;
-    public float HitDelay => hitDelay;
-
     [SerializeField] private GameObject vfxPrefab;
     public GameObject VFXPrefab => vfxPrefab;
     [SerializeReference] private List<DelaySkillAnimation> delaySkills = DelaySkillAnimation.subTypes.Select(type => (DelaySkillAnimation) System.Activator.CreateInstance(type)).ToList();
@@ -30,7 +27,6 @@ public class SkillAnimation {
     public void SetAnimationTrigger(string trigger) => animationTrigger = trigger;
 
     public void SetAnimationDuration(float duration) => animationDuration = duration;
-    public void SetHitDelay(float delay) => hitDelay = delay;
 
     public void SetActorAnimator(AnimatorController controller) {
         triggerIndex = 0;
