@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5938412e-5f52-4830-88a0-72e3ee58e7c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_combat1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_combat1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Render Pipeline.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Render Pipeline.asset" afterDir="false" />
-    </list>
+    <list default="true" id="5938412e-5f52-4830-88a0-72e3ee58e7c3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,6 +80,7 @@
       <workItem from="1699055102600" duration="738000" />
       <workItem from="1699323024420" duration="3757000" />
       <workItem from="1700331095846" duration="391000" />
+      <workItem from="1700889901656" duration="335000" />
     </task>
     <servers />
   </component>
