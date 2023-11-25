@@ -23,21 +23,21 @@ public partial class GameManager {
     /// <summary>
     /// Transition to the next scene;
     /// </summary>
-    public void TransitionToNext() => TransitionToLevel(SceneManager.GetActiveScene().buildIndex + 1);
+    public void TransitionToNext(bool includeLoadingBar = true) => TransitionToLevel(SceneManager.GetActiveScene().buildIndex + 1, includeLoadingBar);
 
     /// <summary>
     /// Transition to the scene designated by a given index;
     /// </summary>
     /// <param name="levelIndex"> Index of the scene to load; </param>
-    public void TransitionToLevel(int levelIndex) => SetActiveScene(levelIndex);
+    public void TransitionToLevel(int levelIndex, bool load = true) => SetActiveScene(levelIndex, load);
 
     /// <summary>
     /// Initiate a coroutine with the corresponding loading sequence;
     /// </summary>
     /// <param name="sceneIndex"> Index of the scene to load; </param>
-    private void SetActiveScene(int sceneIndex) {
+    private void SetActiveScene(int sceneIndex, bool load = true) {
         StartCoroutine(LoadSceneSync(sceneIndex));
-        fadeHandler.Fade(1f, true);
+        fadeHandler.Fade(1f, load);
     }
 
     /// <summary>
@@ -58,5 +58,5 @@ public partial class GameManager {
         }
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode) => fadeHandler.Fade(0f, true);
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) => fadeHandler.Fade(0f);
 }
