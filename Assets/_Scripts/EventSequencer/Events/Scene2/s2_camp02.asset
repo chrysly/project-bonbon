@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4826118d5c6be4baf32b74ee4aafd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 563e0954142a52342933950a538ceacc, type: 3}
   m_Name: s2_camp02
   m_EditorClassIdentifier: 
   eventConditions:
-  - rid: 2255346189779075074
+  - rid: -2
   yarnFile: {fileID: -8253061345870894857, guid: 07c1ff0880f4e0b4ea9a86bac071cd04, type: 3}
+  includeLoadingBar: 1
   references:
     version: 2
     RefIds:
-    - rid: 2255346189779075074
-      type: {class: EventConditions/Condition, ns: , asm: Assembly-CSharp}
+    - rid: -2
+      type: {class: , ns: , asm: }

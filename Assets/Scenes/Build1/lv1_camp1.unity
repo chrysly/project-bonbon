@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -526,6 +526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1520207548}
   - component: {fileID: 1520207547}
+  - component: {fileID: 1520207549}
   m_Layer: 0
   m_Name: Jimmy
   m_TagString: Untagged
@@ -545,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d15e6680feac8d34c87656aca5fd0511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitToStart: 3
+  waitToStart: 2
   startEvent: {fileID: 11400000, guid: aa71f6a4f18529c4982efc8f0c6b8188, type: 2}
   eventSequencer: {fileID: 1929127909}
 --- !u!4 &1520207548
@@ -563,6 +564,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520207549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520207546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb73dc71a5137049852c36a02a0ed32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1929127908
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3a3c2dbb94c61a4e9abb8f1d5afb79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bsm: {fileID: 0}
   eventSequence: []
   onStartEvent: {fileID: 0}
   onWinEvent: {fileID: 0}
