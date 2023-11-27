@@ -11,33 +11,44 @@ public class SelectionDisplay : MonoBehaviour {
     [SerializeField] private float expandDuration = 0.3f;
     [SerializeField] private float innerRingDelay = 0.2f;
 
+    [SerializeField] private float moveDuration = 0.3f;
+
     private bool _firstSpawn = true;
     private bool _active = false;
+    private bool _midTransition = false;
     private Transform _actor;
     
     private IEnumerator _activeAnim = null;
+
+    private Transform inner;
+    private Transform outer;
     
     //DEBUGGING
     [SerializeField] public List<Transform> focus;
 
     public void Start() {
-        _cursorInstance = Instantiate(cursorPrefab);
-        _cursorInstance.SetActive(false);
+        Init(cursorPrefab);
     }
 
     public void Init(GameObject reticlePrefab) {
         _cursorInstance = Instantiate(reticlePrefab);
+        inner = _cursorInstance.transform.GetChild(1);
+        outer = _cursorInstance.transform.GetChild(0);
         _cursorInstance.SetActive(false);
     }
 
     public void Update() {
         if (Input.GetKeyDown(KeyCode.S)) {
-            _active = true;
             FocusEntity(focus[0]);
+        } else if (Input.GetKeyDown(KeyCode.B)) {
+            FocusEntity(focus[1]);
         }
 
-        if (_active) {
-            _cursorInstance.transform.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
+        if (_active && !_midTransition) {
+            inner.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
+            outer.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
+            inner.Rotate(Vector3.forward * (Time.deltaTime * 20));
+            outer.Rotate(Vector3.forward * (Time.deltaTime * -20));
         }
     }
 
@@ -62,8 +73,6 @@ public class SelectionDisplay : MonoBehaviour {
         if (_firstSpawn) {
             _cursorInstance.SetActive(true);
             _cursorInstance.transform.position = target.GetChild(0).position;
-            Transform inner = _cursorInstance.transform.GetChild(1);
-            Transform outer = _cursorInstance.transform.GetChild(0);
             inner.DOScale(new Vector3(0, 1f, 1f), 0f);
             outer.DOScale(new Vector3(1f, 0f, 1f), 0f);
             outer.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
@@ -73,5 +82,21 @@ public class SelectionDisplay : MonoBehaviour {
             inner.DOLocalRotate(new Vector3(0, 0, 0), expandDuration + 0.1f);
             _firstSpawn = false;
         }
+        else {
+            _midTransition = true;
+            inner.DOMove(target.GetComponentInChildren<CursorIdentifier>().transform.position, moveDuration);
+            outer.DOScale(new Vector3(1f, 0f, 1f), 0f);
+            outer.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
+            yield return new WaitForSeconds(innerRingDelay);
+            inner.DOScale(new Vector3(0, 1f, 1f), 0f);
+            inner.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
+            outer.DOMove(target.GetComponentInChildren<CursorIdentifier>().transform.position, moveDuration);
+            yield return new WaitForSeconds(moveDuration);
+            _midTransition = false;
+        }
+
+        _activeAnim = null;
+        yield return null;
+        _active = true;
     }
 }
