@@ -7,7 +7,9 @@ using UnityEngine;
 /// </summary>
 [CreateAssetMenu(fileName = "New EventObject", menuName ="Event System/LoadSceneEvent" )]
 public class LoadSceneEvent : EventObject {
+    [SerializeField] private bool includeLoadingBar;
+
     public override void OnEventEnd() {
-        GameManager.Instance.TransitionToNext();
+        GameManager.Instance.TransitionToNext(includeLoadingBar);
     }
 }

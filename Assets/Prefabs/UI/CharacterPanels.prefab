@@ -1263,7 +1263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff71ee4476c47949a0cb911adf49a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateMachine: {fileID: 0}
   actorIdentifier: {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
   actor: {fileID: 0}
 --- !u!1 &7308062964327540546
@@ -1368,7 +1367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff71ee4476c47949a0cb911adf49a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateMachine: {fileID: 0}
   actorIdentifier: {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
   actor: {fileID: 0}
 --- !u!1 &7441816742826033420
