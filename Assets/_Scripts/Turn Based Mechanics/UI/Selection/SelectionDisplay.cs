@@ -99,4 +99,11 @@ public class SelectionDisplay : MonoBehaviour {
         yield return null;
         _active = true;
     }
+
+    private void ApplySelectShader(Transform target, bool apply) {
+        if (apply) {
+            Transform parent = target.root;
+            SkinnedMeshRenderer[] skin = parent.GetComponentsInChildren<SkinnedMeshRenderer>();
+        }
+    }
 }
