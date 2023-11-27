@@ -6,7 +6,7 @@ using UnityEngine;
 public class CameraAnimation {
     [Header("Camera Focus Properties")]
 
-    [Tooltip("Switches LookAt target to capture entire battlefield")]
+    [Tooltip("Duration of camera animation")]
     [Range(0, 10)] public float delay;
 
     public enum LookAt {
