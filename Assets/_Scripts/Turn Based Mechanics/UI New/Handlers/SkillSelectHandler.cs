@@ -8,6 +8,8 @@ namespace BattleUI {
         [SerializeField] private GameObject skillButtonPrefab;
         public SkillSelectButton[] ButtonArr { get; private set; }
 
+        public event System.Action OnButtonArrange;
+
         private void Awake() { Type = UIStateType.Skill; }
 
         public override UIInputPack InputArrangement() {
@@ -19,7 +21,8 @@ namespace BattleUI {
                 go.name = $"Skill: {skill}";
                 ButtonArr[i] = go.GetComponent<SkillSelectButton>();
                 ButtonArr[i].Init(this, skill);
-            } return new UIInputPack(new[] { ButtonArr }, TraversalMode.Vertical);
+            } OnButtonArrange?.Invoke();
+            return new UIInputPack(new[] { ButtonArr }, TraversalMode.Vertical);
         }
 
         public void Transition<T>(SkillAction skill) where T : UIStateHandler {

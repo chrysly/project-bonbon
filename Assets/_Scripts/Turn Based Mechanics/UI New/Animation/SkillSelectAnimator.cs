@@ -20,18 +20,19 @@ namespace BattleUI {
         }
 
         protected override void UIStateHandler_OnHandlerToggle(bool toggle) {
-            if (toggle) {
-                if (sbarr == null) {
-                    SkillSelectHandler handler = stateHandler as SkillSelectHandler;
-                    sbarr = new SkillButtonAnimator[handler.ButtonArr.Length];
-                    for (int i = 0; i < handler.ButtonArr.Length; i++) {
-                        sbarr[i] = handler.ButtonArr[i].GetComponent<SkillButtonAnimator>();
-                    }
-                }
-                foreach(SkillButtonAnimator button in sbarr) button.Toggle(toggle);
-            }
             base.UIStateHandler_OnHandlerToggle(toggle);
             state = toggle ? UIAnimatorState.Loading : UIAnimatorState.Unloading;
+        }
+
+        private void SkillSelectHandler_OnButtonArrange() {
+            if (sbarr == null) {
+                SkillSelectHandler handler = stateHandler as SkillSelectHandler;
+                sbarr = new SkillButtonAnimator[handler.ButtonArr.Length];
+                for (int i = 0; i < handler.ButtonArr.Length; i++) {
+                    sbarr[i] = handler.ButtonArr[i].GetComponent<SkillButtonAnimator>();
+                }
+            }
+            foreach(SkillButtonAnimator button in sbarr) button.Toggle(true);
         }
 
         protected override IEnumerator Load() {
