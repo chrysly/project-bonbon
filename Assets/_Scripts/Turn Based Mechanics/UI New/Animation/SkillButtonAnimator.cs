@@ -29,6 +29,7 @@ namespace BattleUI {
 
         public override void Toggle(bool toggle) {
             base.Toggle(toggle);
+            if (!toggle) return;
             SkillSelectButton skillButton = Button as SkillSelectButton;
             nameText.text = skillButton.Skill.SkillData.GetSkillName();
             staminaText.text = "STA " + skillButton.Skill.SkillData.staminaCost.ToString();
