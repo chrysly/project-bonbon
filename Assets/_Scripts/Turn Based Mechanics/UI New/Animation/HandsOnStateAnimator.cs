@@ -63,6 +63,12 @@ namespace BattleUI {
             base.UIStateHandler_OnHandlerToggle(toggle);
         }
 
+        protected override IEnumerator Load() {
+            yield return null;
+        }
 
+        protected override IEnumerator Unload() {
+            yield return null;
+        }
     }
 }
