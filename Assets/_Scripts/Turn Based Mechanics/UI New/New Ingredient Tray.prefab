@@ -386,6 +386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4425225398248209344}
   - component: {fileID: 8594910751743053666}
+  - component: {fileID: 6720705416896840301}
   m_Layer: 5
   m_Name: New Ingredient Tray
   m_TagString: Untagged
@@ -428,3 +429,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a860a490fab60647aff186454da0404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6720705416896840301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8502032677846900028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d02df3601b70744c9abd52c08cd4d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTarget: {fileID: 0}
+  selectDuration: 0.3
