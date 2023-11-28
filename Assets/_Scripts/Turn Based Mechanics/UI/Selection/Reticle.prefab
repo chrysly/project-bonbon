@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 5602952154155094510}
   - component: {fileID: 5945811933880410766}
   - component: {fileID: 6686514456686977187}
-  - component: {fileID: 7603850997007312025}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +155,7 @@ GameObject:
   - component: {fileID: 5244370452273139105}
   - component: {fileID: 3498871380575906959}
   - component: {fileID: 9110288537845335081}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Inner Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +227,7 @@ GameObject:
   - component: {fileID: 3771826428830641802}
   - component: {fileID: 6760586076488451162}
   - component: {fileID: 5710478103979486943}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Outer Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

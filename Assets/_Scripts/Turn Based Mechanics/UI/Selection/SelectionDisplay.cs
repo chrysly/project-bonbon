@@ -15,7 +15,8 @@ public class SelectionDisplay : MonoBehaviour {
 
     private bool _firstSpawn = true;
     private bool _active = false;
-    private bool _midTransition = false;
+    private bool _innerTransition = false;
+    private bool _outerTransition = false;
     private Transform _actor;
     
     private IEnumerator _activeAnim = null;
@@ -44,10 +45,13 @@ public class SelectionDisplay : MonoBehaviour {
             FocusEntity(focus[1]);
         }
 
-        if (_active && !_midTransition) {
+        if (_active && !_innerTransition) {
             inner.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
-            outer.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
             inner.Rotate(Vector3.forward * (Time.deltaTime * 20));
+        }
+
+        if (_active && !_outerTransition) {
+            outer.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
             outer.Rotate(Vector3.forward * (Time.deltaTime * -20));
         }
     }
@@ -61,8 +65,6 @@ public class SelectionDisplay : MonoBehaviour {
             _activeAnim = ActivateAction(target);
             StartCoroutine(_activeAnim);
         }
-
-        _actor = target;
     }
 
     public void Deactivate() {
@@ -71,6 +73,7 @@ public class SelectionDisplay : MonoBehaviour {
     
     private IEnumerator ActivateAction(Transform target) {
         if (_firstSpawn) {
+            _actor = target;
             _cursorInstance.SetActive(true);
             _cursorInstance.transform.position = target.GetChild(0).position;
             inner.DOScale(new Vector3(0, 1f, 1f), 0f);
@@ -83,20 +86,32 @@ public class SelectionDisplay : MonoBehaviour {
             _firstSpawn = false;
         }
         else {
-            _midTransition = true;
+            ApplySelectShader(_actor, false);
+            _actor = target;
+            _innerTransition = _outerTransition = true;
             inner.DOMove(target.GetComponentInChildren<CursorIdentifier>().transform.position, moveDuration);
             outer.DOScale(new Vector3(1f, 0f, 1f), 0f);
             outer.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(innerRingDelay);
+            _innerTransition = false;
             inner.DOScale(new Vector3(0, 1f, 1f), 0f);
             inner.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
             outer.DOMove(target.GetComponentInChildren<CursorIdentifier>().transform.position, moveDuration);
             yield return new WaitForSeconds(moveDuration);
-            _midTransition = false;
+            _outerTransition = false;
         }
-
+        ApplySelectShader(_actor, true);
+        
         _activeAnim = null;
         yield return null;
         _active = true;
+    }
+
+    private void ApplySelectShader(Transform target, bool apply) {
+        SkinnedMeshRenderer[] skins = target.GetComponentsInChildren<SkinnedMeshRenderer>();
+        foreach (SkinnedMeshRenderer skin in skins) {
+            if (apply) skin.gameObject.layer = LayerMask.NameToLayer("Select");
+            else skin.gameObject.layer = LayerMask.NameToLayer("Default");
+        }
     }
 }
