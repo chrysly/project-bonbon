@@ -41,6 +41,8 @@ namespace BattleUI {
 
     public class BonbonMenuAnimator : HandsOnStateAnimator {
 
+        private BonbonSlotButton[] slotButtons;
+        private BonbonBakeSlotButton[] bakeButtons;
         private BonbonMainHandler mainHandler;
         private BonbonBakeHandler bakeHandler;
 
@@ -49,6 +51,7 @@ namespace BattleUI {
             bakeHandler = GetComponent<BonbonBakeHandler>();
 
             foreach (UIAnimator animator in animators) animator.Init(this);
+            
             mainHandler.OnHandlerToggle += OnMainHandlerToggle;
             bakeHandler.OnHandlerToggle += OnBakeHandlerToggle;
         }
@@ -70,5 +73,9 @@ namespace BattleUI {
         protected override IEnumerator Unload() {
             yield return null;
         }
+    }
+
+    public class BonbonSlotAnimator : UIButtonAnimator {
+        
     }
 }
