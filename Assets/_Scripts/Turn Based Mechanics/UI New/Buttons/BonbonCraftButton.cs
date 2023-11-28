@@ -1,18 +1,18 @@
 ﻿namespace BattleUI {
     public class BonbonCraftButton : UIButtonBase<BonbonCraftHandler> {
 
-        private BonbonBlueprint bonbon;
+        public BonbonBlueprint Bonbon { get; private set; }
 
         public void Init(BonbonCraftHandler stateHandler, BonbonBlueprint bonbon) {
-            this.StateHandler = stateHandler;
-            this.bonbon = bonbon;
+            StateHandler = stateHandler;
+            Bonbon = bonbon;
         }
 
-        public override bool IsAvailable() => StateHandler.CurrActor.Stamina >= bonbon.craftStamina;
+        public override bool IsAvailable() => StateHandler.CurrActor.Stamina >= Bonbon.craftStamina;
 
         public override void Activate() {
             base.Activate();
-            StateHandler.CraftBonbon(bonbon);
+            StateHandler.CraftBonbon(Bonbon);
         }
     }
 }
