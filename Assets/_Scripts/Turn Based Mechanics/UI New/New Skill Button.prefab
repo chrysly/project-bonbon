@@ -514,6 +514,7 @@ GameObject:
   - component: {fileID: 7747070693127655900}
   - component: {fileID: 3849308880099750425}
   - component: {fileID: 3058813121250453059}
+  - component: {fileID: 52523541248789794}
   m_Layer: 5
   m_Name: New Skill Button
   m_TagString: Untagged
@@ -593,6 +594,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &52523541248789794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492831396512457482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06e2f4c2cb30e649b9de2ed3e5bcb7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTarget: {fileID: 0}
 --- !u!1 &8512815163284264279
 GameObject:
   m_ObjectHideFlags: 0
