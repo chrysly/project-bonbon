@@ -9,7 +9,6 @@ namespace BattleUI {
         [SerializeField] private Transform backdrop;
         [SerializeField] private Transform horizontalView;
         [SerializeField] private Transform ingredientDisplayPoint;
-        [SerializeField] private GameObject ingredientPrefab;
         [SerializeField] private float rollInOutSpeed = 0.3f;
         
         private Vector3 _originalPos;
