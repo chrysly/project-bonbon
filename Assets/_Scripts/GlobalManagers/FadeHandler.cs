@@ -36,4 +36,3 @@ public class FadeHandler : TransitionHandler {
         } if (canvasGroup.alpha == 0) loadingComponents.gameObject.SetActive(false);
     }
 }
-

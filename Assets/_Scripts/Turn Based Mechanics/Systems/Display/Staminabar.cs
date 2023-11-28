@@ -7,18 +7,17 @@ using Slider = UnityEngine.UI.Slider;
 
 public class Staminabar : MonoBehaviour {
     private Slider slider;
-    [SerializeField] private BattleUIStateMachine _stateMachine;
     [SerializeField] private Actor actor;
     void Start() {
         slider = GetComponent<Slider>();
-        _stateMachine.OnStateTransition += UpdateStaminaBar;
+        //_stateMachine.OnStateTransition += UpdateStaminaBar;
         BattleStateMachine.Instance.OnDisplayUpdate += UpdateStaminaBar;
     }
 
     private void UpdateStaminaBar(BattleUIStateMachine.BattleUIState state, BattleUIStateInput input) {
         float currStamina = actor.Stamina;
         float maxStamina = actor.Data.MaxStamina;
-        Debug.Log("Stamina: " + actor.GetStamina());
+        Debug.Log("Stamina: " + actor.Stamina);
 
         slider.value = currStamina / maxStamina;
     }
@@ -26,7 +25,7 @@ public class Staminabar : MonoBehaviour {
     private void UpdateStaminaBar(BattleStateInput input) {
         float currHealth = actor.Stamina;
         float maxHealth = actor.Data.MaxStamina;
-        Debug.Log("Stamina: " + actor.GetStamina());
+        Debug.Log("Stamina: " + actor.Stamina);
 
         slider.value = currHealth / maxHealth;
     }
@@ -34,7 +33,7 @@ public class Staminabar : MonoBehaviour {
     private void UpdateStaminaBarOnState() {
         float currHealth = actor.Stamina;
         float maxHealth = actor.Data.MaxStamina;
-        Debug.Log("Stamina: " + actor.GetStamina());
+        Debug.Log("Stamina: " + actor.Stamina);
 
         slider.value = currHealth / maxHealth;
     }

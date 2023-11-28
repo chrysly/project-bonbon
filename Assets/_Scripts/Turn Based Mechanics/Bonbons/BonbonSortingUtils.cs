@@ -11,13 +11,33 @@ public static class BonbonSortingUtils {
         new ApplyEffectsAction(new List<EffectBlueprint>(new[] { augment.bonbonEffect })).Use(actor.ActiveData, actor);
         /// Trigger a series of immediate actions on the augment;
         foreach (ImmediateAction.SkillOnly action in augment.immediateActions) action.Use(actor.ActiveData, actor);
+        inventory[index] = null;
     }
 
-    public static bool PassBonbon(this Actor sourceActor, int sourceSlot, Actor targetActor) {
+    /// <summary>
+    /// Pass a Bonbon from source to target; <br></br>
+    /// A separate CanPass validity check is required;
+    /// </summary>
+    /// <param name="sourceActor"> Actor sharing the bonbon; </param>
+    /// <param name="sourceSlot"> Slot where the bonbon used to be; </param>
+    /// <param name="targetActor"> Actor receiving the bonbon; </param>
+    public static void PassBonbon(this Actor sourceActor, int sourceSlot, Actor targetActor) {
+        int targetSlot = -1;
+        for (int i = 0; i < targetActor.BonbonInventory.Length; i++) {
+            if (targetActor.BonbonInventory[i] == null) {
+                targetSlot = i;
+                break;
+            }
+        } targetActor.BonbonInventory[targetSlot] = sourceActor.BonbonInventory[sourceSlot];
+        sourceActor.BonbonInventory[sourceSlot] = null;
+    }
+
+    public static bool CanPassBonbon(this Actor sourceActor, int sourceSlot, Actor targetActor) {
         if (sourceActor.BonbonInventory[sourceSlot] == null) {
             Debug.Log($"Source inventory #{sourceSlot} is empty...");
             return false;
         }
+
         int targetSlot = -1;
         for (int i = 0; i < targetActor.BonbonInventory.Length; i++) {
             if (targetActor.BonbonInventory[i] == null) {
@@ -25,10 +45,7 @@ public static class BonbonSortingUtils {
                 break;
             }
         } if (targetSlot == -1) return false;
-        else {
-            targetActor.BonbonInventory[targetSlot] = sourceActor.BonbonInventory[sourceSlot];
-            sourceActor.BonbonInventory[sourceSlot] = null;
-        } return true;
+        return true;
     }
 
     /// <summary>

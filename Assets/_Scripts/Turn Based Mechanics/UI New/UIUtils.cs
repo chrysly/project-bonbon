@@ -1,0 +1,74 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace BattleUI {
+
+    public class UITransitionManager {
+
+        public UIStateHandler CurrHandler { get; private set; }
+        public UIInputPack CurrInput { get; private set; }
+
+        private Stack<UITransitionData> transitionStack;
+        public UITransitionManager() {
+            transitionStack = new(); 
+        }
+
+        public bool Reversible => transitionStack.Count > 1;
+
+        public void Transition(UITransitionData data) => Transition(data.handler, data.input);
+
+        public void Transition(UIStateHandler handler, UIInputPack input) {
+            CurrHandler = handler;
+            CurrInput = input;
+            CurrHandler.SoftEnable();
+            CurrInput.ProcessTraversal(InTraversal.Undefined);
+        }
+
+        public void Record(UIStateHandler handler, UIInputPack input) {
+            transitionStack.Push(new UITransitionData(handler, input));
+        }
+
+        public void RevertTo<T>() where T : UIStateHandler {
+            while (CurrHandler.GetType() != typeof(T)
+                   && Reversible) Revert();
+        }
+
+        public void Revert() {
+            CurrHandler.Revert();
+            UITransitionData prevData = transitionStack.Pop();
+            Transition(prevData);
+        }
+
+        public void RevertAll() {
+            CurrHandler.Revert();
+            while (Reversible) transitionStack.Pop().handler.Revert();
+        }
+    }
+
+    public class UITransitionData {
+        public UIStateHandler handler;
+        public UIInputPack input;
+
+        public UITransitionData(UIStateHandler handler, UIInputPack input) {
+            this.handler = handler;
+            this.input = input;
+        }
+    }
+
+    public static class UILogicUtils {
+
+        public static void LoadHandlers<T>(this Dictionary<System.Type, T> handlerMap, 
+                                           UIBrain brain, GameObject gameObject) where T : UIStateHandler {
+            T[] handlers = gameObject.GetComponentsInChildren<T>();
+            foreach (T handler in handlers) {
+                handlerMap[handler.GetType()] = handler;
+                handler.Init(brain);
+            }
+        }
+
+        public static void Dispose(this UIButton[] buttonArr) {
+            foreach (UIButton button in buttonArr) Object.Destroy(button.gameObject);
+        }
+    }
+}

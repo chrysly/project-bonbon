@@ -80,8 +80,8 @@ public class BattleSkillWindow : MonoBehaviour
             skillButtons.Add(button);
             button.Initialize(skillObject);
 
-            bool insufficientStamina = BattleStateMachine.Instance.CurrInput.ActiveActor().GetStamina() <= skills[activeIndex].SkillData.staminaCost;
-            UIUtils.SetupButton(obj, insufficientStamina, grayoutAlpha);
+            bool insufficientStamina = BattleStateMachine.Instance.CurrInput.ActiveActor().Stamina <= skills[activeIndex].SkillData.staminaCost;
+            UILogicUtils.SetupButton(obj, insufficientStamina, grayoutAlpha);
             
             obj.transform.DOScaleX(1f, animationDuration);
             yield return new WaitForSeconds(animationDuration / 2);
