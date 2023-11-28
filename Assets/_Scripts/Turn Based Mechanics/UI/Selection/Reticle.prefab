@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5602952154155094510}
   - component: {fileID: 5945811933880410766}
   - component: {fileID: 6686514456686977187}
+  - component: {fileID: 7603850997007312025}
   m_Layer: 7
   m_Name: Reticle
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4981898987406499341}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6f6734e48b44984a9455121199c0e37, type: 3}
   m_Name: 
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5945811933880410766
 MonoBehaviour:
   m_ObjectHideFlags: 0
