@@ -13,7 +13,7 @@ namespace BattleUI {
 
         public override void Activate() {
             base.Activate();
-            stateHandler.Attack(target);
+            StateHandler.Attack(target);
         }
     }
 }

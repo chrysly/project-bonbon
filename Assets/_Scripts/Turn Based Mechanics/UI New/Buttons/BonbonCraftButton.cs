@@ -4,15 +4,15 @@
         private BonbonBlueprint bonbon;
 
         public void Init(BonbonCraftHandler stateHandler, BonbonBlueprint bonbon) {
-            this.stateHandler = stateHandler;
+            this.StateHandler = stateHandler;
             this.bonbon = bonbon;
         }
 
-        public override bool IsAvailable() => stateHandler.CurrActor.Stamina >= bonbon.craftStamina;
+        public override bool IsAvailable() => StateHandler.CurrActor.Stamina >= bonbon.craftStamina;
 
         public override void Activate() {
             base.Activate();
-            stateHandler.CraftBonbon(bonbon);
+            StateHandler.CraftBonbon(bonbon);
         }
     }
 }

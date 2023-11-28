@@ -39,6 +39,7 @@ namespace BattleUI {
         public override void Toggle(bool toggle) {
             base.Toggle(toggle);
             targetScale = toggle ? 1 : 0;
+            if (!toggle) selected = false;
         }
 
         protected void UIButton_OnActivate() {

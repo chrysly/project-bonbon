@@ -3,7 +3,7 @@
         
         public override void Activate() {
             base.Activate();
-            stateHandler.Transition<SkillSelectHandler>();
+            StateHandler.Transition<SkillSelectHandler>();
         }
     }
 }

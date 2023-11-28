@@ -7,17 +7,17 @@ namespace BattleUI {
         private BonbonBlueprint recipe;
 
         public void Enable() {
-            recipe = stateHandler.Inventory[Slot] == null ? null
-                                 : stateHandler.FindValidRecipe(Slot);
+            recipe = StateHandler.Inventory[Slot] == null ? null
+                                 : StateHandler.FindValidRecipe(Slot);
         }
 
         public override bool IsAvailable() {
-            return Slot != stateHandler.Slot && recipe != null;
+            return Slot != StateHandler.Slot && recipe != null;
         }
 
         public override void Activate() {
             base.Activate();
-            stateHandler.MatchAndBake(Slot, recipe);
+            StateHandler.MatchAndBake(Slot, recipe);
         }
     }
 }

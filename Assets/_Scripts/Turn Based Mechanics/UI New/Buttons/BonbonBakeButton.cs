@@ -3,7 +3,7 @@
 
         public override void Activate() {
             base.Activate();
-            stateHandler.Transition<BonbonBakeHandler>();
+            StateHandler.Transition<BonbonBakeHandler>();
         }
     }
 }
