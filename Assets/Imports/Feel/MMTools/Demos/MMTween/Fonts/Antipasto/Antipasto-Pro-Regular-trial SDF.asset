@@ -104,7 +104,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 1
+    - _FaceDilate: 0.49
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -118,16 +118,16 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.622
-    - _PerspectiveFilter: 0.875
+    - _OutlineWidth: 0.336
+    - _PerspectiveFilter: 0.901
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.46053237
-    - _ScaleRatioB: 0
-    - _ScaleRatioC: 0
+    - _ScaleRatioA: 0.8457256
+    - _ScaleRatioB: 0.27642855
+    - _ScaleRatioC: 0.27642855
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
-    - _Sharpness: 0
+    - _Sharpness: 0.33
     - _SpecularPower: 2
     - _Stencil: 0
     - _StencilComp: 8
@@ -2714,9 +2714,9 @@ MonoBehaviour:
     packingMode: 0
     atlasWidth: 512
     atlasHeight: 512
-    characterSetSelectionMode: 0
-    characterSequence: 32 - 126, 160, 8203, 8230, 9633
-    referencedFontAssetGUID: 
+    characterSetSelectionMode: 6
+    characterSequence: 20-7E,2026
+    referencedFontAssetGUID: fdc34a5cce1f7244cafb5cefa4d64306
     referencedTextAssetGUID: 
     fontStyle: 0
     fontStyleModifier: 0
