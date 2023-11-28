@@ -226,4 +226,30 @@ namespace PseudoDataStructures {
             } return dict;
         }
     }
+
+    [Serializable]
+    public class SNode<T> {
+        public T[] elements;
+        public T this[int index] => elements[index];
+    }
+    [System.Serializable]
+    public class SMatrix<T> {
+        public SNode<T>[] elementMatrix;
+        public T this[int x, int y] => elementMatrix[x][y];
+        public List<T> Values {
+            get {
+                List<T> list = new();
+                foreach (SNode<T> node in elementMatrix) {
+                    list.AddRange(node.elements);
+                } return list;
+            }
+        }
+
+        public T[][] To2DArray() {
+            T[][] output = new T[elementMatrix.Length][];
+            for (int i = 0; i < elementMatrix.Length; i++) {
+                output[i] = elementMatrix[i].elements;
+            } return output;
+        }
+    }
 }

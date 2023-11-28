@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5778304188111161779}
+  - component: {fileID: 6370814293813900837}
   - component: {fileID: 5531016790935770174}
   - component: {fileID: 5602952154155094510}
   - component: {fileID: 5945811933880410766}
-  - component: {fileID: 7603850997007312025}
   - component: {fileID: 6686514456686977187}
   m_Layer: 7
   m_Name: Reticle
@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5778304188111161779
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42,6 +42,21 @@ RectTransform:
   m_AnchoredPosition: {x: 1.6170044, y: 10.190002}
   m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6370814293813900837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981898987406499341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f6734e48b44984a9455121199c0e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleCursorOffset: 20
+  expandDuration: 0.3
+  innerRingDelay: 0.2
 --- !u!223 &5531016790935770174
 Canvas:
   m_ObjectHideFlags: 0
@@ -59,7 +74,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -105,18 +120,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7603850997007312025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4981898987406499341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83c8feb8a01379c41bf8a54037d87573, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &6686514456686977187
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -129,6 +132,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &7603850997007312025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981898987406499341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c8feb8a01379c41bf8a54037d87573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5456971694978457015
 GameObject:
   m_ObjectHideFlags: 0

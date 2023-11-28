@@ -23,7 +23,7 @@ public class DamageIndicatorManager : MonoBehaviour {
     }
 
     private void SpawnDamageText(int damage, Actor target) {
-        bool hasBonbon = stateMachine.CurrInput.SkillPrep.bonbon != null;
+        bool hasBonbon = false; // Modify on subscription;
 
         if (damage > 0) {
             GameObject text = Instantiate(textPrefab, GenerateOffset(target.transform.position), target.transform.rotation);
