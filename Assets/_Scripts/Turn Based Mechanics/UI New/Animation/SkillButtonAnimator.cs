@@ -14,6 +14,7 @@ namespace BattleUI {
 
         public override void Toggle(bool toggle) {
             base.Toggle(toggle);
+            if (!toggle) return;
             SkillSelectButton skillButton = Button as SkillSelectButton;
             GetComponent<SkillNameIdentifier>().GetComponent<TextMeshProUGUI>().text =
                 skillButton.Skill.SkillData.GetSkillName();
