@@ -1,18 +1,18 @@
 ﻿namespace BattleUI {
     public class SkillSelectButton : UIButtonBase<SkillSelectHandler> {
 
-        private SkillAction skill;
+        public SkillAction Skill { get; private set; }
 
         public void Init(SkillSelectHandler stateHandler, SkillAction skill) {
-            this.StateHandler = stateHandler;
-            this.skill = skill;
+            StateHandler = stateHandler;
+            Skill = skill;
         }
 
-        public override bool IsAvailable() => StateHandler.CurrActor.Stamina >= skill.SkillData.staminaCost;
+        public override bool IsAvailable() => StateHandler.CurrActor.Stamina >= Skill.SkillData.staminaCost;
 
         public override void Activate() {
             base.Activate();
-            StateHandler.Transition<TargetSelectHandler>(skill);
+            StateHandler.Transition<TargetSelectHandler>(Skill);
         }
     }
 }
