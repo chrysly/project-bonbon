@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 namespace BattleUI {
     public abstract class HandsOnStateAnimator : UIStateAnimator {
@@ -22,9 +23,6 @@ namespace BattleUI {
                             yield return loadCoroutine.Current;
                         state = UIAnimatorState.Idle;
                         break;
-                    case UIAnimatorState.Idle:
-                        IEnumerator idleCoroutine;
-                        break;
                     case UIAnimatorState.Unloading:
                         IEnumerator unloadCoroutine = Unload();
                         while (unloadCoroutine.MoveNext())
@@ -41,8 +39,7 @@ namespace BattleUI {
 
     public class BonbonMenuAnimator : HandsOnStateAnimator {
 
-        private BonbonSlotButton[] slotButtons;
-        private BonbonBakeSlotButton[] bakeButtons;
+        [SerializeField] private Transform[] trays;
         private BonbonMainHandler mainHandler;
         private BonbonBakeHandler bakeHandler;
 
@@ -57,17 +54,19 @@ namespace BattleUI {
         }
 
         private void OnMainHandlerToggle(bool toggle) {
-            stateHandler = mainHandler;
+            StateHandler = mainHandler;
             base.UIStateHandler_OnHandlerToggle(toggle);
         }
         
         private void OnBakeHandlerToggle(bool toggle) {
-            stateHandler = bakeHandler;
+            StateHandler = bakeHandler;
             base.UIStateHandler_OnHandlerToggle(toggle);
         }
 
         protected override IEnumerator Load() {
-            yield return null;
+            foreach (Transform transform in trays) {
+                
+            } yield return null;
         }
 
         protected override IEnumerator Unload() {

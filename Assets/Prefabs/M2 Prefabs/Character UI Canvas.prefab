@@ -786,7 +786,6 @@ GameObject:
   - component: {fileID: 7438860086641643502}
   - component: {fileID: 940126684399716505}
   - component: {fileID: 2039803379197738180}
-  - component: {fileID: 8144134807318271263}
   m_Layer: 5
   m_Name: Skill Group
   m_TagString: Untagged
@@ -862,26 +861,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &8144134807318271263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6111924515720279533}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 715408093a18b244db52d89bbf307a63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grayoutAlpha: 0.35
-  icon: {fileID: 7236263966732673749}
-  ribbon: {fileID: 6708593577411597575}
-  ribbon2: {fileID: 6186006690193123597}
-  display: {fileID: 3789947394201116696}
-  skillLayout: {fileID: 501637777653170340}
-  animationDuration: 0.1
-  buttonPrefab: {fileID: 5492831396512457482, guid: e6d102211063df947adb3739327eed0e, type: 3}
 --- !u!1 &6293357388004096485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,7 +1021,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7100674976803698143}
   - component: {fileID: 8345405914376712181}
-  - component: {fileID: 4919298654478318474}
   m_Layer: 5
   m_Name: Ingredients
   m_TagString: Untagged
@@ -1088,25 +1066,6 @@ MonoBehaviour:
     elementMatrix: []
   ingredientView: {fileID: 2731881634578616080}
   craftButtonPrefab: {fileID: 8502032677846900028, guid: 2cd24e19fe274704191c35c2c399f161, type: 3}
---- !u!114 &4919298654478318474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6542139126507298126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cf2b4bca2dc38c44b96d3b5a28df688, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grayoutAlpha: 0.5
-  backdrop: {fileID: 7100674976803698143}
-  horizontalView: {fileID: 2731881634578616080}
-  ingredientDisplayPoint: {fileID: 1067475504937629043}
-  ingredientPrefab: {fileID: 8502032677846900028, guid: 948411ec690171642b0f7547393eb8e7, type: 3}
-  animationDuration: 0.1
-  slot: -1
 --- !u!1 &6855934227515966658
 GameObject:
   m_ObjectHideFlags: 0

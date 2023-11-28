@@ -607,6 +607,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTarget: {fileID: 0}
+  selectDuration: 0.3
+  nameText: {fileID: 1979698544585180939}
+  staminaText: {fileID: 5107792391178447847}
 --- !u!1 &8512815163284264279
 GameObject:
   m_ObjectHideFlags: 0
