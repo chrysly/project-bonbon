@@ -6,7 +6,7 @@ namespace BattleUI {
 
         [SerializeField] private Transform skillView;
         [SerializeField] private GameObject skillButtonPrefab;
-        public SkillSelectButton[] ButtonArr { get; private set; }
+        private SkillSelectButton[] buttonArr;
 
         public event System.Action OnButtonArrange;
 
@@ -14,15 +14,15 @@ namespace BattleUI {
 
         public override UIInputPack InputArrangement() {
             int skillCount = Brain.CurrActor.SkillList.Count;
-            ButtonArr = new SkillSelectButton[skillCount];
+            buttonArr = new SkillSelectButton[skillCount];
             for (int i = 0; i < skillCount; i++) {
                 SkillAction skill = Brain.CurrActor.SkillList[i];
                 GameObject go = Instantiate(skillButtonPrefab, skillView);
                 go.name = $"Skill: {skill}";
-                ButtonArr[i] = go.GetComponent<SkillSelectButton>();
-                ButtonArr[i].Init(this, skill);
+                buttonArr[i] = go.GetComponent<SkillSelectButton>();
+                buttonArr[i].Init(this, skill);
             } OnButtonArrange?.Invoke();
-            return new UIInputPack(new[] { ButtonArr }, TraversalMode.Vertical);
+            return new UIInputPack(new[] { buttonArr }, TraversalMode.Vertical);
         }
 
         public void Transition<T>(SkillAction skill) where T : UIStateHandler {
@@ -30,7 +30,7 @@ namespace BattleUI {
         }
 
         public override void Revert() {
-            ButtonArr = null;
+            buttonArr = null;
             base.Revert();
         }
     }

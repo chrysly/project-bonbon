@@ -33,8 +33,12 @@ namespace BattleUI {
 
         public virtual void Disable() => OnHandlerToggle?.Invoke(false);
 
-        public virtual void Revert() => Disable();
+        public virtual void Revert() {
+            OnHandlerRevert?.Invoke();
+            Disable();
+        }
 
         public System.Action<bool> OnHandlerToggle;
+        public System.Action OnHandlerRevert;
     }
 }

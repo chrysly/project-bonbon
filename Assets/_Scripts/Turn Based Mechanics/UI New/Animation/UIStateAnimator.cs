@@ -5,13 +5,13 @@ namespace BattleUI {
 
         [SerializeField] protected UIAnimator[] animators;
 
-        public UIAnimationBrain Brain { get; private set; }
-        protected UIStateHandler stateHandler;
+        public UIAnimationBrain Brain { get; protected set; }
+        public UIStateHandler StateHandler { get; protected set; }
 
         protected virtual void Awake() {
-            stateHandler = GetComponent<UIStateHandler>();
+            StateHandler = GetComponent<UIStateHandler>();
             foreach (UIAnimator animator in animators) animator.Init(this);
-            stateHandler.OnHandlerToggle += UIStateHandler_OnHandlerToggle;
+            StateHandler.OnHandlerToggle += UIStateHandler_OnHandlerToggle;
         }
 
         public virtual void Init(UIAnimationBrain brain) => Brain = brain;

@@ -70,7 +70,7 @@ public partial class @UIInputMap: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0b105b80-caf5-4703-aec7-71f9e1d34001"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",

@@ -22,7 +22,7 @@ namespace BattleUI {
             CurrHandler = handler;
             CurrInput = input;
             CurrHandler.SoftEnable();
-            CurrInput.ProcessTraversal(InTraversal.Undefined);
+            CurrInput.SelectedButton.Select();
         }
 
         public void Record(UIStateHandler handler, UIInputPack input) {

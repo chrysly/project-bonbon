@@ -9,10 +9,11 @@ namespace BattleUI {
         [SerializeField] private Transform ribbon;
         [SerializeField] private Transform ribbon2;
         [SerializeField] private Transform display;
-        private SkillButtonAnimator[] sbarr;
         
         protected override void Awake() {
             base.Awake();
+            (StateHandler as SkillSelectHandler)
+            .OnButtonArrange += SkillSelectHandler_OnButtonArrange;
             icon.DOScale(0f, 0f);
             ribbon.DOScaleX(0f, 0f);
             ribbon2.DOScaleX(0f, 0f);
@@ -26,6 +27,10 @@ namespace BattleUI {
 
         private void SkillSelectHandler_OnButtonArrange() {
             animators = GetComponentsInChildren<UIAnimator>();
+            foreach (UIAnimator animator in animators) {
+                animator.Init(this);
+                animator.Toggle(true);
+            }
         }
 
         protected override IEnumerator Load() {
