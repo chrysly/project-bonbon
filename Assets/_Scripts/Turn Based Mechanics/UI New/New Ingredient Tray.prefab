@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3541432407302041842}
   - component: {fileID: 7928484961425152405}
   - component: {fileID: 234871404636116085}
+  - component: {fileID: 8404078988332811679}
   m_Layer: 5
   m_Name: Bonbon Icon
   m_TagString: Untagged
@@ -72,6 +73,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &8404078988332811679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083997739606443071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a074d1bb453ce0d48a4508aa6bd1963f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4865586627518691096
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +96,7 @@ GameObject:
   - component: {fileID: 3884357509654366787}
   - component: {fileID: 8923643615334991110}
   - component: {fileID: 6625364793623682265}
+  - component: {fileID: 6648419151881353005}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -206,6 +220,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6648419151881353005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4865586627518691096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e78e705e48bc74694e956064391d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5166688297839824399
 GameObject:
   m_ObjectHideFlags: 0

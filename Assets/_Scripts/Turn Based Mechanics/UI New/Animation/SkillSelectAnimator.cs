@@ -25,14 +25,7 @@ namespace BattleUI {
         }
 
         private void SkillSelectHandler_OnButtonArrange() {
-            if (sbarr == null) {
-                SkillSelectHandler handler = stateHandler as SkillSelectHandler;
-                sbarr = new SkillButtonAnimator[handler.ButtonArr.Length];
-                for (int i = 0; i < handler.ButtonArr.Length; i++) {
-                    sbarr[i] = handler.ButtonArr[i].GetComponent<SkillButtonAnimator>();
-                }
-            }
-            foreach(SkillButtonAnimator button in sbarr) button.Toggle(true);
+            animators = GetComponentsInChildren<UIAnimator>();
         }
 
         protected override IEnumerator Load() {
