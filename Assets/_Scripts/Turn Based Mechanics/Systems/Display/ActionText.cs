@@ -23,6 +23,7 @@ public class ActionText : MonoBehaviour
     private void UpdateActionText(BattleStateMachine.BattleState state, BattleStateInput input) {
         if (state is BattleStateMachine.AnimateState) {
             TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
+            /*
             if (input.SkillPrep.bonbon != null) {
                 text.SetText(input.ActiveActor().Data.DisplayName + " used " + input.SkillPrep.bonbon.Name + " " + input.SkillPrep.skill.SkillData.name +
                              " on "
@@ -35,7 +36,7 @@ public class ActionText : MonoBehaviour
                                  " on "
                                  + input.SkillPrep.targets[0].Data.DisplayName +
                                  "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
-            }
+            }*/
 
             window.DOMove(pivot.position, 0.5f);
 

@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -92,12 +93,21 @@ public class BonbonHandler : StateMachineHandler {
     /// </summary>
     /// <param name="recipeBonbons"> Bonbons available to create a new one; </param>
     /// <returns> A list of matching recipes, or NULL if no matching recipes were found; </returns>
-    public List<BonbonBlueprint> FindRecipes(params BonbonBlueprint[] recipeBonbons) {
+    public List<BonbonBlueprint> FindExactRecipes(params BonbonBlueprint[] recipeBonbons) {
         if (recipeBonbons.Length == 0) return null;
         List<BonbonBlueprint> matchingRecipes = new List<BonbonBlueprint>();
         foreach (BonbonBlueprint bonbonObject in allBonbons) {
             if (bonbonObject.recipe.Length > 0
                 && bonbonObject.recipe.RecipeEquals(recipeBonbons)) matchingRecipes.Add(bonbonObject);
         } return matchingRecipes.Count > 0 ? matchingRecipes : null;
+    }
+
+    /// <summary>
+    /// Find any bonbons whose recipes explicitly contain the passed bonbon;
+    /// </summary>
+    /// <param name="ingredient"> Blueprint of the bonbon to match; </param>
+    /// <returns> An array of matching bonbon blueprints; </returns>
+    public BonbonBlueprint[] FindRelativeRecipes(BonbonBlueprint ingredient) {
+        return allBonbons.Where(bonbon => bonbon.recipe.Contains(ingredient)).ToArray();
     }
 }

@@ -7,7 +7,6 @@ public partial class
     BattleStateMachine : StateMachine<BattleStateMachine, BattleStateMachine.BattleState, BattleStateInput> {
 
     #region SerializeFields
-    [SerializeField] public BattleUIStateMachine uiStateMachine;
     [SerializeField] private EventSequencer _eventSequencer;
     [SerializeField] private float enemyTurnDuration;   //replace with enemy skill duration
     #endregion SerializeFields
@@ -18,8 +17,13 @@ public partial class
     public event StateTransition OnStateTransition;
 
     public new delegate void DisplayUpdate(BattleStateInput input);
-
     public event DisplayUpdate OnDisplayUpdate;
+
+    public event System.Action<bool> OnBattleLock;
+    public override void ToggleMachine(bool disable) {
+        base.ToggleMachine(disable);
+        OnBattleLock?.Invoke(disable);
+    }
 
     #endregion Events
 
@@ -69,7 +73,6 @@ public partial class
 
     public void StartBattle() {
         // Checks whether to progress to Win/Lose state
-        CurrInput.SkillHandler.SkillReset();
         bool allEnemiesDead = CurrInput.ActorList.All(actor => !(actor is EnemyActor) || actor.Defeated);
         bool allCharactersDead = CurrInput.ActorList.All(actor => !(actor is CharacterActor) || actor.Defeated);
 
@@ -91,7 +94,6 @@ public partial class
     /// </summary>
     public void ContinueBattle() {
         ToggleMachine(false);
-        uiStateMachine.ToggleMachine(false);
         if (CurrState is AnimateState) {
             StartBattle(0.3f);
         } else StartBattle();
@@ -101,13 +103,15 @@ public partial class
         StartCoroutine(SkipEnemyAction(enemyTurnDuration));
     }
 
+    /*
     public void SwitchToTargetSelect(SkillAction skill) {
         if (CurrState is TurnState) {
             Transition<TargetSelectState>();
             CurrInput.SkillHandler.SkillUpdate(skill);
         }
-    }
+    }*/
 
+    /*
     public void ConfirmTargetSelect(Actor actor) {
         CurrInput.SkillHandler.SkillUpdate(new Actor[] { actor });
         Transition<AnimateState>();
@@ -129,10 +133,10 @@ public partial class
                     Debug.Log("Bonbon: " + bObject.Name + " at " + i);
                 }
             }
-            CurrInput.ActiveActor().InsertBonbon(slot, bonbonObject);
+            CurrInput.ActiveActor().AcceptBonbon(slot, bonbonObject);
             Debug.Log("Bonbon: " + CurrInput.ActiveActor().BonbonInventory[slot]);
         }
-    }
+    }*/
 
     public void AnimateTurn() {
         CurrState.AnimateTurn();
@@ -152,10 +156,8 @@ public partial class
     }
     #endregion
 
-    // idk if this is ok
     public List<Actor> GetActors() => CurrInput.ActorList;
-    public List<Actor> FilterActorsBySkill() {
-        SkillAction sa = CurrInput.SkillPrep.skill;
+    public List<Actor> FilterActorsBySkill(SkillAction sa) {
         SkillObject.TargetConstraint targetType = sa.SkillData.TargetType;
         switch (targetType) {
             case SkillObject.TargetConstraint.Enemies:
@@ -166,6 +168,8 @@ public partial class
                 return CurrInput.ActorList;
         }
     }
+
+    public List<Actor> FilterActors<T>() where T : Actor => CurrInput.ActorList.Where(actor => actor is T).ToList();
 
     private IEnumerator StartGame(float duration) {
         yield return new WaitForSeconds(duration);

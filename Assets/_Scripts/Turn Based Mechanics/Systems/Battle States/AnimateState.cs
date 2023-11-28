@@ -11,7 +11,6 @@ public partial class BattleStateMachine {
             
             MySM.OnStateTransition.Invoke(this, Input);
 
-            Input.SkillHandler.SkillActivate();
             MySM.OnDisplayUpdate.Invoke(Input);
 
             //OLD --> eve seq code

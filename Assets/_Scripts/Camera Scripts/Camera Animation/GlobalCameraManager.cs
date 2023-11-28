@@ -90,7 +90,7 @@ public class GlobalCameraManager : StateMachineHandler {
                 //_lookTarget.position = fieldTarget.position;
                 break;
             case CameraAnimation.LookAt.Target:
-                _lookTarget.position = BattleStateMachine.Instance.CurrInput.SkillPrep.targets[0].transform.GetChild(0).transform.position;
+                //_lookTarget.position = BattleStateMachine.Instance.CurrInput.SkillPrep.targets[0].transform.GetChild(0).transform.position;
                 break;
             case CameraAnimation.LookAt.User:
                 _lookTarget.position = BattleStateMachine.Instance.CurrInput.ActiveActor().transform.GetChild(0).transform.position;

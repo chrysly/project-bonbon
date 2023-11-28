@@ -22,11 +22,11 @@ public partial class BattleUIStateMachine {
                         Input.AnimationHandler.ingredientWindow.ConfirmBonbon());
                 }
                 else {
-                    if (BattleStateMachine.Instance.CurrInput.ActiveActor().GetStamina()
+                    if (BattleStateMachine.Instance.CurrInput.ActiveActor().Stamina
                         >= Input.AnimationHandler.ingredientWindow.ConfirmBonbon().craftStamina) {
-                        MySM.battleStateMachine.SwitchToBonbonState(
+                        /*MySM.battleStateMachine.SwitchToBonbonState(
                             Input.AnimationHandler.ingredientWindow.ConfirmBonbon(),
-                            Input.AnimationHandler.ingredientWindow.slot, new bool[4]);
+                            Input.AnimationHandler.ingredientWindow.slot, new bool[4]);*/
                         MySM.DelayedTransition<BattleUI_BonbonMenu>(0.2f, false);
                     }
                 }
@@ -43,7 +43,7 @@ public partial class BattleUIStateMachine {
         private void MatchRecipe(int slot, BonbonBlueprint bonbon) {
             BonbonHandler factory = MySM.battleStateMachine.CurrInput.BonbonHandler;
             Debug.Log(Input.actor.BonbonInventory[slot].Data.name + " and " + bonbon.name);
-            List<BonbonBlueprint> blueprint = factory.FindRecipes(Input.actor.BonbonInventory[slot].Data, bonbon);
+            List<BonbonBlueprint> blueprint = factory.FindExactRecipes(Input.actor.BonbonInventory[slot].Data, bonbon);
             if (blueprint != null) {
                 Input.actor.BonbonInventory[slot] = blueprint[0].InstantiateBonbon(Input.actor);
             }

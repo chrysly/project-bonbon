@@ -12,8 +12,6 @@ public class BattleStateInput : StateInput {
     private Actor activeActor;
     private int currentTurn = 0;
 
-    public ActiveSkillPrep SkillPrep => SkillHandler.SkillPrep;
-
     public event System.Action<List<Actor>> OnTurnChange;
     public void PropagateTurnChange(List<Actor> previewList) => OnTurnChange?.Invoke(previewList);
 
