@@ -3,7 +3,7 @@
 
         public override void Activate() {
             base.Activate();
-            stateHandler.Brain.ExitUI();
+            StateHandler.Brain.ExitUI();
         }
     }
 }

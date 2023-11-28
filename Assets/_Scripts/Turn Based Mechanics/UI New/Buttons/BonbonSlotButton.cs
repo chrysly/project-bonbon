@@ -4,13 +4,13 @@ namespace BattleUI {
     [RequireComponent(typeof(BonbonBakeSlotButton))]
     public class BonbonSlotButton : BaseSlotButton<BonbonMainHandler> {
 
-        private BonbonObject Bonbon => stateHandler.Inventory[Slot];
+        private BonbonObject Bonbon => StateHandler.Inventory[Slot];
 
         public override void Activate() {
             base.Activate();
             if (Bonbon == null) {
-                stateHandler.Transition<BonbonCraftHandler>(Slot);
-            } else stateHandler.Transition<BonbonOptionsHandler>(Slot);
+                StateHandler.Transition<BonbonCraftHandler>(Slot);
+            } else StateHandler.Transition<BonbonOptionsHandler>(Slot);
         }
     }
 }
