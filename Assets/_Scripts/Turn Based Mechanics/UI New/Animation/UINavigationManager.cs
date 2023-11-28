@@ -28,6 +28,11 @@ namespace BattleUI {
         }
 
         private void UIAnimationBrain_UpdateCursor(UIButtonAnimator buttonAnim) {
+            bool isDifferent = SelectedButton != null && SelectedButton.Button == buttonAnim.Button;
+            Debug.LogError(SelectedButton != null ? SelectedButton.Button : null);
+            if (SelectedButton != null) SelectedButton.OverrideSelect(false);
+            SelectedButton = buttonAnim;
+            SelectedButton.OverrideSelect(true);
             CursorAnimator cursorAnim = buttonAnim.Button is TargetSelectButton ? targetCursorAnim : guiCursorAnim;
             if (currCursor != null && (cursorAnim.GetType() != currCursor.GetType())) currCursor.Despawn();
             cursorAnim.gameObject.SetActive(true);
