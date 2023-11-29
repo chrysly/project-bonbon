@@ -625,10 +625,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 0
-  HasPlatforms: 0
-  sourceProjectPath: 
-  sourceBankPath: Desktop
+  HasSourceProject: 1
+  HasPlatforms: 1
+  sourceProjectPath: ../../../../Documents/FMOD/Bonbon/Bonbon-Audio-Project/Bonbon-Audio-Project.fspro
+  sourceBankPath: ../../../../Documents/FMOD/Bonbon/Bonbon-Audio-Project/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -649,7 +649,8 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
+  MasterBanks:
+  - Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264

@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: f7d0037f8f23a34419c56f6e43dbd747, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -125,8 +125,8 @@ Material:
     - _BottomColor: {r: 0.25882354, g: 0.41568628, b: 0.36610883, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FirstTierColor: {r: 0.813, g: 0.70030695, b: 0.51114357, a: 0.2901961}
-    - _SecondTierColor: {r: 0, g: 0, b: 0, a: 0}
+    - _FirstTierColor: {r: 0.8490566, g: 0.74856794, b: 0.5727127, a: 0.2901961}
+    - _SecondTierColor: {r: 0.47843137, g: 0.7647059, b: 0.6267214, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _ThirdTierColor: {r: 0.39855573, g: 0.6037736, b: 0.3275187, a: 0}
     - _TopColor: {r: 0.4773308, g: 0.9150943, b: 0.35826808, a: 0}
