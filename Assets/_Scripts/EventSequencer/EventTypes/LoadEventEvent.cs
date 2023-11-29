@@ -8,6 +8,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New EventObject", menuName = "Event System/LoadEventEvent")]
 public class LoadEventEvent : EventObject {
     public EventObject eventToLoad;
+    public EventObject thisEvent;
+
+    public override void OnTrigger() {
+        thisEvent.OnTrigger();
+    }
 
     public override void OnEventEnd() {
         eventToLoad.OnTrigger();

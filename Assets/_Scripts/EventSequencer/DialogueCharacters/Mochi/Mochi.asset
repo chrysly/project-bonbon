@@ -15,20 +15,20 @@ MonoBehaviour:
   characterName: mochi
   portraitList:
   - expression: idle
-    portrait: {fileID: 21300000, guid: d7ae925fb82e9684b83fd867a6942fb0, type: 3}
+    portrait: {fileID: 21300000, guid: fdfba200aba022d4eaff13791719e797, type: 3}
   - expression: neutral_2
-    portrait: {fileID: 21300000, guid: 095b92b3e2146bc44b70b3c302492d37, type: 3}
+    portrait: {fileID: 21300000, guid: fdfba200aba022d4eaff13791719e797, type: 3}
   - expression: apologetic_1
-    portrait: {fileID: 21300000, guid: f7dc298de02349143adc2c3d07c1a223, type: 3}
+    portrait: {fileID: 21300000, guid: 905a2a31fa3860149a467a1bf8a1b763, type: 3}
   - expression: apologetic_2
-    portrait: {fileID: 21300000, guid: b1176857309c69e4dab43c70d8116351, type: 3}
+    portrait: {fileID: 21300000, guid: 04a0ec4b3a4620a4abaeb787c9b0a10a, type: 3}
   - expression: thinking
-    portrait: {fileID: 21300000, guid: 7b00bcaa4fc801844bc82e7c18f0ff76, type: 3}
+    portrait: {fileID: 21300000, guid: a6c20e4e4f7bf664688e2296187064e7, type: 3}
   - expression: suprised
-    portrait: {fileID: 21300000, guid: ce4c317428b7df64f9f2f6395a31ae35, type: 3}
+    portrait: {fileID: 21300000, guid: cfe967d49647e774093b9253f6ce1a0d, type: 3}
   - expression: angry
-    portrait: {fileID: 21300000, guid: b9db1db134718eb4dbbea381203724c7, type: 3}
+    portrait: {fileID: 21300000, guid: 7ba3cf73cfa8148428b817d3db71b544, type: 3}
   - expression: hyped_up
-    portrait: {fileID: 21300000, guid: 2c3a31b74ecad2c4f9632f6ed6a10da0, type: 3}
+    portrait: {fileID: 21300000, guid: b0dd49fd359d55149bb9e4046366ee37, type: 3}
   defaultToRightSide: 1
   dialogueBoxColor: {r: 0.39215687, g: 0.5764706, b: 0.31764707, a: 1}
