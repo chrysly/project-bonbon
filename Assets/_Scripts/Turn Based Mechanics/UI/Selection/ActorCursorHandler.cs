@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,11 +8,20 @@ namespace BattleUI {
 
         [SerializeField] private float animationLength;
         [SerializeField] private float idleCursorOffset;
+        [SerializeField] private GameObject cursorPrefab;
+
+        private Transform _activeCursor;
 
         private UIAnimatorState state;
 
+        private void Awake() {
+            _activeCursor = Instantiate(cursorPrefab, transform).transform;
+        }
+
         public override void FocusEntity(Transform target) {
-            
+            if (_activeCursor == null) {
+                state = UIAnimatorState.Loading;
+            }
         }
 
         protected IEnumerator CoreCoroutine() {
@@ -39,19 +49,19 @@ namespace BattleUI {
         }
 
         private IEnumerator Load() {
-            transform.DOScale(Vector3.zero, 0);
-            transform.DOScale(Vector2.one, animationLength).SetEase(Ease.OutBounce);
+            _activeCursor.DOScale(Vector3.zero, 0);
+            _activeCursor.DOScale(Vector2.one, animationLength).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(animationLength);
         }
 
         private IEnumerator Idle() {
-            transform.localPosition = new Vector2(transform.localPosition.x,
+            _activeCursor.localPosition = new Vector2(transform.localPosition.x,
                                                   Mathf.Sin(Time.time) * idleCursorOffset);
             yield return null;
         }
 
         private IEnumerator Unload() {
-            transform.DOScale(Vector3.zero, 0.2f);
+            _activeCursor.DOScale(Vector3.zero, 0.2f);
             yield return new WaitForSeconds(0.2f);
         }
     }

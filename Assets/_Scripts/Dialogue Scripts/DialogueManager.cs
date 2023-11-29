@@ -47,6 +47,11 @@ public class DialogueManager : MonoBehaviour
     string previousName;
 
     public static UnityEvent<string> dialogueRequestEvent = new UnityEvent<string>();
+    
+    #region Events
+    public delegate void DialogueEvent(bool active);
+    public static event DialogueEvent OnDialogueStart;
+    #endregion Events
 
     #region Monobehavior
     void Start()
@@ -86,6 +91,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_dialogueRunner != null) 
         {
+            OnDialogueStart?.Invoke(true);
             CreateDialogueBox();
             _dialogueRunner.StartDialogue(node);
             ProcessNode();
@@ -224,6 +230,7 @@ public class DialogueManager : MonoBehaviour
                 readingDialogue = false;
                 previousName = null;
             });
+        OnDialogueStart?.Invoke(false);
         _eventSequencer.CheckForEventEnd(); // J
     }
     #endregion
