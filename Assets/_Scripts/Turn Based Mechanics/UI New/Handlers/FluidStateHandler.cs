@@ -9,6 +9,7 @@
 
         public override UIInputPack Enable(BaseTransitionInfo info) {
             if (info is SkillTransitionInfo) TransitionInfo = info as T;
+            if (info is BonbonTransitionInfo) TransitionInfo = info as T;
             return base.Enable(info);
         }
 

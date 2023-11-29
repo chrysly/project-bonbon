@@ -26,7 +26,7 @@ namespace BattleUI {
         public void PassBonbon() {
             Actor target = FetchPassTarget();
             Brain.CurrActor.PassBonbon(Slot, target);
-            Brain.ExitUI();
+            Brain.ExitUI(true);
         }
     }
 }

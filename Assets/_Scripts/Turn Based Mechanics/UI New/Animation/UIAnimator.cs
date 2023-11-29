@@ -9,7 +9,7 @@ namespace BattleUI {
 
     public abstract class UIAnimator : MonoBehaviour {
 
-        protected float animationDuration = 0.2f;
+        protected float animationDuration = 0.15f;
 
         protected UIStateAnimator stateAnimator;
 

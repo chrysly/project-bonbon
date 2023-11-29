@@ -4,11 +4,12 @@ namespace BattleUI {
     [RequireComponent(typeof(BonbonSlotButton))]
     public class BonbonBakeSlotButton : BaseSlotButton<BonbonBakeHandler> {
 
+        public override BonbonObject Bonbon => StateHandler.Inventory[Slot];
         private BonbonBlueprint recipe;
 
         public void Enable() {
-            recipe = StateHandler.Inventory[Slot] == null ? null
-                                 : StateHandler.FindValidRecipe(Slot);
+            recipe = Bonbon == null ? null
+                   : StateHandler.FindValidRecipe(Slot);
         }
 
         public override bool IsAvailable() {

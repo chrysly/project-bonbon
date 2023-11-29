@@ -1021,6 +1021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7100674976803698143}
   - component: {fileID: 8345405914376712181}
+  - component: {fileID: 8804279801864605743}
   m_Layer: 5
   m_Name: Ingredients
   m_TagString: Untagged
@@ -1066,6 +1067,24 @@ MonoBehaviour:
     elementMatrix: []
   ingredientView: {fileID: 2731881634578616080}
   craftButtonPrefab: {fileID: 8502032677846900028, guid: 2cd24e19fe274704191c35c2c399f161, type: 3}
+--- !u!114 &8804279801864605743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6542139126507298126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72847e5852d70a74cba678565fabf2e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animators: []
+  animationDuration: 0.2
+  backdrop: {fileID: 7100674976803698143}
+  horizontalView: {fileID: 2731881634578616080}
+  ingredientDisplayPoint: {fileID: 1067475504937629043}
+  rollInOutSpeed: 0.3
 --- !u!1 &6855934227515966658
 GameObject:
   m_ObjectHideFlags: 0

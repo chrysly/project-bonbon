@@ -7,7 +7,7 @@ namespace BattleUI {
 
         [SerializeField] private Transform cursorTarget;
         public Transform CursorTarget => cursorTarget;
-        public UIButton Button { get; private set; }
+        public UIButton Button { get; protected set; }
 
         protected float selectedScale = 1.2f;
         protected float targetScale;
@@ -15,6 +15,10 @@ namespace BattleUI {
 
         protected override void Awake() {
             base.Awake();
+            LoadLogicButton();
+        }
+
+        protected virtual void LoadLogicButton() {
             Button = GetComponent<UIButton>();
             Button.OnSelect += UIButton_OnSelect;
             Button.OnActivate += UIButton_OnActivate;

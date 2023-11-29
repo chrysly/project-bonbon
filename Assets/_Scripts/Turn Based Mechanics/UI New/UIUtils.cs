@@ -16,13 +16,14 @@ namespace BattleUI {
 
         public bool Reversible => transitionStack.Count > 1;
 
-        public void Transition(UITransitionData data) => Transition(data.handler, data.input);
+        public void Transition(UITransitionData data) => Transition(data.handler, data.input, true);
 
-        public void Transition(UIStateHandler handler, UIInputPack input) {
+        public void Transition(UIStateHandler handler, UIInputPack input, bool softEnable = false) {
             CurrHandler = handler;
             CurrInput = input;
-            CurrHandler.SoftEnable();
+            if (softEnable) CurrHandler.SoftEnable();
             CurrInput.SelectedButton.Select();
+            Debug.LogWarning(CurrInput.SelectedButton);
         }
 
         public void Record(UIStateHandler handler, UIInputPack input) {
@@ -43,6 +44,7 @@ namespace BattleUI {
         public void RevertAll() {
             CurrHandler.Revert();
             while (Reversible) transitionStack.Pop().handler.Revert();
+            transitionStack = new();
         }
     }
 
@@ -68,7 +70,9 @@ namespace BattleUI {
         }
 
         public static void Dispose(this UIButton[] buttonArr) {
-            foreach (UIButton button in buttonArr) Object.Destroy(button.gameObject);
+            foreach (UIButton button in buttonArr) {
+                if (button) Object.Destroy(button.gameObject);
+            }
         }
     }
 }

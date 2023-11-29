@@ -8,7 +8,9 @@ using UnityEngine.UI;
 namespace BattleUI {
     public class BonbonCraftButtonAnimator : UIButtonAnimator {
         
-        [SerializeField] private float selectDuration = 0.3f;
+        [SerializeField] private float selectDuration = 0.1f;
+        [SerializeField] private RawImage icon;
+        [SerializeField] private TextMeshProUGUI nameText;
         
         public override void Init(UIStateAnimator stateAnimator) {
             base.Init(stateAnimator);
@@ -24,10 +26,8 @@ namespace BattleUI {
             base.Toggle(toggle);
             if (!toggle) return;
             BonbonCraftButton bonbonButton = Button as BonbonCraftButton;
-            GetComponentInChildren<BonobnIconIdentifier>().GetComponent<RawImage>().texture =
-                bonbonButton.Bonbon.texture;
-            GetComponentInChildren<BonbonTextIdentifier>().GetComponent<TextMeshProUGUI>().text =
-                bonbonButton.Bonbon.name;
+            icon.texture = bonbonButton.Bonbon.texture;
+            nameText.text = bonbonButton.Bonbon.name;
         }
         
         protected override IEnumerator Idle() {
