@@ -18,7 +18,8 @@ namespace BattleUI {
         }
 
         private void LoadHandlers(Actor actor) {
-            CursorHandler[] handlers = actor.GetComponentsInChildren<CursorHandler>();
+            if (cursorHandler != null) cursorHandler.Deactivate();
+            CursorHandler[] handlers = actor.GetComponentsInChildren<CursorHandler>(true);
             foreach (CursorHandler handler in handlers) {
                 if (handler is ActorCursorHandler) actorCursorHandler = handler as ActorCursorHandler;
                 if (handler is TargetCursorHandler) targetCursorHandler = handler as TargetCursorHandler;
@@ -26,21 +27,26 @@ namespace BattleUI {
         }
 
         private void UIAnimationBrain_UpdateCursor(UIButtonAnimator buttonAnim) {
-            bool isDifferent = SelectedButton != null && SelectedButton.Button == buttonAnim.Button;
             if (SelectedButton != null) SelectedButton.OverrideSelect(false);
             SelectedButton = buttonAnim;
             SelectedButton.OverrideSelect(true);
-            if (isDifferent) UpdateCursor(buttonAnim);
+            if (SelectedButton != null) UpdateCursor(buttonAnim);
         }
 
         private void UpdateCursor(UIButtonAnimator buttonAnimator) {
             CursorHandler nextHandler = actorCursorHandler;
-            if (LogicBrain.CurrHandler is TargetSelectHandler) nextHandler = targetCursorHandler;
+            if (LogicBrain.CurrHandler is TargetSelectHandler) {nextHandler = targetCursorHandler; }
             else if (LogicBrain.CurrHandler is SkillSelectHandler
                      || LogicBrain.CurrHandler is BonbonCraftHandler) nextHandler = null;
             if (cursorHandler != nextHandler && cursorHandler != null) cursorHandler.Deactivate();
             cursorHandler = nextHandler;
-            nextHandler.FocusEntity(buttonAnimator.CursorTarget);
+            if (cursorHandler != null) {
+                Debug.Log("Cursor handler is not null");
+                nextHandler.FocusEntity(buttonAnimator.CursorTarget);
+            }
+            else {
+                Debug.Log("Cursor handler is null");
+            }
         }
     }
 }

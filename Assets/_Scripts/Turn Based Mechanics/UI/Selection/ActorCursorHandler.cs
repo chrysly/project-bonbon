@@ -23,9 +23,13 @@ namespace BattleUI {
 
         public override void FocusEntity(Transform target) {
             _target = target;
-            if (_activeCursor == null) {
+            if (_activeCursor != null) {
                 state = UIAnimatorState.Loading;
             }
+        }
+
+        public override void Deactivate() {
+            state = UIAnimatorState.Unloading;
         }
 
         protected IEnumerator CoreCoroutine() {
@@ -46,14 +50,15 @@ namespace BattleUI {
                         IEnumerator unloadCoroutine = Unload();
                         while (unloadCoroutine.MoveNext())
                             yield return unloadCoroutine.Current;
-                        state = UIAnimatorState.Idle;
                         break;
                 } yield return null;
             }
         }
 
         private IEnumerator Load() {
+            Debug.Log("Loading cursor");
             if (!_activeCursor.gameObject.activeSelf) {
+                Debug.Log("Loading active cursor");
                 _activeCursor.gameObject.SetActive(true);
                 _activeCursor.position = _target.position;
             } else {
@@ -67,8 +72,8 @@ namespace BattleUI {
         }
 
         private IEnumerator Idle() {
-            _activeCursor.localPosition = new Vector2(transform.localPosition.x,
-                                                  Mathf.Sin(Time.time) * idleCursorOffset);
+            // _activeCursor.localPosition = new Vector2(_activeCursor.localPosition.x,
+            //                                       Mathf.Sin(Time.time) * idleCursorOffset);
             yield return null;
         }
 
