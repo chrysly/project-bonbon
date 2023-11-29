@@ -6,7 +6,7 @@ using DG.Tweening;
 namespace BattleUI {
     public class UIButtonAnimator : UIAnimator {
 
-        [SerializeField] private Transform cursorTarget;
+        [SerializeField] public Transform cursorTarget;
         public Transform CursorTarget => cursorTarget;
         public UIButton Button { get; protected set; }
 

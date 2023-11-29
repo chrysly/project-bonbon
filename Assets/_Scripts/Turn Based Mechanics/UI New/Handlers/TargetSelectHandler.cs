@@ -4,9 +4,12 @@ using UnityEngine;
 namespace BattleUI {
     public class TargetSelectHandler : FluidStateHandler<SkillTransitionInfo> {
 
+        private TargetAnimator ta;
         private TargetSelectButton[] buttonArr;
 
-        private void Awake() { Type = UIStateType.TargetSelect; }
+        private void Awake() { Type = UIStateType.TargetSelect;
+            ta = GetComponent<TargetAnimator>();
+        }
 
         public override UIInputPack InputArrangement() {
             List<Actor> targets = Brain.BattleStateMachine
@@ -18,6 +21,9 @@ namespace BattleUI {
                 go.transform.parent = anchor;
                 go.transform.localPosition = Vector3.zero;
                 buttonArr[i] = go.AddComponent<TargetSelectButton>();
+                var aaaa = go.AddComponent<UIButtonAnimator>();
+                ta.Init(aaaa);
+                aaaa.cursorTarget = aaaa.transform;
                 buttonArr[i].Init(this);
                 buttonArr[i].Init(targets[i], anchor);
             } return new UIInputPack(new[] { buttonArr }, TraversalMode.Horizontal);

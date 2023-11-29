@@ -39,12 +39,12 @@ namespace BattleUI {
         public void Update() {
 
             if (_active && !_innerTransition) {
-                inner.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
+                inner.position = _actor.transform.position;
                 inner.Rotate(Vector3.forward * (Time.deltaTime * 20));
             }
 
             if (_active && !_outerTransition) {
-                outer.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
+                outer.position = _actor.transform.position;
                 outer.Rotate(Vector3.forward * (Time.deltaTime * -20));
             }
         }
@@ -58,13 +58,14 @@ namespace BattleUI {
                 _activeAnim = ActivateAction(target);
                 StartCoroutine(_activeAnim);
             }
+            Debug.Log("Running reticle anim");
         }
     
         private IEnumerator ActivateAction(Transform target) {
             if (_firstSpawn) {
                 _actor = target;
                 _cursorInstance.SetActive(true);
-                _cursorInstance.transform.position = target.GetChild(0).position;
+                _cursorInstance.transform.position = target.position;
                 inner.DOScale(new Vector3(0, 1f, 1f), 0f);
                 outer.DOScale(new Vector3(1f, 0f, 1f), 0f);
                 outer.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
@@ -78,7 +79,7 @@ namespace BattleUI {
                 ApplySelectShader(_actor, false);
                 _actor = target;
                 _innerTransition = _outerTransition = true;
-                inner.DOMove(target.GetComponentInChildren<CursorIdentifier>().transform.position, moveDuration);
+                inner.DOMove(target.position, moveDuration);
                 outer.DOScale(new Vector3(1f, 0f, 1f), 0f);
                 outer.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
                 yield return new WaitForSeconds(innerRingDelay);
@@ -97,8 +98,9 @@ namespace BattleUI {
         }
 
         private void ApplySelectShader(Transform target, bool apply) {
-            SkinnedMeshRenderer[] skins = target.GetComponentsInChildren<SkinnedMeshRenderer>();
-            MeshRenderer[] meshSkin = target.GetComponentsInChildren<MeshRenderer>();
+            Actor actor = target.GetComponentInParent<Actor>();
+            SkinnedMeshRenderer[] skins = actor.GetComponentsInChildren<SkinnedMeshRenderer>();
+            MeshRenderer[] meshSkin = actor.GetComponentsInChildren<MeshRenderer>();
             foreach (SkinnedMeshRenderer skin in skins) {
                 if (apply) skin.gameObject.layer = LayerMask.NameToLayer("Select");
                 else skin.gameObject.layer = LayerMask.NameToLayer("Default");
@@ -110,7 +112,7 @@ namespace BattleUI {
             }
         }
     
-        public void Deactivate() {
+        public override void Deactivate() {
             if (_activeAnim == null) {
                 _activeAnim = DeactivateAction();
                 StartCoroutine(_activeAnim);

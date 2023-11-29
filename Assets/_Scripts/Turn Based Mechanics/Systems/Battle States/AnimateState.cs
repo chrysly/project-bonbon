@@ -10,9 +10,6 @@ public partial class BattleStateMachine {
             Debug.Log("Entering animate state");
             
             MySM.OnStateTransition.Invoke(this, Input);
-
-            MySM.OnDisplayUpdate.Invoke(Input);
-
             //OLD --> eve seq code
             //for (int j = 0; j < Input.SkillPrep.targets.Length; j++)
             //{
