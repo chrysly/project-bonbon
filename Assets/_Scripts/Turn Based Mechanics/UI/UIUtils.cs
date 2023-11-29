@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public static class UIUtils {
+public static class UILogicUtils {
     
     public static void SetupButton(GameObject obj, bool toggle, float grayoutAlpha) {
         var images = obj.GetComponentsInChildren<Image>();

@@ -50,12 +50,10 @@ public class EventSequencer : MonoBehaviour {
         } else if (state.GetType() == typeof(BattleStateMachine.LoseState)) {
             DialogueManager.dialogueRequestEvent.Invoke("death_dialogue.yarn");
             bsm.ToggleMachine(true);
-            bsm.uiStateMachine.ToggleMachine(true);
         } else if (bsm.PrevState.GetType() == typeof(BattleStateMachine.BattleStart)) {
             events.Enqueue(onStartEvent);
             RunNextEvent();
             bsm.ToggleMachine(true);
-            bsm.uiStateMachine.ToggleMachine(true);
         }
     }
 

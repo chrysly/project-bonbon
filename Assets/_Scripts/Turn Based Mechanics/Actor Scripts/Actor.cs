@@ -158,11 +158,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         return false;
     }
 
-    public void ConsumeStamina(int amount) {
-        _stamina -= amount;
-    }
-
-    public void InsertBonbon(int slot, BonbonObject bonbon) {
+    public void AcceptBonbon(int slot, BonbonObject bonbon) {
         if (BonbonInventory[slot] == null) {
             BonbonInventory[slot] = bonbon;
         } else Debug.LogError("Inventory slot was not available;");
@@ -172,17 +168,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         SkillList.Add(new SkillAction(skillData, this, SkillList.Count));
     }
 
-
-    public bool HasRemainingStamina() {
-        return _stamina > 0;
-    }
-
-    public bool HasRemainingStamina(int cost) {
-        return _stamina - cost > 0;
-    }
-
-    public int GetStamina() {
-        return _stamina;
+    public void ConsumeStamina(int amount) {
+        _stamina -= amount;
     }
 
     /// <summary> parameter is based on %health </summary>

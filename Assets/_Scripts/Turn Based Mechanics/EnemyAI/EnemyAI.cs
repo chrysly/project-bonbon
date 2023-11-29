@@ -36,7 +36,7 @@ public class EnemyAI
         {
             //Debug.Log("Stamina: " + currentActor.GetStamina());
             // make sure the enemy has enough stamina to use the move
-            if (currentActor.GetStamina() >= skill.SkillData.staminaCost)
+            if (currentActor.Stamina >= skill.SkillData.staminaCost)
             {
                 // if this attack hits multiple targets
                 if (skill.SkillData.aoe)

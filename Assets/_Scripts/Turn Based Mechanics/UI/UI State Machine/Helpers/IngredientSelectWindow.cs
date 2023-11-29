@@ -71,8 +71,8 @@ public class IngredientSelectWindow : MonoBehaviour
             button.Initialize(bonbon);
 
             if (activeIndex >= 0 && activeIndex < _ingredientButtons.Count) {
-                bool insufficientStamina = BattleStateMachine.Instance.CurrInput.ActiveActor().GetStamina() <= ConfirmBonbon().craftStamina;
-                UIUtils.SetupButton(obj, insufficientStamina, grayoutAlpha);
+                bool insufficientStamina = BattleStateMachine.Instance.CurrInput.ActiveActor().Stamina <= ConfirmBonbon().craftStamina;
+                UILogicUtils.SetupButton(obj, insufficientStamina, grayoutAlpha);
             }
 
             obj.transform.DOScale(1f, animationDuration).SetEase(Ease.OutBounce);

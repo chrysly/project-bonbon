@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
 public partial class BattleStateMachine {
     public class TargetSelectState : BattleState {
         private SelectorManager _selectManager = new SelectorManager();
@@ -25,4 +26,4 @@ public partial class BattleStateMachine {
             base.Exit(input);
         }
     }
-}
+} */
