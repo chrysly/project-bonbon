@@ -6,17 +6,17 @@ using UnityEngine.VFX;
 using GameObject = UnityEngine.GameObject;
 
 public class GlobalVFXManager : MonoBehaviour {
-    [SerializeField] private VFXAnimationPackage package;
+    //[SerializeField] private VFXAnimationPackage package;
     public Transform target;
     public Transform user;
     
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.V)) {
             PlayAnimation(package);
         }
-    }
+    }*/
     
     private IEnumerator _action;
     private Queue<List<GameObject>> _activeVFXQueue = new Queue<List<GameObject>>();
