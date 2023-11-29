@@ -8,7 +8,7 @@ public partial class BattleUIStateMachine : StateMachine<BattleUIStateMachine, B
     public new delegate void StateTransition(BattleUIState state, BattleUIStateInput input);
     public event StateTransition OnStateTransition ;
 
-    public new delegate void StaminaConsumption(BattleUIStateInput input);
+    public delegate void StaminaConsumption(BattleUIStateInput input);
     public event StaminaConsumption OnStaminaConsumption;
 
     protected override void Start() {

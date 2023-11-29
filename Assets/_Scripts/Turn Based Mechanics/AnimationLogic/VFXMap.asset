@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89121f3a304db4548b5dabdc741b0316, type: 3}
+  m_Name: VFXMap
+  m_EditorClassIdentifier: 
+  pseudoDict:
+    Keys: 010000000200000004000000
+    Values:
+    - {fileID: 11400000, guid: 4d7a2cf64de57d040b15c3939990f971, type: 2}
+    - {fileID: 11400000, guid: 272b09a4fd9fae2448310224298e4633, type: 2}
+    - {fileID: 11400000, guid: 54a94f3efd46ab749a7be73829230286, type: 2}

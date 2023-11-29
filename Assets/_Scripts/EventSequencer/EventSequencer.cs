@@ -51,7 +51,8 @@ public class EventSequencer : MonoBehaviour {
             DialogueManager.dialogueRequestEvent.Invoke("death_dialogue.yarn");
             bsm.ToggleMachine(true);
         } else if (bsm.PrevState.GetType() == typeof(BattleStateMachine.BattleStart)) {
-            onStartEvent.OnTrigger();
+            events.Enqueue(onStartEvent);
+            RunNextEvent();
             bsm.ToggleMachine(true);
         }
     }

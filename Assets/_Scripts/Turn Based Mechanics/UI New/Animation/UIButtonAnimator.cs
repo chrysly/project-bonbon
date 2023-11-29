@@ -36,11 +36,11 @@ namespace BattleUI {
 
         protected override IEnumerator Idle() {
             if (selected) {
-                transform.DOScale(Vector2.one * selectedScale, animationDuration).SetEase(Ease.OutBounce);
-                yield return new WaitForSeconds(animationDuration);
+                transform.DOScale(Vector2.one * selectedScale, animationDuration);
+                yield return new WaitForSeconds(animationDuration / 2);
             } else {
-                transform.DOScale(Vector2.one * targetScale, animationDuration).SetEase(Ease.InBounce);
-                yield return new WaitForSeconds(animationDuration);
+                transform.DOScale(Vector2.one * targetScale, animationDuration);
+                yield return new WaitForSeconds(animationDuration / 2);
             }
         }
 

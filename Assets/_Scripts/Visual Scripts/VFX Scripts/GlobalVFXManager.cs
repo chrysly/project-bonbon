@@ -5,16 +5,10 @@ using UnityEngine;
 using UnityEngine.VFX;
 using GameObject = UnityEngine.GameObject;
 
-public class GlobalVFXManager : MonoBehaviour {
-    //[SerializeField] private VFXAnimationPackage package;
-    
-    // Update is called once per frame
-    /*void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V)) {
-            PlayAnimation(package);
-        }
-    }*/
+public class GlobalVFXManager : StateMachineHandler {
+
+    [SerializeField] private VFXMap vfxMap;
+    public VFXMap VFXMap => vfxMap;
     
     private IEnumerator _action;
     private Queue<List<GameObject>> _activeVFXQueue = new Queue<List<GameObject>>();
