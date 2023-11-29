@@ -19,7 +19,7 @@ namespace BattleUI {
 
         private void UIBrain_OnUIRefresh(Actor actor) {
             stateAnimators = baseAnimators.Concat(actor.gameObject
-                                          .GetComponentsInChildren<UIStateAnimator>()).ToArray();
+                                          .GetComponentsInChildren<UIStateAnimator>(true)).ToArray();
             foreach (UIStateAnimator animator in stateAnimators) animator.Init(this);
         }
 

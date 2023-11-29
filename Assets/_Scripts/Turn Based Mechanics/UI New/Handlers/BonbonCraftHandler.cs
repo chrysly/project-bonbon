@@ -6,11 +6,9 @@ namespace BattleUI {
 
         [SerializeField] private Transform ingredientView;
         [SerializeField] private GameObject craftButtonPrefab;
-        private SkillSelectButton[] buttonArr;
+
         public event System.Action OnButtonArrange;
         
-        private void Awake() { Type = UIStateType.Bonbon; }
-
         public override UIInputPack InputArrangement() {
             int craftCount = CurrActor.BonbonList.Count;
             BonbonCraftButton[] buttonArr = new BonbonCraftButton[craftCount];
@@ -29,11 +27,6 @@ namespace BattleUI {
             BonbonObject freshBonbon = BonbonHandler.CreateBonbon(bonbon, CurrActor, new bool[4]);
             CurrActor.AcceptBonbon(Slot, freshBonbon);
             Brain.ReturnTo<BonbonMainHandler>();
-        }
-        
-        public override void Revert() {
-            buttonArr = null;
-            base.Revert();
         }
     }
 }

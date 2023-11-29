@@ -26,13 +26,14 @@ namespace BattleUI {
             TransitionInfo.SkillPrep.targets = new[] { target };
             Brain.BattleStateMachine.CurrInput
                  .SkillHandler.SkillActivate(TransitionInfo.SkillPrep);
-            Brain.ExitUI();
+            Brain.ExitUI(false);
         }
 
         public override void Revert() {
-            buttonArr.Dispose();
-            buttonArr = null;
-            base.Revert();
+            if (buttonArr != null) {
+                buttonArr.Dispose();
+                buttonArr = null;
+            } base.Revert();
         }
     }
 }
