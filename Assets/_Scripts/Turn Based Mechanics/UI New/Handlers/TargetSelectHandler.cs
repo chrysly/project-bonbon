@@ -15,7 +15,8 @@ namespace BattleUI {
             for (int i = 0; i < targets.Count; i++) {
                 Transform anchor = targets[i].GetComponentInChildren<CursorIdentifier>(true).transform;
                 GameObject go = new GameObject($"Target: {targets[i]}");
-                go.transform.parent = transform;
+                go.transform.parent = anchor;
+                go.transform.localPosition = Vector3.zero;
                 buttonArr[i] = go.AddComponent<TargetSelectButton>();
                 buttonArr[i].Init(this);
                 buttonArr[i].Init(targets[i], anchor);

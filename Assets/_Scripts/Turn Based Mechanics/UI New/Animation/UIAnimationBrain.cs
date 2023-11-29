@@ -4,7 +4,7 @@ using UnityEngine;
 namespace BattleUI {
     public class UIAnimationBrain : MonoBehaviour {
 
-        private UIBrain logicBrain;
+        public UIBrain LogicBrain { get; private set; }
 
         private UIStateAnimator[] baseAnimators;
         private UIStateAnimator[] stateAnimators;
@@ -12,8 +12,8 @@ namespace BattleUI {
         public event System.Action<UIButtonAnimator> OnSelectionChange;
 
         void Awake() {
-            logicBrain = GetComponent<UIBrain>();
-            logicBrain.OnUIRefresh += UIBrain_OnUIRefresh;
+            LogicBrain = GetComponent<UIBrain>();
+            LogicBrain.OnUIRefresh += UIBrain_OnUIRefresh;
             baseAnimators = GetComponentsInChildren<UIStateAnimator>(true);
         }
 
