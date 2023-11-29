@@ -441,5 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d02df3601b70744c9abd52c08cd4d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTarget: {fileID: 0}
+  cursorTarget: {fileID: 3541432407302041842}
   selectDuration: 0.3
+  icon: {fileID: 234871404636116085}
+  nameText: {fileID: 6625364793623682265}

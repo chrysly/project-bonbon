@@ -36,8 +36,8 @@ namespace BattleUI {
             if (state is BattleStateMachine.TurnState && input.ActiveActor() is CharacterActor) {
                 CurrActor = (CharacterActor) input.ActiveActor();
                 handlerMap.LoadHandlers(this, CurrActor.gameObject);
-                Transition<MainStateHandler>();
                 OnUIRefresh?.Invoke(CurrActor);
+                Transition<MainStateHandler>();
             }
         }
 
@@ -57,6 +57,8 @@ namespace BattleUI {
         }
 
         public void ReturnTo<T>() where T : UIStateHandler => transitionManager.RevertTo<T>();
+
+        public void SoftResetHandler<T>() => handlerMap[typeof(T)].SoftEnable();
 
         private void CycleButton(InTraversal traversal) => CurrInput.ProcessTraversal(traversal);
         private void ProcessAction(InAction action) {
@@ -78,10 +80,11 @@ namespace BattleUI {
             }
         }
 
-        public void ExitUI() {
+        public void ExitUI(bool autonomousBattleTransition) {
             transitionManager.RevertAll();
             DisableUnrelatedHandlers();
             InputReader.Disable();
+            if (autonomousBattleTransition) BattleStateMachine.StartBattle(0.5f);
         }
     }
 }
