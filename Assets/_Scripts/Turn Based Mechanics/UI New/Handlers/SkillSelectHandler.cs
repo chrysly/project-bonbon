@@ -30,7 +30,9 @@ namespace BattleUI {
         }
 
         public override void Revert() {
-            buttonArr = null;
+            if (TransitionInfo.Bonbon != null) {
+                Brain.SoftResetHandler<BonbonMainHandler>();
+            } buttonArr = null;
             base.Revert();
         }
     }
