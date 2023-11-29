@@ -39,12 +39,12 @@ namespace BattleUI {
         public void Update() {
 
             if (_active && !_innerTransition) {
-                inner.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
+                inner.position = _actor.transform.position;
                 inner.Rotate(Vector3.forward * (Time.deltaTime * 20));
             }
 
             if (_active && !_outerTransition) {
-                outer.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
+                outer.position = _actor.transform.position;
                 outer.Rotate(Vector3.forward * (Time.deltaTime * -20));
             }
         }
