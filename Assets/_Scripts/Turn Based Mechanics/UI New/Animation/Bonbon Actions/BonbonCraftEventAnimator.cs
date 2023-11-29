@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class BonbonCraftEventAnimator : MonoBehaviour {
     [SerializeField] private GameObject CraftInputVFXPrefab;
-    [SerializeField] private GameObject 
+    [SerializeField] private GameObject CraftOutputVFXPrefab;
 }
