@@ -58,6 +58,8 @@ namespace BattleUI {
 
         public void ReturnTo<T>() where T : UIStateHandler => transitionManager.RevertTo<T>();
 
+        public void SoftResetHandler<T>() => handlerMap[typeof(T)].SoftEnable();
+
         private void CycleButton(InTraversal traversal) => CurrInput.ProcessTraversal(traversal);
         private void ProcessAction(InAction action) {
             switch (action) {

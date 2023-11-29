@@ -6,24 +6,12 @@ namespace BattleUI {
 
         public BonbonBlueprint[] MatchingRecipes { get; private set; }
 
-        public override void Init(UIBrain brain) {
-            base.Init(brain);
-            IEnumerable<BonbonBakeSlotButton> slots = buttonMatrix.Values.Select(button => button as BonbonBakeSlotButton);
-            for (int i = 0; i < slots.Count(); i++) slots.ElementAt(i).Init(i);
-        }
-
         public override UIInputPack Enable(BaseTransitionInfo info) {
+            UIInputPack input = base.Enable(info);
             MatchingRecipes = BonbonHandler.FindRelativeRecipes(Inventory[Slot].Data).ToArray();
             IEnumerable<BonbonBakeSlotButton> slots = buttonMatrix.Values.Select(button => button as BonbonBakeSlotButton);
             for (int i = 0; i < slots.Count(); i++) slots.ElementAt(i).Enable();
-            return base.Enable(info);
-        }
-
-        public override UIInputPack InputArrangement() {
-            UIButton[][] buttonArr2D = buttonMatrix.To2DArray();
-            for (int i = 0; i < buttonArr2D.Length; i++) {
-                buttonArr2D[i] = buttonArr2D[i].Where(button => (button as BonbonBakeSlotButton).Slot != Slot).ToArray();
-            } return new UIInputPack(buttonArr2D, TraversalMode.Cardinal);
+            return input;
         }
 
         public BonbonBlueprint FindValidRecipe(int slot) {
