@@ -6,19 +6,23 @@ using UnityEngine;
 namespace BattleUI {
     public class ActorCursorHandler : CursorHandler {
 
-        [SerializeField] private float animationLength;
+        [SerializeField] private float animationLength = 0.2f;
         [SerializeField] private float idleCursorOffset;
         [SerializeField] private GameObject cursorPrefab;
 
         private Transform _activeCursor;
+        private Transform _target;
 
         private UIAnimatorState state;
 
         private void Awake() {
             _activeCursor = Instantiate(cursorPrefab, transform).transform;
+            _activeCursor.gameObject.SetActive(false);
+            StartCoroutine(CoreCoroutine());
         }
 
         public override void FocusEntity(Transform target) {
+            _target = target;
             if (_activeCursor == null) {
                 state = UIAnimatorState.Loading;
             }
@@ -49,9 +53,17 @@ namespace BattleUI {
         }
 
         private IEnumerator Load() {
+            if (!_activeCursor.gameObject.activeSelf) {
+                _activeCursor.gameObject.SetActive(true);
+                _activeCursor.position = _target.position;
+            } else {
+                _activeCursor.DOMove(_target.position, animationLength);
+            }
+            
             _activeCursor.DOScale(Vector3.zero, 0);
             _activeCursor.DOScale(Vector2.one, animationLength).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(animationLength);
+            state = UIAnimatorState.Idle;
         }
 
         private IEnumerator Idle() {
@@ -61,6 +73,7 @@ namespace BattleUI {
         }
 
         private IEnumerator Unload() {
+            _activeCursor.gameObject.SetActive(false);
             _activeCursor.DOScale(Vector3.zero, 0.2f);
             yield return new WaitForSeconds(0.2f);
         }
