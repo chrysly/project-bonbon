@@ -9,17 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563e0954142a52342933950a538ceacc, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c4826118d5c6be4baf32b74ee4aafd4, type: 3}
   m_Name: s1_combat03
   m_EditorClassIdentifier: 
   eventConditions:
-  - rid: 2255346189779075072
+  - rid: 6214501969841094657
   yarnFile: {fileID: -8253061345870894857, guid: ce931117ade761740b8046939834f7bd, type: 3}
-  includeLoadingBar: 0
   references:
     version: 2
     RefIds:
-    - rid: 2255346189779075072
+    - rid: 6214501969841094657
       type: {class: EventConditions/TurnNumberCondition, ns: , asm: Assembly-CSharp}
       data:
-        turnNum: 4
+        turnNum: 3

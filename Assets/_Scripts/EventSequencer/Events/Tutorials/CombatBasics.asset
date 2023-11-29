@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb371b3905524e4aaa3c53c34b1b8d7, type: 3}
+  m_Name: CombatBasics
+  m_EditorClassIdentifier: 
+  eventConditions:
+  - rid: -2
+  yarnFile: {fileID: 0}
+  popUps:
+  - {fileID: 21300000, guid: 3f0fa33ea99c6134fb7f7a4c89f8ce9a, type: 3}
+  - {fileID: 21300000, guid: b07947728f76e7643a07bc026dacac62, type: 3}
+  - {fileID: 21300000, guid: a4c146cec57bfd2479a7451c65095df1, type: 3}
+  - {fileID: 21300000, guid: 51e3a3b050462cb448c6089237ce58c8, type: 3}
+  - {fileID: 21300000, guid: 83b349012a592824b8988e541c483e48, type: 3}
+  - {fileID: 21300000, guid: cdb948d65e1bc8c4d951cf74e96cd329, type: 3}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

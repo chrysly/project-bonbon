@@ -69,10 +69,14 @@ public class EventSequencer : MonoBehaviour {
 
             // add any events that meet activate conditions to a queue
             foreach (EventObject ev in eventSequence) {
-                if (ev.CheckConitions(package)) {
+
+                if (ev != null) {
+                    if (ev.CheckConitions(package)) {
                     Debug.Log("Event added to queue");
                     events.Enqueue(ev);
+                    }
                 }
+                
             }
         }
 
@@ -110,8 +114,9 @@ public class EventSequencer : MonoBehaviour {
             events.Dequeue();
         }
         OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
+
     }
-    
+
     public void addEvent(EventObject eventToAdd) {
         events.Enqueue(eventToAdd);
     }
