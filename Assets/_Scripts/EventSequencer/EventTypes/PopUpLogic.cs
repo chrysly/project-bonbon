@@ -10,6 +10,8 @@ public class PopUpLogic : MonoBehaviour {
     private bool isActive = false;
     private BattleStateMachine bsm => BattleStateMachine.Instance;
 
+    public EventSequencer eventSequencer;
+
     void Start() {
         img = GetComponent<Image>();
     }
@@ -28,6 +30,7 @@ public class PopUpLogic : MonoBehaviour {
                 //bsm.ToggleMachine(false);
                 isActive = false;
                 transform.GetChild(0).gameObject.SetActive(false);
+                eventSequencer.CheckForEventEnd();
             }
         }
     }

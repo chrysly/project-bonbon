@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventConditions:
   - rid: -2
-  yarnFile: {fileID: -8253061345870894857, guid: bd650d97120e74f42b28b80d2bc3f37a, type: 3}
-  eventToLoad: {fileID: 11400000, guid: 25dcc5ab3f821824a920f6e83e6fadd3, type: 2}
+  yarnFile: {fileID: 0}
+  eventToLoad: {fileID: 11400000, guid: 7667fa922a73f3347b4481158dc4b8fb, type: 2}
+  thisEvent: {fileID: 11400000, guid: 25dcc5ab3f821824a920f6e83e6fadd3, type: 2}
   references:
     version: 2
     RefIds:
