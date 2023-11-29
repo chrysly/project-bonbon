@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 3623975581694680877}
   - component: {fileID: 7740568649006607722}
   - component: {fileID: 2790887836359901993}
+  - component: {fileID: 9219040118906443294}
   m_Layer: 0
   m_Name: State Machine
   m_TagString: Untagged
@@ -570,6 +571,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonbonMapSO: {fileID: 11400000, guid: c5cef39661d95934b8ac1e1856bebdfd, type: 2}
+--- !u!114 &9219040118906443294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3582622979197147412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3775c5cb0115a4f9b77845e148b622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxMap: {fileID: 11400000, guid: 91eb9a5d2c4cdb4468f0a5f5ce90319b, type: 2}
 --- !u!1 &4310379743052335967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,8 +1258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3f17f7562f9f04e9c3211e72ff090f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiCursorGO: {fileID: 6905004696532198048, guid: 6e20885bd2cdbf24dbba455dcc08fd31, type: 3}
-  targetCursorGO: {fileID: 4981898987406499341, guid: 2e74bc66da1ecc54aa55ac0fed4dab69, type: 3}
 --- !u!1001 &1302448879408566226
 PrefabInstance:
   m_ObjectHideFlags: 0

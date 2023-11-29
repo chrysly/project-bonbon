@@ -6,6 +6,7 @@ public class ActorHandler : StateMachineHandler {
 
     [SerializeField] private ActorMap prefabMap;
     public ActorMap PrefabMap => prefabMap;
+    public BattleStateInput CurrInput => input;
 
     /// <summary> A convenient way to pass down Screen Canvas references to Actors; </summary>
     [System.Serializable]

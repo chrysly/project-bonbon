@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class SelectionDisplay : MonoBehaviour {
+public class TargetCursorHandler : CursorHandler {
     [SerializeField] private GameObject cursorPrefab;
     private GameObject _cursorInstance;
 
@@ -23,9 +23,6 @@ public class SelectionDisplay : MonoBehaviour {
 
     private Transform inner;
     private Transform outer;
-    
-    //DEBUGGING
-    [SerializeField] public List<Transform> focus;
 
     public void Start() {
         Init(cursorPrefab);
@@ -39,11 +36,6 @@ public class SelectionDisplay : MonoBehaviour {
     }
 
     public void Update() {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            FocusEntity(focus[0]);
-        } else if (Input.GetKeyDown(KeyCode.B)) {
-            FocusEntity(focus[1]);
-        }
 
         if (_active && !_innerTransition) {
             inner.position = _actor.GetComponentInChildren<CursorIdentifier>().transform.position;
@@ -60,7 +52,7 @@ public class SelectionDisplay : MonoBehaviour {
     /// Sets the cursor position to the target position. Spawns cursor if inactive.
     /// </summary>
     /// <param name="target"> Target actor to lock to. </param>
-    public void FocusEntity(Transform target) {
+    public override void FocusEntity(Transform target) {
         if (_activeAnim == null) {
             _activeAnim = ActivateAction(target);
             StartCoroutine(_activeAnim);
@@ -141,4 +133,63 @@ public class SelectionDisplay : MonoBehaviour {
         _activeAnim = null;
         yield return null;
     }
+}
+
+namespace BattleUI {
+    public class ActorCursorHandler : CursorHandler {
+
+        [SerializeField] private float animationLength;
+        [SerializeField] private float idleCursorOffset;
+
+        private UIAnimatorState state;
+
+        public override void FocusEntity(Transform target) {
+            
+        }
+
+        protected IEnumerator CoreCoroutine() {
+            while (true) {
+                switch (state) {
+                    case UIAnimatorState.Loading:
+                        IEnumerator loadCoroutine = Load();
+                        while (loadCoroutine.MoveNext())
+                            yield return loadCoroutine.Current;
+                        state = UIAnimatorState.Idle;
+                        break;
+                    case UIAnimatorState.Idle:
+                        IEnumerator idleCoroutine = Idle();
+                        while (idleCoroutine.MoveNext())
+                            yield return idleCoroutine.Current;
+                        break;
+                    case UIAnimatorState.Unloading:
+                        IEnumerator unloadCoroutine = Unload();
+                        while (unloadCoroutine.MoveNext())
+                            yield return unloadCoroutine.Current;
+                        state = UIAnimatorState.Idle;
+                        break;
+                } yield return null;
+            }
+        }
+
+        private IEnumerator Load() {
+            transform.DOScale(Vector3.zero, 0);
+            transform.DOScale(Vector2.one, animationLength).SetEase(Ease.OutBounce);
+            yield return new WaitForSeconds(animationLength);
+        }
+
+        private IEnumerator Idle() {
+            transform.localPosition = new Vector2(transform.localPosition.x,
+                                                  Mathf.Sin(Time.time) * idleCursorOffset);
+            yield return null;
+        }
+
+        private IEnumerator Unload() {
+            transform.DOScale(Vector3.zero, 0.2f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+}
+
+public abstract class CursorHandler : MonoBehaviour {
+    public abstract void FocusEntity(Transform target);
 }

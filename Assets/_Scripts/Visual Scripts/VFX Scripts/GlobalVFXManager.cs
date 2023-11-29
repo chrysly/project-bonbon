@@ -5,7 +5,10 @@ using UnityEngine;
 using UnityEngine.VFX;
 using GameObject = UnityEngine.GameObject;
 
-public class GlobalVFXManager : MonoBehaviour {
+public class GlobalVFXManager : StateMachineHandler {
+
+    [SerializeField] private VFXMap vfxMap;
+    public VFXMap VFXMap => vfxMap;
     //[SerializeField] private VFXAnimationPackage package;
     
     // Update is called once per frame
