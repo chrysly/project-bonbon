@@ -533,15 +533,15 @@ MonoBehaviour:
     HasValue: 0
   displaySortOrder: 0
   childIdentifiers:
-  - c88d16e5272a4e241b0ef0ac2e53b73d
   - fd7c55dab0fce234b8c25f6ffca523c1
-  - 2c5177b11d81d824dbb064f9ac8527da
-  - e7a046c753c3c3d4aacc91f6597f310d
   - 52eb9df5db46521439908db3a29a1bbb
+  - c88d16e5272a4e241b0ef0ac2e53b73d
   - b7716510a1f36934c87976f3a81dbf3d
+  - e7a046c753c3c3d4aacc91f6597f310d
+  - 2c5177b11d81d824dbb064f9ac8527da
   - 0f8eb3f400726694eb47beb1a9f94ce8
-  - 46fbfdf3fc43db0458918377fd40293e
   - 2fea114e74ecf3c4f920e1d5cc1c4c40
+  - 46fbfdf3fc43db0458918377fd40293e
   codecChannels:
     Value: []
     HasValue: 0
@@ -625,10 +625,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 0
-  HasPlatforms: 0
-  sourceProjectPath: 
-  sourceBankPath: Desktop
+  HasSourceProject: 1
+  HasPlatforms: 1
+  sourceProjectPath: ../../../../Documents/FMOD/Bonbon/Bonbon-Audio-Project/Bonbon-Audio-Project.fspro
+  sourceBankPath: ../../../../Documents/FMOD/Bonbon/Bonbon-Audio-Project/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -663,21 +663,21 @@ MonoBehaviour:
   EnableErrorCallback: 0
   SharedLibraryUpdateStage: 0
   SharedLibraryTimeSinceStart: 0
-  CurrentVersion: 131603
+  CurrentVersion: 131609
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131603
   Platforms:
-  - {fileID: -7750448721044542186}
-  - {fileID: -683539959765953292}
-  - {fileID: -6511246867900416414}
   - {fileID: -8809222110783028946}
-  - {fileID: -1856347726403892718}
-  - {fileID: -2407058201386570841}
   - {fileID: -8600936955746795655}
+  - {fileID: -7750448721044542186}
+  - {fileID: -6511246867900416414}
   - {fileID: -2437153161147453989}
+  - {fileID: -2407058201386570841}
+  - {fileID: -1856347726403892718}
+  - {fileID: -683539959765953292}
   - {fileID: -203871626786908310}
-  - {fileID: 2870324503007308798}
   - {fileID: 2756507345625898728}
+  - {fileID: 2870324503007308798}
   MigratedPlatforms: 0c000000150000000b0000000a00000009000000120000000800000005000000060000000200000001000000
 --- !u!114 &2756507345625898728
 MonoBehaviour:
