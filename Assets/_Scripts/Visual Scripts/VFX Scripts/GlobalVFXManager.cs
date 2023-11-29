@@ -7,8 +7,6 @@ using GameObject = UnityEngine.GameObject;
 
 public class GlobalVFXManager : MonoBehaviour {
     //[SerializeField] private VFXAnimationPackage package;
-    public Transform target;
-    public Transform user;
     
     // Update is called once per frame
     /*void Update()
@@ -21,16 +19,16 @@ public class GlobalVFXManager : MonoBehaviour {
     private IEnumerator _action;
     private Queue<List<GameObject>> _activeVFXQueue = new Queue<List<GameObject>>();
     
-    public void PlayAnimation(VFXAnimationPackage package) {
+    public void PlayAnimation(VFXAnimationPackage package, Transform actor) {
         if (_action == null) {
-            _action = AnimationAction(package);
+            _action = AnimationAction(package, actor);
             StartCoroutine(_action);
         }
     }
     
-    public IEnumerator AnimationAction(VFXAnimationPackage package) {
+    public IEnumerator AnimationAction(VFXAnimationPackage package, Transform actor) {
         foreach (VFXAnimation vfxAnim in package.animationList) {
-            CycleOperations(vfxAnim);
+            CycleOperations(vfxAnim, actor);
             yield return new WaitForSeconds(vfxAnim.delay);
         }
 
@@ -39,17 +37,17 @@ public class GlobalVFXManager : MonoBehaviour {
         yield return null;
     }
     
-    private void CycleOperations(VFXAnimation vfxAnim) {
-        if (vfxAnim.visualEffects.Count > 0) SpawnOperation(vfxAnim);
-        if (vfxAnim.material != null && vfxAnim.doMaterialSwap) ApplyShaderOperation(vfxAnim);
-        if (vfxAnim.material != null && vfxAnim.doMaterialReplace) ReplaceMaterialOperation(vfxAnim);
+    private void CycleOperations(VFXAnimation vfxAnim, Transform actor) {
+        if (vfxAnim.visualEffects.Count > 0) SpawnOperation(vfxAnim, actor);
+        if (vfxAnim.material != null && vfxAnim.doMaterialSwap) ApplyShaderOperation(vfxAnim, actor);
+        if (vfxAnim.material != null && vfxAnim.doMaterialReplace) ReplaceMaterialOperation(vfxAnim, actor);
         if (vfxAnim.material != null && vfxAnim.doMaterialLevel) ShaderValueOperation(vfxAnim);
     }
     
     #region VFX Operations
 
-    private void SpawnOperation(VFXAnimation vfxAnim) {
-        Transform spawnLocation = SetTarget(vfxAnim.spawnAt);
+    private void SpawnOperation(VFXAnimation vfxAnim, Transform actor) {
+        Transform spawnLocation = SetTarget(vfxAnim.spawnAt, actor);
         if (vfxAnim.visualEffects != null) {
             List<GameObject> visualEffects = new List<GameObject>();
             foreach (GameObject vfx in vfxAnim.visualEffects) {
@@ -61,8 +59,8 @@ public class GlobalVFXManager : MonoBehaviour {
         }
     }
 
-    private void ReplaceMaterialOperation(VFXAnimation vfxAnim) {
-        Transform meshTransform = SetTarget(vfxAnim.spawnAt);
+    private void ReplaceMaterialOperation(VFXAnimation vfxAnim, Transform actor) {
+        Transform meshTransform = SetTarget(vfxAnim.spawnAt, actor);
         SkinnedMeshRenderer[] skins = meshTransform.GetComponentsInChildren<SkinnedMeshRenderer>();
         Material[] materials = { vfxAnim.material };
         foreach (SkinnedMeshRenderer skin in skins) {
@@ -78,8 +76,8 @@ public class GlobalVFXManager : MonoBehaviour {
         }
     }
 
-    private void ApplyShaderOperation(VFXAnimation vfxAnim) {
-        Transform meshTransform = SetTarget(vfxAnim.spawnAt);
+    private void ApplyShaderOperation(VFXAnimation vfxAnim, Transform actor) {
+        Transform meshTransform = SetTarget(vfxAnim.spawnAt, actor);
         SkinnedMeshRenderer[] skins = meshTransform.GetComponentsInChildren<SkinnedMeshRenderer>();
         foreach (SkinnedMeshRenderer skin in skins) {
             if (skin.materials[skin.materials.Length - 1] == null) {
@@ -122,20 +120,20 @@ public class GlobalVFXManager : MonoBehaviour {
     
     
     //CHANGE TO BSM
-    private Transform SetTarget(VFXAnimation.SpawnAt spawnAt) {
+    private Transform SetTarget(VFXAnimation.SpawnAt spawnAt, Transform actor) {
         if (spawnAt == VFXAnimation.SpawnAt.User) {
-            return user;
+            return actor;
         }
 
         if (spawnAt == VFXAnimation.SpawnAt.Target) {
-            return target;
+            return actor;
         }
 
         if (spawnAt == VFXAnimation.SpawnAt.Field) {
             Debug.Log("Field spawn");
         }
 
-        return target;
+        return actor;
     }
     #endregion VFX Operations
 }
