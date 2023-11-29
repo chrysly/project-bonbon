@@ -191,7 +191,7 @@ namespace FMODUnity
 
         public static Texture2D LoadImage(string filename)
         {
-            Texture2D texture = EditorGUIUtility.Load($"Assets/{RuntimeUtils.PluginBasePath}/images/{filename}") as Texture2D;
+            Texture2D texture = EditorGUIUtility.Load($"{RuntimeUtils.PluginBasePath}/images/{filename}") as Texture2D;
 
             if (texture == null)
             {
@@ -358,7 +358,14 @@ namespace FMODUnity
             EditorApplication.playModeStateChanged += HandleOnPlayModeChanged;
             EditorApplication.pauseStateChanged += HandleOnPausedModeChanged;
 
-            EditorApplication.update += CallStartupMethodsWhenReady;
+            if (Application.isBatchMode)
+            {
+                BuildStatusWatcher.Startup();
+            }
+            else
+            {
+                EditorApplication.update += CallStartupMethodsWhenReady;
+            }
         }
 
         private static void HandleBeforeAssemblyReload()
@@ -476,6 +483,18 @@ namespace FMODUnity
             FMODEventPlayableBehavior.GraphStop += (sender, args) =>
             {
                 PreviewStop(args.eventInstance);
+            };
+
+            FMODEventPlayable.OnCreatePlayable += (sender, args) =>
+            {
+                FMODEventPlayable playable = sender as FMODEventPlayable;
+                if (playable.Parameters.Length > 0 || playable.Template.ParameterLinks.Count > 0)
+                {
+                    LoadPreviewBanks();
+                    FMOD.Studio.EventDescription eventDescription;
+                    system.getEventByID(playable.EventReference.Guid, out eventDescription);
+                    playable.LinkParameters(eventDescription);
+                }
             };
 #endif
 
@@ -651,7 +670,7 @@ namespace FMODUnity
             {
                 url = string.Format("{0}/{1}/{2}", Prefix, version, section);
             }
-                
+
             Application.OpenURL(url);
         }
 
@@ -720,15 +739,25 @@ namespace FMODUnity
             foreach (EditorParamRef param in eventRef.Parameters)
             {
                 FMOD.Studio.PARAMETER_DESCRIPTION paramDesc;
-                CheckResult(eventDescription.getParameterDescriptionByName(param.Name, out paramDesc));
-                param.ID = paramDesc.id;
                 if (param.IsGlobal)
                 {
-                    CheckResult(System.setParameterByID(param.ID, previewParamValues[param.Name]));
+                    CheckResult(System.getParameterDescriptionByName(param.Name, out paramDesc));
                 }
                 else
                 {
-                    CheckResult(eventInstance.setParameterByID(param.ID, previewParamValues[param.Name]));
+                    CheckResult(eventDescription.getParameterDescriptionByName(param.Name, out paramDesc));
+                }
+
+                float value = previewParamValues.ContainsKey(param.Name) ? previewParamValues[param.Name] : param.Default;
+                param.ID = paramDesc.id;
+
+                if (param.IsGlobal)
+                {
+                    CheckResult(System.setParameterByID(param.ID, value));
+                }
+                else
+                {
+                    CheckResult(eventInstance.setParameterByID(param.ID, value));
                 }
             }
 
@@ -1034,7 +1063,7 @@ namespace FMODUnity
         {
             if (string.IsNullOrEmpty(AssetDatabase.GUIDToAssetPath(RuntimeUtils.BaseFolderGUID)))
             {
-                string folderPath = $"Assets/{RuntimeUtils.PluginBasePathDefault}";
+                string folderPath = RuntimeUtils.PluginBasePathDefault;
 
                 if (!Directory.Exists(folderPath))
                 {
@@ -1203,7 +1232,7 @@ namespace FMODUnity
                 return;
             }
 
-            string obsoleteFolder = $"Assets/{RuntimeUtils.PluginBasePath}/obsolete";
+            string obsoleteFolder = $"{RuntimeUtils.PluginBasePath}/obsolete";
 
             if (AssetDatabase.IsValidFolder(obsoleteFolder))
             {
@@ -1230,8 +1259,8 @@ namespace FMODUnity
 
     public class StagingSystem
     {
-        private static string PlatformsFolder => $"Assets/{RuntimeUtils.PluginBasePath}/platforms";
-        private static string StagingFolder => $"Assets/{RuntimeUtils.PluginBasePath}/staging";
+        private static string PlatformsFolder => $"{RuntimeUtils.PluginBasePath}/platforms";
+        private static string StagingFolder => $"{RuntimeUtils.PluginBasePath}/staging";
         private const string AnyCPU = "AnyCPU";
 
         private static readonly LibInfo[] LibrariesToUpdate = {

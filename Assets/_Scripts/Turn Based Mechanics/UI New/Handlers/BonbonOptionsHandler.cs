@@ -9,7 +9,11 @@ namespace BattleUI {
         public int ShareStaminaCost => shareStaminaCost;
 
         public override void Transition<T>() {
-            Brain.Transition<T>(new SkillTransitionInfo(Inventory[Slot]));
+            if (typeof(T) == typeof(SkillSelectHandler)) {
+                Brain.Transition<T>(new SkillTransitionInfo(Inventory[Slot]));
+            } if (typeof(T) == typeof(BonbonBakeHandler)) {
+                Brain.Transition<T>(new BonbonTransitionInfo(Slot));
+            }
         }
 
         public Actor FetchPassTarget() {
@@ -26,7 +30,7 @@ namespace BattleUI {
         public void PassBonbon() {
             Actor target = FetchPassTarget();
             Brain.CurrActor.PassBonbon(Slot, target);
-            Brain.ExitUI();
+            Brain.ExitUI(true);
         }
     }
 }
