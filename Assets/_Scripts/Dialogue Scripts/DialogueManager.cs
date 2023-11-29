@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour
     void Update()
     {
         //Debug Input
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !tweeningDialogue)
+        if (Input.GetKeyDown(KeyCode.E) && !tweeningDialogue)
         {
             if (readingDialogue)
             {
