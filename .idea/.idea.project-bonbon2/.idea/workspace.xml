@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5938412e-5f52-4830-88a0-72e3ee58e7c3" name="Changes" comment="" />
+    <list default="true" id="5938412e-5f52-4830-88a0-72e3ee58e7c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Dialogue Scripts/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Dialogue Scripts/DialogueManager.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +84,7 @@
       <workItem from="1700331095846" duration="391000" />
       <workItem from="1700889901656" duration="335000" />
       <workItem from="1700893484922" duration="782000" />
+      <workItem from="1701249150196" duration="632000" />
     </task>
     <servers />
   </component>
