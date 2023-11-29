@@ -19,6 +19,7 @@ namespace BattleUI {
         public UIInput InputReader { get; private set; }
 
         public event System.Action<Actor> OnUIRefresh;
+        public event System.Action OnAnimationEvent;
 
         public bool UILocked;
 
