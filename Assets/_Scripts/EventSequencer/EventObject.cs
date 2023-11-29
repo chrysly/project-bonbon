@@ -16,10 +16,14 @@ public class EventObject : ScriptableObject {
     /// checks if an events conditions are met. if yes, add it to the event queue
     /// </summary>
     public virtual bool CheckConitions(AIActionValue package) {
+
         foreach (Condition condition in eventConditions) {
-            if (!condition.Check(package)) {
-                return false;
+            if (condition != null) {
+                if (!condition.Check(package)) {
+                    return false;
+                }
             }
+            
         }
         return true;
     }

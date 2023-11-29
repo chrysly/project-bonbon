@@ -69,10 +69,14 @@ public class EventSequencer : MonoBehaviour {
 
             // add any events that meet activate conditions to a queue
             foreach (EventObject ev in eventSequence) {
-                if (ev.CheckConitions(package)) {
+
+                if (ev != null) {
+                    if (ev.CheckConitions(package)) {
                     Debug.Log("Event added to queue");
                     events.Enqueue(ev);
+                    }
                 }
+                
             }
         }
 
