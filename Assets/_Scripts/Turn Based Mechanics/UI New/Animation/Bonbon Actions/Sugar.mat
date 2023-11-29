@@ -54,8 +54,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Dissolve_Outline_Width: 0.05
-    - _Level: 0.39
+    - _Dissolve_Outline_Width: 0.086
+    - _Level: 0.047
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scroll: -0.28
