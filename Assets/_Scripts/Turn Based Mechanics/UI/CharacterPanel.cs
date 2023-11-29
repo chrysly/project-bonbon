@@ -5,29 +5,19 @@ using DG.Tweening;
 using UnityEngine;
 
 public class CharacterPanel : MonoBehaviour {
-    private BattleStateMachine stateMachine => BattleStateMachine.Instance;
+    
     private Vector3 resetPos;
     private Vector3 newPos;
-    private bool active = false;
 
     private void Start() {
         resetPos = transform.position;
         newPos = new Vector3(resetPos.x, resetPos.y - 300, resetPos.z);
         transform.DOMove(newPos, 0f);
-        stateMachine.OnStateTransition += Toggle;
+        DialogueManager.OnDialogueStart += Toggle;
     }
 
-    private void Toggle(BattleStateMachine.BattleState state, BattleStateInput input) {
-        if (state is BattleStateMachine.BattleStart || state is BattleStateMachine.WinState ||
-            state is BattleStateMachine.LoseState) {
-            if (active) {
-                transform.DOMove(newPos, 0.5f);
-            }
-        }
-        else {
-            if (!active) {
-                transform.DOMove(resetPos, 0.5f);
-            }
-        }
+    private void Toggle(bool active) {
+        if (active) transform.DOMove(newPos, 0.5f);
+        else transform.DOMove(resetPos, 0.5f);
     }
 }
