@@ -24,8 +24,21 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
-    m_Colors: []
+    m_Floats:
+    - _Depth: 8.2
+    - _Foam_Speed: 0.26
+    - _Interactive_Foam_Depth: 8.09
+    - _Interactive_Foam_Speed: 0.21
+    - _Normals_Strength: 1.17
+    - _Refraction_Speed: 0.91
+    - _Wave_Speed: 0.39
+    m_Colors:
+    - _Deep_Color: {r: 0.06373133, g: 0.054626856, b: 0.305, a: 0.39607844}
+    - _Foam_Color: {r: 0.33760378, g: 0.4300877, b: 0.5471698, a: 0}
+    - _HorizonColor: {r: 0.54920757, g: 0.60174185, b: 0.7169812, a: 0.12156863}
+    - _Interactive_Foam_Color: {r: 0.18487096, g: 0.19899997, b: 0.19899997, a: 1}
+    - _Shallow_Color: {r: 0, g: 0.3799127, b: 0.87, a: 0.4392157}
+    - _Specular_Color: {r: 0.49783525, g: 0.5469176, b: 0.59599996, a: 0.9490196}
   m_BuildTextureStacks: []
 --- !u!114 &3023487088886878217
 MonoBehaviour:

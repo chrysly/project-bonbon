@@ -16,7 +16,7 @@ public partial class
     public new delegate void StateTransition(BattleState state, BattleStateInput input);
     public event StateTransition OnStateTransition;
 
-    public new delegate void DisplayUpdate(BattleStateInput input);
+    public delegate void DisplayUpdate(BattleStateInput input);
     public event DisplayUpdate OnDisplayUpdate;
 
     public event System.Action<bool> OnBattleLock;

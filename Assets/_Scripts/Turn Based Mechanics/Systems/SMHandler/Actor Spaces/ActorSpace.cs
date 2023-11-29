@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public abstract class ActorSpace : MonoBehaviour {
 
     [SerializeField] protected ActorHandler handler;
+    private GlobalVFXManager VFXHandler => handler.CurrInput.VFXHandler;
     protected Dictionary<ActorData, GameObject> prefabMap => handler.PrefabMap.ActorPrefabMap;
 
     [SerializeField] private ActorData initialActor;
@@ -26,9 +29,16 @@ public abstract class ActorSpace : MonoBehaviour {
     }
 
     public void DespawnActor() {
-        Destroy(actorPrefab);
-        actorPrefab = null;
+        StartCoroutine(FaintYouHeathen(CurrActor, actorPrefab));
         CurrActor = null;
+        actorPrefab = null;
+    }
+
+    private IEnumerator FaintYouHeathen(Actor actor, GameObject actorPrefab) {
+        VFXHandler.PlayAnimation(VFXHandler.VFXMap.GenericVFXDict[GenericVFXType.Death], actor.transform);
+        actor.transform.DOScale(Vector3.zero, 1f).SetEase(Ease.InOutBounce);
+        yield return new WaitForSeconds(5);
+        Destroy(actorPrefab);
     }
 
     #if UNITY_EDITOR

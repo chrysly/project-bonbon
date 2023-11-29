@@ -6,6 +6,7 @@ public class ActorHandler : StateMachineHandler {
 
     [SerializeField] private ActorMap prefabMap;
     public ActorMap PrefabMap => prefabMap;
+    public BattleStateInput CurrInput => input;
 
     /// <summary> A convenient way to pass down Screen Canvas references to Actors; </summary>
     [System.Serializable]
@@ -46,15 +47,12 @@ public class ActorHandler : StateMachineHandler {
 
     public void InitializePrefab(GameObject actorPrefab) {
         Actor actor = actorPrefab.GetComponentInChildren<Actor>(true);
-        if (actor is CharacterActor) {
-            UIAnimationHandler uHandler = actorPrefab.GetComponentInChildren<UIAnimationHandler>(true);
-            ScreenCanvasRefs.SetupRefs(ref uHandler._stateMachine, ref uHandler.skillWindow, ref uHandler.ingredientWindow);
-        } actor.InjectHandler(this);
+        actor.InjectHandler(this);
     }
 
     public void KillActor(Actor actor) {
         ActorSpace[] targetSpace = actor is CharacterActor ? characterSpaces : enemySpaces;
-        ActorSpace space = targetSpace.FirstOrDefault(actor => actor.CurrActor == actor);
+        ActorSpace space = targetSpace.FirstOrDefault(actorSpace => actorSpace.CurrActor == actor);
         if (space != null) space.DespawnActor();
         input.TurnOrderHandler.Remove(actor);
     }

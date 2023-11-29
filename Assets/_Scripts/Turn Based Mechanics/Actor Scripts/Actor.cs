@@ -13,6 +13,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     [HideInInspector]
     [SerializeField] private ActorHandler handler;
+    private GlobalVFXManager VFXHandler => handler.CurrInput.VFXHandler;
     public void InjectHandler(ActorHandler handler) => this.handler = handler;
     #endregion Data Attributes
 
@@ -140,7 +141,6 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     private void Faint() {
         _hitpoints = 0;
         ApplyState(ActorState.Fainted);
-        transform.DOScale(Vector3.zero, 1f).SetEase(Ease.InOutBounce);
         handler.KillActor(this);
         Debug.Log($"{data.DisplayName} has fallen!");
     }
@@ -148,6 +148,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     //Returns true if over maximum hitpoints.
     //Does not heal if Actor is defeated.
     public bool RestoreHitpoints(int heal) {
+        VFXHandler.PlayAnimation(VFXHandler.VFXMap.GenericVFXDict[GenericVFXType.Heal], transform);
         if (_hitpoints + heal > data.MaxHitpoints) {
             _hitpoints = data.MaxHitpoints;
             return true;

@@ -23,6 +23,7 @@ public class BattleStateInput : StateInput {
     public AnimationHandler AnimationHandler { get; private set; }
     public BonbonHandler BonbonHandler { get; private set; }
     public GlobalCameraManager CameraHandler { get; private set; }
+    public GlobalVFXManager VFXHandler { get; private set; }
     #endregion
 
     /// <summary>
@@ -37,6 +38,7 @@ public class BattleStateInput : StateInput {
             else if (smh is AnimationHandler) AnimationHandler = smh as AnimationHandler;
             else if (smh is BonbonHandler) BonbonHandler = smh as BonbonHandler;
             else if (smh is GlobalCameraManager) CameraHandler = smh as GlobalCameraManager;
+            else if (smh is GlobalVFXManager) VFXHandler = smh as GlobalVFXManager;
         } /// Second loop => Initialize Handlers;
         foreach (StateMachineHandler smh in handlers) smh.Initialize(this);
     }

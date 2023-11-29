@@ -23,10 +23,8 @@ namespace ASEUtilities {
                                                 "\n  • No Actor Components were found;" +
                                                 "\n  • More than one Actor Component was found;" +
                                                 "\n  • The Data of the Actor Component does not match the data map;"},
-            { PrefabWarning.InvalidUIHandler, "Invalid UIAnimationHandler Script. Causes:" +
-                                              "\n  • No UIAnimationHandler Components were found;" +
-                                              "\n  • More than one UIAnimationHandler Component was found;" +
-                                              "\nCharacter Actors require UIAnimationHandlers for initialization;" },
+            { PrefabWarning.InvalidUIHandler, "Invalid Actor Scripts. Causes:" +
+                                              "\n  • None known;" },
         };
 
         public static Dictionary<ActorSpace, List<SpaceWarning>> VerifyHandlerStatus(ActorHandler actorHandler) {
@@ -75,10 +73,7 @@ namespace ASEUtilities {
             List<PrefabWarning> warnings = new List<PrefabWarning>();
             Actor[] actors = prefab.GetComponentsInChildren<Actor>(true);
             if (actors.Length != 1 || actors[0].Data != actorData) warnings.Add(PrefabWarning.InvalidActorScript);
-            if (actorData is CharacterData) {
-                UIAnimationHandler[] handlers = prefab.GetComponentsInChildren<UIAnimationHandler>(true);
-                if (handlers.Length != 1) warnings.Add(PrefabWarning.InvalidActorScript);
-            } return warnings;
+            return warnings;
         }
 
         private static T[] CleanupSpaceStructure<T>(T[] spaces, out bool dirty) where T : ActorSpace {
