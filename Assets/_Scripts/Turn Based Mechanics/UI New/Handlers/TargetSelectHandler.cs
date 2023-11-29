@@ -23,6 +23,7 @@ namespace BattleUI {
                 buttonArr[i] = go.AddComponent<TargetSelectButton>();
                 var aaaa = go.AddComponent<UIButtonAnimator>();
                 ta.Init(aaaa);
+                aaaa.cursorTarget = aaaa.transform;
                 buttonArr[i].Init(this);
                 buttonArr[i].Init(targets[i], anchor);
             } return new UIInputPack(new[] { buttonArr }, TraversalMode.Horizontal);
