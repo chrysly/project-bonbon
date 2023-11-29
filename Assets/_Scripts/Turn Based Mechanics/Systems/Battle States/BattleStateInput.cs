@@ -7,7 +7,13 @@ public class BattleStateInput : StateInput {
 
     #region Global Variables
     public TurnOrderHandler TurnOrderHandler { get; private set; }
-    public List<Actor> ActorList => ActorHandler.ActorList;
+    public List<Actor> ActorList {
+        get {
+            List<Actor> list = ActorHandler.ActorList;
+            foreach (Actor actor in list) Debug.LogError(actor);
+            return list;
+        }
+    }
 
     private Actor activeActor;
     private int currentTurn = 0;
