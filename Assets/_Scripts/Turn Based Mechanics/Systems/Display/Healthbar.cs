@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BattleUI;
 using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
@@ -7,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Slider = UnityEngine.UI.Slider;
 
-public class Healthbar : MonoBehaviour {
+public class Healthbar : ScreenSpaceElement {
     private Slider slider;
     private TextMeshProUGUI _text;
     private BattleStateMachine stateMachine => BattleStateMachine.Instance;
