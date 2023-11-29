@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: VFXMap
   m_EditorClassIdentifier: 
   pseudoDict:
-    Keys: 00000000
+    Keys: 010000000200000004000000
     Values:
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 4d7a2cf64de57d040b15c3939990f971, type: 2}
+    - {fileID: 11400000, guid: 272b09a4fd9fae2448310224298e4633, type: 2}
+    - {fileID: 11400000, guid: 54a94f3efd46ab749a7be73829230286, type: 2}
