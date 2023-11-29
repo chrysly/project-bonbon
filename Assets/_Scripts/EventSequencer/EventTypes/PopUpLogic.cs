@@ -1,26 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopUpLogic : MonoBehaviour {
     public List<Sprite> imageList = new List<Sprite>();
     private int currIndex = 0;
-    private SpriteRenderer spriteRenderer;
-    public bool isActive = false;
+    private Image img;
+    private bool isActive = false;
+    private BattleStateMachine bsm => BattleStateMachine.Instance;
 
     void Start() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        startPopUp(imageList);
+        img = GetComponent<Image>();
     }
 
     void Update() {
         if (isActive) {
+            //bsm.ToggleMachine(true);
+
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 CycleImages(1);
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow)) {
                 CycleImages(-1);
+            } else if (Input.GetKeyDown(KeyCode.Escape)) {
+                img.enabled = false;
+                //bsm.ToggleMachine(false);
+                isActive = false;
+                transform.GetChild(0).gameObject.SetActive(false);
             }
         }
     }
@@ -31,7 +38,7 @@ public class PopUpLogic : MonoBehaviour {
         imageList = popUps;
 
         if (imageList.Count > 0) {
-            spriteRenderer.sprite = imageList[currIndex];
+            img.sprite = imageList[currIndex];
         }
     }
 
@@ -52,6 +59,6 @@ public class PopUpLogic : MonoBehaviour {
         }
 
         // display the current index
-        spriteRenderer.sprite = imageList[currIndex];
+        img.sprite = imageList[currIndex];
     }
 }

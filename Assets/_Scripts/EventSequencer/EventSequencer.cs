@@ -52,7 +52,8 @@ public class EventSequencer : MonoBehaviour {
             bsm.ToggleMachine(true);
             bsm.uiStateMachine.ToggleMachine(true);
         } else if (bsm.PrevState.GetType() == typeof(BattleStateMachine.BattleStart)) {
-            onStartEvent.OnTrigger();
+            events.Enqueue(onStartEvent);
+            RunNextEvent();
             bsm.ToggleMachine(true);
             bsm.uiStateMachine.ToggleMachine(true);
         }
