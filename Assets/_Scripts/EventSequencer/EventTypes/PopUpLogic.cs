@@ -18,16 +18,14 @@ public class PopUpLogic : MonoBehaviour {
 
     void Update() {
         if (isActive) {
-            //bsm.ToggleMachine(true);
 
-            if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            if (Input.GetKeyDown(KeyCode.D)) {
                 CycleImages(1);
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            else if (Input.GetKeyDown(KeyCode.A)) {
                 CycleImages(-1);
-            } else if (Input.GetKeyDown(KeyCode.Escape)) {
+            } else if (Input.GetKeyDown(KeyCode.Q)) {
                 img.enabled = false;
-                //bsm.ToggleMachine(false);
                 isActive = false;
                 transform.GetChild(0).gameObject.SetActive(false);
                 eventSequencer.CheckForEventEnd();

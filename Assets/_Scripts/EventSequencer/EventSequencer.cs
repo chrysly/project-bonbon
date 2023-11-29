@@ -110,8 +110,9 @@ public class EventSequencer : MonoBehaviour {
             events.Dequeue();
         }
         OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
+
     }
-    
+
     public void addEvent(EventObject eventToAdd) {
         events.Enqueue(eventToAdd);
     }
