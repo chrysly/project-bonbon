@@ -66,10 +66,6 @@ public class SelectionDisplay : MonoBehaviour {
             StartCoroutine(_activeAnim);
         }
     }
-
-    public void Deactivate() {
-        
-    }
     
     private IEnumerator ActivateAction(Transform target) {
         if (_firstSpawn) {
@@ -109,9 +105,40 @@ public class SelectionDisplay : MonoBehaviour {
 
     private void ApplySelectShader(Transform target, bool apply) {
         SkinnedMeshRenderer[] skins = target.GetComponentsInChildren<SkinnedMeshRenderer>();
+        MeshRenderer[] meshSkin = target.GetComponentsInChildren<MeshRenderer>();
         foreach (SkinnedMeshRenderer skin in skins) {
             if (apply) skin.gameObject.layer = LayerMask.NameToLayer("Select");
             else skin.gameObject.layer = LayerMask.NameToLayer("Default");
         }
+
+        foreach (MeshRenderer mesh in meshSkin) {
+            if (apply) mesh.gameObject.layer = LayerMask.NameToLayer("Select");
+            else mesh.gameObject.layer = LayerMask.NameToLayer("Default");
+        }
+    }
+    
+    public void Deactivate() {
+        if (_activeAnim == null) {
+            _activeAnim = DeactivateAction();
+            StartCoroutine(_activeAnim);
+        }
+
+        _actor = null;
+    }
+
+    private IEnumerator DeactivateAction() {
+        _active = false;
+        _firstSpawn = true;
+        inner.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
+        inner.DOLocalRotate(new Vector3(0, 0, -90f), expandDuration + 0.1f);
+        inner.DOScale(new Vector3(0.5f, 0f, 0.5f), expandDuration);
+        yield return new WaitForSeconds(innerRingDelay / 2);
+        outer.DOScale(1f, expandDuration).SetEase(Ease.OutBounce);
+        outer.DOLocalRotate(new Vector3(0, 0, 90f), expandDuration + 0.1f);
+        outer.DOScale(new Vector3(0.5f, 0f, 0.5f), expandDuration);
+        yield return new WaitForSeconds(expandDuration);
+        _cursorInstance.SetActive(false);
+        _activeAnim = null;
+        yield return null;
     }
 }
