@@ -8,7 +8,8 @@ namespace BattleUI {
         [SerializeField] private GameObject craftButtonPrefab;
 
         public event System.Action OnButtonArrange;
-        
+        public event System.Action<BonbonFXInfo> OnBonbonModification;
+
         public override UIInputPack InputArrangement() {
             int craftCount = CurrActor.BonbonList.Count;
             BonbonCraftButton[] buttonArr = new BonbonCraftButton[craftCount];
@@ -26,6 +27,7 @@ namespace BattleUI {
         public void CraftBonbon(BonbonBlueprint bonbon) {
             BonbonObject freshBonbon = BonbonHandler.CreateBonbon(bonbon, CurrActor, new bool[4]);
             CurrActor.AcceptBonbon(Slot, freshBonbon);
+            OnBonbonModification?.Invoke(new BonbonCraftInfo(Slot, freshBonbon));
             Brain.ReturnTo<BonbonMainHandler>();
         }
     }

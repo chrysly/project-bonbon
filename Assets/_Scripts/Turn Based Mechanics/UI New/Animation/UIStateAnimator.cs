@@ -10,11 +10,13 @@ namespace BattleUI {
 
         protected virtual void Awake() {
             StateHandler = GetComponent<UIStateHandler>();
-            foreach (UIAnimator animator in animators) animator.Init(this);
             StateHandler.OnHandlerToggle += UIStateHandler_OnHandlerToggle;
         }
 
-        public virtual void Init(UIAnimationBrain brain) => Brain = brain;
+        public virtual void Init(UIAnimationBrain brain) {
+            Brain = brain;
+            foreach (UIAnimator animator in animators) animator.Init(this);
+        }
 
         protected virtual void UIStateHandler_OnHandlerToggle(bool toggle) {
             foreach (UIAnimator animator in animators) animator.Toggle(toggle);

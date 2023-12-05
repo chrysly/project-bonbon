@@ -9,7 +9,12 @@ namespace BattleUI {
 
         public virtual void Select() => OnSelect?.Invoke();
 
-        public virtual void Activate() => OnActivate?.Invoke();
+        public void TryActivate() {
+            OnActivate?.Invoke();
+            if (Available) Activate();
+        }
+
+        public virtual void Activate() { }
 
         public virtual bool IsAvailable() => true;
 

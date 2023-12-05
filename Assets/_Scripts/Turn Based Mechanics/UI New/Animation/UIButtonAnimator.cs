@@ -28,7 +28,10 @@ namespace BattleUI {
             Button.OnActivate += UIButton_OnActivate;
         }
 
-        public void OverrideSelect(bool select) => selected = select;
+        public virtual void OverrideSelect(bool select) {
+            if (select) ;//stateAnimator.SendCursor(this);
+            selected = select;
+        }
 
         protected void UIButton_OnSelect() {
             stateAnimator.Brain.UpdateSelection(this);
@@ -51,10 +54,19 @@ namespace BattleUI {
             if (!toggle) selected = false;
         }
 
-        protected void UIButton_OnActivate() {
-            transform.DOScale(Vector2.one * 1.3f, 0.1f).SetEase(Ease.OutElastic);
+        /// <summary>
+        /// Visual feedback for when the button is selected;
+        /// </summary>
+        protected virtual void UIButton_OnActivate() {
+            if (!Button.Available) {
+                transform.DOShakeRotation(0.5f, new Vector3(0, 0, 15 * Mathf.Sign(Mathf.Sin(Time.time))),
+                                          10, 45, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.OutQuint);
+            } else transform.DOScale(1.5f, animationDuration).SetEase(Ease.OutBack);
         }
 
+        /// <summary>
+        /// Updates the visual appearance of the button based on availability;
+        /// </summary>
         protected virtual void ProcessAvailability() {
             float targetAlpha = Button.Available ? 1 : 0.25f;
             foreach (MaskableGraphic graphic in graphics) graphic.DOFade(targetAlpha, 0);

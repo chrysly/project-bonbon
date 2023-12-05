@@ -11,6 +11,7 @@ namespace BattleUI {
         [SerializeField] private TextMeshProUGUI nameText;
         [SerializeField] private TextMeshProUGUI staminaText;
         private CanvasGroup canvasGroup;
+        private bool destroyed;
 
         protected override void Awake() {
             base.Awake();
@@ -24,7 +25,8 @@ namespace BattleUI {
 
         public void PseudoDestroy() {
             stateAnimator.StateHandler.OnHandlerRevert -= PseudoDestroy;
-            Destroy(gameObject);
+            if (!destroyed) Destroy(gameObject);
+            destroyed = true;
         }
 
         public override void Toggle(bool toggle) {
@@ -51,5 +53,7 @@ namespace BattleUI {
             transform.DOScale(Vector2.zero, animationDuration);
             yield return new WaitForSeconds(animationDuration);
         }
+
+        void OnDisable() => destroyed = true;
     }
 }

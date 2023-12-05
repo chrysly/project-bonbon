@@ -10,6 +10,10 @@ namespace BattleUI {
         private UIStateAnimator[] stateAnimators;
 
         public event System.Action<UIButtonAnimator> OnSelectionChange;
+        public event System.Action<bool> OnGlobalSoftToggle;
+
+        public event System.Action<BonbonFXInfo> OnBonbonAnimationCall;
+        public void PropagateAnimationCall(BonbonFXInfo info) => OnBonbonAnimationCall?.Invoke(info);
 
         void Awake() {
             LogicBrain = GetComponent<UIBrain>();
