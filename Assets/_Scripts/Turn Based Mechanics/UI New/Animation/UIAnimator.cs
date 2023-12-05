@@ -4,7 +4,7 @@ using DG.Tweening;
 
 namespace BattleUI {
 
-    public enum UIAnimatorState {  Idle, Loading, Unloading }
+    public enum UIAnimatorState {  Idle, Loading, Unloading, Special }
 
     public abstract class UIAnimator : MonoBehaviour {
 
@@ -21,6 +21,7 @@ namespace BattleUI {
 
         public virtual void Init(UIStateAnimator stateAnimator) {
             this.stateAnimator = stateAnimator;
+            this.stateAnimator.Brain.OnGlobalSoftToggle += Toggle;
         }
 
         protected IEnumerator CoreCoroutine() {
@@ -30,7 +31,7 @@ namespace BattleUI {
                         IEnumerator loadCoroutine = Load();
                         while (loadCoroutine.MoveNext())
                             yield return loadCoroutine.Current;
-                        state = UIAnimatorState.Idle;
+                        if (state == UIAnimatorState.Loading) state = UIAnimatorState.Idle;
                         break;
                     case UIAnimatorState.Idle:
                         IEnumerator idleCoroutine = Idle();
@@ -41,7 +42,6 @@ namespace BattleUI {
                         IEnumerator unloadCoroutine = Unload();
                         while (unloadCoroutine.MoveNext())
                             yield return unloadCoroutine.Current;
-                        state = UIAnimatorState.Idle;
                         break;
                 } yield return null;
             }

@@ -19,12 +19,13 @@ namespace BattleUI {
                 .OnButtonArrange += BonbonCraftHandler_OnButtonArrange;
             _originalPos = backdrop.position;
         }
-
-        protected override void UIStateHandler_OnHandlerToggle(bool toggle) {
-            base.UIStateHandler_OnHandlerToggle(toggle);
-            state = toggle ? UIAnimatorState.Loading : UIAnimatorState.Unloading;
-        }
         
+        public override void Init(UIAnimationBrain brain) {
+            base.Init(brain);
+            (StateHandler as BonbonCraftHandler)
+                .OnBonbonModification += Brain.PropagateAnimationCall;
+        }
+
         private void BonbonCraftHandler_OnButtonArrange() {
             animators = GetComponentsInChildren<UIAnimator>();
             foreach (UIAnimator animator in animators) {

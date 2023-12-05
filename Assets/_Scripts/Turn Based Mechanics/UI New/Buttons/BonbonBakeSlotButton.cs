@@ -18,9 +18,7 @@ namespace BattleUI {
                    : StateHandler.FindValidRecipe(Slot);
         }
 
-        public override bool IsAvailable() {
-            return Slot != StateHandler.Slot && recipe != null;
-        }
+        public override bool IsAvailable() => recipe != null;
 
         public override void Activate() {
             base.Activate();

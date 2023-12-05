@@ -11,7 +11,8 @@ namespace BattleUI {
         [SerializeField] private float selectDuration = 0.1f;
         [SerializeField] private RawImage icon;
         [SerializeField] private TextMeshProUGUI nameText;
-        
+        private bool destroyed;
+
         public override void Init(UIStateAnimator stateAnimator) {
             base.Init(stateAnimator);
             this.stateAnimator.StateHandler.OnHandlerRevert += PseudoDestroy;
@@ -19,7 +20,8 @@ namespace BattleUI {
 
         public void PseudoDestroy() {
             stateAnimator.StateHandler.OnHandlerRevert -= PseudoDestroy;
-            Destroy(gameObject);
+            if (!destroyed) Destroy(gameObject);
+            destroyed = true;
         }
         
         public override void Toggle(bool toggle) {
@@ -44,5 +46,7 @@ namespace BattleUI {
             transform.DOScale(Vector2.zero, animationDuration);
             yield return new WaitForSeconds(animationDuration);
         }
+
+        void OnDisable() => destroyed = true;
     }
 }

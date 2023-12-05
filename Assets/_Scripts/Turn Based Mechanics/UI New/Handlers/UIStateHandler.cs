@@ -23,8 +23,9 @@ namespace BattleUI {
         public virtual void Transition<T>() where T : UIStateHandler => Brain.Transition<T>();
 
         public virtual UIInputPack Enable(BaseTransitionInfo info) {
+            UIInputPack input = InputArrangement();
             OnHandlerToggle?.Invoke(true);
-            return InputArrangement();
+            return input;
         }
 
         public virtual void SoftEnable() => OnHandlerToggle?.Invoke(true);

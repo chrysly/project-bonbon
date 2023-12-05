@@ -20,16 +20,20 @@ namespace BattleUI {
                         IEnumerator loadCoroutine = Load();
                         while (loadCoroutine.MoveNext())
                             yield return loadCoroutine.Current;
-                        state = UIAnimatorState.Idle;
+                        if (state == UIAnimatorState.Loading) state = UIAnimatorState.Idle;
                         break;
                     case UIAnimatorState.Unloading:
                         IEnumerator unloadCoroutine = Unload();
                         while (unloadCoroutine.MoveNext())
                             yield return unloadCoroutine.Current;
-                        state = UIAnimatorState.Idle;
                         break;
                 } yield return null;
             }
+        }
+
+        protected override void UIStateHandler_OnHandlerToggle(bool toggle) {
+            base.UIStateHandler_OnHandlerToggle(toggle);
+            state = toggle ? UIAnimatorState.Loading : UIAnimatorState.Unloading;
         }
 
         protected abstract IEnumerator Load();

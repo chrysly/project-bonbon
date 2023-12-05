@@ -20,11 +20,6 @@ namespace BattleUI {
             display.DOScaleY(0f, 0f);
         }
 
-        protected override void UIStateHandler_OnHandlerToggle(bool toggle) {
-            base.UIStateHandler_OnHandlerToggle(toggle);
-            state = toggle ? UIAnimatorState.Loading : UIAnimatorState.Unloading;
-        }
-
         private void SkillSelectHandler_OnButtonArrange() {
             animators = GetComponentsInChildren<UIAnimator>();
             foreach (UIAnimator animator in animators) {
@@ -44,8 +39,8 @@ namespace BattleUI {
         }
 
         protected override IEnumerator Unload() {
-            ribbon.DOScaleX(0f, 1f).SetEase(Ease.OutBounce);
-            ribbon2.DOScaleX(0f, 1.5f).SetEase(Ease.OutBounce);
+            ribbon.DOScaleX(0f, 0.2f).SetEase(Ease.OutBounce);
+            ribbon2.DOScaleX(0f, 0.2f).SetEase(Ease.OutBounce);
             yield return new WaitForSeconds(animationDuration / 2);
             icon.DOScale(0f, animationDuration);
             display.DOScaleY(0f, animationDuration);

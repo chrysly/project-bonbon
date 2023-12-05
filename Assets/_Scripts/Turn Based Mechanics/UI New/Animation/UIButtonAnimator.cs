@@ -29,7 +29,7 @@ namespace BattleUI {
         }
 
         public virtual void OverrideSelect(bool select) {
-            //stateAnimator.SendCursor(this);
+            if (select) ;//stateAnimator.SendCursor(this);
             selected = select;
         }
 
@@ -58,7 +58,10 @@ namespace BattleUI {
         /// Visual feedback for when the button is selected;
         /// </summary>
         protected virtual void UIButton_OnActivate() {
-            transform.DOShakeRotation(0.1f).SetEase(Ease.OutElastic);
+            if (!Button.Available) {
+                transform.DOShakeRotation(0.5f, new Vector3(0, 0, 15 * Mathf.Sign(Mathf.Sin(Time.time))),
+                                          10, 45, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.OutQuint);
+            } else transform.DOScale(1.5f, animationDuration).SetEase(Ease.OutBack);
         }
 
         /// <summary>

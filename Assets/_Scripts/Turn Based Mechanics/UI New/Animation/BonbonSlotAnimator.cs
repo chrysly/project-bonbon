@@ -1,8 +1,10 @@
-﻿using UnityEngine.UI;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 namespace BattleUI {
-    public class BonbonSlotAnimator : UIButtonAnimator {
+    public partial class BonbonSlotAnimator : UIButtonAnimator {
 
         private BonbonObject Bonbon {
             get {
@@ -15,7 +17,10 @@ namespace BattleUI {
             }
         } private BonbonSlotButton slotButton;
         private BonbonBakeSlotButton bakeButton;
+        private Coroutine specialAnimation;
 
+        public int Slot => Button is BonbonSlotButton ? (Button as BonbonSlotButton).Slot
+                                                      : (Button as BonbonBakeSlotButton).Slot;
         private RawImage icon;
 
         protected override void Awake() {
@@ -33,20 +38,37 @@ namespace BattleUI {
         }
 
         public override void Toggle(bool toggle) {
-            /*if (Button != null) {
-                Button.OnSelect -= UIButton_OnSelect;
-                Button.OnActivate -= UIButton_OnActivate;
-            } Button = stateAnimator.StateHandler is BonbonMainHandler ? slotButton : bakeButton;
-            Button.OnSelect += UIButton_OnSelect;
-            Button.OnActivate += UIButton_OnActivate;*/
-            Button = stateAnimator.StateHandler is BonbonMainHandler ? slotButton : bakeButton;
+            bool isMain = stateAnimator.StateHandler is BonbonMainHandler;
+            Button = isMain ? slotButton : bakeButton;
             UpdateIcon();
-            base.Toggle(toggle);
+            ResolveAnimations();
+            if (isMain) base.Toggle(toggle);
+            else {
+                if (!toggle) {
+                    selected = false;
+                    icon.DOFade(icon.texture == null ? 0 : 1, animationDuration / 2);
+                } else ProcessAvailability();
+            }
+        }
+
+        public void ToggleWithAnimation(BonbonFXInfo info) {
+            ResolveAnimations();
+            Button = stateAnimator.StateHandler is BonbonMainHandler ? slotButton : bakeButton;
+            IEnumerator animation = info is BonbonCraftInfo
+                                    ? CraftAnimation(info as BonbonCraftInfo)
+                                    : BakeAnimation(info as BonbonBakeInfo);
+            specialAnimation = StartCoroutine(animation);
+            state = UIAnimatorState.Special;
+            targetScale = 1;
         }
 
         private void UpdateIcon() {
             icon.texture = Bonbon == null ? null : Bonbon.Texture;
-            icon.DOFade(icon.texture == null ? 0 : 1, 0);
+        }
+
+        protected override void ProcessAvailability() {
+            icon.DOFade(icon.texture == null ? 0 
+                                             : Button.Available ? 1 : 0.5f, 0);
         }
     }
 }

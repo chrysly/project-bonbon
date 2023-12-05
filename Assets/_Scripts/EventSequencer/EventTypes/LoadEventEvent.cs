@@ -13,8 +13,4 @@ public class LoadEventEvent : EventObject {
     public override void OnTrigger() {
         thisEvent.OnTrigger();
     }
-
-    public override void OnEventEnd() {
-        eventToLoad.OnTrigger();
-    }
 }

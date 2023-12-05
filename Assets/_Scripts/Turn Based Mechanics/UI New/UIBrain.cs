@@ -19,6 +19,7 @@ namespace BattleUI {
         public UIInput InputReader { get; private set; }
 
         public event System.Action<Actor> OnUIRefresh;
+        public event System.Action<bool> OnGlobalSoftToggle;
         public event System.Action OnAnimationEvent;
 
         public bool UILocked;
@@ -45,6 +46,7 @@ namespace BattleUI {
         private void BattleStateMachine_OnBattleLock(bool disabled) {
             if (disabled) InputReader.Disable();
             UILocked = disabled;
+            OnGlobalSoftToggle?.Invoke(!disabled);
         }
 
         public void Transition<T>(BaseTransitionInfo info = null) where T : UIStateHandler {
@@ -65,9 +67,8 @@ namespace BattleUI {
         private void ProcessAction(InAction action) {
             switch (action) {
                 case InAction.Confirm:
-                    if (CurrInput.SelectedButton.Available) {
-                        CurrInput.SelectedButton.Activate();
-                    } break;
+                    CurrInput.SelectedButton.TryActivate();
+                    break;
                 case InAction.Back:
                     if (transitionManager.Reversible) {
                         transitionManager.Revert();
