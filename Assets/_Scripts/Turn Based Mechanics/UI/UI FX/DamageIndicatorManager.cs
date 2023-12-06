@@ -10,7 +10,7 @@ public class DamageIndicatorManager : MonoBehaviour {
 
     [SerializeField] private GameObject textPrefab;
     private BattleStateMachine stateMachine => BattleStateMachine.Instance;
-    [SerializeField] private float textDelay = 1f;
+    [SerializeField] private float textDelay = 0f;
     [SerializeField] private float textDuration = 1f;
 
     public void Start() {
@@ -22,14 +22,11 @@ public class DamageIndicatorManager : MonoBehaviour {
         stateMachine.CurrInput.AnimationHandler.DamageEvent += SpawnDamageText;
     }
 
-    private void SpawnDamageText(int damage, Actor target) {
-        bool hasBonbon = false; // Modify on subscription;
-
+    private void SpawnDamageText(int damage, Actor target, bool augmented) {
         if (damage > 0) {
             GameObject text = Instantiate(textPrefab, GenerateOffset(target.transform.position), target.transform.rotation);
             text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + damage;
-            text.transform.DOScale(0f, 0f);
-            RunTextAnimation(text.transform, hasBonbon);
+            RunTextAnimation(text.transform, augmented);
         }
     }
 

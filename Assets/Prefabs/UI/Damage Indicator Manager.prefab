@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPrefab: {fileID: 1086587533687293907, guid: cf3069645cdd68349a5dab254851511f, type: 3}
-  stateMachine: {fileID: 0}
-  textDelay: 1
+  textDelay: 0
   textDuration: 1

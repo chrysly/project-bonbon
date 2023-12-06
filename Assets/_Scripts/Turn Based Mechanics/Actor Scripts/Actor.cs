@@ -11,10 +11,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     public StatIteration ActiveData { get; private set; }
     [SerializeField] private string uniqueID;
 
-    [HideInInspector]
-    [SerializeField] private ActorHandler handler;
-    private GlobalVFXManager VFXHandler => handler.CurrInput.VFXHandler;
-    public void InjectHandler(ActorHandler handler) => this.handler = handler;
+    private BattleStateInput currInput;
     #endregion Data Attributes
 
     #region Accessors
@@ -59,7 +56,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     #endregion
 
-    protected virtual void Awake() {
+    public void Init(BattleStateInput currInput) {
+        this.currInput = currInput;
         InitializeAttributes();
         InitializeLevelObjects();
     }
@@ -126,37 +124,24 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         ComputeStats();
     }
 
-    //Returns true if Actor has no remaining health.
-    public bool DepleteHitpoints(int damage) {
+    public void DepleteHitpoints(int damage) {
         damage = ActiveData.ComputeDefense(damage);
-
-        if (_hitpoints - damage <= 0) {
-            Faint();
-            return true;
-        }
         _hitpoints -= damage;
-        return false;
+        if (_hitpoints <= 0) Faint();
     }
 
     private void Faint() {
         _hitpoints = 0;
         ApplyState(ActorState.Fainted);
-        handler.KillActor(this);
+
+        //handler.KillActor(this);
         Debug.Log($"{data.DisplayName} has fallen!");
     }
 
-    //Returns true if over maximum hitpoints.
-    //Does not heal if Actor is defeated.
-    public bool RestoreHitpoints(int heal) {
-        VFXHandler.PlayAnimation(VFXHandler.VFXMap.GenericVFXDict[GenericVFXType.Heal], transform);
-        if (_hitpoints + heal > data.MaxHitpoints) {
-            _hitpoints = data.MaxHitpoints;
-            return true;
-        }
-        if (!Defeated) {
-            _hitpoints += heal;
-        }
-        return false;
+    public void RestoreHitpoints(int heal) {
+        int objectiveHeal = Mathf.Min(heal, data.MaxHitpoints - _hitpoints);
+        _hitpoints += objectiveHeal;
+        currInput.AnimationHandler.TriggerHeal(objectiveHeal, this);
     }
 
     public void AcceptBonbon(int slot, BonbonObject bonbon) {
@@ -175,20 +160,11 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
 
     /// <summary> parameter is based on %health </summary>
     public void RefundStamina(int percent) {
-        // ensure the % is in valid range
-        if (percent < 0)
-            percent = 0;
-        else if (percent > 100)
-            percent = 100;
-
-        // calculate
+        percent = Mathf.Clamp(percent, 0, 100);
         int maxStamina = data.MaxStamina;
         int refillAmount = (int) (maxStamina * (percent / 100f));
-
-        if (_stamina + refillAmount > maxStamina)
-            _stamina = maxStamina;
-        else
-            _stamina += refillAmount;
+        _stamina = Mathf.Min(data.MaxStamina, _stamina + refillAmount);
+        if (this is CharacterActor) currInput.AnimationHandler.TriggerStamina(this);
     }
 
     #region Comparators

@@ -9,7 +9,7 @@ namespace BattleUI {
         }
 
         protected override void UIButton_OnActivate() {
-            transform.DOScale(transform.localScale * 3, animationDuration).SetEase(Ease.OutBack);
+            transform.DOScale(transform.localScale * 2, animationDuration).SetEase(Ease.OutBack);
         }
 
         protected override void ProcessAvailability() { }

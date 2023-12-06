@@ -16,6 +16,10 @@ public class CharacterPanel : MonoBehaviour {
         DialogueManager.OnDialogueStart += Toggle;
     }
 
+    void OnDisable() {
+        DialogueManager.OnDialogueStart -= Toggle;
+    }
+
     private void Toggle(bool active) {
         if (active) transform.DOMove(newPos, 0.5f);
         else transform.DOMove(resetPos, 0.5f);

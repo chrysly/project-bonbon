@@ -186,9 +186,9 @@ namespace CJUtils {
                         }
                    
                         if (dropRect.Contains(Event.current.mousePosition)) {
-                            GUI.DrawTexture(dropRect, hover);
+                            if (hover != null) GUI.DrawTexture(dropRect, hover);
                         } else {
-                            GUI.DrawTexture(dropRect, normal);
+                            if (normal != null) GUI.DrawTexture(dropRect, normal);
                         } break;
                 } return currObj;
             }

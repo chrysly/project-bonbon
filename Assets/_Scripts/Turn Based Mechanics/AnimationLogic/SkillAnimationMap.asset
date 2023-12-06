@@ -50,7 +50,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 3.5
+        animationDuration: 2.5
         vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 7741419895652352006
@@ -124,7 +124,7 @@ MonoBehaviour:
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 1
+        - triggerTime: 0.2
           percentMultiplier: 100
     - rid: 7741419895652352001
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
@@ -133,14 +133,12 @@ MonoBehaviour:
     - rid: 7741419895652352002
       type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
       data:
-        triggers:
-        - triggerTime: 0
-          percentMultiplier: 100
+        triggers: []
     - rid: 7741419895652352003
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0.5
+        - triggerTime: 0.1
           percentMultiplier: 100
     - rid: 7741419895652352004
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
@@ -149,15 +147,17 @@ MonoBehaviour:
     - rid: 7741419895652352005
       type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
       data:
-        triggers:
-        - triggerTime: 0
-          percentMultiplier: 100
+        triggers: []
     - rid: 7741419895652352006
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0
-          percentMultiplier: 100
+        - triggerTime: 0.3
+          percentMultiplier: 30
+        - triggerTime: 0.6
+          percentMultiplier: 30
+        - triggerTime: 1
+          percentMultiplier: 50
     - rid: 7741419895652352007
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
       data:
@@ -165,6 +165,4 @@ MonoBehaviour:
     - rid: 7741419895652352008
       type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
       data:
-        triggers:
-        - triggerTime: 0
-          percentMultiplier: 100
+        triggers: []

@@ -11,15 +11,9 @@ using CJUtils;
 [System.Serializable]
 public abstract class DelaySkillPercentAnimation : DelaySkillAnimation
 {
-    [SerializeField] protected List<PercentTrigger> triggers = new List<PercentTrigger> { new PercentTrigger(0, 100) };
+    public List<PercentTrigger> triggers = new();
 
-    public override IEnumerable<IEnumerator> GetCoroutines(AnimationHandler handler, AIActionValue[] avs, Actor[] targets) {
-        return triggers.Select(target => CreateCoroutine(handler, avs, targets, target));
-    }
-
-    protected abstract IEnumerator CreateCoroutine(AnimationHandler handler, AIActionValue[] avs, Actor[] targets, PercentTrigger trigger);
-
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     protected string description = string.Empty;
 
     protected override void InnerGUI() {
@@ -62,5 +56,5 @@ public abstract class DelaySkillPercentAnimation : DelaySkillAnimation
         triggers.Clear();
         triggers.Add(new PercentTrigger(0, 100));
     }
-#endif
+    #endif
 }

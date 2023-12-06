@@ -42,12 +42,16 @@ public class ActorHandler : StateMachineHandler {
 
     public override void Initialize(BattleStateInput input) {
         base.Initialize(input);
-        input.InitializeTurnOrder(ActorList);
+        foreach (CharacterSpace characterSpace in characterSpaces) {
+            characterSpace.Init(this);
+        } foreach (EnemySpace enemySpace in enemySpaces) {
+            enemySpace.Init(this);
+        } input.InitializeTurnOrder(ActorList);
     }
 
     public void InitializePrefab(GameObject actorPrefab) {
         Actor actor = actorPrefab.GetComponentInChildren<Actor>(true);
-        actor.InjectHandler(this);
+        actor.Init(CurrInput);
     }
 
     public void KillActor(Actor actor) {

@@ -137,7 +137,7 @@ public class ActorSpaceEditor : EditorWindow {
         T[] resizedArr = new T[spaceArr.Length + 1];
         System.Array.Copy(spaceArr, resizedArr, spaceArr.Length);
         resizedArr[spaceArr.Length] = spaceGO.AddComponent<T>();
-        resizedArr[spaceArr.Length].Initialize(actorHandler);
+        resizedArr[spaceArr.Length].EditorInitialize(actorHandler);
         return resizedArr;
     }
 
@@ -429,17 +429,6 @@ public class ActorSpaceEditor : EditorWindow {
                             healthbar.Actor = match.GetComponentInChildren<Actor>();
                             EditorUtility.SetDirty(healthbar);
                         }
-                    }
-                }
-            }
-        } using (new EditorGUILayout.HorizontalScope()) {
-            EditorUtils.WindowBoxLabel("Revise Actor Handler References", GUILayout.Height(19));
-            using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
-                if (GUILayout.Button("Auto-Assign")) {
-                    var actors = ((ActorSpace[]) actorHandler.EditorCharacterSpaces).Concat(actorHandler.EditorEnemySpaces).Select(space => space.GetComponentInChildren<Actor>(true));
-                    foreach (Actor actor in actors) {
-                        actor.InjectHandler(actorHandler);
-                        EditorUtility.SetDirty(actor);
                     }
                 }
             }

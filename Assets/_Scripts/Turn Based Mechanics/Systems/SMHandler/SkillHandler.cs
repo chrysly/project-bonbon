@@ -8,9 +8,9 @@ public class SkillHandler : StateMachineHandler {
 
     public void SkillActivate(ActiveSkillPrep SkillPrep) {
         if (SkillPrep.targets.Length > 0) {
+            OnSkillTrigger?.Invoke(SkillPrep);
             if (SkillPrep.bonbon == null) SkillPrep.skill.ActivateSkill(SkillPrep.targets);
             else SkillPrep.skill.AugmentSkill(SkillPrep.targets, SkillPrep.bonbon);
-            OnSkillTrigger?.Invoke(SkillPrep);
         }
     }
 }

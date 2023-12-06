@@ -21,6 +21,7 @@ namespace BattleUI {
         }
 
         protected virtual void Attach(UIButtonAnimator target) {
+            transform.SetParent(target.transform, false);
             target.OnToggle += UIButtonAnimator_OnToggle;
             target.OnActivate += UIButtonAnimator_OnActivate;
         }
