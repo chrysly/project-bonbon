@@ -18,7 +18,7 @@ public class SkillAnimation {
 
     [SerializeField] private GameObject vfxPrefab;
     public GameObject VFXPrefab => vfxPrefab;
-    [SerializeReference] private List<DelaySkillAnimation> delaySkills = DelaySkillAnimation.subTypes.Select(type => (DelaySkillAnimation) System.Activator.CreateInstance(type)).ToList();
+    [SerializeReference] private List<DelaySkillAnimation> delaySkills;
     public List<DelaySkillAnimation> DelaySkills => delaySkills;
 
     [SerializeField] private CameraAnimationPackage cap;

@@ -13,11 +13,15 @@ public abstract class ActorSpace : MonoBehaviour {
     public Actor CurrActor { get; private set; }
     [SerializeField] protected GameObject actorPrefab;
 
-    void Awake() {
+    public void Init(ActorHandler handler) {
+        this.handler = handler;
         if (initialActor != null) {
             if (actorPrefab == null) {
                 SpawnActor(initialActor);
-            } else CurrActor = actorPrefab.GetComponentInChildren<Actor>(true);
+            } else {
+                CurrActor = actorPrefab.GetComponentInChildren<Actor>(true);
+                CurrActor.Init(handler.CurrInput);
+            }
         }
     }
 
@@ -62,7 +66,7 @@ public abstract class ActorSpace : MonoBehaviour {
         UnityEditor.Handles.Label(transform.position, gameObject.name.IsolatePathEnd(" "), style);
     }
 
-    public void Initialize(ActorHandler handler) {
+    public void EditorInitialize(ActorHandler handler) {
         this.handler = handler;
         UnityEditor.EditorUtility.SetDirty(this);
     }

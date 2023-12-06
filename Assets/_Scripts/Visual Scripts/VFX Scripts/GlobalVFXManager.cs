@@ -12,7 +12,12 @@ public class GlobalVFXManager : StateMachineHandler {
     
     private IEnumerator _action;
     private Queue<List<GameObject>> _activeVFXQueue = new Queue<List<GameObject>>();
-    
+
+    public void Connect(AnimationHandler animationHandler) {
+        animationHandler.HealEvent += AnimationHandler_HealEvent;
+        animationHandler.StaminaEvent += AnimationHandler_StaminaEvent;
+    }
+
     public void PlayAnimation(VFXAnimationPackage package, Transform actor) {
         if (_action == null) {
             _action = AnimationAction(package, actor);
@@ -130,4 +135,16 @@ public class GlobalVFXManager : StateMachineHandler {
         return actor;
     }
     #endregion VFX Operations
+
+    #region Events
+
+    private void AnimationHandler_HealEvent(int amount, Actor actor) {
+        PlayAnimation(VFXMap.GenericVFXDict[GenericVFXType.Heal], actor.transform);
+    }
+
+    private void AnimationHandler_StaminaEvent(Actor actor) {
+        PlayAnimation(VFXMap.GenericVFXDict[GenericVFXType.StaminaRegen], actor.transform);
+    }
+
+    #endregion
 }
