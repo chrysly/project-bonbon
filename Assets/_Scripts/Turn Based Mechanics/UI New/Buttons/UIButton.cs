@@ -10,8 +10,11 @@ namespace BattleUI {
         public virtual void Select() => OnSelect?.Invoke();
 
         public void TryActivate() {
-            OnActivate?.Invoke();
-            if (Available) Activate();
+            try {
+                OnActivate?.Invoke();
+            } catch {
+                Debug.LogError("Failed OnActivate;");
+            } if (Available) Activate();
         }
 
         public virtual void Activate() { }
