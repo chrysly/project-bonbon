@@ -1146,6 +1146,7 @@ GameObject:
   - component: {fileID: 2321989103947864735}
   - component: {fileID: 4408469319466145429}
   - component: {fileID: 4564851679087645089}
+  - component: {fileID: 1422949740120310728}
   m_Layer: 0
   m_Name: Target Group
   m_TagString: Untagged
@@ -1196,6 +1197,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animators: []
+--- !u!114 &1422949740120310728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983215131295861193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f127a9d56b8ec8e41aaa3e1de589b0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorPrefab: {fileID: 4981898987406499341, guid: 2e74bc66da1ecc54aa55ac0fed4dab69, type: 3}
 --- !u!1 &7361345189848095480
 GameObject:
   m_ObjectHideFlags: 0

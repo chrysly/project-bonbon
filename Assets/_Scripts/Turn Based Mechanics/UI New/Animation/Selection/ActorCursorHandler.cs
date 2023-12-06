@@ -4,7 +4,8 @@ using DG.Tweening;
 using UnityEngine;
 
 namespace BattleUI {
-    public class ActorCursorHandler : CursorHandler {
+    /*
+    public class ActorCursorHandler : UICursorAnimator {
 
         [SerializeField] private float animationLength = 0.2f;
         [SerializeField] private float idleCursorOffset;
@@ -82,5 +83,5 @@ namespace BattleUI {
             _activeCursor.DOScale(Vector3.zero, 0.2f);
             yield return new WaitForSeconds(0.2f);
         }
-    }
+    }*/
 }

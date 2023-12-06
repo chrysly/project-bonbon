@@ -4,12 +4,11 @@ using UnityEngine;
 namespace BattleUI {
     public class TargetSelectHandler : FluidStateHandler<SkillTransitionInfo> {
 
-        private TargetAnimator ta;
         private TargetSelectButton[] buttonArr;
 
-        private void Awake() { Type = UIStateType.TargetSelect;
-            ta = GetComponent<TargetAnimator>();
-        }
+        public event System.Action<UIButton> OnButtonCreated;
+
+        private void Awake() { Type = UIStateType.TargetSelect; }
 
         public override UIInputPack InputArrangement() {
             List<Actor> targets = Brain.BattleStateMachine
@@ -20,10 +19,9 @@ namespace BattleUI {
                 GameObject go = new GameObject($"Target: {targets[i]}");
                 go.transform.parent = anchor;
                 go.transform.localPosition = Vector3.zero;
+                go.transform.localRotation = Quaternion.identity;
                 buttonArr[i] = go.AddComponent<TargetSelectButton>();
-                var aaaa = go.AddComponent<UIButtonAnimator>();
-                ta.Init(aaaa);
-                aaaa.cursorTarget = aaaa.transform;
+                OnButtonCreated?.Invoke(buttonArr[i]);
                 buttonArr[i].Init(this);
                 buttonArr[i].Init(targets[i], anchor);
             } return new UIInputPack(new[] { buttonArr }, TraversalMode.Horizontal);
@@ -37,10 +35,8 @@ namespace BattleUI {
         }
 
         public override void Revert() {
-            if (buttonArr != null) {
-                buttonArr.Dispose();
-                buttonArr = null;
-            } base.Revert();
+            buttonArr = null;
+            base.Revert();
         }
     }
 }

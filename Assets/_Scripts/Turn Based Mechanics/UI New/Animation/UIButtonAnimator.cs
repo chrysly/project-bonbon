@@ -16,6 +16,9 @@ namespace BattleUI {
         protected float targetScale;
         protected bool selected;
 
+        public event System.Action<bool> OnToggle;
+        public event System.Action<bool> OnActivate;
+
         protected override void Awake() {
             base.Awake();
             LoadLogicButton();
@@ -29,12 +32,11 @@ namespace BattleUI {
         }
 
         public virtual void OverrideSelect(bool select) {
-            if (select) ;//stateAnimator.SendCursor(this);
             selected = select;
         }
 
         protected void UIButton_OnSelect() {
-            stateAnimator.Brain.UpdateSelection(this);
+            stateAnimator.UpdateSelection(this);
         }
 
         protected override IEnumerator Idle() {
@@ -52,6 +54,7 @@ namespace BattleUI {
             ProcessAvailability();
             targetScale = toggle ? 1 : 0;
             if (!toggle) selected = false;
+            OnToggle?.Invoke(toggle);
         }
 
         /// <summary>
@@ -62,6 +65,7 @@ namespace BattleUI {
                 transform.DOShakeRotation(0.5f, new Vector3(0, 0, 15 * Mathf.Sign(Mathf.Sin(Time.time))),
                                           10, 45, true, ShakeRandomnessMode.Harmonic).SetEase(Ease.OutQuint);
             } else transform.DOScale(1.5f, animationDuration).SetEase(Ease.OutBack);
+            OnActivate?.Invoke(Button.Available);
         }
 
         /// <summary>
