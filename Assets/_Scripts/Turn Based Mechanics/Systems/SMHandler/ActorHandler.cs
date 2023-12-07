@@ -61,6 +61,12 @@ public class ActorHandler : StateMachineHandler {
         input.TurnOrderHandler.Remove(actor);
     }
 
+    public void DespawnActor(Actor actor) {
+        ActorSpace[] targetSpace = actor is CharacterActor ? characterSpaces : enemySpaces;
+        ActorSpace space = targetSpace.FirstOrDefault(actorSpace => actorSpace.PseudoActor == actor);
+        if (space != null) space.ConfirmHeathenExtermination();
+    }
+
     #if UNITY_EDITOR
 
     [HideInInspector] public Transform anchorTransform;

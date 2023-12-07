@@ -12,6 +12,8 @@ public abstract class ActorSpace : MonoBehaviour {
     [SerializeField] private ActorData initialActor;
     public Actor CurrActor { get; private set; }
     [SerializeField] protected GameObject actorPrefab;
+    
+    public Actor PseudoActor { get; private set; }
 
     public void Init(ActorHandler handler) {
         this.handler = handler;
@@ -33,12 +35,16 @@ public abstract class ActorSpace : MonoBehaviour {
     }
 
     public void DespawnActor() {
+        PseudoActor = CurrActor;
         StartCoroutine(FaintYouHeathen(CurrActor, actorPrefab));
         CurrActor = null;
         actorPrefab = null;
     }
 
+    public void ConfirmHeathenExtermination() => PseudoActor = null;
+
     private IEnumerator FaintYouHeathen(Actor actor, GameObject actorPrefab) {
+        while (PseudoActor != null) yield return null;
         VFXHandler.PlayAnimation(VFXHandler.VFXMap.GenericVFXDict[GenericVFXType.Death], actor.transform);
         actor.transform.DOScale(Vector3.zero, 1f).SetEase(Ease.InOutBounce);
         yield return new WaitForSeconds(5);
