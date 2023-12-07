@@ -36,6 +36,7 @@ public class SkillAction {
 
     public void AugmentSkill(Actor[] targets, BonbonObject bonbon) {
         PayStamina();
+        RemoveBonbon(bonbon);
         SkillAugment augment = bonbon.Data.augmentData;
         /// Ensure that the skill applies effects if it originally didn't;
         var aea = new ApplyEffectsAction();
@@ -43,6 +44,11 @@ public class SkillAction {
             && !SkillData.immediateActions.Contains(aea)) SkillData.immediateActions.Add(aea);
         /// Perform the actions on the caster with new computations;
         foreach (Actor target in targets) SkillData.PerformActions(Caster.ActiveData.Augment(augment), target);
+    }
+
+    private void RemoveBonbon(BonbonObject bonbon) {
+        int index = new List<BonbonObject>(Caster.BonbonInventory).FindIndex(0, Caster.BonbonInventory.Length, item => item == bonbon);
+        Caster.BonbonInventory[index] = null;
     }
 
     public override string ToString() {
