@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BattleUI {
     public partial class BonbonSlotAnimator {
-    
+
+        [SerializeField] private GameObject vfxPrefab;
+
         /// Enumerator Requirements:
         /// - Must set the animator state to 'Idle' at the end;
         /// - Must update the icon at some point by calling the UpdateIcon() method;
@@ -26,6 +30,14 @@ namespace BattleUI {
         /// bonbon: The BonbonObject to be crafted (from which you can access the icon);
 
         private IEnumerator CraftAnimation(BonbonCraftInfo info) {
+            GameObject vfxInstance = Instantiate(vfxPrefab, transform.position, Quaternion.identity);
+            Material dissolveMat = transform.GetComponent<SpriteRenderer>().material;
+            transform.DOScale(Vector3.zero, 0f);
+            transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBounce);
+            dissolveMat.SetFloat("_Dissolve", 1f);
+            dissolveMat.DOFloat(0f, "_Dissolve", 1f);
+            yield return new WaitForSeconds(2f);
+            Destroy(vfxInstance, 3f);
             yield return null;
             state = UIAnimatorState.Idle;
         }

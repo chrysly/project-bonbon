@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Strawberry Shortcake
   m_EditorClassIdentifier: 
   name: Strawberry Crepe
-  texture: {fileID: 2800000, guid: a12f88e09dfd233499e62e2ac5e6f341, type: 3}
+  texture: {fileID: 21300000, guid: a12f88e09dfd233499e62e2ac5e6f341, type: 3}
   description: 
   craftStamina: 10
   passiveModifiers:

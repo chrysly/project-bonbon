@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class IngredientButton : BattleButton
 {
     [SerializeField] private TextMeshProUGUI bonbonText;
-    [SerializeField] private RawImage image;
+    [SerializeField] private Sprite image;
 
     private BonbonBlueprint _blueprint;
     
     public void Initialize(BonbonBlueprint blueprint) {
         _blueprint = blueprint;
         bonbonText.SetText(_blueprint.name);
-        image.texture = blueprint.texture;
+        //image.texture = blueprint.texture.texture;
     }
     
     public void Select(float delay) {

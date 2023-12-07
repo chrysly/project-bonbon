@@ -262,7 +262,7 @@ namespace BonbonAssetManager {
                 GUILayout.FlexibleSpace();
                 using (new EditorGUILayout.VerticalScope(UIStyles.WindowBox, GUILayout.Width(buttonSize), GUILayout.Height(buttonSize), GUILayout.ExpandWidth(false))) {
                     GUILayout.FlexibleSpace();
-                    GUILayout.Label(ingredient.texture, UIStyles.CenteredLabel, GUILayout.Width(buttonSize), GUILayout.Height(buttonSize));
+                    GUILayout.Label(ingredient.texture.texture, UIStyles.CenteredLabel, GUILayout.Width(buttonSize), GUILayout.Height(buttonSize));
                     GUILayout.FlexibleSpace();
                 } GUILayout.FlexibleSpace();
                 return new Rect();
