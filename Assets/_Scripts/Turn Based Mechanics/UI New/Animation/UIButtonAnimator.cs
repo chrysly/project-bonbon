@@ -41,10 +41,10 @@ namespace BattleUI {
 
         protected override IEnumerator Idle() {
             if (selected) {
-                transform.DOScale(Vector2.one * selectedScale, animationDuration);
+                transform.DOScale(selectedScale, animationDuration);
                 yield return new WaitForSeconds(animationDuration / 2);
             } else {
-                transform.DOScale(Vector2.one * targetScale, animationDuration);
+                transform.DOScale(new Vector3(targetScale, targetScale, 1f), animationDuration);
                 yield return new WaitForSeconds(animationDuration / 2);
             }
         }

@@ -32,7 +32,7 @@ namespace BattleUI {
         private IEnumerator CraftAnimation(BonbonCraftInfo info) {
             GameObject vfxInstance = Instantiate(vfxPrefab, transform.position, Quaternion.identity);
             Material dissolveMat = transform.GetComponent<SpriteRenderer>().material;
-            transform.DOScale(Vector3.zero, 0f);
+            transform.DOScale(new Vector3(0f, 0f, 1f), 0f);
             transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBounce);
             dissolveMat.SetFloat("_Dissolve", 1f);
             dissolveMat.DOFloat(0f, "_Dissolve", 1f);

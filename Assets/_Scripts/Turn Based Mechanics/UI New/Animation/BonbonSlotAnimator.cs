@@ -67,6 +67,9 @@ namespace BattleUI {
         }
 
         protected override void ProcessAvailability() {
+            if (icon.sprite == null) {
+                
+            }
             icon.DOFade(icon.sprite == null ? 0 
                                              : Button.Available ? 1 : 0.5f, 0);
         }
