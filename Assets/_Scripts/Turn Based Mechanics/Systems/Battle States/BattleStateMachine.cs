@@ -96,7 +96,8 @@ public partial class
         ToggleMachine(false);
         if (CurrState is AnimateState) {
             StartBattle(0.3f);
-        } else StartBattle();
+        }
+        else StartBattle();
     }
 
     public void SkipEnemySelection() {
