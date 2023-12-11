@@ -37,16 +37,24 @@ public class EventObject : ScriptableObject {
     /// <summary>
     /// what happens when an event is called
     /// </summary>
-    public virtual IEnumerator OnTrigger() { 
+    public virtual IEnumerator OnTrigger() {
+
+        yield return new WaitForSeconds(1f);    // because if not it goes to fast and glitches out
         DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
-        
+
         //wait while the dialogue event is still running
-        while(DialogueManager.dialogueIsOccuring) {
+        while (DialogueManager.dialogueIsOccuring) {
+            Debug.Log(yarnFile.name + " waiting...");
             yield return null;
         }
 
         OnEventEnd();
     }
+    //public virtual void OnTrigger() {
+    //    DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
+
+    //    DialogueManager.OnDialogueStart += () => OnEventEnd();
+    //}
 
     public virtual void OnEventEnd() {
         EventObjectTerminate.Invoke();

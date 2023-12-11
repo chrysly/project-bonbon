@@ -54,7 +54,7 @@ public class EventSequencer : MonoBehaviour {
             RunNextEvent();
         } 
         else if (state.GetType() == typeof(BattleStateMachine.LoseState)) {
-            DialogueManager.dialogueRequestEvent.Invoke("death_dialogue.yarn");
+            DialogueManager.dialogueRequestEvent.Invoke("death_dialogue");
         } 
         else if (bsm.PrevState.GetType() == typeof(BattleStateMachine.BattleStart)) {
             RunNextEvent();
@@ -91,6 +91,7 @@ public class EventSequencer : MonoBehaviour {
             return;
         }
 
+        
         if (bsm != null) { bsm.ToggleMachine(true); }
 
         StartCoroutine(eventsToRun.Peek().OnTrigger());
@@ -104,12 +105,13 @@ public class EventSequencer : MonoBehaviour {
     /// Checks the event queue. If there are more events to run, run those events
     /// </summary>
     public void EventEnd() {
+        Debug.Log("EventEnd");
+        eventSequence.Remove(eventsToRun.Peek());
+        eventsToRun.Dequeue();
+
         if (eventsToRun.Count > 0) {
             RunNextEvent();
         } else {
-            bsm.ToggleMachine(false);
-            eventSequence.Remove(eventsToRun.Peek());
-            eventsToRun.Dequeue();
             OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
         }      
     }

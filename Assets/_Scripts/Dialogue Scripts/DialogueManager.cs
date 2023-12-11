@@ -54,7 +54,6 @@ public class DialogueManager : MonoBehaviour
 
     // jasmine vars
     public static bool dialogueIsOccuring = false;
-
     #region Monobehavior
     void Start()
     {
@@ -91,8 +90,6 @@ public class DialogueManager : MonoBehaviour
     #region Main Dialogue Processing
     public void StartNode(string node = "BrookeTestScript1")
     {
-        dialogueIsOccuring = true;
-
         if (_dialogueRunner != null) 
         {
             OnDialogueStart?.Invoke(true);
@@ -110,6 +107,9 @@ public class DialogueManager : MonoBehaviour
     }
     void ProcessNode()
     {
+        Debug.Log("true");
+        dialogueIsOccuring = true;
+
         readingDialogue = true;
         Debug.Log("DialogueManager.ProcessNode(): Current Node Name: " + _dialogueRunner.CurrentNodeName);
         //get tags and set up characters + character sides
@@ -235,6 +235,7 @@ public class DialogueManager : MonoBehaviour
             });
         OnDialogueStart?.Invoke(false);
 
+        Debug.Log("false");
         dialogueIsOccuring = false;
     }
     #endregion
