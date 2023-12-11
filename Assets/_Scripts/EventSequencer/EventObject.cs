@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 using static EventConditions;   // i hope this is ok?
 
 [CreateAssetMenu(fileName = "New EventObject", menuName ="Event System/EventObject" )]
 
 public class EventObject : ScriptableObject {
     [SerializeReference]
-    public List<Condition> eventConditions = new List<Condition>(); //check
+    public List<Condition> eventConditions = new List<Condition>();
 
-    public TextAsset yarnFile;
+    [SerializeField] private TextAsset yarnFile;
+    [SerializeField] private bool playOnStart = false;
+    public bool getPlayOnStart() { return playOnStart; }
+
+    #region Events
+    public event System.Action EventObjectTerminate;
+    #endregion
 
     /// <summary>
-    /// checks if an events conditions are met. if yes, add it to the event queue
+    /// return true if event conditions are met
     /// </summary>
     public virtual bool CheckConitions(AIActionValue package) {
 
@@ -23,7 +30,6 @@ public class EventObject : ScriptableObject {
                     return false;
                 }
             }
-            
         }
         return true;
     }
@@ -31,11 +37,28 @@ public class EventObject : ScriptableObject {
     /// <summary>
     /// what happens when an event is called
     /// </summary>
-    public virtual void OnTrigger() {
-        DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
-    }
+    public virtual IEnumerator OnTrigger() {
 
-    public virtual void OnEventEnd() { }
+        yield return new WaitForSeconds(1f);    // because if not it goes to fast and glitches out
+        DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
+
+        //wait while the dialogue event is still running
+        while (DialogueManager.dialogueIsOccuring) {
+            Debug.Log(yarnFile.name + " waiting...");
+            yield return null;
+        }
+
+        OnEventEnd();
+    }
+    //public virtual void OnTrigger() {
+    //    DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
+
+    //    DialogueManager.OnDialogueStart += () => OnEventEnd();
+    //}
+
+    public virtual void OnEventEnd() {
+        EventObjectTerminate.Invoke();
+    }
 
     // NOTE
     //You'll need to implement a custom editor or context menus

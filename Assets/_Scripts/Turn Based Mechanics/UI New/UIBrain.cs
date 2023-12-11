@@ -44,6 +44,8 @@ namespace BattleUI {
         }
 
         private void BattleStateMachine_OnBattleLock(bool disabled) {
+            if (UILocked == disabled) return;
+            
             if (disabled) InputReader.Disable();
             UILocked = disabled;
             OnGlobalSoftToggle?.Invoke(!disabled);

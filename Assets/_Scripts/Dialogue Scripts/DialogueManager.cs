@@ -21,7 +21,6 @@ public class DialogueManager : MonoBehaviour
     YarnProject _yarnProject;
 
     [Header("References")]
-    [SerializeField] EventSequencer _eventSequencer;    // J
     [SerializeField] GameObject _viewport;
     [SerializeField] GameObject _dialogueViewPrefab;
     [SerializeField] GameObject _dialoguePortraitPrefab;
@@ -53,6 +52,8 @@ public class DialogueManager : MonoBehaviour
     public static event DialogueEvent OnDialogueStart;
     #endregion Events
 
+    // jasmine vars
+    public static bool dialogueIsOccuring = false;
     #region Monobehavior
     void Start()
     {
@@ -106,6 +107,9 @@ public class DialogueManager : MonoBehaviour
     }
     void ProcessNode()
     {
+        Debug.Log("true");
+        dialogueIsOccuring = true;
+
         readingDialogue = true;
         Debug.Log("DialogueManager.ProcessNode(): Current Node Name: " + _dialogueRunner.CurrentNodeName);
         //get tags and set up characters + character sides
@@ -203,7 +207,6 @@ public class DialogueManager : MonoBehaviour
     }
     void EndDialogue()
     {
-        //Debug.Log("DialogueManager.EndDialogue()");
         foreach (GameObject o in activeDialogueBoxList)
         {
             CanvasGroup dialogueViewCG = o.GetComponent<CanvasGroup>();
@@ -231,7 +234,9 @@ public class DialogueManager : MonoBehaviour
                 previousName = null;
             });
         OnDialogueStart?.Invoke(false);
-        _eventSequencer.CheckForEventEnd(); // J
+
+        Debug.Log("false");
+        dialogueIsOccuring = false;
     }
     #endregion
 
