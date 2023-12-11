@@ -21,7 +21,6 @@ public class DialogueManager : MonoBehaviour
     YarnProject _yarnProject;
 
     [Header("References")]
-    [SerializeField] EventSequencer _eventSequencer;    // J
     [SerializeField] GameObject _viewport;
     [SerializeField] GameObject _dialogueViewPrefab;
     [SerializeField] GameObject _dialoguePortraitPrefab;
@@ -52,6 +51,9 @@ public class DialogueManager : MonoBehaviour
     public delegate void DialogueEvent(bool active);
     public static event DialogueEvent OnDialogueStart;
     #endregion Events
+
+    // jasmine vars
+    public static bool dialogueIsOccuring = false;
 
     #region Monobehavior
     void Start()
@@ -89,6 +91,8 @@ public class DialogueManager : MonoBehaviour
     #region Main Dialogue Processing
     public void StartNode(string node = "BrookeTestScript1")
     {
+        dialogueIsOccuring = true;
+
         if (_dialogueRunner != null) 
         {
             OnDialogueStart?.Invoke(true);
@@ -203,7 +207,6 @@ public class DialogueManager : MonoBehaviour
     }
     void EndDialogue()
     {
-        //Debug.Log("DialogueManager.EndDialogue()");
         foreach (GameObject o in activeDialogueBoxList)
         {
             CanvasGroup dialogueViewCG = o.GetComponent<CanvasGroup>();
@@ -231,7 +234,8 @@ public class DialogueManager : MonoBehaviour
                 previousName = null;
             });
         OnDialogueStart?.Invoke(false);
-        _eventSequencer.CheckForEventEnd(); // J
+
+        dialogueIsOccuring = false;
     }
     #endregion
 

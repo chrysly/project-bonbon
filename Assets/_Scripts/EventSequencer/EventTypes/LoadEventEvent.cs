@@ -10,7 +10,8 @@ public class LoadEventEvent : EventObject {
     public EventObject eventToLoad;
     public EventObject thisEvent;
 
-    public override void OnTrigger() {
+    public override IEnumerator OnTrigger() {
         thisEvent.OnTrigger();
+        yield return null;
     }
 }

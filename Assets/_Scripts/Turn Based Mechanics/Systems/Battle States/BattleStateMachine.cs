@@ -48,7 +48,7 @@ public partial class
 
     protected override void Start() {
         base.Start();
-        _eventSequencer.OnEventTerminate += ContinueBattle;
+        //_eventSequencer.OnEventTerminate += ContinueBattle;
         StartCoroutine(StartGame(1.75f));
     }
 
@@ -92,12 +92,12 @@ public partial class
     /// <summary>
     /// Continuation method when BSM is frozen on animate state
     /// </summary>
-    public void ContinueBattle() {
-        ToggleMachine(false);
-        if (CurrState is AnimateState) {
-            StartBattle(0.3f);
-        } else StartBattle();
-    }
+    //public void ContinueBattle() {
+    //    ToggleMachine(false);
+    //    if (CurrState is AnimateState) {
+    //        StartBattle(0.3f);
+    //    } else StartBattle();
+    //}
 
     public void SkipEnemySelection() {
         StartCoroutine(SkipEnemyAction(enemyTurnDuration));

@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 using static EventConditions;   // i hope this is ok?
 
 [CreateAssetMenu(fileName = "New EventObject", menuName ="Event System/EventObject" )]
 
 public class EventObject : ScriptableObject {
     [SerializeReference]
-    public List<Condition> eventConditions = new List<Condition>(); //check
+    public List<Condition> eventConditions = new List<Condition>();
 
-    public TextAsset yarnFile;
+    [SerializeField] private TextAsset yarnFile;
+    [SerializeField] private bool playOnStart = false;
+    public bool getPlayOnStart() { return playOnStart; }
+
+    #region Events
+    public event System.Action EventObjectTerminate;
+    #endregion
 
     /// <summary>
-    /// checks if an events conditions are met. if yes, add it to the event queue
+    /// return true if event conditions are met
     /// </summary>
     public virtual bool CheckConitions(AIActionValue package) {
 
@@ -23,7 +30,6 @@ public class EventObject : ScriptableObject {
                     return false;
                 }
             }
-            
         }
         return true;
     }
@@ -31,11 +37,20 @@ public class EventObject : ScriptableObject {
     /// <summary>
     /// what happens when an event is called
     /// </summary>
-    public virtual void OnTrigger() {
+    public virtual IEnumerator OnTrigger() { 
         DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
+        
+        //wait while the dialogue event is still running
+        while(DialogueManager.dialogueIsOccuring) {
+            yield return null;
+        }
+
+        OnEventEnd();
     }
 
-    public virtual void OnEventEnd() { }
+    public virtual void OnEventEnd() {
+        EventObjectTerminate.Invoke();
+    }
 
     // NOTE
     //You'll need to implement a custom editor or context menus

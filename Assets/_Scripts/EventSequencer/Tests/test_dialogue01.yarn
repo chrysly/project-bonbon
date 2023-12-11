@@ -1,0 +1,13 @@
+﻿title: test_dialogue01
+tags: Pan:idle:right
+---
+Pan: blah blah blah
+
+<<add_char mochi false>>
+Mochi: are you tripping my G?
+
+Pan:nah fam.
+
+<<remove_char pan>>
+<<remove_char mochi>>
+===
