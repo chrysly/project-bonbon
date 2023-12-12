@@ -18,6 +18,7 @@ MonoBehaviour:
     duration: 3.35
     visualEffects: []
     doMaterialSwap: 1
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: 40c63bf72a4af984dbb9a90378d93715, type: 2}
     materialDuration: 4
     doMaterialLevel: 1
@@ -27,6 +28,7 @@ MonoBehaviour:
     duration: 0
     visualEffects: []
     doMaterialSwap: 0
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: 40c63bf72a4af984dbb9a90378d93715, type: 2}
     materialDuration: 0
     doMaterialLevel: 1
@@ -37,16 +39,18 @@ MonoBehaviour:
     visualEffects:
     - {fileID: 226741796385180899, guid: eb69e999e412bf249acb612b21cbef4b, type: 3}
     doMaterialSwap: 0
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: 40c63bf72a4af984dbb9a90378d93715, type: 2}
     materialDuration: 0
     doMaterialLevel: 0
-    materialLevel: {x: 20, y: 1}
+    materialLevel: {x: 11, y: 1}
   - spawnAt: 0
     delay: 0.99
     duration: 5.22
     visualEffects:
     - {fileID: 2611070077734973462, guid: 9066d8f284798b543b5d149c9900cb02, type: 3}
     doMaterialSwap: 0
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: 40c63bf72a4af984dbb9a90378d93715, type: 2}
     materialDuration: 0
     doMaterialLevel: 0
@@ -56,6 +60,7 @@ MonoBehaviour:
     duration: 0
     visualEffects: []
     doMaterialSwap: 0
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: 40c63bf72a4af984dbb9a90378d93715, type: 2}
     materialDuration: 0
     doMaterialLevel: 1

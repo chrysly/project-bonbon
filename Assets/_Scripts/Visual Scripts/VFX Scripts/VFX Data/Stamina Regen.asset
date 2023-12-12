@@ -19,6 +19,7 @@ MonoBehaviour:
     visualEffects:
     - {fileID: 4286436937226147305, guid: 722790a8aefb11c44ba009c0064ab932, type: 3}
     doMaterialSwap: 1
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
     materialDuration: 4
     doMaterialLevel: 1
@@ -28,6 +29,7 @@ MonoBehaviour:
     duration: 0
     visualEffects: []
     doMaterialSwap: 0
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
     materialDuration: 0
     doMaterialLevel: 1
@@ -37,16 +39,18 @@ MonoBehaviour:
     duration: 4.4
     visualEffects: []
     doMaterialSwap: 0
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
     materialDuration: 0
     doMaterialLevel: 0
-    materialLevel: {x: 20, y: 1}
+    materialLevel: {x: 11, y: 1}
   - spawnAt: 0
     delay: 0.93
     duration: 5.22
     visualEffects:
     - {fileID: 2472791055051125194, guid: 59a216a9ca40a1d4fa8307bbac4aadde, type: 3}
     doMaterialSwap: 0
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
     materialDuration: 0
     doMaterialLevel: 0
@@ -56,6 +60,7 @@ MonoBehaviour:
     duration: 0
     visualEffects: []
     doMaterialSwap: 0
+    doMaterialReplace: 0
     material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
     materialDuration: 0
     doMaterialLevel: 1
