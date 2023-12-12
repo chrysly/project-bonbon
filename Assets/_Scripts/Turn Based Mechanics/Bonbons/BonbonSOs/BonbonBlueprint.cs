@@ -8,7 +8,7 @@ using UnityEditor;
 public class BonbonBlueprint : ScriptableObject {
 
     public new string name;
-    public Texture texture;
+    public Sprite texture;
 
     /// <summary> A description of the bonbon for later use in the UI; </summary>
     public string description;
@@ -75,7 +75,7 @@ public class BonbonBlueprint : ScriptableObject {
     public static GUIContent GUIContent(object bonbonBlueprint) {
         BonbonBlueprint bp = bonbonBlueprint as BonbonBlueprint;
         if (bp.texture == null) return new GUIContent(bp.name);
-        else return new GUIContent(bp.texture);
+        else return new GUIContent(bp.texture.texture);
     }
 
     #endif

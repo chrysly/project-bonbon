@@ -10,7 +10,7 @@ public class BonbonObject {
     public BonbonBlueprint Data { get; private set; }
 
     public string Name => Data.name;
-    public Texture Texture => Data.texture;
+    public Sprite Texture => Data.texture;
     public string Description => Data.description;
 
     public int CraftStamina => Data.craftStamina;

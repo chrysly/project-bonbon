@@ -18,7 +18,7 @@ namespace BattleUI {
             bakeHandler = GetComponent<BonbonBakeHandler>();
 
             slotAnimators = animators.Select(animator => animator as BonbonSlotAnimator).ToArray();
-            foreach (Transform transform in decorations) transform.DOScale(0, 0);
+            foreach (Transform transform in decorations) transform.DOScale(new Vector3(0f, 0f, 1f), 0);
             
             mainHandler.OnHandlerToggle += OnMainHandlerToggle;
             bakeHandler.OnHandlerToggle += OnBakeHandlerToggle;
@@ -50,14 +50,14 @@ namespace BattleUI {
 
         protected override IEnumerator Load() {
             foreach (Transform transform in decorations) {
-                transform.DOScale(Vector2.one, animationDuration).SetEase(Ease.InOutCirc);
+                transform.DOScale(Vector3.one, animationDuration).SetEase(Ease.InOutCirc);
                 yield return new WaitForSeconds(animationDuration / 2);
             } yield return null;
         }
 
         protected override IEnumerator Unload() {
             foreach (Transform transform in decorations) {
-                transform.DOScale(Vector2.zero, animationDuration).SetEase(Ease.InOutQuart);
+                transform.DOScale(new Vector3(0f, 0f, 1f), animationDuration).SetEase(Ease.InOutQuart);
                 yield return new WaitForSeconds(animationDuration / 2);
             } yield return null;
         }
