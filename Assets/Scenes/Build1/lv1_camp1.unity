@@ -547,8 +547,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitToStart: 2
-  startEvent: {fileID: 11400000, guid: 064ce3fdc4c816a46ae0ab9dbb50c9bc, type: 2}
-  eventSequencer: {fileID: 1929127909}
+  campEvents:
+  - {fileID: 11400000, guid: 917b344ad52b09a44b954e62ae9079d1, type: 2}
+  - {fileID: 11400000, guid: aa71f6a4f18529c4982efc8f0c6b8188, type: 2}
+  evSeq: {fileID: 1929127909}
 --- !u!4 &1520207548
 Transform:
   m_ObjectHideFlags: 0
@@ -711,7 +713,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventSequence: []
-  onStartEvent: {fileID: 0}
   onWinEvent: {fileID: 0}
 --- !u!4 &1929127910
 Transform:

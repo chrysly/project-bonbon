@@ -1,14 +1,28 @@
 ﻿title: s1_combatWin
-tags: Mochi:neutral_2:left Pan:slight_smile:right
+tags: Mochi:hyped_up:left
 ---
-Mochi_neutral_2: We won!
-Mochi_neutral_2: Did you see that Pan?!
-Mochi_neutral_2: I went all *Swish* and *Swoosh.*
-Mochi_neutral_2: Haha, those Jello Jumpers were a piece of cake!
+Mochi_hyped_up: Wahoo!!! 
+Mochi_hyped_up: Did you see that Pan?! 
+Mochi_hyped_up: I went all *Swish* and *Swoosh*
+Mochi_hyped_up: And then-
 
-Pan_slight_smile: I’m glad you’re ok.
-Pan: But...
-Pan: Are you already forgetting that you nearly lost without me?
-Pan: Come on, let’s go find somewhere safe, it’s getting late.
+<<add_char pan true>>
+
+Pan: Mochi...
+
+Mochi_suprised: O__o
+
+Pan: Did you actually think you could make the perfect dish for mom and dad…
+
+Pan_angry: WITHOUT ME??!!?!?
+Pan_angry: YOU GOTTA LET ME IN ON THIS!
+
+Pan_happy: It can be a joint gift :3
+
+Mochi_apologetic_1: Uh.
+Mochi_apologetic_1: Ok?
+
+<<remove_char pan>>
+<<remove_char mochi>>
 
 ===
