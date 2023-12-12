@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: s1_combat01
   m_EditorClassIdentifier: 
   eventConditions:
-  - rid: 2255346168750407681
+  - rid: -2
   yarnFile: {fileID: -8253061345870894857, guid: 0e539d29f90f6a94e8431bc446c8cb7a, type: 3}
+  playOnStart: 1
   references:
     version: 2
     RefIds:
-    - rid: 2255346168750407681
-      type: {class: EventConditions/GenericCondition, ns: , asm: Assembly-CSharp}
+    - rid: -2
+      type: {class: , ns: , asm: }

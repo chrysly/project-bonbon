@@ -5,9 +5,8 @@ using UnityEngine;
 public class AutoStartDialogue : MonoBehaviour {
     public float waitToStart = 0.0f;
 
-    public EventObject campEvent;
+    public List<EventObject> campEvents;
 
-    // testing
     public EventSequencer evSeq;
 
     void Start() {
@@ -16,7 +15,10 @@ public class AutoStartDialogue : MonoBehaviour {
 
     IEnumerator Wait() {
         yield return new WaitForSeconds(waitToStart);
-        evSeq.AddEvent(campEvent);
+
+        foreach (EventObject ev in campEvents) {
+            evSeq.AddEvent(ev);
+        }
         evSeq.RunNextEvent();
     }
 }

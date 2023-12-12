@@ -12,7 +12,7 @@ public class EventObject : ScriptableObject {
     public List<Condition> eventConditions = new List<Condition>();
 
     [SerializeField] private TextAsset yarnFile;
-    [SerializeField] private bool playOnStart = false;
+    [SerializeField] private bool playOnStart;
     public bool getPlayOnStart() { return playOnStart; }
 
     #region Events
@@ -50,11 +50,6 @@ public class EventObject : ScriptableObject {
 
         OnEventEnd();
     }
-    //public virtual void OnTrigger() {
-    //    DialogueManager.dialogueRequestEvent.Invoke(yarnFile.name);
-
-    //    DialogueManager.OnDialogueStart += () => OnEventEnd();
-    //}
 
     public virtual void OnEventEnd() {
         EventObjectTerminate.Invoke();

@@ -15,6 +15,7 @@ MonoBehaviour:
   eventConditions:
   - rid: -2
   yarnFile: {fileID: 0}
+  playOnStart: 1
   popUps:
   - {fileID: 21300000, guid: 3f0fa33ea99c6134fb7f7a4c89f8ce9a, type: 3}
   - {fileID: 21300000, guid: b07947728f76e7643a07bc026dacac62, type: 3}

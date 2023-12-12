@@ -66,19 +66,19 @@ public class EventSequencer : MonoBehaviour {
     /// </summary>
     private void CheckSkillEvent(ActiveSkillPrep activeSkillPrep) {
 
-        for (int i = 0; i < activeSkillPrep.targets. Length; ++i) {
+        for (int i = 0; i < activeSkillPrep.targets.Length; ++i) {
             AIActionValue package = activeSkillPrep.skill.ComputeSkillActionValues(activeSkillPrep.targets[i]);
             package.currentTurn = bsm.CurrInput.CurrTurn();
 
             // add any events that meet activate conditions to a queue
             foreach (EventObject ev in eventSequence) {
-
                 if (ev != null) {
                     if (ev.CheckConitions(package)) {
                         AddEvent(ev);
                     }
                 }
             }
+            RunNextEvent();
         }
     }
 
@@ -105,7 +105,6 @@ public class EventSequencer : MonoBehaviour {
     /// Checks the event queue. If there are more events to run, run those events
     /// </summary>
     public void EventEnd() {
-        Debug.Log("EventEnd");
         eventSequence.Remove(eventsToRun.Peek());
         eventsToRun.Dequeue();
 

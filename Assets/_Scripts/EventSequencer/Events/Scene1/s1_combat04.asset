@@ -15,6 +15,7 @@ MonoBehaviour:
   eventConditions:
   - rid: 6214501969841094658
   yarnFile: {fileID: -8253061345870894857, guid: 86f59d789e6e0ea439f0176eca3731d9, type: 3}
+  playOnStart: 0
   includeLoadingBar: 1
   references:
     version: 2
@@ -22,4 +23,4 @@ MonoBehaviour:
     - rid: 6214501969841094658
       type: {class: EventConditions/TurnNumberCondition, ns: , asm: Assembly-CSharp}
       data:
-        turnNum: 3
+        turnNum: 4

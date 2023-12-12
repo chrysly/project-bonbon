@@ -22,6 +22,10 @@ public class PopUpEvent : EventObject {
         popUpLogic.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         popUpLogic.startPopUp(popUps);
 
-        yield return null;
+        while (popUpLogic.getActive()) {
+            yield return null;
+        }
+
+        OnEventEnd();
     }
 }
