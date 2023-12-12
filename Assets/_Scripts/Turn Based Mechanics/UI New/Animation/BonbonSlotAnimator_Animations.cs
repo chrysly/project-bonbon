@@ -8,6 +8,9 @@ namespace BattleUI {
     public partial class BonbonSlotAnimator {
 
         [SerializeField] private GameObject vfxPrefab;
+        [SerializeField] private GameObject craftVfxPrefab;
+        [SerializeField] private Material defaultMat;
+        [SerializeField] private Material bonbonAnimMat;
 
         /// Enumerator Requirements:
         /// - Must set the animator state to 'Idle' at the end;
@@ -31,12 +34,15 @@ namespace BattleUI {
 
         private IEnumerator CraftAnimation(BonbonCraftInfo info) {
             GameObject vfxInstance = Instantiate(vfxPrefab, transform.position, Quaternion.identity);
-            Material dissolveMat = transform.GetComponent<SpriteRenderer>().material;
-            transform.DOScale(new Vector3(0f, 0f, 1f), 0f);
+            Material[] oldMats = { new Material(defaultMat) };
+            Material[] dissolveMat = { new Material(bonbonAnimMat) };
+            GetComponent<SpriteRenderer>().materials = dissolveMat;
+            transform.DOScale(new Vector3(0.5f, 0.5f, 1f), 0f);
             transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBounce);
-            dissolveMat.SetFloat("_Dissolve", 1f);
-            dissolveMat.DOFloat(0f, "_Dissolve", 1f);
-            yield return new WaitForSeconds(2f);
+            dissolveMat[0].SetFloat("_Dissolve", 1f);
+            dissolveMat[0].DOFloat(0f, "_Dissolve", 1.4f);
+            yield return new WaitForSeconds(1.1f);
+            GetComponent<SpriteRenderer>().materials = oldMats;
             Destroy(vfxInstance, 3f);
             yield return null;
             state = UIAnimatorState.Idle;
@@ -48,6 +54,17 @@ namespace BattleUI {
         /// result: The BonbonObject that will be placed in the slot after combining the ingredients;
 
         private IEnumerator BakeAnimation(BonbonBakeInfo info) {
+            GameObject vfxInstance = Instantiate(craftVfxPrefab, transform.position, Quaternion.identity);
+            Material[] oldMats = { new Material(defaultMat) };
+            Material[] dissolveMat = { new Material(bonbonAnimMat) };
+            GetComponent<SpriteRenderer>().materials = dissolveMat;
+            transform.DOScale(new Vector3(0.5f, 0.5f, 1f), 0f);
+            transform.DOScale(Vector3.one, 1.5f).SetEase(Ease.OutBounce);
+            dissolveMat[0].SetFloat("_Dissolve", 1f);
+            dissolveMat[0].DOFloat(0f, "_Dissolve", 2f);
+            yield return new WaitForSeconds(1.5f);
+            Destroy(vfxInstance, 3f);
+            GetComponent<SpriteRenderer>().materials = oldMats;
             yield return null;
             state = UIAnimatorState.Idle;
         }

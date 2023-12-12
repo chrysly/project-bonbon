@@ -46,7 +46,7 @@ namespace BattleUI {
             else {
                 if (!toggle) {
                     selected = false;
-                    icon.DOFade(icon.sprite == null ? 0 : 1, animationDuration / 2);
+                    GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 0 : 1, "_Alpha" ,animationDuration / 2);
                 } else ProcessAvailability();
             }
         }
@@ -67,11 +67,8 @@ namespace BattleUI {
         }
 
         protected override void ProcessAvailability() {
-            if (icon.sprite == null) {
-                
-            }
-            icon.DOFade(icon.sprite == null ? 0 
-                                             : Button.Available ? 1 : 0.5f, 0);
+            GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 0 
+                                             : Button.Available ? 1 : 0.5f, "_Alpha" ,0);
         }
     }
 }
