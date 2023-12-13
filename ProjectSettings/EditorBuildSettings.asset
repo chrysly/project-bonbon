@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Build1/lv2_combat1.unity
     guid: 5100592f24dba3e4a84ca169135f784a
+  - enabled: 1
+    path: Assets/Scenes/Build1/_End.unity
+    guid: d57202c398a03c143b553bdf9bad6155
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e2ef6156d909d1a46b98e9cbfcbbb479, type: 2}

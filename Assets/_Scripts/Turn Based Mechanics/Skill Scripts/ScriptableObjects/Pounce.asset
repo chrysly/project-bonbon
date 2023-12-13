@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: pounce
   skillName: Pounce
-  staminaCost: 0
+  staminaCost: 30
   immediateActions:
   - rid: 1640337368647991300
   targetType: 0

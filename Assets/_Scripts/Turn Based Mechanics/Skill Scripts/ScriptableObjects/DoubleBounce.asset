@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: double_bounce
   skillName: Double Bounce
-  staminaCost: 20
+  staminaCost: 15
   immediateActions:
   - rid: 1640337368647991297
   targetType: 0
@@ -25,4 +25,4 @@ MonoBehaviour:
     - rid: 1640337368647991297
       type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
       data:
-        damageAmount: 7
+        damageAmount: 4

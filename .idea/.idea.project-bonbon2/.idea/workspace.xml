@@ -2,12 +2,87 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5938412e-5f52-4830-88a0-72e3ee58e7c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Dialogue Scripts/DialogueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Dialogue Scripts/DialogueManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art Assets/Entities/Enemies/Jello Jumpers/Level1Scene2.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Art Assets/Entities/Enemies/Jello Jumpers/Level1Scene2.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Imports/BOXOPHOBIC/Atmospheric Height Fog/Core/Editor/HeightFogHubAutorun.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Imports/BOXOPHOBIC/Atmospheric Height Fog/Core/Pipelines/Built-in Pipeline.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Imports/BOXOPHOBIC/Atmospheric Height Fog/Core/Pipelines/High Definition.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Imports/BOXOPHOBIC/Atmospheric Height Fog/Core/Pipelines/Universal.unitypackage.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Effects &amp; Actions/Effects/Shortcake Buff.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Effects &amp; Actions/Effects/Shortcake Buff.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.project-bonbon2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.project-bonbon2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/DialogueTesting/PlaceholderMochiPortrait_Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/DialogueTesting/PlaceholderMochiPortrait_Idle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/DialogueTesting/PlaceholderPanPortrait_Idle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/DialogueTesting/PlaceholderPanPortrait_Idle.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Entities/Enemies/Jello Jumpers/Jello.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Entities/Enemies/Jello Jumpers/Jello.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/Environment/Trees/Tree1/Tree1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/Environment/Trees/Tree1/Tree1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/VFX/Status/Death/Dissolve.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/VFX/Status/Death/Dissolve.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/VFX/Status/Heal/Heal Outline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/VFX/Status/Heal/Heal Outline.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art Assets/VFX/Status/Stamina/Stamina Outline.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art Assets/VFX/Status/Stamina/Stamina Outline.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imports/Feel/FeelDemosURP/Strike/Volume/Level 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imports/Feel/FeelDemosURP/Strike/Volume/Level 2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/M2 Prefabs/Pan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/M2 Prefabs/Pan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/M2 Prefabs/Updated/Mochi Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/M2 Prefabs/Updated/Mochi Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Systems/Systems.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Systems/Systems.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/CharacterPanels.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/CharacterPanels.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Damage Text.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Damage Text.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Turn Order/Portrait.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Turn Order/Portrait.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv1_combat3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_camp1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_camp1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_combat1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Build1/lv2_combat1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JasmineTests/TutorialCanvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JasmineTests/TutorialCanvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JasmineTests/TutorialPopUp.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JasmineTests/TutorialPopUp.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JasmineTests/image (1).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/JasmineTests/image (1).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Stab Scene/Hitstop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Stab Scene/Hitstop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/EventTypes/PopUpLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/EventTypes/PopUpLogic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_combat03.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_combat03.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_combat04.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_combat04.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_combat04.yarn" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Scene1/s1_combat04.yarn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/10.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/10.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/10.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/2.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/5.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/5.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/6.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/6.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/7.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/7.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/9.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/9.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/9.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/AugmentingSkills.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/AugmentingSkills.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/BasicBonbonCrafting.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/BasicBonbonCrafting.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/CombatBasics.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/CombatBasics.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/CombiningBonbons.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/EventSequencer/Events/Tutorials/CombiningBonbons.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Actor Scripts/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Actor Scripts/Actor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/AnimationLogic/SkillAnimationMap.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/AnimationLogic/SkillAnimationMap.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Bonbons/BonbonSOs/Strawberry Shortcake.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Bonbons/BonbonSOs/Strawberry Shortcake.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Effects &amp; Actions/Effects/DefenseUpEffect.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Effects &amp; Actions/Effects/DefenseUpEffect.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Effects &amp; Actions/Effects/SuperAttackUpEffect.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Effects &amp; Actions/Effects/SuperAttackUpEffect.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Skill Scripts/ScriptableObjects/DoubleBounce.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Skill Scripts/ScriptableObjects/DoubleBounce.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Skill Scripts/ScriptableObjects/Pounce.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Skill Scripts/ScriptableObjects/Pounce.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Skill Scripts/ScriptableObjects/Sad Pounce.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/Skill Scripts/ScriptableObjects/Sad Pounce.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/UI/CharacterPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/UI/CharacterPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/UI/UI State Machine/TurnOrder/TurnOrderDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/Turn Based Mechanics/UI/UI State Machine/TurnOrder/TurnOrderDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAsset.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,6 +160,8 @@
       <workItem from="1700889901656" duration="335000" />
       <workItem from="1700893484922" duration="782000" />
       <workItem from="1701249150196" duration="632000" />
+      <workItem from="1702402852001" duration="6821000" />
+      <workItem from="1702425381449" duration="972000" />
     </task>
     <servers />
   </component>
@@ -93,4 +170,23 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/_Scripts/EventSequencer/EventSequencer.cs</url>
+          <line>48</line>
+          <properties documentPath="C:\Users\vucoo\Documents\GitHub\project-bonbon2\Assets\_Scripts\EventSequencer\EventSequencer.cs" initialLine="49" containingFunctionPresentation="method 'RunStateEvent'">
+            <startOffsets>
+              <option value="1426" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1442" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>

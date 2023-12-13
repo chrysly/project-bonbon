@@ -15,12 +15,13 @@ MonoBehaviour:
   name: ++ATK
   duration: 1
   modifiers:
-    flatAttack: 0
-    percentAttack: 0.5
+    flatAttack: 3
+    percentAttack: 1
     flatHeal: 0
     percentHealCast: 0
     flatDefense: 0
     percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0
-    percentStaminaRegen: 0
+    flatStaminaRegen: 0
+  effectType: 0

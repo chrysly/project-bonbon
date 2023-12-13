@@ -23,15 +23,13 @@ public class HitStop : MonoBehaviour {
     }
     IEnumerator Wait(float duration){
         waiting = true;
-        _animators[0].transform.DOMoveY(_animators[0].transform.position.y + 0.5f, 0f);
         yield return new WaitForSeconds(0.06f);
-        _animators[0].transform.DOMoveY(_animators[0].transform.position.y + -0.5f, 0f);
         yield return new WaitForSeconds(0.06f);
-        _animators[0].transform.DOMoveY(_animators[0].transform.position.y + 0.5f, 0f);
         yield return new WaitForSeconds(0.06f);
-        _animators[0].transform.DOMoveY(_animators[0].transform.position.y + -0.5f, 0f);
         yield return new WaitForSeconds(duration);
-        _animators[0].transform.DOScale(new Vector3(0, 0, 0), 0.1f);
+        _animators[0].transform.DOMoveY(_animators[0].transform.position.y - .5f, 0f);
+        _animators[0].transform.DOMoveX(_animators[0].transform.position.x - 2f, 0f);
+        //_animators[0].transform.DOScale(new Vector3(0, 0, 0), 0.1f);
         foreach (Animator animator in _animators) {
             animator.speed = 1;
         }

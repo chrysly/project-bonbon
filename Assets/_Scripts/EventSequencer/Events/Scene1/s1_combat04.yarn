@@ -3,5 +3,11 @@ tags: Mochi:hyped_up:left
 ---
 Mochi_suprised: aaaaa!!
 
+<<add_char pan true>>
+
+Pan: MOCHI WATCH OUT!!!
+
+
+<<remove_char pan>>
 <<remove_char mochi>>
 ===

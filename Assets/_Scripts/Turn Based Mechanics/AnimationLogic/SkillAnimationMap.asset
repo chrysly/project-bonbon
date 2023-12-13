@@ -62,28 +62,28 @@ MonoBehaviour:
     - Keys:
       - {fileID: 11400000, guid: c58fa5e0cfdec884daac7cc6fdd3e138, type: 2}
       Values:
-      - animationTrigger: 
-        animationDuration: 0
+      - animationTrigger: _Attack
+        animationDuration: 1
         vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 883123758755479580
         - rid: 883123758755479581
         - rid: 883123758755479582
         cap: {fileID: 0}
-        actorAnimator: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 7c024bb658a0375429c34d49fc68dd6e, type: 2}
         triggerIndex: 0
     - Keys:
       - {fileID: 11400000, guid: a6ac0735501b31b418532e1c52bac788, type: 2}
       Values:
-      - animationTrigger: 
-        animationDuration: 0
+      - animationTrigger: _Attack
+        animationDuration: 2
         vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 883123758755479583
         - rid: 883123758755479584
         - rid: 883123758755479585
         cap: {fileID: 0}
-        actorAnimator: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 3fd8b0f640740ff4897fb648836df986, type: 2}
         triggerIndex: 0
   references:
     version: 2

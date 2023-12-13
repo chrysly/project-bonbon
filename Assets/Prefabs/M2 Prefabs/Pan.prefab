@@ -22733,7 +22733,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
   uniqueID: pan
-  handler: {fileID: 0}
   _hitpoints: 0
   _stamina: 0
 --- !u!136 &1280533827547510581
@@ -73301,7 +73300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2304215098868891541, guid: c4fb39eb2bf80484dbbca50e7c9debe1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.092
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 2304215098868891541, guid: c4fb39eb2bf80484dbbca50e7c9debe1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -73321,11 +73320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2304215098868891541, guid: c4fb39eb2bf80484dbbca50e7c9debe1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.07098389
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2304215098868891541, guid: c4fb39eb2bf80484dbbca50e7c9debe1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5670166
+      value: 1.57
       objectReference: {fileID: 0}
     - target: {fileID: 2304215098868891541, guid: c4fb39eb2bf80484dbbca50e7c9debe1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -73338,6 +73337,10 @@ PrefabInstance:
     - target: {fileID: 2304215098868891541, guid: c4fb39eb2bf80484dbbca50e7c9debe1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412663399705820345, guid: c4fb39eb2bf80484dbbca50e7c9debe1, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5572490927849886620, guid: c4fb39eb2bf80484dbbca50e7c9debe1, type: 3}
       propertyPath: m_Name
