@@ -3271,7 +3271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3431087842516781927}
-  - component: {fileID: 7332001578754425767}
+  - component: {fileID: 6906864294458452471}
   m_Layer: 0
   m_Name: Tray 1
   m_TagString: Untagged
@@ -3302,7 +3302,7 @@ RectTransform:
   m_AnchoredPosition: {x: 364, y: -3}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7332001578754425767
+--- !u!114 &6906864294458452471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3311,9 +3311,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5051549933518933288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d500903f1413d544bec5b225450cfb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 537b8c3e7eaf9ec4ba2522c1cdb3d31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphics:
+  - {fileID: 7235155765493367353}
+  - {fileID: 7728836636716937135}
 --- !u!1 &5103118004885324178
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,7 +4923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2772018877086845527}
-  - component: {fileID: 5253822636692953756}
+  - component: {fileID: 4559472010436735238}
   m_Layer: 0
   m_Name: Tray 2
   m_TagString: Untagged
@@ -4951,7 +4954,7 @@ RectTransform:
   m_AnchoredPosition: {x: 354, y: -213}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5253822636692953756
+--- !u!114 &4559472010436735238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4960,6 +4963,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9101748248552132629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d500903f1413d544bec5b225450cfb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 537b8c3e7eaf9ec4ba2522c1cdb3d31f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graphics:
+  - {fileID: 6816047006383435342}
+  - {fileID: 8488066889703563407}

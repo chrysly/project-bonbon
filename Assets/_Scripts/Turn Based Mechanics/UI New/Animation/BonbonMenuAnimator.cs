@@ -17,7 +17,8 @@ namespace BattleUI {
             mainHandler = GetComponent<BonbonMainHandler>();
             bakeHandler = GetComponent<BonbonBakeHandler>();
 
-            slotAnimators = animators.Select(animator => animator as BonbonSlotAnimator).ToArray();
+            slotAnimators = animators.Where(animator => animator is BonbonSlotAnimator)
+                                     .Select(animator => animator as BonbonSlotAnimator).ToArray();
             foreach (Transform transform in decorations) transform.DOScale(new Vector3(0f, 0f, 1f), 0);
             
             mainHandler.OnHandlerToggle += OnMainHandlerToggle;
