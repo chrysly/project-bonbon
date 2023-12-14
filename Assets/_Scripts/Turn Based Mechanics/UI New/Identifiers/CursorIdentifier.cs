@@ -5,4 +5,7 @@ using UnityEngine;
 
 public class CursorIdentifier : MonoBehaviour
 {
+    private void Awake() {
+        gameObject.layer = LayerMask.NameToLayer("TopLevelUI");
+    }
 }

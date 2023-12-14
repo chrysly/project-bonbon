@@ -1,28 +1,40 @@
 ﻿title: s2_camp01
-tags: Pan:idle:right Mochi:idle:left
+tags: Pan:slight_smile:right Mochi:idle:left
 ---
-Pan: ~sigh~
-Pan: What are you even doing out here?
+Pan_slight_smile:  So, what’s the plan MochMoch?
 
-Mochi: I’m going to find people who need my help.
-Mochi: I’m not just going to stand by as sweetures like that rampage through the countryside.
+Mochi_neutral_2: Okok. Here’s what we’re gonna do.
+Mochi_neutral_2: ...
+Mochi_neutral_2:Step 1: obtain a crystal pomegranate...
 
-Pan: Mochi, a year ago, “sweetures like that” would have never attacked you in the first place. 
-Pan: Something is happening right now and it’s not safe outside the walls.
-Pan_slight_smile: Come on, let’s head home.
+Mochi_hyped_up: Step 2: profit.
 
-Mochi_apologetic: No. Sorry sis but now, I’m even more sure that this is what I need to do!
-Mochi_angry: I’m gonna figure out what’s going on with the sweetures since all of you “adults” aren’t doing anything other than hiding away behind the walls!
-Mochi_angry: You’ll have to drag me back kicking and screaming and even if you do, I’ll just run away again!
+Pan_happy: Is that it?
 
-Pan: . . .
-Pan: Fine.
-Pan:I guess nothing is going to change your mind...
-Pan: I’m coming with you.
+Mochi_apologetic_1: :D
 
-Mochi_suprised: Huh?! Are you serious?
+Pan_happy: ...
+Pan_happy: ......
 
-Pan_slight_smile: Of course. We’re family! Through thick and thin, we have to support each other.
-Pan_slight_smile: Mochi... No matter what, I'll always be here for you.
+Mochi_apologetic_2:
+
+Pan_deadpan: Mochi are you seriously saying this all you planned for. I mean I know you can be kinda (dumb) sometimes but did you actually just leave the house trying to find one of the most rare and coveted cooking ingredients with not even a single clue as to where to start looking. Like I know I can be an airhead sometimes but this level of incompetence is honestly embarrassing.
+Pan_deadpan: ...
+
+Pan_happy: To think you thought you could do this without me~
+
+Mochi_apologetic_2: Huh?
+Mochi_apologetic_2: Wha habba.
+Mochi_apologetic_2: I zone out when you get “that” weird look on your face.
+
+Pan_slight_smile: ...
+Pan_slight_smile: Anywho,
+
+Pan_happy: I’m here to keep you safe now so don’t you worry.
+
+Pan_slight_smile: In the meantime, let's get some rest.
+
+<<remove_char pan>>
+<<remove_char mochi>>
 
 ===

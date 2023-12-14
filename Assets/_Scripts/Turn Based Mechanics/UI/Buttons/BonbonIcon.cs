@@ -19,7 +19,7 @@ public class BonbonIcon : BattleButton {
         if (bonbonObject == null) return;
         gameObject.SetActive(true);
         _bonbonObject = bonbonObject;
-        GetComponent<RawImage>().texture = _bonbonObject.Texture;
+        //GetComponent<RawImage>().texture = _bonbonObject.Texture;
         transform.DOScale(1f, 0.1f).SetEase(Ease.OutBounce);
     }
 

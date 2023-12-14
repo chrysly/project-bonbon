@@ -31,9 +31,7 @@ public class EventConditions {
         public int damage;
         public override bool Check(AIActionValue package) {
 
-            Debug.Log("got here");
-            if (package.target.Data.DisplayName == character.DisplayName && package.immediateDamage >= damage) {
-                Debug.Log("passed check");
+            if (package.target.Data.DisplayName.Equals(character.DisplayName) && package.immediateDamage >= damage) {
                 return true;
             }
             return false;
@@ -48,7 +46,7 @@ public class EventConditions {
     public class TurnNumberCondition : Condition {
         public int turnNum;
         public override bool Check(AIActionValue package) {
-            if (package.currentTurn == turnNum) {
+            if (package.currentTurn >= turnNum) {
                 return true;
             }
             return false;

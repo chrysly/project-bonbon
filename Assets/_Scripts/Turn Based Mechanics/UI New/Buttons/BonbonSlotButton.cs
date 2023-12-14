@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace BattleUI {
-    [RequireComponent(typeof(BonbonBakeSlotButton))]
+    //[RequireComponent(typeof(BonbonBakeSlotButton))]
     public class BonbonSlotButton : BaseSlotButton<BonbonMainHandler> {
 
         [SerializeField] private int slot;

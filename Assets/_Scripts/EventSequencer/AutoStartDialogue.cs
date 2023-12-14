@@ -5,19 +5,20 @@ using UnityEngine;
 public class AutoStartDialogue : MonoBehaviour {
     public float waitToStart = 0.0f;
 
-    public EventObject startEvent;
+    public List<EventObject> campEvents;
 
-    public EventSequencer eventSequencer;
-    // Start is called before the first frame update
+    public EventSequencer evSeq;
+
     void Start() {
-        Debug.Log("huh");
         StartCoroutine(Wait());
     }
 
     IEnumerator Wait() {
         yield return new WaitForSeconds(waitToStart);
-        eventSequencer.addEvent(startEvent);
-        eventSequencer.RunNextEvent();
-        Debug.Log("triggered");
+
+        foreach (EventObject ev in campEvents) {
+            evSeq.AddEvent(ev);
+        }
+        evSeq.RunNextEvent();
     }
 }

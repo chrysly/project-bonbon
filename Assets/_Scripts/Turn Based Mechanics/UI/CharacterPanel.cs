@@ -11,7 +11,7 @@ public class CharacterPanel : MonoBehaviour {
 
     private void Start() {
         resetPos = transform.position;
-        newPos = new Vector3(resetPos.x, resetPos.y - 300, resetPos.z);
+        newPos = new Vector3(resetPos.x, resetPos.y - 360, resetPos.z);
         transform.DOMove(newPos, 0f);
         DialogueManager.OnDialogueStart += Toggle;
     }

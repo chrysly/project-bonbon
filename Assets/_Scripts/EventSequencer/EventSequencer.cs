@@ -7,15 +7,15 @@ using Yarn.Unity;
 
 /// <summary>
 /// Event runner --> holds events for each scene, and runs them when conditions are met
+/// When the battle starts, you run every event that's in the 'eventsToRun' queue
 /// </summary>
 public class EventSequencer : MonoBehaviour {
 
     private BattleStateMachine bsm => BattleStateMachine.Instance;
 
-    public List<EventObject> eventSequence;
-    public EventObject onStartEvent;
-    public EventObject onWinEvent;
-    Queue<EventObject> events = new Queue<EventObject>();
+    [SerializeField] private List<EventObject> eventSequence;
+    [SerializeField] private EventObject onWinEvent;
+    private Queue<EventObject> eventsToRun = new Queue<EventObject>();
 
     #region Events
     public delegate void EventTerminate();
@@ -26,7 +26,12 @@ public class EventSequencer : MonoBehaviour {
         if (bsm == null)
             return;
 
-        bsm.OnStateTransition += RunEvent;
+        bsm.OnStateTransition += RunStateEvent;
+
+        // add events that will play on start
+        foreach (EventObject e in eventSequence) {
+            if (e.getPlayOnStart()) { AddEvent(e); }
+        }
     }
 
     void Start() {
@@ -39,21 +44,20 @@ public class EventSequencer : MonoBehaviour {
     /// <summary>
     /// Every time the bsm.OnStateTransition event is invoked this method is called
     /// </summary>
-    private void RunEvent(BattleStateMachine.BattleState state, BattleStateInput input) {
+    private void RunStateEvent(BattleStateMachine.BattleState state, BattleStateInput input) {
 
         if (bsm == null)
             return;
 
         if (state.GetType() == typeof(BattleStateMachine.WinState)) {
-            events.Enqueue(onWinEvent);
+            AddEvent(onWinEvent);
             RunNextEvent();
-        } else if (state.GetType() == typeof(BattleStateMachine.LoseState)) {
-            DialogueManager.dialogueRequestEvent.Invoke("death_dialogue.yarn");
-            bsm.ToggleMachine(true);
-        } else if (bsm.PrevState.GetType() == typeof(BattleStateMachine.BattleStart)) {
-            events.Enqueue(onStartEvent);
+        } 
+        else if (state.GetType() == typeof(BattleStateMachine.LoseState)) {
+            DialogueManager.dialogueRequestEvent.Invoke("death_dialogue");
+        } 
+        else if (bsm.PrevState.GetType() == typeof(BattleStateMachine.BattleStart)) {
             RunNextEvent();
-            bsm.ToggleMachine(true);
         }
     }
 
@@ -61,63 +65,57 @@ public class EventSequencer : MonoBehaviour {
     /// Should be called every time a skill is used, and checks if events should run based on that
     /// </summary>
     private void CheckSkillEvent(ActiveSkillPrep activeSkillPrep) {
-        Debug.Log("triggered skill event");
 
-        for (int i = 0; i < activeSkillPrep.targets. Length; ++i) {
+        for (int i = 0; i < activeSkillPrep.targets.Length; ++i) {
             AIActionValue package = activeSkillPrep.skill.ComputeSkillActionValues(activeSkillPrep.targets[i]);
             package.currentTurn = bsm.CurrInput.CurrTurn();
 
             // add any events that meet activate conditions to a queue
             foreach (EventObject ev in eventSequence) {
-
                 if (ev != null) {
                     if (ev.CheckConitions(package)) {
-                    Debug.Log("Event added to queue");
-                    events.Enqueue(ev);
+                        AddEvent(ev);
                     }
                 }
-                
             }
-        }
-
-        if (RunNextEvent()) {
-            bsm.ToggleMachine(true);
+            RunNextEvent();
         }
     }
 
-    //public void CheckForEvents(AIActionValue package) {
-    //    // add any events that meet activate conditions to a queue
-    //    foreach (EventObject ev in eventSequence) {
-    //        if (ev.CheckConitions(package)) {
-    //            events.Enqueue(ev);
-    //        }
-    //    }
-    //}
-
-    public bool RunNextEvent() {
-        // run the next event in queue
-        if (events.Count > 0)
-        {
-            events.Peek().OnTrigger();
-            return true;
+    /// <summary>
+    /// Run the next event in the event queue
+    /// </summary>
+    public void RunNextEvent() {
+        if (eventsToRun.Count <= 0) {
+            Debug.Log("There are no Events to Run!");
+            return;
         }
-        return false;
+
+        
+        if (bsm != null) { bsm.ToggleMachine(true); }
+
+        StartCoroutine(eventsToRun.Peek().OnTrigger());
+
+        // subscribe to an event that triggers event end logic later
+        // temporary function that takes in no arguments and has the code on the right as its statement
+        eventsToRun.Peek().EventObjectTerminate += () => EventEnd();
     }
 
-    public void CheckForEventEnd() {
-        Debug.Log("noice");
+    /// <summary>
+    /// Checks the event queue. If there are more events to run, run those events
+    /// </summary>
+    public void EventEnd() {
+        eventSequence.Remove(eventsToRun.Peek());
+        eventsToRun.Dequeue();
 
-        if (events.Count != 0) {
-            Debug.Log("actually nice");
-            events.Peek().OnEventEnd();
-            eventSequence.Remove(events.Peek());
-            events.Dequeue();
-        }
-        OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
-
+        if (eventsToRun.Count > 0) {
+            RunNextEvent();
+        } else {
+            OnEventTerminate?.Invoke();  //Invoke C# event whenever the battle event is terminated ᕙ(`▽´)ᕗ
+        }      
     }
 
-    public void addEvent(EventObject eventToAdd) {
-        events.Enqueue(eventToAdd);
+    public void AddEvent(EventObject eventToAdd) {
+        eventsToRun.Enqueue(eventToAdd);
     }
 }

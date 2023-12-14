@@ -8,9 +8,6 @@ public class PopUpLogic : MonoBehaviour {
     private int currIndex = 0;
     private Image img;
     private bool isActive = false;
-    private BattleStateMachine bsm => BattleStateMachine.Instance;
-
-    public EventObject eventToLoad;
 
     void Start() {
         img = GetComponent<Image>();
@@ -24,17 +21,17 @@ public class PopUpLogic : MonoBehaviour {
             }
             else if (Input.GetKeyDown(KeyCode.A)) {
                 CycleImages(-1);
-            } else if (Input.GetKeyDown(KeyCode.Q)) {
+            } else if (Input.GetKeyDown(KeyCode.E)) {
                 img.enabled = false;
                 isActive = false;
                 transform.GetChild(0).gameObject.SetActive(false);
-                eventToLoad.OnTrigger();
             }
         }
     }
 
     public void startPopUp(List<Sprite> popUps) {
         isActive = true;
+        currIndex = 0;
 
         imageList = popUps;
 
@@ -61,5 +58,9 @@ public class PopUpLogic : MonoBehaviour {
 
         // display the current index
         img.sprite = imageList[currIndex];
+    }
+
+    public bool getActive() {
+        return isActive;
     }
 }

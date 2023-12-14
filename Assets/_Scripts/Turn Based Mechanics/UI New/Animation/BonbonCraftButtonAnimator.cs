@@ -28,7 +28,7 @@ namespace BattleUI {
             base.Toggle(toggle);
             if (!toggle) return;
             BonbonCraftButton bonbonButton = Button as BonbonCraftButton;
-            icon.texture = bonbonButton.Bonbon.texture;
+            icon.texture = bonbonButton.Bonbon.texture.texture;
             nameText.text = bonbonButton.Bonbon.name;
         }
         

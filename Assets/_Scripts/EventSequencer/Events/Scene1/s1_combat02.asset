@@ -15,6 +15,7 @@ MonoBehaviour:
   eventConditions:
   - rid: 2255346168750407682
   yarnFile: {fileID: -8253061345870894857, guid: 371cbcac79d976042ae8f40702396e69, type: 3}
+  playOnStart: 0
   references:
     version: 2
     RefIds:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 using GameObject = UnityEngine.GameObject;
@@ -16,6 +17,7 @@ public class GlobalVFXManager : StateMachineHandler {
     public void Connect(AnimationHandler animationHandler) {
         animationHandler.HealEvent += AnimationHandler_HealEvent;
         animationHandler.StaminaEvent += AnimationHandler_StaminaEvent;
+        animationHandler.DamageEvent += AnimationHandler_DamageEvent;
     }
 
     public void PlayAnimation(VFXAnimationPackage package, Transform actor) {
@@ -144,6 +146,10 @@ public class GlobalVFXManager : StateMachineHandler {
 
     private void AnimationHandler_StaminaEvent(Actor actor) {
         PlayAnimation(VFXMap.GenericVFXDict[GenericVFXType.StaminaRegen], actor.transform);
+    }
+
+    private void AnimationHandler_DamageEvent(int damage, Actor actor, bool hasBonbon) {
+        PlayAnimation(VFXMap.GenericVFXDict[GenericVFXType.Damage], actor.transform);
     }
 
     #endregion

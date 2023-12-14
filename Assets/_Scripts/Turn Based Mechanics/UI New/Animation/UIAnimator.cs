@@ -15,7 +15,7 @@ namespace BattleUI {
         protected UIAnimatorState state;
 
         protected virtual void Awake() {
-            transform.DOScale(Vector2.zero, 0);
+            transform.DOScale(new Vector3(0f, 0f, 1f), 0);
             StartCoroutine(CoreCoroutine());
         }
 
@@ -48,7 +48,7 @@ namespace BattleUI {
         }
 
         protected virtual IEnumerator Load() {
-            transform.DOScale(Vector2.one, animationDuration);
+            transform.DOScale(Vector3.one, animationDuration);
             yield return new WaitForSeconds(animationDuration);
         }
 
@@ -57,7 +57,7 @@ namespace BattleUI {
         }
 
         protected virtual IEnumerator Unload() {
-            transform.DOScale(Vector2.zero, animationDuration);
+            transform.DOScale(new Vector3(0f, 0f, 1f), animationDuration);
             yield return new WaitForSeconds(animationDuration);
         }
 

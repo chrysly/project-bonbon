@@ -30,7 +30,7 @@ public class TurnOrderDisplay : MonoBehaviour {
         portraitList = new List<Portrait>();
 
         var portraitTransform = portraitPrefab.GetComponent<Image>().rectTransform;
-        portraitSpace = portraitTransform.rect.height * 1.1f;
+        portraitSpace = portraitTransform.rect.height * .5f;
     }
 
     void Start() => battleStateMachine.CurrInput.OnTurnChange += TurnOrderDisplay_OnTurnChange;

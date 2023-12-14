@@ -135,6 +135,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         ApplyState(ActorState.Fainted);
 
         currInput.ActorHandler.KillActor(this);
+        currInput.ActorHandler.DespawnActor(this);
         Debug.Log($"{data.DisplayName} has fallen!");
     }
 

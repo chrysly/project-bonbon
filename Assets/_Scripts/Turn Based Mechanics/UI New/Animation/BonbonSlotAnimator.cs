@@ -21,11 +21,11 @@ namespace BattleUI {
 
         public int Slot => Button is BonbonSlotButton ? (Button as BonbonSlotButton).Slot
                                                       : (Button as BonbonBakeSlotButton).Slot;
-        private RawImage icon;
+        private SpriteRenderer icon;
 
         protected override void Awake() {
             base.Awake();
-            icon = GetComponent<RawImage>();
+            icon = GetComponent<SpriteRenderer>();
         }
 
         protected override void LoadLogicButton() {
@@ -46,7 +46,7 @@ namespace BattleUI {
             else {
                 if (!toggle) {
                     selected = false;
-                    icon.DOFade(icon.texture == null ? 0 : 1, animationDuration / 2);
+                    GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 0 : 1, "_Alpha" ,animationDuration / 2);
                 } else ProcessAvailability();
             }
         }
@@ -63,12 +63,12 @@ namespace BattleUI {
         }
 
         private void UpdateIcon() {
-            icon.texture = Bonbon == null ? null : Bonbon.Texture;
+            icon.sprite = Bonbon == null ? null : Bonbon.Texture;
         }
 
         protected override void ProcessAvailability() {
-            icon.DOFade(icon.texture == null ? 0 
-                                             : Button.Available ? 1 : 0.5f, 0);
+            GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 0 
+                                             : Button.Available ? 1 : 0.5f, "_Alpha" ,0);
         }
     }
 }

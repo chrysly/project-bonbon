@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb371b3905524e4aaa3c53c34b1b8d7, type: 3}
+  m_Name: BasicBonbonCrafting
+  m_EditorClassIdentifier: 
+  eventConditions:
+  - rid: 5308663412181172224
+  - rid: 7257875449696223233
+  yarnFile: {fileID: 0}
+  playOnStart: 0
+  popUps:
+  - {fileID: 21300000, guid: a4e90914fd694924ab21263647bfc8eb, type: 3}
+  - {fileID: 21300000, guid: d5da85e3ff7cc4a489d0463c1ae41a52, type: 3}
+  - {fileID: 21300000, guid: 6e2dc937f19ab8c4487d3ebf9f291b13, type: 3}
+  - {fileID: 21300000, guid: 244411b448951344ca36fd642d993fef, type: 3}
+  - {fileID: 21300000, guid: 7287da16b7153804895d7a1235cbec17, type: 3}
+  - {fileID: 21300000, guid: e94d6f9cf725b99418a48678de2408a9, type: 3}
+  references:
+    version: 2
+    RefIds:
+    - rid: 5308663412181172224
+      type: {class: EventConditions/TurnNumberCondition, ns: , asm: Assembly-CSharp}
+      data:
+        turnNum: 2
+    - rid: 7257875449696223233
+      type: {class: EventConditions/DamageCondition, ns: , asm: Assembly-CSharp}
+      data:
+        character: {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
+        damage: 0

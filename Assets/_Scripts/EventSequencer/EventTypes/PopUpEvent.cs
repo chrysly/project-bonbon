@@ -10,16 +10,22 @@ using UnityEngine.UI;
 public class PopUpEvent : EventObject {
     public List<Sprite> popUps;
 
-    public override void OnTrigger() {
+    public override IEnumerator OnTrigger() {
         PopUpLogic popUpLogic = GameObject.FindObjectOfType<PopUpLogic>();
 
         if (popUpLogic == null) {
             Debug.Log("Pop Up not found");
-            return;
+            yield break;
         }
 
         popUpLogic.GetComponent<Image>().enabled = true;
         popUpLogic.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         popUpLogic.startPopUp(popUps);
+
+        while (popUpLogic.getActive()) {
+            yield return null;
+        }
+
+        OnEventEnd();
     }
 }
