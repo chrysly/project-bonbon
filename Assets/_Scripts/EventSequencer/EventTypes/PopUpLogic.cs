@@ -21,7 +21,7 @@ public class PopUpLogic : MonoBehaviour {
             }
             else if (Input.GetKeyDown(KeyCode.A)) {
                 CycleImages(-1);
-            } else if (Input.GetKeyDown(KeyCode.Q)) {
+            } else if (Input.GetKeyDown(KeyCode.E)) {
                 img.enabled = false;
                 isActive = false;
                 transform.GetChild(0).gameObject.SetActive(false);

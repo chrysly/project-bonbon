@@ -14,14 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventConditions:
   - rid: 5308663412181172224
+  - rid: 7257875449696223233
   yarnFile: {fileID: 0}
   playOnStart: 0
   popUps:
-  - {fileID: 21300000, guid: 1c9ae009bee1918419c88771b4dee8e3, type: 3}
+  - {fileID: 21300000, guid: a4e90914fd694924ab21263647bfc8eb, type: 3}
+  - {fileID: 21300000, guid: d5da85e3ff7cc4a489d0463c1ae41a52, type: 3}
+  - {fileID: 21300000, guid: 6e2dc937f19ab8c4487d3ebf9f291b13, type: 3}
+  - {fileID: 21300000, guid: 244411b448951344ca36fd642d993fef, type: 3}
+  - {fileID: 21300000, guid: 7287da16b7153804895d7a1235cbec17, type: 3}
+  - {fileID: 21300000, guid: e94d6f9cf725b99418a48678de2408a9, type: 3}
   references:
     version: 2
     RefIds:
     - rid: 5308663412181172224
       type: {class: EventConditions/TurnNumberCondition, ns: , asm: Assembly-CSharp}
       data:
-        turnNum: 3
+        turnNum: 2
+    - rid: 7257875449696223233
+      type: {class: EventConditions/DamageCondition, ns: , asm: Assembly-CSharp}
+      data:
+        character: {fileID: 11400000, guid: 1e0d0fa49162b3d44b088f7653d14656, type: 2}
+        damage: 0

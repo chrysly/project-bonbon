@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: sad_pounce
   skillName: Sad Pounce
-  staminaCost: 20
+  staminaCost: 30
   immediateActions:
   - rid: 1640337368647991301
   targetType: 0
@@ -25,4 +25,4 @@ MonoBehaviour:
     - rid: 1640337368647991301
       type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
       data:
-        damageAmount: 4
+        damageAmount: 2
