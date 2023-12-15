@@ -15,6 +15,7 @@ public class EventSequencer : MonoBehaviour {
 
     [SerializeField] private List<EventObject> eventSequence;
     [SerializeField] private EventObject onWinEvent;
+    [SerializeField] private EventObject deathEvent;
     private Queue<EventObject> eventsToRun = new Queue<EventObject>();
 
     #region Events
@@ -54,8 +55,9 @@ public class EventSequencer : MonoBehaviour {
             RunNextEvent();
         } 
         else if (state.GetType() == typeof(BattleStateMachine.LoseState)) {
-            DialogueManager.dialogueRequestEvent.Invoke("death_dialogue");
-        } 
+            AddEvent(deathEvent);
+            RunNextEvent();
+        }
         else if (bsm.PrevState.GetType() == typeof(BattleStateMachine.BattleStart)) {
             RunNextEvent();
         }

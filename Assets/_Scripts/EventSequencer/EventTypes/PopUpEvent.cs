@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Loads another event after this one finishes
+/// Loads the tutorial pop up events
 /// </summary>
 [CreateAssetMenu(fileName = "New EventObject", menuName = "Event System/PopUpEvent")]
 public class PopUpEvent : EventObject {
