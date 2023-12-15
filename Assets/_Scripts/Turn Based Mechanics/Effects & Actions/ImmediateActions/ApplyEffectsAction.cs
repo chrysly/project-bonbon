@@ -15,6 +15,7 @@ public class ApplyEffectsAction : ImmediateAction.SkillOnly {
 
     /// <summary> List of effects applied by the action; </summary>
     [SerializeField] private List<EffectBlueprint> effects;
+    public List<EffectBlueprint> Effects => effects;
 
     public ApplyEffectsAction() {
         effects = new List<EffectBlueprint>();

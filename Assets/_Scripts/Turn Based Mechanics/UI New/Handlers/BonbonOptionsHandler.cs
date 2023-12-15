@@ -30,6 +30,7 @@ namespace BattleUI {
         public void PassBonbon() {
             Actor target = FetchPassTarget();
             Brain.CurrActor.PassBonbon(Slot, target);
+            Brain.CurrActor.ConsumeStamina(shareStaminaCost);
             Brain.ExitUI(true);
         }
     }

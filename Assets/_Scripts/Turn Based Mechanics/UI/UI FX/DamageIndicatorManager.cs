@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -20,32 +20,47 @@ public class DamageIndicatorManager : MonoBehaviour {
     private IEnumerator DelaySubscription() {
         yield return new WaitForSeconds(0.5f);
         stateMachine.CurrInput.AnimationHandler.DamageEvent += SpawnDamageText;
+        stateMachine.CurrInput.AnimationHandler.HealEvent += SpawnHealText;
+        stateMachine.CurrInput.AnimationHandler.EffectEvent += SpawnEffectText;
     }
 
-    private void SpawnDamageText(int damage, Actor target, bool augmented) {
+    private void SpawnDamageText(float damage, Actor target, bool augmented) {
         if (damage > 0) {
             GameObject text = Instantiate(textPrefab, GenerateOffset(target.transform.position), target.transform.rotation);
-            text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + damage;
-            RunTextAnimation(text.transform, augmented);
+            text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "" + (int) damage;
+            RunTextAnimation(text.transform, augmented ? new Color32(240, 108, 163, 255) : Color.white, augmented ? 1.5f : 1f);
         }
     }
 
-    private void RunTextAnimation(Transform text, bool augmented) {
-        if (augmented) {
-            Debug.Log("Changed color");
-            text.GetComponentInChildren<TextMeshProUGUI>(true).color = new Color32(240, 108, 163, 255);
-        }
-        StartCoroutine(TextAnimationAction(text, augmented));
+    private void SpawnHealText(float heal, Actor target) {
+        GameObject text = Instantiate(textPrefab, GenerateOffset(target.transform.position), target.transform.rotation);
+        text.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "+" + (int) heal;
+        RunTextAnimation(text.transform, new Color(0.11f, 0.80f, 0.60f, 1f));
     }
 
-    private IEnumerator TextAnimationAction(Transform text, bool augmented) {
+    private void SpawnEffectText(List<EffectBlueprint> effects, Actor target) {
+        if (effects == null || effects.Count == 0) return;
+        foreach (EffectBlueprint effect in effects) {
+            if (effect.modifiers.flatAttack > 0 || effect.modifiers.percentAttack > 0) {
+                GenerateEffectText("<color=red>ATK</color><color=yellow>↑</color>", target);
+            } if (effect.modifiers.flatAttack < 0 || effect.modifiers.percentAttack < 0) {
+                GenerateEffectText("<color=red>ATK</color><color=blue>↓</color>", target);
+            } if (effect.modifiers.flatDefense > 0 || effect.modifiers.percentDefense > 0) {
+                GenerateEffectText("<color=pink>DEF</color><color=yellow>↑</color>", target);
+            } if (effect.modifiers.flatAttack < 0 || effect.modifiers.percentAttack < 0) {
+                GenerateEffectText("<color=pink>DEF</color><color=blue>↓</color>", target);
+            }
+        }
+    }
+
+    private void RunTextAnimation(Transform text, Color32 color, float targetScale = 1) {
+        text.GetComponentInChildren<TextMeshProUGUI>(true).color = color;
+        StartCoroutine(TextAnimationAction(text, targetScale));
+    }
+
+    private IEnumerator TextAnimationAction(Transform text, float targetScale) {
         yield return new WaitForSeconds(textDelay);
-        if (!augmented) {
-            text.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBounce);
-        }
-        else {
-            text.transform.DOScale(1.5f, 0.5f).SetEase(Ease.OutBounce);
-        }
+        text.transform.DOScale(targetScale, 0.5f).SetEase(Ease.OutBounce);
 
         text.transform.DOMoveY(text.transform.position.y + 2f, 1f);
         yield return new WaitForSeconds(textDuration);
@@ -53,6 +68,14 @@ public class DamageIndicatorManager : MonoBehaviour {
         yield return new WaitForSeconds(0.3f);
         Destroy(text.gameObject);
         yield return null;
+    }
+
+    private void GenerateEffectText(string effectText, Actor target) {
+        GameObject text = Instantiate(textPrefab, GenerateOffset(target.transform.position), target.transform.rotation);
+        TextMeshProUGUI textComp = text.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        textComp.richText = true;
+        textComp.text = effectText;
+        RunTextAnimation(text.transform, Color.white);
     }
 
     private Vector3 GenerateOffset(Vector3 position) {

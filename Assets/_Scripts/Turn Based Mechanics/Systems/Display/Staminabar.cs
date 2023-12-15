@@ -1,50 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Slider = UnityEngine.UI.Slider;
 
-public class Staminabar : MonoBehaviour {
-    private Slider slider;
-    private TextMeshProUGUI _text;
-    [SerializeField] private Actor actor;
-    void Start() {
-        slider = GetComponent<Slider>();
-        //_stateMachine.OnStateTransition += UpdateStaminaBar;
-        BattleStateMachine.Instance.OnStateTransition += UpdateStaminaBar; 
-        _text = GetComponentInChildren<TextMeshProUGUI>();
-    }
+namespace BattleUI {
+    public class Staminabar : GenericBar {
 
-    private void UpdateStaminaBar(BattleStateMachine.BattleState state, BattleStateInput input) {
-        float currStamina = actor.Stamina;
-        float maxStamina = actor.Data.MaxStamina;
-        Debug.Log("Stamina: " + actor.Stamina);
-        
-        float staminaRatio = currStamina / maxStamina;
-        DOTween.To(() => slider.value, x => slider.value = x, staminaRatio, 0.5f);
-        _text.text = currStamina + " / " + maxStamina;
-        
-        slider.value = currStamina / maxStamina;
-    }
+        protected override int CurrPoints => actor.Stamina;
+        protected override int MaxPoints => actor.Data.MaxStamina;
 
-    private void UpdateStaminaBar(BattleStateInput input) {
-        float currStamina = actor.Stamina;
-        float maxStamina = actor.Data.MaxStamina;
-        Debug.Log("Stamina: " + actor.Stamina);
+        protected override void RegisterInMachine() {
+            handler.OnStamina += (value, target) => UpdateBar(Mathf.Clamp(visualGauge + value, 0, MaxPoints), target);
+        }
 
-        slider.value = currStamina / maxStamina;
+        /*
+        private Slider slider;
+        private TextMeshProUGUI _text;
+        [SerializeField] private Actor actor;
+        void Start() {
+            slider = GetComponent<Slider>();
+            //_stateMachine.OnStateTransition += UpdateStaminaBar;
+            BattleStateMachine.Instance.OnStateTransition += UpdateStaminaBar; 
+            _text = GetComponentInChildren<TextMeshProUGUI>();
+        }
 
-        _text.text = currStamina + "/" + maxStamina;
-    }
+        private void UpdateStaminaBar(BattleStateMachine.BattleState state, BattleStateInput input) {
+            float currStamina = actor.Stamina;
+            float maxStamina = actor.Data.MaxStamina;
+            Debug.Log("Stamina: " + actor.Stamina);
 
-    private void UpdateStaminaBarOnState() {
-        float currHealth = actor.Stamina;
-        float maxHealth = actor.Data.MaxStamina;
-        Debug.Log("Stamina: " + actor.Stamina);
+            float staminaRatio = currStamina / maxStamina;
+            DOTween.To(() => slider.value, x => slider.value = x, staminaRatio, 0.5f);
+            _text.text = currStamina + " / " + maxStamina;
 
-        slider.value = currHealth / maxHealth;
+            slider.value = currStamina / maxStamina;
+        }
+
+        private void UpdateStaminaBar(BattleStateInput input) {
+            float currStamina = actor.Stamina;
+            float maxStamina = actor.Data.MaxStamina;
+            Debug.Log("Stamina: " + actor.Stamina);
+
+            slider.value = currStamina / maxStamina;
+
+            _text.text = currStamina + "/" + maxStamina;
+        }
+
+        private void UpdateStaminaBarOnState() {
+            float currHealth = actor.Stamina;
+            float maxHealth = actor.Data.MaxStamina;
+            Debug.Log("Stamina: " + actor.Stamina);
+
+            slider.value = currHealth / maxHealth;
+        }*/
     }
 }
