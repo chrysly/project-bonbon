@@ -418,20 +418,6 @@ public class ActorSpaceEditor : EditorWindow {
                                               handlerStatus.spaceStatus.image);
                 GUI.color = Color.white;
             }
-        } using (new EditorGUILayout.HorizontalScope()) {
-            EditorUtils.WindowBoxLabel("Assign Global Canvas References", GUILayout.Height(19));
-            using (new EditorGUILayout.HorizontalScope(UIStyles.WindowBox)) {
-                if (GUILayout.Button("Auto-Assign")) {
-                    var healthbars = actorHandler.transform.parent.GetComponentsInChildren<Healthbar>();
-                    foreach (Healthbar healthbar in healthbars) {
-                        var match = actorHandler.EditorCharacterSpaces.FirstOrDefault(space => space.InitialActor == healthbar.ActorIdentifier);
-                        if (match != null) {
-                            healthbar.Actor = match.GetComponentInChildren<Actor>();
-                            EditorUtility.SetDirty(healthbar);
-                        }
-                    }
-                }
-            }
         }
     }
 

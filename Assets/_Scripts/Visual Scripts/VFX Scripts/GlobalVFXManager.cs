@@ -140,15 +140,16 @@ public class GlobalVFXManager : StateMachineHandler {
 
     #region Events
 
-    private void AnimationHandler_HealEvent(int amount, Actor actor) {
+    private void AnimationHandler_HealEvent(float heal, Actor actor) {
         PlayAnimation(VFXMap.GenericVFXDict[GenericVFXType.Heal], actor.transform);
     }
 
-    private void AnimationHandler_StaminaEvent(Actor actor) {
+    private void AnimationHandler_StaminaEvent(int value, Actor actor) {
+        if (value < 0) return;
         PlayAnimation(VFXMap.GenericVFXDict[GenericVFXType.StaminaRegen], actor.transform);
     }
 
-    private void AnimationHandler_DamageEvent(int damage, Actor actor, bool hasBonbon) {
+    private void AnimationHandler_DamageEvent(float damage, Actor actor, bool hasBonbon) {
         PlayAnimation(VFXMap.GenericVFXDict[GenericVFXType.Damage], actor.transform);
     }
 

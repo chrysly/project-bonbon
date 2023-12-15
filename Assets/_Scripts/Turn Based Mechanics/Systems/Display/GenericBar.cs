@@ -9,27 +9,40 @@ namespace BattleUI {
     public abstract class GenericBar : ScreenSpaceElement {
 
         [SerializeField] protected ActorData actorIdentifier;
-        protected BattleStateMachine BattleStateMachine => BattleStateMachine.Instance;
+
+        protected abstract int CurrPoints { get; }
         protected abstract int MaxPoints { get; }
         protected Actor actor;
 
         private Slider slider;
         private TextMeshProUGUI _text;
 
-        private float visualGauge;
+        protected float visualGauge;
 
         void Awake() {
             slider = GetComponent<Slider>();
             _text = GetComponentInChildren<TextMeshProUGUI>();
         }
 
-        private void UpdateBar(float value) {
-            float currHealth = visualGauge;
-            float maxHealth = actor.Data.MaxHitpoints;
-
-            float healthRatio = currHealth / maxHealth;
-            DOTween.To(() => slider.value, x => slider.value = x, healthRatio, 0.5f);
-            _text.text = currHealth + " / " + maxHealth;
+        public override void Init(ScreenSpaceHandler handler) {
+            base.Init(handler);
+            actor = handler.FetchActor(actorIdentifier);
+            if (actor == null) Destroy(gameObject);
+            else {
+                slider.value = CurrPoints;
+                visualGauge = CurrPoints;
+                _text.text = visualGauge + " / " + MaxPoints;
+            } RegisterInMachine();
         }
+
+        protected void UpdateBar(float value, Actor actor) {
+            if (actor.Data != actorIdentifier) return;
+            visualGauge = value;
+            float valueRatio = visualGauge / MaxPoints;
+            DOTween.To(() => slider.value, x => slider.value = x, valueRatio, 0.5f);
+            _text.text = visualGauge + " / " + MaxPoints;
+        }
+
+        protected abstract void RegisterInMachine();
     }
 }

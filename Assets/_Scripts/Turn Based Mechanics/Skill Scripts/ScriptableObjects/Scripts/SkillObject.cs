@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +25,13 @@ public class SkillObject : ScriptableObject {
     public enum TargetConstraint { Enemies, Allies, All }
     [SerializeField] private TargetConstraint targetType;
     public TargetConstraint TargetType => targetType;
+
+    public List<EffectBlueprint> Effects {
+        get {
+            var rawAction = immediateActions.FirstOrDefault(action => action is ApplyEffectsAction);
+            return rawAction != null ? (rawAction as ApplyEffectsAction).Effects : null;
+        }
+    }
 
     public bool aoe = false;
 

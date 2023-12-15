@@ -120,8 +120,9 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     }
 
     public void RemoveEffects(List<int> effectIndices) {
-        foreach (int effectIndex in effectIndices) EffectList.RemoveAt(effectIndex);
-        ComputeStats();
+        foreach (int effectIndex in effectIndices) {
+            if (effectIndex < EffectList.Count) EffectList.RemoveAt(effectIndex);
+        } ComputeStats();
     }
 
     public void DepleteHitpoints(int damage) {
@@ -156,7 +157,9 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
     }
 
     public void ConsumeStamina(int amount) {
-        _stamina -= amount;
+        int consumeAmount = Mathf.Min(amount, _stamina);
+        _stamina -= consumeAmount;
+        if (this is CharacterActor) currInput.AnimationHandler.TriggerStamina(-consumeAmount, this);
     }
 
     /// <summary> parameter is based on %health </summary>
@@ -165,7 +168,7 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         int maxStamina = data.MaxStamina;
         int refillAmount = (int) (maxStamina * (percent / 100f));
         _stamina = Mathf.Min(data.MaxStamina, _stamina + refillAmount);
-        if (this is CharacterActor) currInput.AnimationHandler.TriggerStamina(this);
+        if (this is CharacterActor) currInput.AnimationHandler.TriggerStamina(refillAmount, this);
     }
 
     #region Comparators
