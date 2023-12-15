@@ -206,7 +206,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -1773369437
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &8473051397823085646
 MonoBehaviour:
@@ -555,6 +555,25 @@ MonoBehaviour:
   dialogueView: {fileID: 5003630775599078525}
   continueActionType: 0
   continueActionKeyCode: 32
+  continueActionReference: {fileID: 0}
+  continueAction:
+    m_Name: Skip
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 
+      m_Path: Submit
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skip
+      m_Flags: 0
+    m_Flags: 0
+  enableActionOnStart: 1
 --- !u!225 &6256946733362062739
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1391,7 +1410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc67ae203ae17774e8af7b36a3dca021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventSequencer: {fileID: 0}
   _viewport: {fileID: 7578882629820358480}
   _dialogueViewPrefab: {fileID: 2239816723467315020, guid: 83071ba3ae9511a4f8a385b3dee0c96b, type: 3}
   _dialoguePortraitPrefab: {fileID: 2237448201068572721, guid: 62e6c3bc8d34ecb4987075b205a5bf06, type: 3}

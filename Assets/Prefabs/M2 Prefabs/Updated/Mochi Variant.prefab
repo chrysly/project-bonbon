@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: moveDuration
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 5127890089007320850, guid: ea089f3f94526a146b2b843761202041, type: 3}
+      propertyPath: m_BlockingObjects
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5912312475948334162, guid: ea089f3f94526a146b2b843761202041, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

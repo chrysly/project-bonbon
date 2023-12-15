@@ -18,12 +18,13 @@ MonoBehaviour:
   yarnFile: {fileID: 0}
   playOnStart: 0
   popUps:
+  - {fileID: 21300000, guid: cdb948d65e1bc8c4d951cf74e96cd329, type: 3}
   - {fileID: 21300000, guid: a4e90914fd694924ab21263647bfc8eb, type: 3}
   - {fileID: 21300000, guid: d5da85e3ff7cc4a489d0463c1ae41a52, type: 3}
   - {fileID: 21300000, guid: 6e2dc937f19ab8c4487d3ebf9f291b13, type: 3}
   - {fileID: 21300000, guid: 244411b448951344ca36fd642d993fef, type: 3}
   - {fileID: 21300000, guid: 7287da16b7153804895d7a1235cbec17, type: 3}
-  - {fileID: 21300000, guid: e94d6f9cf725b99418a48678de2408a9, type: 3}
+  - {fileID: 21300000, guid: d898014b709d0dc4eadb84e8181f3f0c, type: 3}
   references:
     version: 2
     RefIds:
