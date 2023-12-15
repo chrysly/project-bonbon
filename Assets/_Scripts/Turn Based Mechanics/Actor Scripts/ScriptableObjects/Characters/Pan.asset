@@ -20,7 +20,7 @@ MonoBehaviour:
   baseDefense: 8
   baseSpeed: 5
   maxStamina: 100
-  staminaRegenRate: 15
+  staminaRegenRate: 20
   skillMap:
     startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
     secondaryElements:
