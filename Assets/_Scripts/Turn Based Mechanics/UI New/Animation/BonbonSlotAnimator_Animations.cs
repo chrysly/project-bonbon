@@ -72,7 +72,9 @@ namespace BattleUI {
         private void ResolveAnimations() {
             if (specialAnimation != null) {
                 StopCoroutine(specialAnimation);
-                /// Reset local parameters;
+                Material[] oldMats = { new Material(defaultMat) };
+                GetComponent<SpriteRenderer>().materials = oldMats;
+                transform.DOScale(Vector3.one, 0f);
             }
         }
     }
