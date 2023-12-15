@@ -17,7 +17,8 @@ namespace BattleUI {
             mainHandler = GetComponent<BonbonMainHandler>();
             bakeHandler = GetComponent<BonbonBakeHandler>();
 
-            slotAnimators = animators.Select(animator => animator as BonbonSlotAnimator).ToArray();
+            slotAnimators = animators.Where(animator => animator is BonbonSlotAnimator)
+                                     .Select(animator => animator as BonbonSlotAnimator).ToArray();
             foreach (Transform transform in decorations) transform.DOScale(new Vector3(0f, 0f, 1f), 0);
             
             mainHandler.OnHandlerToggle += OnMainHandlerToggle;
@@ -32,15 +33,14 @@ namespace BattleUI {
 
         private void OnMainHandlerToggle(bool toggle) {
             StateHandler = mainHandler;
-            if (bonbonFXInfo == null) base.UIStateHandler_OnHandlerToggle(toggle);
+            if (bonbonFXInfo == null || !toggle) base.UIStateHandler_OnHandlerToggle(toggle);
             else {
                 foreach (BonbonSlotAnimator slotAnimator in slotAnimators) {
                     if (slotAnimator.Slot == bonbonFXInfo.animationSlot) {
                         slotAnimator.ToggleWithAnimation(bonbonFXInfo);
                     } else slotAnimator.Toggle(toggle);
-                } bonbonFXInfo = null;
-                state = toggle ? UIAnimatorState.Loading : UIAnimatorState.Unloading;
-            }
+                } state = toggle ? UIAnimatorState.Loading : UIAnimatorState.Unloading;
+            } bonbonFXInfo = null;
         }
         
         private void OnBakeHandlerToggle(bool toggle) {

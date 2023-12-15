@@ -2,7 +2,5 @@
 
 namespace BattleUI {
 
-    public class UIIdleAnimator : UIAnimator {
-
-    }
+    public class UIIdleAnimator : UIAnimator { }
 }
