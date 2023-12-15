@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stamina Outline
+  m_Name: Defense Outline
   m_Shader: {fileID: -6465566751694194690, guid: 250b26f40dcc20046a837d6b51eedad7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -59,7 +59,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _Level: 3
+    - _Level: 20
     - _Power: 2.43
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -71,5 +71,5 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 1.5608019, g: 3.7306879, b: 3.7735846, a: 0}
+    - _Color: {r: 3.9924023, g: 1.8632785, b: 0.7306847, a: 0}
   m_BuildTextureStacks: []

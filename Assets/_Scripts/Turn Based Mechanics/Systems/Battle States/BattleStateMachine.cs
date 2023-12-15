@@ -112,32 +112,6 @@ public partial class
         }
     }*/
 
-    /*
-    public void ConfirmTargetSelect(Actor actor) {
-        CurrInput.SkillHandler.SkillUpdate(new Actor[] { actor });
-        Transition<AnimateState>();
-    }
-
-    public void AugmentSkill(BonbonObject bonbon) {
-        CurrInput.SkillHandler.SkillUpdate(bonbon);
-    }
-
-    public void SwitchToBonbonState(BonbonBlueprint bonbon, int slot, bool[] mask) {
-        if (CurrState is TurnState || CurrState is BonbonState) {
-            BonbonObject bonbonObject = CurrInput.BonbonHandler.CreateBonbon(bonbon, CurrInput.ActiveActor(), mask);
-            for (int i = 0; i < 4; i++) {
-                BonbonObject bObject = CurrInput.ActiveActor().BonbonInventory[i];
-                if (bObject == null) {
-                    Debug.Log("NULL at " + i);
-                }
-                else {
-                    Debug.Log("Bonbon: " + bObject.Name + " at " + i);
-                }
-            }
-            CurrInput.ActiveActor().AcceptBonbon(slot, bonbonObject);
-            Debug.Log("Bonbon: " + CurrInput.ActiveActor().BonbonInventory[slot]);
-        }
-    }*/
 
     public void AnimateTurn() {
         CurrState.AnimateTurn();
