@@ -8,7 +8,7 @@ public class ResetButton : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q)) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
         }
     }
 }

@@ -20,7 +20,7 @@ MonoBehaviour:
     portrait: {fileID: 21300000, guid: fdfba200aba022d4eaff13791719e797, type: 3}
   - expression: apologetic_1
     portrait: {fileID: 21300000, guid: 905a2a31fa3860149a467a1bf8a1b763, type: 3}
-  - expression: apologetic_2
+  - expression: sad
     portrait: {fileID: 21300000, guid: 04a0ec4b3a4620a4abaeb787c9b0a10a, type: 3}
   - expression: thinking
     portrait: {fileID: 21300000, guid: a6c20e4e4f7bf664688e2296187064e7, type: 3}

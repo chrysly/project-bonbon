@@ -17,11 +17,14 @@ MonoBehaviour:
   yarnFile: {fileID: 0}
   playOnStart: 1
   popUps:
+  - {fileID: 21300000, guid: e94d6f9cf725b99418a48678de2408a9, type: 3}
   - {fileID: 21300000, guid: d735e2142d188c44d8413b305f7affe9, type: 3}
   - {fileID: 21300000, guid: b3d91d00e24f08d4391a02cfb3a5b416, type: 3}
   - {fileID: 21300000, guid: d5f8eb96d97bb5340893e39f7c84be33, type: 3}
   - {fileID: 21300000, guid: e4152a4a18168d54d9eccecce520b09f, type: 3}
+  - {fileID: 21300000, guid: fbaccb91c2f548f4ea0ef3f08e0c2188, type: 3}
   - {fileID: 21300000, guid: b51ed48812f72b049a45d3b039a4bfed, type: 3}
+  - {fileID: 21300000, guid: 7c35aeb74bb9abb4f99ed13e8b2d9737, type: 3}
   references:
     version: 2
     RefIds:
