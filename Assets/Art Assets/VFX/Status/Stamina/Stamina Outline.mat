@@ -59,7 +59,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 2
     - _DstBlend: 10
-    - _Level: 10.485377
+    - _Level: 20
     - _Power: 2.43
     - _QueueControl: 0
     - _QueueOffset: 0
