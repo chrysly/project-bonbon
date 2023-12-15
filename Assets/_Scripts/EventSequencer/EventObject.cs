@@ -11,7 +11,7 @@ public class EventObject : ScriptableObject {
     [SerializeReference]
     public List<Condition> eventConditions = new List<Condition>();
 
-    [SerializeField] private TextAsset yarnFile;
+    [SerializeField] protected TextAsset yarnFile;
     [SerializeField] private bool playOnStart;
     public bool getPlayOnStart() { return playOnStart; }
 

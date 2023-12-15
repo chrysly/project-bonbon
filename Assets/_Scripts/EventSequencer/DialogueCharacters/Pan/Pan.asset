@@ -28,5 +28,7 @@ MonoBehaviour:
     portrait: {fileID: 21300000, guid: 4d11572e763ae9140ba1a9133491731d, type: 3}
   - expression: deadpan
     portrait: {fileID: 21300000, guid: 0e3e52315a2c7154eb54637f2c589f26, type: 3}
+  - expression: sad
+    portrait: {fileID: 21300000, guid: 1065ee8af810d2740a0fa56973cf1b2d, type: 3}
   defaultToRightSide: 0
   dialogueBoxColor: {r: 0.6981132, g: 0.3523496, b: 0.63996893, a: 1}
