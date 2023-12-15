@@ -37,17 +37,17 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3d159e7365c470b4b8a664b4f906aff8, type: 3}
+        m_Texture: {fileID: 2800000, guid: ccabb284845a6ea429a842aab8d47b46, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Brightness: 2.4
+    - _Brightness: 5.73
     - _Glossiness: -10
     - _Rim_Amount: 0
     - _Rim_Threshold: 0
     - _Toon_Amount: 0.204
     m_Colors:
     - _Ambient_Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9049365, g: 1, b: 0.88699996, a: 1}
   m_BuildTextureStacks: []
