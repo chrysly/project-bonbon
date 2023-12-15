@@ -33,15 +33,14 @@ namespace BattleUI {
 
         private void OnMainHandlerToggle(bool toggle) {
             StateHandler = mainHandler;
-            if (bonbonFXInfo == null) base.UIStateHandler_OnHandlerToggle(toggle);
+            if (bonbonFXInfo == null || !toggle) base.UIStateHandler_OnHandlerToggle(toggle);
             else {
                 foreach (BonbonSlotAnimator slotAnimator in slotAnimators) {
                     if (slotAnimator.Slot == bonbonFXInfo.animationSlot) {
                         slotAnimator.ToggleWithAnimation(bonbonFXInfo);
                     } else slotAnimator.Toggle(toggle);
-                } bonbonFXInfo = null;
-                state = toggle ? UIAnimatorState.Loading : UIAnimatorState.Unloading;
-            }
+                } state = toggle ? UIAnimatorState.Loading : UIAnimatorState.Unloading;
+            } bonbonFXInfo = null;
         }
         
         private void OnBakeHandlerToggle(bool toggle) {
