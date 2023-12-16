@@ -1043,6 +1043,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2578940351677343576, guid: 83c4de2e4d4aa7142bf3167c39709ec8, type: 3}
+      propertyPath: backImage
+      value: 
+      objectReference: {fileID: 1995851349114206079}
     - target: {fileID: 4542383629510362650, guid: 83c4de2e4d4aa7142bf3167c39709ec8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1076,6 +1080,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83c4de2e4d4aa7142bf3167c39709ec8, type: 3}
+--- !u!1 &1995851349114206079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8334162729099156479, guid: 83c4de2e4d4aa7142bf3167c39709ec8, type: 3}
+  m_PrefabInstance: {fileID: 7501401462336842880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7918531250511429039 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 431803320609198383, guid: 83c4de2e4d4aa7142bf3167c39709ec8, type: 3}
