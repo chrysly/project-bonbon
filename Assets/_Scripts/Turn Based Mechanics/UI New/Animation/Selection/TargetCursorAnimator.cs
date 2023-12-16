@@ -9,8 +9,13 @@ namespace BattleUI {
         [SerializeField] private float innerRingDelay = 0.2f;
         [SerializeField] private float moveDuration = 0.3f;
 
+        [SerializeField] private float rotationSpeed = 20f;
+
         [SerializeField] private Transform inner;
         [SerializeField] private Transform outer;
+        [SerializeField] private bool augmented = false;
+
+        private IEnumerator _activeAnim;
 
         public override void Init() {
             inner.DOScale(new Vector3(0, 1f, 1f), 0f);
@@ -53,10 +58,24 @@ namespace BattleUI {
         protected override IEnumerator Idle() {
             while (state == UIAnimatorState.Idle) {
                 if (target != null) {
-                    inner.Rotate(Vector3.forward * (Time.deltaTime * 20));
-                    outer.Rotate(Vector3.forward * (Time.deltaTime * -20));
+                    inner.Rotate(Vector3.forward * (Time.deltaTime * rotationSpeed));
+                    outer.Rotate(Vector3.forward * (Time.deltaTime * -rotationSpeed));
+
+                    if (augmented && _activeAnim == null) {
+                        _activeAnim = Shake();
+                        StartCoroutine(_activeAnim);
+                    }
                 } yield return null;
             }
+        }
+
+        private IEnumerator Shake() {
+            inner.DOShakeScale(0.2f, new Vector3(1, 0.7f, 1), 20);
+            yield return new WaitForSeconds(0.1f);
+            outer.DOShakeScale(0.2f, new Vector3(0.6f, 0.8f, 1), 20);
+            yield return new WaitForSeconds(1f);
+            _activeAnim = null;
+            yield return null;
         }
 
         protected override IEnumerator Unload() {

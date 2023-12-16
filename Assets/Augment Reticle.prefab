@@ -53,8 +53,10 @@ MonoBehaviour:
   expandDuration: 0.3
   innerRingDelay: 0.2
   moveDuration: 0.3
+  rotationSpeed: 40
   inner: {fileID: 5244370452273139105}
   outer: {fileID: 3771826428830641802}
+  augmented: 1
 --- !u!1 &5456971694978457015
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +122,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 1202d91a2c3fe454ca9c892560f5ba18, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
