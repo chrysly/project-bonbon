@@ -59,4 +59,14 @@ public partial class GameManager {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) => fadeHandler.Fade(0f);
+
+
+    // (Ryan) Sorry for temp wack Carlos :)
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.R))
+        {
+            TransitionToLevel(0);
+        }
+    }
 }
