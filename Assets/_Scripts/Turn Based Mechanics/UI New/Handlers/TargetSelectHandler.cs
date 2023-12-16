@@ -10,6 +10,8 @@ namespace BattleUI {
 
         private void Awake() { Type = UIStateType.TargetSelect; }
 
+        public SkillTransitionInfo skillTransitionInfo => TransitionInfo;
+
         public override UIInputPack InputArrangement() {
             List<Actor> targets = Brain.BattleStateMachine
                                        .FilterActorsBySkill(TransitionInfo.Skill);

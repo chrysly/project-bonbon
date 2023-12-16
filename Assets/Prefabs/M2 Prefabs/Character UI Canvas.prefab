@@ -1210,6 +1210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorPrefab: {fileID: 4981898987406499341, guid: 2e74bc66da1ecc54aa55ac0fed4dab69, type: 3}
+  augmentPrefab: {fileID: 4981898987406499341, guid: 7c1839770af399b4b95515c85879313d, type: 3}
 --- !u!1 &7361345189848095480
 GameObject:
   m_ObjectHideFlags: 0
