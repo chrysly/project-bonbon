@@ -19,7 +19,6 @@ public class PopUpEvent : EventObject {
         }
 
         popUpLogic.GetComponent<Image>().enabled = true;
-        popUpLogic.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         popUpLogic.startPopUp(popUps);
 
         while (popUpLogic.getActive()) {

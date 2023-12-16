@@ -8,6 +8,8 @@ public class PopUpLogic : MonoBehaviour {
     private int currIndex = 0;
     private Image img;
     private bool isActive = false;
+    private bool hasReachedLast = false;
+    [SerializeField] private GameObject backImage;
 
     void Start() {
         img = GetComponent<Image>();
@@ -21,10 +23,13 @@ public class PopUpLogic : MonoBehaviour {
             }
             else if (Input.GetKeyDown(KeyCode.A)) {
                 CycleImages(-1);
-            } else if (Input.GetKeyDown(KeyCode.Q)) {
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q) && hasReachedLast) {
                 img.enabled = false;
                 isActive = false;
-                transform.GetChild(0).gameObject.SetActive(false);
+                hasReachedLast = false;
+                backImage.SetActive(false);
             }
         }
     }
@@ -51,6 +56,10 @@ public class PopUpLogic : MonoBehaviour {
         // ensure looping through images
         if (currIndex < 0) {
             currIndex = imageList.Count - 1;
+        } 
+        else if (currIndex == imageList.Count - 1) {
+            hasReachedLast = true;
+            backImage.SetActive(true);
         }
         else if (currIndex >= imageList.Count) {
             currIndex = 0;
