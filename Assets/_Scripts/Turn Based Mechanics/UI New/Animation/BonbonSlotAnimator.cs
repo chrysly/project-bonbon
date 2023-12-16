@@ -18,6 +18,7 @@ namespace BattleUI {
         } private BonbonSlotButton slotButton;
         private BonbonBakeSlotButton bakeButton;
         private Coroutine specialAnimation;
+        private Sprite defaultSprite;
 
         public int Slot => Button is BonbonSlotButton ? (Button as BonbonSlotButton).Slot
                                                       : (Button as BonbonBakeSlotButton).Slot;
@@ -26,6 +27,7 @@ namespace BattleUI {
         protected override void Awake() {
             base.Awake();
             icon = GetComponent<SpriteRenderer>();
+            defaultSprite = icon.sprite;
         }
 
         protected override void LoadLogicButton() {
@@ -46,7 +48,7 @@ namespace BattleUI {
             else {
                 if (!toggle) {
                     selected = false;
-                    GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 0 : 1, "_Alpha" ,animationDuration / 2);
+                    GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 1 : 1, "_Alpha" ,animationDuration / 2);
                 } else ProcessAvailability();
             }
         }
@@ -67,8 +69,24 @@ namespace BattleUI {
         }
 
         protected override void ProcessAvailability() {
-            GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 0 
+            GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 1 
                                              : Button.Available ? 1 : 0.5f, "_Alpha" ,0);
+        }
+
+        protected override IEnumerator Idle()
+        {
+            if (selected)
+            {
+                transform.DOScale(selectedScale, animationDuration);
+                yield return new WaitForSeconds(animationDuration / 2);
+                icon.sprite = Bonbon == null ? defaultSprite : Bonbon.Texture;
+            }
+            else
+            {
+                transform.DOScale(new Vector3(targetScale, targetScale, 1f), animationDuration);
+                yield return new WaitForSeconds(animationDuration / 2);
+                icon.sprite = Bonbon == null ? null : Bonbon.Texture;
+            }
         }
     }
 }
