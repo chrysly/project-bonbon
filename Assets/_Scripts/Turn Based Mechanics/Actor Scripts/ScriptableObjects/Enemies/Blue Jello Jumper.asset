@@ -16,8 +16,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 7895477d0c1f4784a839dcb3f034d4de, type: 3}
   id: jelloblue
   maxHitpoints: 25
-  basePotency: 25
-  baseDefense: 5
+  basePotency: 0
+  baseDefense: 0
   baseSpeed: 3
   maxStamina: 80
   staminaRegenRate: 20

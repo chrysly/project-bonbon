@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class StatIteration {
 
@@ -49,14 +50,14 @@ public class StatIteration {
     public StatIteration Augment(SkillAugment sa) => new StatIteration(this, sa);
 
     public int ComputeDamage(int rawAmount) {
-        return rawAmount + rawAmount * (Potency / 100) + (Augmentation != null ? Augmentation.damageBoost : 0);
+        return rawAmount + (int) (rawAmount * (Potency / 100f)) + (Augmentation != null ? Augmentation.damageBoost : 0);
     }
 
     public int ComputeHeal(int rawAmount) {
-        return rawAmount + rawAmount * (Potency / 100) + (Augmentation != null ? Augmentation.healBoost : 0);
+        return rawAmount + (int) (rawAmount * (Potency / 100f)) + (Augmentation != null ? Augmentation.healBoost : 0);
     }
 
     public int ComputeDefense(int rawAmount) {
-        return rawAmount * (1 - (Defense / 100));
+        return (int) (rawAmount * Mathf.Clamp(1 - (Defense / 100f), 0.5f, 1));
     }
 }

@@ -15,8 +15,8 @@ MonoBehaviour:
   name: +ATK
   duration: 1
   modifiers:
-    flatAttack: 0
-    percentAttack: 0.3
+    flatAttack: 30
+    percentAttack: 0
     flatHeal: 0
     percentHealCast: 0
     flatDefense: 0

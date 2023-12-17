@@ -16,8 +16,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e46987e33e526af418ee060940498a44, type: 3}
   id: 0_Pan
   maxHitpoints: 20
-  basePotency: 5
-  baseDefense: 8
+  basePotency: 0
+  baseDefense: 0
   baseSpeed: 5
   maxStamina: 100
   staminaRegenRate: 20

@@ -171,6 +171,8 @@ public class Actor : MonoBehaviour, IComparable<Actor> {
         if (this is CharacterActor) currInput.AnimationHandler.TriggerStamina(refillAmount, this);
     }
 
+    public void DeclareEffects(List<EffectBlueprint> effects) => currInput.AnimationHandler.TriggerEffects(effects, this);
+
     #region Comparators
     public int CompareTo(Actor actor) {
         return data.BaseSpeed - actor.data.BaseSpeed;

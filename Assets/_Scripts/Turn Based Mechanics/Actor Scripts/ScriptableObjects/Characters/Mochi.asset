@@ -16,8 +16,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 23f8768c734de284383fa55f73172ca7, type: 3}
   id: 0_Mochi
   maxHitpoints: 25
-  basePotency: 2
-  baseDefense: 2
+  basePotency: 10
+  baseDefense: 0
   baseSpeed: 7
   maxStamina: 100
   staminaRegenRate: 25

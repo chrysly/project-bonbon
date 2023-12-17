@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Red Jello Jumper
   m_EditorClassIdentifier: 
   displayName: Red Jello Jumper
+  icon: {fileID: 0}
   id: jellored
   maxHitpoints: 15
-  basePotency: 8
-  baseDefense: 3
+  basePotency: 0
+  baseDefense: 0
   baseSpeed: 7
   maxStamina: 80
   staminaRegenRate: 20

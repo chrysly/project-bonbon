@@ -16,8 +16,8 @@ MonoBehaviour:
   icon: {fileID: 0}
   id: jellogreen
   maxHitpoints: 20
-  basePotency: 7
-  baseDefense: 3
+  basePotency: 0
+  baseDefense: 0
   baseSpeed: 5
   maxStamina: 80
   staminaRegenRate: 20

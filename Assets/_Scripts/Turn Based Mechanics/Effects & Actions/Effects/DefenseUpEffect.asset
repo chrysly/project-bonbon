@@ -19,8 +19,8 @@ MonoBehaviour:
     percentAttack: 0
     flatHeal: 0
     percentHealCast: 0
-    flatDefense: 2
-    percentDefense: 100
+    flatDefense: 50
+    percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0
     flatStaminaRegen: 0

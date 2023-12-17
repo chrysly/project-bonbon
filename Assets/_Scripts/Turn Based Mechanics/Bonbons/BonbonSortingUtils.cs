@@ -9,6 +9,7 @@ public static class BonbonSortingUtils {
         SkillAugment augment = inventory[index].AugmentData;
         /// Apply Bonbon Effect to Caster;
         new ApplyEffectsAction(new List<EffectBlueprint>(new[] { augment.bonbonEffect })).Use(actor.ActiveData, actor);
+        actor.DeclareEffects(new List<EffectBlueprint>(new[] { augment.bonbonEffect }));
         /// Trigger a series of immediate actions on the augment;
         foreach (ImmediateAction.SkillOnly action in augment.immediateActions) action.Use(actor.ActiveData, actor);
         inventory[index] = null;
