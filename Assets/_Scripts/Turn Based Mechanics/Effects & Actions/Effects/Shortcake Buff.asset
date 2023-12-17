@@ -15,12 +15,12 @@ MonoBehaviour:
   name: +DEF
   duration: 3
   modifiers:
-    flatAttack: 3
-    percentAttack: 15
-    flatHeal: 3
+    flatAttack: 40
+    percentAttack: 0
+    flatHeal: 0
     percentHealCast: 0
-    flatDefense: 4
-    percentDefense: 120
+    flatDefense: 75
+    percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0
     flatStaminaRegen: 0

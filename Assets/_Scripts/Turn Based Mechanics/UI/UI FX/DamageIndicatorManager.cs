@@ -41,14 +41,15 @@ public class DamageIndicatorManager : MonoBehaviour {
     private void SpawnEffectText(List<EffectBlueprint> effects, Actor target) {
         if (effects == null || effects.Count == 0) return;
         foreach (EffectBlueprint effect in effects) {
+            Debug.LogError("Fuck");
             if (effect.modifiers.flatAttack > 0 || effect.modifiers.percentAttack > 0) {
-                GenerateEffectText("<color=red>ATK</color><color=yellow>↑</color>", target);
+                GenerateEffectText("<color=#FF7F7F>ATK</color><color=yellow>↑</color>", target);
             } if (effect.modifiers.flatAttack < 0 || effect.modifiers.percentAttack < 0) {
-                GenerateEffectText("<color=red>ATK</color><color=blue>↓</color>", target);
+                GenerateEffectText("<color=#FF7F7F>ATK</color><color=blue>↓</color>", target);
             } if (effect.modifiers.flatDefense > 0 || effect.modifiers.percentDefense > 0) {
-                GenerateEffectText("<color=pink>DEF</color><color=yellow>↑</color>", target);
-            } if (effect.modifiers.flatAttack < 0 || effect.modifiers.percentAttack < 0) {
-                GenerateEffectText("<color=pink>DEF</color><color=blue>↓</color>", target);
+                GenerateEffectText("<color=#9BEDFF>DEF</color><color=yellow>↑</color>", target);
+            } if (effect.modifiers.flatDefense < 0 || effect.modifiers.percentDefense < 0) {
+                GenerateEffectText("<color=#9BEDFF>DEF</color><color=blue>↓</color>", target);
             }
         }
     }
@@ -75,7 +76,7 @@ public class DamageIndicatorManager : MonoBehaviour {
         TextMeshProUGUI textComp = text.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         textComp.richText = true;
         textComp.text = effectText;
-        RunTextAnimation(text.transform, Color.white);
+        RunTextAnimation(text.transform, Color.white, 0.5f);
     }
 
     private Vector3 GenerateOffset(Vector3 position) {

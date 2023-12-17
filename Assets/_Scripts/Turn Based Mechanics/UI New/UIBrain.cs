@@ -78,6 +78,14 @@ namespace BattleUI {
             }
         }
 
+        public T FindHandler<T>() where T : UIStateHandler {
+            try {
+                return handlerMap[typeof(T)] as T;
+            } catch (KeyNotFoundException) {
+                return null;
+            }
+        }
+
         public void DisableUnrelatedHandlers(UIStateHandler handler = null) {
             foreach (KeyValuePair<System.Type, UIStateHandler> kvp in handlerMap) {
                 if (handler == null || kvp.Value.Type != handler.Type) kvp.Value.Disable();

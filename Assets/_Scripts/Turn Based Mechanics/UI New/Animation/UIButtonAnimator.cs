@@ -51,7 +51,7 @@ namespace BattleUI {
 
         public override void Toggle(bool toggle) {
             base.Toggle(toggle);
-            ProcessAvailability();
+            if (toggle) ProcessAvailability();
             targetScale = toggle ? 1 : 0;
             if (!toggle) selected = false;
             OnToggle?.Invoke(toggle);
