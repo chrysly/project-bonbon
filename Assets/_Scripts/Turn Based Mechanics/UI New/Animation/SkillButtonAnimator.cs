@@ -37,6 +37,10 @@ namespace BattleUI {
             staminaText.text = "STA " + skillButton.Skill.SkillData.staminaCost.ToString();
         }
 
+        protected override void UIButton_OnActivate() {
+            if (!stateAnimator.Brain.CinematicMode) base.UIButton_OnActivate();
+        }
+
         protected override IEnumerator Idle() {
             if (selected) { 
                 canvasGroup.DOFade(1f, selectDuration);

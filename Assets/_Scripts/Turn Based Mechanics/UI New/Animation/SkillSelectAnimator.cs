@@ -45,5 +45,11 @@ namespace BattleUI {
             icon.DOScale(0f, animationDuration);
             display.DOScaleY(0f, animationDuration);
         }
+
+        protected override void OnDestroy() {
+            base.OnDestroy();
+            if (Brain.CinematicMode) (StateHandler as SkillSelectHandler)
+                                     .OnButtonArrange -= SkillSelectHandler_OnButtonArrange;
+        }
     }
 }

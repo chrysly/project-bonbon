@@ -4,6 +4,8 @@ using UnityEngine;
 namespace BattleUI {
     public class UIAnimationBrain : MonoBehaviour {
 
+        public bool CinematicMode;
+
         private UIBrain logicBrain;
 
         private UIStateAnimator[] baseAnimators;
@@ -23,6 +25,7 @@ namespace BattleUI {
             stateAnimators = baseAnimators.Concat(actor.gameObject
                                           .GetComponentsInChildren<UIStateAnimator>(true)).ToArray();
             foreach (UIStateAnimator animator in stateAnimators) animator.Init(this);
+            //if (CinematicMode) Destroy(this);
         }
     }
 }
