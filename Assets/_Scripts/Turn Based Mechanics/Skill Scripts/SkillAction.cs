@@ -18,7 +18,7 @@ public class SkillAction {
         AIActionValue actionValue = new AIActionValue();
         SkillData.ComputeActionValues(ref actionValue, bonbon == null ? Caster.ActiveData : Caster.ActiveData.Augment(bonbon.Data.augmentData));
         actionValue.immediateDamage = target.ActiveData.ComputeDefense(actionValue.immediateDamage);
-        actionValue.damageOverTime = target.ActiveData.ComputeDefense(actionValue.damageOverTime);
+        //actionValue.damageOverTime = target.ActiveData.ComputeDefense(actionValue.damageOverTime);
         actionValue.target = target;
         return actionValue;
     }
