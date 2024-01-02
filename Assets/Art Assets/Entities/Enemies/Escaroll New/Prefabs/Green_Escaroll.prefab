@@ -148,6 +148,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e74e5c28eec3319428363a87aaccc0b7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3279274382182789811}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e74e5c28eec3319428363a87aaccc0b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8631757590427833222}
   m_SourcePrefab: {fileID: 100100000, guid: e74e5c28eec3319428363a87aaccc0b7, type: 3}
 --- !u!4 &461685627165891150 stripped
 Transform:
@@ -180,3 +183,24 @@ MonoBehaviour:
   uniqueID: escaroll_green
   _hitpoints: 0
   _stamina: 0
+--- !u!95 &8631757590427833222
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7994447842525858815}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47f0916c79f44594e8f04014c2641495, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
