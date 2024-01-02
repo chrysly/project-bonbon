@@ -22,6 +22,7 @@ namespace BattleUI {
         public virtual void Init(UIStateAnimator stateAnimator) {
             this.stateAnimator = stateAnimator;
             this.stateAnimator.Brain.OnGlobalSoftToggle += Toggle;
+            if (stateAnimator.Brain.CinematicMode) Destroy(this);
         }
 
         protected IEnumerator CoreCoroutine() {

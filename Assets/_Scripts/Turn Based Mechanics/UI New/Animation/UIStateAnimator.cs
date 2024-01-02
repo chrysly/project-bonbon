@@ -20,6 +20,7 @@ namespace BattleUI {
         public virtual void Init(UIAnimationBrain brain) {
             Brain = brain;
             foreach (UIAnimator animator in animators) animator.Init(this);
+            if (Brain.CinematicMode) Destroy(this);
         }
 
         public void UpdateSelection(UIButtonAnimator buttonAnim) {
@@ -31,6 +32,10 @@ namespace BattleUI {
 
         protected virtual void UIStateHandler_OnHandlerToggle(bool toggle) {
             foreach (UIAnimator animator in animators) animator.Toggle(toggle);
+        }
+
+        protected virtual void OnDestroy() {
+            StateHandler.OnHandlerToggle -= UIStateHandler_OnHandlerToggle;
         }
 
         #if UNITY_EDITOR

@@ -36,7 +36,7 @@ namespace BattleUI {
         }
 
         protected void UIButton_OnSelect() {
-            stateAnimator.UpdateSelection(this);
+            if (stateAnimator != null) stateAnimator.UpdateSelection(this);
         }
 
         protected override IEnumerator Idle() {

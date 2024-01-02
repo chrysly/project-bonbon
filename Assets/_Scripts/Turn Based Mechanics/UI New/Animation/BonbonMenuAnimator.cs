@@ -61,5 +61,13 @@ namespace BattleUI {
                 yield return new WaitForSeconds(animationDuration / 2);
             } yield return null;
         }
+
+        protected override void OnDestroy() {
+            base.OnDestroy();
+            bakeHandler.OnBonbonModification -= Brain.PropagateAnimationCall;
+            mainHandler.OnHandlerToggle -= OnMainHandlerToggle;
+            bakeHandler.OnHandlerToggle -= OnBakeHandlerToggle;
+            Debug.Log("bruh");
+        }
     }
 }

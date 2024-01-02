@@ -24,6 +24,8 @@ namespace BattleUI {
                                                       : (Button as BonbonBakeSlotButton).Slot;
         private SpriteRenderer icon;
 
+        private bool destroyed;
+
         protected override void Awake() {
             base.Awake();
             icon = GetComponent<SpriteRenderer>();
@@ -48,7 +50,7 @@ namespace BattleUI {
             else {
                 if (!toggle) {
                     selected = false;
-                    GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 1 : 1, "_Alpha" ,animationDuration / 2);
+                    if (!destroyed) GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 1 : 1, "_Alpha" ,animationDuration / 2);
                 } else ProcessAvailability();
             }
         }
@@ -69,7 +71,7 @@ namespace BattleUI {
         }
 
         protected override void ProcessAvailability() {
-            GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 1 
+            if (!destroyed) GetComponent<SpriteRenderer>().material.DOFloat(icon.sprite == null ? 1 
                                              : Button.Available ? 1 : 0.5f, "_Alpha" ,0);
         }
 
@@ -88,5 +90,7 @@ namespace BattleUI {
                 icon.sprite = Bonbon == null ? null : Bonbon.Texture;
             }
         }
+
+        void OnDisable() => destroyed = true;
     }
 }

@@ -43,5 +43,13 @@ namespace BattleUI {
             backdrop.DOMove(_originalPos, rollInOutSpeed);
             yield return null;
         }
+
+        protected override void OnDestroy() {
+            base.OnDestroy();
+            (StateHandler as BonbonCraftHandler)
+                .OnButtonArrange -= BonbonCraftHandler_OnButtonArrange;
+            (StateHandler as BonbonCraftHandler)
+                .OnBonbonModification -= Brain.PropagateAnimationCall;
+        }
     }
 }
