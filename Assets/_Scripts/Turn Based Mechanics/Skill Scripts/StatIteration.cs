@@ -22,14 +22,14 @@ public class StatIteration {
         Actor = si.Actor;
         BaseData = si.BaseData;
         Augmentation = sa;
-        Reset();
+        Reset(si);
     }
 
-    public void Reset() {
-        Potency = BaseData.BasePotency;
-        Defense = BaseData.BaseDefense;
-        Speed = BaseData.BaseSpeed;
-        StaminaRegen = BaseData.StaminaRegenRate;
+    public void Reset(StatIteration si = null) {
+        Potency = si != null ? si.Potency : BaseData.BasePotency;
+        Defense = si != null ? si.Defense : BaseData.BaseDefense;
+        Speed = si != null ? si.Speed : BaseData.BaseSpeed;
+        StaminaRegen = si != null ? si.StaminaRegen : BaseData.StaminaRegenRate;
     }
 
     public void ComputeModifiers(List<PassiveModifier> mods) {
@@ -50,7 +50,9 @@ public class StatIteration {
     public StatIteration Augment(SkillAugment sa) => new StatIteration(this, sa);
 
     public int ComputeDamage(int rawAmount) {
-        return rawAmount + (int) (rawAmount * (Potency / 100f)) + (Augmentation != null ? Augmentation.damageBoost : 0);
+        var flatAmount = rawAmount + (Augmentation != null ? Augmentation.damageBoost : 0);
+        Debug.Log(Potency);
+        return (int) (flatAmount * (1 + Potency / 100f));
     }
 
     public int ComputeHeal(int rawAmount) {

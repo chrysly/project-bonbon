@@ -15,7 +15,7 @@ MonoBehaviour:
   name: +DEF
   duration: 3
   modifiers:
-    flatAttack: 40
+    flatAttack: 60
     percentAttack: 0
     flatHeal: 0
     percentHealCast: 0
