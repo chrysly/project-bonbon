@@ -832,6 +832,18 @@ PrefabInstance:
       propertyPath: characterSpaces.Array.data[1]
       value: 
       objectReference: {fileID: 1982895042}
+    - target: {fileID: 3914537961187630004, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914537961187630004, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914537961187630004, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4429349973849333192, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
       propertyPath: m_Name
       value: Systems

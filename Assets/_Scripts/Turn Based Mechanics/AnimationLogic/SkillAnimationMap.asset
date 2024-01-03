@@ -19,6 +19,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: dad2abed660d4a8429c2fd524b6d202f, type: 2}
     - {fileID: 11400000, guid: 21264717e1192cb45b03b68e6b9ca697, type: 2}
     - {fileID: 11400000, guid: f27f82fe1f0812b49b86b628e8b7a788, type: 2}
+    - {fileID: 11400000, guid: 7e20d97347926b345b69fb2db4b8c8cf, type: 2}
+    - {fileID: 11400000, guid: d16a6647fdd1a3b41898669a6d1c892c, type: 2}
+    - {fileID: 11400000, guid: 617f06c552f527644a60a627e0709077, type: 2}
     Values:
     - Keys:
       - {fileID: 11400000, guid: dc8857a6470f59644abcfdc3114d2e4e, type: 2}
@@ -84,6 +87,36 @@ MonoBehaviour:
         - rid: 883123758755479585
         cap: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 3fd8b0f640740ff4897fb648836df986, type: 2}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: 441420bb28a5ea24cb0a8761e78f6457, type: 2}
+      Values:
+      - animationTrigger: _Attack
+        animationDuration: 2
+        vfxPrefab: {fileID: 0}
+        delaySkills: []
+        cap: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: ed42c4fa7e768d34f9a0cbe04a3a475f, type: 2}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: 9940f9350ca05b44ebb0a49d2d4810b0, type: 2}
+      Values:
+      - animationTrigger: _Attack
+        animationDuration: 1
+        vfxPrefab: {fileID: 0}
+        delaySkills: []
+        cap: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 47f0916c79f44594e8f04014c2641495, type: 2}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: c071a1a57102f3d4c968ae3ec1807123, type: 2}
+      Values:
+      - animationTrigger: _Attack
+        animationDuration: 1
+        vfxPrefab: {fileID: 0}
+        delaySkills: []
+        cap: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 25faa9a24ce6b2b4c81fcf6361baa7d5, type: 2}
         triggerIndex: 0
   references:
     version: 2
