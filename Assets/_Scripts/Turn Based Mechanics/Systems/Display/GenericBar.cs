@@ -31,7 +31,7 @@ namespace BattleUI {
             else {
                 slider.value = CurrPoints;
                 visualGauge = CurrPoints;
-                _text.text = visualGauge + " / " + MaxPoints;
+                if (_text != null) _text.text = visualGauge + " / " + MaxPoints;
             } RegisterInMachine();
         }
 
@@ -40,7 +40,7 @@ namespace BattleUI {
             visualGauge = value;
             float valueRatio = visualGauge / MaxPoints;
             DOTween.To(() => slider.value, x => slider.value = x, valueRatio, 0.5f);
-            _text.text = visualGauge + " / " + MaxPoints;
+            if (_text != null) _text.text = visualGauge + " / " + MaxPoints;
         }
 
         protected abstract void RegisterInMachine();
