@@ -40,7 +40,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 8da61769129ddfb41863497411fae10e, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 1.5
+        animationDuration: 2.5
         vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 7741419895652352003
@@ -171,7 +171,7 @@ MonoBehaviour:
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0.1
+        - triggerTime: 1
           percentMultiplier: 100
     - rid: 7741419895652352004
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
