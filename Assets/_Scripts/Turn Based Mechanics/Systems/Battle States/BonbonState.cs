@@ -11,7 +11,7 @@ public partial class BattleStateMachine {
             base.Enter(i);
             Debug.Log("Entering Bonbon state");
             
-            _movement.Bump(Input.ActiveActor().transform);  // HARD CODED (change later bc anumation??? idk)
+            //_movement.Bump(Input.ActiveActor().transform);  // HARD CODED (change later bc anumation??? idk)
             MySM.OnStateTransition.Invoke(this, Input);
         }
         

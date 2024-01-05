@@ -38,6 +38,8 @@ public class AnimationHandler : StateMachineHandler {
             Animator casterAnimator = skillAction.Caster.GetComponentInChildren<Animator>(true);
             casterAnimator.SetTrigger(sAnim.AnimationTrigger);
 
+            skillAction.Caster.GetComponentInChildren<ModelGroupIdentifier>().Bump(skillPrep.targets[0].transform, 1f);
+
             battleStateMachine.StartBattle(sAnim.AnimationDuration);
             if (bonbon != null) ; /// Do VFXs
 

@@ -402,7 +402,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!114 &3587472195898591988
 MonoBehaviour:
@@ -1147,7 +1147,7 @@ GameObject:
   - component: {fileID: 4408469319466145429}
   - component: {fileID: 4564851679087645089}
   - component: {fileID: 1422949740120310728}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Target Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
