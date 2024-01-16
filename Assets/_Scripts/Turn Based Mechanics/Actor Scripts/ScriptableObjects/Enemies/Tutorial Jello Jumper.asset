@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a98e8789bee034f9a681bfba2205a2, type: 3}
+  m_Name: Tutorial Jello Jumper
+  m_EditorClassIdentifier: 
+  displayName: Blue Jello Jumper
+  icon: {fileID: 21300000, guid: 7895477d0c1f4784a839dcb3f034d4de, type: 3}
+  id: tutorial_blue_jello
+  maxHitpoints: 300
+  basePotency: 0
+  baseDefense: 0
+  baseSpeed: 3
+  maxStamina: 80
+  staminaRegenRate: 20
+  skillMap:
+    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
+    secondaryElements:
+    - {fileID: 11400000, guid: aeb0e7af1e732af43af0b8f54d08b698, type: 2}
+  bonbonMap:
+    startIndeces: 0000000000000000000000000000000000000000000000000000000000000000
+    secondaryElements: []
