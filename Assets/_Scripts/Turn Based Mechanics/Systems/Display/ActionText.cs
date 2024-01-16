@@ -6,7 +6,6 @@ using TMPro;
 
 namespace BattleUI {
     public class ActionText : ScreenSpaceElement {
-        private BattleStateMachine stateMachine => BattleStateMachine.Instance;
 
         [SerializeField] private float textActiveDuration = 3f;
         [SerializeField] private Transform window;
@@ -16,7 +15,7 @@ namespace BattleUI {
 
         public override void Init(ScreenSpaceHandler handler) {
             base.Init(handler);
-            stateMachine.CurrInput.SkillHandler.OnSkillTrigger += UpdateActionText;
+            handler.Input.SkillHandler.OnSkillTrigger += UpdateActionText;
             ///stateMachine.CurrInput.BonbonHandler.OnBonbonCreation += UpdateBonbonActionText;
             originalPosition = window.position;
         }
@@ -28,13 +27,6 @@ namespace BattleUI {
                          $"{skillPrep.skill.SkillData.Name} on " + (skillPrep.targets[0].Data is EnemyData ? "the " : "") + $"{skillPrep.targets[0].Data.DisplayName}!");
 
             window.DOMove(pivot.position, 0.5f);
-            ClearText();
-        }
-
-        private void UpdateBonbonActionText(BonbonObject bonbon) {
-            TextMeshProUGUI text = GetComponent<TextMeshProUGUI>();
-            text.SetText(stateMachine.CurrInput.ActiveActor().Data.DisplayName + " created " + bonbon.Name +
-                         "!"); //HARD CODED BC IM LAZY AND WE'RE GONNA CHANGE THIS LATER
             ClearText();
         }
 
