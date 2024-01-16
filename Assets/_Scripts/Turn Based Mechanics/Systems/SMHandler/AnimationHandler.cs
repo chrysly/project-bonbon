@@ -33,12 +33,12 @@ public class AnimationHandler : StateMachineHandler {
         try {
             SkillAnimation sAnim = SkillAMap[skillAction.SkillData][skillAction.Caster.Data];
 
-            CameraAnimationPackage cap = sAnim.CameraAnimationPackage;
-            if (cap != null) input.CameraHandler.PlayAnimation(cap);
+            ///CameraAnimationPackage cap = sAnim.CameraAnimationPackage;
+            ///if (cap != null) input.CameraHandler.PlayAnimation(cap);
             Animator casterAnimator = skillAction.Caster.GetComponentInChildren<Animator>(true);
             casterAnimator.SetTrigger(sAnim.AnimationTrigger);
 
-            skillAction.Caster.GetComponentInChildren<ModelGroupIdentifier>().Bump(skillPrep.targets[0].transform, 1f);
+            //skillAction.Caster.GetComponentInChildren<ModelGroupIdentifier>().Bump(skillPrep.targets[0].transform, 1f);
 
             battleStateMachine.StartBattle(sAnim.AnimationDuration);
             if (bonbon != null) ; /// Do VFXs
