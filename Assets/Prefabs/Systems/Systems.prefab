@@ -33,7 +33,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -150}
+  m_AnchoredPosition: {x: 45, y: -150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2399297485505345719
@@ -51,7 +51,7 @@ MonoBehaviour:
   rectTransform: {fileID: 0}
   portraitPrefab: {fileID: 5895490857641700366, guid: 541f6c5b5c9207542833797a8b4ad238, type: 3}
   spawnDuration: 0.1
-  graphicHeight: 105
+  graphicHeight: 90
 --- !u!1 &474926234130371976
 GameObject:
   m_ObjectHideFlags: 0
