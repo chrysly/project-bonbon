@@ -6,7 +6,8 @@ namespace BattleUI {
         protected override int MaxPoints => actor.Data.MaxHitpoints;
 
         protected override void RegisterInMachine() {
-            handler.OnDamage += (value, target) => UpdateBar(Mathf.Clamp(visualGauge - value, 0, MaxPoints), target);
+            handler.OnDamage += (value, target) => { UpdateBar(Mathf.Clamp(visualGauge - value, 0, MaxPoints), target);
+                                                     if (visualGauge <= 0) target.VisualFaint(); };
             handler.OnHeal += (value, target) => UpdateBar(Mathf.Clamp(visualGauge + value, 0, MaxPoints), target);
         }
 

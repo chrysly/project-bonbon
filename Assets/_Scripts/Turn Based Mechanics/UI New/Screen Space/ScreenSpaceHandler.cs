@@ -4,6 +4,8 @@ using UnityEngine;
 namespace BattleUI {
     public class ScreenSpaceHandler : StateMachineHandler {
 
+        [SerializeField] private GameObject characterAnchor;
+
         private ScreenSpaceElement[] elements;
         public event System.Action<float, Actor> OnDamage;
         public event System.Action<float, Actor> OnHeal;
@@ -14,7 +16,8 @@ namespace BattleUI {
             input.AnimationHandler.DamageEvent += (dmg, target, augment) => OnDamage?.Invoke(dmg, target);
             input.AnimationHandler.HealEvent += (heal, target) => OnHeal?.Invoke(heal, target);
             input.AnimationHandler.StaminaEvent += (value, target) => OnStamina?.Invoke(value, target);
-            elements = GetComponentsInChildren<ScreenSpaceElement>();
+            elements = GetComponentsInChildren<ScreenSpaceElement>(true);
+            elements = elements.Concat(characterAnchor.GetComponentsInChildren<ScreenSpaceElement>(true)).ToArray();
             foreach (ScreenSpaceElement element in elements) element.Init(this);
         }
 
