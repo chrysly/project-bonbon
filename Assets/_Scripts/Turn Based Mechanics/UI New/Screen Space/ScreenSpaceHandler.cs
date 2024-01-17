@@ -17,7 +17,9 @@ namespace BattleUI {
             input.AnimationHandler.HealEvent += (heal, target) => OnHeal?.Invoke(heal, target);
             input.AnimationHandler.StaminaEvent += (value, target) => OnStamina?.Invoke(value, target);
             elements = GetComponentsInChildren<ScreenSpaceElement>(true);
-            elements = elements.Concat(characterAnchor.GetComponentsInChildren<ScreenSpaceElement>(true)).ToArray();
+            if (characterAnchor != null) {
+                elements = elements.Concat(characterAnchor.GetComponentsInChildren<ScreenSpaceElement>(true)).ToArray();
+            } else Debug.LogError("Assign the Character Anchor in the ScreenSpace State Machine Handler");
             foreach (ScreenSpaceElement element in elements) element.Init(this);
         }
 
