@@ -47,7 +47,6 @@ namespace BattleUI.TurnOrder {
                             yield return cleanupCoroutine.Current;
                         } break;
                     case State.Relocate:
-                        Debug.Log("Empty your mother 3");
                         IEnumerator relocateCoroutine = Relocate();
                         while (relocateCoroutine.MoveNext()) {
                             yield return relocateCoroutine.Current;
@@ -67,7 +66,6 @@ namespace BattleUI.TurnOrder {
         }
 
         private void UpdateTurnDisplay(List<Actor> actorList) {
-            Debug.Log("Empty your mother 2");
             oldOrder = currOrder;
             List<TurnPortrait> portraitList = new();
             string content = "| ";
@@ -90,9 +88,10 @@ namespace BattleUI.TurnOrder {
         }
 
         private TurnPortrait SummonPortrait(int index, Actor actor) {
-            GameObject portraitGO = Instantiate(portraitPrefab, new Vector2(rectTransform.anchoredPosition.x,
-                                                                            rectTransform.anchoredPosition.y - graphicHeight * index),
-                                                                            transform.rotation, transform);
+            GameObject portraitGO = Instantiate(portraitPrefab, transform, false);
+            portraitGO.GetComponent<RectTransform>().anchoredPosition = new Vector2(rectTransform.anchoredPosition.x,
+                                                                                    rectTransform.anchoredPosition.y 
+                                                                                    - graphicHeight * index - graphicHeight * 1.5f);
             Portrait portrait = portraitGO.GetComponent<Portrait>();
             portrait.Init(this);
             portrait.UpdateActor(actor);

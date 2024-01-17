@@ -130,8 +130,8 @@ MonoBehaviour:
   profile: {fileID: 8232850580098087894}
   selector: {fileID: 1934870619321407522}
   bgExtendedWidth: 200
-  selectedScale: 1
-  selectedPosition: {fileID: 6374847852850394097}
+  selectScale: 1
+  baseAlpha: 0.925
 --- !u!1 &6990249756099023576
 GameObject:
   m_ObjectHideFlags: 0
