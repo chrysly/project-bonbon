@@ -25,6 +25,8 @@ public class VFXAnimation
     [Tooltip("List of visual effect prefabs to spawn")]
     public List<GameObject> visualEffects;
 
+    [Tooltip("Offset of VFX")] public Vector3 vfxOffset;
+
     [Tooltip("Toggle material swap. Keep material inside material to change its level.")]
     public bool doMaterialSwap;
     
