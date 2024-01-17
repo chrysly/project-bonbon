@@ -10,7 +10,7 @@ namespace BattleUI.TurnOrder {
         private RectTransform rectTransform;
 
         private int position;
-        private State state;
+        ///private State state;
         private bool expanded;
 
         [SerializeField] private Image background;
@@ -20,6 +20,11 @@ namespace BattleUI.TurnOrder {
         [SerializeField] private float bgExtendedWidth;
         [SerializeField] private float selectedScale;
         [SerializeField] private RectTransform selectedPosition;
+
+        private float targetYPos;
+        private float selectLerp;
+        private Vector2 reloVelocity;
+        private Vector2 selectVelocity;
 
         private Vector2 selectorDelta;
 
@@ -32,15 +37,18 @@ namespace BattleUI.TurnOrder {
             selector.rectTransform.sizeDelta = new Vector2(selectorDelta.x, 0);
         }
 
-        public void Init(TurnOrderDisplay handler) {
-            this.tod = handler;
+        public void Init(TurnOrderDisplay tod) {
+            this.tod = tod;
             StartCoroutine(CoreCoroutine());
-            handler.OnPortraitUpdate += OnPortraitUpdate;
+            ///tod.OnPortraitUpdate += OnPortraitUpdate;
         }
 
         public void UpdateActor(Actor actor) => profile.sprite = actor.Data.Icon;
-        public void UpdatePos(int position) => this.position = position;
-
+        public void UpdatePos(int position) {
+            this.position = position;
+            targetYPos = tod.rectTransform.anchoredPosition.y - tod.GraphicHeight * position;
+        }
+        /*
         private void OnPortraitUpdate(State state) {
             bool deprecated = position < 0;
             switch (state) {
@@ -54,10 +62,47 @@ namespace BattleUI.TurnOrder {
                     if (!deprecated) this.state = State.Select;
                     break;
             }
-        }
+        }*/
 
         private IEnumerator CoreCoroutine() {
             while (true) {
+                if (position < 0) {
+                    RectTransform bgRect = background.rectTransform;
+                    if (Mathf.Approximately(bgRect.anchoredPosition.x, selectedPosition.position.x)) {
+                        RectTransform pfRect = profile.rectTransform;
+                        RectTransform slRect = selector.rectTransform;
+                        float offset = Vector2.Distance(bgRect.anchoredPosition, selectedPosition.anchoredPosition);
+                        pfRect.DOAnchorPos(new Vector2(pfRect.anchoredPosition.x - offset, pfRect.anchoredPosition.y), tod.SpawnDuration * (2 / 3));
+                        bgRect.DOAnchorPos(slRect.anchoredPosition, tod.SpawnDuration * (2 / 3));
+                        slRect.DOSizeDelta(new Vector2(selectorDelta.x, 0), tod.SpawnDuration * (2 / 3));
+                    } profile.DOFade(0, tod.SpawnDuration * (2 / 3));
+                    yield return new WaitForSeconds(tod.SpawnDuration * (2 / 5));
+                    bgRect.DOSizeDelta(new Vector2(0, 95), tod.SpawnDuration);
+                    yield return new WaitForSeconds(tod.SpawnDuration * (3 / 5));
+                    Destroy(gameObject);
+                    break;
+                } else {
+                    /// Relocate Portrait;
+                    rectTransform.anchoredPosition = Vector2.SmoothDamp(rectTransform.anchoredPosition,
+                                                                        new Vector2(tod.rectTransform.anchoredPosition.x, targetYPos),
+                                                                        ref reloVelocity, tod.SpawnDuration * 2);
+                    /// Expand Portrait;
+                    RectTransform bgRect = background.rectTransform;
+                    bgRect.sizeDelta = Vector2.SmoothDamp(bgRect.sizeDelta, new Vector2(bgExtendedWidth, 95), ref selectVelocity, tod.SpawnDuration * (2 / 3));
+                    profile.color = new Color(profile.color.r, profile.color.g, profile.color.b,
+                                              Mathf.MoveTowards(profile.color.a, 1, Time.deltaTime * 2));
+                    if (position == 0 && Mathf.Approximately(rectTransform.anchoredPosition.y, targetYPos)) {
+                        RectTransform pfRect = profile.rectTransform;
+                        float offset = Vector2.Distance(bgRect.anchoredPosition, selectedPosition.anchoredPosition);
+                        pfRect.DOAnchorPos(new Vector2(pfRect.anchoredPosition.x + offset, pfRect.anchoredPosition.y),
+                                                       tod.SpawnDuration).SetEase(Ease.OutBounce);
+                        bgRect.DOAnchorPos(selectedPosition.anchoredPosition, tod.SpawnDuration / 2).SetEase(Ease.OutBounce);
+                        yield return new WaitForSeconds(tod.SpawnDuration * 0.75f);
+                        selector.rectTransform.DOSizeDelta(selectorDelta, tod.SpawnDuration).SetEase(Ease.OutBounce);
+                        yield return new WaitForSeconds(tod.SpawnDuration * 0.75f);
+                    }
+                } yield return null;
+                /*
                 switch (state) {
                     case State.Cleanup:
                         IEnumerator cleanupCoroutine = Cleanup();
@@ -74,7 +119,7 @@ namespace BattleUI.TurnOrder {
                         while (selectCoroutine.MoveNext()) {
                             yield return selectCoroutine.Current;
                         } break;
-                } yield return null;
+                } yield return null;*/
             }
         }
 
