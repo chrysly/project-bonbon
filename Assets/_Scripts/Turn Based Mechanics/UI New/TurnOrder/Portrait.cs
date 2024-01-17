@@ -103,6 +103,7 @@ namespace BattleUI.TurnOrder {
                         pfRect.anchoredPosition = Vector2.Lerp(pfRect.anchoredPosition, pfSelectedPos, selectLerp);
                         bgRect.anchoredPosition = Vector2.Lerp(bgRect.anchoredPosition, bgSelectedPos, selectLerp);
                         slRect.sizeDelta = Vector2.Lerp(slRect.sizeDelta, selectorDelta, selectLerp);
+                        selector.color = AlphaColor(selector.color, Mathf.MoveTowards(profile.color.a, softEnabled ? 1 : 0, Time.deltaTime * 2));
                     }
                 } yield return null;
             }

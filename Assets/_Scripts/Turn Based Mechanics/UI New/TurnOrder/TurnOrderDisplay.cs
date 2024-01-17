@@ -29,9 +29,10 @@ namespace BattleUI.TurnOrder {
             }
         }
 
-        void Awake() {
-            rectTransform = GetComponent<RectTransform>();
-        }
+        void Awake() => rectTransform = GetComponent<RectTransform>();
+        void Start() => DialogueManager.OnDialogueStart += DialogueManager_OnDialogueStart;
+        void OnDisable() => DialogueManager.OnDialogueStart -= DialogueManager_OnDialogueStart;
+        private void DialogueManager_OnDialogueStart(bool toggle) => OnSoftToggle?.Invoke(!toggle);
 
         public override void Init(ScreenSpaceHandler handler) {
             this.handler = handler;
