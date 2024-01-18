@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Red Jello Jumper
   m_EditorClassIdentifier: 
   displayName: Red Jello Jumper
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 535b7576ed6318046b70cf381328ce72, type: 3}
   id: jellored
   maxHitpoints: 15
   basePotency: 0
