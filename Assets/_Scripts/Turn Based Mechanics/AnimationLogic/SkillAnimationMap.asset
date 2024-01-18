@@ -60,8 +60,8 @@ MonoBehaviour:
         - rid: 7741419895652352004
         - rid: 7741419895652352005
         cap: {fileID: 0}
-        baseSkillVFX: {fileID: 0}
-        bonbonSkillVFX: {fileID: 0}
+        baseSkillVFX: {fileID: 11400000, guid: a02737dc089d417478329890435e93ee, type: 2}
+        bonbonSkillVFX: {fileID: 11400000, guid: 7b9aa3c4d43f00b459e683bf71dbda25, type: 2}
         actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
     - Keys:
@@ -124,7 +124,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 9940f9350ca05b44ebb0a49d2d4810b0, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 2
+        animationDuration: 3
         delaySkills:
         - rid: 9144232903597883396
         - rid: 9144232903597883397
@@ -138,7 +138,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: c071a1a57102f3d4c968ae3ec1807123, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 2
+        animationDuration: 4
         delaySkills:
         - rid: 9144232903597883405
         - rid: 9144232903597883406
@@ -287,7 +287,7 @@ MonoBehaviour:
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0
+        - triggerTime: 2
           percentMultiplier: 100
     - rid: 9144232903597883397
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
@@ -301,7 +301,7 @@ MonoBehaviour:
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0
+        - triggerTime: 1.5
           percentMultiplier: 100
     - rid: 9144232903597883403
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
@@ -315,8 +315,12 @@ MonoBehaviour:
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0
-          percentMultiplier: 100
+        - triggerTime: 1
+          percentMultiplier: 25
+        - triggerTime: 1.5
+          percentMultiplier: 25
+        - triggerTime: 2
+          percentMultiplier: 50
     - rid: 9144232903597883406
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
       data:
