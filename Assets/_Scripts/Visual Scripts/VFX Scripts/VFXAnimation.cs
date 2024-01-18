@@ -27,6 +27,8 @@ public class VFXAnimation
 
     [Tooltip("Offset of VFX")] public Vector3 vfxOffset;
 
+    [Tooltip("Parent VFX to actor")] public bool parentVFX = false;
+
     [Tooltip("Toggle material swap. Keep material inside material to change its level.")]
     public bool doMaterialSwap;
     

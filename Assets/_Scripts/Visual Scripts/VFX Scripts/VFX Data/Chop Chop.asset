@@ -18,12 +18,12 @@ MonoBehaviour:
     duration: 0
     visualEffects: []
     vfxOffset: {x: 0, y: 0, z: 0}
-    doMaterialSwap: 0
+    doMaterialSwap: 1
     doMaterialReplace: 0
-    material: {fileID: 0}
-    materialDuration: 0
-    doMaterialLevel: 0
-    materialLevel: {x: 0, y: 0}
+    material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
+    materialDuration: 2
+    doMaterialLevel: 1
+    materialLevel: {x: 20, y: 0}
   - spawnAt: 0
     delay: 0.4
     duration: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
     vfxOffset: {x: 0, y: 0, z: 0}
     doMaterialSwap: 0
     doMaterialReplace: 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
     materialDuration: 0
     doMaterialLevel: 0
     materialLevel: {x: 0, y: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
     vfxOffset: {x: 0, y: 0, z: 0}
     doMaterialSwap: 0
     doMaterialReplace: 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
     materialDuration: 0
     doMaterialLevel: 0
     materialLevel: {x: 0, y: 0}
@@ -56,10 +56,10 @@ MonoBehaviour:
     vfxOffset: {x: 0, y: 0, z: 0}
     doMaterialSwap: 0
     doMaterialReplace: 0
-    material: {fileID: 0}
-    materialDuration: 0
-    doMaterialLevel: 0
-    materialLevel: {x: 0, y: 0}
+    material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
+    materialDuration: 1
+    doMaterialLevel: 1
+    materialLevel: {x: 2.5, y: 0.6}
   - spawnAt: 0
     delay: 0.5
     duration: 1
@@ -68,7 +68,7 @@ MonoBehaviour:
     vfxOffset: {x: 0, y: 0, z: 0}
     doMaterialSwap: 0
     doMaterialReplace: 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: b1347fa977c7da54cb1832d04d2ade33, type: 2}
     materialDuration: 0
-    doMaterialLevel: 0
-    materialLevel: {x: 0, y: 0}
+    doMaterialLevel: 1
+    materialLevel: {x: 20, y: 0.3}
