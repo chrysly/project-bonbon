@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4231670794417469085, guid: 1ba11e660f092f0478d5d5dcf9e91281, type: 3}
+      propertyPath: actorIdentifier
+      value: 
+      objectReference: {fileID: 11400000, guid: c58fa5e0cfdec884daac7cc6fdd3e138, type: 2}
     - target: {fileID: 7404962570417301471, guid: 1ba11e660f092f0478d5d5dcf9e91281, type: 3}
       propertyPath: m_Name
       value: Enemy Canvas
@@ -369,6 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77d433988f3d5b94896b941ab053ef6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
 --- !u!4 &5438612464349233162 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3051387732017716662, guid: 54b3721474749f143ac4d7ece0b70025, type: 3}
