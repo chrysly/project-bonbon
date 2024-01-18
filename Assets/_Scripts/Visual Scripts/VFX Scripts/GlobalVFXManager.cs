@@ -33,10 +33,8 @@ public class GlobalVFXManager : StateMachineHandler {
     }
 
     public void PlayAnimation(VFXAnimationPackage package, Transform actor) {
-        if (_action == null) {
-            _action = AnimationAction(package, actor);
-            StartCoroutine(_action);
-        }
+        _action = AnimationAction(package, actor);
+        StartCoroutine(_action);
     }
     
     public IEnumerator AnimationAction(VFXAnimationPackage package, Transform actor) {
