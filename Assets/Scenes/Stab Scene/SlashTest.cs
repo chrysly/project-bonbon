@@ -21,7 +21,7 @@ public class SlashTest : MonoBehaviour
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space) && !attacking) {
             attacking = true;
-            anim.Play("Wait");
+            anim.Play("_Skill1");
             Debug.Log("oof");
             StartCoroutine(SlashAttack());
         }

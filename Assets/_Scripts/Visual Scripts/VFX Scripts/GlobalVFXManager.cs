@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -9,10 +10,21 @@ using GameObject = UnityEngine.GameObject;
 public class GlobalVFXManager : StateMachineHandler {
 
     [SerializeField] private VFXMap vfxMap;
+    // [SerializeField] private VFXAnimationPackage package;
+    // [SerializeField] private Animator animator;
+    // [SerializeField] private Actor actor;
     public VFXMap VFXMap => vfxMap;
     
     private IEnumerator _action;
     private Queue<List<GameObject>> _activeVFXQueue = new Queue<List<GameObject>>();
+
+    // private void Update() {
+    //     if (Input.GetKeyDown(KeyCode.O)) {
+    //         animator.Play("_Skill1");
+    //         Debug.Log("oof");
+    //         PlayAnimation(package, actor.transform);
+    //     }
+    // }
 
     public void Connect(AnimationHandler animationHandler) {
         animationHandler.HealEvent += AnimationHandler_HealEvent;
@@ -52,7 +64,8 @@ public class GlobalVFXManager : StateMachineHandler {
         if (vfxAnim.visualEffects != null) {
             List<GameObject> visualEffects = new List<GameObject>();
             foreach (GameObject vfx in vfxAnim.visualEffects) {
-                GameObject effectObject = Instantiate(vfx, spawnLocation.position, Quaternion.identity);
+                GameObject effectObject = Instantiate(vfx, spawnLocation.position, Quaternion.identity, actor);
+                effectObject.transform.rotation = spawnLocation.rotation;
                 visualEffects.Add(effectObject);
             }
             _activeVFXQueue.Enqueue(visualEffects);
