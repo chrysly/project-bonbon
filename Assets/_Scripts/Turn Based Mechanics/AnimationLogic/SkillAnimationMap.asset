@@ -193,7 +193,7 @@ MonoBehaviour:
       type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers:
-        - triggerTime: 0
+        - triggerTime: 1
           percentMultiplier: 100
     - rid: 7741419895652352004
       type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
