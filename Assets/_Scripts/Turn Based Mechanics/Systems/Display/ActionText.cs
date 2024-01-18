@@ -13,6 +13,12 @@ namespace BattleUI {
         private IEnumerator _activeDisplay;
         private Vector3 originalPosition;
 
+        void Start() => DialogueManager.OnDialogueStart += SpeedMove;
+
+        void OnDisable() => DialogueManager.OnDialogueStart += SpeedMove;
+
+        private void SpeedMove(bool smth) => window.DOMove(originalPosition, 0.5f);
+
         public override void Init(ScreenSpaceHandler handler) {
             base.Init(handler);
             handler.Input.SkillHandler.OnSkillTrigger += UpdateActionText;

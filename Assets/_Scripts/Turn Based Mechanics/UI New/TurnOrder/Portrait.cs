@@ -18,6 +18,7 @@ namespace BattleUI.TurnOrder {
         [SerializeField] private float bgHeight;
         [SerializeField] private float selectScale;
         [SerializeField] private float baseAlpha;
+        [SerializeField] private float selectorOffset;
         
         private float targetYPos;
         private Vector3 baseScale;
@@ -42,7 +43,7 @@ namespace BattleUI.TurnOrder {
             selector.rectTransform.sizeDelta = new Vector2(selectorDelta.x, 0);
             bgSelectedPos = background.rectTransform.anchoredPosition;
             pfSelectedPos = profile.rectTransform.anchoredPosition;
-            bgRect.anchoredPosition = new Vector2(selector.rectTransform.anchoredPosition.x - 6,
+            bgRect.anchoredPosition = new Vector2(selector.rectTransform.anchoredPosition.x - selectorOffset,
                                                   selector.rectTransform.anchoredPosition.y);
             baseScale = rectTransform.localScale;
         }
