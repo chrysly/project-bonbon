@@ -43,9 +43,7 @@ public class SkillAnimationEditor : EditorWindow {
         animationMap = null;
         skills = null;
         actors = null;
-        if (selectedAnimation != null) {
-            selectedAnimation.CleanDelayEditor();
-        } selectedAnimation = null;
+        selectedAnimation = null;
         Resources.UnloadUnusedAssets();
     }
 
@@ -100,11 +98,13 @@ public class SkillAnimationEditor : EditorWindow {
                                         }
                                         break;
                                     case SectionType.VFX:
-                                        selectedAnimation.SetVFXPrefab(EditorGUILayout.ObjectField(selectedAnimation.VFXPrefab,
-                                                                                                   typeof(GameObject), false) as GameObject);
-                                        if (selectedAnimation.DelayScriptEditor is not null) {
-                                            selectedAnimation.DelayScriptEditor.OnInspectorGUI();
-                                        } break;
+                                        EditorUtils.WindowBoxLabel("Base Skill VFX");
+                                        selectedAnimation.SetBaseSkillVFX(EditorGUILayout.ObjectField(selectedAnimation.BaseSkillVFX,
+                                                                                                      typeof(VFXAnimationPackage), false) as VFXAnimationPackage);
+                                        EditorUtils.WindowBoxLabel("Bonbon Skill VFX");
+                                        selectedAnimation.SetBonbonSkillVFX(EditorGUILayout.ObjectField(selectedAnimation.BonbonSkillVFX,
+                                                                                                        typeof(VFXAnimationPackage), false) as VFXAnimationPackage);
+                                        break;
                                     case SectionType.Camera:
                                         selectedAnimation.SetCap(EditorGUILayout.ObjectField(selectedAnimation.CameraAnimationPackage, 
                                                                                              typeof(CameraAnimationPackage), false) as CameraAnimationPackage);
