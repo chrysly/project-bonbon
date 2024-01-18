@@ -51,7 +51,7 @@ MonoBehaviour:
   rectTransform: {fileID: 0}
   portraitPrefab: {fileID: 5895490857641700366, guid: 541f6c5b5c9207542833797a8b4ad238, type: 3}
   spawnDuration: 0.1
-  graphicHeight: 90
+  graphicHeight: 120
 --- !u!1 &474926234130371976
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +638,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxMap: {fileID: 11400000, guid: 91eb9a5d2c4cdb4468f0a5f5ce90319b, type: 2}
+  package: {fileID: 0}
+  animator: {fileID: 0}
+  actor: {fileID: 0}
 --- !u!114 &6305954219011389026
 MonoBehaviour:
   m_ObjectHideFlags: 0
