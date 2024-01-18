@@ -25,4 +25,4 @@ MonoBehaviour:
     - rid: 1640337368647991303
       type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
       data:
-        damageAmount: 9
+        damageAmount: 6
