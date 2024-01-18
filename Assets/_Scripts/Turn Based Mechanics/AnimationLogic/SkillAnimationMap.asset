@@ -28,12 +28,13 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 2
-        vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 7741419895652352000
         - rid: 7741419895652352001
         - rid: 7741419895652352002
         cap: {fileID: 11400000, guid: b0c9143f69087684ba48bb269de8869a, type: 2}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 0e57d98b12432ca4f81441b7f91189ce, type: 2}
         triggerIndex: 0
     - Keys:
@@ -41,12 +42,13 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 2.5
-        vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 7741419895652352003
         - rid: 7741419895652352004
         - rid: 7741419895652352005
         cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 21e478e5c1ff41342b13640d70c4d0de, type: 2}
         triggerIndex: 0
     - Keys:
@@ -54,12 +56,13 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 3.5
-        vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 7741419895652352006
         - rid: 7741419895652352007
         - rid: 7741419895652352008
         cap: {fileID: 11400000, guid: 3513c84b1b9866e41a53e78425a983d4, type: 2}
+        baseSkillVFX: {fileID: 11400000, guid: 3e6eea271d0302646aa082d194c82936, type: 2}
+        bonbonSkillVFX: {fileID: 11400000, guid: 3e6eea271d0302646aa082d194c82936, type: 2}
         actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
         triggerIndex: 0
     - Keys:
@@ -67,12 +70,13 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 1
-        vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 883123758755479580
         - rid: 883123758755479581
         - rid: 883123758755479582
         cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 7c024bb658a0375429c34d49fc68dd6e, type: 2}
         triggerIndex: 0
     - Keys:
@@ -80,12 +84,13 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 2
-        vfxPrefab: {fileID: 0}
         delaySkills:
         - rid: 883123758755479583
         - rid: 883123758755479584
         - rid: 883123758755479585
         cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 3fd8b0f640740ff4897fb648836df986, type: 2}
         triggerIndex: 0
     - Keys:
@@ -93,9 +98,10 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 2
-        vfxPrefab: {fileID: 0}
         delaySkills: []
         cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: ed42c4fa7e768d34f9a0cbe04a3a475f, type: 2}
         triggerIndex: 0
     - Keys:
@@ -103,9 +109,10 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 1
-        vfxPrefab: {fileID: 0}
         delaySkills: []
         cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 47f0916c79f44594e8f04014c2641495, type: 2}
         triggerIndex: 0
     - Keys:
@@ -113,9 +120,10 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 1
-        vfxPrefab: {fileID: 0}
         delaySkills: []
         cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
         actorAnimator: {fileID: 9100000, guid: 25faa9a24ce6b2b4c81fcf6361baa7d5, type: 2}
         triggerIndex: 0
   references:
