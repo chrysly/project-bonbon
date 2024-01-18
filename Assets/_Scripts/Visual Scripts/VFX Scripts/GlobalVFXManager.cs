@@ -10,21 +10,21 @@ using GameObject = UnityEngine.GameObject;
 public class GlobalVFXManager : StateMachineHandler {
 
     [SerializeField] private VFXMap vfxMap;
-    [SerializeField] private VFXAnimationPackage package;
-    [SerializeField] private Animator animator;
-    [SerializeField] private Actor actor;
+    // [SerializeField] private VFXAnimationPackage package;
+    // [SerializeField] private Animator animator;
+    // [SerializeField] private Actor actor;
     public VFXMap VFXMap => vfxMap;
     
     private IEnumerator _action;
     private Queue<List<GameObject>> _activeVFXQueue = new Queue<List<GameObject>>();
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.O)) {
-            animator.Play("_Skill1");
-            Debug.Log("oof");
-            PlayAnimation(package, actor.transform);
-        }
-    }
+    // private void Update() {
+    //     if (Input.GetKeyDown(KeyCode.O)) {
+    //         animator.Play("_Skill1");
+    //         Debug.Log("oof");
+    //         PlayAnimation(package, actor.transform);
+    //     }
+    // }
 
     public void Connect(AnimationHandler animationHandler) {
         animationHandler.HealEvent += AnimationHandler_HealEvent;
