@@ -23,10 +23,7 @@ public class EventSequencer : MonoBehaviour {
     public event EventTerminate OnEventTerminate;
     #endregion Events
 
-    void Awake() {
-        if (bsm == null)
-            return;
-
+    public void SetUp() {
         bsm.OnStateTransition += RunStateEvent;
 
         // add events that will play on start
@@ -35,10 +32,7 @@ public class EventSequencer : MonoBehaviour {
         }
     }
 
-    void Start() {
-        if (bsm == null)
-            return;
-
+    public void Init() {
         bsm.CurrInput.SkillHandler.OnSkillTrigger += CheckSkillEvent;
     }
 

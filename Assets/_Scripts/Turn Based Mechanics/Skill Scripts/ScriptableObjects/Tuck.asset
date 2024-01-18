@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14142bd7c92aef1418ae58a98e3f393a, type: 3}
-  m_Name: StrawShot
+  m_Name: Tuck
   m_EditorClassIdentifier: 
-  skillID: straw_shot
-  skillName: Straw Shot
+  skillID: DEFAULT
+  skillName: VANILLA
   staminaCost: 0
   immediateActions: []
   targetType: 0

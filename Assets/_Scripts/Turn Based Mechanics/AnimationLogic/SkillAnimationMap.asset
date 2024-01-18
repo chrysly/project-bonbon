@@ -74,7 +74,7 @@ MonoBehaviour:
         - rid: 7741419895652352008
         cap: {fileID: 11400000, guid: 3513c84b1b9866e41a53e78425a983d4, type: 2}
         baseSkillVFX: {fileID: 11400000, guid: 3e6eea271d0302646aa082d194c82936, type: 2}
-        bonbonSkillVFX: {fileID: 11400000, guid: 3e6eea271d0302646aa082d194c82936, type: 2}
+        bonbonSkillVFX: {fileID: 11400000, guid: ac454915baeeb2a4eac736f237308799, type: 2}
         actorAnimator: {fileID: 9100000, guid: 9c666c5a5e9c78e49875649dc774c7e0, type: 2}
         triggerIndex: 0
     - Keys:

@@ -39,11 +39,13 @@ public partial class
         if (instance != null) {
             Destroy(gameObject);
         } else instance = this;
+        _eventSequencer.SetUp();
     }
 
     protected override void SetInitialState() {
         SetState<BattleStart>();
         CurrInput.Initialize(GetComponentsInChildren<StateMachineHandler>(true));
+        _eventSequencer.Init();
     }
 
     protected override void Start() {

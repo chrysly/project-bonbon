@@ -14,6 +14,7 @@ public class BattleStateInput : StateInput {
 
     public event System.Action<List<Actor>> OnTurnChange;
     public void PropagateTurnChange(List<Actor> previewList) => OnTurnChange?.Invoke(previewList);
+    public event System.Action<bool> OnUISoftToggle;
 
     #endregion Global Variables
 
@@ -49,6 +50,7 @@ public class BattleStateInput : StateInput {
     private void InitializeTurnOrder(List<Actor> actorList) {
         TurnOrderHandler = new TurnOrderHandler(actorList);
         PropagateTurnChange(TurnOrderHandler.GetTurnPreview(5));
+        OnUISoftToggle?.Invoke(true);
         activeActor = TurnOrderHandler.Advance();
     }
 
