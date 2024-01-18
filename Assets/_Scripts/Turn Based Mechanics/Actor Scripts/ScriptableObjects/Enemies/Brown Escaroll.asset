@@ -15,16 +15,17 @@ MonoBehaviour:
   displayName: Brown Escaroll
   icon: {fileID: 21300000, guid: 7895477d0c1f4784a839dcb3f034d4de, type: 3}
   id: escaroll_brown
-  maxHitpoints: 26
+  maxHitpoints: 14
   basePotency: 0
   baseDefense: 0
   baseSpeed: 3
   maxStamina: 100
   staminaRegenRate: 20
   skillMap:
-    startIndeces: 0000000001000000010000000100000001000000010000000100000001000000
+    startIndeces: 0000000002000000020000000200000002000000020000000200000002000000
     secondaryElements:
     - {fileID: 11400000, guid: 7e20d97347926b345b69fb2db4b8c8cf, type: 2}
+    - {fileID: 11400000, guid: fbc83dc4322b03e4fb2ee91af0ece232, type: 2}
   bonbonMap:
     startIndeces: 0000000000000000000000000000000000000000000000000000000000000000
     secondaryElements: []

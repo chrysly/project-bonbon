@@ -15,9 +15,14 @@ MonoBehaviour:
   skillID: straw_shot
   skillName: Straw Shot
   staminaCost: 0
-  immediateActions: []
+  immediateActions:
+  - rid: 9144232903597883400
   targetType: 0
   aoe: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 9144232903597883400
+      type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
+      data:
+        damageAmount: 7

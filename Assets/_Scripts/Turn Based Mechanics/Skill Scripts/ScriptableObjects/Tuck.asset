@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14142bd7c92aef1418ae58a98e3f393a, type: 3}
   m_Name: Tuck
   m_EditorClassIdentifier: 
-  skillID: DEFAULT
-  skillName: VANILLA
+  skillID: tuck
+  skillName: Tuck
   staminaCost: 0
-  immediateActions: []
-  targetType: 0
+  immediateActions:
+  - rid: 9144232903597883401
+  targetType: 1
   aoe: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 9144232903597883401
+      type: {class: ApplyEffectsAction, ns: , asm: Assembly-CSharp}
+      data:
+        effects:
+        - {fileID: 11400000, guid: 71d93fc200b107642a7829433f6768ad, type: 2}

@@ -22,6 +22,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7e20d97347926b345b69fb2db4b8c8cf, type: 2}
     - {fileID: 11400000, guid: d16a6647fdd1a3b41898669a6d1c892c, type: 2}
     - {fileID: 11400000, guid: 617f06c552f527644a60a627e0709077, type: 2}
+    - {fileID: 11400000, guid: fbc83dc4322b03e4fb2ee91af0ece232, type: 2}
     Values:
     - Keys:
       - {fileID: 11400000, guid: dc8857a6470f59644abcfdc3114d2e4e, type: 2}
@@ -110,7 +111,10 @@ MonoBehaviour:
       Values:
       - animationTrigger: _Attack
         animationDuration: 2
-        delaySkills: []
+        delaySkills:
+        - rid: 9144232903597883402
+        - rid: 9144232903597883403
+        - rid: 9144232903597883404
         cap: {fileID: 0}
         baseSkillVFX: {fileID: 0}
         bonbonSkillVFX: {fileID: 0}
@@ -120,8 +124,11 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 9940f9350ca05b44ebb0a49d2d4810b0, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 1
-        delaySkills: []
+        animationDuration: 2
+        delaySkills:
+        - rid: 9144232903597883396
+        - rid: 9144232903597883397
+        - rid: 9144232903597883398
         cap: {fileID: 0}
         baseSkillVFX: {fileID: 0}
         bonbonSkillVFX: {fileID: 0}
@@ -131,8 +138,49 @@ MonoBehaviour:
       - {fileID: 11400000, guid: c071a1a57102f3d4c968ae3ec1807123, type: 2}
       Values:
       - animationTrigger: _Attack
-        animationDuration: 1
-        delaySkills: []
+        animationDuration: 2
+        delaySkills:
+        - rid: 9144232903597883405
+        - rid: 9144232903597883406
+        - rid: 9144232903597883407
+        cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 25faa9a24ce6b2b4c81fcf6361baa7d5, type: 2}
+        triggerIndex: 0
+    - Keys:
+      - {fileID: 11400000, guid: 441420bb28a5ea24cb0a8761e78f6457, type: 2}
+      - {fileID: 11400000, guid: 9940f9350ca05b44ebb0a49d2d4810b0, type: 2}
+      - {fileID: 11400000, guid: c071a1a57102f3d4c968ae3ec1807123, type: 2}
+      Values:
+      - animationTrigger: _Attack
+        animationDuration: 0.5
+        delaySkills:
+        - rid: 9144232903597883408
+        - rid: 9144232903597883409
+        - rid: 9144232903597883410
+        cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: ed42c4fa7e768d34f9a0cbe04a3a475f, type: 2}
+        triggerIndex: 0
+      - animationTrigger: _Attack
+        animationDuration: 0.5
+        delaySkills:
+        - rid: 9144232903597883411
+        - rid: 9144232903597883412
+        - rid: 9144232903597883413
+        cap: {fileID: 0}
+        baseSkillVFX: {fileID: 0}
+        bonbonSkillVFX: {fileID: 0}
+        actorAnimator: {fileID: 9100000, guid: 47f0916c79f44594e8f04014c2641495, type: 2}
+        triggerIndex: 0
+      - animationTrigger: _Attack
+        animationDuration: 0.5
+        delaySkills:
+        - rid: 9144232903597883414
+        - rid: 9144232903597883415
+        - rid: 9144232903597883416
         cap: {fileID: 0}
         baseSkillVFX: {fileID: 0}
         bonbonSkillVFX: {fileID: 0}
@@ -232,6 +280,84 @@ MonoBehaviour:
       data:
         triggerTime: 0
     - rid: 9144232900142301191
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883396
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 0
+          percentMultiplier: 100
+    - rid: 9144232903597883397
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 9144232903597883398
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883402
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 0
+          percentMultiplier: 100
+    - rid: 9144232903597883403
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 9144232903597883404
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883405
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers:
+        - triggerTime: 0
+          percentMultiplier: 100
+    - rid: 9144232903597883406
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 9144232903597883407
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883408
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883409
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 9144232903597883410
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883411
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883412
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 9144232903597883413
+      type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883414
+      type: {class: DelaySkillDamageAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggers: []
+    - rid: 9144232903597883415
+      type: {class: DelaySkillEffectAnimation, ns: , asm: Assembly-CSharp}
+      data:
+        triggerTime: 0
+    - rid: 9144232903597883416
       type: {class: DelaySkillHealAnimation, ns: , asm: Assembly-CSharp}
       data:
         triggers: []

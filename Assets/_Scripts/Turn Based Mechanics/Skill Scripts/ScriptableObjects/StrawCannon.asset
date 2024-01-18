@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: straw_cannon
   skillName: Straw Cannon
-  staminaCost: 20
+  staminaCost: 0
   immediateActions:
   - rid: 1640337368647991303
   targetType: 0
@@ -25,4 +25,4 @@ MonoBehaviour:
     - rid: 1640337368647991303
       type: {class: DamageSkillAction, ns: , asm: Assembly-CSharp}
       data:
-        damageAmount: 7
+        damageAmount: 9
