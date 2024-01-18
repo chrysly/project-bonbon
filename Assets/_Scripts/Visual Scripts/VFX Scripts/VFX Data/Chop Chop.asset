@@ -37,7 +37,7 @@ MonoBehaviour:
     doMaterialLevel: 0
     materialLevel: {x: 0, y: 0}
   - spawnAt: 0
-    delay: 0.3
+    delay: 0.5
     duration: 1
     visualEffects:
     - {fileID: 4062057654680826533, guid: a6a7b8b93bfe5fc4bb63b6cce0adf68a, type: 3}
@@ -49,7 +49,7 @@ MonoBehaviour:
     doMaterialLevel: 0
     materialLevel: {x: 0, y: 0}
   - spawnAt: 0
-    delay: 0.8
+    delay: 0.6
     duration: 1
     visualEffects:
     - {fileID: 454304686997564923, guid: ea60960008a6eb94d833f18603c72659, type: 3}
