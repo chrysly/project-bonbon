@@ -1123,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 591526674750422557, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -4.04
+      objectReference: {fileID: 0}
     - target: {fileID: 3731191176261244883, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
       propertyPath: anchorTransform
       value: 
@@ -1302,6 +1306,10 @@ PrefabInstance:
     - target: {fileID: 7506161137474518876, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
       propertyPath: m_Priority
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747824680177542689, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: 8016658437882586487, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
       propertyPath: onWinEvent
