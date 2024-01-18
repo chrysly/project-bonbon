@@ -38,7 +38,8 @@ public class AnimationHandler : StateMachineHandler {
             Animator casterAnimator = skillAction.Caster.GetComponentInChildren<Animator>(true);
             casterAnimator.SetTrigger(sAnim.AnimationTrigger);
 
-            skillAction.Caster.GetComponentInChildren<ModelGroupIdentifier>().Bump(skillPrep.targets[0].transform, sAnim.AnimationDuration);
+            ModelGroupIdentifier mgi = skillAction.Caster.GetComponentInChildren<ModelGroupIdentifier>();
+            if (mgi != null) mgi.Bump(skillPrep.targets[0].transform, sAnim.AnimationDuration);
 
             battleStateMachine.StartBattle(sAnim.AnimationDuration);
 
