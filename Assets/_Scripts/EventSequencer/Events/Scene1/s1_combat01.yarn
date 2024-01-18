@@ -1,12 +1,12 @@
 ﻿title: s1_combat01
-tags: Mochi:neutral_2:left
+tags: Mochi:thinking:left
 ---
-Mochi: Hmmm, now where could that ingredient be...
+Mochi_thinking: Hmmm, now where could that ingredient be...
 
 <<add_char narr true>>
 Narr_idle: *rustling noises*
 
-Mochi_suprised: Huh? Who’s there!?
+Mochi_idle: Huh? Who’s there!?
 
 Narr_idle: *A blue jell-o jumper ambushes Mochi.*
 
@@ -14,6 +14,6 @@ Mochi_suprised: Agh! A Jello Jumper!!
 
 Mochi_thinking: Wait a second...
 Mochi_thinking: This blue blob can barely bounce!
-Mochi_thinking: Heh, you’re going down.
+Mochi_happy1: Heh, you’re going down.
 
 ===

@@ -15,20 +15,26 @@ MonoBehaviour:
   characterName: mochi
   portraitList:
   - expression: idle
-    portrait: {fileID: 21300000, guid: fdfba200aba022d4eaff13791719e797, type: 3}
-  - expression: neutral_2
-    portrait: {fileID: 21300000, guid: fdfba200aba022d4eaff13791719e797, type: 3}
-  - expression: apologetic_1
-    portrait: {fileID: 21300000, guid: 905a2a31fa3860149a467a1bf8a1b763, type: 3}
-  - expression: sad
-    portrait: {fileID: 21300000, guid: 04a0ec4b3a4620a4abaeb787c9b0a10a, type: 3}
-  - expression: thinking
-    portrait: {fileID: 21300000, guid: a6c20e4e4f7bf664688e2296187064e7, type: 3}
-  - expression: suprised
-    portrait: {fileID: 21300000, guid: cfe967d49647e774093b9253f6ce1a0d, type: 3}
+    portrait: {fileID: 21300000, guid: d993c90f86d52e7479d48df4dd9bf2cf, type: 3}
   - expression: angry
-    portrait: {fileID: 21300000, guid: 7ba3cf73cfa8148428b817d3db71b544, type: 3}
+    portrait: {fileID: 21300000, guid: b8eb446c10e53f147b4205cd95a014fb, type: 3}
+  - expression: apologetic
+    portrait: {fileID: 21300000, guid: 3c51890c72415a346bc3a39b1b81fca1, type: 3}
+  - expression: excited
+    portrait: {fileID: 21300000, guid: 474cd63c0fad91146b9ff532e48c7c52, type: 3}
+  - expression: happy1
+    portrait: {fileID: 21300000, guid: 121438c8cc0721c4b821c1fca4cf3309, type: 3}
+  - expression: happy2
+    portrait: {fileID: 21300000, guid: a31d807d0cb8b604eae64c59f8cce721, type: 3}
   - expression: hyped_up
-    portrait: {fileID: 21300000, guid: b0dd49fd359d55149bb9e4046366ee37, type: 3}
-  defaultToRightSide: 1
+    portrait: {fileID: 21300000, guid: c56c6e01f6e2a9f48a4f1c412954ffd1, type: 3}
+  - expression: neutral
+    portrait: {fileID: 21300000, guid: 8800e5636d120f14daf2143ca87975cc, type: 3}
+  - expression: sad
+    portrait: {fileID: 21300000, guid: 5ca672a674281f14e830912bc3d7cc6d, type: 3}
+  - expression: suprised
+    portrait: {fileID: 21300000, guid: 8b83dc35e5bdc854cacc481f5e4f6474, type: 3}
+  - expression: thinking
+    portrait: {fileID: 21300000, guid: 3012fd5351ec88f4698959b30e2d3acc, type: 3}
+  defaultToRightSide: 0
   dialogueBoxColor: {r: 0.39215687, g: 0.5764706, b: 0.31764707, a: 1}
