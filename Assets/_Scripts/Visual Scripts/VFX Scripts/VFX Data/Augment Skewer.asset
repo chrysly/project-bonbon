@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationList:
   - spawnAt: 0
-    delay: 0.5
-    duration: 2
+    delay: 1.1
+    duration: 0
     visualEffects: []
     vfxOffset: {x: 0, y: 0, z: 0}
     parentVFX: 0
@@ -25,9 +25,9 @@ MonoBehaviour:
     materialDuration: 0
     doMaterialLevel: 0
     materialLevel: {x: 0, y: 0}
-    createAfterImage: 1
-    afterImageMaterial: {fileID: 2100000, guid: 49446777d9fee7b4c88663b6386a7522, type: 2}
-    afterImageDuration: 10
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0
   - spawnAt: 0
     delay: 0
     duration: 2
@@ -41,6 +41,6 @@ MonoBehaviour:
     materialDuration: 0
     doMaterialLevel: 0
     materialLevel: {x: 0, y: 0}
-    createAfterImage: 1
-    afterImageMaterial: {fileID: 2100000, guid: 49446777d9fee7b4c88663b6386a7522, type: 2}
-    afterImageDuration: 2
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0
