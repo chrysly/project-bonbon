@@ -30,13 +30,14 @@ namespace BattleUI.TurnOrder {
         }
 
         void Awake() => rectTransform = GetComponent<RectTransform>();
-        void Start() => DialogueManager.OnDialogueStart += DialogueManager_OnDialogueStart;
-        void OnDisable() => DialogueManager.OnDialogueStart -= DialogueManager_OnDialogueStart;
-        private void DialogueManager_OnDialogueStart(bool toggle) => OnSoftToggle?.Invoke(!toggle);
+        void Start() => DialogueManager.OnDialogueStart += SoftToggle;
+        void OnDisable() => DialogueManager.OnDialogueStart -= SoftToggle;
+        public void SoftToggle(bool toggle) => OnSoftToggle?.Invoke(!toggle);
 
         public override void Init(ScreenSpaceHandler handler) {
             this.handler = handler;
             handler.Input.OnTurnChange += UpdateTurnDisplay;
+            handler.Input.OnUISoftToggle += SoftToggle;
         }
 
         private void UpdateTurnDisplay(List<Actor> actorList) {
