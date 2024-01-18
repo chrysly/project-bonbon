@@ -190,7 +190,7 @@ namespace BonbonAssetManager {
             } return changed;
         }
 
-        public static void DrawAssetGroup<T>(List<T> assetList, Vector2 scrollVar, System.Func<object, GUIContent> contentFunc,
+        public static void DrawAssetGroup<T>(List<T> assetList, ref Vector2 scrollVar, System.Func<object, GUIContent> contentFunc,
                                              Rect position, float buttonSize) where T : ScriptableObject {
             EditorUtils.WindowBoxLabel($"Available {typeof(T).FullName.ToCamelSpace().RemovePathEnd(" ")}s");
 

@@ -161,13 +161,13 @@ namespace BonbonAssetManager {
 
                                     break;
                                 case Mode.Recipe:
-                                    BAMUtils.DrawAssetGroup(bonbonList, bonbonScroll, BonbonBlueprint.GUIContent,
+                                    BAMUtils.DrawAssetGroup(bonbonList, ref bonbonScroll, BonbonBlueprint.GUIContent,
                                                             MainGUI.position, buttonSize);
                                     DrawRecipeDropSlots();
                                     DrawRecipePreview(selectedBonbon);
                                     break;
                                 case Mode.GlobalMap:
-                                    BAMUtils.DrawAssetGroup(MainGUI.GlobalBonbonList, bonbonScroll, BonbonBlueprint.GUIContent,
+                                    BAMUtils.DrawAssetGroup(MainGUI.GlobalBonbonList, ref bonbonScroll, BonbonBlueprint.GUIContent,
                                                             MainGUI.position, buttonSize);
                                     BAMUtils.DrawMap(globalBonbonMap, ref scrollGroup, BonbonBlueprint.GUIContent, buttonSize, 
                                                      MainGUI.assetRefs.dndFieldAssets, SaveMap);
@@ -547,13 +547,13 @@ namespace BonbonAssetManager {
 
                                         switch (mapEditor) {
                                             case MapEditor.Skill:
-                                                BAMUtils.DrawAssetGroup(skillList, upperScroll, SkillObject.GUIContent,
+                                                BAMUtils.DrawAssetGroup(skillList, ref upperScroll, SkillObject.GUIContent,
                                                                         MainGUI.position, buttonSize);
                                                 BAMUtils.DrawMap(skillMap, ref scrollGroup, SkillObject.GUIContent, buttonSize,
                                                                  MainGUI.assetRefs.dndFieldAssets, SaveMap);
                                                 break;
                                             case MapEditor.Bonbon:
-                                                BAMUtils.DrawAssetGroup(bonbonList, upperScroll, BonbonBlueprint.GUIContent,
+                                                BAMUtils.DrawAssetGroup(bonbonList, ref upperScroll, BonbonBlueprint.GUIContent,
                                                                     MainGUI.position, buttonSize);
                                                 BAMUtils.DrawMap(bonbonMap, ref scrollGroup, BonbonBlueprint.GUIContent, buttonSize,
                                                                  MainGUI.assetRefs.dndFieldAssets, SaveMap);
