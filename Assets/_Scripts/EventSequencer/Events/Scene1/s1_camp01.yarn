@@ -1,12 +1,10 @@
 ﻿title: s1_camp01
-tags: Mochi:idle:left
+tags: Mochi:happy1:left
 ---
-Mochi: This is gonna be the best thing mom and dad have ever tasted!
+Mochi_happy1: This is gonna be the best thing mom and dad have ever tasted!
 
-Mochi_thinking: Pan has always been their favorite child, but now it's gonna be me!
+Mochi_neutral: Pan has always been their favorite child, but now it's gonna be me!
 
 Mochi_hyped_up: I just have to find the final ingredient for this dish.
-
-<<remove_char mochi>>
 
 ===
