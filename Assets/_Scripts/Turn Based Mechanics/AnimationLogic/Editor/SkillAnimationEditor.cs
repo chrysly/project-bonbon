@@ -95,8 +95,7 @@ public class SkillAnimationEditor : EditorWindow {
                                         EditorGUILayout.Separator();
                                         foreach (DelaySkillAnimation delaySkillAnimation in selectedAnimation.DelaySkills) {
                                             delaySkillAnimation.OnGUI();
-                                        }
-                                        break;
+                                        } break;
                                     case SectionType.VFX:
                                         EditorUtils.WindowBoxLabel("Base Skill VFX");
                                         selectedAnimation.SetBaseSkillVFX(EditorGUILayout.ObjectField(selectedAnimation.BaseSkillVFX,

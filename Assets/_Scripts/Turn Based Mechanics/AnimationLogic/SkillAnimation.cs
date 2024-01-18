@@ -17,7 +17,16 @@ public class SkillAnimation {
     public float AnimationDuration => animationDuration;
 
     [SerializeReference] private List<DelaySkillAnimation> delaySkills;
-    public List<DelaySkillAnimation> DelaySkills => delaySkills;
+    public List<DelaySkillAnimation> DelaySkills {
+        get {
+            if (delaySkills == null) {
+                delaySkills = new();
+                delaySkills.Add(new DelaySkillDamageAnimation());
+                delaySkills.Add(new DelaySkillEffectAnimation());
+                delaySkills.Add(new DelaySkillHealAnimation());
+            } return delaySkills;
+        }
+    }
 
     [SerializeField] private CameraAnimationPackage cap;
     public CameraAnimationPackage CameraAnimationPackage => cap;
