@@ -130,7 +130,7 @@ MonoBehaviour:
   profile: {fileID: 8232850580098087894}
   selector: {fileID: 1934870619321407522}
   bgExtendedWidth: 150
-  bgHeight: 125
+  bgHeight: 150
   selectScale: 1
   baseAlpha: 0.925
 --- !u!1 &6990249756099023576
@@ -167,8 +167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25, y: 1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -25.5, y: 1}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7447556487856431211
 CanvasRenderer:
@@ -243,7 +243,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 150, y: 125}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7175329402763490518
 CanvasRenderer:
