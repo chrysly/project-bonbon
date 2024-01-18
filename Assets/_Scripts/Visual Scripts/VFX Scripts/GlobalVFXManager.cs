@@ -10,21 +10,21 @@ using GameObject = UnityEngine.GameObject;
 public class GlobalVFXManager : StateMachineHandler {
 
     [SerializeField] private VFXMap vfxMap;
-    // [SerializeField] private VFXAnimationPackage package;
-    // [SerializeField] private Animator animator;
-    // [SerializeField] private Actor actor;
+    [SerializeField] private VFXAnimationPackage package;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Actor actor;
     public VFXMap VFXMap => vfxMap;
     
     private IEnumerator _action;
     private Queue<List<GameObject>> _activeVFXQueue = new Queue<List<GameObject>>();
 
-    // private void Update() {
-    //     if (UnityEngine.Input.GetKeyDown(KeyCode.O)) {
-    //         animator.Play("_Skill1");
-    //         Debug.Log("oof");
-    //         PlayAnimation(package, actor.transform);
-    //     }
-    // }
+    private void Update() {
+        if (UnityEngine.Input.GetKeyDown(KeyCode.O)) {
+            animator.Play("_Skill1");
+            Debug.Log("oof");
+            PlayAnimation(package, actor.transform);
+        }
+    }
 
     public void Connect(AnimationHandler animationHandler) {
         animationHandler.HealEvent += AnimationHandler_HealEvent;
@@ -53,9 +53,23 @@ public class GlobalVFXManager : StateMachineHandler {
         if (vfxAnim.material != null && vfxAnim.doMaterialSwap) ApplyShaderOperation(vfxAnim, actor);
         if (vfxAnim.material != null && vfxAnim.doMaterialReplace) ReplaceMaterialOperation(vfxAnim, actor);
         if (vfxAnim.material != null && vfxAnim.doMaterialLevel) ShaderValueOperation(vfxAnim);
+        if (vfxAnim.createAfterImage && vfxAnim.afterImageMaterial != null) AfterImageOperation(vfxAnim, actor);
     }
     
     #region VFX Operations
+
+    private void AfterImageOperation(VFXAnimation vfxAnim, Transform actor) {
+        Transform meshTransform = SetTarget(vfxAnim.spawnAt, actor);
+        SkinnedMeshRenderer[] skins = meshTransform.GetComponentsInChildren<SkinnedMeshRenderer>();
+        Material[] materials = { vfxAnim.afterImageMaterial };
+        foreach (SkinnedMeshRenderer skin in skins) {
+            materials[0].SetFloat("_Level", 2.5f);
+            GameObject image = Instantiate(skin.gameObject, skin.transform.position, skin.transform.rotation, skin.transform.parent);
+            image.GetComponent<SkinnedMeshRenderer>().materials = materials;
+            materials[0].DOFloat(20, "_Level", vfxAnim.afterImageDuration);
+            Destroy(image, vfxAnim.afterImageDuration + 0.1f);
+        }
+    }
 
     private void SpawnOperation(VFXAnimation vfxAnim, Transform actor) {
         Transform spawnLocation = SetTarget(vfxAnim.spawnAt, actor);

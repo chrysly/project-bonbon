@@ -46,4 +46,8 @@ public class VFXAnimation
 
     [Tooltip("Level value of shader. Effect varies depending on first index float value of shader. y = duration")]
     public Vector2 materialLevel;
+
+    [Tooltip("Afterimage")] public bool createAfterImage;
+    [Tooltip("Afterimage material")] public Material afterImageMaterial;
+    [Tooltip("Afterimage duration")] public float afterImageDuration;
 }

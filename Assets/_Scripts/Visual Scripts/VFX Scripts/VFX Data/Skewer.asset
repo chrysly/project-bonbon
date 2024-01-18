@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbaeae2cf2e54f245b7633a818fb71a5, type: 3}
+  m_Name: Skewer
+  m_EditorClassIdentifier: 
+  animationList:
+  - spawnAt: 0
+    delay: 1.1
+    duration: 0
+    visualEffects: []
+    vfxOffset: {x: 0, y: 0, z: 0}
+    parentVFX: 0
+    doMaterialSwap: 0
+    doMaterialReplace: 0
+    material: {fileID: 0}
+    materialDuration: 0
+    doMaterialLevel: 0
+    materialLevel: {x: 0, y: 0}
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0
+  - spawnAt: 0
+    delay: 0
+    duration: 2
+    visualEffects:
+    - {fileID: 2807789086055997111, guid: ae262900c9e92f04188b8c8757571e41, type: 3}
+    vfxOffset: {x: 0, y: 0, z: 0}
+    parentVFX: 1
+    doMaterialSwap: 0
+    doMaterialReplace: 0
+    material: {fileID: 0}
+    materialDuration: 0
+    doMaterialLevel: 0
+    materialLevel: {x: 0, y: 0}
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0
