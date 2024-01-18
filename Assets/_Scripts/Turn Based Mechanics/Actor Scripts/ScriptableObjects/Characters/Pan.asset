@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pan
   m_EditorClassIdentifier: 
   displayName: Pan
-  icon: {fileID: 21300000, guid: 2b691732f41c3ce45ad0b3456d2bc6e3, type: 3}
+  icon: {fileID: 21300000, guid: 601790d6b5a992341b354ad12ca30f8c, type: 3}
   id: 0_Pan
   maxHitpoints: 20
   basePotency: 0

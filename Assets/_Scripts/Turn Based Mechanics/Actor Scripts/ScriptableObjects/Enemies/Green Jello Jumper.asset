@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Green Jello Jumper
   m_EditorClassIdentifier: 
   displayName: Green Jello Jumper
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5dff081fd48cbed4e8e25e83bb205303, type: 3}
   id: jellogreen
   maxHitpoints: 20
   basePotency: 0
