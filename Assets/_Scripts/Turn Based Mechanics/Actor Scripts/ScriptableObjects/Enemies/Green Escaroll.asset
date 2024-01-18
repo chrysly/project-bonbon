@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Green Escaroll
   m_EditorClassIdentifier: 
   displayName: Green Escaroll
-  icon: {fileID: 21300000, guid: 7895477d0c1f4784a839dcb3f034d4de, type: 3}
+  icon: {fileID: 21300000, guid: cb1c9043427223140bb1e58022d34bf9, type: 3}
   id: escaroll_green
   maxHitpoints: 16
   basePotency: 0

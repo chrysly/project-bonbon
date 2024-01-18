@@ -15,7 +15,7 @@ MonoBehaviour:
   displayName: Blue Jello Jumper
   icon: {fileID: 21300000, guid: 9eb6ddb2d5ca81d488e78a30ca125dcd, type: 3}
   id: jelloblue
-  maxHitpoints: 25
+  maxHitpoints: 20
   basePotency: 0
   baseDefense: 0
   baseSpeed: 3

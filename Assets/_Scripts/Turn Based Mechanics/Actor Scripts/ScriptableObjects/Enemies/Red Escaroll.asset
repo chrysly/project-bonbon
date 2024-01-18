@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Red Escaroll
   m_EditorClassIdentifier: 
   displayName: Red Escaroll
-  icon: {fileID: 21300000, guid: 7895477d0c1f4784a839dcb3f034d4de, type: 3}
+  icon: {fileID: 21300000, guid: c66dfcdc66284a34c9e3a039b2823dc6, type: 3}
   id: escaroll_red
   maxHitpoints: 13
   basePotency: 0

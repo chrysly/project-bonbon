@@ -19,12 +19,12 @@ MonoBehaviour:
     visualEffects: []
     vfxOffset: {x: 0, y: 0, z: 0}
     parentVFX: 0
-    doMaterialSwap: 0
+    doMaterialSwap: 1
     doMaterialReplace: 0
-    material: {fileID: 0}
-    materialDuration: 0
-    doMaterialLevel: 0
-    materialLevel: {x: 0, y: 0}
+    material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
+    materialDuration: 4.2
+    doMaterialLevel: 1
+    materialLevel: {x: 2.5, y: 1}
     createAfterImage: 0
     afterImageMaterial: {fileID: 0}
     afterImageDuration: 0
@@ -32,15 +32,15 @@ MonoBehaviour:
     delay: 0
     duration: 2
     visualEffects:
-    - {fileID: 2807789086055997111, guid: ae262900c9e92f04188b8c8757571e41, type: 3}
+    - {fileID: 4128847265330884712, guid: 9af3eb08d6ab77344b5ea491bb54846e, type: 3}
     vfxOffset: {x: 0, y: 0, z: 0}
     parentVFX: 1
     doMaterialSwap: 0
     doMaterialReplace: 0
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
     materialDuration: 0
-    doMaterialLevel: 0
-    materialLevel: {x: 0, y: 0}
+    doMaterialLevel: 1
+    materialLevel: {x: 20, y: 0.5}
     createAfterImage: 0
     afterImageMaterial: {fileID: 0}
     afterImageDuration: 0
