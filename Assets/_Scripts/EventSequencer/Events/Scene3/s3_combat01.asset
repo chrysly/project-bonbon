@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 563e0954142a52342933950a538ceacc, type: 3}
-  m_Name: s1_combatWIN
+  m_Script: {fileID: 11500000, guid: 6c4826118d5c6be4baf32b74ee4aafd4, type: 3}
+  m_Name: s3_combat01
   m_EditorClassIdentifier: 
   eventConditions:
   - rid: -2
-  yarnFile: {fileID: -8253061345870894857, guid: ed130a8deae5711478f461ab8f6fd6d0, type: 3}
-  playOnStart: 0
-  includeLoadingBar: 1
+  yarnFile: {fileID: -8253061345870894857, guid: 6546a993c98304843bfa6b4db67db222, type: 3}
+  playOnStart: 1
   references:
     version: 2
     RefIds:
