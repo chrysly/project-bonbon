@@ -15,6 +15,7 @@ namespace BattleUI.TurnOrder {
         [SerializeField] private Image selector;
 
         [SerializeField] private float bgExtendedWidth;
+        [SerializeField] private float bgHeight;
         [SerializeField] private float selectScale;
         [SerializeField] private float baseAlpha;
         
@@ -75,7 +76,7 @@ namespace BattleUI.TurnOrder {
                         slRect.DOSizeDelta(new Vector2(selectorDelta.x, 0), tod.SpawnDuration * (2/3));
                     } profile.DOFade(0, tod.SpawnDuration * (2/3));
                     yield return new WaitForSeconds(tod.SpawnDuration * (2/3));
-                    bgRect.DOSizeDelta(new Vector2(0, 95), tod.SpawnDuration * 1.2f);
+                    bgRect.DOSizeDelta(new Vector2(0, bgHeight), tod.SpawnDuration * 1.2f);
                     yield return new WaitForSeconds(tod.SpawnDuration * 1.2f);
                     Destroy(gameObject);
                     break;
@@ -88,7 +89,7 @@ namespace BattleUI.TurnOrder {
                                                                         ref reloVelocity, tod.SpawnDuration * 2);
 
                     /// Expand Portrait;
-                    bgRect.sizeDelta = Vector2.SmoothDamp(bgRect.sizeDelta, new Vector2(softEnabled ? bgExtendedWidth : 0, 95),
+                    bgRect.sizeDelta = Vector2.SmoothDamp(bgRect.sizeDelta, new Vector2(softEnabled ? bgExtendedWidth : 0, bgHeight),
                                                                             ref selectVelocity, tod.SpawnDuration * 1.5f);
                     background.color = AlphaColor(background.color, Mathf.MoveTowards(background.color.a,
                                                                                       softEnabled ? (selected ? 1 : baseAlpha) : 0, 
