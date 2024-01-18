@@ -24,4 +24,8 @@ MonoBehaviour:
     flatSpeed: 0
     percentSpeed: 0
     flatStaminaRegen: 0
+  actions: []
   effectType: 0
+  references:
+    version: 2
+    RefIds: []
