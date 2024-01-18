@@ -22,4 +22,4 @@ MonoBehaviour:
     - rid: 1366417402520666112
       type: {class: EventConditions/TurnNumberCondition, ns: , asm: Assembly-CSharp}
       data:
-        turnNum: 4
+        turnNum: 8

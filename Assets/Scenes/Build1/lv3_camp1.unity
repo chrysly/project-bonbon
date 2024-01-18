@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000051962208, g: 0.0005199772, b: 0.0016866971, a: 1}
+  m_IndirectSpecularColor: {r: 0.000051687104, g: 0.0005197376, b: 0.0016857558, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitToStart: 2
   campEvents:
-  - {fileID: 11400000, guid: 241daeae4d7f892468f5b08a25647100, type: 2}
+  - {fileID: 11400000, guid: 86689593d1866394099f13c3ec340919, type: 2}
   evSeq: {fileID: 933842364}
 --- !u!4 &840497275
 Transform:
