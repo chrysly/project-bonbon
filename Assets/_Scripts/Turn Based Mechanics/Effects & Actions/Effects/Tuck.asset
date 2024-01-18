@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tuck
   m_EditorClassIdentifier: 
   name: Tuck
-  duration: 0
+  duration: 3
   modifiers:
     flatAttack: 0
     percentAttack: 0
