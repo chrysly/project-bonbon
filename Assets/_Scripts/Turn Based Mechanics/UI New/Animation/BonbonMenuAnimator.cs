@@ -67,7 +67,6 @@ namespace BattleUI {
             bakeHandler.OnBonbonModification -= Brain.PropagateAnimationCall;
             mainHandler.OnHandlerToggle -= OnMainHandlerToggle;
             bakeHandler.OnHandlerToggle -= OnBakeHandlerToggle;
-            Debug.Log("bruh");
         }
     }
 }

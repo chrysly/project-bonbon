@@ -46,7 +46,7 @@ public class ActorHandler : StateMachineHandler {
             characterSpace.Init(this);
         } foreach (EnemySpace enemySpace in enemySpaces) {
             enemySpace.Init(this);
-        } input.InitializeTurnOrder(ActorList);
+        }
     }
 
     public void InitializePrefab(GameObject actorPrefab) {
