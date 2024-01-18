@@ -24,6 +24,7 @@ public class BattleStateInput : StateInput {
     public BonbonHandler BonbonHandler { get; private set; }
     public GlobalCameraManager CameraHandler { get; private set; }
     public GlobalVFXManager VFXHandler { get; private set; }
+    public BattleUI.ScreenSpaceHandler ScreenSpaceHandler { get; private set; }
     #endregion
 
     /// <summary>
@@ -33,7 +34,8 @@ public class BattleStateInput : StateInput {
     public void Initialize(StateMachineHandler[] handlers) {
         /// First loop => Grab references;
         foreach (StateMachineHandler smh in handlers) {
-            if (smh is ActorHandler) ActorHandler = smh as ActorHandler;
+            if (smh is BattleUI.ScreenSpaceHandler) ScreenSpaceHandler = smh as BattleUI.ScreenSpaceHandler;
+            else if (smh is ActorHandler) ActorHandler = smh as ActorHandler;
             else if (smh is SkillHandler) SkillHandler = smh as SkillHandler;
             else if (smh is AnimationHandler) AnimationHandler = smh as AnimationHandler;
             else if (smh is BonbonHandler) BonbonHandler = smh as BonbonHandler;
@@ -41,18 +43,19 @@ public class BattleStateInput : StateInput {
             else if (smh is GlobalVFXManager) VFXHandler = smh as GlobalVFXManager;
         } /// Second loop => Initialize Handlers;
         foreach (StateMachineHandler smh in handlers) smh.Initialize(this);
+        InitializeTurnOrder(ActorHandler.ActorList);
     }
 
-    public void InitializeTurnOrder(List<Actor> actorList) {
+    private void InitializeTurnOrder(List<Actor> actorList) {
         TurnOrderHandler = new TurnOrderHandler(actorList);
-        PropagateTurnChange(TurnOrderHandler.GetTurnPreview(6));
+        PropagateTurnChange(TurnOrderHandler.GetTurnPreview(5));
         activeActor = TurnOrderHandler.Advance();
     }
 
     /// <summary> Advances until the next undefeated Actor. Returns to initial Actor if not available.</summary>
     public void AdvanceTurn() {
         do {
-            PropagateTurnChange(TurnOrderHandler.GetTurnPreview(6));
+            PropagateTurnChange(TurnOrderHandler.GetTurnPreview(5));
             activeActor = TurnOrderHandler.Advance();
         } while (activeActor.Defeated);
         currentTurn++;

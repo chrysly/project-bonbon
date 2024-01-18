@@ -33,17 +33,18 @@ public class AnimationHandler : StateMachineHandler {
         try {
             SkillAnimation sAnim = SkillAMap[skillAction.SkillData][skillAction.Caster.Data];
 
-            CameraAnimationPackage cap = sAnim.CameraAnimationPackage;
-            if (cap != null) input.CameraHandler.PlayAnimation(cap);
+            ///CameraAnimationPackage cap = sAnim.CameraAnimationPackage;
+            ///if (cap != null) input.CameraHandler.PlayAnimation(cap);
             Animator casterAnimator = skillAction.Caster.GetComponentInChildren<Animator>(true);
             casterAnimator.SetTrigger(sAnim.AnimationTrigger);
 
             skillAction.Caster.GetComponentInChildren<ModelGroupIdentifier>().Bump(skillPrep.targets[0].transform, sAnim.AnimationDuration);
 
             battleStateMachine.StartBattle(sAnim.AnimationDuration);
-            if (bonbon != null) ; /// Do VFXs
 
-            CompileAnimationSequence(skillPrep, sAnim);
+            if (sAnim.BaseSkillVFX != null) {
+                input.VFXHandler.PlayAnimation(bonbon == null ? sAnim.BaseSkillVFX : sAnim.BonbonSkillVFX, skillAction.Caster.transform);
+            } CompileAnimationSequence(skillPrep, sAnim);
         } catch (KeyNotFoundException) {
             Debug.LogWarning($"Animation Undefined for {skillAction.SkillData.Name} -> {skillAction.Caster.Data.DisplayName}");
         }

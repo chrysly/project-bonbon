@@ -16,13 +16,17 @@ public class SkillAnimation {
     [SerializeField] private float animationDuration;
     public float AnimationDuration => animationDuration;
 
-    [SerializeField] private GameObject vfxPrefab;
-    public GameObject VFXPrefab => vfxPrefab;
     [SerializeReference] private List<DelaySkillAnimation> delaySkills;
     public List<DelaySkillAnimation> DelaySkills => delaySkills;
 
     [SerializeField] private CameraAnimationPackage cap;
     public CameraAnimationPackage CameraAnimationPackage => cap;
+
+    [SerializeField] private VFXAnimationPackage baseSkillVFX;
+    public VFXAnimationPackage BaseSkillVFX => baseSkillVFX;
+
+    [SerializeField] private VFXAnimationPackage bonbonSkillVFX;
+    public VFXAnimationPackage BonbonSkillVFX => bonbonSkillVFX != null ? bonbonSkillVFX : baseSkillVFX;
 
 #if UNITY_EDITOR
 
@@ -57,27 +61,16 @@ public class SkillAnimation {
 
     /// VFX Editor ///
 
-    public void SetVFXPrefab(GameObject prefab) {
-        CleanDelayEditor();
-        vfxPrefab = prefab;
+    public void SetBaseSkillVFX(VFXAnimationPackage baseSkillVFX) {
+        this.baseSkillVFX = baseSkillVFX;
+    }
+
+    public void SetBonbonSkillVFX(VFXAnimationPackage bonbonSkillVFX) {
+        this.bonbonSkillVFX = bonbonSkillVFX;
     }
 
     public void SetCap(CameraAnimationPackage cap) {
         this.cap = cap;
-    }
-
-    public UnityEditor.Editor DelayScriptEditor {
-        get {
-            if (delayScriptEditor is null && VFXPrefab != null) {
-                SlashTest delayComponent = VFXPrefab.GetComponentInChildren<SlashTest>(true);
-                if (delayComponent != null) delayScriptEditor = UnityEditor.Editor.CreateEditor(delayComponent);
-            } return delayScriptEditor;
-        }
-    } private UnityEditor.Editor delayScriptEditor;
-
-    public void CleanDelayEditor() {
-        Object.DestroyImmediate(DelayScriptEditor);
-        delayScriptEditor = null;
     }
 
     #endif
