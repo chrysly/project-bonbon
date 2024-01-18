@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbaeae2cf2e54f245b7633a818fb71a5, type: 3}
+  m_Name: Augment Chop Chop
+  m_EditorClassIdentifier: 
+  animationList:
+  - spawnAt: 0
+    delay: 0.4
+    duration: 0
+    visualEffects: []
+    vfxOffset: {x: 0, y: 0, z: 0}
+    doMaterialSwap: 1
+    doMaterialReplace: 0
+    material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
+    materialDuration: 2
+    doMaterialLevel: 1
+    materialLevel: {x: 20, y: 0}
+  - spawnAt: 0
+    delay: 0.4
+    duration: 1
+    visualEffects:
+    - {fileID: 617006100559382859, guid: 775e75cbec8d59344b7aeac99876d7ab, type: 3}
+    vfxOffset: {x: 0, y: 0, z: 0}
+    doMaterialSwap: 0
+    doMaterialReplace: 0
+    material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
+    materialDuration: 0
+    doMaterialLevel: 0
+    materialLevel: {x: 0, y: 0}
+  - spawnAt: 0
+    delay: 0.5
+    duration: 1
+    visualEffects:
+    - {fileID: 3988141076236572673, guid: ad2bc89820ae7d644b47240936bad458, type: 3}
+    vfxOffset: {x: 0, y: 0, z: 0}
+    doMaterialSwap: 0
+    doMaterialReplace: 0
+    material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
+    materialDuration: 0
+    doMaterialLevel: 0
+    materialLevel: {x: 0, y: 0}
+  - spawnAt: 0
+    delay: 0.6
+    duration: 1
+    visualEffects:
+    - {fileID: 1391286684853095589, guid: 8662218dec46cde4c8ca00d535e7b9f6, type: 3}
+    vfxOffset: {x: 0, y: 0, z: 0}
+    doMaterialSwap: 0
+    doMaterialReplace: 0
+    material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
+    materialDuration: 1
+    doMaterialLevel: 1
+    materialLevel: {x: 2.5, y: 0.6}
+  - spawnAt: 0
+    delay: 0.5
+    duration: 1
+    visualEffects:
+    - {fileID: 5313126812582821922, guid: 19d0e3ac8028e324ab03c960836e775b, type: 3}
+    vfxOffset: {x: 0, y: 0, z: 0}
+    doMaterialSwap: 0
+    doMaterialReplace: 0
+    material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
+    materialDuration: 0
+    doMaterialLevel: 1
+    materialLevel: {x: 20, y: 0.3}
