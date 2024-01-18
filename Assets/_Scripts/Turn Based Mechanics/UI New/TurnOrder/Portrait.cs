@@ -48,8 +48,8 @@ namespace BattleUI.TurnOrder {
 
         public void Init(TurnOrderDisplay tod) {
             this.tod = tod;
-            StartCoroutine(CoreCoroutine());
             tod.OnSoftToggle += (toggle) => softEnabled = toggle;
+            StartCoroutine(CoreCoroutine());
         }
 
         public void UpdateActor(Actor actor) => profile.sprite = actor.Data.Icon;
