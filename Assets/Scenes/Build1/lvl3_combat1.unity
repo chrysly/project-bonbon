@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.24174856, g: 0.41928223, b: 0.55570626, a: 1}
+  m_IndirectSpecularColor: {r: 0.24205694, g: 0.4195001, b: 0.5557158, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -138,6 +138,14 @@ PrefabInstance:
     - target: {fileID: 2642918069673691180, guid: 3dc84b816df5262478b375645d09379e, type: 3}
       propertyPath: _hitpoints
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205295191694534440, guid: 3dc84b816df5262478b375645d09379e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205295191694534440, guid: 3dc84b816df5262478b375645d09379e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8165723941170580468, guid: 3dc84b816df5262478b375645d09379e, type: 3}
       propertyPath: m_Name
@@ -531,6 +539,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brown_Escaroll
       objectReference: {fileID: 0}
+    - target: {fileID: 9135289079501430410, guid: 45f2cd8031b3c844ead830e60d77411c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135289079501430410, guid: 45f2cd8031b3c844ead830e60d77411c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -798,6 +814,14 @@ PrefabInstance:
     - target: {fileID: 3279274382182789811, guid: 1e351b776daaf674ba144cb2ae38cac4, type: 3}
       propertyPath: _hitpoints
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948217034572275696, guid: 1e351b776daaf674ba144cb2ae38cac4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948217034572275696, guid: 1e351b776daaf674ba144cb2ae38cac4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7330219001791123781, guid: 1e351b776daaf674ba144cb2ae38cac4, type: 3}
       propertyPath: m_LocalScale.x
@@ -1282,11 +1306,19 @@ PrefabInstance:
     - target: {fileID: 8016658437882586487, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
       propertyPath: onWinEvent
       value: 
-      objectReference: {fileID: 11400000, guid: 4b34fcdf418c426419d98269a58ce54d, type: 2}
+      objectReference: {fileID: 11400000, guid: 92fe05b93cd43d0439d0df9717805bef, type: 2}
+    - target: {fileID: 8016658437882586487, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
+      propertyPath: eventSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8016658437882586487, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
       propertyPath: eventSequence.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 4b34fcdf418c426419d98269a58ce54d, type: 2}
+      objectReference: {fileID: 11400000, guid: 67f4068a65921f34fb32b3597c779580, type: 2}
+    - target: {fileID: 8016658437882586487, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
+      propertyPath: eventSequence.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a53ec03565480b46a0e7e1d4af0ead4, type: 2}
     - target: {fileID: 8483909726663881036, guid: 68c5b40cdfaeb4e4f83d1cb359f2688d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
