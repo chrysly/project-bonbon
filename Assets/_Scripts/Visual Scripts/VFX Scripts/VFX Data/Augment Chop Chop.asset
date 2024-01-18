@@ -18,6 +18,7 @@ MonoBehaviour:
     duration: 0
     visualEffects: []
     vfxOffset: {x: 0, y: 0, z: 0}
+    parentVFX: 1
     doMaterialSwap: 1
     doMaterialReplace: 0
     material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
@@ -30,6 +31,7 @@ MonoBehaviour:
     visualEffects:
     - {fileID: 617006100559382859, guid: 775e75cbec8d59344b7aeac99876d7ab, type: 3}
     vfxOffset: {x: 0, y: 0, z: 0}
+    parentVFX: 1
     doMaterialSwap: 0
     doMaterialReplace: 0
     material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
@@ -42,6 +44,7 @@ MonoBehaviour:
     visualEffects:
     - {fileID: 3988141076236572673, guid: ad2bc89820ae7d644b47240936bad458, type: 3}
     vfxOffset: {x: 0, y: 0, z: 0}
+    parentVFX: 1
     doMaterialSwap: 0
     doMaterialReplace: 0
     material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
@@ -54,6 +57,7 @@ MonoBehaviour:
     visualEffects:
     - {fileID: 1391286684853095589, guid: 8662218dec46cde4c8ca00d535e7b9f6, type: 3}
     vfxOffset: {x: 0, y: 0, z: 0}
+    parentVFX: 1
     doMaterialSwap: 0
     doMaterialReplace: 0
     material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
@@ -66,6 +70,7 @@ MonoBehaviour:
     visualEffects:
     - {fileID: 5313126812582821922, guid: 19d0e3ac8028e324ab03c960836e775b, type: 3}
     vfxOffset: {x: 0, y: 0, z: 0}
+    parentVFX: 1
     doMaterialSwap: 0
     doMaterialReplace: 0
     material: {fileID: 2100000, guid: 61b3158f4f64b894ead3f38a55c013f1, type: 2}
