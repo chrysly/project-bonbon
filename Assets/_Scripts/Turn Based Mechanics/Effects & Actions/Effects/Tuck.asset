@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9f5bec5e6f56049a6df8ec23952b87, type: 3}
   m_Name: Tuck
   m_EditorClassIdentifier: 
-  name: 
-  duration: 0
+  name: Tuck
+  duration: 3
   modifiers:
     flatAttack: 0
     percentAttack: 0
     flatHeal: 0
     percentHealCast: 0
-    flatDefense: 0
+    flatDefense: 30
     percentDefense: 0
     flatSpeed: 0
     percentSpeed: 0

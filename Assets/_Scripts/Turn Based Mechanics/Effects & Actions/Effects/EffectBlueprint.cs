@@ -15,7 +15,7 @@ public class EffectBlueprint : ScriptableObject {
     /// <summary> Modifiers applied while the effect is active; </summary>
     public PassiveModifier modifiers;
     /// <summary> Actions carried at the beginning of every turn; </summary>
-    public List<ImmediateAction.EffectOnly> actions;
+    [SerializeReference] public List<ImmediateAction.EffectOnly> actions;
     public enum EffectType { Buff, Debuff }
     public EffectType effectType;
 
