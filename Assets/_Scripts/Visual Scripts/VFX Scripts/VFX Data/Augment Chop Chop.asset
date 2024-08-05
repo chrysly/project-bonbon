@@ -25,6 +25,9 @@ MonoBehaviour:
     materialDuration: 2
     doMaterialLevel: 1
     materialLevel: {x: 20, y: 0}
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0
   - spawnAt: 0
     delay: 0.4
     duration: 1
@@ -38,6 +41,9 @@ MonoBehaviour:
     materialDuration: 0
     doMaterialLevel: 0
     materialLevel: {x: 0, y: 0}
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0
   - spawnAt: 0
     delay: 0.5
     duration: 1
@@ -51,6 +57,9 @@ MonoBehaviour:
     materialDuration: 0
     doMaterialLevel: 0
     materialLevel: {x: 0, y: 0}
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0
   - spawnAt: 0
     delay: 0.6
     duration: 1
@@ -64,6 +73,9 @@ MonoBehaviour:
     materialDuration: 1
     doMaterialLevel: 1
     materialLevel: {x: 2.5, y: 0.6}
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0
   - spawnAt: 0
     delay: 0.5
     duration: 1
@@ -77,3 +89,6 @@ MonoBehaviour:
     materialDuration: 0
     doMaterialLevel: 1
     materialLevel: {x: 20, y: 0.3}
+    createAfterImage: 0
+    afterImageMaterial: {fileID: 0}
+    afterImageDuration: 0

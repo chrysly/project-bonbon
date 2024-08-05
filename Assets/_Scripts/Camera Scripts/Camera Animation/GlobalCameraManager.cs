@@ -19,6 +19,9 @@ public class GlobalCameraManager : StateMachineHandler {
 
     private IEnumerator _action;
 
+    public CameraAnimationPackage cameraPackage;
+    public Animator animator;
+
     public void Start() {
         _followTarget = new GameObject("Follow Target").transform;
         _lookTarget = new GameObject("Look Target").transform;
@@ -27,12 +30,12 @@ public class GlobalCameraManager : StateMachineHandler {
         _followTarget.position = staticCamera.transform.position;
     }
 
-    // public void Update() {
-    //     if (Input.GetKeyDown(KeyCode.C)) {
-    //         PlayAnimation(cameraPackage);
-    //         animator.Play("_Skill1");
-    //     }
-    // }
+    public void Update() {
+        if (UnityEngine.Input.GetKeyDown(KeyCode.C)) {
+            PlayAnimation(cameraPackage);
+            animator.Play("_Skill1");
+        }
+    }
 
     public void PlayAnimation(CameraAnimationPackage package) {
         if (_action == null) {
