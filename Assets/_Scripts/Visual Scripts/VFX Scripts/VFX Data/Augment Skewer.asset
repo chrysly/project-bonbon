@@ -30,7 +30,7 @@ MonoBehaviour:
     afterImageDuration: 0
   - spawnAt: 0
     delay: 0
-    duration: 2
+    duration: 4
     visualEffects:
     - {fileID: 4128847265330884712, guid: 9af3eb08d6ab77344b5ea491bb54846e, type: 3}
     vfxOffset: {x: 0, y: 0, z: 0}
